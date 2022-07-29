@@ -16,7 +16,10 @@
 
 
         """,
-    "depends": ["wecom_message", "portal",],
+    "depends": [
+        "wecom_message",
+        "portal",
+    ],
     "external_dependencies": {"python": [],},
     "data": ["data/wecom_portal_data.xml", "views/portal_templates.xml",],
     "qweb": ["static/src/xml/*.xml",],

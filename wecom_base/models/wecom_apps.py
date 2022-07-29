@@ -2,7 +2,7 @@
 
 
 from odoo import _, api, fields, models
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+# from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
 from odoo.exceptions import UserError
 
 

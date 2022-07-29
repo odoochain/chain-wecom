@@ -48,10 +48,10 @@
                 </xpath>
                 <xpath expr="//div[hasclass('oe_title')]//h1" position="after">
                     <!-- <label for="alias" class="oe_edit_only" /> -->
-                    <h2 attrs="{'invisible': [('is_wecom_user','=',False)]}">
-                        <lable for="alias" />
-                        <field name="alias" placeholder="Alias"/>
-                    </h2>
+<!--                    <h2 attrs="{'invisible': [('is_wecom_user','=',False)]}">-->
+<!--                        <lable for="alias" />-->
+<!--                        <field name="alias" placeholder="Alias"/>-->
+<!--                    </h2>-->
                     <!-- <label for="english_name" class="oe_edit_only" attrs="{'invisible': [('is_wecom_user','=',False)]}"/> -->
                     <h2 attrs="{'invisible': [('is_wecom_user','=',False)]}">
                         <label for="english_name" />
@@ -87,8 +87,8 @@
                 <xpath expr="//templates" position="before">
                     <field name="is_wecom_user"/>
                 </xpath>
-
-                <xpath expr="//strong[@class='o_kanban_record_title']/field[@name='name']" position="before">
+<!--https://stackoverflow.com/questions/65202059/odoo-aplicant-kanban-view-add-text-under-stage-name-->
+                <xpath expr="//strong[hasclass('o_kanban_record_title')]/field[@name='name']" position="before">
                     <div class="float-right" t-if="record.is_wecom_user.raw_value" name="is_wecom_user">
                         <span class="fa fa-weixin text-info" role="img" aria-label="Enterprise wechat Employee" title="Enterprise wechat Employee">
                         </span>
