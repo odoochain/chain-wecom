@@ -4,3 +4,4 @@ pdfminer
 num2words
 ffmpy
 pydub
+pandas

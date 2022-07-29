@@ -90,7 +90,7 @@ class WeComMessageTemplate(models.Model):
         "Markdown Body",
         translate=True,
     )
-
+    templates_id = fields.Many2one("wecom.message.template", string="Message template")
     # options
     safe = fields.Selection(
         [

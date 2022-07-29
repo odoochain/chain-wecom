@@ -38,7 +38,7 @@ WeCom Service-side API and Client-side API
         "views/menu.xml",
     ],
     "external_dependencies": {
-        "python": ["requests_toolbelt", "pandas", "lxml_to_dict", "pycryptodome"],
+        "python": ["requests_toolbelt", "pandas", "pycryptodome"],
     },
     "qweb": ["static/src/xml/*.xml",],
     # "post_init_hook": "post_init_hook",

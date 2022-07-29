@@ -60,9 +60,9 @@ class website(models.Model):
     social_weibo = fields.Char(
         "Weibo Account url", related="company_id.social_weibo", readonly=False
     )
-    social_renren = fields.Char(
-        "Renren Account url", related="company_id.social_renren", readonly=False
-    )
+    # social_renren = fields.Char(
+    #     "Renren Account url", related="company_id.social_renren", readonly=False
+    # )
 
     has_social_sidebar = fields.Boolean("Enable Social Network Sidebar", default=True)
 

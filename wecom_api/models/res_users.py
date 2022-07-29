@@ -4,7 +4,7 @@ import logging
 import base64
 from lxml import etree
 from odoo import api, fields, models, _
-from lxml_to_dict import lxml_to_dict
+
 from odoo.exceptions import AccessError
 
 WECOM_USER_MAPPING_ODOO_USER = {
@@ -25,7 +25,8 @@ class User(models.Model):
         xml_tree = self.env.context.get("xml_tree")
         company_id = self.env.context.get("company_id")
         xml_tree_str = etree.fromstring(bytes.decode(xml_tree))
-        dic = lxml_to_dict(xml_tree_str)["xml"]
+        dic = etree.tostring(xml_tree_str, xml_declaration=True, encoding='utf-8')
+        # dic = lxml_to_dict(xml_tree_str)["xml"]
         # print("user dic", dic)
 
         domain = [

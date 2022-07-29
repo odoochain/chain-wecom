@@ -16,7 +16,6 @@
 
                 <field name="social_qq" options="{'format': false}"/>
                 <field name="social_weibo"/>
-                <field name="social_renren"/>
             </xpath>
         </field>
     </record>

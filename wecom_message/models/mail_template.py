@@ -11,7 +11,7 @@ _logger = logging.getLogger(__name__)
 
 
 class MailTemplate(models.Model):
-    "Template for sending WeCom message"
+    # "Template for sending WeCom message"
 
     _inherit = "mail.template"
     _description = "WeCom Message Templates"
@@ -383,7 +383,7 @@ class MailTemplate(models.Model):
                         .sudo()
                         .new(
                             dict(
-                                markdown_body=values["body_markdown"],
+                                body_markdown=values["body_markdown"],
                                 record_name=record.display_name,
                             )
                         ),
@@ -423,7 +423,7 @@ class MailTemplate(models.Model):
                         .sudo()
                         .new(
                             dict(
-                                json_body=values["body_json"],
+                                body_json=values["body_json"],
                                 record_name=record.display_name,
                             )
                         ),

@@ -6,12 +6,17 @@
 [![Docs](http://img.shields.io/badge/Wecom14.0-Docs-F34B7D.svg?style=flat&colorA=8F8F8F)](https://docs.rstudio.xyz/zh/14.0/wecom)
 [![SDK](http://img.shields.io/badge/企微SDK-API-F34B7D.svg?style=flat&colorA=8F8F8F)](https://gitee.com/rainbowstudio/wecom_sdk_service/)
 
+thanks 
 
+https://github.com/anodoo/anodoo
+
+https://github.com/masami10/odoo_wxwork
+    
 *2022/2/5* 
 
 14.0开发导致为止了，除了修复bug外，不添加新功能了
 
-> 新增功能：
+> 新增功能：   
 
 - 应用列表：对应企业微信后台的应用
 - 应用参数：多对一关联到应用列表

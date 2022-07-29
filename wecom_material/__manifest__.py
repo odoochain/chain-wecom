@@ -35,6 +35,7 @@ Install:
     pip install pydub ffmpy
     or
     pip3 install pydub ffmpy
+    pip install ffmpy3
 
 """,
     "depends": ["attachment_indexation", "wecom_api"],

@@ -56,10 +56,10 @@ class WeComUser(models.Model):
     address = fields.Char(string="Address", copy=False)
     open_userid = fields.Char(string="Open user id", copy=False)
     extattr = fields.Text(
-        string="Extended attributes", copy=False, default={}, force_save=True
+        string="Extended attributes", copy=False, default={}
     )
     external_profile = fields.Text(
-        string="External attributes", copy=False, default={}, force_save=True
+        string="External attributes", copy=False, default={}
     )
     status = fields.Selection(
         [

@@ -20,8 +20,8 @@ class MailMail(models.Model):
         help="Media file ID, which can be obtained by calling the upload temporary material interface",
     )
     # body_html = fields.Text("Html Body", translate=True, sanitize=False)
-    body_json = fields.Text("Json Body", sanitize=False)
-    body_markdown = fields.Text("Markdown Body", sanitize=False)
+    body_json = fields.Text("Json Contents", default={}, sanitize_style=True)
+    body_markdown = fields.Text("Markdown Contents", default="", sanitize_style=True)
     # description = fields.Char(
     #     "Short description",
     #     compute="_compute_description",
