@@ -32,11 +32,11 @@
         <!-- 1.100.3.1 标签 -->
         <menuitem id="menu_hrms_employee_settings_employee_tag" name="Tags" action="hr.open_view_categ_form" parent="menu_hrms_employee_settings_employee" sequence="1" groups="base.group_no_one"/>
 
-        <!-- 1.100.4 工作地点 -->
-        <menuitem id="menu_hrms_employee_settings_work_location" action="hr.hr_work_location_action" parent="menu_hrms_employee_configuration" sequence="4" groups="hr.group_hr_user"/>
+<!--        &lt;!&ndash; 1.100.4 工作地点 &ndash;&gt;-->
+<!--        <menuitem id="menu_hrms_employee_settings_work_location" action="hr.hr_work_location_action" parent="menu_hrms_employee_configuration" sequence="4" groups="hr.group_hr_user"/>-->
 
-        <!-- 1.100.5 离职原因 -->
-        <menuitem id="menu_hrms_employee_settings_departure_reason" action="hr.hr_departure_reason_action" parent="menu_hrms_employee_configuration" sequence="5" groups="hr.group_hr_user"/>
+<!--        &lt;!&ndash; 1.100.5 离职原因 &ndash;&gt;-->
+<!--        <menuitem id="menu_hrms_employee_settings_departure_reason" action="hr.hr_departure_reason_action" parent="menu_hrms_employee_configuration" sequence="5" groups="hr.group_hr_user"/>-->
 
         <!-- 1.100.99隐藏人力资源菜单 -->
         <!-- <menuitem id="menu_hrms_config_hide_hr_menu" name="Hide Hr Menu" action="action_view_hr_menu" parent="menu_hrms_employee_configuration" groups="base.group_erp_manager" sequence="99"/> -->

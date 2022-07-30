@@ -7,9 +7,9 @@
     "installable": True,
     "application": True,
     "auto_install": False,
-    "category": "WeCom/Human Resources",
+    "category": "WeCom/WeCom",
     "website": "https://gitee.com/rainbowstudio/wecom",
-    "version": "15.0.0.1",
+    "version": "14.0.0.1",
     "summary": """
         
         """,
@@ -28,7 +28,7 @@
         "views/res_config_settings_views.xml",
         "views/hr_department_view.xml",
         "views/hr_employee_view.xml",
-        "views/hr_employee_category_views.xml",
+        # "views/hr_employee_category_views.xml",
         "views/menu_views.xml",
     ],
     "assets": {
