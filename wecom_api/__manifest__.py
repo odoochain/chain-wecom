@@ -7,7 +7,7 @@
     "installable": True,
     "application": False,
     "auto_install": False,
-    "category": "WeCom Suites/Settings",
+    "category": "WeCom/WeCom",
     "version": "14.0.0.2",
     "summary": """
 WeCom Service-side API and Client-side API              
@@ -39,7 +39,7 @@ WeCom Service-side API and Client-side API
         "python": [
             "requests_toolbelt",
             "pandas",
-            "pypandoc==1.7.0",
+            # "pypandoc==1.7.0",
             "pycryptodome",
             "html2text",
         ],
