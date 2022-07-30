@@ -7,7 +7,7 @@
     "installable": True,
     "application": True,
     "auto_install": False,
-    "category": "WeCom Suites/Human Resources",
+    "category": "WeCom/Human Resources",
     "website": "https://gitee.com/rainbowstudio/wecom",
     "version": "15.0.0.1",
     "summary": """
@@ -16,7 +16,7 @@
     "description": """
 
         """,
-    "depends": ["hr", "web_multi_level_menu",],
+    "depends": ["hr", ],
     "data": [
         "security/ir.model.access.csv",
         "data/ir_config_parameter.xml",
