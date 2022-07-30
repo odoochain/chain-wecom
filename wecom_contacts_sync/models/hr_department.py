@@ -2,11 +2,10 @@
 
 import logging
 import base64
-from pdb import _rstr
+# from pdb import _rstr
 import time
 from lxml import etree
 from odoo import api, fields, models, _
-from lxml_to_dict import lxml_to_dict
 from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
 
 _logger = logging.getLogger(__name__)
@@ -316,7 +315,7 @@ class Department(models.Model):
         xml_tree = self.env.context.get("xml_tree")
         company_id = self.env.context.get("company_id")
         xml_tree_str = etree.fromstring(bytes.decode(xml_tree))
-        dic = lxml_to_dict(xml_tree_str)["xml"]
+        dic = etree.tostring(xml_tree_str, xml_declaration=True, encoding='utf-8')
         # print("department dic", dic)
 
         domain = [

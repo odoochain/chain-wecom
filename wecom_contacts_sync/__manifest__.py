@@ -19,7 +19,7 @@
     "depends": ["wecom_contacts",],
     "external_dependencies": {"python": ["pandas"],},
     "data": [
-        "security/ir.model.access.csv",
+        # "security/ir.model.access.csv",
         "data/wecom_app_config_data.xml",
         "data/wecom_app_event_type_data.xml",
         "data/ir_cron_data.xml",

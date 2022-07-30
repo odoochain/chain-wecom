@@ -18,7 +18,7 @@
         """,
     "depends": ["hr", ],
     "data": [
-        "security/ir.model.access.csv",
+        # "security/ir.model.access.csv",
         "data/ir_config_parameter.xml",
         # "data/hr_data.xml",
         "wizard/hr_plan_wizard_views.xml",
