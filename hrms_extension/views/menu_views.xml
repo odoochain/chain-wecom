@@ -5,19 +5,19 @@
         <menuitem id="menu_hrms_contract" name="Contracts" action="hr_contract.action_hr_contract" parent="hrms_base.menu_hrms_employee_profiles" sequence="5" groups="hr_contract.group_hr_contract_manager"/>
 
         <!-- 1.99.2 员工档案配置菜单 > 员工 > 技能 -->
-        <menuitem id="menu_employee_profiles_settings_skill_type" name="Skills" action="hr_skills.hr_skill_type_action" parent="hrms_base.menu_hrms_employee_profiles_other_settings" sequence="3" groups="base.group_no_one"/>
+<!--        <menuitem id="menu_employee_profiles_settings_skill_type" name="Skills" action="hr_skills.hr_skill_type_action" parent="hrms_base.menu_hrms_employee_profiles_other_settings" sequence="3" groups="base.group_no_one"/>-->
 
         <!-- 1.99.3 员工档案配置菜单 > 技能配置菜单 -->
-        <menuitem id="menu_hrms_configuration_resume" name="Resumé" parent="hrms_base.menu_hrms_employee_profiles_other_settings" sequence="3" groups="base.group_no_one"/>
+<!--        <menuitem id="menu_hrms_configuration_resume" name="Resumé" parent="hrms_base.menu_hrms_employee_profiles_other_settings" sequence="3" groups="base.group_no_one"/>-->
 
-        <menuitem id="menu_hrms_resume_line_type_menu" name="Types" action="hr_skills.hr_resume_type_action" parent="menu_hrms_configuration_resume" sequence="3" groups="base.group_no_one"/>
+<!--        <menuitem id="menu_hrms_resume_line_type_menu" name="Types" action="hr_skills.hr_resume_type_action" parent="menu_hrms_configuration_resume" sequence="3" groups="base.group_no_one"/>-->
 
-        <!-- 1.99.7 员工档案配置菜单 > 挑战 -->
-        <menuitem id="menu_hrms_gamification" parent="hrms_base.menu_hrms_employee_profiles_other_settings" name="Challenges" sequence="7"/>
+<!--        &lt;!&ndash; 1.99.7 员工档案配置菜单 > 挑战 &ndash;&gt;-->
+<!--        <menuitem id="menu_hrms_gamification" parent="hrms_base.menu_hrms_employee_profiles_other_settings" name="Challenges" sequence="7"/>-->
 
-        <menuitem id="menu_hrms_gamification_badge_menu_hr" parent="menu_hrms_gamification" action="gamification.badge_list_action" sequence="1"/>
-        <menuitem id="menu_hrms_gamification_challenge_menu_hr" parent="menu_hrms_gamification" action="hr_gamification.challenge_list_action2" groups="hr.group_hr_user" sequence="2"/>
-        <menuitem id="menu_hrms_gamification_goal_menu_hr" parent="menu_hrms_gamification" action="hr_gamification.goals_menu_groupby_action2" groups="hr.group_hr_user" sequence="3"/>
+<!--        <menuitem id="menu_hrms_gamification_badge_menu_hr" parent="menu_hrms_gamification" action="gamification.badge_list_action" sequence="1"/>-->
+<!--        <menuitem id="menu_hrms_gamification_challenge_menu_hr" parent="menu_hrms_gamification" action="hr_gamification.challenge_list_action2" groups="hr.group_hr_user" sequence="2"/>-->
+<!--        <menuitem id="menu_hrms_gamification_goal_menu_hr" parent="menu_hrms_gamification" action="hr_gamification.goals_menu_groupby_action2" groups="hr.group_hr_user" sequence="3"/>-->
 
         <!-- 3.招聘 -->
         <menuitem id="menu_hrms_recruitment_main" name="Recruitment" parent="hrms_base.menu_hrms_root" groups="hr_recruitment.group_hr_recruitment_user" sequence="3"/>

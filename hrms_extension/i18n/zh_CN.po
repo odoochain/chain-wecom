@@ -28,6 +28,11 @@ msgid "All Applications"
 msgstr "全部申请"
 
 #. module: hrms_extension
+#: model:ir.ui.menu,name:hrms_extension.menu_hrms_contract
+msgid "Contracts"
+msgstr "合同"
+
+#. module: hrms_extension
 #: model:ir.ui.menu,name:hrms_extension.menu_hrms_attendance_view_attendances
 msgid "Attendances"
 msgstr "考勤"
