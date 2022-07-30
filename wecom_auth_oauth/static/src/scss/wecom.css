@@ -1,0 +1,23 @@
+/* Error: Undefined mixin.
+ *   ,
+ * 1 | / @include media-breakpoint-down(sm) {
+ * 2 | |     .wecom_qr_dialog {
+ * 3 | |         iframe {
+ * 4 | |             transform: scale(0.9) !important;
+ * 5 | |             transform-origin: -110% 50% !important;
+ * 6 | |         }
+ * 7 | |     }
+ * 8 | \ }
+ *   '
+ *   wecom.scss 1:1  root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Undefined mixin.\a   \2577 \a 1 \2502  \250c  @include media-breakpoint-down(sm) {\a 2 \2502  \2502      .wecom_qr_dialog {\a 3 \2502  \2502          iframe {\a 4 \2502  \2502              transform: scale(0.9) !important;\a 5 \2502  \2502              transform-origin: -110% 50% !important;\a 6 \2502  \2502          }\a 7 \2502  \2502      }\a 8 \2502  \2514  }\a   \2575 \a   wecom.scss 1:1  root stylesheet";
+}

@@ -10,7 +10,7 @@
     "description": """ 
 
 """,
-    "depends": ["web",],
+    "depends": ["web", ],
     "data": ["views/assets_templates.xml",],
     "qweb": ["static/src/xml/*.xml",],
     # "external_dependencies": {

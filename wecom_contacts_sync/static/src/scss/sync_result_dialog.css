@@ -1,0 +1,16 @@
+.wecom_sync_result_dialog {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.wecom_sync_result_dialog .o_group {
+  margin: 0 !important;
+}
+.wecom_sync_result_dialog .o_group .o_horizontal_separator {
+  margin: 8px 8px 8px 0 !important;
+}
+.wecom_sync_result_dialog .o_form_view,
+.wecom_sync_result_dialog .o_form_label {
+  line-height: 1.2 !important;
+}
+
+/*# sourceMappingURL=sync_result_dialog.css.map */

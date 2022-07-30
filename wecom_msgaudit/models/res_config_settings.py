@@ -13,12 +13,12 @@ from odoo.exceptions import UserError
 class ResConfigSettings(models.TransientModel):
     _inherit = "res.config.settings"
 
-    company_id = fields.Many2one(
-        "res.company",
-        string="Company",
-        required=True,
-        default=lambda self: self.env.company,
-    )
+    # company_id = fields.Many2one(
+    #     "res.company",
+    #     string="Company",
+    #     required=True,
+    #     default=lambda self: self.env.company,
+    # )
     msgaudit_app_id = fields.Many2one(
         related="company_id.msgaudit_app_id", readonly=False
     )
