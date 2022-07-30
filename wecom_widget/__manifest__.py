@@ -6,16 +6,12 @@
     "category": "WeCom/WeCom",
     "summary": "WeCom Widget",
     "website": "https://gitee.com/rainbowstudio/wecom",
-    "version": "14.0.0.1",
+    "version": "14.0.0.2",
     "description": """ 
 
 """,
-    "depends": ["web", ],
-    "data": ["views/assets_templates.xml",],
-    # "qweb": ["static/src/xml/*.xml",],
-    # "external_dependencies": {
-    #     "python": ["markdown"],
-    # },
+    "depends": ["web",],
+    "data": [],
     "assets": {
         "web.assets_backend": [
             # SCSSS
@@ -33,10 +29,11 @@
             "wecom_widget/static/src/js/dialog.js",
             "wecom_widget/static/src/js/wecom_config.js",
         ],
-        "web.assets_qweb": ["wecom_widget/static/src/xml/*.xml", ],
+        "web.assets_qweb": ["wecom_widget/static/src/xml/*.xml",],
     },
-    "sequence": 605,
+    "sequence": 600,
     "installable": True,
-    "auto_install": True,
+    "auto_install": False,
     "application": False,
+    "license": "LGPL-3",
 }
