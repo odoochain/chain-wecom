@@ -3,12 +3,12 @@
     "name": "WeCom Contacts",
     "author": "RStudio",
     "website": "https://gitee.com/rainbowstudio/wecom",
-    "sequence": 607,
+    "sequence": 602,
     "installable": True,
     "application": True,
     "auto_install": False,
     "category": "WeCom/WeCom",
-    "version": "14.0.0.1",
+    "version": "14.0.0.2",
     "summary": """
         WeCom Contacts
         """,
@@ -18,24 +18,35 @@
         """,
     "depends": [
         "contacts",
-        'hr',
-        'wecom_base',
+        "hr",
+        "wecom_base",
     ],
     "data": [
         "security/ir.model.access.csv",
         "data/ir_cron_data.xml",
         "data/wecom_apps_data.xml",
         "views/res_partner_views.xml",
+        "views/res_partner_category_views.xml",
+        "views/res_users_views.xml",
         "views/res_config_settings_views.xml",
         "views/res_company_views.xml",
-        "views/wecom_user_view.xml",
-        "views/menu_view.xml",
-        "views/assets_templates.xml",
+        "views/ir_cron_views.xml",
+        "views/menu_views.xml",
     ],
+    "assets": {
+        "web.assets_backend": [
+            # SCSSS
+            # JS
+            "wecom_contacts/static/src/js/download_contacts.js",
+            "wecom_contacts/static/src/js/download_tags.js",
+        ],
+        "web.assets_qweb": [
+            "wecom_contacts/static/src/xml/*.xml",
+        ],
+    },
     "external_dependencies": {
         "python": [],
     },
-    "qweb": [
-        "static/src/xml/*.xml",
-    ],
+    # "pre_init_hook": "pre_init_hook",
+    "license": "LGPL-3",
 }

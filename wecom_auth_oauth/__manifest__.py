@@ -7,15 +7,20 @@
     "installable": True,
     "application": True,
     "auto_install": False,
-    "category": "WeCom Suites/Authentication",
-    "version": "15.0.0.1",
+    "category": "WeCom/WeCom",
+    "version": "14.0.0.2",
     "summary": """
         One click login, code scanning login.
         """,
     "description": """
 
         """,
-    "depends": ["portal", "auth_oauth", "wecom_material",],
+    "depends": [
+        "portal",
+        "auth_oauth",
+        "wecom_material",
+        "wecom_base",
+    ],
     "data": [
         "data/wecom_apps_data.xml",
         "data/wecom_app_config_data.xml",

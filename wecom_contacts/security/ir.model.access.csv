@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-wecom_users_access_right,access.wecom.users,model_wecom_users,base.group_erp_manager,1,0,0,0
-wecom_department_access_right,access.wecom.department,model_wecom_department,base.group_erp_manager,1,0,0,0
+
+"access_change_type_wizard","access.change.type.wizard","model_change_type_wizard","wecom_base.group_wecom_settings_manager",1,1,1,0
+"access_change_type_user","access.change.type.user","model_change_type_user","wecom_base.group_wecom_settings_manager",1,1,1,0
