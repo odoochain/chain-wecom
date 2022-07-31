@@ -7,8 +7,8 @@
     "installable": True,
     "application": False,
     "auto_install": False,
-    "category": "WeCom Suites/Human Resources",
-    "version": "15.0.0.1",
+    "category": "WeCom/WeCom",
+    "version": "14.0.0.3",
     "summary": """
         
         """,
