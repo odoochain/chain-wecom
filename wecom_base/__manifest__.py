@@ -25,7 +25,7 @@
         "data/ir_cron_data.xml",
         "data/wecom_app_type_data.xml",
         "views/ir_cron_views.xml",
-        "views/res_config_settings_views.xml",
+        # "views/res_config_settings_views.xml",
         "views/res_company_views.xml",
         "views/wecom_service_api_list_views.xml",
         "views/wecom_service_api_error_views.xml",
@@ -40,10 +40,10 @@
     "assets": {
         "web.assets_backend": [
             # SCSSS
-            "wecom_base/static/src/scss/wecom_settings_navigation.scss",
+            # "wecom_base/static/src/scss/wecom_settings_navigation.scss",
             # JS
-            "wecom_base/static/src/js/wecom_settings_navigation.js",
-            "wecom_base/static/src/js/list_header_button.js",
+            # "wecom_base/static/src/js/wecom_settings_navigation.js",
+            # "wecom_base/static/src/js/list_header_button.js",
         ],
         "web.assets_qweb": [
             "wecom_base/static/src/xml/*.xml",

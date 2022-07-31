@@ -11,9 +11,6 @@ class ResConfigSettings(models.TransientModel):
     is_wecom_organization = fields.Boolean(
         related="company_id.is_wecom_organization", readonly=False
     )
-    # company_name = fields.Char(
-    #     related="company_id.name", string="Company Name", readonly=False
-    # )
     abbreviated_name = fields.Char(
         related="company_id.abbreviated_name", readonly=False
     )

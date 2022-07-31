@@ -112,3 +112,4 @@ venv.bak/
 .dmypy.json
 dmypy.json
 
+/wecom_base/dev.md
