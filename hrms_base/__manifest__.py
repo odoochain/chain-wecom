@@ -20,6 +20,9 @@
         "hr",
         "hr_contract",
         "hr_skills",
+        'hr_recruitment',
+        'hr_attendance',
+        'hr_holidays',
     ],
     "data": [
         # "security/ir.model.access.csv",

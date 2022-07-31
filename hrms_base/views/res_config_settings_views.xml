@@ -33,7 +33,7 @@
                     <div class="row mt16 o_settings_container" name="hr_menu_applications_container">
                         <div class="col-12 col-lg-6 o_setting_box" id="hrms_recruitment_install">
                             <div class="o_setting_left_pane">
-                                <field name="module_hrms_recruitment" />
+                                <field name="module_hrms_recruitment" class="col-lg-1 ml16"/>
                             </div>
                             <div class="o_setting_right_pane" id="hrms_recruitment_settings">
                                 <label for="module_hrms_recruitment"/>

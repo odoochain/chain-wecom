@@ -21,6 +21,7 @@
         "hr_attendance",
     ],
     "data": ["views/menu_views.xml","views/res_config_settings_views.xml"],
+    'images': ['static/description/icon.png'],
     "external_dependencies": {"python": [],},
     "license": "LGPL-3",
 }

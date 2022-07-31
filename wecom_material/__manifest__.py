@@ -7,7 +7,7 @@
     "installable": True,
     "application": True,
     "auto_install": False,
-    "category": "WeCom Suites/Material",
+    "category": "WeCom/Wecom",
     "version": "14.0.0.2",
     "summary": """
         WeCom material management 
