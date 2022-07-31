@@ -16,7 +16,7 @@
                                 <i class="fa fa-globe fa-lg" aria-label="Wecom Global Settings"/>
                                 Wecom Global Settings
                             </span>
-                            <widget name="res_config_wecom_navigation_gobottom"/>
+<!--                            <widget name="res_config_wecom_navigation_gobottom"/>-->
                         </h2>
                         <div class="row mt8 o_settings_container">
                             <div class="col-xs-12 col-md-6 o_setting_box">
@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="o_setting_right_pane" id="wecom_web_theme_settings">
                                     <label for="module_wecom_web_theme" string="Wecom Web Theme" />
-                                    <widget name="wecom_pro_tag"/>
+<!--                                    <widget name="wecom_pro_tag"/>-->
                                     <div class="text-muted">
                                         This module modifies the web addon to provide responsiveness.
                                     </div>
@@ -120,7 +120,7 @@
                                 <i class="fa fa-building fa-lg" aria-label="Wecom Companies settings" />
                                 Wecom Companies settings
                             </span>
-                            <widget name='res_config_wecom_navigation_gotop'/>
+<!--                            <widget name='res_config_wecom_navigation_gotop'/>-->
                         </h2>
                         <div class="row mt8 o_settings_container">
                             <div class="col-12 col-lg-6 o_setting_box">
@@ -171,7 +171,7 @@
                                     Wecom Contact Settings
                                 <i class="fa fa-lg fa-info-circle fa-lg" title="The values set below are the companies identified as WeCom organizations." />
                             </span>
-                            <widget name='res_config_wecom_navigation_gotop'/>
+<!--                            <widget name='res_config_wecom_navigation_gotop'/>-->
                         </h2>
                         <div class="row mt8 o_settings_container" attrs="{'invisible': [('is_wecom_organization','=',False)]}" name="wecom_contact_settings_container">
                             <div class="col-12 col-lg-6 o_setting_box" id="wecom_contacts_install">
