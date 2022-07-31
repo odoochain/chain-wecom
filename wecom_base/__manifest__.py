@@ -16,7 +16,13 @@
     "description": """
 
         """,
-    "depends": ["base_setup", "wecom_l10n", "wecom_widget", "wecom_api"],
+    "depends": [
+        "base_setup",
+        "hr_contract",
+        "hr_skills",
+        "wecom_l10n",
+        "wecom_widget",
+        "wecom_api"],
     "data": [
         "security/wecom_security.xml",
         "security/ir.model.access.csv",        
