@@ -9,9 +9,9 @@
             font-weight: normal;
         }
 
-        .o_setting_box:visible:nth-child(odd) {
-            clear: left;
-        }
+        //.o_setting_box:visible:nth-child(odd) {
+        //    clear: left;
+        //}
 
         .text-muted {
             color: #aaaaaa;
@@ -27,7 +27,7 @@
 
                 .o_enterprise_label {
                     position: absolute;
-                    top: 0px;
+                    top: 0;
                     right: 40px;
                 }
             }

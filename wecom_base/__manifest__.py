@@ -42,13 +42,14 @@
             # SCSSS
             "wecom_base/static/src/scss/wecom_settings_navigation.scss",
             # JS
-            "wecom_base/static/src/js/wecom_settings_navigation.js",            
+            "wecom_base/static/src/js/wecom_settings_navigation.js",
             "wecom_base/static/src/js/list_header_button.js",
         ],
         "web.assets_qweb": [
             "wecom_base/static/src/xml/*.xml",
         ],
     },
+    # "qweb": ["static/src/xml/*.xml", ],
     "license": "LGPL-3",
     # "post_init_hook": "_open_wecom_settings",
 }

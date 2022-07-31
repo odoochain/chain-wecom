@@ -10,7 +10,9 @@
     "description": """ 
 
 """,
-    "depends": ["web",],
+    "depends": [
+        "web",
+    ],
     "data": [],
     "assets": {
         "web.assets_backend": [
