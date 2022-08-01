@@ -23,6 +23,7 @@
         'hr_recruitment',
         'hr_attendance',
         'hr_holidays',
+        'hr_gamification',
     ],
     "data": [
         # "security/ir.model.access.csv",
