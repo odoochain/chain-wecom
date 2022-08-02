@@ -1,4 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_wecom_employee_bind_wecom_wizard,access_wecom_employee_bind_wecom_wizard,model_wecom_employee_bind_wecom_wizard,base.group_user,1,0,0,0
-access_wecom_user_bind_wecom_wizard,access_wecom_user_bind_wecom_wizard,model_wecom_user_bind_wecom_wizard,base.group_user,1,0,0,0
 
