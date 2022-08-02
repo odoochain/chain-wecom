@@ -41,11 +41,11 @@
         <!-- 1.99.4.1 简历类型 -->
         <menuitem id="menu_hrms_employee_profiles_settings_resume_type" name="Types" action="hr_skills.hr_resume_type_action" parent="menu_hrms_employee_profiles_settings_resume" sequence="1" groups="base.group_no_one"/>
 
-        <!-- 1.99.5 工作地点 -->
-        <menuitem id="menu_hrms_employee_settings_work_location" action="hr.hr_work_location_action" parent="menu_hrms_employee_configuration" sequence="5" groups="hr.group_hr_user"/>
+<!--        &lt;!&ndash; 1.99.5 工作地点 &ndash;&gt;-->
+<!--        <menuitem id="menu_hrms_employee_settings_work_location" action="hr.hr_work_location_action" parent="menu_hrms_employee_configuration" sequence="5" groups="hr.group_hr_user"/>-->
 
-        <!-- 1.99.6 离职原因 -->
-        <menuitem id="menu_hrms_employee_settings_departure_reason" action="hr.hr_departure_reason_action" parent="menu_hrms_employee_configuration" sequence="6" groups="hr.group_hr_user"/>
+<!--        &lt;!&ndash; 1.99.6 离职原因 &ndash;&gt;-->
+<!--        <menuitem id="menu_hrms_employee_settings_departure_reason" action="hr.hr_departure_reason_action" parent="menu_hrms_employee_configuration" sequence="6" groups="hr.group_hr_user"/>-->
 
 
         <!-- 2.员工目录 -->
