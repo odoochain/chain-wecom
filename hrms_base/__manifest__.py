@@ -9,7 +9,7 @@
     "auto_install": False,
     "category": "WeCom/WeCom",
     "website": "https://gitee.com/rainbowstudio/wecom",
-    "version": "14.0.0.1",
+    "version": "14.0.0.2",
     "summary": "Human Resource Management System",
     "description": """
 
@@ -18,7 +18,6 @@
                 "hr_work_entry_contract",
                 "hr_skills",
                 "hr_appraisal",
-                # "web_multi_level_menu",
                 ],
     "data": [
         "security/ir.model.access.csv",
@@ -27,21 +26,16 @@
         "wizard/hr_plan_wizard_views.xml",
         # "wizard/hr_menu_wizard_views.xml",
         "views/ir_ui_menu_views.xml",
+        "views/assets.xml",
         "views/res_config_settings_views.xml",
         "views/hr_department_view.xml",
         "views/hr_employee_view.xml",
         "views/hr_employee_category_views.xml",
         "views/menu_views.xml",
     ],
-    "assets": {
-        "web.assets_backend": [
-            # SCSSS
-            "hrms_base/static/src/scss/hrms_settings_navigation.scss",
-            # JS
-            "hrms_base/static/src/js/hrms_settings_navigation.js",
-        ],
-        "web.assets_qweb": ["hrms_base/static/src/xml/*.xml",],
-    },
+    'qweb': [
+        'static/src/xml/hr_settings_navigation_menu.xml',
+    ],
     "external_dependencies": {"python": [],},
     "license": "LGPL-3",
     "bootstrap": True,

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+    <t t-name="hrms_base.res_config_hrms_navigation_gobottom">
+        <a class="text-right fa fa-angle-double-down" aria-label="GoBottom" href=""/>
+    </t>
+</template>

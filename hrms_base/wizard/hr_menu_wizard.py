@@ -15,7 +15,8 @@ class HrMenusWizard(models.TransientModel):
     #     compute="_compute_hr_menus",
     # )
     hr_menus_domain = fields.Char(
-        default="['&','&','&',('parent_id','=',False),('web_icon', 'ilike', 'hr'),('name', 'not like', 'HRMS'),'|',('active','=',True),('active','=',False)]"
+        default="['&','&','&',('parent_id','=',False),('web_icon', 'ilike', 'hr'),('name', 'not like', 'HRMS'),'|',"
+                "('active','=',True),('active','=',False)] "
     )
     hr_menus_ids = fields.Many2many(
         "ir.ui.menu",

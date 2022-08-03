@@ -5,7 +5,8 @@ odoo.define('hrms_base.WecomSettingsNavigationMenu', function (require) {
     var widget_registry = require('web.widget_registry');
 
     var WecomSettingsNavigationMenu = Widget.extend({
-        template: 'res_config_hrms_navigation_menu',
+        template: 'hrms_base.WecomSettingsNavigationMenu',
+        xmlDependencies: ['/hrms_base/static/src/xml/hr_settings_navigation_menu.xml'],
         events: {
             'click a.hrms_jump_anchor': '_jump_anchor',
         },
@@ -46,7 +47,8 @@ odoo.define('hrms_base.WeComSettingsNavigationGoTop', function (require) {
     var widget_registry = require('web.widget_registry');
 
     var WeComSettingsNavigationGoTop = Widget.extend({
-        template: 'res_config_hrms_navigation_gotop',
+        template: 'hrms_base.res_config_hrms_navigation_gotop',
+        xmlDependencies: ['/hrms_base/static/src/xml/hr_settings_navigation_gotop.xml'],
         events: {
             'click': '_gotop',
         },
@@ -79,7 +81,8 @@ odoo.define('hrms_base.HrmsSettingsNavigationGoBottom', function (require) {
     var widget_registry = require('web.widget_registry');
 
     var HrmsSettingsNavigationGoBottom = Widget.extend({
-        template: 'res_config_hrms_navigation_gobottom',
+        template: 'hrms_base.res_config_hrms_navigation_gobottom',
+        xmlDependencies: ['/hrms_base/static/src/xml/hr_settings_navigation_gobuttom.xml'],
         events: {
             'click': '_gobottom',
         },

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+    <t t-name="hrms_base.res_config_hrms_navigation_gotop">
+        <a class="text-right fa fa-angle-double-up" aria-label="GoTop" href=""/>
+    </t>
+</template>
