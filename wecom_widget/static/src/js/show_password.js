@@ -13,8 +13,9 @@ odoo.define("wecom_widget.ShowPasswordFieldText", function (require) {
 
     var ShowPasswordFieldText = FieldChar.extend({
         description: _lt("Show Password"),
-        template: 'ShowPasswordInput',
-        ShowPasswordTemplate: 'ShowPasswordButton',
+        template: 'wecom_widget.ShowPasswordInput',
+        xmlDependencies: ['/wecom_widget/static/src/xml/showpasswordinput.xml'],
+        ShowPasswordTemplate: 'wecom_widget.ShowPasswordButton',
         className: 'o_field_showpassword',
         init: function (parent) {
             this._super.apply(this, arguments);

@@ -131,7 +131,7 @@ odoo.define("wecom_widget.FieldTextMarkDown", function (require) {
 			var dialog = new Dialog(this, {
 				size: 'large',
 				title: dialog_title,
-				$content: QWeb.render('wecom.markdown.syntax', {
+				$content: QWeb.render('wecom_widget.markdown.syntax', {
 					code1: code1,
 					code2: code2,
 					code3: code3,

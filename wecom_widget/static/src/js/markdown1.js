@@ -7,7 +7,7 @@ odoo.define('web_widget_markdown', function (require) {
 
     var markdownField = basicFields.DebouncedField.extend(basicFields.TranslatableFieldMixin, {
         supportedFieldTypes: ['text'],
-        template: 'FieldMarkdown',
+        template: 'wecom_widget.WeComMarkdown',
         jsLibs: [
             '/wecom_widget/static/lib/simplemde-markdown-editor/simplemde.min.js',
         ],

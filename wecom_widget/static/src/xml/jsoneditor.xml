@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template>
 
-    <t t-name="JsonEditor">
+    <t t-name="wecom_widget.JsonEditor">
         <sapn t-attf-class="#{widget.className}" t-if="widget.mode === 'readonly'"></sapn>
 
         <div t-attf-class="#{widget.className}" t-if="widget.mode === 'edit'">

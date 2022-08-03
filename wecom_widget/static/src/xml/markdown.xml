@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template>
-    <t t-name="WeComMarkdown">
+    <t t-name="wecom_widget.WeComMarkdown">
         <t t-if="widget.mode === 'readonly'">
             <span t-attf-class="#{widget.className}" t-att-invisible="widget.attrs.invisible"/>
         </t>

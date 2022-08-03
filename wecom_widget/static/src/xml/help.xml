@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template>
 
-    <t t-name="wecom.markdown.syntax">
+    <t t-name="wecom_widget.markdown.syntax">
         <div>
             <div class="markdown-description">
                 <h3>企业微信应用消息支持的markdown语法</h3>
