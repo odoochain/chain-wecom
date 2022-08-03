@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<templates>
+<template>
 
     <t t-name="JsonEditor">
         <sapn t-attf-class="#{widget.className}" t-if="widget.mode === 'readonly'"></sapn>
@@ -10,4 +10,4 @@
 
     </t>
 
-</templates>
+</template>

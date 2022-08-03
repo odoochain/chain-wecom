@@ -29,8 +29,9 @@ odoo.define('wecom.pro_tag', function (require) {
 
 
     var WecomProfessionalSuiteTag = Widget.extend({
-        template: 'WecomProfessionalTag',
-        upgrade_template: 'WecomProfessionalUpgrade',
+        template: 'wecom_widget.WecomProfessionalTag',
+        xmlDependencies: ['/wecom_widget/static/src/xml/wecom_pro_tag.xml'],
+        upgrade_template: 'wecom_widget.WecomProfessionalUpgrade',
         events: {
             'click': '_onTagClicked',
         },
@@ -107,7 +108,7 @@ odoo.define('wecom.pro_tag', function (require) {
             }).open();
         },
         _confirmUpgrade: function () {
-            window.open("https://www.rstudio.xyz", '_blank');
+            window.open("https://www.wenchang.xyz", '_blank');
         },
     });
 

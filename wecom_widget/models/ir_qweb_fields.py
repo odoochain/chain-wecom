@@ -10,5 +10,5 @@ class MarkdownConverter(models.AbstractModel):
     _inherit = "ir.qweb.field"
 
     @api.model
-    def value_to_html(self, value, options):
+    def value_to_markdown(self, value, options):
         return markdown.markdown(value)

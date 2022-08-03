@@ -18,6 +18,7 @@
                 "hr_work_entry_contract",
                 "hr_skills",
                 "hr_appraisal",
+                "wecom_widget",
                 ],
     "data": [
         "security/ir.model.access.csv",

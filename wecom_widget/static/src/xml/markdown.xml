@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<templates>
+<template>
     <t t-name="WeComMarkdown">
         <t t-if="widget.mode === 'readonly'">
             <span t-attf-class="#{widget.className}" t-att-invisible="widget.attrs.invisible"/>
@@ -19,4 +19,4 @@
                 
         </div>
     </t>
-</templates>
+</template>

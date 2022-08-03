@@ -5,7 +5,8 @@ odoo.define('wecom_base.WecomSettingsNavigationMenu', function (require) {
     var widget_registry = require('web.widget_registry');
 
     var WecomSettingsNavigationMenu = Widget.extend({
-        template: 'res_config_wecom_navigation_menu',
+        template: 'wecom_base.WecomSettingsNavigationMenu',
+        xmlDependencies: ['/wecom_base/static/src/xml/wecom_settings_navigation.xml'],
         events: {
             'click a.wecom_jump_anchor': '_jump_anchor',
         },
@@ -46,7 +47,8 @@ odoo.define('wecom_base.WeComSettingsNavigationGoTop', function (require) {
     var widget_registry = require('web.widget_registry');
 
     var WeComSettingsNavigationGoTop = Widget.extend({
-        template: 'res_config_wecom_navigation_gotop',
+        template: 'wecom_base.WeComSettingsNavigationGoTop',
+        xmlDependencies: ['/wecom_base/static/src/xml/wecom_settings_navigation.xml'],
         events: {
             'click': '_gotop',
         },
@@ -79,7 +81,8 @@ odoo.define('wecom_base.WeComSettingsNavigationGoBottom', function (require) {
     var widget_registry = require('web.widget_registry');
 
     var WeComSettingsNavigationGoBottom = Widget.extend({
-        template: 'res_config_wecom_navigation_gobottom',
+        template: 'wecom_base.WeComSettingsNavigationGoBottom',
+        xmlDependencies: ['/wecom_base/static/src/xml/wecom_settings_navigation.xml'],
         events: {
             'click': '_gobottom',
         },
