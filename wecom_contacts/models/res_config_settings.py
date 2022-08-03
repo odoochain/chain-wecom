@@ -15,13 +15,6 @@ _logger = logging.getLogger(__name__)
 class ResConfigSettings(models.TransientModel):
     _inherit = "res.config.settings"
 
-    company_id = fields.Many2one(
-        "res.company",
-        string="Company",
-        required=True,
-        default=lambda self: self.env.company,
-    )
-
     # 加入企微微信二维码
     contacts_join_qrcode_enabled = fields.Boolean(
         related="company_id.wecom_contacts_join_qrcode_enabled", readonly=False
