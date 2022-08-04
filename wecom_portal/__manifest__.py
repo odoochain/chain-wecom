@@ -8,7 +8,7 @@
     "application": True,
     "auto_install": False,
     "category": "WeCom/WeCom",
-    "version": "14.0.0.1",
+    "version": "14.0.0.2",
     "summary": """
         WeCom Employee Portal
         """,
@@ -21,6 +21,10 @@
         "portal",
     ],
     "external_dependencies": {"python": [],},
-    "data": ["data/wecom_portal_data.xml", "views/portal_templates.xml",],
+    "data": [
+        "data/wecom_apps_data.xml",
+        "views/portal_templates.xml",
+        "views/res_config_settings_views.xml",
+    ],
     "qweb": ["static/src/xml/*.xml",],
 }
