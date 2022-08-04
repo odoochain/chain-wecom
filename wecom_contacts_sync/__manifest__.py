@@ -16,7 +16,10 @@
 
 
         """,
-    "depends": ["wecom_contacts",],
+    "depends": [
+        "wecom_contacts",
+        "hrms_base",
+    ],
     "external_dependencies": {"python": ["pandas"],},
     "data": [
         # "security/ir.model.access.csv",
