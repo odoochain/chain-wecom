@@ -18,14 +18,14 @@
         """,
     "depends": [
         "mail",
-        # "digest",
+        "digest",
         "rating",
         "wecom_widget",
         "wecom_material",
         "wecom_contacts",
         "wecom_auth_oauth",
     ],
-    "external_dependencies": {"python": ["html2text", "lxml", "pandas"],},
+    "external_dependencies": {"python": ["html2text", "lxml", "pandas"], },
     "data": [
         "security/wecom_message_security.xml",
         "security/ir.model.access.csv",
