@@ -17,7 +17,7 @@
 
         """,
     "depends": [
-        "wecom_message",
+        "wecom_contacts",
         "portal",
     ],
     "external_dependencies": {"python": [],},
