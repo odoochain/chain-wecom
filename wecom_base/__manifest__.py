@@ -23,7 +23,8 @@
         "hrms_base",
         "wecom_l10n",
         "wecom_widget",
-        "wecom_api"],
+        "wecom_api",
+    ],
     "data": [
         "security/wecom_security.xml",
         "security/ir.model.access.csv",        

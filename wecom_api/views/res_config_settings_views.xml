@@ -15,7 +15,7 @@
                                 Contact synchronization Settings
                             <i class="fa fa-lg fa-info-circle fa-lg" title="The values set below are the companies identified as WeCom organizations." />
                         </span>
-                        <widget name='res_config_wecom_navigation_gotop'/>
+                        <widget name='res_config_hrms_navigation_gotop'/>
                     </h2>
                     <div class="row mt16 o_settings_container" id="wecom_contact_settings_container">
                         <div class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('is_wecom_organization','=',False)]}">
@@ -87,7 +87,7 @@
                                     <div class="content-group overflow-auto">
                                         <div class="mt4">
                                             <field name="contacts_app_config_ids" widget="wecom_config" help="description" class="w-100 pl-3">
-                                                <tree create="0" edit="true" delete="0" editable="bottom" help="description">
+                                                <tree create="0" edit="true" delete="0" editable="bottom">
                                                     <field name="name" readonly="1"/>
                                                     <field name="key" readonly="1"/>
                                                     <field name="value" required="1"/>
@@ -140,7 +140,7 @@
                                 WeCom Material
                             <i class="fa fa-lg fa-info-circle fa-lg" title="The values set below are the companies identified as WeCom organizations." />
                         </span>
-                        <widget name='res_config_wecom_navigation_gotop'/>
+                        <widget name='res_config_hrms_navigation_gotop'/>
                     </h2>
                     <div class="row mt16 o_settings_container" attrs="{'invisible': [('is_wecom_organization','=',False)]}">
                         <div class="col-12 col-lg-6 o_setting_box" id="wecom_material_install">
@@ -169,7 +169,7 @@
                             Application login authorization
                             <i class="fa fa-lg fa-info-circle fa-lg" title="The values set below are the companies identified as WeCom organizations." />
                         </span>
-                        <widget name='res_config_wecom_navigation_gotop'/>
+                        <widget name='res_config_hrms_navigation_gotop'/>
                     </h2>
                     <div class="row mt16 o_settings_container" attrs="{'invisible': [('module_wecom_material','=',False)]}">
                         <div class="col-12 col-lg-6 o_setting_box" id="wecom_auth_oauth_install">
@@ -199,7 +199,7 @@
                                 Portal
                             <i class="fa fa-lg fa-info-circle" title="The values set below are the companies identified as WeCom organizations." />
                         </span>
-                        <widget name='res_config_wecom_navigation_gotop'/>
+                        <widget name='res_config_hrms_navigation_gotop'/>
                     </h2>
                     <div class="row mt16 o_settings_container" attrs="{'invisible': [('module_wecom_message','=',False)]}">
                         <div class="col-12 col-lg-6 o_setting_box" id="wecom_portal_install">
@@ -227,7 +227,7 @@
                                 Contacts
                             <i class="fa fa-lg fa-info-circle" title="The values set below are the companies identified as WeCom organizations." />
                         </span>
-                        <widget name='res_config_wecom_navigation_gotop'/>
+                        <widget name='res_config_hrms_navigation_gotop'/>
                     </h2>
                     <div class="row mt16 o_settings_container" attrs="{'invisible': [('module_wecom_message','=',False)]}">
                         <div class="col-12 col-lg-6 o_setting_box" id="wecom_contacts_install">
@@ -255,7 +255,7 @@
                                 Session Content Archive
                             <i class="fa fa-lg fa-info-circle fa-lg" title="The values set below are the companies identified as WeCom organizations." />
                         </span>
-                        <widget name='res_config_wecom_navigation_gotop'/>
+                        <widget name='res_config_hrms_navigation_gotop'/>
                     </h2>
                     <div class="row mt16 o_settings_container" attrs="{'invisible': [('is_wecom_organization','=',False)]}">
                         <div class="col-12 col-lg-6 o_setting_box" id="wecom_msgaudit_install">
@@ -284,7 +284,7 @@
                                 WeCom Message
                             <i class="fa fa-lg fa-info-circle fa-lg" title="The values set below are the companies identified as WeCom organizations." />
                         </span>
-                        <widget name='res_config_wecom_navigation_gotop'/>
+                        <widget name='res_config_hrms_navigation_gotop'/>
                     </h2>
                     <div class="row mt16 o_settings_container" attrs="{'invisible': [('module_wecom_auth_oauth','=',False)]}">
                         <div class="col-12 col-lg-6 o_setting_box" id="wecom_message_install">
