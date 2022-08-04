@@ -25,11 +25,12 @@ class ResConfigSettings(models.TransientModel):
         default=lambda self: self.env.company,
     )
 
-    auth_app_id = fields.Many2one(related="company_id.auth_app_id", readonly=False,)
-    auth_agentid = fields.Integer(related="auth_app_id.agentid", readonly=False)
-    auth_secret = fields.Char(related="auth_app_id.secret", readonly=False)
+    auth_app_id = fields.Many2one(string="Auth App Id", related="company_id.auth_app_id", readonly=False,)
+    auth_agentid = fields.Integer(string="Auth App Agent", related="auth_app_id.agentid", readonly=False)
+    auth_secret = fields.Char(string="Auth App Secret", related="auth_app_id.secret", readonly=False)
 
     auth_app_config_ids = fields.One2many(
+        string="Auth App Configuration",
         # related="company_id.contacts_auto_sync_hr_enabled", readonly=False
         related="auth_app_id.app_config_ids",
         # domain="[('company_id', '=', company_id),('app_id', '=', contacts_app_id)]",

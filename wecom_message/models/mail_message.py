@@ -31,7 +31,7 @@ class Message(models.Model):
     )
     message_to_tag = fields.Char(string="To Tags", help="Message recipients (tags)",)
 
-    body_html = fields.Html("Html Contents", default="", sanitize_style=True)
+    body_html = fields.Html("Contents", default="", sanitize_style=True)
     body_json = fields.Text("Json Contents", default={})
     body_markdown = fields.Text("Markdown Contents", default="")
     is_wecom_message = fields.Boolean("Is WeCom Message", readonly=True)

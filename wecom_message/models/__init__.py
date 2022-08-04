@@ -17,3 +17,4 @@ from . import mail_thread
 
 from . import wecom_apps
 from . import wecom_message_api
+from . import wecom_message_template

@@ -79,7 +79,7 @@ class WecomContactsSyncWizard(models.TransientModel):
         "wecom.app_config",
         "app_id",
         store=False,
-        string="Application Configuration",
+        string="Contacts Application Configuration",
         compute=_compute_config,
     )
 

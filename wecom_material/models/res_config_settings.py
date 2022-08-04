@@ -19,7 +19,7 @@ class ResConfigSettings(models.TransientModel):
     )
 
     material_agentid = fields.Integer(related="material_app_id.agentid", readonly=False)
-    material_secret = fields.Char(related="material_app_id.secret", readonly=False)
+    material_secret = fields.Char(string="Material Secret",related="material_app_id.secret", readonly=False)
     material_access_token = fields.Char(related="material_app_id.access_token")
 
     def get_material_app_info(self):

@@ -177,14 +177,16 @@ class WecomMessageMessage(models.Model):
     sender = fields.Char("Sender",)
     meaasge_from = fields.Char(
         "From",
-        help="Wecom user id of the sender. This field is set when no matching partner is found and replaces the author_id field in the chatter.",
+        help="Wecom user id of the sender. This field is set when no matching partner is found and replaces the "
+             "author_id field in the chatter.",
     )
     author_id = fields.Many2one(
         "res.partner",
         "Author",
         index=True,
         ondelete="set null",
-        help="Author of the message. If not set, meaasge_from may hold an message wecom user id that did not match any partner.",
+        help="Author of the message. If not set, meaasge_from may hold an message wecom user id that did not match "
+             "any partner.",
     )
     author_avatar = fields.Binary(
         "Author's avatar",

@@ -18,7 +18,7 @@ class Company(models.Model):
 
     auth_app_id = fields.Many2one(
         "wecom.apps",
-        string="Application",
+        string="Auth Application",
         # required=True,
         # default=lambda self: self.env.company,
         # domain="[('company_id', '=', current_company_id)]",
