@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import logging
-from odoo import api, fields, models, Command, _
+from odoo import api, fields, models, _
 
 from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
 

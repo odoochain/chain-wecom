@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-from odoo import _, api, fields, models
+from odoo import fields, models
 
 
 class WeComTag(models.Model):

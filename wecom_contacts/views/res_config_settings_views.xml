@@ -104,7 +104,7 @@
                             <i class="fa fa-suitcase fa-lg" aria-label="Wecom Material settings" />
                                 Wecom Material settings
                         </span>
-                        <widget name='res_config_wecom_navigation_gotop'/>
+                        <widget name='res_config_hrms_navigation_gotop'/>
                     </h2>
                     <div class="row mt8 o_settings_container" attrs="{'invisible': ['|',('is_wecom_organization','=',False),('module_wecom_contacts','=',False)]}">
                         <div class="col-12 col-lg-6 o_setting_box" id="wecom_material_install">
@@ -132,7 +132,7 @@
                             <i class="fa fa-sign-in fa-lg" aria-label="Wecom Authentication settings" />
                                 Wecom Authentication settings
                         </span>
-                        <widget name='res_config_wecom_navigation_gotop'/>
+                        <widget name='res_config_hrms_navigation_gotop'/>
                     </h2>
                     <div class="row mt8 o_settings_container" attrs="{'invisible': ['|',('is_wecom_organization','=',False),('module_wecom_material','=',False)]}">
                         <div class="col-12 col-lg-6 o_setting_box" id="wecom_auth_oauth_install">
@@ -161,7 +161,7 @@
                             <i class="fa fa-home fa-lg" aria-label="Wecom Portal Settings" />
                                 Wecom Portal Settings
                         </span>
-                        <widget name='res_config_wecom_navigation_gotop'/>
+                        <widget name='res_config_hrms_navigation_gotop'/>
                     </h2>
                     <div class="row mt8 o_settings_container" attrs="{'invisible': ['|',('is_wecom_organization','=',False),('module_wecom_material','=',False)]}">
                         <div class="col-12 col-lg-6 o_setting_box" id="wecom_portal_install">
@@ -188,7 +188,7 @@
                             <i class="fa fa-envelope-o fa-lg" aria-label="Wecom Message settings" />
                                 Wecom Message settings
                         </span>
-                        <widget name='res_config_wecom_navigation_gotop'/>
+                        <widget name='res_config_hrms_navigation_gotop'/>
                     </h2>
                     <div class="row mt8 o_settings_container" attrs="{'invisible': ['|',('is_wecom_organization','=',False),('module_wecom_material','=',False)]}">
                         <div class="col-12 col-lg-6 o_setting_box" id="wecom_message_install">
@@ -218,7 +218,7 @@
                                 Session Content Archive
                             <i class="fa fa-lg fa-info-circle fa-lg" title="The values set below are the companies identified as WeCom organizations." />
                         </span>
-                        <widget name='res_config_wecom_navigation_gotop'/>
+                        <widget name='res_config_hrms_navigation_gotop'/>
                     </h2>
                     <div class="row mt16 o_settings_container" attrs="{'invisible': [('is_wecom_organization','=',False)]}">
                         <div class="col-12 col-lg-6 o_setting_box" id="wecom_msgaudit_install">
@@ -246,7 +246,7 @@
                                 Attendances
                             <i class="fa fa-lg fa-info-circle fa-lg" title="The values set below are the companies identified as WeCom organizations." />
                         </span>
-                        <widget name='res_config_wecom_navigation_gotop'/>
+                        <widget name='res_config_hrms_navigation_gotop'/>
                     </h2>
                     <div class="row mt16 o_settings_container" attrs="{'invisible': [('is_wecom_organization','=',False)]}">
                         <div class="col-12 col-lg-6 o_setting_box" id="wecom_attendance_install">
@@ -274,7 +274,7 @@
                                 Approvals
                             <i class="fa fa-lg fa-info-circle fa-lg" title="The values set below are the companies identified as WeCom organizations." />
                         </span>
-                        <widget name='res_config_wecom_navigation_gotop'/>
+                        <widget name='res_config_hrms_navigation_gotop'/>
                     </h2>
                     <div class="row mt16 o_settings_container" attrs="{'invisible': [('is_wecom_organization','=',False)]}">
                         <div class="col-12 col-lg-6 o_setting_box" id="wecom_approval_install">
@@ -283,7 +283,7 @@
                             </div>
                             <div class="o_setting_right_pane" id="wecom_msgaudit_settings">
                                 <label string="WeCom Approvals" for="module_wecom_approval"/>
-                                <widget name="wecom_pro_tag"/>
+<!--                                <widget name="wecom_pro_tag"/>-->
                                 <div class="text-muted">
                                     Anytime, anywhere approval, you can customize the approval template, support countersigning, or signing, superior approval, conditional approval, and adapt to various processes.
                                 </div>

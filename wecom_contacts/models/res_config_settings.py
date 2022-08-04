@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import datetime
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError, ValidationError
-import time
+from odoo import models, fields, _
+from odoo.exceptions import ValidationError
 
 from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
 
