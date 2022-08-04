@@ -29,11 +29,12 @@ class ResConfigSettings(models.TransientModel):
     )
 
     # 通讯录
-    contacts_app_id = fields.Many2one(
-        related="company_id.contacts_app_id", readonly=False
-    )
+    contacts_app_id = fields.Many2one(string="Contacts AppId",
+                                      related="company_id.contacts_app_id", readonly=False
+                                      )
 
-    contacts_secret = fields.Char(related="contacts_app_id.secret", readonly=False)
+    contacts_secret = fields.Char(string="Contacts Secret",
+                                  related="contacts_app_id.secret", readonly=False)
 
     # contacts_access_token = fields.Char(related="contacts_app_id.access_token")
 
@@ -48,7 +49,7 @@ class ResConfigSettings(models.TransientModel):
     )
 
     module_wecom_contacts_sync = fields.Boolean("WeCom Contacts Synchronized")
-    
+
     module_wecom_material = fields.Boolean("WeCom Material")
     module_wecom_auth_oauth = fields.Boolean("WeCom Authentication")
     module_wecom_message = fields.Boolean("WeCom Message")
@@ -195,4 +196,3 @@ class ResConfigSettings(models.TransientModel):
                     _("End getting join enterprise QR code of company [%s]")
                     % (self.company_id.name)
                 )
-

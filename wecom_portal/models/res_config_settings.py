@@ -9,9 +9,9 @@ class ResConfigSettings(models.TransientModel):
     _inherit = "res.config.settings"
 
     # 应用菜单
-    menu_app_id = fields.Many2one(related="company_id.menu_app_id", readonly=False)
-    menu_agentid = fields.Integer(related="menu_app_id.agentid", readonly=False)
-    menu_secret = fields.Char(related="menu_app_id.secret", readonly=False)
+    menu_app_id = fields.Many2one(string="Menu AppId", related="company_id.menu_app_id", readonly=False)
+    menu_agentid = fields.Integer(string="Menu AgentId", related="menu_app_id.agentid", readonly=False)
+    menu_secret = fields.Char(string="Menu Secret", related="menu_app_id.secret", readonly=False)
     menu_body = fields.Text(related="menu_app_id.menu_body", readonly=False)
 
     def get_menu_app_info(self):

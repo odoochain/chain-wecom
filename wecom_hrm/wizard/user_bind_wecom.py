@@ -22,7 +22,7 @@ class UserBindWecom(models.TransientModel):
     user_id = fields.Many2one(
         "res.users", string="Related User", required=True, readonly=True
     )
-    user_name = fields.Char(related="user_id.name", readonly=True)
+    user_name = fields.Char(string="User Name", related="user_id.name", readonly=True)
     company_id = fields.Many2one(related="user_id.company_id", readonly=True)
     sync = fields.Boolean(string="Synchronize updates", default=False)
 

@@ -7,7 +7,7 @@
     "installable": True,
     "application": False,
     "auto_install": False,
-    "category": "WeCom Suites/Messages",
+    "category": "WeCom/Messages",
     "version": "14.0.0.2",
     "summary": """
 Use Enterprise WeChat to periodically send KPI digest messages periodically.  

@@ -35,7 +35,7 @@ class ResConfigSettings(models.TransientModel):
             ("1", "Block mail and send only messages."),
             ("2", "Send mail and messages at the same time"),
         ],
-        string="Sending method",
+        string="Sending Method",
         default="1",
         request=True,
         config_parameter="wecom_message_sending_method",
