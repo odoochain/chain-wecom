@@ -15,7 +15,7 @@ class WeComAppConfig(models.Model):
 
     app_id = fields.Many2one(
         "wecom.apps",
-        string="Application",
+        string="Application Id",
         copy=False,
         ondelete="cascade",
         default=lambda self: self.env["wecom.apps"].id,

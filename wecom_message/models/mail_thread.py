@@ -2,7 +2,6 @@
 
 
 import re
-from email import message
 import logging
 from odoo import _, api, exceptions, fields, models, tools, registry, SUPERUSER_ID
 from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
@@ -78,7 +77,7 @@ class MailThread(models.AbstractModel):
         TDE/XDO TODO: 直接标记 rdata，例如 r['notif'] = 'ocn_client' 和 r['needaction']=False 并正确覆盖notify_recipients
         """
         ir_config = self.env["ir.config_parameter"].sudo()
-        message_sending_method = ir_config.get_param("wecom.message_sending_method")
+        message_sending_method = ir_config.get_param("wecom_message_sending_method")
 
         bus_notifications = []
         inbox_pids = [r["id"] for r in recipients_data if r["notif"] == "inbox"]

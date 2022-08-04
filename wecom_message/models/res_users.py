@@ -31,7 +31,7 @@ class ResUsers(models.Model):
         邀请用户使用 双因素身份验证
         """
         ir_config = self.env["ir.config_parameter"].sudo()
-        message_sending_method = ir_config.get_param("wecom.message_sending_method")
+        message_sending_method = ir_config.get_param("wecom_message_sending_method")
 
         invite_template = self.env.ref("wecom_message.auth_totp_mail_mail_template_totp_invite")
         users_to_invite = self.sudo().filtered(lambda user: not user.totp_secret)
@@ -79,7 +79,7 @@ class ResUsers(models.Model):
         增加判断模板对象为企业微信用户,使用企业微信发送模板消息的方法
         """
         ir_config = self.env["ir.config_parameter"].sudo()
-        message_sending_method = ir_config.get_param("wecom.message_sending_method")
+        message_sending_method = ir_config.get_param("wecom_message_sending_method")
 
         if self.env.context.get("install_mode", False):
             return
@@ -159,7 +159,7 @@ class ResUsers(models.Model):
         TODO:发送未注册的用户提醒 消息
         """
         ir_config = self.env["ir.config_parameter"].sudo()
-        message_sending_method = ir_config.get_param("wecom.message_sending_method")
+        message_sending_method = ir_config.get_param("wecom_message_sending_method")
 
         datetime_min = fields.Datetime.today() - relativedelta(days=after_days)
         datetime_max = datetime_min + relativedelta(hours=23, minutes=59, seconds=59)

@@ -38,7 +38,9 @@ class ResConfigSettings(models.TransientModel):
     # contacts_access_token = fields.Char(related="contacts_app_id.access_token")
 
     contacts_app_config_ids = fields.One2many(
-        related="contacts_app_id.app_config_ids", readonly=False,
+        string="Wecom Contacts Config",
+        related="contacts_app_id.app_config_ids",
+        readonly=False,
     )
 
     contacts_app_callback_service_ids = fields.One2many(
@@ -119,7 +121,8 @@ class ResConfigSettings(models.TransientModel):
                     )
                     _logger.warning(
                         _(
-                            "Automatic task:Error in obtaining the QR code of joining company [%s],error code: %s, error name: %s, error message: %s"
+                            "Automatic task:Error in obtaining the QR code of joining company [%s],error code: %s, "
+                            "error name: %s, error message: %s "
                         )
                         % (company.name, str(ex.errCode), error["name"], ex.errMsg)
                     )

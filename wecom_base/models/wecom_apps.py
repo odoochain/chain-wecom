@@ -115,8 +115,8 @@ class WeComApps(models.Model):
         else:
             self.type_code = "[]"
 
-    agentid = fields.Integer(string="Agent ID", copy=False)  # 企业应用id
-    secret = fields.Char("Secret", default="", copy=False)
+    agentid = fields.Integer("Wecom Agentid", string="Wecom Agent ID", copy=False)  # 企业应用id
+    secret = fields.Char("Wecom Secret", string="Wecom Secret", default="", copy=False)
     square_logo_url = fields.Char(string="Square Logo", copy=True)  # 企业应用方形头像
     description = fields.Text(string="Description", translate=True, copy=True)  # 企业应用详情
     allow_userinfos = fields.Char(
@@ -192,7 +192,7 @@ class WeComApps(models.Model):
     app_config_ids = fields.One2many(
         "wecom.app_config",
         "app_id",
-        string="Application Configuration",
+        string="Wecom Application Configuration",
         # context={
         #     "default_company_id": lambda self: self.company_id,
         # },

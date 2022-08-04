@@ -18,7 +18,7 @@
         """,
     "depends": [
         "mail",
-        "digest",
+        # "digest",
         "rating",
         "wecom_widget",
         "wecom_material",

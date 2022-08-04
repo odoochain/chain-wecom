@@ -20,6 +20,11 @@ class ResConfigSettings(models.TransientModel):
     message_secret = fields.Char(string="Message App Secret", related="message_app_id.secret", readonly=False)
     message_access_token = fields.Char(string="Message Auth Access App Token", related="message_app_id.access_token")
 
+    message_domain = fields.Selection([
+        ('prod', 'Production'),
+        ('sand', 'Sandbox'),
+    ], string='message Environment', default='sand', required=True, config_parameter='wecom_message_domain')
+
     message_app_callback_service_ids = fields.One2many(
         string="Message Auth Callback App Service Ids",
         related="message_app_id.app_callback_service_ids", readonly=False
@@ -33,7 +38,7 @@ class ResConfigSettings(models.TransientModel):
         string="Sending method",
         default="1",
         request=True,
-        config_parameter="wecom.message_sending_method",
+        config_parameter="wecom_message_sending_method",
     )
     # module_gamification = fields.Boolean(readonly=False)
 

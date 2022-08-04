@@ -27,12 +27,12 @@ class ResConfigSettings(models.TransientModel):
     )
 
     global_error_code_troubleshooting_method_node = fields.Char(
-        "Global error code troubleshooting method page element node", config_parameter="wecom.global_error_code_troubleshooting_method_node",
+        "Global error code troubleshooting method page element node",
+        config_parameter="wecom.global_error_code_troubleshooting_method_node",
     )
 
     module_wecom_web_theme = fields.Boolean("WeCom Web Theme")
     module_wecom_contacts = fields.Boolean("WeCom Contacts")
-
 
     @api.model
     def get_values(self):
@@ -43,7 +43,7 @@ class ResConfigSettings(models.TransientModel):
             True if ir_config.get_param("wecom.debug_enabled") == "True" else False
         )
 
-        res.update(debug_enabled=debug_enabled,)
+        res.update(debug_enabled=debug_enabled, )
         return res
 
     def set_values(self):
@@ -59,7 +59,7 @@ class ResConfigSettings(models.TransientModel):
             "res_model": "res.company",
             "res_id": self.env.company.id,
             "target": "current",
-            "context": {"form_view_initial_mode": "edit",},
+            "context": {"form_view_initial_mode": "edit", },
         }
 
     @api.depends("company_id")
@@ -71,7 +71,6 @@ class ResConfigSettings(models.TransientModel):
 
     @api.model
     def open_wecom_settings(self):
-
         action = self.env["ir.actions.actions"]._for_xml_id(
             "wecom_base.res_config_settings_view_form"
         )
@@ -79,9 +78,3 @@ class ResConfigSettings(models.TransientModel):
 
         return action
 
-    def get_app_info(self):
-        """
-        获取企业应用信息
-        :param agentid:
-        :return:
-        """
