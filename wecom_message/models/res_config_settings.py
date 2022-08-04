@@ -37,7 +37,7 @@ class ResConfigSettings(models.TransientModel):
         ],
         string="Sending Method",
         default="1",
-        request=True,
+        required=True,
         config_parameter="wecom_message_sending_method",
     )
     # module_gamification = fields.Boolean(readonly=False)
