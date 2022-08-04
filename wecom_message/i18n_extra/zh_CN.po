@@ -319,7 +319,7 @@ msgstr ""
 "      "
 
 #. module: auth_totp_mail
-#: model:mail.template,body_json:auth_totp_mail.mail_template_totp_invite
+#: model:mail.template,body_json:auth_totp_mail_mail_template_totp_invite
 msgid ""
 "{\n"
 "        \"card_type\": \"news_notice\",\n"

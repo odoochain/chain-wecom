@@ -19,15 +19,15 @@ class MailTemplate(models.Model):
     _order = "name"
 
     # recipients
-    message_to_user = fields.Char(string="To Users", help="Message recipients (users)",)
+    message_to_user = fields.Char(string="Wecom To Users", help="Message recipients (users)",)
     message_to_party = fields.Char(
         string="To Departments", help="Message recipients (departments)",
     )
-    message_to_tag = fields.Char(string="To Tags", help="Message recipients (tags)",)
+    message_to_tag = fields.Char(string="Wecom To Tags", help="Message recipients (tags)",)
 
     # content
     media_id = fields.Many2one(
-        string="Media file id",
+        string="Wecom Media file id",
         comodel_name="wecom.material",
         help="Media file ID, which can be obtained by calling the upload temporary material interface",
     )
@@ -35,7 +35,7 @@ class MailTemplate(models.Model):
     body_markdown = fields.Text("Markdown Body", translate=True,)
 
     use_templates = fields.Boolean("Is template message", default=False)
-    templates_id = fields.Many2one("wecom.message.template", string="Message template")
+    templates_id = fields.Many2one("wecom.message.template", string="Wecom Message template")
 
     msgtype = fields.Selection(
         [
@@ -67,7 +67,10 @@ class MailTemplate(models.Model):
         string="Secret message",
         required=True,
         default="1",
-        help="Indicates whether it is a confidential message, 0 indicates that it can be shared externally, 1 indicates that it cannot be shared and the content displays watermark, 2 indicates that it can only be shared within the enterprise, and the default is 0; Note that only messages of mpnews type support the safe value of 2, and other message types do not",
+        help="Indicates whether it is a confidential message, 0 indicates that it can be shared externally, "
+             "1 indicates that it cannot be shared and the content displays watermark, 2 indicates that it can only "
+             "be shared within the enterprise, and the default is 0; Note that only messages of mpnews type support "
+             "the safe value of 2, and other message types do not",
     )
 
     enable_id_trans = fields.Boolean(
@@ -383,7 +386,7 @@ class MailTemplate(models.Model):
                         .sudo()
                         .new(
                             dict(
-                                markdown_body=values["body_markdown"],
+                                body=values["body_markdown"],
                                 record_name=record.display_name,
                             )
                         ),

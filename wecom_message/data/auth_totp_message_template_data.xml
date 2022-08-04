@@ -3,7 +3,7 @@
   <data noupdate="1">
 
     <!-- 面向用户的 TOTP：通过电子邮件邀请 -->
-    <record id="auth_totp_mail.mail_template_totp_invite" model="mail.template">
+    <record id="auth_totp_mail_mail_template_totp_invite" model="mail.template">
       <field name="msgtype">template_card</field>
       <field name="message_to_user">{{ object.wecom_userid }}</field>
       <field name="body_json">{

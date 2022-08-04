@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, exceptions, fields, models, _, Command
+from odoo import api, exceptions, fields, models, _
 
 
 class MailActivity(models.Model):

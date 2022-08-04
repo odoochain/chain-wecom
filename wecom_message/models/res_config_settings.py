@@ -12,22 +12,16 @@ from odoo.exceptions import UserError, ValidationError
 class ResConfigSettings(models.TransientModel):
     _inherit = "res.config.settings"
 
-    company_id = fields.Many2one(
-        "res.company",
-        string="Company",
-        required=True,
-        default=lambda self: self.env.company,
-    )
-
     # 消息
     message_app_id = fields.Many2one(
         related="company_id.message_app_id", readonly=False
     )
-    message_agentid = fields.Integer(related="message_app_id.agentid", readonly=False)
-    message_secret = fields.Char(related="message_app_id.secret", readonly=False)
-    message_access_token = fields.Char(related="message_app_id.access_token")
+    message_agentid = fields.Integer(string="Message App Id", related="message_app_id.agentid", readonly=False)
+    message_secret = fields.Char(string="Message App Secret", related="message_app_id.secret", readonly=False)
+    message_access_token = fields.Char(string="Message Auth Access App Token", related="message_app_id.access_token")
 
     message_app_callback_service_ids = fields.One2many(
+        string="Message Auth Callback App Service Ids",
         related="message_app_id.app_callback_service_ids", readonly=False
     )
 
@@ -112,3 +106,4 @@ class ResConfigSettings(models.TransientModel):
                 raise UserError(_("Message application ID and secret cannot be empty!"))
             else:
                 record.message_app_id.get_app_info()
+        super(ResConfigSettings, self).get_message_app_info()

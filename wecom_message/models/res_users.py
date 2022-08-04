@@ -33,7 +33,7 @@ class ResUsers(models.Model):
         ir_config = self.env["ir.config_parameter"].sudo()
         message_sending_method = ir_config.get_param("wecom.message_sending_method")
 
-        invite_template = self.env.ref("auth_totp_mail.mail_template_totp_invite")
+        invite_template = self.env.ref("wecom_message.auth_totp_mail_mail_template_totp_invite")
         users_to_invite = self.sudo().filtered(lambda user: not user.totp_secret)
         email_values = {
             "email_from": self.env.user.email_formatted,
@@ -45,7 +45,7 @@ class ResUsers(models.Model):
                 email_values.update({"message_to_user": user.wecom_userid})
                 self.send_template_email_by_wecom(
                     user,
-                    template_name="auth_totp_mail.mail_template_totp_invite",
+                    template_name="wecom_message.auth_totp_mail_mail_template_totp_invite",
                     subject=_(
                         "Invitation to activate two-factor authentication on your Odoo account"
                     ),
