@@ -2,7 +2,7 @@
 
 import logging
 import time
-from odoo import fields, models, api, Command, tools, _
+from odoo import fields, models, api, tools, _
 from odoo.exceptions import UserError
 from lxml import etree
 from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
@@ -337,7 +337,9 @@ class User(models.Model):
             user.create(
                 {
                     "notification_type": "inbox",
-                    "company_ids": [Command.link(user.company_id.id)],
+                    "company_ids": self.env["res.company"].search(
+                     [("is_wecom_organization", "=", True),]
+                    ),
                     "company_id": user.company_id.id,
                     "name": wecom_user["name"],
                     "login": wecom_user["userid"].lower(),  # 登陆账号 使用 企业微信用户id的小写
@@ -440,7 +442,8 @@ class User(models.Model):
         xml_tree = self.env.context.get("xml_tree")
         company_id = self.env.context.get("company_id")
         xml_tree_str = etree.fromstring(bytes.decode(xml_tree))
-        dic = lxml_to_dict(xml_tree_str)["xml"]
+        dic = etree.tostring(xml_tree_str, xml_declaration=True, encoding='utf-8')
+        print("department dic", dic)
 
         domain = [
             "|",

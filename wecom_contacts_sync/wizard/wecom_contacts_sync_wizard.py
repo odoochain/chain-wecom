@@ -292,7 +292,6 @@ class WecomContactsSyncWizard(models.TransientModel):
         )
         return {
             "name": _("Synchronize results using the wizard"),
-            "view_type": "form",
             "view_mode": "form",
             "res_model": "wecom.contacts.sync.wizard",
             "res_id": self.id,

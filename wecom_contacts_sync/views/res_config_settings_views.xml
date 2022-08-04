@@ -20,7 +20,7 @@
                                 <div class="content-group overflow-auto">
                                     <div class="mt4">
                                         <field name="contacts_app_config_ids" widget="wecom_config" format="value" type="ttype" help="description" class="w-100 pl-3">
-                                            <tree create="0" edit="true" delete="0" editable="bottom" help="description">
+                                            <tree create="0" edit="true" delete="0" editable="bottom">
                                                 <field name="name" readonly="1"/>
                                                 <field name="key" readonly="1"/>
                                                 <field name="value" need_format="true" force_save="1" required="1"/>
@@ -46,7 +46,7 @@
                                 <div class="content-group overflow-auto">
                                     <div class="mt4">
                                         <field name="contacts_app_callback_service_ids" widget="wecom_config" help="description" class="w-100 pl-3">
-                                            <tree create="0" edit="true" delete="0" editable="bottom" help="description">
+                                            <tree create="0" edit="true" delete="0" editable="bottom">
                                                 <field name="name" readonly="1"/>
                                                 <field name="callback_url" readonly="1" widget="CopyClipboardChar"/>
                                                 <field name="callback_url_token" required="1" max-width="80px"/>

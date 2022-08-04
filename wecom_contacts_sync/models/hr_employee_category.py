@@ -505,7 +505,7 @@ class EmployeeCategory(models.Model):
                 "name": "download_tag_members",
                 "state": False,
                 "time": 0,
-                "msg": repr(e),
+                "msg": repr(ex),
             }
         except Exception as e:
             res = {
