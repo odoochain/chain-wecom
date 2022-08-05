@@ -19,6 +19,7 @@
     "depends": [
         "mail",
         # "digest",
+        'auth_totp_mail',
         "rating",
         "wecom_widget",
         "wecom_material",
