@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<templates id="template" xml:space="preserve">
+<template>
     <t t-name="wecom_widget.WecomProfessionalUpgrade">
         <div class="row" role="status">
             <div class="col-6">
@@ -27,4 +27,4 @@
         </div>
     </t>
 
-</templates>
+</template>
