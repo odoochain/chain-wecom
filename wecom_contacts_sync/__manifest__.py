@@ -28,6 +28,7 @@
         "data/wecom_app_event_type_data.xml",
         "data/ir_cron_data.xml",
         "data/hr_data.xml",
+
         "views/assets_templates.xml",
 
         "views/res_config_settings_views.xml",
@@ -44,19 +45,6 @@
         "views/wecom_contacts_block_views.xml",
         "views/menu_views.xml",
     ],
-    # "assets": {
-    #     "web._assets_common_styles": [
-    #         "wecom_contacts_sync/static/src/scss/sync_result_dialog.scss",
-    #     ],
-    #     "web.assets_backend": [
-    #         # SCSSS
-    #         # JS
-    #         "wecom_contacts_sync/static/src/js/download_deps.js",
-    #         "wecom_contacts_sync/static/src/js/download_staffs.js",
-    #         "wecom_contacts_sync/static/src/js/download_tags.js",
-    #     ],
-    #     "web.assets_qweb": ["wecom_contacts_sync/static/src/xml/*.xml",],
-    # },
     "qweb": ["static/src/xml/*.xml", ],
     "license": "LGPL-3",
 }
