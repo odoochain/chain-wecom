@@ -33,7 +33,7 @@ class DepartmentCategory(models.Model):
         help="Tag ID, non negative integer. When this parameter is specified, the new tag will generate the corresponding tag ID. if it is not specified, it will be automatically increased by the current maximum ID.",
     )
     is_wecom_category = fields.Boolean(
-        string="WeCom Tag",
+        string="WeCom Category Tag",
         default=False,
     )
 
