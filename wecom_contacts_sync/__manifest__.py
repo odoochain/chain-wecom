@@ -43,16 +43,6 @@
         "wizard/wecom_users_sync_wizard_views.xml",
         "views/wecom_contacts_block_views.xml",
         "views/menu_views.xml",
-
-        "views/hr_department_view.xml",
-        "views/hr_employee_view.xml",
-        "views/hr_employee_category_views.xml",
-
-        "views/ir_cron_views.xml",
-        "wizard/wecom_contacts_sync_wizard_views.xml",
-        "wizard/wecom_users_sync_wizard_views.xml",
-        "views/wecom_contacts_block_views.xml",
-        "views/menu_views.xml",
     ],
     # "assets": {
     #     "web._assets_common_styles": [

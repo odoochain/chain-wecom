@@ -218,7 +218,8 @@ class WeComApps(models.Model):
         ):
             _logger.info(
                 _(
-                    "Automatic task: start to synchronize the enterprise wechat organizational structure of the company [%s]"
+                    "Automatic task: start to synchronize the enterprise wechat organizational structure of the "
+                    "company [%s] "
                 )
                 % (app.company_id.name)
             )
@@ -228,7 +229,8 @@ class WeComApps(models.Model):
 
             _logger.info(
                 _(
-                    "Automatic task: end synchronizing the enterprise wechat organizational structure of the company [%s]"
+                    "Automatic task: end synchronizing the enterprise wechat organizational structure of the company "
+                    "[%s] "
                 )
                 % (app.company_id.name)
             )

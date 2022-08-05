@@ -281,7 +281,7 @@
                             <div class="o_setting_left_pane">
                                 <field name="module_wecom_approval" />
                             </div>
-                            <div class="o_setting_right_pane" id="wecom_msgaudit_settings">
+                            <div class="o_setting_right_pane" id="wecom_approval_settings">
                                 <label string="WeCom Approvals" for="module_wecom_approval"/>
 <!--                                <widget name="wecom_pro_tag"/>-->
                                 <div class="text-muted">
