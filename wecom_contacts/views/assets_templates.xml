@@ -3,9 +3,6 @@
     <data>
 
         <template id="assets_backend" name="account assets" inherit_id="web._assets_bootstrap">
-            <!--        <xpath expr="//link[last()]" position="after">-->
-            <!--            <link rel="stylesheet" type="text/scss" href="/wecom_hrm_syncing/static/src/scss/notification.scss"/>-->
-            <!--        </xpath>-->
             <xpath expr="." position="inside">
                 <script type="text/javascript" src="/wecom_contacts/static/src/js/download_contacts.js"></script>
                 <script type="text/javascript" src="/wecom_contacts/static/src/js/download_tags.js"></script>

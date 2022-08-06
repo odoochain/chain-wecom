@@ -145,7 +145,7 @@ class ResConfigSettings(models.TransientModel):
         if debug:
             _logger.info(
                 _("Start getting join enterprise QR code of company [%s]")
-                % (self.company_id.name)
+                % self.company_id.name
             )
         try:
             wecomapi = self.env["wecom.service_api"].InitServiceApi(
@@ -186,5 +186,5 @@ class ResConfigSettings(models.TransientModel):
             if debug:
                 _logger.info(
                     _("End getting join enterprise QR code of company [%s]")
-                    % (self.company_id.name)
+                    % self.company_id.name
                 )
