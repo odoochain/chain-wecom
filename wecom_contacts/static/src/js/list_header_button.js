@@ -24,7 +24,7 @@ odoo.define('wecom_contacts.wecom_organizational_download', function (require) {
                     self.displayNotification({
                         type: 'success',
                         title: _t("Downloaded successfully!"),
-                        message: _t("Organization structure downloaded successfull!"),
+                        message: _t("Organization structure downloaded successfully!"),
                         sticky: true,
                         buttons: [{
                             text: _t("Refresh"),

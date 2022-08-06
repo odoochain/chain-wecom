@@ -5,6 +5,7 @@ import datetime
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.exceptions import UserError, ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -220,6 +221,23 @@ class WeComApps(models.Model):
         """
         for record in self.subtype_ids:
             self.generate_service_by_code(record.code)
+    # ————————————————————————————————————
+    # 应用回调服务
+    # ————————————————————————————————————
+    def generate_service(self):
+        """
+        生成服务
+        :return:
+        """
+        params = self.env["ir.config_parameter"].sudo()
+        base_url = params.get_param("web.base.url")
+        if not self.app_id:
+            raise ValidationError(_("Please bind contact app!"))
+        else:
+            self.callback_url = base_url + "/wecom_callback/%s/%s" % (
+                self.app_id.company_id.id,
+                self.code,
+            )
 
     def generate_service_by_code(self, code):
         """
@@ -227,7 +245,45 @@ class WeComApps(models.Model):
         :param code:
         :return:
         """
+        if code == "contacts":
+            service = self.app_callback_service_ids.sudo().search(
+                [
+                    ("app_id", "=", self.id),
+                    ("code", "=", code),
+                    "|",
+                    ("active", "=", True),
+                    ("active", "=", False),
+                ]
+            )
 
+            if not service:
+                service.create(
+                    {
+                        "app_id": self.id,
+                        "name": _("Contacts synchronization"),
+                        "code": code,
+                        "callback_url_token": "",
+                        "callback_aeskey": "",
+                        "description": _(
+                            "When members modify their personal information, the modified information will be pushed "
+                            "to the following URL in the form of events to ensure the synchronization of the address "
+                            "book. "
+                        ),
+                    }
+                )
+            else:
+                service.write(
+                    {
+                        "name": _("Contacts synchronization"),
+                        "code": code,
+                        "callback_url": service.generate_service(),
+                        "description": _(
+                            "When members modify their personal information, the modified information will be pushed "
+                            "to the following URL in the form of events to ensure the synchronization of the address "
+                            "book. "
+                        ),
+                    }
+                )
     # ————————————————————————————————————
     # 应用参数配置
     # ————————————————————————————————————

@@ -35,21 +35,7 @@
         "views/ir_cron_views.xml",
         "views/menu_views.xml",
     ],
-    # "assets": {
-    #     "web.assets_backend": [
-    #         # SCSSS
-    #         # JS
-    #         "wecom_contacts/static/src/js/download_contacts.js",
-    #         "wecom_contacts/static/src/js/download_tags.js",
-    #     ],
-    #     "web.assets_qweb": [
-    #         "wecom_contacts/static/src/xml/*.xml",
-    #     ],
-    # },
-    # "external_dependencies": {
-    #     "python": [],
-    # },
-    "qweb": ["static/src/xml/list_header_button.xml", ],
+    "qweb": ["static/src/xml/*.xml", ],
     # "pre_init_hook": "pre_init_hook",
     "license": "LGPL-3",
 }

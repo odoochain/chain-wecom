@@ -40,6 +40,7 @@ class HrMenusWizard(models.TransientModel):
         # compute="_compute_hr_menus"，
         # domain="['&','&','&',('parent_id','=',False),('web_icon', 'ilike', 'hr'),('name', 'not like', 'HRMS'),'|',('active','=',True),('active','=',False)]",
     )
+
     # compute_sudo=True,domain="['&amp;','&amp;','&amp;',('parent_id','=',False),('web_icon', 'ilike', 'hr'),('name', 'not like', 'HRMS'),'|',('active','=',True),('active','=',False)]",
 
     def _compute_hr_menus(self):
