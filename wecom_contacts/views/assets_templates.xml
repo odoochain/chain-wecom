@@ -2,7 +2,7 @@
 <odoo>
     <data>
 
-        <template id="assets_backend" name="account assets" inherit_id="web._assets_bootstrap">
+        <template id="assets_backend" name="contacts assets" inherit_id="web.assets_backend">
             <xpath expr="//script[last()]" position="after">
                 <script type="text/javascript" src="/wecom_contacts/static/src/js/download_contacts.js"></script>
                 <script type="text/javascript" src="/wecom_contacts/static/src/js/download_tags.js"></script>

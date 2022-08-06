@@ -228,7 +228,6 @@ class PartnerCategory(models.Model):
         company_id = self.env.context.get("company_id")
         xml_tree_str = etree.fromstring(bytes.decode(xml_tree))
         dic = etree.tostring(xml_tree_str, xml_declaration=True, encoding='utf-8')
-        # dic = lxml_to_dict(xml_tree_str)["xml"]
 
         callback_tag = self.sudo().search(
             [("company_id", "=", company_id.id), ("tagid", "=", dic["TagId"])],
