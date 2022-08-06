@@ -65,7 +65,9 @@ class WeComApps(models.Model):
                         "callback_url_token": "",
                         "callback_aeskey": "",
                         "description": _(
-                            "When members modify their personal information, the modified information will be pushed to the following URL in the form of events to ensure the synchronization of the address book."
+                            "When members modify their personal information, the modified information will be pushed "
+                            "to the following URL in the form of events to ensure the synchronization of the address "
+                            "book. "
                         ),
                     }
                 )
@@ -76,7 +78,9 @@ class WeComApps(models.Model):
                         "code": code,
                         "callback_url": service.generate_service(),
                         "description": _(
-                            "When members modify their personal information, the modified information will be pushed to the following URL in the form of events to ensure the synchronization of the address book."
+                            "When members modify their personal information, the modified information will be pushed "
+                            "to the following URL in the form of events to ensure the synchronization of the address "
+                            "book. "
                         ),
                     }
                 )

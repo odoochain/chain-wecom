@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import logging
-import base64
-# from pdb import _rstr
 import time
 from lxml import etree
 from odoo import api, fields, models, _
@@ -314,9 +312,11 @@ class Department(models.Model):
     def wecom_event_change_contact_party(self, cmd):
         xml_tree = self.env.context.get("xml_tree")
         company_id = self.env.context.get("company_id")
-        xml_tree_str = etree.fromstring(bytes.decode(xml_tree))
+        parser = etree.XMLParser(remove_blank_text=True)
+        xml_tree_str = etree.fromstring(bytes.decode(xml_tree), parser=parser)
         dic = etree.tostring(xml_tree_str, xml_declaration=True, encoding='utf-8')
-        # print("department dic", dic)
+        # dic2 = lxml_to_dict(xml_tree_str)["xml"]
+        print("department dic", dic)
 
         domain = [
             "|",
@@ -345,12 +345,12 @@ class Department(models.Model):
                 )
         for key, value in dic.items():
             if (
-                key == "ToUserName"
-                or key == "FromUserName"
-                or key == "CreateTime"
-                or key == "Event"
-                or key == "MsgType"
-                or key == "ChangeType"
+                    key == "ToUserName"
+                    or key == "FromUserName"
+                    or key == "CreateTime"
+                    or key == "Event"
+                    or key == "MsgType"
+                    or key == "ChangeType"
             ):
                 # 忽略掉 不需要的key
                 pass

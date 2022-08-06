@@ -36,8 +36,6 @@ class ResConfigSettings(models.TransientModel):
     contacts_secret = fields.Char(string="Contacts Secret",
                                   related="contacts_app_id.secret", readonly=False)
 
-    # contacts_access_token = fields.Char(related="contacts_app_id.access_token")
-
     contacts_app_config_ids = fields.One2many(
         string="Wecom Contacts Config",
         related="contacts_app_id.app_config_ids",
@@ -131,7 +129,7 @@ class ResConfigSettings(models.TransientModel):
                 _(
                     "Automatic task:End obtaining joining enterprise QR code of company [%s]"
                 )
-                % (company.name)
+                % company.name
             )
 
     def get_join_qrcode(self):
@@ -182,8 +180,8 @@ class ResConfigSettings(models.TransientModel):
                             "wecom_contacts_join_qrcode_last_time": datetime.datetime.now(),
                         }
                     )
-                    # self.contacts_join_qrcode=response["join_qrcode"]
-                    # self.contacts_join_qrcode_last_time =  datetime.datetime.now()
+                    self.contacts_join_qrcode = response["join_qrcode"]
+                    self.contacts_join_qrcode_last_time = datetime.datetime.now()
 
         except ApiException as ex:
             return self.env["wecomapi.tools.action"].ApiExceptionDialog(
