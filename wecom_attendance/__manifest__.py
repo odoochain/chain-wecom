@@ -7,7 +7,7 @@
     "installable": True,
     "application": True,
     "auto_install": False,
-    "category": "WeCom Suites/Attendances",
+    "category": "WeCom/Attendances",
     "website": "https://gitee.com/rainbowstudio/wecom",
     "version": "14.0.0.2",
     "summary": """

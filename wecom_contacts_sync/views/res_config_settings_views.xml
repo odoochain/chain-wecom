@@ -23,7 +23,7 @@
                                             <tree create="0" edit="true" delete="0" editable="bottom">
                                                 <field name="name" readonly="1"/>
                                                 <field name="key" readonly="1"/>
-                                                <field name="value" need_format="true" force_save="1" required="1"/>
+                                                <field name="value" force_save="1" required="1"/>
                                                 <field name="description" invisible="1"/>
                                             </tree>
                                         </field>
@@ -49,9 +49,9 @@
                                             <tree create="0" edit="true" delete="0" editable="bottom">
                                                 <field name="name" readonly="1"/>
                                                 <field name="callback_url" readonly="1" widget="CopyClipboardChar"/>
-                                                <field name="callback_url_token" required="1" max-width="80px"/>
-                                                <field name="callback_aeskey" required="1" max-width="200px"/>
-                                                <field name="active" widget="boolean_toggle" max-width="30px"/>
+                                                <field name="callback_url_token" required="1"/>
+                                                <field name="callback_aeskey" required="1"/>
+                                                <field name="active" widget="boolean_toggle"/>
                                                 <field name="description" invisible="1"/>
                                             </tree>
                                         </field>

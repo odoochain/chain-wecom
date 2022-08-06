@@ -636,7 +636,8 @@ class EmployeeCategory(models.Model):
         dic = etree.tostring(xml_tree_str, xml_declaration=True, encoding='utf-8')
 
         callback_tag = self.sudo().search(
-            [("company_id", "=", company_id.id), ("tagid", "=", dic["TagId"])], limit=1,
+            [("company_id", "=", company_id.id), ("tagid", "=", dic["TagId"])],
+            limit=1,
         )
         domain = [
             "|",
@@ -690,7 +691,8 @@ class EmployeeCategory(models.Model):
             for wecom_userid in update_dict["add_employee_ids"].split(","):
                 add_employee_list.append(
                     employee.search(
-                        [("wecom_userid", "=", wecom_userid.lower())], limit=1
+                        [("wecom_userid", "=", wecom_userid.lower())],
+                        limit=1
                     ).id
                 )
         elif "del_employee_ids" in update_dict.keys():

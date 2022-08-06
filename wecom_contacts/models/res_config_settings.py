@@ -70,61 +70,55 @@ class ResConfigSettings(models.TransientModel):
         for company in companies:
             _logger.info(
                 _("Automatic task:Start to get join enterprise QR code of company [%s]")
-                % (company.name)
+                % company.name
             )
-            if not company.contacts_app_id:
-                _logger.info(
-                    _("Automatic task:Please bind the contact app of company [%s]!")
-                    % (company.name)
+            # if not company.contacts_app_id:
+            #     _logger.info(
+            #         _("Automatic task:Please bind the contact app of company [%s]!")
+            #         % company.name
+            #     )
+            # else:
+            try:
+                wecomapi = self.env["wecom.service_api"].InitServiceApi(
+                    company.corpid, company.contacts_app_id.secret
                 )
-            elif not company.wecom_contacts_join_qrcode_enabled:
-                _logger.info(
-                    _(
-                        "Automatic task:Please enable the company [%s] to join the enterprise wechat QR code function!"
-                    )
-                    % (company.name)
-                )
-            else:
-                try:
-                    wecomapi = self.env["wecom.service_api"].InitServiceApi(
-                        company.corpid, company.contacts_app_id.secret
-                    )
 
-                    last_time = company.wecom_contacts_join_qrcode_last_time
-                    size_type = company.wecom_contacts_join_qrcode_size_type
-                    # 超期
-                    overdue = False
-                    if last_time:
-                        overdue = self.env[
-                            "wecomapi.tools.datetime"
-                        ].cheeck_days_overdue(last_time, 7)
-                    if not last_time or overdue:
-                        response = wecomapi.httpCall(
-                            self.env["wecom.service_api_list"].get_server_api_call(
-                                "GET_JOIN_QRCODE"
-                            ),
-                            {"size_type": size_type},
-                        )
-                        if response["errcode"] == 0:
-                            company.write(
-                                {
-                                    "wecom_contacts_join_qrcode": response[
-                                        "join_qrcode"
-                                    ],
-                                    "wecom_contacts_join_qrcode_last_time": datetime.datetime.now(),
-                                }
-                            )
-                except ApiException as ex:
-                    error = self.env["wecom.service_api_error"].get_error_by_code(
-                        ex.errCode
+                last_time = company.wecom_contacts_join_qrcode_last_time
+                size_type = company.wecom_contacts_join_qrcode_size_type
+                # 超期
+                overdue = False
+                if last_time:
+                    overdue = self.env[
+                        "wecomapi.tools.datetime"
+                    ].cheeck_days_overdue(last_time, 7)
+                elif not last_time or overdue:
+                    response = wecomapi.httpCall(
+                        self.env["wecom.service_api_list"].get_server_api_call(
+                            "GET_JOIN_QRCODE"
+                        ),
+                        {"size_type": size_type},
                     )
-                    _logger.warning(
-                        _(
-                            "Automatic task:Error in obtaining the QR code of joining company [%s],error code: %s, "
-                            "error name: %s, error message: %s "
+                    if response["errcode"] == 0:
+                        company.write(
+                            {
+                                "wecom_contacts_join_qrcode": response[
+                                    "join_qrcode"
+                                ],
+                                "wecom_contacts_join_qrcode_last_time": datetime.datetime.now(),
+                            }
                         )
-                        % (company.name, str(ex.errCode), error["name"], ex.errMsg)
+
+            except ApiException as ex:
+                error = self.env["wecom.service_api_error"].get_error_by_code(
+                    ex.errCode
+                )
+                _logger.warning(
+                    _(
+                        "Automatic task:Error in obtaining the QR code of joining company [%s],error code: %s, "
+                        "error name: %s, error message: %s "
                     )
+                    % (company.name, str(ex.errCode), error["name"], ex.errMsg)
+                )
             _logger.info(
                 _(
                     "Automatic task:End obtaining joining enterprise QR code of company [%s]"

@@ -24,7 +24,7 @@ class EmployeeBindWecom(models.TransientModel):
         "hr.employee", string="Related Employee", required=True, readonly=True
     )
     # employee_name = fields.Char(related="employee_id.name", readonly=True, store=True,)
-    # company_id = fields.Many2one(related="employee_id.company_id", readonly=True)
+    company_id = fields.Many2one(related="employee_id.company_id", readonly=True)
 
     # @api.depends("company_id", "wecom_userid")
     @api.depends("wecom_userid")
