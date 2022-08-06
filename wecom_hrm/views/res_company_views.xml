@@ -12,7 +12,7 @@
                     <h2 id="wecom_contact" class="d-flex justify-content-between" attrs="{'invisible': [('is_wecom_organization','=',False)]}">
                         <span class="text-left">
                             <i class="fa fa-book fa-lg" aria-label="Contact synchronization"/>
- Contact synchronization Settings
+                                Contact synchronization Settings
                         </span>
                         <span class="text-right fa fa-angle-double-up" aria-label="GoTop"/>
                     </h2>
@@ -45,7 +45,11 @@
                                 <div class="row">
                                     <!-- 在企业微信的后台获取应用"通讯录"信息时的重要票据,在通信时都需要携带此信息用于验证接口的访问权限。 -->
                                     <div class="text-muted col-md-12" id="contacts_access_token_text">
-                                        Important notes when obtaining application "address book" information in the background of the WeCom, this information needs to be carried during communication to verify the access authority of the interface.
+                                        Important notes when obtaining application "address book"
+                                        information in the background of the WeCom,
+                                        this information needs
+                                        to be carried during communication
+                                        to verify the access authority of the interface.
                                         <br/>
                                         <span style="color:orange;padding: 0px 16px;">
                                             <i class="fa fa-info-circle" aria-label="info" />

@@ -10,7 +10,6 @@ from odoo.addons.base.models.ir_mail_server import MailDeliveryException
 
 _logger = logging.getLogger(__name__)
 
-
 WECOM_USER_MAPPING_ODOO_USER = {
     "UserID": "wecom_userid",  # 成员UserID
     "Name": "name",  # 成员名称;
@@ -161,7 +160,7 @@ class User(models.Model):
         users = super(User, self).create(vals_list)
 
         if not self.env.context.get("no_reset_password") and self.env.context.get(
-            "send_mail"
+                "send_mail"
         ):
             users_with_email = users.filtered("email")
             if users_with_email:
@@ -236,7 +235,7 @@ class User(models.Model):
                 blocks = (
                     self.env["wecom.contacts.block"]
                     .sudo()
-                    .search([("company_id", "=", company.id),])
+                    .search([("company_id", "=", company.id), ])
                 )
                 block_list = []
 
@@ -332,13 +331,13 @@ class User(models.Model):
 
         try:
             groups_id = (
-                self.sudo().env["res.groups"].search([("id", "=", 9),], limit=1,).id
+                self.sudo().env["res.groups"].search([("id", "=", 9), ], limit=1, ).id
             )  # id=1是内部用户, id=9是门户用户
             user.create(
                 {
                     "notification_type": "inbox",
                     "company_ids": self.env["res.company"].search(
-                     [("is_wecom_organization", "=", True),]
+                        [("is_wecom_organization", "=", True), ]
                     ),
                     "company_id": user.company_id.id,
                     "name": wecom_user["name"],
@@ -472,12 +471,12 @@ class User(models.Model):
 
         for key, value in dic.items():
             if (
-                key == "ToUserName"
-                or key == "FromUserName"
-                or key == "CreateTime"
-                or key == "Event"
-                or key == "MsgType"
-                or key == "ChangeType"
+                    key == "ToUserName"
+                    or key == "FromUserName"
+                    or key == "CreateTime"
+                    or key == "Event"
+                    or key == "MsgType"
+                    or key == "ChangeType"
             ):
                 # 忽略掉 不需要的key
                 pass
@@ -509,7 +508,7 @@ class User(models.Model):
 
         if cmd == "create":
             update_dict.update(
-                {"is_wecom_user": True,}
+                {"is_wecom_user": True, }
             )
             try:
                 wecomapi = self.env["wecom.service_api"].InitServiceApi(
@@ -531,7 +530,7 @@ class User(models.Model):
             callback_user.write(update_dict)
         elif cmd == "delete":
             callback_user.write(
-                {"active": False,}
+                {"active": False, }
             )
 
 
@@ -544,15 +543,15 @@ class ChangeTypeWizard(models.TransientModel):
 
     def _default_user_ids(self):
         user_ids = (
-            self._context.get("active_model") == "res.users"
-            and self._context.get("active_ids")
-            or []
+                self._context.get("active_model") == "res.users"
+                and self._context.get("active_ids")
+                or []
         )
         return [
             (
                 0,
                 0,
-                {"user_id": user.id, "user_login": user.login, "user_name": user.name,},
+                {"user_id": user.id, "user_login": user.login, "user_name": user.name, },
             )
             for user in self.env["res.users"].browse(user_ids)
         ]
@@ -580,11 +579,11 @@ class ChangeTypeUser(models.TransientModel):
     user_id = fields.Many2one(
         "res.users", string="User", required=True, ondelete="cascade"
     )
-    user_login = fields.Char(string="Login account", readonly=True,)
+    user_login = fields.Char(string="Login account", readonly=True, )
     user_name = fields.Char(string="Login name", readonly=True)
     # 用户类型参见res_group
     new_type = fields.Selection(
-        [("1", _("Internal User")), ("9", _("Portal User")), ("10", _("Public User")),],
+        [("1", _("Internal User")), ("9", _("Portal User")), ("10", _("Public User")), ],
         string="User Type",
         default="1",
     )
@@ -598,12 +597,12 @@ class ChangeTypeUser(models.TransientModel):
                     )
                 )
             if (
-                # 排除初始系统自带的用户
-                line.user_id.id == 1
-                or line.user_id.id == 2
-                or line.user_id.id == 3
-                or line.user_id.id == 4
-                or line.user_id.id == 5
+                    # 排除初始系统自带的用户
+                    line.user_id.id == 1
+                    or line.user_id.id == 2
+                    or line.user_id.id == 3
+                    or line.user_id.id == 4
+                    or line.user_id.id == 5
             ):
                 pass
             else:

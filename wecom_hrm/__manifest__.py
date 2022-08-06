@@ -4,7 +4,7 @@
     "name": "WeCom HRM",
     "author": "RStudio",
     "sequence": 602,
-    "installable": True,
+    "installable": False,
     "application": False,
     "auto_install": False,
     "category": "WeCom/WeCom",

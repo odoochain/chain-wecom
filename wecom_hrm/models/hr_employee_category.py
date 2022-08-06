@@ -43,7 +43,7 @@ class EmployeeCategory(models.Model):
         default=0,
         help="Tag ID, non negative integer. When this parameter is specified, the new tag will generate the corresponding tag ID. if it is not specified, it will be automatically increased by the current maximum ID.",
     )
-    is_wecom_category = fields.Boolean(string="WeCom Tag", default=False,)
+    is_wecom_category = fields.Boolean(string="WeCom Category", default=False,)
 
     @api.depends("is_wecom_category")
     def _compute_display_name(self):
