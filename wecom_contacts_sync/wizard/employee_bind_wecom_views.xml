@@ -22,7 +22,7 @@
                         </group>
                     </sheet>
                     <footer>
-                        <button class="oe_highlight" name="bind_wecom_member" icon="fa-user-plus" string="Binding" type="object" />
+<!--                        <button class="oe_highlight" name="bind_wecom_member" icon="fa-user-plus" string="Binding" type="object" />-->
                         <button string="Cancel" class="btn-secondary" special="cancel"/>
                     </footer>
                 </form>
@@ -31,12 +31,14 @@
 
 
         <record id="employee_bind_wecom_action" model="ir.actions.act_window">
-            <field name="name">Employees bind enterprise wechat members</field>
+            <field name="name">wecom.employee_bind_wecom_wizard.form</field>
             <field name="res_model">wecom.employee_bind_wecom_wizard</field>
             <field name="type">ir.actions.act_window</field>
+            <field name="binding_view_types">form</field>
             <field name="view_mode">form</field>
             <field name="view_id" ref="employee_bind_wecom_view_form"/>
             <field name="target">new</field>
+            <field name="help">Bind wecom for the selected employee.</field>
             <field name="context">{'default_employee_id':active_id}</field>
         </record>
     </data>

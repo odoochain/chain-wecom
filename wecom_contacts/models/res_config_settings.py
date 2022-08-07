@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import datetime
-from odoo import models, fields, _
+from odoo import models, fields, _, api
 from odoo.exceptions import ValidationError
 
 from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
@@ -46,7 +46,7 @@ class ResConfigSettings(models.TransientModel):
         related="contacts_app_id.app_callback_service_ids", readonly=False
     )
 
-    module_wecom_contacts_sync = fields.Boolean("WeCom Contacts Synchronized")
+    module_wecom_contacts_sync = fields.Boolean("WeCom Contacts Synchronized", default=False)
 
     module_wecom_material = fields.Boolean("WeCom Material")
     module_wecom_auth_oauth = fields.Boolean("WeCom Authentication")
@@ -188,3 +188,20 @@ class ResConfigSettings(models.TransientModel):
                     _("End getting join enterprise QR code of company [%s]")
                     % self.company_id.name
                 )
+
+    @api.model
+    def get_values(self):
+        res = super(ResConfigSettings, self).get_values()
+        ir_config = self.env["ir.config_parameter"].sudo()
+
+        module_wecom_contacts = (
+            True if ir_config.get_param("wecom.module_wecom_contacts") == "True" else False
+        )
+
+        res.update(module_wecom_contacts=module_wecom_contacts, )
+        return res
+
+    def set_values(self):
+        super(ResConfigSettings, self).set_values()
+        ir_config = self.env["ir.config_parameter"].sudo()
+        ir_config.set_param("wecom.debug_enabled", self.debug_enabled or "False")

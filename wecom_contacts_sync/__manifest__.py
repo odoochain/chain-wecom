@@ -4,9 +4,6 @@
     "author": "RStudio",
     "website": "https://gitee.com/rainbowstudio/wecom",
     "sequence": 603,
-    "installable": True,
-    "application": False,
-    "auto_install": False,
     "category": "WeCom/CRM",
     "version": "14.0.0.2",
     "summary": """
@@ -32,19 +29,24 @@
         "views/assets_templates.xml",
 
         "views/res_config_settings_views.xml",
+        "wizard/user_bind_wecom_views.xml",
         "views/res_users_views.xml",
         "views/wecom_apps_views.xml",
         "views/hr_department_view.xml",
-        "views/hr_employee_view.xml",
         "views/hr_employee_category_views.xml",
         "views/ir_cron_views.xml",
+
         "wizard/employee_bind_wecom_views.xml",
-        "wizard/user_bind_wecom_views.xml",
+        "views/hr_employee_view.xml",
+
         "wizard/wecom_contacts_sync_wizard_views.xml",
         "wizard/wecom_users_sync_wizard_views.xml",
         "views/wecom_contacts_block_views.xml",
         "views/menu_views.xml",
     ],
     "qweb": ["static/src/xml/*.xml", ],
+    "installable": True,
+    "auto_install": False,
+    "application": True,
     "license": "LGPL-3",
 }

@@ -57,12 +57,10 @@ class HrEmployeePrivate(models.Model):
     # ----------------------------------------------------------------------------------
     # private_email = fields.Char(string="Private Email", groups="hr.group_hr_user",store=True,)
 
-    
-
-    wecom_userid = fields.Char(string="WeCom user Id", readonly=True,)
-    wecom_openid = fields.Char(string="WeCom OpenID", readonly=True,)
-    alias = fields.Char(string="Alias", readonly=True,)
-    english_name = fields.Char(string="English Name", readonly=True,)
+    wecom_userid = fields.Char(string="WeCom user Id", readonly=True, )
+    wecom_openid = fields.Char(string="WeCom OpenID", readonly=True, )
+    alias = fields.Char(string="Alias", readonly=True, )
+    english_name = fields.Char(string="English Name", readonly=True, )
 
     department_ids = fields.Many2many(
         "hr.department", string="Multiple departments", readonly=True,
@@ -90,12 +88,12 @@ class HrEmployeePrivate(models.Model):
         解除绑定企业微信成员
         """
         self.write(
-            {"is_wecom_user": False, "wecom_userid": None, "qr_code": None,}
+            {"is_wecom_user": False, "wecom_userid": None, "qr_code": None, }
         )
         if self.user_id:
             # 关联了User
             self.user_id.write(
-                {"is_wecom_user": False, "wecom_userid": None, "qr_code": None,}
+                {"is_wecom_user": False, "wecom_userid": None, "qr_code": None, }
             )
 
     def get_wecom_openid(self):
@@ -112,7 +110,7 @@ class HrEmployeePrivate(models.Model):
                     self.env["wecom.service_api_list"].get_server_api_call(
                         "USERID_TO_OPENID"
                     ),
-                    {"userid": employee.wecom_userid,},
+                    {"userid": employee.wecom_userid, },
                 )
             except ApiException as ex:
                 self.env["wecomapi.tools.action"].ApiExceptionDialog(
@@ -174,7 +172,7 @@ class HrEmployeePrivate(models.Model):
                     "sticky": False,  # 延时关闭
                     "className": "bg-success",
                     "type": "success",
-                    "next": {"type": "ir.actions.client", "tag": "reload",},  # 刷新窗体
+                    "next": {"type": "ir.actions.client", "tag": "reload", },  # 刷新窗体
                 }
             finally:
                 action = {
@@ -246,7 +244,7 @@ class HrEmployeePrivate(models.Model):
                 blocks = (
                     self.env["wecom.contacts.block"]
                     .sudo()
-                    .search([("company_id", "=", company.id),])
+                    .search([("company_id", "=", company.id), ])
                 )
                 block_list = []
 
@@ -368,7 +366,7 @@ class HrEmployeePrivate(models.Model):
                 "contacts_use_default_avatar_when_adding_employees",
             )  # 使用系统微信默认头像的标识
 
-            emp= employee.create(
+            emp = employee.create(
                 {
                     "wecom_userid": wecom_employee["userid"].lower(),
                     "name": wecom_employee["name"],
@@ -434,7 +432,7 @@ class HrEmployeePrivate(models.Model):
             department_ids = self.get_employee_parent_wecom_department(
                 company, wecom_employee["department"]
             )
-        try:            
+        try:
             employee.write(
                 {
                     "name": wecom_employee["name"],
@@ -639,7 +637,7 @@ class HrEmployeePrivate(models.Model):
 
         domain = ["|", ("active", "=", False), ("active", "=", True)]
         employees = self.search(
-            domain + [("is_wecom_user", "=", True), ("company_id", "=", company.id),]
+            domain + [("is_wecom_user", "=", True), ("company_id", "=", company.id), ]
         )
 
         for employee in employees:
@@ -725,12 +723,12 @@ class HrEmployeePrivate(models.Model):
                         [("wecom_userid", "=", parent_employee_wecom_id)], limit=1
                     )
             elif (
-                key == "ToUserName"
-                or key == "FromUserName"
-                or key == "CreateTime"
-                or key == "Event"
-                or key == "MsgType"
-                or key == "ChangeType"
+                    key == "ToUserName"
+                    or key == "FromUserName"
+                    or key == "CreateTime"
+                    or key == "Event"
+                    or key == "MsgType"
+                    or key == "ChangeType"
             ):
                 # 忽略掉 不需要的key
                 pass
@@ -822,7 +820,7 @@ class HrEmployeePrivate(models.Model):
         if cmd == "create":
             # print("执行创建员工")
             update_dict.update(
-                {"company_id": company_id.id, "is_wecom_user": True,}
+                {"company_id": company_id.id, "is_wecom_user": True, }
             )
             if contacts_use_default_avatar:
                 update_dict.update(
@@ -862,6 +860,5 @@ class HrEmployeePrivate(models.Model):
         elif cmd == "delete":
             # print("执行删除员工")
             callback_employee.write(
-                {"active": False,}
+                {"active": False, }
             )
-

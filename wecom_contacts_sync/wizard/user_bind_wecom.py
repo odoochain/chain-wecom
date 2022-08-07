@@ -68,7 +68,7 @@ class UserBindWecom(models.TransientModel):
             )
         )
         if len(user) > 0:
-            raise UserError(_("User with ID [%s] already exists") % (self.wecom_userid))
+            raise UserError(_("User with ID [%s] already exists") % self.wecom_userid)
         else:
             self.user_id.write(
                 {
