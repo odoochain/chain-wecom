@@ -22,7 +22,7 @@
                         </group>
                     </sheet>
                     <footer>
-<!--                        <button class="oe_highlight" name="bind_wecom_member" icon="fa-user-plus" string="Binding" type="object" />-->
+                        <button class="oe_highlight" name="bind_wecom_member" icon="fa-user-plus" string="Binding" type="object" />
                         <button string="Cancel" class="btn-secondary" special="cancel"/>
                     </footer>
                 </form>
