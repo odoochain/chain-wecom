@@ -325,7 +325,8 @@ class HrEmployeePrivate(models.Model):
                     "state": False,
                     "time": end_time - start_time,
                     "msg": _(
-                        "The current company does not identify the enterprise wechat organization. Please configure or switch the company."
+                        "The current company does not identify the enterprise wechat organization. Please configure "
+                        "or switch the company. "
                     ),
                 }
             ]
