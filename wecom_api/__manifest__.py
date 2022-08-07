@@ -18,6 +18,7 @@ WeCom Service-side API and Client-side API
         """,
     "depends": [
         "hrms_base",
+        "pl_wecom_widget"
         # "wecom_base",
     ],
     "data": [

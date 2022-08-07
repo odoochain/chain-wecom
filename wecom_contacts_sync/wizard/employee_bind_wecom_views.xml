@@ -30,8 +30,8 @@
             </field>
         </record>
 
-        <record model="ir.actions.act_window" id="action_request_form">
-            <field name="name">Request a file</field>
+        <record model="ir.actions.act_window" id="employee_bind_wecom_action_request_form">
+            <field name="name">employee_bind_wecom_action_request_form</field>
             <field name="res_model">wecom.employee_bind_wecom_wizard</field>
             <field name="view_mode">form</field>
             <field name="context">{'form_view_ref': 'wecom_contacts_sync.employee_bind_wecom_view_form'}</field>

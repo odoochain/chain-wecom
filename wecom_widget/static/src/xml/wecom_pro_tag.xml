@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<templates>
-
-    <t t-name="wecom_widget.WecomProfessionalTag">
-        <span class="badge badge-primary oe_inline o_wecom_pro_label">Wecom Professional</span>
-    </t>
-</templates>

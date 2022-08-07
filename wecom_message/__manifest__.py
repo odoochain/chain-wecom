@@ -21,7 +21,7 @@
         # "digest",
         'auth_totp_mail',
         "rating",
-        "wecom_widget",
+        "pl_wecom_widget",
         "wecom_material",
         "wecom_contacts",
         "wecom_auth_oauth",

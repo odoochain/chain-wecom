@@ -11,9 +11,9 @@
                         <div class="oe_button_box" name="button_box">
                             <!-- <button name="get_access_token" type="object" string="Click test to get token" class="oe_stat_button" icon="fa-cloud"/> -->
                         </div>
-                        <group>
-                            <field name="name"/>
-                        </group>
+<!--                        <group>-->
+<!--                            <field name="name"/>-->
+<!--                        </group>-->
                         <group>
                             <field name="corpid" widget="wecom_password"/>
                         </group>

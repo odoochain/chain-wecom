@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="o_setting_right_pane" id="wecom_web_theme_settings">
                                     <label for="module_wecom_web_theme" string="Wecom Web Theme" />
-<!--                                    <widget name="wecom_pro_tag"/>-->
+                                    <widget name="pl_wecom_widget.wecom_pro_tag"/>
                                     <div class="text-muted">
                                         This module modifies the web addon to provide responsiveness.
                                     </div>
