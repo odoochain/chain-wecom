@@ -326,6 +326,7 @@ class OAuthController(http.Controller):
                         "fullname": company["name"],
                         "appid": company["corpid"],
                         "agentid": auth_app.agentid if auth_app else 0,
+                        "enabled_join": company["wecom_contacts_join_qrcode_enabled"],
                         "join_qrcode": company["wecom_contacts_join_qrcode"],
                     }
                 )

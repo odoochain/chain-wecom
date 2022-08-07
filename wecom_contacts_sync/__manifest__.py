@@ -26,22 +26,20 @@
         "data/ir_cron_data.xml",
         "data/hr_data.xml",
 
-        "views/assets_templates.xml",
-
-        "views/res_config_settings_views.xml",
+        "wizard/employee_bind_wecom_views.xml",
         "wizard/user_bind_wecom_views.xml",
+        "wizard/wecom_contacts_sync_wizard_views.xml",
+        "wizard/wecom_users_sync_wizard_views.xml",
+        "views/wecom_contacts_block_views.xml",
+        "views/assets_templates.xml",
+        "views/res_config_settings_views.xml",
+
         "views/res_users_views.xml",
         "views/wecom_apps_views.xml",
         "views/hr_department_view.xml",
         "views/hr_employee_category_views.xml",
         "views/ir_cron_views.xml",
-
-        "wizard/employee_bind_wecom_views.xml",
         "views/hr_employee_view.xml",
-
-        "wizard/wecom_contacts_sync_wizard_views.xml",
-        "wizard/wecom_users_sync_wizard_views.xml",
-        "views/wecom_contacts_block_views.xml",
         "views/menu_views.xml",
     ],
     "qweb": ["static/src/xml/*.xml", ],

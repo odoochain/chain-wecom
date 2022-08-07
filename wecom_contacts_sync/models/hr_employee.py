@@ -348,6 +348,7 @@ class HrEmployeePrivate(models.Model):
             limit=1,
         )
         result = {}
+        print("employee：", company, employee, wecom_employee)
         if not employee:
             result = self.create_employee(company, employee, wecom_employee)
         else:
@@ -411,7 +412,7 @@ class HrEmployeePrivate(models.Model):
             # 使用create()方法，不会更新员工的私人邮箱
             emp.private_email = wecom_employee["email"]
         except Exception as e:
-            result = _("Error creating company %s employee %s %s, error reason: %s") % (
+            result = _("Error creating company [%s] employee [%s %s], error reason: %s") % (
                 company.name,
                 wecom_employee["userid"].lower(),
                 wecom_employee["name"],
