@@ -4,11 +4,13 @@
 
         <template id="assets_backend" name="wxwork settings assets" inherit_id="web.assets_backend">
             <xpath expr="//script[last()]" position="after">
-                <script type="text/javascript" src="/wecom_attendance/static/src/js/list_header_button.js"></script>
-                <script type="text/javascript" src="/wecom_attendance/static/src/js/wecom_attendance_checkindate.js"></script>
+                <script type="text/javascript" src="/wecom_attendance/static/src/js/*.js"></script>
+<!--                <script type="text/javascript" src="/wecom_attendance/static/src/js/list_header_button.js"></script>-->
+<!--                <script type="text/javascript" src="/wecom_attendance/static/src/js/wecom_attendance_checkindate.js"></script>-->
             </xpath>
             <xpath expr="//link[last()]" position="after">
-                <link rel="stylesheet" type="text/scss" href="/wecom_attendance/static/src/scss/checkindate.scss"/>
+<!--                <link rel="stylesheet" type="text/scss" href="/wecom_attendance/static/src/scss/checkindate.scss"/>-->
+                <link rel="stylesheet" type="text/scss" href="/wecom_attendance/static/src/scss/*.scss"/>
             </xpath>
 
         </template>

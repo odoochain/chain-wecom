@@ -283,7 +283,7 @@
                             </div>
                             <div class="o_setting_right_pane" id="wecom_approval_settings">
                                 <label string="WeCom Approvals" for="module_wecom_approval"/>
-<!--                                <widget name="wecom_pro_tag"/>-->
+                                <widget name="pl_wecom_widget.wecom_pro_tag"/>
                                 <div class="text-muted">
                                     Anytime, anywhere approval, you can customize the approval template, support countersigning, or signing, superior approval, conditional approval, and adapt to various processes.
                                 </div>

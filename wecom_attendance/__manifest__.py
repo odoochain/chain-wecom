@@ -16,7 +16,11 @@
     "description": """
 
         """,
-    "depends": ["wecom_contacts", "hrms_base", "hrms_attendance",],
+    "depends": [
+        "wecom_contacts",
+        "hrms_base",
+        "wecom_contacts_sync",
+        "hrms_attendance",],
     "data": [
         "security/ir.model.access.csv",
         "data/wecom_apps_data.xml",
