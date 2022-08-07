@@ -40,7 +40,7 @@ class WeComApps(models.Model):
     )
     type_id = fields.Many2one("wecom.app.type", string="Application Types", store=True)
 
-    subtype_ids = fields.Many2many("wecom.app.subtype", string="Application Subtype",)
+    subtype_ids = fields.Many2many("wecom.app.subtype", string="Application Subtype", )
     type_code = fields.Char(
         string="Application type code",
         store=True,
@@ -127,7 +127,7 @@ class WeComApps(models.Model):
         string="Visible range (Department)", copy=False
     )  # 企业应用可见范围（部门）
     allow_tags = fields.Char(string="Visible range (Tag))", copy=False)  # 企业应用可见范围（标签）
-    close = fields.Boolean(string="Disabled", copy=False)  # 	企业应用是否被停用
+    close = fields.Boolean(string="Disabled", copy=False)  # 企业应用是否被停用
     redirect_domain = fields.Char(string="Trusted domain name", copy=True)  # 企业应用可信域名
     report_location_flag = fields.Boolean(
         string="Open the geographic location and report", copy=False
@@ -221,6 +221,7 @@ class WeComApps(models.Model):
         """
         for record in self.subtype_ids:
             self.generate_service_by_code(record.code)
+
     # ————————————————————————————————————
     # 应用回调服务
     # ————————————————————————————————————
@@ -284,6 +285,7 @@ class WeComApps(models.Model):
                         ),
                     }
                 )
+
     # ————————————————————————————————————
     # 应用参数配置
     # ————————————————————————————————————
