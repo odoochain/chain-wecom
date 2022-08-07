@@ -43,7 +43,7 @@
             <field name="value">False</field>
             <field name="description" type="html">
                 <p class="o_view_nocontent_smiling_face">
-                    Enterprise wechat Contacts can be read and edited through API interface
+                    Enterprise WeChat Contacts can be read and edited through API interface
                     <br></br>Value: True or False
                 </p>
             </field>

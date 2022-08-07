@@ -13,8 +13,6 @@ MENU_TEMPLATE = {
 class WeComApps(models.Model):
     _inherit = "wecom.apps"
 
-    
-
     def get_wecom_app_menu(self):
         """
         获取企微应用菜单 MENU_GET
@@ -68,9 +66,9 @@ class WeComApps(models.Model):
                 ensure_ascii=False,
             )
         if (
-            eval(self.menu_body)
-            and "button" in eval(self.menu_body)
-            and eval(self.menu_body)["button"]
+                eval(self.menu_body)
+                and "button" in eval(self.menu_body)
+                and eval(self.menu_body)["button"]
         ):
             # menu_body 不为空  +  存在 button 列表   +   button 列表元素大于一
             menu = eval(self.menu_body)

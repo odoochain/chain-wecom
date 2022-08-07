@@ -309,13 +309,6 @@ class WeComApps(models.Model):
         for record in self.subtype_ids:
             self.generate_parameters_by_code(record.code)
 
-    def generate_parameters_by_code(self, code):
-        """
-        根据code生成参数
-        :param code:
-        :retur
-        """
-
     # ————————————————————————————————————
     # 应用信息
     # ————————————————————————————————————
