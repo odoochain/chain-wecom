@@ -55,11 +55,7 @@ class EmployeeBindWecom(models.TransientModel):
                 employee.avatar = None
 
     def bind_wecom_member(self):
-        if self.name is None:
-            raise UserError(
-                _("There is no member with ID [%s] in enterprise wechat")
-                % self.wecom_userid
-            )
+        self.ensure_one()
         employee = (
             self.env["hr.employee"]
             .sudo()

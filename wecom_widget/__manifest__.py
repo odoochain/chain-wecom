@@ -6,7 +6,7 @@
     "category": "WeCom/WeCom",
     "summary": "WeCom Widget",
     "website": "https://gitee.com/rainbowstudio/wecom",
-    "version": "14.0.0.2",
+    "version": "14.0.0.3",
     "description": """ 
 
 """,

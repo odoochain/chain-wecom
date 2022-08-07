@@ -25,7 +25,7 @@ class Company(models.Model):
         domain="[('company_id', '=', current_company_id)]",
     )
 
-    def set_oauth_provider_wxwork(self):
+    def set_oauth_provider_wecom_work(self):
         web_base_url = self.env["ir.config_parameter"].get_param("web.base.url")
 
         new_auth_redirect_uri = (

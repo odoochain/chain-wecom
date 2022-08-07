@@ -84,11 +84,6 @@ class HrEmployeePrivate(models.Model):
         string="WeCom employees", readonly=True, default=False,
     )
 
-    def bind_wecom_member(self):
-        """
-        绑定企业微信成员
-        """
-
     def unbind_wecom_member(self):
         """
         解除绑定企业微信成员

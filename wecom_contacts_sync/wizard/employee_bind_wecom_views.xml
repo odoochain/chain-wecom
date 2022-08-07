@@ -4,6 +4,7 @@
 
         <record id="employee_bind_wecom_view_form" model="ir.ui.view">
             <field name="name">wecom.employee_bind_wecom_wizard.view.form</field>
+            <field name="priority" eval="6"/>
             <field name="model">wecom.employee_bind_wecom_wizard</field>
             <field name="arch" type="xml">
                 <form create="1">
@@ -29,17 +30,23 @@
             </field>
         </record>
 
-
-        <record id="employee_bind_wecom_action" model="ir.actions.act_window">
-            <field name="name">wecom.employee_bind_wecom_wizard.form</field>
+        <record model="ir.actions.act_window" id="action_request_form">
+            <field name="name">Request a file</field>
             <field name="res_model">wecom.employee_bind_wecom_wizard</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="binding_view_types">form</field>
             <field name="view_mode">form</field>
-            <field name="view_id" ref="employee_bind_wecom_view_form"/>
+            <field name="context">{'form_view_ref': 'wecom_contacts_sync.employee_bind_wecom_view_form'}</field>
             <field name="target">new</field>
-            <field name="help">Bind wecom for the selected employee.</field>
-            <field name="context">{'default_employee_id':active_id}</field>
         </record>
+
+<!--        <record id="employee_bind_wecom_action" model="ir.actions.act_window">-->
+<!--            <field name="name">wecom.employee_bind_wecom_wizard.form</field>-->
+<!--            <field name="res_model">wecom.employee_bind_wecom_wizard</field>-->
+<!--            <field name="view_mode">form</field>-->
+<!--&lt;!&ndash;            <field name="view_id" ref="employee_bind_wecom_view_form"/>&ndash;&gt;-->
+<!--            <field name="context">{'form_view_ref': 'employee_bind_wecom_view_form'}</field>-->
+<!--            <field name="target">new</field>-->
+<!--            <field name="help">Bind wecom for the selected employee.</field>-->
+<!--            <field name="context"># {'default_employee_id':active_id}</field>-->
+<!--        </record>-->
     </data>
 </odoo>
