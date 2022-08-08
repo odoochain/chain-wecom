@@ -309,6 +309,156 @@ class WeComApps(models.Model):
         for record in self.subtype_ids:
             self.generate_parameters_by_code(record.code)
 
+    def generate_parameters_by_code(self, code):
+        """
+        根据code生成参数
+        :param code:
+        :retur
+        """
+        if code == "contacts":
+            # 从xml 获取数据
+            ir_model_data = self.env["ir.model.data"]
+            contacts_allow_sync_hr = ir_model_data.get_object_reference(
+                "wecom_contacts_sync", "wecom_app_config_contacts_allow_sync_hr"
+            )[
+                1
+            ]  # 1
+            contacts_sync_hr_department_id = ir_model_data.get_object_reference(
+                "wecom_contacts_sync", "wecom_app_config_contacts_sync_hr_department_id"
+            )[
+                1
+            ]  # 2
+            contacts_edit_enabled = ir_model_data.get_object_reference(
+                "wecom_contacts_sync", "wecom_app_config_contacts_edit_enabled"
+            )[
+                1
+            ]  # 3
+            contacts_allow_add_system_users = ir_model_data.get_object_reference(
+                "wecom_contacts_sync",
+                "wecom_app_config_contacts_allow_add_system_users",
+            )[
+                1
+            ]  # 4
+            contacts_use_default_avatar_when_adding_employees = ir_model_data.get_object_reference(
+                "wecom_contacts_sync",
+                "wecom_app_config_contacts_use_default_avatar_when_adding_employees",
+            )[
+                1
+            ]  # 5
+            contacts_update_avatar_every_time_sync_employees = (
+                ir_model_data.get_object_reference(
+                    "wecom_contacts_sync",
+                    "wecom_app_config_contacts_update_avatar_every_time_sync_employees",
+                )[1]
+            )  # 6
+            # enabled_join_qrcode = ir_model_data.get_object_reference(
+            #     "wecom_contacts_sync", "wecom_app_config_contacts_enabled_join_qrcode"
+            # )[
+            #     1
+            # ]  # 7
+            # join_qrcode = ir_model_data.get_object_reference(
+            #     "wecom_contacts_sync", "wecom_app_config_contacts_join_qrcode"
+            # )[
+            #     1
+            # ]  # 8
+            # join_qrcode_size_type = ir_model_data.get_object_reference(
+            #     "wecom_contacts_sync", "wecom_app_config_contacts_join_qrcode_size_type"
+            # )[
+            #     1
+            # ]  # 9
+            # join_qrcode_last_time = ir_model_data.get_object_reference(
+            #     "wecom_contacts_sync",
+            #     "wecom_app_config_acontacts_join_qrcode_last_time",
+            # )[
+            #     1
+            # ]  # 10
+
+            vals_list = [
+                contacts_allow_sync_hr,  # 1
+                contacts_sync_hr_department_id,  # 2
+                contacts_edit_enabled,  # 3
+                contacts_allow_add_system_users,  # 4
+                contacts_use_default_avatar_when_adding_employees,  # 5
+                contacts_update_avatar_every_time_sync_employees,  # 6
+                # enabled_join_qrcode,  # 7
+                # join_qrcode,  # 8
+                # join_qrcode_size_type,  # 9
+                # join_qrcode_last_time,  # 10
+            ]
+
+            for id in vals_list:
+                app_config_id = self.env["wecom.app_config"].search([("id", "=", id)])
+                app_config = (
+                    self.env["wecom.app_config"]
+                    .sudo()
+                    .search([("app_id", "=", self.id), ("key", "=", app_config_id.key)])
+                )
+
+                if not app_config:
+                    app_config.sudo().create(
+                        {
+                            "name": app_config_id.name,
+                            "app_id": self.id,
+                            "key": app_config_id.key,
+                            "ttype": app_config_id.ttype,
+                            "value": ""
+                            if app_config_id.key == "join_qrcode"
+                            or app_config_id.key == "join_qrcode_last_time"
+                            else app_config_id.value,
+                            "description": app_config_id.description,
+                        }
+                    )
+                else:
+                    app_config.sudo().write(
+                        {
+                            "name": app_config_id.name,
+                            "description": app_config_id.description,
+                        }
+                    )
+
+        if code == "auth":
+            ir_model_data = self.env["ir.model.data"]
+            auth_redirect_uri = ir_model_data.get_object_reference(
+                "wecom_auth_oauth", "wecom_app_config_authentication_auth_redirect_uri"
+            )[1]
+            qr_redirect_uri = ir_model_data.get_object_reference(
+                "wecom_auth_oauth", "wecom_app_config_authentication_qr_redirect_uri"
+            )[1]
+            vals_list = [
+                auth_redirect_uri,
+                qr_redirect_uri,
+            ]
+
+            for id in vals_list:
+                app_config_id = self.env["wecom.app_config"].search([("id", "=", id)])
+                app_config = (
+                    self.env["wecom.app_config"]
+                    .sudo()
+                    .search([("app_id", "=", self.id), ("key", "=", app_config_id.key)])
+                )
+                if not app_config:
+                    app_config = (
+                        self.env["wecom.app_config"]
+                        .sudo()
+                        .create(
+                            {
+                                "name": app_config_id.name,
+                                "app_id": self.id,
+                                "key": app_config_id.key,
+                                "ttype": app_config_id.ttype,
+                                "value": app_config_id.value,
+                                "description": app_config_id.description,
+                            }
+                        )
+                    )
+                else:
+                    app_config.sudo().write(
+                        {
+                            "name": app_config_id.name,
+                            "value": app_config_id.value,
+                            "description": app_config_id.description,
+                        }
+                    )
     # ————————————————————————————————————
     # 应用信息
     # ————————————————————————————————————

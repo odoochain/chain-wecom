@@ -20,50 +20,7 @@ class WeComApps(models.Model):
         :param code:
         :return:
         """
-        if code == "auth":
-            ir_model_data = self.env["ir.model.data"]
-            auth_redirect_uri = ir_model_data.get_object_reference(
-                "wecom_auth_oauth", "wecom_app_config_authentication_auth_redirect_uri"
-            )[1]
-            qr_redirect_uri = ir_model_data.get_object_reference(
-                "wecom_auth_oauth", "wecom_app_config_authentication_qr_redirect_uri"
-            )[1]
-            vals_list = [
-                auth_redirect_uri,
-                qr_redirect_uri,
-            ]
-
-            for id in vals_list:
-                app_config_id = self.env["wecom.app_config"].search([("id", "=", id)])
-                app_config = (
-                    self.env["wecom.app_config"]
-                    .sudo()
-                    .search([("app_id", "=", self.id), ("key", "=", app_config_id.key)])
-                )
-                if not app_config:
-                    app_config = (
-                        self.env["wecom.app_config"]
-                        .sudo()
-                        .create(
-                            {
-                                "name": app_config_id.name,
-                                "app_id": self.id,
-                                "key": app_config_id.key,
-                                "ttype": app_config_id.ttype,
-                                "value": app_config_id.value,
-                                "description": app_config_id.description,
-                            }
-                        )
-                    )
-                else:
-                    app_config.sudo().write(
-                        {
-                            "name": app_config_id.name,
-                            "value": app_config_id.value,
-                            "description": app_config_id.description,
-                        }
-                    )
-        super(WeComApps, self).generate_parameters_by_code(code)
+        return super(WeComApps, self).generate_parameters_by_code(code)
 
     # ————————————————————————————————————
     # 设置认证应用配置
