@@ -4,7 +4,7 @@
 
         <record forcecreate="True" id="ir_cron_pull_wecom_service_api_error" model="ir.cron">
             <field name="name">WeCom: Pull the global error code of WeCom.</field>
-            <field name="model_id" ref="model_wecom_service_api_error"/>
+            <field name="model_id" ref="wecom_api.model_wecom_service_api_error"/>
             <field name="state">code</field>
             <field name="code">model.cron_pull_global_error_code()</field>
             <field name="user_id" ref="base.user_root" />

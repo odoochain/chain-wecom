@@ -194,7 +194,7 @@ class WeComApps(models.Model):
                         }
                     )
 
-        super(WeComApps, self).generate_parameters_by_code(code)
+        # super(WeComApps, self).generate_parameters_by_code(code)
 
     # ————————————————————————————————————
     # 通讯录
@@ -218,9 +218,10 @@ class WeComApps(models.Model):
         ):
             _logger.info(
                 _(
-                    "Automatic task: start to synchronize the enterprise wechat organizational structure of the company [%s]"
+                    "Automatic task: start to synchronize the enterprise wechat organizational structure of the "
+                    "company [%s] "
                 )
-                % (app.company_id.name)
+                % app.company_id.name
             )
 
             result = app.sync_contacts()
@@ -228,7 +229,8 @@ class WeComApps(models.Model):
 
             _logger.info(
                 _(
-                    "Automatic task: end synchronizing the enterprise wechat organizational structure of the company [%s]"
+                    "Automatic task: end synchronizing the enterprise wechat organizational structure of the company "
+                    "[%s] "
                 )
                 % (app.company_id.name)
             )
