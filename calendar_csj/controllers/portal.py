@@ -15,17 +15,17 @@ import pytz
 import io
 from odoo.tools.misc import get_lang
 from babel.dates import format_datetime, format_date
-
-import werkzeug.contrib.sessions
+# https://github.com/odoo/odoo/pull/45931/files
+# import werkzeug.contrib.sessions
 import werkzeug.datastructures
 import werkzeug.exceptions
 import werkzeug.local
 import werkzeug.routing
 import werkzeug.wrappers
-import werkzeug.wsgi
-from werkzeug import urls
-from werkzeug.wsgi import wrap_file
-from werkzeug.urls import url_encode
+# import werkzeug.wsgi
+# from werkzeug import urls
+# from werkzeug.wsgi import wrap_file
+# from werkzeug.urls import url_encode
 from datetime import datetime, timedelta
 import xlsxwriter
 
@@ -34,6 +34,10 @@ from odoo.osv.expression import OR
 import logging
 _logger = logging.getLogger(__name__)
 
+# try:
+#     from werkzeug.middleware.shared_data import SharedDataMiddleware
+# except ImportError:
+#     from werkzeug.wsgi import SharedDataMiddleware
 
 class CustomerPortal(CustomerPortal):
 

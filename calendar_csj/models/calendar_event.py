@@ -11,7 +11,10 @@ _logger = logging.getLogger(__name__)
 class CalendarEvent(models.Model):
     _inherit = 'calendar.event'
 
-    state = fields.Selection(selection_add=[('cancel', 'Canceled')])
+    state = fields.Selection([('cancel', 'Canceled'),
+                              ('done', 'Done'),
+                              ('open', 'Opening')]
+                             )
     appointment_id = fields.Many2one('calendar.appointment', 'Appointment', ondelete='cascade')
     type = fields.Selection([
         ('audience', 'Audience'),

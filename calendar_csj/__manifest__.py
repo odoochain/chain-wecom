@@ -14,7 +14,7 @@
     # Check https://github.com/odoo/odoo/blob/13.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Marketing/Online Appointment',
-    'version': '13.1',
+    'version': '14.0.0.3',
 
     # any module necessary for this one to work correctly
     'depends': ['website_calendar','contacts','base_address_city','event', 'calendar', 'portal'],

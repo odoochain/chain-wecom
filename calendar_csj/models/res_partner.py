@@ -200,17 +200,10 @@ class ResPartner(models.Model):
             else:
                 record.appointment_bool = False
 
-    company_type = fields.Selection([
-        ('person', 'Funcionario'),
-        ('company', 'Entity'),
+    company_type = fields.Selection(
+        selection_add=[
         ('judged', 'Despacho'),
         ('guest','Guest')], default='person', compute=False, inverse=False)
-    type = fields.Selection([
-        ('contact', 'Contact'),
-        ('invoice', 'Judge'),
-        ('delivery', 'Secretary'),
-        ('other', 'Other'),
-        ('private', '.')], default='contact')
     code = fields.Char('Code', size=3)
     mame = fields.Char('Name')
     extension_lifesize = fields.Char('Extension Lifesize')

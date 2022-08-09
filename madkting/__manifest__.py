@@ -19,7 +19,7 @@
 
     # any module necessary for this one to work correctly
     'depends': [
-        # 'base',
+        'base',
         'sale_management',
         'stock',
         'component_event'
@@ -50,6 +50,7 @@
     "installable": True,
     "application": True,
     "auto_install": False,
+    "license": "LGPL-3",
 }
 
 # Version 0.2.0

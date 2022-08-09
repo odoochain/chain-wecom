@@ -14,7 +14,7 @@ from ..responses import results
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    channel = fields.Char('Marketplace')
+    channel = fields.Char('Marketplace Channel')
     channel_id = fields.Integer('Channel Id')
     yuju_shop_id = fields.Integer('Yuju Shop Id')
     yuju_pack_id = fields.Char('Yuju Pack Id')
@@ -28,7 +28,7 @@ class SaleOrder(models.Model):
     channel_order_reference = fields.Char('Marketplace Reference')
     channel_order_id = fields.Char('Marketplace Id')
     channel_order_market_fee = fields.Float('Channel Marketplace Fee')
-    channel_order_shipping_cost = fields.Float('Seller Shipping Cost')
+    channel_order_shipping_cost = fields.Float('Channel Shipping Cost')
     order_progress = fields.Char('Order Progress')
     payment_status = fields.Char('Payment Status')
     payment_id = fields.Integer('Pago Id')

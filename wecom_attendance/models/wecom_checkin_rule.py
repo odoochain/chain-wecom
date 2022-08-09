@@ -102,7 +102,7 @@ class WecomCheckinRule(models.Model):
             ("3", _("Mobile phone & smart attendance machine")),
         ],
         readonly=True,
-        string="Check-in type",
+        string="Check-in Typename",
         compute="_compute_type_name",
     )  # 打卡方式，0:手机；2:智慧考勤机；3:手机+智慧考勤机
 
