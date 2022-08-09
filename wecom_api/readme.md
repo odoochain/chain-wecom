@@ -34,3 +34,7 @@ except ApiException as e:
     # 弹框显示异常
     return self.env["wecom.tools"].ApiExceptionDialog(ex)
 ```
+
+## 工具参考 html2plaintext
+
+[mail](https://github.com/odoochain/OCB/blob/74719cdb1d0993ed282ef155ab8133bb38adbbc2/odoo/tools/mail.py)

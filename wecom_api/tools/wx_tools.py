@@ -22,7 +22,7 @@ class WxTools(models.AbstractModel):
     _name = "wecom.tools"
     _description = "Wecom Tools"
 
-    def recipients_split(text):
+    def recipients_split(self, text):
         """
         使用 | 拆分企业微信消息的接收对象
         """
@@ -44,7 +44,7 @@ class WxTools(models.AbstractModel):
 
     def html2text_handle(self, body_html):
         # 转换markdown格式
-        if bool(body_html):
+        if body_html is not None:
             return html2text.html2text(body_html)
         else:
             return None
