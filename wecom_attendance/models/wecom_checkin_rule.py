@@ -44,12 +44,12 @@ class WecomCheckinRule(models.Model):
             ("3", _("Free commuting")),
         ],
         readonly=True,
-        string="Rule type",
+        string="Grouptype Name",
         compute="_compute_grouptype_name",
     )  # 打卡规则类型。1：固定时间上下班；2：按班次上下班；3：自由上下班 。
 
-    groupname = fields.Char(string="Check-in rule id", readonly=True,)  # 打卡规则名称
-    groupid = fields.Integer(string="Check-in rule id", readonly=True,)  # 打卡规则id
+    groupname = fields.Char(string="Group Name", readonly=True,)  # 打卡规则名称
+    groupid = fields.Integer(string="Check-in RuleId", readonly=True,)  # 打卡规则id
     checkindate = fields.Text(
         string="Check-in time", readonly=True,default="{}"
     )  # 打卡时间配置，当规则类型为排班时没有意义
@@ -118,7 +118,7 @@ class WecomCheckinRule(models.Model):
     option_out_range = fields.Integer(
         string="Out-of-range punch card processing", readonly=True,
     )  # 范围外打卡处理方式，0-视为范围外异常，默认值；1-视为正常外勤；2:不允许范围外打卡
-    create_userid = fields.Char(string="Created by", readonly=True)  # 规则创建人userid
+    create_userid = fields.Char(string="Created UserId", readonly=True)  # 规则创建人userid
     use_face_detect = fields.Boolean(
         string="Face recognition", readonly=True,
     )  # 人脸识别打卡开关，true为启用，false为不启用

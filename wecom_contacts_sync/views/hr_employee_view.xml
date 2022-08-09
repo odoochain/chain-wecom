@@ -79,7 +79,7 @@
                     <field name="is_wecom_user"/>
                 </xpath>
 
-                <xpath expr="//strong[@class='o_kanban_record_title']/field[@name='name']" position="before">
+                <xpath expr="//strong[hasclass('o_kanban_record_title')]/field[@name='name']" position="before">
                     <div class="float-right" t-if="record.is_wecom_user.raw_value" name="is_wecom_user">
                         <span class="fa fa-weixin text-info mr4" role="img" aria-label="Enterprise wechat Employee" title="Enterprise wechat Employee">
                         </span>

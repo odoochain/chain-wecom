@@ -3,13 +3,6 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, ValidationError
 
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
-
-
-import werkzeug.urls
-import werkzeug.utils
-import urllib
-import datetime
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -17,13 +10,6 @@ _logger = logging.getLogger(__name__)
 
 class ResConfigSettings(models.TransientModel):
     _inherit = "res.config.settings"
-
-    company_id = fields.Many2one(
-        "res.company",
-        string="Company",
-        required=True,
-        default=lambda self: self.env.company,
-    )
 
     auth_app_id = fields.Many2one(string="Auth App Id", related="company_id.auth_app_id", readonly=False,)
     auth_agentid = fields.Integer(string="Auth App Agent", related="auth_app_id.agentid", readonly=False)

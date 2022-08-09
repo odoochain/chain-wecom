@@ -22,8 +22,8 @@ class ResConfigSettings(models.TransientModel):
     msgaudit_app_id = fields.Many2one(
         related="company_id.msgaudit_app_id", readonly=False
     )
-    msgaudit_secret = fields.Char(related="msgaudit_app_id.secret", readonly=False)
-    msgaudit_access_token = fields.Char(related="msgaudit_app_id.access_token")
+    msgaudit_secret = fields.Char(string="Msgaudit Secret", related="msgaudit_app_id.secret", readonly=False)
+    msgaudit_access_token = fields.Char(string="Msgaudit Token", related="msgaudit_app_id.access_token")
 
     # msgaudit_auto_get_internal_groupchat_name = fields.Boolean(
     #     "Automatically get internal group chat name", default=True

@@ -93,6 +93,7 @@ class WeComApps(models.Model):
         注意：14使用 get_object_reference 方法，15 没有此方法，
         故在 \wecom_base\models\ir_model.py 添加了 get_object_reference方法
         """
+        print("begin generate code:", str(code))
         return super(WeComApps, self).generate_parameters_by_code(code)
 
     # ————————————————————————————————————

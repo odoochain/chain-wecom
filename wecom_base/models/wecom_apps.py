@@ -437,20 +437,33 @@ class WeComApps(models.Model):
                     .search([("app_id", "=", self.id), ("key", "=", app_config_id.key)])
                 )
                 if not app_config:
-                    app_config = (
-                        self.env["wecom.app_config"]
-                        .sudo()
-                        .create(
-                            {
-                                "name": app_config_id.name,
-                                "app_id": self.id,
-                                "key": app_config_id.key,
-                                "ttype": app_config_id.ttype,
-                                "value": app_config_id.value,
-                                "description": app_config_id.description,
-                            }
-                        )
+                    app_config.sudo().create(
+                        {
+                            "name": app_config_id.name,
+                            "app_id": self.id,
+                            "key": app_config_id.key,
+                            "ttype": app_config_id.ttype,
+                            "value": ""
+                            if app_config_id.key == "join_qrcode"
+                            or app_config_id.key == "join_qrcode_last_time"
+                            else app_config_id.value,
+                            "description": app_config_id.description,
+                        }
                     )
+                    # app_config = (
+                    #     self.env["wecom.app_config"]
+                    #     .sudo()
+                    #     .create(
+                    #         {
+                    #             "name": app_config_id.name,
+                    #             "app_id": self.id,
+                    #             "key": app_config_id.key,
+                    #             "ttype": app_config_id.ttype,
+                    #             "value": app_config_id.value,
+                    #             "description": app_config_id.description,
+                    #         }
+                    #     )
+                    # )
                 else:
                     app_config.sudo().write(
                         {
@@ -505,12 +518,12 @@ class WeComApps(models.Model):
                             "home_url": response["home_url"],
                         }
                     )
-                    # msg = {
-                    #     "title": _("Tips"),
-                    #     "message": _("Successfully obtained application information!"),
-                    #     "sticky": False,
-                    # }
-                    # return self.env["wecomapi.tools.action"].WecomSuccessNotification(msg)
+                    msg = {
+                        "title": _("Tips"),
+                        "message": _("Successfully obtained application information!"),
+                        "sticky": False,
+                    }
+                    return self.env["wecomapi.tools.action"].WecomSuccessNotification(msg)
 
     def set_app_info(self):
         """

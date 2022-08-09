@@ -20,7 +20,9 @@
         "wecom_contacts",
         "hrms_base",
         "wecom_contacts_sync",
-        "hrms_attendance",],
+        "hrms_attendance",
+        "wecom_base",
+    ],
     "data": [
         "security/ir.model.access.csv",
         "data/wecom_apps_data.xml",

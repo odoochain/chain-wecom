@@ -8,7 +8,7 @@
     "application": True,
     "auto_install": False,
     "category": "WeCom/WeCom",
-    "version": "14.0.0.2",
+    "version": "14.0.0.3",
     "summary": """
         One click login, code scanning login.
         """,

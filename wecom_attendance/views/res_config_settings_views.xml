@@ -20,7 +20,7 @@
                                     <field name="attendance_app_id" class="w-100" widget="selection" domain="['&amp;',('type_code', 'like', '%checkin%'),('company_id', '=', company_id)]"/>
                                 </div>
                                 <button name="%(wecom_base.action_view_wecom_apps_list)d" icon="fa-arrow-right" type="action" string="Management application" class="btn-link" attrs="{'invisible': [('attendance_app_id','!=',False)]}"/>
-                                <button class="btn btn-primary" name="get_app_info" string="Get application info" type="object" icon="fa-cloud-download" attrs="{'invisible': [('attendance_app_id','=',False)]}" context="{'app': 'checkin'}"/>
+                                <button class="btn btn-primary" name="get_attendance_app_info" string="Get application info" type="object" icon="fa-cloud-download" attrs="{'invisible': [('attendance_app_id','=',False)]}" context="{'app': 'checkin'}"/>
 
                                 <div class="mt4" attrs="{'invisible': [('attendance_app_id','=',False)]}">
                                     <div class="text-warning mt8">

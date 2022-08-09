@@ -15,7 +15,7 @@
         <menuitem id="menu_hrms_attendance_report_menu" name="Attendance" parent="hrms_base.menu_hrms_report_root" sequence="7"/>
 
         <!-- 99.7.1 考勤分析 -->
-        <menuitem id="menu_hrms_attendance_report" name="Attendance Analysis" action="hr_attendance.hr_attendance_report_action" parent="menu_hrms_attendance_report_menu" sequence="1" groups="hr_attendance.group_hr_attendance_user"/>
+        <menuitem id="menu_hrms_attendance_report" name="Attendance Analysis" action="hr_attendance.hr_employee_attendance_action_kanban" parent="menu_hrms_attendance_report_menu" sequence="1" groups="hr_attendance.group_hr_attendance_user"/>
 
     </data>
 </odoo>
