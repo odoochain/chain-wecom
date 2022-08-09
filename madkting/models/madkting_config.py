@@ -255,7 +255,7 @@ class MadktingWebhook(models.Model):
         else:
             return results.success_result()
 
-    def __get_data(self):
+    def _get_data(self):
         """
         :return:
         :rtype: dict

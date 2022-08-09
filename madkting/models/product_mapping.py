@@ -14,6 +14,7 @@ from ..log.logger import logger
 from collections import defaultdict
 import math
 
+
 class YujuMapping(models.Model):
     _name = 'yuju.mapping'
     _description = 'Mapeo de Tiendas Yuju'
@@ -32,7 +33,7 @@ class YujuMapping(models.Model):
         return self.search([('company_id', '=', company_id)])
 
     @api.model
-    def create_mapping(self, mapping):            
+    def create_mapping(self, mapping):
         """
         The mapping table is limited to only one record per id_shop, company_id
         :param mapping:
@@ -50,8 +51,8 @@ class YujuMapping(models.Model):
                 return results.error_result('The id shop is empty for company {}'.format(company_id))
 
             create_data = {
-                "company_id" : company_ids.id,
-                "id_shop_yuju" : m.get('id_shop')
+                "company_id": company_ids.id,
+                "id_shop_yuju": m.get('id_shop')
             }
 
             try:
@@ -61,8 +62,9 @@ class YujuMapping(models.Model):
             else:
                 mapping_created.append(new_row_id.id)
 
-        return results.success_result({'mapped_rows' : mapping_created})
-       
+        return results.success_result({'mapped_rows': mapping_created})
+
+
 class ProductYujuMapping(models.Model):
     _name = "yuju.mapping.product"
     _description = 'Mapeo de Productos Yuju'
@@ -72,9 +74,10 @@ class ProductYujuMapping(models.Model):
     id_shop_yuju = fields.Char('Id Shop Yuju')
     state = fields.Selection([('active', 'Activo'), ('disabled', 'Pausado')], 'Estatus')
     default_code = fields.Char('SKU')
+
     # company_id = fields.Many2one('res.company', 'Company')
     # barcode = fields.Char('Codigo de Barras')
-    
+
     # _sql_constraints = [('id_product_mapping_uniq', 'unique (product_id, company_id, id_product_yuju, id_shop_yuju)',
     #                      'The relationship between products of yuju and odoo must be one to one!')]
 
@@ -86,7 +89,7 @@ class ProductYujuMapping(models.Model):
         mapping_ids = self.get_product_mapping(product_id, id_shop)
         if mapping_ids:
             try:
-                mapping_ids.write(mapping_data)                
+                mapping_ids.write(mapping_data)
             except Exception as err:
                 logger.exception(err)
                 raise ValidationError('Error al actualizar el mapeo')
@@ -117,7 +120,7 @@ class ProductYujuMapping(models.Model):
         mapping = self.env['yuju.mapping'].get_mapping(company_id)
         if not mapping:
             return False
-        
+
         id_shop = mapping.id_shop_yuju
 
         mapping_ids = []
@@ -143,17 +146,20 @@ class ProductYujuMapping(models.Model):
 
 class YujuMappingModel(models.Model):
     _name = "yuju.mapping.model"
-
+    _description = "Mirroam Map Model"
     name = fields.Char('Modelo Mapeo')
     code = fields.Char('Codigo')
 
+
 class YujuMappingField(models.Model):
     _name = "yuju.mapping.field"
+    _description = "Mirroam Map Field"
 
     name = fields.Char('Yuju Field')
     field = fields.Char('Odoo Field')
     default_value = fields.Char('Odoo Field Default Value')
-    fieldtype = fields.Selection([('integer', 'Numerico'), ('char', 'Cadena'), ('relation', 'Relacional')], 'Odoo Field Type')
+    fieldtype = fields.Selection([('integer', 'Numerico'), ('char', 'Cadena'), ('relation', 'Relacional')],
+                                 'Odoo Field Type')
     model = fields.Many2one('yuju.mapping.model', 'Modelo Mapeo')
     field_values = fields.One2many('yuju.mapping.field.value', 'field_id', 'Valores campos')
 
@@ -175,21 +181,24 @@ class YujuMappingField(models.Model):
                     if mapping_value_id:
                         mapping_value = mapping_value_id.value
                     else:
-                        mapping_value = row.default_value                        
+                        mapping_value = row.default_value
 
                     if row.fieldtype in ['integer', 'relation']:
                         mapping_value = int(mapping_value)
-                    
-                    record_data.update({odoo_field : mapping_value})
+
+                    record_data.update({odoo_field: mapping_value})
 
         return record_data
 
+
 class YujuMappingFieldValue(models.Model):
     _name = "yuju.mapping.field.value"
+    _description = "Mirroam Map FieldValue"
 
     name = fields.Char('Yuju Value')
     value = fields.Char('Odoo Value')
     field_id = fields.Many2one('yuju.mapping.field', 'Odoo Field')
+
 
 class YujuMappingCustom(models.Model):
     _name = "yuju.mapping.custom"
@@ -200,7 +209,7 @@ class YujuMappingCustom(models.Model):
     custom_values = fields.One2many('yuju.mapping.custom.value', 'custom_id', 'Valores custom')
 
     @api.model
-    def update_custom_values(self, fulfillment, channel_id):        
+    def update_custom_values(self, fulfillment, channel_id):
         custom_data = {}
         mapping_custom = self.search([])
         if mapping_custom.ids:
@@ -211,13 +220,14 @@ class YujuMappingCustom(models.Model):
                 rule_found = False
                 for custom_v in el.custom_values:
                     if custom_v.channel_id == str(channel_id) and custom_v.ff_type == str(fulfillment):
-                        custom_data.update({custom_field : custom_v.name})
+                        custom_data.update({custom_field: custom_v.name})
                         rule_found = True
                         break
                 if not rule_found:
-                    custom_data.update({custom_field : custom_default})
+                    custom_data.update({custom_field: custom_default})
         return custom_data
-    
+
+
 class YujuMappingCustomValue(models.Model):
     _name = "yuju.mapping.custom.value"
     _description = 'Yuju Mapping Custom Values'
