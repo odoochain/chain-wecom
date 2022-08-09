@@ -19,7 +19,7 @@
 
     # any module necessary for this one to work correctly
     'depends': [
-        'base',
+        # 'base',
         'sale_management',
         'stock',
         'component_event'
@@ -28,7 +28,7 @@
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
-        'views/views.xml',
+        'views/madkting_views.xml',
         # 'views/templates.xml',
     ],
     # only loaded in demonstration mode
@@ -46,7 +46,10 @@
         "responses/**/*",  # exclude all files in a folder hierarchy recursively
         "security/**/*",  # exclude all files in a folder hierarchy recursively
         "views/**/*",  # exclude all files in a folder hierarchy recursively
-    ]
+    ],
+    "installable": True,
+    "application": True,
+    "auto_install": False,
 }
 
 # Version 0.2.0
