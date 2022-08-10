@@ -75,19 +75,19 @@
                         </div>
                     </div>
 
-                    <!-- <div class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('msgaudit_app_id','=',False)]}" name="msgaudit_sdk_proxy">
-                        <div class="o_setting_left_pane">
-                            <field name="msgaudit_sdk_proxy"/>
-                        </div>
-                        <div class="o_setting_right_pane">
-                            <label for="msgaudit_sdk_proxy"/>
-                            <div class="row">
-                                <div class="text-muted col-md-12">
-                                    Using a proxy to access the session content archive SDK.
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
+<!--                    <div class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('msgaudit_app_id','=',False)]}" name="msgaudit_sdk_proxy">-->
+<!--                        <div class="o_setting_left_pane">-->
+<!--                            <field name="msgaudit_sdk_proxy"/>-->
+<!--                        </div>-->
+<!--                        <div class="o_setting_right_pane">-->
+<!--                            <label for="msgaudit_sdk_proxy"/>-->
+<!--                            <div class="row">-->
+<!--                                <div class="text-muted col-md-12">-->
+<!--                                    Using a proxy to access the session content archive SDK.-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
                     <div class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('msgaudit_app_id','=',False)]}" name="msgaudit_sdk_url">
                         <div class="o_setting_left_pane">
                             <i class="fa fa-link fa-lg" aria-label="Sdk URL of session Content Archive."/>

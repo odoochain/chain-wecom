@@ -61,6 +61,7 @@ class ResConfigSettings(models.TransientModel):
         """
         自动任务获取加入企业二维码
         """
+        global overdue
         companies = self.env["res.company"].search(
             [
                 ("is_wecom_organization", "=", True),
@@ -85,12 +86,9 @@ class ResConfigSettings(models.TransientModel):
 
                 last_time = company.wecom_contacts_join_qrcode_last_time
                 size_type = company.wecom_contacts_join_qrcode_size_type
-                # 超期
                 overdue = False
                 if last_time:
-                    overdue = self.env[
-                        "wecomapi.tools.datetime"
-                    ].cheeck_days_overdue(last_time, 7)
+                    overdue = self.env["wecomapi.tools.datetime"].cheeck_days_overdue(last_time, 7)
                 elif not last_time or overdue:
                     response = wecomapi.httpCall(
                         self.env["wecom.service_api_list"].get_server_api_call(
@@ -144,8 +142,8 @@ class ResConfigSettings(models.TransientModel):
 
         if debug:
             _logger.info(
-                _("Start getting join enterprise QR code of company [%s]")
-                % self.company_id.name
+                _("Start getting join enterprise QR code of company [%s] Last time is [%s]")
+                % (self.company_id.name, self.contacts_join_qrcode_last_time)
             )
         try:
             wecomapi = self.env["wecom.service_api"].InitServiceApi(
@@ -158,7 +156,7 @@ class ResConfigSettings(models.TransientModel):
             overdue = False
             if last_time:
                 overdue = self.env["wecomapi.tools.datetime"].cheeck_days_overdue(
-                    last_time, 7
+                    last_time, 1
                 )
             if not last_time or overdue:
                 response = wecomapi.httpCall(

@@ -468,8 +468,8 @@ msgstr "会话内容存档"
 #. module: wecom_contacts
 #: code:addons/wecom_contacts/models/res_config_settings.py:0
 #, python-format
-msgid "Start getting join enterprise QR code of company [%s]"
-msgstr "开始获取公司[%s]的加入企业微信二维码"
+msgid "Start getting join enterprise QR code of company [%s] Last time is [%s]"
+msgstr "开始获取公司[%s]的加入企业微信二维码,时间[%s] "
 
 #. module: wecom_contacts
 #: model_terms:ir.ui.view,arch_db:wecom_contacts.res_config_settings_view_form

@@ -228,7 +228,7 @@
                             <div class="o_setting_right_pane" id="wecom_msgaudit_settings">
                                 <label string="Session Content Archive" for="module_wecom_msgaudit"/>
                                 <div class="text-muted">
-                                    Enterprises can obtain members' conversation content through the interface to meet the regulatory compliance requirements of enterprises and ensure the quality of customer service.
+                                    Enterprises can obtain members'conversation content through the interface to meet the regulatory compliance requirements of enterprises and ensure the quality of customer service.
                                 </div>
                                 <div class="content-group" attrs="{'invisible': [('module_wecom_msgaudit', '=', False)]}" id="wecom_msgaudit_warning">
                                     <div class="mt8 text-warning">
@@ -276,6 +276,7 @@
                         </span>
                         <widget name='res_config_hrms_navigation_gotop'/>
                     </h2>
+<!--                    微信审批-->
                     <div class="row mt16 o_settings_container" attrs="{'invisible': [('is_wecom_organization','=',False)]}">
                         <div class="col-12 col-lg-6 o_setting_box" id="wecom_approval_install">
                             <div class="o_setting_left_pane">

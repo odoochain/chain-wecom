@@ -35,7 +35,7 @@ class ResConfigSettings(models.TransientModel):
         config_parameter="wecom.msgaudit.chatdata.add_to_log_note.img_max_size",
     )
 
-    # msgaudit_sdk_proxy = fields.Boolean(string="Proxy Request", default=False,)
+    msgaudit_sdk_proxy = fields.Boolean(string="Proxy Request", default=False,)
     msgaudit_sdk_url = fields.Char(
         string="Sdk Request Url",
         default="http://localhost:8000",

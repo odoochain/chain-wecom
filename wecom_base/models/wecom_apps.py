@@ -232,12 +232,12 @@ class WeComApps(models.Model):
         """
         params = self.env["ir.config_parameter"].sudo()
         base_url = params.get_param("web.base.url")
-        if not self.app_id:
+        if not self.agentid:
             raise ValidationError(_("Please bind contact app!"))
         else:
             self.callback_url = base_url + "/wecom_callback/%s/%s" % (
-                self.app_id.company_id.id,
-                self.code,
+                self.company_id.id,
+                self.type_code,
             )
 
     def generate_service_by_code(self, code):
