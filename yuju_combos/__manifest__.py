@@ -12,7 +12,7 @@
     'author': "Gerardo A Lopez Vega @glopzvega",
     'email': "gerardo.lopez@yuju.io",
     'website': "https://yuju.io/",
-    'category': 'Sales',
+    'category': 'Wecom/Sales',
     'version': '0.0.1',
     'license': 'Other proprietary',
 

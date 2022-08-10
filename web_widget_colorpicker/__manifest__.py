@@ -2,7 +2,7 @@
 {
     "name": """Web Widget Colorpicker""",
     "summary": """Added Color Picker for From""",
-    "category": "web",
+    "category": "Wecom/web",
     "images": ['static/description/icon.png'],
     "version": "14.21.04.21",
     "description": """

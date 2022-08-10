@@ -147,8 +147,8 @@ class ProductYujuMapping(models.Model):
 class YujuMappingModel(models.Model):
     _name = "yuju.mapping.model"
     _description = "Mirroam Map Model"
-    name = fields.Char('Modelo Mapeo')
-    code = fields.Char('Codigo')
+    name = fields.Char('Model Mapping')
+    code = fields.Char('Mapping Code')
 
 
 class YujuMappingField(models.Model):
@@ -158,10 +158,11 @@ class YujuMappingField(models.Model):
     name = fields.Char('Yuju Field')
     field = fields.Char('Odoo Field')
     default_value = fields.Char('Odoo Field Default Value')
-    fieldtype = fields.Selection([('integer', 'Numerico'), ('char', 'Cadena'), ('relation', 'Relacional')],
+    fieldtype = fields.Selection([('integer', 'Numeric'), ('char', 'Cadena'), ('relation', 'Relation')],
                                  'Odoo Field Type')
-    model = fields.Many2one('yuju.mapping.model', 'Modelo Mapeo')
-    field_values = fields.One2many('yuju.mapping.field.value', 'field_id', 'Valores campos')
+    model = fields.Many2one('yuju.mapping.model', string='Model mapping')
+    field_values = fields.One2many(comodel_name='yuju.mapping.field.value',
+                                   inverse_name='field_id', string='Field values')
 
     @api.model
     def update_mapping_fields(self, record_data, modelo):

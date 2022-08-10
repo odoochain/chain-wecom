@@ -8,10 +8,10 @@
  *
  */
 
-(function (root, factory) {
+(function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module unless amdModuleId is set
-    define(["jquery"], function (jq) {
+    define(["jquery"], function(jq) {
       return (factory(jq));
     });
   } else if (typeof exports === 'object') {
@@ -22,7 +22,7 @@
   } else if (jQuery && !jQuery.fn.colorpicker) {
     factory(jQuery);
   }
-}(this, function ($) {
+}(this, function($) {
   'use strict';
   /**
    * Color manipulation helper class
@@ -34,7 +34,7 @@
    * @param {Boolean} [hexNumberSignPrefix]
    * @constructor
    */
-  var Color = function (
+  var Color = function(
     val, predefinedColors, fallbackColor, fallbackFormat, hexNumberSignPrefix) {
     this.fallbackValue = fallbackColor ?
       (
@@ -232,16 +232,16 @@
     /**
      * @return {Object}
      */
-    getValue: function () {
+    getValue: function() {
       return this.value;
     },
     /**
      * @param {Object} val
      */
-    setValue: function (val) {
+    setValue: function(val) {
       this.value = val;
     },
-    _sanitizeNumber: function (val) {
+    _sanitizeNumber: function(val) {
       if (typeof val === 'number') {
         return val;
       }
@@ -259,14 +259,14 @@
       }
       return 1;
     },
-    isTransparent: function (strVal) {
+    isTransparent: function(strVal) {
       if (!strVal || !(typeof strVal === 'string' || strVal instanceof String)) {
         return false;
       }
       strVal = strVal.toLowerCase().trim();
       return (strVal === 'transparent') || (strVal.match(/#?00000000/)) || (strVal.match(/(rgba|hsla)\(0,0,0,0?\.?0\)/));
     },
-    rgbaIsTransparent: function (rgba) {
+    rgbaIsTransparent: function(rgba) {
       return ((rgba.r === 0) && (rgba.g === 0) && (rgba.b === 0) && (rgba.a === 0));
     },
     // parse a string to HSB
@@ -275,7 +275,7 @@
      * @param {String} strVal
      * @returns {boolean} Returns true if it could be parsed, false otherwise
      */
-    setColor: function (strVal) {
+    setColor: function(strVal) {
       strVal = strVal.toLowerCase().trim();
       if (strVal) {
         if (this.isTransparent(strVal)) {
@@ -306,19 +306,19 @@
       }
       return false;
     },
-    setHue: function (h) {
+    setHue: function(h) {
       this.value.h = 1 - h;
     },
-    setSaturation: function (s) {
+    setSaturation: function(s) {
       this.value.s = s;
     },
-    setBrightness: function (b) {
+    setBrightness: function(b) {
       this.value.b = 1 - b;
     },
-    setAlpha: function (a) {
+    setAlpha: function(a) {
       this.value.a = Math.round((parseInt((1 - a) * 100, 10) / 100) * 100) / 100;
     },
-    toRGB: function (h, s, b, a) {
+    toRGB: function(h, s, b, a) {
       if (arguments.length === 0) {
         h = this.value.h;
         s = this.value.s;
@@ -345,7 +345,7 @@
         a: a
       };
     },
-    toHex: function (ignoreFormat, h, s, b, a) {
+    toHex: function(ignoreFormat, h, s, b, a) {
       if (arguments.length <= 1) {
         h = this.value.h;
         s = this.value.s;
@@ -374,7 +374,7 @@
 
       return hexStr;
     },
-    toHSL: function (h, s, b, a) {
+    toHSL: function(h, s, b, a) {
       if (arguments.length === 0) {
         h = this.value.h;
         s = this.value.s;
@@ -401,7 +401,7 @@
         a: isNaN(a) ? 0 : a
       };
     },
-    toAlias: function (r, g, b, a) {
+    toAlias: function(r, g, b, a) {
       var c, rgb = (arguments.length === 0) ? this.toHex(true) : this.toHex(true, r, g, b, a);
 
       // support predef. colors in non-hex format too, as defined in the alias itself
@@ -415,7 +415,7 @@
       }
       return false;
     },
-    RGBtoHSB: function (r, g, b, a) {
+    RGBtoHSB: function(r, g, b, a) {
       r /= 255;
       g /= 255;
       b /= 255;
@@ -437,7 +437,7 @@
         a: this._sanitizeNumber(a)
       };
     },
-    HueToRGB: function (p, q, h) {
+    HueToRGB: function(p, q, h) {
       if (h < 0) {
         h += 1;
       } else if (h > 1) {
@@ -453,7 +453,7 @@
         return p;
       }
     },
-    HSLtoRGB: function (h, s, l, a) {
+    HSLtoRGB: function(h, s, l, a) {
       if (s < 0) {
         s = 0;
       }
@@ -479,7 +479,7 @@
      * @param {String} strVal
      * @returns {Object} Object containing h,s,b,a,format properties or FALSE if failed to parse
      */
-    parse: function (strVal) {
+    parse: function(strVal) {
       if (arguments.length === 0) {
         return false;
       }
@@ -493,7 +493,7 @@
         strVal = this.colors[strVal].toLowerCase().trim();
       }
 
-      $.each(this.stringParsers, function (i, parser) {
+      $.each(this.stringParsers, function(i, parser) {
         var match = parser.re.exec(strVal);
         values = match && parser.parse.apply(that, [match]);
         if (values) {
@@ -513,7 +513,7 @@
       });
       return result;
     },
-    getValidFallbackFormat: function () {
+    getValidFallbackFormat: function() {
       var formats = [
         'rgba', 'rgb', 'hex', 'hsla', 'hsl'
       ];
@@ -533,57 +533,64 @@
      * @param {boolean} [forceRawValue] Forces hashtag prefix when getting hex color (default: false)
      * @returns {String}
      */
-    toString: function (forceRawValue, format, translateAlias) {
+    toString: function(forceRawValue, format, translateAlias) {
       format = format || this.origFormat || this.fallbackFormat;
       translateAlias = translateAlias || false;
 
       var c = false;
 
       switch (format) {
-        case 'rgb': {
-          c = this.toRGB();
-          if (this.rgbaIsTransparent(c)) {
-            return 'transparent';
+        case 'rgb':
+          {
+            c = this.toRGB();
+            if (this.rgbaIsTransparent(c)) {
+              return 'transparent';
+            }
+            return 'rgb(' + c.r + ',' + c.g + ',' + c.b + ')';
           }
-          return 'rgb(' + c.r + ',' + c.g + ',' + c.b + ')';
-        }
-        break;
-      case 'rgba': {
-        c = this.toRGB();
-        return 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + c.a + ')';
-      }
-      break;
-      case 'hsl': {
-        c = this.toHSL();
-        return 'hsl(' + Math.round(c.h * 360) + ',' + Math.round(c.s * 100) + '%,' + Math.round(c.l * 100) + '%)';
-      }
-      break;
-      case 'hsla': {
-        c = this.toHSL();
-        return 'hsla(' + Math.round(c.h * 360) + ',' + Math.round(c.s * 100) + '%,' + Math.round(c.l * 100) + '%,' + c.a + ')';
-      }
-      break;
-      case 'hex': {
-        return this.toHex(forceRawValue);
-      }
-      break;
-      case 'alias': {
-        c = this.toAlias();
+          break;
+        case 'rgba':
+          {
+            c = this.toRGB();
+            return 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + c.a + ')';
+          }
+          break;
+        case 'hsl':
+          {
+            c = this.toHSL();
+            return 'hsl(' + Math.round(c.h * 360) + ',' + Math.round(c.s * 100) + '%,' + Math.round(c.l * 100) + '%)';
+          }
+          break;
+        case 'hsla':
+          {
+            c = this.toHSL();
+            return 'hsla(' + Math.round(c.h * 360) + ',' + Math.round(c.s * 100) + '%,' + Math.round(c.l * 100) + '%,' + c.a + ')';
+          }
+          break;
+        case 'hex':
+          {
+            return this.toHex(forceRawValue);
+          }
+          break;
+        case 'alias':
+          {
+            c = this.toAlias();
 
-        if (c === false) {
-          return this.toString(forceRawValue, this.getValidFallbackFormat());
-        }
+            if (c === false) {
+              return this.toString(forceRawValue, this.getValidFallbackFormat());
+            }
 
-        if (translateAlias && !(c in Color.webColors) && (c in this.predefinedColors)) {
-          return this.predefinedColors[c];
-        }
+            if (translateAlias && !(c in Color.webColors) && (c in this.predefinedColors)) {
+              return this.predefinedColors[c];
+            }
 
-        return c;
-      }
-      default: {
-        return c;
-      }
-      break;
+            return c;
+          }
+        default:
+          {
+            return c;
+          }
+          break;
       }
     },
     // a set of RE's that can match strings and generate color tuples.
@@ -592,7 +599,7 @@
     stringParsers: [{
       re: /rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*?\)/,
       format: 'rgb',
-      parse: function (execResult) {
+      parse: function(execResult) {
         return [
           execResult[1],
           execResult[2],
@@ -603,7 +610,7 @@
     }, {
       re: /rgb\(\s*(\d*(?:\.\d+)?)\%\s*,\s*(\d*(?:\.\d+)?)\%\s*,\s*(\d*(?:\.\d+)?)\%\s*?\)/,
       format: 'rgb',
-      parse: function (execResult) {
+      parse: function(execResult) {
         return [
           2.55 * execResult[1],
           2.55 * execResult[2],
@@ -614,7 +621,7 @@
     }, {
       re: /rgba\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*(?:,\s*(\d*(?:\.\d+)?)\s*)?\)/,
       format: 'rgba',
-      parse: function (execResult) {
+      parse: function(execResult) {
         return [
           execResult[1],
           execResult[2],
@@ -625,7 +632,7 @@
     }, {
       re: /rgba\(\s*(\d*(?:\.\d+)?)\%\s*,\s*(\d*(?:\.\d+)?)\%\s*,\s*(\d*(?:\.\d+)?)\%\s*(?:,\s*(\d*(?:\.\d+)?)\s*)?\)/,
       format: 'rgba',
-      parse: function (execResult) {
+      parse: function(execResult) {
         return [
           2.55 * execResult[1],
           2.55 * execResult[2],
@@ -636,7 +643,7 @@
     }, {
       re: /hsl\(\s*(\d*(?:\.\d+)?)\s*,\s*(\d*(?:\.\d+)?)\%\s*,\s*(\d*(?:\.\d+)?)\%\s*?\)/,
       format: 'hsl',
-      parse: function (execResult) {
+      parse: function(execResult) {
         return [
           execResult[1] / 360,
           execResult[2] / 100,
@@ -647,7 +654,7 @@
     }, {
       re: /hsla\(\s*(\d*(?:\.\d+)?)\s*,\s*(\d*(?:\.\d+)?)\%\s*,\s*(\d*(?:\.\d+)?)\%\s*(?:,\s*(\d*(?:\.\d+)?)\s*)?\)/,
       format: 'hsla',
-      parse: function (execResult) {
+      parse: function(execResult) {
         return [
           execResult[1] / 360,
           execResult[2] / 100,
@@ -658,7 +665,7 @@
     }, {
       re: /#?([a-fA-F0-9]{2})([a-fA-F0-9]{2})([a-fA-F0-9]{2})/,
       format: 'hex',
-      parse: function (execResult) {
+      parse: function(execResult) {
         return [
           parseInt(execResult[1], 16),
           parseInt(execResult[2], 16),
@@ -669,7 +676,7 @@
     }, {
       re: /#?([a-fA-F0-9])([a-fA-F0-9])([a-fA-F0-9])/,
       format: 'hex',
-      parse: function (execResult) {
+      parse: function(execResult) {
         return [
           parseInt(execResult[1] + execResult[1], 16),
           parseInt(execResult[2] + execResult[2], 16),
@@ -678,7 +685,7 @@
         ];
       }
     }],
-    colorNameToHex: function (name) {
+    colorNameToHex: function(name) {
       if (typeof this.colors[name.toLowerCase()] !== 'undefined') {
         return this.colors[name.toLowerCase()];
       }
@@ -696,8 +703,7 @@
     format: false, //forces a format
     input: 'input', // children input selector
     container: false, // container selector
-    // component: '.add-on, .input-group-addon', // children component selector
-    component: '.add-on, .input-group-append', // children component selector
+    component: '.add-on, .input-group-addon', // children component selector
     fallbackColor: false, // fallback color value. null = keeps current color.
     fallbackFormat: 'hex', // fallback color format
     hexNumberSignPrefix: true, // put a '#' (number sign) before hex strings
@@ -760,7 +766,7 @@
    * @param {Object} options
    * @constructor
    */
-  var Colorpicker = function (element, options) {
+  var Colorpicker = function(element, options) {
     this.element = $(element).addClass('colorpicker-element');
     this.options = $.extend(true, {}, defaults, this.element.data(), options);
     this.component = this.options.component;
@@ -818,13 +824,13 @@
         selectorsContainer = colorpicker.picker.find('.colorpicker-selectors');
 
       if (selectorsContainer.length > 0) {
-        $.each(this.options.colorSelectors, function (name, color) {
+        $.each(this.options.colorSelectors, function(name, color) {
           var $btn = $('<i />')
             .addClass('colorpicker-selectors-color')
             .css('background-color', color)
             .data('class', name).data('alias', name);
 
-          $btn.on('mousedown.colorpicker touchstart.colorpicker', function (event) {
+          $btn.on('mousedown.colorpicker touchstart.colorpicker', function(event) {
             event.preventDefault();
             colorpicker.setValue(
               colorpicker.format === 'alias' ? $(this).data('alias') : $(this).css('background-color')
@@ -837,7 +843,7 @@
     }
 
     // Prevent closing the colorpicker when clicking on itself
-    $picker.on('mousedown.colorpicker touchstart.colorpicker', $.proxy(function (e) {
+    $picker.on('mousedown.colorpicker touchstart.colorpicker', $.proxy(function(e) {
       if (e.target === e.currentTarget) {
         e.preventDefault();
       }
@@ -891,7 +897,7 @@
     }
     this.update();
 
-    $($.proxy(function () {
+    $($.proxy(function() {
       this.element.trigger('create');
     }, this));
   };
@@ -900,7 +906,7 @@
 
   Colorpicker.prototype = {
     constructor: Colorpicker,
-    destroy: function () {
+    destroy: function() {
       this.picker.remove();
       this.element.removeData('colorpicker', 'color').off('.colorpicker');
       if (this.input !== false) {
@@ -914,7 +920,7 @@
         type: 'destroy'
       });
     },
-    reposition: function () {
+    reposition: function() {
       if (this.options.inline !== false || this.options.container) {
         return false;
       }
@@ -929,7 +935,7 @@
         left: offset.left
       });
     },
-    show: function (e) {
+    show: function(e) {
       if (this.isDisabled()) {
         // Don't show the widget if it's disabled (the input)
         return;
@@ -953,7 +959,7 @@
         color: this.color
       });
     },
-    hide: function (e) {
+    hide: function(e) {
       if ((typeof e !== 'undefined') && e.target) {
         // Prevent hide if triggered by an event and an element inside the colorpicker has been clicked/touched
         if (
@@ -974,12 +980,12 @@
         color: this.color
       });
     },
-    updateData: function (val) {
+    updateData: function(val) {
       val = val || this.color.toString(false, this.format);
       this.element.data('color', val);
       return val;
     },
-    updateInput: function (val) {
+    updateInput: function(val) {
       val = val || this.color.toString(false, this.format);
       if (this.input !== false) {
         this.input.prop('value', val);
@@ -987,7 +993,7 @@
       }
       return val;
     },
-    updatePicker: function (val) {
+    updatePicker: function(val) {
       if (typeof val !== 'undefined') {
         this.color = this.createColor(val);
       }
@@ -1021,7 +1027,7 @@
 
       return val;
     },
-    updateComponent: function (val) {
+    updateComponent: function(val) {
       var color;
 
       if (typeof val !== 'undefined') {
@@ -1032,28 +1038,20 @@
 
       if (this.component !== false) {
         var icn = this.component.find('i').eq(0);
-        // var icn = this.component;
-        // if (icn.length > 0) {
-        //   icn.css({
-        //     'backgroundColor': color.toString(true, this.format)
-        //   });
-        // } else {
-        //   this.component.css({
-        //     'backgroundColor': color.toString(true, this.format)
-        //   });
-        // }
-        icn.css({
-          'color': color.toString(true, this.format),
-          'filter': 'invert(100%)',
-        });
-        this.component.css({
-          'backgroundColor': color.toString(true, this.format)
-        });
+        if (icn.length > 0) {
+          icn.css({
+            'backgroundColor': color.toString(true, this.format)
+          });
+        } else {
+          this.component.css({
+            'backgroundColor': color.toString(true, this.format)
+          });
+        }
       }
 
       return color.toString(false, this.format);
     },
-    update: function (force) {
+    update: function(force) {
       var val;
       if ((this.getValue(false) !== false) || (force === true)) {
         // Update input/data only if the current value is not empty
@@ -1065,7 +1063,7 @@
       return val;
 
     },
-    setValue: function (val) { // set color manually
+    setValue: function(val) { // set color manually
       this.color = this.createColor(val);
       this.update(true);
       this.element.trigger({
@@ -1080,7 +1078,7 @@
      * @param {String} val
      * @returns {Color}
      */
-    createColor: function (val) {
+    createColor: function(val) {
       return new Color(
         val ? val : null,
         this.options.colorSelectors,
@@ -1089,7 +1087,7 @@
         this.options.hexNumberSignPrefix
       );
     },
-    getValue: function (defaultValue) {
+    getValue: function(defaultValue) {
       defaultValue = (typeof defaultValue === 'undefined') ? this.options.fallbackColor : defaultValue;
       var val;
       if (this.hasInput()) {
@@ -1103,16 +1101,16 @@
       }
       return val;
     },
-    hasInput: function () {
+    hasInput: function() {
       return (this.input !== false);
     },
-    isDisabled: function () {
+    isDisabled: function() {
       if (this.hasInput()) {
         return (this.input.prop('disabled') === true);
       }
       return false;
     },
-    disable: function () {
+    disable: function() {
       if (this.hasInput()) {
         this.input.prop('disabled', true);
         this.element.trigger({
@@ -1124,7 +1122,7 @@
       }
       return false;
     },
-    enable: function () {
+    enable: function() {
       if (this.hasInput()) {
         this.input.prop('disabled', false);
         this.element.trigger({
@@ -1141,7 +1139,7 @@
       left: 0,
       top: 0
     },
-    mousedown: function (e) {
+    mousedown: function(e) {
       if (!e.pageX && !e.pageY && e.originalEvent && e.originalEvent.touches) {
         e.pageX = e.originalEvent.touches[0].pageX;
         e.pageY = e.originalEvent.touches[0].pageY;
@@ -1183,7 +1181,7 @@
       }
       return false;
     },
-    mousemove: function (e) {
+    mousemove: function(e) {
       if (!e.pageX && !e.pageY && e.originalEvent && e.originalEvent.touches) {
         e.pageX = e.originalEvent.touches[0].pageX;
         e.pageY = e.originalEvent.touches[0].pageY;
@@ -1241,7 +1239,7 @@
       });
       return false;
     },
-    mouseup: function (e) {
+    mouseup: function(e) {
       e.stopPropagation();
       e.preventDefault();
       $(window.document).off({
@@ -1252,10 +1250,10 @@
       });
       return false;
     },
-    change: function (e) {
+    change: function(e) {
       this.keyup(e);
     },
-    keyup: function (e) {
+    keyup: function(e) {
       if ((e.keyCode === 38)) {
         if (this.color.value.a < 1) {
           this.color.value.a = Math.round((this.color.value.a + 0.01) * 100) / 100;
@@ -1290,12 +1288,12 @@
 
   $.colorpicker = Colorpicker;
 
-  $.fn.colorpicker = function (option) {
+  $.fn.colorpicker = function(option) {
     var apiArgs = Array.prototype.slice.call(arguments, 1),
       isSingleElement = (this.length === 1),
       returnValue = null;
 
-    var $jq = this.each(function () {
+    var $jq = this.each(function() {
       var $this = $(this),
         inst = $this.data('colorpicker'),
         options = ((typeof option === 'object') ? option : {});

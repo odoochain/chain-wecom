@@ -2,7 +2,7 @@
 
 {
     "name": "Web multi level menu",
-    "category": "Extra Tools",
+    "category": "Wecom/web",
     "version": "14.0.0.1",
     "summary": "Let odoo support more than 4 levels of menus.",
     "description": """""",
