@@ -156,7 +156,7 @@ class ResConfigSettings(models.TransientModel):
             overdue = False
             if last_time:
                 overdue = self.env["wecomapi.tools.datetime"].cheeck_days_overdue(
-                    last_time, 1
+                    last_time, 7
                 )
             if not last_time or overdue:
                 response = wecomapi.httpCall(

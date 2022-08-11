@@ -162,7 +162,7 @@ class WecomMessageMessage(models.Model):
         "message, comment for other messages such as user replies",
     )
     subtype_id = fields.Many2one(
-        "mail.message.subtype", "Subtype", ondelete="set null", index=True
+        "mail.message.subtype", "Subtype", ondelete="set null"
     )  # 子类型
     # mail_activity_type_id = fields.Many2one(
     #     "mail.activity.type", "Mail Activity Type", index=True, ondelete="set null"
@@ -221,12 +221,12 @@ class WecomMessageMessage(models.Model):
     #     copy=False,
     #     depends=["notified_partner_ids"],
     # )
-    needaction = fields.Boolean(
-        "Need Action",
-        # compute="_get_needaction",
-        search="_search_needaction",
-        help="Need Action",
-    )
+    # needaction = fields.Boolean(
+    #     "Need Action",
+    #     # compute="_get_needaction",
+    #     search="_search_needaction",
+    #     help="Need Action",
+    # )
 
     def _compute_description(self):
         for message in self:

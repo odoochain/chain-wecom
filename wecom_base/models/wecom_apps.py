@@ -554,15 +554,18 @@ class WeComApps(models.Model):
             return self.env["wecomapi.tools.action"].ApiExceptionDialog(
                 ex, raise_exception=True
             )
-        # finally:
-        #     if self.expiration_time and self.expiration_time > datetime.now():
-        #         # 令牌未过期，则直接返回 提示信息
-        #         msg = {
-        #             "title": _("Tips"),
-        #             "message": _("Token is still valid, and no update is required!"),
-        #             "sticky": False,
-        #         }
-        #         return self.env["wecomapi.tools.action"].WecomInfoNotification(msg)
+        finally:
+            if self.expiration_time and self.expiration_time > datetime.datetime.now():
+                # 令牌未过期，则直接返回 提示信息
+                msg = {
+                    "title": _("Tips"),
+                    "message": _("Token is still valid, and no update is required!"),
+                    "sticky": False,
+                }
+                _logger.info(
+                    _("Notice: [%s] ")
+                    % msg
+                )
 
     def cron_get_app_token(self):
         """

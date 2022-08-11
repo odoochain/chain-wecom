@@ -65,55 +65,55 @@ class MailThread(models.AbstractModel):
     # NOTIFICATION API
     # ------------------------------------------------------
 
-    def _notify_record_by_inbox(
-        self, message, recipients_data, msg_vals=False, **kwargs
-    ):
-        """通知方式：收件箱。做两件主要的事情
-
-          * 为用户创建收件箱通知;
-          * 创建通道/消息链接（channel_ids mail.message 字段）;
-          * 发送总线通知;
-
-        TDE/XDO TODO: 直接标记 rdata，例如 r['notif'] = 'ocn_client' 和 r['needaction']=False 并正确覆盖notify_recipients
-        """
-        ir_config = self.env["ir.config_parameter"].sudo()
-        message_sending_method = ir_config.get_param("wecom_message_sending_method")
-
-        bus_notifications = []
-        inbox_pids = [r["id"] for r in recipients_data if r["notif"] == "inbox"]
-        if inbox_pids:
-            notif_create_values = [
-                {
-                    "mail_message_id": message.id,
-                    "res_partner_id": pid,
-                    "notification_type": "inbox",
-                    "notification_status": "sent",
-                    "is_wecom_message": True
-                    if self.env["res.partner"].browse(pid).wecom_userid
-                    else False,
-                }
-                for pid in inbox_pids
-            ]
-
-            mail_notification = (
-                self.env["mail.notification"].sudo().create(notif_create_values)
-            )
-
-            message_format_values = message.message_format()[0]
-            for partner_id in inbox_pids:
-                bus_notifications.append(
-                    (
-                        self.env["res.partner"].browse(partner_id),
-                        "mail.message/inbox",
-                        dict(message_format_values),
-                    )
-                )
-            if mail_notification.is_wecom_message:
-                self._notify_record_by_wecom(
-                    message, recipients_data, msg_vals=msg_vals, **kwargs
-                )
-        if message_sending_method != "1":
-            self.env["bus.bus"].sudo()._sendmany(bus_notifications)
+    # def _notify_record_by_inbox(
+    #     self, message, recipients_data, msg_vals=False, **kwargs
+    # ):
+    #     """通知方式：收件箱。做两件主要的事情
+    #
+    #       * 为用户创建收件箱通知;
+    #       * 创建通道/消息链接（channel_ids mail.message 字段）;
+    #       * 发送总线通知;
+    #
+    #     TDE/XDO TODO: 直接标记 rdata，例如 r['notif'] = 'ocn_client' 和 r['needaction']=False 并正确覆盖notify_recipients
+    #     """
+    #     ir_config = self.env["ir.config_parameter"].sudo()
+    #     message_sending_method = ir_config.get_param("wecom_message_sending_method")
+    #
+    #     bus_notifications = []
+    #     inbox_pids = [r["id"] for r in recipients_data if r["notif"] == "inbox"]
+    #     if inbox_pids:
+    #         notif_create_values = [
+    #             {
+    #                 "mail_message_id": message.id,
+    #                 "res_partner_id": pid,
+    #                 "notification_type": "inbox",
+    #                 "notification_status": "sent",
+    #                 "is_wecom_message": True
+    #                 if self.env["res.partner"].browse(pid).wecom_userid
+    #                 else False,
+    #             }
+    #             for pid in inbox_pids
+    #         ]
+    #
+    #         mail_notification = (
+    #             self.env["mail.notification"].sudo().create(notif_create_values)
+    #         )
+    #
+    #         message_format_values = message.message_format()[0]
+    #         for partner_id in inbox_pids:
+    #             bus_notifications.append(
+    #                 (
+    #                     self.env["res.partner"].browse(partner_id),
+    #                     "mail.message/inbox",
+    #                     dict(message_format_values),
+    #                 )
+    #             )
+    #         if mail_notification.is_wecom_message:
+    #             self._notify_record_by_wecom(
+    #                 message, recipients_data, msg_vals=msg_vals, **kwargs
+    #             )
+    #     if message_sending_method != "1":
+    #         self.env["bus.bus"].sudo()._sendmany(bus_notifications)
 
     def _notify_record_by_wecom(
         self, message, recipients_data, msg_vals=False, **kwargs
