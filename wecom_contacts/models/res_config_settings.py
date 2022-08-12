@@ -14,6 +14,10 @@ _logger = logging.getLogger(__name__)
 class ResConfigSettings(models.TransientModel):
     _inherit = "res.config.settings"
 
+    wecom_api_domain_ip = fields.Char(
+        "Wecom API Domain IP", config_parameter="wecom.api_domain_ip",
+    )
+
     # 加入企微微信二维码
     contacts_join_qrcode_enabled = fields.Boolean(
         related="company_id.wecom_contacts_join_qrcode_enabled", readonly=False
@@ -203,3 +207,42 @@ class ResConfigSettings(models.TransientModel):
     #     super(ResConfigSettings, self).set_values()
     #     ir_config = self.env["ir.config_parameter"].sudo()
     #     ir_config.set_param("wecom.debug_enabled", self.debug_enabled or "False")
+
+    # TODO: 使用任务 获取IP
+
+    def get_wecom_api_domain_ip(self):
+        """
+        获取企业微信API域名IP段
+        """
+        ir_config = self.env["ir.config_parameter"].sudo()
+        debug = ir_config.get_param("wecom.debug_enabled")
+
+        if not self.contacts_app_id:
+            raise ValidationError(_("Please bind contact app!"))
+
+        if debug:
+            _logger.info(_("Start to get enterprise wechat API domain name IP segment"))
+        try:
+            wecomapi = self.env["wecom.service_api"].InitServiceApi(
+                self.company_id.corpid, self.contacts_app_id.secret
+            )
+
+            response = wecomapi.httpCall(
+                self.env["wecom.service_api_list"].get_server_api_call(
+                    "GET_API_DOMAIN_IP"
+                ),
+                {},
+            )
+            if response["errcode"] == 0:
+                ir_config.sudo().set_param("wecom.api_domain_ip", response["ip_list"])
+
+        except ApiException as ex:
+            return self.env["wecomapi.tools.action"].ApiExceptionDialog(
+                ex, raise_exception=True
+            )
+
+        finally:
+            if debug:
+                _logger.info(
+                    _("End obtaining enterprise wechat API domain name IP segment")
+                )

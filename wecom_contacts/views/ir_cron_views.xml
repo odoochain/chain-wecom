@@ -9,7 +9,12 @@
             <field name="res_id" ref="ir_cron_get_join_qrcode"/>
         </record>
 
-        
+        <record id="ir_cron_act_get_wecom_api_domain_ip" model="ir.actions.act_window">
+            <field name="name">WeCom: Get API Domain IP.</field>
+            <field name="res_model">ir.cron</field>
+            <field name="view_mode">form</field>
+            <field name="res_id" ref="ir_cron_get_wecom_api_domain_ip"/>
+        </record>
 
     </data>
 </odoo>
