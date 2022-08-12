@@ -8,7 +8,7 @@
     "application": False,
     "auto_install": False,
     "category": "WeCom/WeCom",
-    "version": "14.0.0.2",
+    "version": "14.0.0.3",
     "summary": """
 WeCom Service-side API and Client-side API              
         """,
