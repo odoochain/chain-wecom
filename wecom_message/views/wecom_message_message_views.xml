@@ -15,7 +15,7 @@
                                 <!-- <field name="email_from"/> -->
                                 <field name="author_id"/>
                                 <field name="message_type"/>
-                                <!-- <field name="subtype_id"/> -->
+                                 <field name="wecom_message_subtype_id"/>
                                 <!-- <field name="is_internal"/> -->
                             </group>
                             <group>

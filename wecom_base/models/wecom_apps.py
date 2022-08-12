@@ -578,4 +578,4 @@ class WeComApps(models.Model):
                 )
                 % (app.name, app.company_id.name)
             )
-            app.get_access_token()
+            # app.get_access_token()

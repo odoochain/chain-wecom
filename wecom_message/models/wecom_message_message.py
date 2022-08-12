@@ -23,13 +23,13 @@ class WecomMessageMessage(models.Model):
     def default_get(self, fields):
         res = super(WecomMessageMessage, self).default_get(fields)
         missing_author = "author_id" in fields and "author_id" not in res
-        missing_email_from = "meaasge_from" in fields and "meaasge_from" not in res
+        missing_email_from = "message_from" in fields and "message_from" not in res
         if missing_author or missing_email_from:
             author_id, meaasge_from = self.env["mail.thread"]._message_compute_author(
-                res.get("author_id"), res.get("meaasge_from"), raise_exception=False
+                res.get("author_id"), res.get("message_from"), raise_exception=False
             )
             if missing_email_from:
-                res["meaasge_from"] = meaasge_from
+                res["message_from"] = meaasge_from
             if missing_author:
                 res["author_id"] = author_id
 
@@ -161,8 +161,10 @@ class WecomMessageMessage(models.Model):
         help="Message type: email for email message, notification for system "
         "message, comment for other messages such as user replies",
     )
-    subtype_id = fields.Many2one(
-        "mail.message.subtype", "Subtype", ondelete="set null"
+    wecom_message_subtype_id = fields.Many2one(
+        "mail.message.subtype",
+        string="Subtypes",
+        # ondelete="set null"
     )  # 子类型
     # mail_activity_type_id = fields.Many2one(
     #     "mail.activity.type", "Mail Activity Type", index=True, ondelete="set null"
@@ -175,7 +177,7 @@ class WecomMessageMessage(models.Model):
     # 来源
     # origin
     sender = fields.Char("Sender",)
-    meaasge_from = fields.Char(
+    message_from = fields.Char(
         "From",
         help="Wecom user id of the sender. This field is set when no matching partner is found and replaces the "
              "author_id field in the chatter.",
@@ -185,7 +187,7 @@ class WecomMessageMessage(models.Model):
         "Author",
         index=True,
         ondelete="set null",
-        help="Author of the message. If not set, meaasge_from may hold an message wecom user id that did not match "
+        help="Author of the message. If not set, message_from may hold an message wecom user id that did not match "
              "any partner.",
     )
     author_avatar = fields.Binary(
