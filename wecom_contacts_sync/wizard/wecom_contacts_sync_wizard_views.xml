@@ -4,38 +4,28 @@
         <record id="view_form_wecom_contacts_sync_wizard" model="ir.ui.view">
             <field name="name">Contact synchronization Wizard</field>
             <field name="model">wecom.contacts.sync.wizard</field>
+            <field name="priority" eval="1"/>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form>
                     <group string="Synchronize all companies?">
-                        <field name="sync_all" />
+                        <!-- invisible="1" -->
+                        <field name="manage_multiple_companies" invisible="1"/>
+                        <field name="sync_all" attrs="{'readonly': [('manage_multiple_companies', '=', False)]}"/>
                         <field name="company_id" widget="selection" attrs="{'required': [('sync_all','=', False)]}"/>
                         <field name="companies" />
+                    </group>
 
-                    </group>
-                    <group string="Application Configuration">
-                        <field name="contacts_app_id" invisible="1"/>
-                        <field name="contacts_app_config_ids" class="w-100" nolabel="1">
-                            <tree create="0" edit="0" delete="0">
-                                <field name="name"/>
-                                <field name="ttype"/>
-                                <field name="value"/>
-                            </tree>
-                        </field>
-                    </group>
-                    <notebook>
-                        <page string="Help">
-                            <div>
-                                Linux production server uses the following command to view real-time logs:
-                            </div>
-                            <div class="mt8 mb16">
-                                <kbd>tail -f /var/log/odoo/odoo-server.log</kbd>
-                            </div>
-                            <div>
-                                If an error occurs, please check the help file.
-                            </div>
-                        </page>
-                    </notebook>
+                    <separator string="Help"/>
+                    <div>
+                        Linux production server uses the following command to view real-time logs:
+                    </div>
+                    <div class="mt8 mb16">
+                        <kbd>tail -f /var/log/odoo/odoo-server.log</kbd>
+                    </div>
+                    <div>
+                        If an error occurs, please check the help file.
+                    </div>
 
                     <footer>
                         <button name="wizard_sync_contacts" string="Start syncing" type="object" class="oe_highlight"/>
@@ -47,6 +37,7 @@
         <record id="view_form_wecom_contacts_sync_result" model="ir.ui.view">
             <field name="name">Contact synchronization Result</field>
             <field name="model">wecom.contacts.sync.wizard</field>
+            <field name="priority" eval="2"/>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form class="wecom_sync_result_dialog">
@@ -61,51 +52,34 @@
                             <field name="sync_result" />
                         </group>
                     </group>
-                    <group string="Hr Department sync">
+                    <group string="Wecom Department sync">
                         <group>
-                            <field name="hr_department_sync_state" />
-                            <field name="hr_department_sync_times" />
+                            <field name="wecom_department_sync_state" />
+                            <field name="wecom_department_sync_times" />
                         </group>
                         <group>
-                            <field name="hr_department_sync_result" />
-                        </group>
-                    </group>
-                    <group string="Hr Employee sync">
-                        <group>
-                            <field name="hr_employee_sync_state" />
-                            <field name="hr_employee_sync_times" />
-                        </group>
-                        <group>
-                            <field name="hr_employee_sync_result" />
+                            <field name="wecom_department_sync_result" />
                         </group>
                     </group>
-                    <group string="Hr Tag sync">
+                    <group string="Wecom User sync">
                         <group>
-                            <field name="hr_tag_sync_state" />
-                            <field name="hr_tag_sync_times" />
+                            <field name="wecom_user_sync_state" />
+                            <field name="wecom_user_sync_times" />
                         </group>
                         <group>
-                            <field name="hr_tag_sync_result" />
-                        </group>
-                    </group>
-                    <group string="System User sync">
-                        <group>
-                            <field name="res_user_sync_state" />
-                            <field name="res_user_sync_times" />
-                        </group>
-                        <group>
-                            <field name="res_user_sync_result" />
+                            <field name="wecom_user_sync_result" />
                         </group>
                     </group>
-                    <group string="Contact tag sync">
+                    <group string="Wecom Tag sync">
                         <group>
-                            <field name="partner_tag_sync_state" />
-                            <field name="partner_tag_sync_times" />
+                            <field name="wecom_tag_sync_state" />
+                            <field name="wecom_tag_sync_times" />
                         </group>
                         <group>
-                            <field name="partner_tag_sync_result" />
+                            <field name="wecom_tag_sync_result" />
                         </group>
                     </group>
+
                     <footer>
                         <button string="Close" class="btn-primary" special="cancel"/>
                         <button name="reload" string="Close and refresh" class="btn-primary" type="object"/>

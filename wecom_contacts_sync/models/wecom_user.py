@@ -27,7 +27,7 @@ class WecomUser(models.Model):
     )  # 英部门文名称
     mobile = fields.Char(string="mobile phone", readonly=True, default="")  # 手机号码
     department = fields.Char(
-        string="Department", readonly=True, default=""
+        string="User Department", readonly=True, default=""
     )  # 成员所属部门id列表
 
     main_department = fields.Char(
@@ -38,7 +38,7 @@ class WecomUser(models.Model):
     )  # 部门内的排序值，默认为0。数量必须和department一致，数值越大排序越前面。值范围是[0, 2^32)
     position = fields.Char(string="Position", readonly=True, default="")  # 职务信息；
     gender = fields.Char(
-        string="Gender", readonly=True, default=""
+        string="User Gender", readonly=True, default=""
     )  # 性别。0表示未定义，1表示男性，2表示女性。
     email = fields.Char(string="Email", readonly=True, default="")  # 邮箱
     biz_mail = fields.Char(string="BizMail", readonly=True, default="")  # 企业邮箱
@@ -64,7 +64,7 @@ class WecomUser(models.Model):
         string="External position", readonly=True, default=""
     )  # 对外职务，如果设置了该值，则以此作为对外展示的职务，否则以position来展示。
     status = fields.Integer(
-        string="Status", readonly=True, default=""
+        string="User Status", readonly=True, default=""
     )  # 激活状态: 1=已激活，2=已禁用，4=未激活，5=退出企业。已激活代表已激活企业微信或已关注微信插件（原企业号）。未激活代表既未激活企业微信又未关注微信插件（原企业号）。
     qr_code = fields.Char(
         string="Personal QR code", readonly=True, default=""

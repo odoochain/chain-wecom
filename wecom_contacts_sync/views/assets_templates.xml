@@ -9,6 +9,7 @@
                 <script type="text/javascript" src="/wecom_contacts_sync/static/src/js/download_deps.js"></script>
                 <script type="text/javascript" src="/wecom_contacts_sync/static/src/js/download_staffs.js"></script>
                 <script type="text/javascript" src="/wecom_contacts_sync/static/src/js/download_tags.js"></script>
+                <script type="text/javascript" src="/wecom_contacts_sync/static/src/js/wecom_contacts_sync.js"></script>
             </xpath>
         </template>
     </data>

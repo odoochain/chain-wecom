@@ -2,10 +2,8 @@
 
 import logging
 import time
-from odoo import fields, models, api, Command, tools, _
-from odoo.exceptions import UserError
-from lxml import etree
-from lxml_to_dict import lxml_to_dict
+from odoo import fields, models, api, tools, _
+
 from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
 from odoo.addons.base.models.ir_mail_server import MailDeliveryException
 
@@ -127,7 +125,7 @@ class WecomDepartment(models.Model):
 
             # 2.设置上级部门
             set_parent_department_result = self.set_parent_department(company)
-            # print("set_parent_department_result", set_parent_department_result)
+            print("set_parent_department_result", set_parent_department_result)
             if set_parent_department_result:
                 for r in set_parent_department_result:
                     tasks.append(r)
