@@ -574,8 +574,8 @@ class WeComApps(models.Model):
         for app in self.search([("company_id", "!=", False)]):
             _logger.info(
                 _(
-                    "Automatic task: start to get the application [%s] token of company [%s]"
+                    "Automatic task: start to get the application [%s] token of company [%s] from base"
                 )
                 % (app.name, app.company_id.name)
             )
-            # app.get_access_token()
+            app.get_access_token()

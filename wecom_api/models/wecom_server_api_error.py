@@ -53,8 +53,9 @@ class WecomServerApiError(models.Model):
             # url = "https://developer.work.weixin.qq.com/document/path/90313"  # 2022-05-29
             page_text = requests.get(url=global_error_code_url).text
             tree = etree.HTML(page_text)
+            # tree = etree.HTML(page_text)
 
-            # 生成 排查方法, 企业全局错误码 页面最下面的 “排查方法” 内容
+            # 生成 排查方法, 企业全局错误码 页面最下面的 “排查方法” 内容0d0ea8b54895ea30dd85398ba532c73c
             # methods_elements = tree.xpath("//ul[@data-sign='07e2431b7bbf7440a0301c13cc9c5afa']/li") # 
             methods_elements = tree.xpath(global_error_code_troubleshooting_method_node)  # 2022-06-27
 

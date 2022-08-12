@@ -8,7 +8,7 @@
     "application": True,
     "auto_install": False,
     "category": "WeCom/WeCom",
-    "version": "14.0.0.1",
+    "version": "14.0.0.3",
     "summary": """
 
         """,
