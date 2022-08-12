@@ -300,7 +300,7 @@ class WecomContactsSyncWizard(models.TransientModel):
 
         if fail_state_rows == all_state_rows:
             sync_state = "fail"
-        elif fail_state_rows > 0 and fail_state_rows < all_state_rows:
+        elif 0 < fail_state_rows < all_state_rows:
             sync_state = "partially"
         elif fail_state_rows == 0:
             sync_state = "completed"
@@ -309,8 +309,7 @@ class WecomContactsSyncWizard(models.TransientModel):
         if fail_department_state_rows == all_state_rows:
             wecom_department_sync_state = "fail"
         elif (
-            fail_department_state_rows > 0
-            and fail_department_state_rows < all_state_rows
+                0 < fail_department_state_rows < all_state_rows
         ):
             wecom_department_sync_state = "partially"
         elif fail_department_state_rows == 0:
@@ -319,14 +318,14 @@ class WecomContactsSyncWizard(models.TransientModel):
         # 员工
         if fail_user_state_rows == all_state_rows:
             wecom_user_sync_state = "fail"
-        elif fail_user_state_rows > 0 and fail_user_state_rows < all_state_rows:
+        elif 0 < fail_user_state_rows < all_state_rows:
             wecom_user_sync_state = "partially"
         elif fail_user_state_rows == 0:
             wecom_user_sync_state = "completed"
 
         if fail_tag_state_rows == all_state_rows:
             wecom_tag_sync_state = "fail"
-        elif fail_tag_state_rows > 0 and fail_tag_state_rows < all_state_rows:
+        elif 0 < fail_tag_state_rows < all_state_rows:
             wecom_tag_sync_state = "partially"
         elif fail_tag_state_rows == 0:
             wecom_tag_sync_state = "completed"

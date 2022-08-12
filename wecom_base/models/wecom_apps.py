@@ -525,12 +525,12 @@ class WeComApps(models.Model):
                     }
                     return self.env["wecomapi.tools.action"].WecomSuccessNotification(msg)
 
-    def set_app_info(self):
-        """
-        设置企业应用信息
-        :param agentid:
-        :return:
-        """
+    # def set_app_info(self):
+    #     """
+    #     设置企业应用信息
+    #     :param agentid:
+    #     :return:
+    #     """
 
     # ————————————————————————————————————
     # 应用令牌
@@ -543,7 +543,7 @@ class WeComApps(models.Model):
         debug = ir_config.get_param("wecom.debug_enabled")
         if debug:
             _logger.info(
-                _("Start getting app [%s] token for company [%s]")
+                _("Start getting app [%s] token for company [%s] from base")
                 % (self.name, self.company_id.name)
             )
         try:

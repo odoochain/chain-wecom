@@ -246,3 +246,4 @@ class ResConfigSettings(models.TransientModel):
                 _logger.info(
                     _("End obtaining enterprise wechat API domain name IP segment")
                 )
+                

@@ -121,7 +121,7 @@ class WecomUsersSyncWizard(models.TransientModel):
 
         if fail_rows == all_rows:
             self.state = "fail"
-        elif fail_rows > 0 and fail_rows < all_rows:
+        elif 0 < fail_rows < all_rows:
             self.state = "partially"
         elif fail_rows == 0:
             self.state = "completed"

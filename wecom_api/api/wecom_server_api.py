@@ -5,8 +5,6 @@ import requests
 from datetime import datetime, timedelta
 from odoo import api, fields, models, SUPERUSER_ID, _
 
-# from .wecom_abstract_api import ApiException
-
 
 class WecomServerApi(models.TransientModel):
     _inherit = "wecom.abstract_api"
