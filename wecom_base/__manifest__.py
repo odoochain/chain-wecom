@@ -46,7 +46,7 @@
         "views/wecom_app_subtype_views.xml",
         "views/menu_views.xml",
     ],
-    "qweb": ["static/src/xml/list_header_button.xml", ],
+    "qweb": ["static/src/xml/*.xml", ],
     "license": "LGPL-3",
     # "post_init_hook": "_open_wecom_settings",
 }
