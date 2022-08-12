@@ -41,6 +41,7 @@
         "views/ir_cron_views.xml",
         "views/hr_employee_view.xml",
         "views/menu_views.xml",
+        "views/wecom_user_views.xml",
     ],
     "qweb": ["static/src/xml/*.xml", ],
     "installable": True,
