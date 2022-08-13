@@ -17,7 +17,6 @@ _logger = logging.getLogger(__name__)
 class WecomContactsSyncWizard(models.TransientModel):
     _name = "wecom.contacts.sync.wizard"
     _description = "WeCom contacts synchronization wizard"
-    # _order = "create_date"
 
     @api.model
     def _default_company_ids(self):
@@ -25,7 +24,7 @@ class WecomContactsSyncWizard(models.TransientModel):
         默认公司
         """
         company_ids = self.env["res.company"].search(
-            [("is_wecom_organization", "=", True),]
+            [("is_wecom_organization", "=", True), ]
         )
         return company_ids
 
@@ -210,18 +209,18 @@ class WecomContactsSyncWizard(models.TransientModel):
             if row["sync_state"] == "fail":
                 sync_result += self.handle_sync_result(index, rows, row["sync_result"])
             wecom_department_sync_result += self.handle_sync_result(
-                index, rows, row["wecom_department_sync_result"]
+                index, rows, row["hr_department_sync_result"]
             )
             wecom_user_sync_result += self.handle_sync_result(
-                index, rows, row["wecom_user_sync_result"]
+                index, rows, row["res_user_sync_result"]
             )
             wecom_tag_sync_result += self.handle_sync_result(
-                index, rows, row["wecom_tag_sync_result"]
+                index, rows, row["hr_tag_sync_result"]
             )
 
-            wecom_department_sync_times += row["wecom_department_sync_times"]
-            wecom_user_sync_times += row["wecom_user_sync_times"]
-            wecom_tag_sync_times += row["wecom_tag_sync_times"]
+            wecom_department_sync_times += row["hr_department_sync_times"]
+            wecom_user_sync_times += row["res_user_sync_times"]
+            wecom_tag_sync_times += row["hr_tag_sync_times"]
 
         self.sync_result = sync_result
         self.wecom_department_sync_result = wecom_department_sync_result
@@ -243,7 +242,7 @@ class WecomContactsSyncWizard(models.TransientModel):
             "res_model": "wecom.contacts.sync.wizard",
             "res_id": self.id,
             "view_id": False,
-            "views": [[form_view.id, "form"],],
+            "views": [[form_view.id, "form"], ],
             "type": "ir.actions.act_window",
             # 'context': '{}',
             # 'context': self.env.context,
@@ -282,15 +281,14 @@ class WecomContactsSyncWizard(models.TransientModel):
         """
         all_state_rows = len(df)  # 获取所有行数
         fail_state_rows = len(df[df["sync_state"] == "fail"])  # 获取失败行数
-
         fail_department_state_rows = len(
-            df[df["wecom_department_sync_state"] == "fail"]
+            df.loc[(df.hr_department_sync_state == "fail")]
         )  # 获取HR部门失败行数
         fail_user_state_rows = len(
-            df[df["wecom_user_sync_state"] == "fail"]
+            df.loc[(df.res_user_sync_state == "fail")]
         )  # 获取HR员工失败行数
         fail_tag_state_rows = len(
-            df[df["wecom_tag_sync_state"] == "fail"]
+            df.loc[(df.hr_tag_sync_state == "fail")]
         )  # 获取HR标签失败行数
 
         sync_state = None

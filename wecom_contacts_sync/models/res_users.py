@@ -198,7 +198,7 @@ class User(models.Model):
                 contacts_sync_hr_department_id = app_config.get_param(
                     company.contacts_app_id.id, "contacts_sync_hr_department_id"
                 )  # 需要同步的企业微信部门ID
-                response = wxapi.httpCall(
+                response = wxapi.contactshttpCall(
                     self.env["wecom.service_api_list"].get_server_api_call("USER_LIST"),
                     {
                         "department_id": contacts_sync_hr_department_id,
@@ -218,6 +218,7 @@ class User(models.Model):
                         "msg": str(ex),
                     }
                 ]
+                print("The department id is:", contacts_sync_hr_department_id)
             except Exception as e:
                 end_time = time.time()
                 tasks = [

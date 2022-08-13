@@ -9,7 +9,7 @@
     "auto_install": False,
     "category": "WeCom/WeCom",
     "website": "https://gitee.com/rainbowstudio/wecom",
-    "version": "14.0.0.2",
+    "version": "14.0.0.3",
     "summary": "Human Resource Management System",
     "description": """
 
@@ -31,7 +31,6 @@
         "views/res_config_settings_views.xml",
         "views/hr_department_view.xml",
         "views/hr_employee_view.xml",
-        "views/hr_employee_category_views.xml",
         "views/menu_views.xml",
     ],
     'qweb': [

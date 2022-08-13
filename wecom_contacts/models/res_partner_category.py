@@ -68,7 +68,7 @@ class PartnerCategory(models.Model):
                 wxapi = self.env["wecom.service_api"].InitServiceApi(
                     company.corpid, company.contacts_app_id.secret
                 )
-                response = wxapi.httpCall(
+                response = wxapi.contactshttpCall(
                     self.env["wecom.service_api_list"].get_server_api_call(
                         "TAG_GET_LIST"
                     )

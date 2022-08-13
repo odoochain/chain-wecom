@@ -106,12 +106,15 @@ class WecomAbstractApi(models.AbstractModel):
                     response = self.__httpPost(url, args)
                 elif method == "GET":
                     url = self.__makeUrl(shortUrl)
-                    if "corpsecret" in args:
+                    if args is None:
                         url = self.__appendArgs(url, args)
-                    if "id" in args:
-                        url = self.__appendArgs(url, args)
-                    if "department_id" in args:
-                        url = self.__appendArgs(url, args)
+                    else:
+                        if "corpsecret" in args:
+                            url = self.__appendArgs(url, args)
+                        if "id" in args:
+                            url = self.__appendArgs(url, args)
+                        if "department_id" in args:
+                            url = self.__appendArgs(url, args)
                     response = self.__httpGet(url)
                 else:
                     raise ApiException(-1, _("unknown method type"))
