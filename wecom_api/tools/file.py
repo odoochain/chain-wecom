@@ -34,7 +34,6 @@ class WecomApiToolsFile(models.AbstractModel):
         获取企业微信用户头像的base64编码
         return:返回base64
         """
-        imgbase64 = ""
         if use_default_avatar or avatar_url == "":
             image_name = "default_image.png"
             if gender == "1":
@@ -43,7 +42,7 @@ class WecomApiToolsFile(models.AbstractModel):
                 image_name = "default_female_image.png"
 
             default_image = get_module_resource(
-                "wecom_hrm_syncing", "static/src/img", image_name
+                "wecom_contacts_sync", "static/src/img", image_name
             )
             # print(default_image)
             with open(default_image, "rb") as f:

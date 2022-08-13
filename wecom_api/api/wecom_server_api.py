@@ -30,7 +30,7 @@ class WecomServerApi(models.TransientModel):
             # 创建API令牌记录
             api = self.sudo().create({"corpid": corpid, "secret": secret})
         if api["access_token"] is False or api["access_token"] == "":
-            # token为空，刷新API令牌记录
+            # token为空，刷新API令牌记录,这里出现问题str和bool的矛盾
             api.refreshAccessToken()
         if api["expiration_time"] is False or api["expiration_time"] < datetime.now():
             # token过期，刷新API令牌记录

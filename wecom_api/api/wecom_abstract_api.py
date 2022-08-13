@@ -45,7 +45,6 @@ class WecomAbstractApi(models.AbstractModel):
 
     def refreshProviderAccessToken(self):
         raise NotImplementedError
-
     def httpCall(self, urlType, args=None, include_agentid=False):
         """
         调用API
@@ -59,15 +58,60 @@ class WecomAbstractApi(models.AbstractModel):
         response = {}
         for retryCnt in range(0, 3):
             try:
-                if "POST" == method:
+                if method == "POST":
                     url = self.__makeUrl(shortUrl)
                     if "agentid" in args and include_agentid:
                         url = self.__appendArgs(url, {"agentid": args["agentid"]})
                         del args["agentid"]
                     response = self.__httpPost(url, args)
-                elif "GET" == method:
+                elif method == "GET":
                     url = self.__makeUrl(shortUrl)
-                    url = self.__appendArgs(url, args)
+                    if "corpsecret" in args:
+                        url = self.__appendArgs(url, args)
+                        # del args["agentid"]
+                    response = self.__httpGet(url)
+                else:
+                    raise ApiException(-1, _("unknown method type"))
+            except Exception as e:
+                raise ApiException(-2, e)  # 其他错误
+
+            # 检查令牌是否过期
+            if self.__tokenExpired(response.get("errcode")):
+                self.__refreshToken(shortUrl)
+                retryCnt += 1
+                continue
+            else:
+                break
+        # 检测响应
+        return self.__checkResponse(response)
+
+    def contactshttpCall(self, urlType, args=None, include_agentid=False):
+        """
+        调用API
+        :param urlType : 服务端API类型和请求方式（"GET" or "POST"）
+        :param args : 请求参数
+        :param include_agentid : 标识args含有 "agentid" 关键字，需要进行处理
+        :returns 返回结果
+        """
+        shortUrl = urlType[0]
+        method = urlType[1]
+        response = {}
+        for retryCnt in range(0, 3):
+            try:
+                if method == "POST":
+                    url = self.__makeUrl(shortUrl)
+                    if "agentid" in args and include_agentid:
+                        url = self.__appendArgs(url, {"agentid": args["agentid"]})
+                        del args["agentid"]
+                    response = self.__httpPost(url, args)
+                elif method == "GET":
+                    url = self.__makeUrl(shortUrl)
+                    if "corpsecret" in args:
+                        url = self.__appendArgs(url, args)
+                    if "id" in args:
+                        url = self.__appendArgs(url, args)
+                    if "department_id" in args:
+                        url = self.__appendArgs(url, args)
                     response = self.__httpGet(url)
                 else:
                     raise ApiException(-1, _("unknown method type"))
@@ -160,8 +204,11 @@ class WecomAbstractApi(models.AbstractModel):
 
         if self.get_api_debug() is True:
             print("Wecom API GET", realUrl)
-
-        return requests.get(realUrl).json()
+        proxy_dict = {
+                "http": "http://127.0.0.1:10809",
+                "https": "http://127.0.0.1:10809",
+            }
+        return requests.get(url=realUrl, proxies=proxy_dict).json()
 
     @staticmethod
     def __checkResponse(response):
