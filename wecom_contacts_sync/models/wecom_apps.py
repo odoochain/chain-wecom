@@ -99,7 +99,7 @@ class WeComApps(models.Model):
     # ————————————————————————————————————
     # 通讯录
     # ————————————————————————————————————
-    
+
     def cron_sync_contacts(self):
         """
         自动任务同步组织架构
@@ -114,7 +114,7 @@ class WeComApps(models.Model):
         sync_start_time = time.time()
 
         for app in self.search(
-            [("company_id", "!=", False), ("type_code", "=", "['contacts']")]
+                [("company_id", "!=", False), ("type_code", "=", "['contacts']")]
         ):
             _logger.info(
                 _(
@@ -127,25 +127,23 @@ class WeComApps(models.Model):
             result = app.sync_contacts()
             results.append(result)
 
-            _logger.info(
-                _(
-                    "Automatic task: end synchronizing the enterprise wechat organizational structure of the company "
-                    "[%s] "
-                )
-                % (app.company_id.name)
+        _logger.info(
+            _(
+                "Automatic task: end synchronizing the enterprise wechat organizational structure of the company "
+                "[%s] "
             )
+            % app.company_id.name
+        )
         df = pd.DataFrame(results)
-
+        # https: // developer.work.weixin.qq.com / document / path / 90208
         (
             sync_task_state,
             hr_department_sync_state,
             hr_employee_sync_state,
-            hr_tag_sync_state,
-            res_user_sync_state,
-            partner_tag_sync_state,
-        ) = self.handle_sync_all_state(
-            df
-        )  # 处理同步状态
+            # hr_tag_sync_state,
+            # res_user_sync_state,
+            # partner_tag_sync_state,
+        ) = self.handle_sync_all_state(df)  # 处理同步状态
 
         # 处理同步结果和时间
         sync_task_result = ""
@@ -236,18 +234,18 @@ Synchronize contact tag results:
                 self.get_state_name(hr_employee_sync_state),
                 hr_employee_sync_times,
                 hr_employee_sync_result,
-                # hr标签
-                self.get_state_name(hr_tag_sync_state),
-                hr_tag_sync_times,
-                hr_tag_sync_result,
-                # 系统用户
-                self.get_state_name(res_user_sync_state),
-                res_user_sync_times,
-                res_user_sync_result,
-                # 联系人标签
-                self.get_state_name(partner_tag_sync_state),
-                partner_tag_sync_times,
-                partner_tag_sync_result,
+                # # hr标签
+                # self.get_state_name(hr_tag_sync_state),
+                # hr_tag_sync_times,
+                # hr_tag_sync_result,
+                # # 系统用户
+                # self.get_state_name(res_user_sync_state),
+                # res_user_sync_times,
+                # res_user_sync_result,
+                # # 联系人标签
+                # self.get_state_name(partner_tag_sync_state),
+                # partner_tag_sync_times,
+                # partner_tag_sync_result,
             )
         )
 
@@ -281,25 +279,25 @@ Synchronize contact tag results:
                 }
             )
 
-            # # 同步HR员工
-            # sync_employee_result = (
-            #     self.env["hr.employee"]
-            #     .with_context(company_id=self.company_id)
-            #     .download_wecom_staffs()
-            # )
-            # print(sync_employee_result)
-            # (
-            #     hr_employee_sync_state,
-            #     hr_employee_sync_times,
-            #     hr_employee_sync_result,
-            # ) = self.handle_sync_task_state(sync_employee_result, self.company_id)
-            # result.update(
-            #     {
-            #         "hr_employee_sync_state": hr_employee_sync_state,
-            #         "hr_employee_sync_times": hr_employee_sync_times,
-            #         "hr_employee_sync_result": hr_employee_sync_result,
-            #     }
-            # )
+            # 同步HR员工
+            sync_employee_result = (
+                self.env["hr.employee"]
+                .with_context(company_id=self.company_id)
+                .download_wecom_staffs()
+            )
+            print(sync_employee_result)
+            (
+                hr_employee_sync_state,
+                hr_employee_sync_times,
+                hr_employee_sync_result,
+            ) = self.handle_sync_task_state(sync_employee_result, self.company_id)
+            result.update(
+                {
+                    "hr_employee_sync_state": hr_employee_sync_state,
+                    "hr_employee_sync_times": hr_employee_sync_times,
+                    "hr_employee_sync_result": hr_employee_sync_result,
+                }
+            )
 
             # # 同步HR标签
             # sync_hr_tag_result = (
@@ -365,23 +363,23 @@ Synchronize contact tag results:
                     "company_name": self.company_id.name,
                     "sync_state": "fail",
                     "sync_result": _(
-                        "Synchronization of company [%s] failed. Reason:configuration does not allow synchronization to HR."
-                    )
-                    % self.company_id.name,
+                        "Synchronization of company [%s] failed. Reason:configuration does not allow synchronization "
+                        "to HR. "
+                    ) % self.company_id.name,
 
                     "hr_department_sync_state": "fail",
                     "hr_department_sync_times": 0,
                     "hr_department_sync_result": _(
-                        "Synchronization of company [%s] failed. Reason:configuration does not allow synchronization to HR."
-                    )
-                    % self.company_id.name,
+                        "Synchronization of company [%s] failed. Reason:configuration does not allow synchronization "
+                        "to HR. "
+                    ) % self.company_id.name,
 
-                    # "hr_employee_sync_state": "fail",
-                    # "hr_employee_sync_times": 0,
-                    # "hr_employee_sync_result": _(
-                    #     "Synchronization of company [%s] failed. Reason:configuration does not allow synchronization to HR."
-                    # )
-                    # % self.company_id.name,
+                    "hr_employee_sync_state": "fail",
+                    "hr_employee_sync_times": 0,
+                    "hr_employee_sync_result": _(
+                        "Synchronization of company [%s] failed. Reason:configuration does not allow synchronization "
+                        "to HR. "
+                    ) % self.company_id.name,
 
                     # "hr_tag_sync_state": "fail",
                     # "hr_tag_sync_times": 0,
@@ -441,29 +439,29 @@ Synchronize contact tag results:
         fail_department_state_rows = len(
             df[df["hr_department_sync_state"] == "fail"]
         )  # 获取HR部门失败行数
-        # fail_employee_state_rows = len(
-        #     df[df["hr_employee_sync_state"] == "fail"]
-        # )  # 获取HR员工失败行数
-        # fail_hr_tag_state_rows = len(
-        #     df[df["hr_tag_sync_state"] == "fail"]
-        # )  # 获取HR标签失败行数
-        # fail_user_state_rows = len(
-        #     df[df["res_user_sync_state"] == "fail"]
-        # )  # 获取系统用户失败行数
-        # fail_partner_tag_state_rows = len(
-        #     df[df["res_user_sync_state"] == "fail"]
-        # )  # 获取联系人标签失败行数
+        fail_employee_state_rows = len(
+            df[df["hr_employee_sync_state"] == "fail"]
+        )  # 获取HR员工失败行数
+        fail_hr_tag_state_rows = len(
+            df[df["hr_tag_sync_state"] == "fail"]
+        )  # 获取HR标签失败行数
+        fail_user_state_rows = len(
+            df[df["res_user_sync_state"] == "fail"]
+        )  # 获取系统用户失败行数
+        fail_partner_tag_state_rows = len(
+            df[df["res_user_sync_state"] == "fail"]
+        )  # 获取联系人标签失败行数
 
         sync_state = None
         hr_department_sync_state = None
-        # hr_employee_sync_state = None
-        # hr_tag_sync_state = None
-        # res_user_sync_state = None
-        # partner_tag_sync_state = None
+        hr_employee_sync_state = None
+        hr_tag_sync_state = None
+        res_user_sync_state = None
+        partner_tag_sync_state = None
 
         if fail_state_rows == all_state_rows:
             sync_state = "fail"
-        elif fail_state_rows > 0 and fail_state_rows < all_state_rows:
+        elif 0 < fail_state_rows < all_state_rows:
             sync_state = "partially"
         elif fail_state_rows == 0:
             sync_state = "completed"
@@ -471,19 +469,18 @@ Synchronize contact tag results:
         if fail_department_state_rows == all_state_rows:
             hr_department_sync_state = "fail"
         elif (
-            fail_department_state_rows > 0
-            and fail_department_state_rows < all_state_rows
+                0 < fail_department_state_rows < all_state_rows
         ):
             hr_department_sync_state = "partially"
         elif fail_department_state_rows == 0:
             hr_department_sync_state = "completed"
 
-        # if fail_employee_state_rows == all_state_rows:
-        #     hr_employee_sync_state = "fail"
-        # elif fail_employee_state_rows > 0 and fail_employee_state_rows < all_state_rows:
-        #     hr_employee_sync_state = "partially"
-        # elif fail_employee_state_rows == 0:
-        #     hr_employee_sync_state = "completed"
+        if fail_employee_state_rows == all_state_rows:
+            hr_employee_sync_state = "fail"
+        elif 0 < fail_employee_state_rows < all_state_rows:
+            hr_employee_sync_state = "partially"
+        elif fail_employee_state_rows == 0:
+            hr_employee_sync_state = "completed"
 
         # if fail_hr_tag_state_rows == all_state_rows:
         #     hr_tag_sync_state = "fail"
@@ -512,7 +509,7 @@ Synchronize contact tag results:
         return (
             sync_state,
             hr_department_sync_state,
-            # hr_employee_sync_state,
+            hr_employee_sync_state,
             # hr_tag_sync_state,
             # res_user_sync_state,
             # partner_tag_sync_state,

@@ -207,7 +207,7 @@ class HrEmployeePrivate(models.Model):
                     company.contacts_app_id.id, "contacts_sync_hr_department_id"
                 )  # 需要同步的企业微信部门ID
                 # TODO 需要判断是否安装了 同步模块
-                response = wxapi.httpCall(
+                response = wxapi.contactshttpCall(
                     self.env["wecom.service_api_list"].get_server_api_call("USER_LIST"),
                     {
                         "department_id": contacts_sync_hr_department_id,
@@ -343,7 +343,7 @@ class HrEmployeePrivate(models.Model):
             ],
             limit=1,
         )
-        result = {}
+        # result = {}
         print("employee：", company, employee, wecom_employee)
         if not employee:
             result = self.create_employee(company, employee, wecom_employee)

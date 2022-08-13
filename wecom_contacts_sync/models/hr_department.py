@@ -31,7 +31,7 @@ class Department(models.Model):
     wecom_department_id = fields.Integer(
         string="WeCom department ID",
         readonly=True,
-        default="0",
+        default="",
     )
 
     wecom_department_parent_id = fields.Integer(
@@ -74,13 +74,9 @@ class Department(models.Model):
                 contacts_sync_hr_department_id = app_config.get_param(
                     company.contacts_app_id.id, "contacts_sync_hr_department_id"
                 )  # 需要同步的企业微信部门ID
-                response = wxapi.httpCall(
-                    self.env["wecom.service_api_list"].get_server_api_call(
-                        "DEPARTMENT_LIST"
-                    ),
-                    {
-                        "id": contacts_sync_hr_department_id,
-                    },
+                response = wxapi.contactshttpCall(
+                    urlType=self.env["wecom.service_api_list"].get_server_api_call("DEPARTMENT_LIST"),
+                    args={"id": contacts_sync_hr_department_id,},
                 )
             except ApiException as ex:
                 end_time = time.time()
@@ -187,7 +183,6 @@ class Department(models.Model):
             ],
             limit=1,
         )
-        result = {}
         if not department:
             result = self.create_department(company, department, wecom_department)
         else:
@@ -209,6 +204,10 @@ class Department(models.Model):
                     "company_id": company.id,
                 }
             )
+            result = _("Success creat Department %s") % (
+                wecom_department["name"],
+            )
+            _logger.info(result)
         except Exception as e:
             result = _("Error creating Department [%s], error details:%s") % (
                 wecom_department["name"],
