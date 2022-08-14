@@ -403,7 +403,7 @@ class WeComApps(models.Model):
                             "ttype": app_config_id.ttype,
                             "value": ""
                             if app_config_id.key == "join_qrcode"
-                            or app_config_id.key == "join_qrcode_last_time"
+                               or app_config_id.key == "join_qrcode_last_time"
                             else app_config_id.value,
                             "description": app_config_id.description,
                         }
@@ -445,7 +445,7 @@ class WeComApps(models.Model):
                             "ttype": app_config_id.ttype,
                             "value": ""
                             if app_config_id.key == "join_qrcode"
-                            or app_config_id.key == "join_qrcode_last_time"
+                               or app_config_id.key == "join_qrcode_last_time"
                             else app_config_id.value,
                             "description": app_config_id.description,
                         }
@@ -472,6 +472,7 @@ class WeComApps(models.Model):
                             "description": app_config_id.description,
                         }
                     )
+
     # ————————————————————————————————————
     # 应用信息
     # ————————————————————————————————————
@@ -488,8 +489,9 @@ class WeComApps(models.Model):
                     record.company_id.corpid, record.secret
                 )
                 response = wecomapi.httpCall(
-                    self.env["wecom.service_api_list"].get_server_api_call("AGENT_GET"),
-                    {"agentid": str(record.agentid)},
+                    urlType=self.env["wecom.service_api_list"].get_server_api_call("AGENT_GET"),
+                    args={"agentid": str(record.agentid)},
+                    include_agentid=True
                 )
             except ApiException as e:
                 return self.env["wecomapi.tools.action"].ApiExceptionDialog(
@@ -525,12 +527,55 @@ class WeComApps(models.Model):
                     }
                     return self.env["wecomapi.tools.action"].WecomSuccessNotification(msg)
 
-    # def set_app_info(self):
-    #     """
-    #     设置企业应用信息
-    #     :param agentid:
-    #     :return:
-    #     """
+    def get_agentid_info(self, agentid, secret):
+        """
+        获取企业应用信息
+        :param agentid:
+        :return:
+        """
+        for record in self:
+            try:
+                wecomapi = self.env["wecom.service_api"].InitServiceApi(
+                    record.company_id.corpid, record.secret
+                )
+                response = wecomapi.httpCall(
+                    urlType=self.env["wecom.service_api_list"].get_server_api_call("AGENT_GET"),
+                    args={"agentid": str(agentid)},
+                    include_agentid=True
+                )
+            except ApiException as e:
+                return self.env["wecomapi.tools.action"].ApiExceptionDialog(
+                    e, raise_exception=True
+                )
+            else:
+                if response["errcode"] == 0:
+                    record.write(
+                        {
+                            "app_name": response["name"],
+                            "square_logo_url": response["square_logo_url"],
+                            "description": response["description"],
+                            "allow_userinfos": response["allow_userinfos"]
+                            if "allow_userinfos" in response
+                            else "{}",
+                            "allow_partys": response["allow_partys"]
+                            if "allow_partys" in response
+                            else "{}",
+                            "allow_tags": response["allow_tags"]
+                            if "allow_tags" in response
+                            else "{}",
+                            "close": response["close"],
+                            "redirect_domain": response["redirect_domain"],
+                            "report_location_flag": response["report_location_flag"],
+                            "isreportenter": response["isreportenter"],
+                            "home_url": response["home_url"],
+                        }
+                    )
+                    msg = {
+                        "title": _("Tips"),
+                        "message": _("Successfully obtained application information!"),
+                        "sticky": False,
+                    }
+                    return self.env["wecomapi.tools.action"].WecomSuccessNotification(msg)
 
     # ————————————————————————————————————
     # 应用令牌

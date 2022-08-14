@@ -106,9 +106,16 @@ class ResConfigSettings(models.TransientModel):
         获取应用信息
         :return:
         """
+        agentid = self.message_app_id.agentid
+        secret = self.message_app_id.secret
+        assert agentid
         for record in self:
-            if record.message_agentid == 0 or record.message_secret == "":
+            if agentid == "1000002" and (
+                    record.message_app_id.agentid == 0 or record.message_app_id.secret == ""
+            ):
                 raise UserError(_("Message application ID and secret cannot be empty!"))
+            if agentid and record.message_app_id.agentid and secret:
+                record.message_app_id.get_agentid_info(agentid, secret)
             else:
-                record.message_app_id.get_app_info()
-        super(ResConfigSettings, self).get_message_app_info()
+                raise UserError(_("Message application ID and secret cannot be empty!"))
+

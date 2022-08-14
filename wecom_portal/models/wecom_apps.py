@@ -22,7 +22,7 @@ class WeComApps(models.Model):
                 self.company_id.corpid, self.secret,
             )
 
-            response = wxapi.httpCall(
+            response = wxapi.contactshttpCall(
                 self.env["wecom.service_api_list"].get_server_api_call("MENU_GET"),
                 {"agentid": str(self.agentid)},
             )
@@ -92,12 +92,12 @@ class WeComApps(models.Model):
                 self.company_id.corpid, self.secret,
             )
             menu.update({"agentid": str(self.agentid)})
-            response_set = wxapi.httpCall(
+            response_set = wxapi.contactshttpCall(
                 self.env["wecom.service_api_list"].get_server_api_call("MENU_CREATE"),
                 menu,
                 include_agentid=True,
             )
-            response_get = wxapi.httpCall(
+            response_get = wxapi.contactshttpCall(
                 self.env["wecom.service_api_list"].get_server_api_call("MENU_GET"),
                 {"agentid": str(self.agentid)},
             )
@@ -130,7 +130,7 @@ class WeComApps(models.Model):
                 self.company_id.corpid, self.secret,
             )
 
-            response = wxapi.httpCall(
+            response = wxapi.contactshttpCall(
                 self.env["wecom.service_api_list"].get_server_api_call("MENU_DELETE"),
                 {"agentid": str(self.agentid)},
             )

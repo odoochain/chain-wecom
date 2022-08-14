@@ -69,6 +69,9 @@ class WecomAbstractApi(models.AbstractModel):
                     if "corpsecret" in args:
                         url = self.__appendArgs(url, args)
                         # del args["agentid"]
+                    if "agentid" in args and include_agentid:
+                        url = self.__appendArgs(url, {"agentid": args["agentid"]})
+                        # del args["agentid"]
                     response = self.__httpGet(url)
                 else:
                     raise ApiException(-1, _("unknown method type"))
@@ -183,9 +186,12 @@ class WecomAbstractApi(models.AbstractModel):
 
         if self.get_api_debug() is True:
             print("Wecom API POST", realUrl, args)
-
+        proxy_dict = {
+                "http": "http://127.0.0.1:10809",
+                "https": "http://127.0.0.1:10809",
+            }
         return requests.post(
-            realUrl, data=json.dumps(args, ensure_ascii=False).encode("utf-8")
+            url=realUrl, proxies=proxy_dict, data=json.dumps(args, ensure_ascii=False).encode("utf-8")
         ).json()
 
     def __httpPostFile(self, url, data, headers):

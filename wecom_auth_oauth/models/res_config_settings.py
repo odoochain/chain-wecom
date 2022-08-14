@@ -11,7 +11,7 @@ _logger = logging.getLogger(__name__)
 class ResConfigSettings(models.TransientModel):
     _inherit = "res.config.settings"
 
-    auth_app_id = fields.Many2one(string="Auth App Id", related="company_id.auth_app_id", readonly=False,)
+    auth_app_id = fields.Many2one(string="Auth App Id", related="company_id.auth_app_id", readonly=False, )
     auth_agentid = fields.Integer(string="Auth App Agent", related="auth_app_id.agentid", readonly=False)
     auth_secret = fields.Char(string="Auth App Secret", related="auth_app_id.secret", readonly=False)
 
@@ -48,9 +48,11 @@ class ResConfigSettings(models.TransientModel):
         app = self.env.context.get("app")
         for record in self:
             if app == "auth" and (
-                record.auth_app_id.agentid == 0 or record.auth_app_id.secret == ""
+                    record.auth_app_id.agentid == 0 or record.auth_app_id.secret == ""
             ):
                 raise UserError(_("Auth application ID and secret cannot be empty!"))
+            if app == "auth" and record.auth_app_id.agentid and record.auth_app_id.agentid:
+                record.auth_app_id.get_agentid_info(record.auth_app_id.agentid,
+                                                    record.auth_app_id.secret)
             else:
-                record.auth_app_id.get_app_info()
-        super(ResConfigSettings, self).get_app_info()
+                raise UserError(_("Auth application is not installed!"))

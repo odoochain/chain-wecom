@@ -34,7 +34,7 @@
                 </tree>
             </field>
         </record>
-<record id="view_wecom_user_kanban" model="ir.ui.view">
+        <record id="view_wecom_user_kanban" model="ir.ui.view">
             <field name="name">wecom.user.kanban</field>
             <field name="model">wecom.user</field>
             <field name="arch" type="xml">

@@ -196,30 +196,31 @@ class WeComApps(models.Model):
                 """
 Automatic task: end the synchronization of the enterprise wechat organizational structure of all companies.
 =======================================================================================================================
-Task Synchronization status:%s, Synchronization task time:%s seconds,
+Task Synchronization status: [%s], Synchronization task time:[%s] seconds,
 Synchronization results：
-%s
+[%s]
 -----------------------------------------------------------------------------------------------------------------------
-Hr department sync status:%s, Synchronize HR department time: %s seconds,
+Hr department sync status: [%s], Synchronize HR department time: [%s] seconds,
 Synchronize HR department results:
-%s
+[%s]
 -----------------------------------------------------------------------------------------------------------------------
-Hr employee sync status:%s, Synchronize HR employee time: %s seconds,
+Hr employee sync status:[%s], Synchronize HR employee time: [%s] seconds,
 Synchronize HR employee results:
-%s
+[%s]
 -----------------------------------------------------------------------------------------------------------------------
-Hr tag sync status:%s, Synchronize HR tag time: %s seconds,
+Hr tag sync status:[%s], Synchronize HR tag time: [%s] seconds,
 Synchronize HR tag results:
-%s
+[%s]
 -----------------------------------------------------------------------------------------------------------------------
-System user status:%s, Synchronize system user time: %s seconds,
+System user status:[%s], Synchronize system user time: [%s] seconds,
 Synchronize system user results:
-%s
+[%s]
 -----------------------------------------------------------------------------------------------------------------------
-Contact tag status:%s, Synchronize contact tag time: %s seconds,
+Contact tag status:[%s], Synchronize contact tag time: [%s] seconds,
 Synchronize contact tag results:
-%s
-======================================================================================================================="""
+[%s]
+=======================================================================================================================
+"""
             )
             % (
                 # 任务
@@ -234,18 +235,18 @@ Synchronize contact tag results:
                 self.get_state_name(hr_employee_sync_state),
                 hr_employee_sync_times,
                 hr_employee_sync_result,
-                # # hr标签
-                # self.get_state_name(hr_tag_sync_state),
-                # hr_tag_sync_times,
-                # hr_tag_sync_result,
-                # # 系统用户
-                # self.get_state_name(res_user_sync_state),
-                # res_user_sync_times,
-                # res_user_sync_result,
-                # # 联系人标签
-                # self.get_state_name(partner_tag_sync_state),
-                # partner_tag_sync_times,
-                # partner_tag_sync_result,
+                # hr标签
+                self.get_state_name(hr_tag_sync_state),
+                hr_tag_sync_times,
+                hr_tag_sync_result,
+                # 系统用户
+                self.get_state_name(res_user_sync_state),
+                res_user_sync_times,
+                res_user_sync_result,
+                # 联系人标签
+                self.get_state_name(partner_tag_sync_state),
+                partner_tag_sync_times,
+                partner_tag_sync_result,
             )
         )
 

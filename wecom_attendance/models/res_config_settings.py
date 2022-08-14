@@ -27,10 +27,11 @@ class ResConfigSettings(models.TransientModel):
         """
         app = self.env.context.get("app")
         for record in self:
-            if app == "auth" and (
+            if app == "checkin" and (
                 record.attendance_app_id.agentid == 0 or record.attendance_app_id.secret == ""
             ):
-                raise UserError(_("Auth application ID and secret cannot be empty!"))
+                raise UserError(_("Checkin application ID and secret cannot be empty!"))
+            if app == "checkin" and record.attendance_app_id.agentid and record.attendance_app_id.agentid:
+                record.attendance_app_id.get_agentid_info(record.attendance_app_id.agentid, record.attendance_app_id.secret)
             else:
-                record.attendance_app_id.get_app_info()
-        super(ResConfigSettings, self).get_app_info()
+                raise UserError(_("Checkin application is not installed!"))

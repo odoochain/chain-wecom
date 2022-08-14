@@ -17,10 +17,9 @@ class Digest(models.Model):
     # ------------------------------------------------------------
     def _action_send_to_user(self, user, tips_count=1, consum_tips=True):
         get_param = self.env["ir.config_parameter"].sudo().get_param
-        web_base_url = get_param("web.base.url")
-        message_sending_method = get_param("wecom.message_sending_method")
+        # web_base_url = get_param("web.base.url")
+        # message_sending_method = get_param("wecom.message_sending_method")
 
-        
         rendered_body = self.env['mail.render.mixin'].with_context(preserve_comments=True)._render_template(
             'digest.digest_mail_main',
             'digest.digest',
@@ -32,14 +31,14 @@ class Digest(models.Model):
                 'top_button_url': self.get_base_url(),
                 'company': user.company_id,
                 'user': user,
-                'unsubscribe_token': self._get_unsubscribe_token(user.id),
+                # 'unsubscribe_token': self._get_unsubscribe_token(user.id),
                 'tips_count': tips_count,
                 'formatted_date': datetime.today().strftime('%B %d, %Y'),
                 # 'display_mobile_banner': True,
                 'display_mobile_banner': False if user.wecom_userid else True,
-                'kpi_data': self._compute_kpis(user.company_id, user),
-                'tips': self._compute_tips(user.company_id, user, tips_count=tips_count, consumed=consum_tips),
-                'preferences': self._compute_preferences(user.company_id, user),
+                # 'kpi_data': self._compute_kpis(user.company_id, user),
+                # 'tips': self._compute_tips(user.company_id, user, tips_count=tips_count, consumed=consum_tips),
+                # 'preferences': self._compute_preferences(user.company_id, user),
             },
             post_process=True
         )[self.id]
@@ -53,8 +52,7 @@ class Digest(models.Model):
             },
         )
 
-
-         # 获取素材
+        # 获取素材
 
         material_id = self.env["ir.model.data"].get_object_reference(
             "wecom_material", "wecom_material_image_kpi"
@@ -79,7 +77,7 @@ class Digest(models.Model):
                 temporary=material_template.temporary,
                 media_file=material_template.media_file,
                 media_filename=material_template.media_filename,
-                company_id=user.company_id.id,                
+                company_id=user.company_id.id,
             )
             material = material_template.copy(copy_material)
 
@@ -93,10 +91,9 @@ class Digest(models.Model):
             'state': 'outgoing',
             'subject': '%s: %s' % (user.company_id.name, self.name),
             # 以下为企微字段
-            "is_wecom_message":True if user.wecom_userid else False, 
+            "is_wecom_message": True if user.wecom_userid else False,
             "message_to_user": user.wecom_userid,
             "msgtype": "mpnews",
-            "body_html": full_mail,
             "media_id": material.id,
             "safe": "1",
             "enable_id_trans": False,
