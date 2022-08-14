@@ -105,7 +105,9 @@ class WecomUser(models.Model):
         readonly=True,
         compute="_compute_status_name",
     )  # 激活状态: 1=已激活，2=已禁用，4=未激活，5=退出企业。已激活代表已激活企业微信或已关注微信插件（原企业号）。未激活代表既未激活企业微信又未关注微信插件（原企业号）。
-
+    tag_ids = fields.Many2many(
+        'wecom.tag', 'user_tag_rel',
+        'user_id', 'tag_id', string='Tags')
     gender_name = fields.Selection([
         ('1', _('Male')),
         ('2', _('Female')),
@@ -366,3 +368,8 @@ class WecomUser(models.Model):
                 "time": 0,
                 "msg": result,
             }  # 返回失败结果
+
+    def download_single_user(self):
+        """
+        下载单个用户
+        """

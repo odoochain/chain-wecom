@@ -30,6 +30,8 @@ class WecomTag(models.Model):
     partylist = fields.Text(
         string="Party list", readonly=True, default=""
     )  # 标签中包含的部门id列表
+    # odoo 字段
+    user_ids = fields.Many2many('wecom.user', 'user_tag_rel', 'tag_id', 'user_id', string='User Ids')
 
     # ------------------------------------------------------------
     # 企微标签下载
