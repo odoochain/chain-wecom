@@ -8,7 +8,7 @@ odoo.define('wecom_contacts_sync.sync_contacts', function (require) {
     var ListView = require('web.ListView');
     var viewRegistry = require('web.view_registry');
 
-    // 企微通讯录同步
+    // 企微通讯录-成员同步
     function renderWecomUserSyncButton() {
         const current_company_id = session.user_context.allowed_company_ids[0]; //当前公司id
         if (this.$buttons) {

@@ -22,7 +22,7 @@
         </record>
 
         <record id="hrms_base_department_tree" model="ir.ui.view">
-            <field name="name">wxwork hr departmen tree</field>
+            <field name="name">wecom hr department tree</field>
             <field name="model">hr.department</field>
             <field name="field_parent">child_ids</field>
             <field name="inherit_id" ref="hr.view_department_tree"/>
@@ -37,7 +37,7 @@
                 <xpath expr="//field[@name='parent_id']" position="after">
                     <field name="is_wecom_department"/>
                     <field name="wecom_department_id" options="{'format': false}"/>
-                    <!-- <field name="wecom_department_order"/> -->
+                    <field name="wecom_department_order"/>
                 </xpath>
             </field>
         </record>

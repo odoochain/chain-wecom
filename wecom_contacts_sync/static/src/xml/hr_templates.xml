@@ -10,7 +10,7 @@
         </t>
     </t> -->
 
-    <!-- 部门 Department-->
+    <!-- 部门 Department 下载企微部门数据-->
     <t t-name="HrDepartmentDownloadRequest.download_deps_button">
         <button type="button" class="btn btn-info o_button_download_deps fa fa-cloud-download">
             Download wecom department data

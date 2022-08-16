@@ -74,11 +74,11 @@
         </record>
 
         <function model="ir.actions.act_window" name="write">
-            <value eval="[ref('hr.open_view_categ_form')]"/>
+            <value eval="[ref('hr.open_view_category_form')]"/>
             <value eval="{'name': 'Tags'}"/>
         </function>
 
-        <record id="hr.open_view_categ_form" model="ir.actions.act_window">
+        <record id="hr.open_view_category_form" model="ir.actions.act_window">
             <field name="search_view_id" ref="hr_employee_category_view_search"/>
             <field name="domain">[]</field>
             <field name="context">{ 'search_default_company': 1,}</field>
