@@ -23,7 +23,7 @@
             <field name="name">wecom.user.tree</field>
             <field name="model">wecom.user</field>
             <field name="arch" type="xml">
-                <tree string="User" create="false" delete="false" multi_edit="false" import="false" sample="1" js_class="wecom_user_tree_sync">
+                <tree string="User" create="false" delete="false" multi_edit="false" import="false"  export_xlsx="false" sample="1" js_class="wecom_user_tree_sync">
                     <field name="name" />
                     <field name="gender_name" />
                     <field name="userid" />
@@ -184,6 +184,5 @@
             <field name="search_view_id" ref="view_wecom_user_filter"/>
             <field name="context">{}</field>
         </record>
-
     </data>
 </odoo>

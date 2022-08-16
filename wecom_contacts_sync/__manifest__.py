@@ -5,7 +5,7 @@
     "website": "https://gitee.com/rainbowstudio/wecom",
     "sequence": 603,
     "category": "WeCom/CRM",
-    "version": "14.0.0.3",
+    "version": "14.0.0.4",
     "summary": """
         
         """,
@@ -30,6 +30,8 @@
         "wizard/user_bind_wecom_views.xml",
         "wizard/wecom_contacts_sync_wizard_views.xml",
         "wizard/wecom_users_sync_wizard_views.xml",
+        "views/wecom_department_views.xml",
+        "views/wecom_tag_views.xml",
         "views/wecom_contacts_block_views.xml",
         "views/assets_templates.xml",
         "views/res_config_settings_views.xml",
