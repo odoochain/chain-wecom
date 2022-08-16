@@ -28,7 +28,7 @@ class WecomUser(models.Model):
     )  # 英部门文名称
     mobile = fields.Char(string="mobile phone", readonly=True, default="")  # 手机号码
     department = fields.Char(
-        string="Department", readonly=True, default=""
+        string="Multiple Departments", readonly=True, default=""
     )  # 成员所属部门id列表
 
     main_department = fields.Char(
@@ -43,8 +43,8 @@ class WecomUser(models.Model):
     )  # 性别。0表示未定义，1表示男性，2表示女性。
     email = fields.Char(string="Email", readonly=True, default="")  # 邮箱
     biz_mail = fields.Char(string="BizMail", readonly=True, default="")  # 企业邮箱
-    is_leader_in_dept = fields.Boolean(
-        string="Department Leader", readonly=True, default=False
+    is_leader_in_dept = fields.Char(
+        string="Is Department Leader", readonly=True, default=False
     )  # 表示在所在的部门内是否为部门负责人。0-否；1-是。是一个列表，数量必须与department一致。
     direct_leader = fields.Char(
         string="Direct Leader", readonly=True, default=""
@@ -91,7 +91,25 @@ class WecomUser(models.Model):
         compute="_compute_department_id",
         store=True,
     )
-    department_complete_name = fields.Char(string="Department complete Name", related="department_id.complete_name")
+    department_ids = fields.Many2many(
+        "wecom.department",
+        "wecom_user_department_rel",
+        "user_id",
+        "department_id",
+        string="Multiple Departments",
+        readonly=True,
+        compute="_compute_department_ids",
+    )
+    tag_ids = fields.Many2many(
+        "wecom.tag",
+        "wecom_user_tag_rel",
+        "wecom_user_id",
+        "wecom_tag_id",
+        string="Tags",
+    )
+    department_complete_name = fields.Char(
+        string="Department complete Name", related="department_id.complete_name"
+    )
     order_in_department = fields.Integer(
         string="Sequence in department", readonly=True, default="0",
     )  # 成员在对应部门中的排序值，默认为0。数量必须和department一致
@@ -107,11 +125,12 @@ class WecomUser(models.Model):
         compute="_compute_status_name",
     )  # 激活状态: 1=已激活，2=已禁用，4=未激活，5=退出企业。已激活代表已激活企业微信或已关注微信插件（原企业号）。未激活代表既未激活企业微信又未关注微信插件（原企业号）。
 
-    gender_name = fields.Selection([
-        ('1', _('Male')),
-        ('2', _('Female')),
-        ('0', _('Undefined'))
-    ], string="Gender",compute="_compute_gender_name")
+    gender_name = fields.Selection(
+        [("1", _("Male")), ("2", _("Female")), ("0", _("Undefined"))],
+        string="Gender",
+        compute="_compute_gender_name",
+    )
+    color = fields.Integer("Color Index")
 
     @api.depends("status")
     def _compute_status_name(self):
@@ -136,6 +155,39 @@ class WecomUser(models.Model):
         for user in self:
             user.gender_name = str(user.gender)
 
+    @api.depends("department")
+    def _compute_department_ids(self):
+        """
+        计算多部门  eval( )
+        """
+        for user in self:
+            department_list = eval(user.department)
+            department_ids = self.get_parent_department(
+                user.company_id, department_list
+            )
+            # department_ids = self.env["wecom.department"].search(
+            #     [
+            #         ("department_id", "in", department_list),
+            #         ("company_id", "=", user.company_id.id),
+            #     ],
+            # )
+
+            user.write({"department_ids": [(6, 0, department_ids)]})
+
+    def get_parent_department(self, company, departments):
+        """
+        获取上级部门
+        """
+        department_ids = []
+        for department in departments:
+            department_id = self.env["wecom.department"].search(
+                [("department_id", "=", department), ("company_id", "=", company.id),],
+                limit=1,
+            )
+            if department_id:
+                department_ids.append(department_id.id)
+        return department_ids
+
     # ------------------------------------------------------------
     # 企微用户下载
     # ------------------------------------------------------------
@@ -145,7 +197,11 @@ class WecomUser(models.Model):
         下载用户列表
         """
         start_time = time.time()
+
         company = self.env.context.get("company_id")
+        if type(company) == int:
+            company = self.env["res.company"].browse(company)
+
         tasks = []
 
         try:
@@ -367,3 +423,100 @@ class WecomUser(models.Model):
                 "time": 0,
                 "msg": result,
             }  # 返回失败结果
+
+    def download_single_user(self):
+        """
+        下载单个用户
+        """
+        company = self.company_id
+        params = {}
+        message = ""
+        try:
+            wxapi = self.env["wecom.service_api"].InitServiceApi(
+                company.corpid, company.contacts_app_id.secret
+            )
+            response = wxapi.httpCall(
+                self.env["wecom.service_api_list"].get_server_api_call("USER_GET"),
+                {"userid": self.userid},
+            )
+            for key in response.keys():
+                if type(response[key]) in (list, dict) and response[key]:
+                    json_str = json.dumps(
+                        response[key],
+                        sort_keys=False,
+                        indent=2,
+                        separators=(",", ":"),
+                        ensure_ascii=False,
+                    )
+                    response[key] = json_str
+            self.write(
+                {
+                    "name": response["name"],
+                    "english_name": self.env["wecom.tools"].check_dictionary_keywords(
+                        response, "english_name"
+                    ),
+                    "mobile": response["mobile"],
+                    "department": response["department"],
+                    "main_department": response["main_department"],
+                    "order": response["order"],
+                    "position": response["position"],
+                    "gender": response["gender"],
+                    "email": response["email"],
+                    "biz_mail": response["biz_mail"],
+                    "is_leader_in_dept": response["is_leader_in_dept"],
+                    "direct_leader": response["direct_leader"],
+                    "avatar": response["avatar"],
+                    "thumb_avatar": response["thumb_avatar"],
+                    "telephone": response["telephone"],
+                    "alias": response["alias"],
+                    "extattr": response["extattr"],
+                    "external_profile": self.env[
+                        "wecom.tools"
+                    ].check_dictionary_keywords(response, "external_profile"),
+                    "external_position": self.env[
+                        "wecom.tools"
+                    ].check_dictionary_keywords(response, "external_position"),
+                    "status": response["status"],
+                    "qr_code": response["qr_code"],
+                    "address": self.env["wecom.tools"].check_dictionary_keywords(
+                        response, "address"
+                    ),
+                    "open_userid": self.env["wecom.tools"].check_dictionary_keywords(
+                        response, "open_userid"
+                    ),
+                }
+            )
+        except ApiException as ex:
+            message = _("User [id:%s, name:%s] failed to download,Reason: %s") % (
+                self.userid,
+                self.name,
+                str(ex),
+            )
+            _logger.warning(message)
+            params = {
+                "title": _("Download failed!"),
+                "message": message,
+                "sticky": True,  # 延时关闭
+                "className": "bg-danger",
+                "type": "danger",
+            }
+        else:
+            message = _("User [id:%s, name:%s] downloaded successfully") % (
+                self.userid,
+                self.name,
+            )
+            params = {
+                "title": _("Download Success!"),
+                "message": message,
+                "sticky": False,  # 延时关闭
+                "className": "bg-success",
+                "type": "success",
+                "next": {"type": "ir.actions.client", "tag": "reload",},  # 刷新窗体
+            }
+        finally:
+            action = {
+                "type": "ir.actions.client",
+                "tag": "display_notification",
+                "params": params,
+            }
+            return action
