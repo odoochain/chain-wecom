@@ -29,7 +29,7 @@ extensions_and_size = {
 
 
 class WeComMaterial(models.Model):
-    "Template for sending WeCom message"
+    # "Template for sending WeCom message"
     _name = "wecom.material"
     _description = "WeCom material"
     _order = "company_id,name"

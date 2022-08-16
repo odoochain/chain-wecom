@@ -118,6 +118,8 @@ class WecomAbstractApi(models.AbstractModel):
                             url = self.__appendArgs(url, args)
                         if "department_id" in args:
                             url = self.__appendArgs(url, args)
+                        if "agentid" in args:
+                            url = self.__appendArgs(url, args)
                     response = self.__httpGet(url)
                 else:
                     raise ApiException(-1, _("unknown method type"))

@@ -19,6 +19,7 @@
     "depends": [
         "wecom_contacts",
         "portal",
+        "pl_wecom_widget",
     ],
     "external_dependencies": {"python": [],},
     "data": [

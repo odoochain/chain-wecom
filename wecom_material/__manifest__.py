@@ -37,7 +37,10 @@ Install:
     pip3 install pydub ffmpy
 
 """,
-    "depends": ["attachment_indexation", "wecom_contacts"],
+    "depends": [
+        "attachment_indexation",
+        "wecom_contacts",
+],
     "data": [
         "security/wecom_material_security.xml",
         "security/ir.model.access.csv",

@@ -100,7 +100,7 @@
         </record>
 
         <!-- 7 -->
-        <!-- <record id="wecom_app_config_contacts_enabled_join_qrcode" model="wecom.app_config">
+        <record id="wecom_app_config_contacts_enabled_join_qrcode" model="wecom.app_config">
             <field name="app_id" ref="wecom_contacts.wecom_app_contacts"/>
             <field name="name">Enable to join the enterprise QR code</field>
             <field name="key">enabled_join_qrcode</field>
@@ -112,7 +112,7 @@
                     <br></br>Value: True or False
                 </p>
             </field>
-        </record> -->
+        </record>
 
         <!-- 8 -->
         <!-- <record id="wecom_app_config_contacts_join_qrcode" model="wecom.app_config">

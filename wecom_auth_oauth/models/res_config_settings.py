@@ -38,7 +38,7 @@ class ResConfigSettings(models.TransientModel):
                 #     raise ValidationError(_("Please bind contact app!"))
                 # else:
                 record.auth_app_id.with_context(code=code).generate_parameters()
-        super(ResConfigSettings, self).generate_parameters()
+        # super(ResConfigSettings, self).generate_parameters()
 
     def get_app_info(self):
         """

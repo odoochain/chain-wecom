@@ -85,7 +85,7 @@ class ResConfigSettings(models.TransientModel):
                     raise ValidationError(_("Please bind message app!"))
                 else:
                     record.message_app_id.with_context(code=code).generate_parameters()
-        super(ResConfigSettings, self).generate_parameters()
+        # super(ResConfigSettings, self).generate_parameters()
 
     def generate_service(self):
         """
@@ -99,7 +99,7 @@ class ResConfigSettings(models.TransientModel):
                     raise ValidationError(_("Please bind message app!"))
                 else:
                     record.message_app_id.with_context(code=code).generate_service()
-        super(ResConfigSettings, self).generate_service()
+        # super(ResConfigSettings, self).generate_service()
 
     def get_message_app_info(self):
         """

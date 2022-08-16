@@ -21,6 +21,7 @@
         "contacts",
         "hr",
         "wecom_base",
+        "pl_wecom_widget",
     ],
     "data": [
         "security/ir.model.access.csv",
