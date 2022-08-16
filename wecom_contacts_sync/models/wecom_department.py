@@ -48,7 +48,7 @@ class WecomDepartment(models.Model):
         "wecom.department", "parentid", string="Child Departments"
     )
     member_ids = fields.One2many(
-        "wecom.user", "department_id", string="Members", readonly=True
+        "wecom.user", "department_id", string="Members Ids", readonly=True
     )
     complete_name = fields.Char('Complete Name', compute='_compute_complete_name', recursive=True, store=True)
     department_leader_ids = fields.Many2many(
@@ -56,14 +56,14 @@ class WecomDepartment(models.Model):
         "user_department_rel",
         "tag_id",
         "user_id",
-        string="Department Leader",
+        string="Department LeaderIds",
     )
     user_ids = fields.Many2many(
         "wecom.user",
         "wecom_user_department_rel",
         "department_id",
         "user_id",
-        string="Members",
+        string="User Ids",
     )
     color = fields.Integer("Color Index")
 
