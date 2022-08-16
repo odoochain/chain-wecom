@@ -3,7 +3,7 @@
     <data noupdate="1">
 
         <template id="digest_mail_main" inherit_id="digest.digest_mail_main">            
-            <xpath expr="//div[@class='by_odoo']" position="replace"/>
+            <xpath expr="//div[hasclass('by_odoo')]" position="replace"/>
         </template>
 
     </data>

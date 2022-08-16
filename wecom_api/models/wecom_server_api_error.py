@@ -53,7 +53,7 @@ class WecomServerApiError(models.Model):
             page_text = requests.get(url=global_error_code_url)
             page_text.encoding = chardet.detect(page_text.content)['encoding']
             tree = etree.HTML(page_text.text)
-            table = tree.xpath("//div[@class='cherry-table-container']/table")  # 取出表格
+            table = tree.xpath("//div[hasclass('cherry-table-container')]/table")  # 取出表格
             table = etree.tostring(
                 table[0], encoding="utf-8"
             ).decode()  # 将第一个表格转成string格式
