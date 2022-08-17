@@ -8,10 +8,20 @@
 
 thanks 
 
+https://github.com/rainbow-studio-solution/wecom
+
 https://github.com/anodoo/anodoo
 
 https://github.com/masami10/odoo_wxwork
-    
+
+*2022/8/16*
+
+14.0.0.3 原作者没空再开发14版本，只好自己继续开发放出，感谢原作者
+
+### 以下为原记录：
+
+-----------------------------------------------------------------------------------------------------
+
 *2022/2/5* 
 
 14.0开发导致为止了，除了修复bug外，不添加新功能了
