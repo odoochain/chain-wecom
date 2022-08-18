@@ -3,7 +3,7 @@
 {
     "name": """QR-based payments in POS""",
     "summary": """Technical module to support qr-based payments like Alipay, WeChat""",
-    "category": "Hidden",
+    "category": "Wecom/Hidden",
     "images": [],
     "version": "14.0.1.0.1",
     "application": False,

@@ -1,7 +1,7 @@
 {
     "name": """QR Code Scanning in POS""",
     "summary": """Scans QR codes via device's camera""",
-    "category": "Point of Sale",
+    "category": "Wecom/Point of Sale",
     "images": ["images/main.png"],
     "version": "14.0.1.0.2",
     "application": False,

@@ -4,7 +4,7 @@
 {
     "name": """WeChat API""",
     "summary": """Technical module to integrate Odoo with WeChat;Need cryptography""",
-    "category": "Hidden",
+    "category": "Wecom/Hidden",
     "images": [],
     "version": "14.0.1.3",
     "application": False,

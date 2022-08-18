@@ -3,7 +3,7 @@
 {
     "name": """POS QR Showing in POS""",
     "summary": """Show QR for qr-based payment systems in POS or Customer Screen""",
-    "category": "Hidden",
+    "category": "Wecom/Hidden",
     "images": [],
     "version": "14.0.1.1.0",
     "application": False,

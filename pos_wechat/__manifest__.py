@@ -3,9 +3,9 @@
 {
     "name": """WeChat Payments in POS""",
     "summary": """Support WeChat QR-based payments (scan and show)""",
-    "category": "Point of Sale",
+    "category": "Wecom/Point of Sale",
     "images": ["images/main.jpg"],
-    "version": "14.0.1.0.0",
+    "version": "14.0.1.3",
     "application": False,
     "author": "IT-Projects LLC, Ivan Yelizariev",
     "support": "help@itpp.dev",
