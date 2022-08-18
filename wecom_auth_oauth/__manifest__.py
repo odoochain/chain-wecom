@@ -25,7 +25,6 @@
         "data/wecom_apps_data.xml",
         "data/wecom_app_config_data.xml",
         "data/wecom_oauth_data.xml",
-        # "data/wecom_oauth_data.xml",
         "views/assets_templates.xml",
         "views/res_config_settings_views.xml",
         "views/wecom_apps_views.xml",

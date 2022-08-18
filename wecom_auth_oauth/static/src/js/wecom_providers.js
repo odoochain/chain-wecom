@@ -36,11 +36,11 @@ odoo.define('wecom_auth_oauth.providers', function (require) {
         },
         is_wecom_browser: function () {
             var ua = navigator.userAgent.toLowerCase();
-            let isWx = ua.match(/MicroMessenger/i) == "micromessenger";
+            let isWx = ua.match(/MicroMessenger/i) === "micromessenger";
             if (!isWx) {
                 return false;
             } else {
-                let isWxWork = ua.match(/WxWork/i) == "wxwork";
+                let isWxWork = ua.match(/WxWork/i) === "wxwork";
                 if (isWxWork) {
                     return true;
                 } else {
@@ -183,6 +183,7 @@ odoo.define('wecom_auth_oauth.providers', function (require) {
         //         function onBridgeReady() {
         //             WeixinJSBridge.invoke();
         //         }
+        //
         //         if (typeof WeixinJSBridge == "undefined") {
         //             if (document.addEventListener) {
         //                 document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
@@ -198,8 +199,9 @@ odoo.define('wecom_auth_oauth.providers', function (require) {
         //         console.log(res)
         //         // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
         //     });
-
+        //
         // },
+
         // get_jsapi_parameter: async function (nonceStr, timestamp, url, company_id) {
         //     var self = this;
         //     return self._rpc({
@@ -210,7 +212,7 @@ odoo.define('wecom_auth_oauth.providers', function (require) {
         //             timestamp: timestamp,
         //             url: url,
         //         },
-
+        //
         //     }).then(function (response) {
         //         // return response;
         //         return Promise.resolve(response);

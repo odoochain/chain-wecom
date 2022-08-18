@@ -1,0 +1,34 @@
+.o_form_field_jsoneditor {
+  width: 100% !important;
+  height: 660px !important;
+}
+.o_form_field_jsoneditor .o_form_field_jsoneditor_ditor {
+  width: 100% !important;
+  height: 600px !important;
+}
+.o_form_field_jsoneditor .jsoneditor {
+  width: 100% !important;
+  height: 600px !important;
+}
+.o_form_field_jsoneditor .jsoneditor .jsoneditor-menu span.jsoneditor-renderMode {
+  font-size: 8pt;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 10px;
+}
+.o_form_field_jsoneditor .jsoneditor .jsoneditor-menu span.jsoneditor-translate {
+  position: absolute;
+  color: #ffffff;
+  padding: 6px !important;
+  margin-left: 4px !important;
+}
+.o_form_field_jsoneditor .jsoneditor .jsoneditor-menu i.jsoneditor-translate {
+  position: absolute;
+  padding: 10px;
+}
+.o_form_field_jsoneditor .jsoneditor .jsoneditor-menu .jsoneditor-search .jsoneditor-frame {
+  display: flex !important;
+}
+
+/*# sourceMappingURL=jsoneditor.css.map */

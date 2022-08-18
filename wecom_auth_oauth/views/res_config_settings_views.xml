@@ -77,7 +77,7 @@
                                 <div class="content-group">
                                     <div class="mt4">
                                         <field name="auth_app_config_ids" widget="wecom_config" format="value" type="ttype" help="description" class="w-100 pl-3">
-                                            <tree create="0" edit="true" delete="0" editable="bottom" help="description">
+                                            <tree create="0" edit="true" delete="0" editable="bottom">
                                                 <field name="name" readonly="1"/>
                                                 <field name="key" readonly="1"/>
                                                 <field name="value" required="1"/>
