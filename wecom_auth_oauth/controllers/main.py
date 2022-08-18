@@ -52,7 +52,7 @@ class OAuthLogin(Home):
             ):
                 # 一键登录
                 return_url = (
-                    request.httprequest.url_root + "wxowrk_auth_oauth/authorize"
+                    request.httprequest.url_root + "wxwork_auth_oauth/authorize"
                 )
 
                 state = self.get_state(provider)
@@ -74,7 +74,7 @@ class OAuthLogin(Home):
                 in provider["auth_endpoint"]
             ):
                 # 扫描登录
-                return_url = request.httprequest.url_root + "wxowrk_auth_oauth/qr"
+                return_url = request.httprequest.url_root + "wxwork_auth_oauth/qr"
 
                 state = self.get_state(provider)
 
@@ -106,9 +106,7 @@ class OAuthLogin(Home):
 
 
 class OAuthController(http.Controller):
-    @http.route(
-        "/wxowrk_auth_oauth/authorize", type="http", auth="none",
-    )
+    @http.route("/wxwork_auth_oauth/authorize", type="http", auth="none",)
     def wecom_web_authorize(self, **kw):
         code = kw.pop("code", None)
 
@@ -200,7 +198,7 @@ class OAuthController(http.Controller):
         except ApiException as e:
             return request.env["wecom.tools"].ApiExceptionDialog(e)
 
-    @http.route("/wxowrk_auth_oauth/qr", type="http", auth="none")
+    @http.route("/wxwork_auth_oauth/qr", type="http", auth="none")
     def wecom_qr_authorize(self, **kw):
         code = kw.pop("code", None)
         company = (
@@ -286,7 +284,7 @@ class OAuthController(http.Controller):
         except ApiException as e:
             return request.env["wecom.tools"].ApiExceptionDialog(e)
 
-    @http.route("/wxowrk_login_info", type="json", auth="none")
+    @http.route("/wxwork_login_info", type="json", auth="none")
     def wecom_get_login_info(self, **kwargs):
         data = {}
         if "is_wecom_browser" in kwargs:

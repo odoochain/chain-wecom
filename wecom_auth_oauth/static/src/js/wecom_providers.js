@@ -17,7 +17,7 @@ odoo.define('wecom_auth_oauth.providers', function (require) {
         start: function () {
             var self = this;
             this.companies = self._rpc({
-                route: "/wxowrk_login_info",
+                route: "/wxwork_login_info",
                 params: {
                     is_wecom_browser: self.is_wecom_browser()
                 },

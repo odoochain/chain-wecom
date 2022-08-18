@@ -16,7 +16,7 @@ odoo.define('wecom_auth_oauth.join', function (require) {
         start: function () {
             var self = this;
             this.companies = self._rpc({
-                route: "/wxowrk_login_info",
+                route: "/wxwork_login_info",
                 params: {
 
                 },

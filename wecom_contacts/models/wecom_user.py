@@ -72,6 +72,11 @@ class WeComUser(models.Model):
         default="2",
     )
     qr_code = fields.Char(string="QR code", copy=False)
+    _sql_constraints = [
+        ('userid_key', 'UNIQUE (wecom_userid)', '账号已存在 !'),
+        ('mobile_key', 'UNIQUE (mobile)', '手机号已存在 !'),
+        ('email_key', 'UNIQUE (email)', '邮箱已存在 !'),
+    ]
 
     @api.model
     def organizational_download(self):

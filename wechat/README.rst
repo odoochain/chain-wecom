@@ -83,7 +83,7 @@ Contributors
 Further information
 ===================
 
-Odoo Apps Store: https://apps.odoo.com/apps/modules/13.0/wechat/
+Odoo Apps Store: https://apps.odoo.com/apps/modules/14.0/wechat/
 
 
 Tested on `Odoo 12.0 <https://github.com/odoo/odoo/commit/b05e34a0d9b13a1c6971b99ed3e5fa20199f3545>`_
