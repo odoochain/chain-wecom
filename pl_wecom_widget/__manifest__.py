@@ -18,7 +18,6 @@
     ],
     'qweb': [
         'static/src/xml/*.xml',
-        'static/src/legacy/js/week_days.js',
     ],
     "sequence": 600,
     "installable": True,

@@ -1,8 +1,8 @@
-odoo.define('web.WeekDays', function (require) {
+odoo.define('pl_wecom_widget.WeekDays', function (require) {
     'use strict';
 
     const CustomCheckbox = require('web.CustomCheckbox');
-    const Registry = require('web.widgetRegistry');
+    const Registry = require('web.widget_registry');
     const utils = require('web.utils');
     const { useState } = owl.hooks;
 
@@ -87,7 +87,7 @@ odoo.define('web.WeekDays', function (require) {
         sat: {type: 'boolean'},
     };
 
-    Registry.add('week_days', WeekDays);
+    Registry.add('pl_wecom_widget.week_days', WeekDays);
 
     return WeekDays;
 });
