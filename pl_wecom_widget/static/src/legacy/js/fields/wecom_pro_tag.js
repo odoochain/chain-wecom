@@ -53,7 +53,7 @@ odoo.define('pl_wecom_widget.wecom_pro_tag', function (require) {
         },
         check_status: function (box) {
             var self = this;
-            var addon_name = box.find(".o_setting_left_pane").contents().attr("name").split("module_")[1];
+            var addon_name = ((box.find(".o_setting_left_pane").contents().attr("name"))+'').split("module_")[1];
             var $input = box.find(".o_setting_left_pane").find("input");
             this._rpc({
                 model: 'ir.module.module',
