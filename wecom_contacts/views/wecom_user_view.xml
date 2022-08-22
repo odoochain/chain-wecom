@@ -74,10 +74,10 @@
 
                         <notebook>
                             <page name="extattr" string="Extended attributes">
-                                <field name="extattr" widget="wecom_jsoneditor"/>
+                                <field name="extattr" widget="html"/>
                             </page>
                             <page name="external_profile" string="External attributes">
-                                <field name="external_profile" widget="wecom_jsoneditor"/>
+                                <field name="external_profile" widget="html"/>
                             </page>
                         </notebook>
                     </sheet>

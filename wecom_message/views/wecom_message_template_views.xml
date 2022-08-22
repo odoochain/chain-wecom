@@ -53,7 +53,7 @@
                                 <h2 style="display: inline-block;" class="w-75">
                                     <field name="subject" placeholder="Subject (placeholders may be used here)"/>
                                 </h2>
-                                <field name="body_json" widget="wecom_jsoneditor" />
+                                <field name="body_json" widget="ace" />
                             </page>
                             <page string="Markdown Content" name="markdown_content" attrs="{'invisible': [('msgtype','!=','markdown')]}">
                                 <label for="subject"/>

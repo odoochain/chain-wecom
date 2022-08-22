@@ -141,7 +141,7 @@
                                 <field name="sphfeed" widget="html" attrs="{'invisible': [('msgtype','!=','sphfeed')]}"/>
                             </page>
                             <page string="Recipient list">
-                                <field name="tolist" widget="wecom_jsoneditor"/>
+                                <field name="tolist" widget="ace"/>
                             </page>
                             <page name="group_chat" string="Group chat information" attrs="{'invisible': [('room','=',False)]}">
                                 <group col="4">
@@ -156,12 +156,12 @@
                                         <field name="room_notice"/>
                                     </group>
                                     <group>
-                                        <field name="room_members" widget="wecom_jsoneditor"/>
+                                        <field name="room_members" widget="ace"/>
                                     </group>
                                 </group>
                             </page>
                             <page string="Decrypt the original chat message" name="decrypted_chat_msg">
-                                <field name="decrypted_chat_msg" widget="wecom_jsoneditor"/>
+                                <field name="decrypted_chat_msg" widget="ace"/>
                             </page>
                         </notebook>
                     </sheet>

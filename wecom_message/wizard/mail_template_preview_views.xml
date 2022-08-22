@@ -49,7 +49,7 @@
                             <field name="body_markdown" widget="wecom_markdown" readonly="1" nolabel="1" options='{"safe": True}' />
                         </page>
                         <page string="Json Content" name="body_json" attrs="{'invisible': ['|',('msgtype','=','mpnews'),('msgtype','=','markdown')]}">
-                            <field name="body_json" widget="wecom_jsoneditor" readonly="1" nolabel="1" options='{"safe": True}'/>
+                            <field name="body_json" widget="ace" readonly="1" nolabel="1" options='{"safe": True}'/>
                         </page>
                     </notebook>
                     <footer>

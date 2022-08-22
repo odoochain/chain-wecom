@@ -65,7 +65,7 @@
                                 <field name="body_html" widget="html" />
                             </page>
                             <page string="Json Content" name="json_content" attrs="{'invisible': ['|',('msgtype','=','mpnews'),('msgtype','=','markdown')]}">
-                                <field name="body_json" widget="wecom_jsoneditor" />
+                                <field name="body_json" widget="ace" />
                             </page>
                             <page string="Markdown Content" name="markdown_content" attrs="{'invisible': [('msgtype','!=','markdown')]}">
                                 <field name="body_markdown" widget="wecom_markdown" />

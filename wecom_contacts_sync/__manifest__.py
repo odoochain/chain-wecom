@@ -14,6 +14,7 @@
 
         """,
     "depends": [
+        "hr",
         "wecom_contacts",
         "hrms_base",
     ],

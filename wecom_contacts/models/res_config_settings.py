@@ -132,7 +132,6 @@ class ResConfigSettings(models.TransientModel):
         """
         获取加入企业二维码
         """
-        # self.contacts_app_id.get_join_qrcode()
         ir_config = self.env["ir.config_parameter"].sudo()
         debug = ir_config.get_param("wecom.debug_enabled")
 
@@ -209,6 +208,59 @@ class ResConfigSettings(models.TransientModel):
     #     ir_config.set_param("wecom.debug_enabled", self.debug_enabled or "False")
 
     # TODO: 使用任务 获取IP
+    def _cron_get_wecom_api_domain_ip(self):
+        """
+        自动任务采集企业微信API域名IP段
+        """
+        global overdue
+        companies = self.env["res.company"].search(
+            [
+                ("is_wecom_organization", "=", True),
+                ("wecom_contacts_join_qrcode_enabled", "=", True),
+            ]
+        )
+        for company in companies:
+            _logger.info(
+                _("Start to get enterprise wechat API domain name IP segment")
+            )
+            # if not company.contacts_app_id:
+            #     _logger.info(
+            #         _("Automatic task:Please bind the contact app of company [%s]!")
+            #         % company.name
+            #     )
+            # else:
+            try:
+                wecomapi = self.env["wecom.service_api"].InitServiceApi(
+                    company.corpid, company.contacts_app_id.secret
+                )
+                ir_config = self.env["ir.config_parameter"].sudo()
+                response = wecomapi.httpCall(
+                    self.env["wecom.service_api_list"].get_server_api_call(
+                        "GET_API_DOMAIN_IP"
+                    ),
+                    {},
+                )
+                overdue = False
+                if response["errcode"] == 0:
+                    ir_config.sudo().set_param("wecom.api_domain_ip", response["ip_list"])
+
+            except ApiException as ex:
+                error = self.env["wecom.service_api_error"].get_error_by_code(
+                    ex.errCode
+                )
+                _logger.warning(
+                    _(
+                        "Automatic task:Error in obtaining the QR code of joining company [%s],error code: %s, "
+                        "error name: %s, error message: %s "
+                    )
+                    % (company.name, str(ex.errCode), error["name"], ex.errMsg)
+                )
+            _logger.info(
+                _(
+                    "Automatic task:End obtaining joining enterprise QR code of company [%s]"
+                )
+                % company.name
+            )
 
     def get_wecom_api_domain_ip(self):
         """

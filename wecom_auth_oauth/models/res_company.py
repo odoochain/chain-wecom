@@ -75,51 +75,51 @@ class Company(models.Model):
                     }
                 )
 
-    def cron_get_join_qrcode(self):
-        """
-        获取加入企业二维码任务
-        """
-        ir_config = self.env["ir.config_parameter"].sudo()
-        debug = ir_config.get_param("wecom.debug_enabled")
-
-        try:
-            if debug:
-                _logger.info(_("Task:Start getting join enterprise QR code"))
-            companies = (
-                self.env["res.company"]
-                .sudo()
-                .search([(("is_wecom_organization", "=", True))])
-            )
-            if len(companies) > 0:
-                for company in companies:
-
-                    wxapi = (
-                        self.env["wecom.service_api"]
-                        .sudo()
-                        .InitServiceApi(company.corpid, company.contacts_app_id.secret)
-                    )
-                    response = wxapi.httpCall(
-                        self.env["wecom.service_api_list"].get_server_api_call(
-                            "GET_JOIN_QRCODE"
-                        ),
-                        {"size_type": company.join_qrcode_size_type,},
-                    )
-
-                    if response["errcode"] == 0:
-                        company.join_qrcode = response["join_qrcode"]
-                        company.join_qrcode_last_time = datetime.datetime.now().strftime(
-                            "%Y-%m-%d %H:%M:%S"
-                        )
-                        if debug:
-                            _logger.info(
-                                _(
-                                    "Task:Complete obtaining the QR code to join the enterprise"
-                                )
-                            )
-        except ApiException as ex:
-            return self.env["wecomapi.tools.action"].ApiExceptionDialog(
-                ex, raise_exception=True
-            )
+    # def cron_get_join_qrcode(self):
+    #     """
+    #     获取加入企业二维码任务
+    #     """
+    #     ir_config = self.env["ir.config_parameter"].sudo()
+    #     debug = ir_config.get_param("wecom.debug_enabled")
+    #
+    #     try:
+    #         if debug:
+    #             _logger.info(_("Task:Start getting join enterprise QR code"))
+    #         companies = (
+    #             self.env["res.company"]
+    #             .sudo()
+    #             .search([(("is_wecom_organization", "=", True))])
+    #         )
+    #         if len(companies) > 0:
+    #             for company in companies:
+    #
+    #                 wxapi = (
+    #                     self.env["wecom.service_api"]
+    #                     .sudo()
+    #                     .InitServiceApi(company.corpid, company.contacts_app_id.secret)
+    #                 )
+    #                 response = wxapi.httpCall(
+    #                     self.env["wecom.service_api_list"].get_server_api_call(
+    #                         "GET_JOIN_QRCODE"
+    #                     ),
+    #                     {"size_type": company.join_qrcode_size_type,},
+    #                 )
+    #
+    #                 if response["errcode"] == 0:
+    #                     company.join_qrcode = response["join_qrcode"]
+    #                     company.join_qrcode_last_time = datetime.datetime.now().strftime(
+    #                         "%Y-%m-%d %H:%M:%S"
+    #                     )
+    #                     if debug:
+    #                         _logger.info(
+    #                             _(
+    #                                 "Task:Complete obtaining the QR code to join the enterprise"
+    #                             )
+    #                         )
+    #     except ApiException as ex:
+    #         return self.env["wecomapi.tools.action"].ApiExceptionDialog(
+    #             ex, raise_exception=True
+    #         )
 
     @api.model
     def get_login_join_qrcode(self):

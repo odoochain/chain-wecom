@@ -43,7 +43,7 @@
                             <field name="body_html" widget="html" options="{'style-inline': true}"/>
                         </page>
                         <page string="Json Body" name="json_body" attrs="{'invisible': ['|',('msgtype','=','mpnews'),('msgtype','=','markdown')]}">
-                            <field name="body_json" widget="wecom_jsoneditor"/>
+                            <field name="body_json" widget="ace"/>
                         </page>
                         <page string="Markdown Body" name="markdown_body" attrs="{'invisible': [('msgtype','!=','markdown')]}">
                             <field name="body_markdown" widget="wecom_markdown"/>
@@ -124,7 +124,7 @@
                 <filter name="sent" string="Sent" domain="[('state','=','sent')]"/>
                 <filter name="exception" string="Failed" domain="[('state','=','exception')]"/>
                 <separator/>
-                <filter name="type_message" string="Message" domain="[('message_type','=','wxwork')]"/>
+                <filter name="type_message" string="Message" domain="[('message_type','=','email')]"/>
                 <filter name="type_comment" string="Comment" domain="[('message_type','=','comment')]"/>
                 <filter name="type_notification" string="Notification" domain="[('message_type','=','notification')]"/>
                 <group expand="0" string="Extended Filters...">
