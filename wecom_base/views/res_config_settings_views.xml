@@ -13,7 +13,7 @@
                         <widget name="res_config_wecom_navigation_menu"/>
                         <h2 id="wecom_global" class="bg-info d-flex justify-content-between">
                             <span class="text-left">
-                                <i class="fa fa-globe fa-lg" aria-label="Wecom Global Settings"/>
+                                <i class="fa fa-globe fa-lg" role="img" aria-label="Wecom Global Settings" title="Wecom Global Settings"/>
                                 Wecom Global Settings
                             </span>
                             <widget name="res_config_wecom_navigation_gobottom"/>
@@ -37,7 +37,7 @@
 
                             <div class="col-xs-12 col-md-6 o_setting_box">
                                 <div class="o_setting_left_pane">
-                                    <i class="fa fa-archive fa-lg" aria-label="WeCom resources"></i>
+                                    <i class="fa fa-archive fa-lg" role="img" aria-label="WeCom resources" title="Wecom resources"></i>
                                 </div>
                                 <div class="o_setting_right_pane">
                                     <label for="resources_path"/>
@@ -59,7 +59,7 @@
 
                             <div class="col-xs-12 col-md-6 o_setting_box">
                                 <div class="o_setting_left_pane">
-                                    <i class="fa fa-link fa-lg" aria-label="WeCom global error code page URL"></i>
+                                    <i class="fa fa-link fa-lg"  role="img" aria-label="WeCom global error code page URL"></i>
                                 </div>
                                 <div class="o_setting_right_pane">
                                     <label for="global_error_code_url"/>
@@ -78,7 +78,7 @@
 
                             <div class="col-xs-12 col-md-6 o_setting_box">
                                 <div class="o_setting_left_pane">
-                                    <i class="fa fa-list-ul fa-lg" aria-label="Global error code troubleshooting method page element node"></i>
+                                    <i class="fa fa-list-ul fa-lg" role="img" aria-label="Global error code troubleshooting method page element node"></i>
                                 </div>
                                 <div class="o_setting_right_pane">
                                     <label for="global_error_code_troubleshooting_method_node"/>
@@ -117,7 +117,7 @@
                         <!-- 公司设置 -->
                         <h2 id="wecom_companies" class="bg-info d-flex justify-content-between">
                             <span class="text-left">
-                                <i class="fa fa-building fa-lg" aria-label="Wecom Companies settings" />
+                                <i class="fa fa-building fa-lg" role="img" aria-label="Wecom Companies settings" />
                                 Wecom Companies settings
                             </span>
                             <widget name='res_config_wecom_navigation_gotop'/>
@@ -146,7 +146,7 @@
                             </div>
                             <div class="col-12 col-lg-6 o_setting_box" id="wecom_corpid_settings_container">
                                 <div class="o_setting_left_pane">
-                                    <i class="fa fa-flag fa-lg" aria-label="Corp Id"></i>
+                                    <i class="fa fa-flag fa-lg" role="img" aria-label="Corp Id"></i>
                                 </div>
                                 <div class="o_setting_right_pane">
                                     <div class="content-group">
@@ -167,7 +167,7 @@
                         <!-- 通讯簿 -->
                         <h2 id="wecom_contact" class="bg-info d-flex justify-content-between" attrs="{'invisible': [('is_wecom_organization','=',False)]}">
                             <span class="text-left">
-                                <i class="fa fa-book fa-lg" aria-label="Wecom Contact Settings"/>
+                                <i class="fa fa-book fa-lg" role="img" aria-label="Wecom Contact Settings"/>
                                     Wecom Contact Settings
                                 <i class="fa fa-lg fa-info-circle fa-lg" title="The values set below are the companies identified as WeCom organizations." />
                             </span>
