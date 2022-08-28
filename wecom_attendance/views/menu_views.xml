@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <data>
-
-        <menuitem name="Wecom Checkin Rules" id="menu_wecom_checkin_rule_list" parent="wecom_base.menu_wecom_attendance" sequence="3" action="action_view_wecom_checkin_rule_list" groups="wecom_base.group_wecom_settings_manager" />
-
-    </data>
-
-</odoo>
