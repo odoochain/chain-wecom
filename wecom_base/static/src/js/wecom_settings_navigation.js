@@ -46,6 +46,7 @@ odoo.define('wecom_base.WeComSettingsNavigationGoTop', function (require) {
     var widget_registry = require('web.widget_registry');
 
     var WeComSettingsNavigationGoTop = Widget.extend({
+        // tagName: 'meter',
         template: 'res_config_wecom_navigation_gotop',
         events: {
             'click': '_gotop',
