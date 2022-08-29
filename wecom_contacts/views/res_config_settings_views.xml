@@ -306,7 +306,7 @@
                             </div>
                             <div class="o_setting_right_pane" id="wecom_msgaudit_settings">
                                 <label string="WeCom Approvals" for="module_wecom_approval"/>
-                                <widget name="wecom_pro_tag"/>
+                                <widget name="erp_pro_tag"/>
                                 <div class="text-muted">
                                     Anytime, anywhere approval, you can customize the approval template, support countersigning, or signing, superior approval, conditional approval, and adapt to various processes.
                                 </div>

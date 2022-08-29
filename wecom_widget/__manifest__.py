@@ -20,9 +20,9 @@
             "wecom_widget/static/src/scss/showpassword.scss",
             "wecom_widget/static/src/scss/wecom_config.scss",
             "wecom_widget/static/src/scss/contacts_display.scss",
-            "wecom_widget/static/src/legacy/scss/wecom_pro_tag.scss",
+            "wecom_widget/static/src/legacy/scss/erp_pro_tag.scss",
             # js
-            "wecom_widget/static/src/legacy/js/fields/wecom_pro_tag.js",
+            "wecom_widget/static/src/legacy/js/fields/erp_pro_tag.js",
             "wecom_widget/static/src/js/wecom_markdown.js",
             "wecom_widget/static/src/js/show_password.js",
             "wecom_widget/static/src/js/wecom_widget_image_url.js",

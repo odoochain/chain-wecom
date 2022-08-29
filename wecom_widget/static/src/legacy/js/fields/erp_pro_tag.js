@@ -1,5 +1,5 @@
 /** 
- * <widget name="wecom_pro_tag"/>，仅用于 class = o_settings_container, 如下使用
+ * <widget name="erp_pro_tag"/>，仅用于 class = o_settings_container, 如下使用
  * 
  *  <div class="col-12 col-lg-6 o_setting_box" id="wecom_web_theme_install">
  *      <div class="o_setting_left_pane">
@@ -7,12 +7,12 @@
  *      </div>
  *      <div class="o_setting_right_pane" id="wecom_web_theme_settings">
  *          <label for="module_wecom_web_theme" string="Wecom Web Theme" />
- *          <widget name="wecom_pro_tag"/>
+ *          <widget name="erp_pro_tag"/>
  *      </div>
  *  </div>
  */
 
-odoo.define('wecom.pro_tag', function (require) {
+odoo.define('wecom.erp_pro_tag', function (require) {
     "use strict";
 
     var AbstractField = require('web.AbstractField');
@@ -28,7 +28,7 @@ odoo.define('wecom.pro_tag', function (require) {
 
 
 
-    var WecomProfessionalSuiteTag = Widget.extend({
+    var ErpProfessionalSuiteTag = Widget.extend({
         template: 'WecomProfessionalTag',
         upgrade_template: 'WecomProfessionalUpgrade',
         events: {
@@ -111,6 +111,6 @@ odoo.define('wecom.pro_tag', function (require) {
         },
     });
 
-    widget_registry.add('wecom_pro_tag', WecomProfessionalSuiteTag);
-    return WecomProfessionalSuiteTag;
+    widget_registry.add('erp_pro_tag', ErpProfessionalSuiteTag);
+    return ErpProfessionalSuiteTag;
 });
