@@ -1,4 +1,4 @@
-odoo.define('wecom_contacts_sync.staffs', function (require) {
+odoo.define('hrms.sync_contacts_staffs', function (require) {
     "use strict";
 
     var session = require('web.session');
@@ -41,31 +41,29 @@ odoo.define('wecom_contacts_sync.staffs', function (require) {
                     model: 'hr.employee',
                     method: 'sync_wecom_user',
                     args: [],
-                }).then(function (results) {
-                    $.each(results, function (index, result) {
-                        if (result["state"]) {
-                            self.displayNotification({
-                                type: 'success',
-                                title: _t("Sync succeeded!"),
-                                message: result["msg"],
-                                sticky: true,
-                                buttons: [{
-                                    text: _t("Refresh"),
-                                    click: () => {
-                                        window.location.reload(true);
-                                    },
-                                    primary: true
-                                }],
-                            });
-                        } else {
-                            self.displayNotification({
-                                type: 'danger',
-                                title: _t("Sync failed!"),
-                                message: result["msg"],
-                                sticky: true,
-                            });
-                        }
-                    });
+                }).then(function (result) {
+                    if (result["state"]) {
+                        self.displayNotification({
+                            type: 'success',
+                            title: _t("Sync succeeded!"),
+                            message: result["msg"],
+                            sticky: true,
+                            buttons: [{
+                                text: _t("Refresh"),
+                                click: () => {
+                                    window.location.reload(true);
+                                },
+                                primary: true
+                            }],
+                        });
+                    } else {
+                        self.displayNotification({
+                            type: 'danger',
+                            title: _t("Sync failed!"),
+                            message: result["msg"],
+                            sticky: true,
+                        });
+                    }
                 })
             });
         }
@@ -154,6 +152,6 @@ odoo.define('wecom_contacts_sync.staffs', function (require) {
     });
 
 
-    viewRegistry.add('hr_employee_tree_sync', HrEmployeeSyncRequestListView);
-    viewRegistry.add('hr_employee_kanban_sync', HrEmployeeSyncRequestKanbanView);
+    viewRegistry.add('hrms_employee_tree_sync', HrEmployeeSyncRequestListView);
+    viewRegistry.add('hrms_employee_kanban_sync', HrEmployeeSyncRequestKanbanView);
 });

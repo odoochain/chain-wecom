@@ -1,42 +1,15 @@
 # -*- coding: utf-8 -*-
 
-
+import time
 import logging
 from lxml import etree
 from odoo import api, fields, models, _, Command, tools
 
 _logger = logging.getLogger(__name__)
 
-WECOM_USER_MAPPING_ODOO_EMPLOYEE = {
-    "UserID": "wecom_userid",  # 成员UserID
-    "Name": "name",  # 成员名称;
-    "Department": "department_ids",  # 成员部门列表，仅返回该应用有查看权限的部门id
-    "MainDepartment": "department_id",  # 主部门
-    "IsLeaderInDept": "",  # 表示所在部门是否为上级，0-否，1-是，顺序与Department字段的部门逐一对应
-    "DirectLeader": "",  # 直属上级
-    "Mobile": "mobile_phone",  # 手机号码
-    "Position": "job_title",  # 职位信息
-    "Gender": "gender",  # 企微性别：0表示未定义，1表示男性，2表示女性；odoo性别：male为男性，female为女性，other为其他
-    "Email": "work_email",  # 邮箱;
-    "Status": "active",  # 激活状态：1=已激活 2=已禁用 4=未激活 已激活代表已激活企业微信或已关注微工作台（原企业号）5=成员退出
-    "Avatar": "avatar",  # 头像url。注：如果要获取小图将url最后的”/0”改成”/100”即可。
-    "Alias": "alias",  # 成员别名
-    "Telephone": "work_phone",  # 座机;
-    "Address": "work_location",  # 地址;
-    "ExtAttr": {
-        "Type": "",  # 扩展属性类型: 0-本文 1-网页
-        "Text": "",  # 文本属性类型，扩展属性类型为0时填写
-        "Value": "",  # 文本属性内容
-        "Web": "",  # 网页类型属性，扩展属性类型为1时填写
-        "Title": "",  # 网页的展示标题
-        "Url": "",  # 网页的url
-    },  # 扩展属性;
-}
-
-
 class HrEmployeePrivate(models.Model):
     _inherit = "hr.employee"
-    _order = "wecom_user_order"
+    # _order = "wecom_user_order"
 
     # ----------------------------------------------------------------------------------
     # 开发人员注意：hr模块中
@@ -58,25 +31,22 @@ class HrEmployeePrivate(models.Model):
         related="company_id.is_wecom_organization", readonly=False
     )
     wecom_user = fields.Many2one('wecom.user',required=True)
-
-    wecom_user_info = fields.Text(string="WeCom user info", readonly=True, default="{}")
     wecom_userid = fields.Char(string="WeCom User Id", related="wecom_user.userid",)
     wecom_openid = fields.Char(string="WeCom Open Userid", related="wecom_user.open_userid",)
-    alias = fields.Char(string="Alias", readonly=True,)
-    english_name = fields.Char(string="English Name", readonly=True,)
+    alias = fields.Char(string="Alias", readonly=True, related="wecom_user.alias")
+    english_name = fields.Char(string="English Name", readonly=True,related="wecom_user.english_name")
 
     department_ids = fields.Many2many(
         "hr.department", string="Multiple departments", readonly=True,
     )
     use_system_avatar = fields.Boolean(readonly=True, default=True)
-    avatar = fields.Char(string="Avatar")
+    avatar = fields.Char(string="Avatar",related="wecom_user.avatar")
 
     qr_code = fields.Char(
         string="Personal QR code",
-        help="Personal QR code, Scan can be added as external contact",
-        readonly=True,
+        readonly=True,related="wecom_user.qr_code"
     )
-    wecom_user_order = fields.Char("WeCom user sort", default="0", readonly=True,)
+    # wecom_user_order = fields.Char("WeCom user sort", default="0", readonly=True,)
     is_wecom_user = fields.Boolean(
         string="WeCom employees", readonly=True, default=False,
     )
@@ -112,7 +82,7 @@ class HrEmployeePrivate(models.Model):
         for employee in self:
             params = {}
             if employee.wecom_openid is False:
-                employee.get_wecom_openid()
+                employee.wecom_user.get_open_userid()
 
             try:
                 res_user_id = self.env["res.users"]._get_or_create_user_by_wecom_userid(
@@ -159,15 +129,63 @@ class HrEmployeePrivate(models.Model):
         """
         同步企微成员
         """
+        start_time = time.time()
+        tasks = {}
         if self.env.context.get('company_id'):
             company = self.env['res.company'].browse(self.env.context['company_id'])
-            print("1",company)
         else:
             company = self.env.company
-            print("2",company)
-        
-        # if not company:
-        #     company = self.env.company
-        
 
-        return {}
+        wecom_users = self.env['wecom.user'].search([('company_id','=',company.id)])
+
+        app_config = self.env["wecom.app_config"].sudo()
+        contacts_use_default_avatar = app_config.get_param(
+            company.contacts_app_id.id,
+            "contacts_use_default_avatar_when_adding_employees",
+        )  # 使用系统微信默认头像的标识
+        contacts_update_avatar = app_config.get_param(
+            company.contacts_app_id.id,
+            "contacts_update_avatar_every_time_sync_employees",
+        )  # 每次同步都更新头像的标识
+        # TODO 待处理 通讯录展示组件 获取企微成员的相关属性
+        try:
+            for wecom_user in wecom_users:
+                # 从企业微信同步员工
+                employee = self.search([('wecom_userid','=',wecom_user.userid)])
+                if not employee:
+                    employee = self.search([('wecom_openid','=',wecom_user.open_userid)])
+
+                if not employee:
+                    employee = self.sudo().create({
+                        'company_id':company.id,
+                        'name':wecom_user.name,
+                        'work_phone':None, # 避免使用公司的电话
+                        'wecom_user':wecom_user.id,
+                        'is_wecom_user':True,
+                        "marital": None,  # 不生成婚姻状况
+                        # "image_1920": self.env["wecomapi.tools.file"].get_avatar_base64(
+                        #     contacts_use_default_avatar,
+                        #     wecom_employee["gender"],
+                        #     wecom_employee["avatar"],
+                        # ),
+                    })
+                else:
+                    employee.sudo().write({
+                        'name':wecom_user.name,
+                    })
+        except Exception as e:
+            end_time = time.time()
+            tasks = {
+                "state": False,
+                "time": end_time - start_time,
+                "msg": str(e),
+            }
+        else:
+            end_time = time.time()
+            tasks = {
+                "state": True,
+                "time": end_time - start_time,
+                "msg": _("Successfully synchronized wecom employees"),
+            }
+        finally:
+            return tasks
