@@ -6,7 +6,7 @@ import logging
 
 _logger = logging.getLogger(__name__)
 
-class WecomApiToolsAction(models.AbstractModel):
+class WecomApiToolsData(models.AbstractModel):
     _name = "wecomapi.tools.data"
     _description = "Wecom API Tools - Data"
 

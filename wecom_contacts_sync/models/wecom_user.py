@@ -68,13 +68,13 @@ class WecomUser(models.Model):
     )  # 对外职务，如果设置了该值，则以此作为对外展示的职务，否则以position来展示。
     status = fields.Integer(
         string="Status", readonly=True, default=""
-    )  # 激活状态: 1=已激活，2=已禁用，4=未激活，5=退出企业。已激活代表已激活企业微信或已关注微信插件（原企业号）。未激活代表既未激活企业微信又未关注微信插件（原企业号）。
+    )  # 激活状态: status 1=已激活，2=已禁用，4=未激活，5=退出企业。已激活代表已激活企业微信或已关注微信插件（原企业号）。未激活代表既未激活企业微信又未关注微信插件（原企业号）。
     qr_code = fields.Char(
         string="Personal QR code", readonly=True, default=""
     )  # 员工个人二维码，扫描可添加为外部联系人
     address = fields.Char(string="Address", readonly=True, default="")  # 地址
     open_userid = fields.Char(
-        string="Open userid", readonly=True, default=""
+        string="Open userid", readonly=True, default=None
     )  # 开放用户Id,全局唯一,对于同一个服务商，不同应用获取到企业内同一个成员的open_userid是相同的，最多64个字节。仅第三方应用可获取
 
     # odoo 字段
@@ -204,6 +204,51 @@ class WecomUser(models.Model):
                 department_ids.append(department_id.id)
         return department_ids
 
+
+    def copy_as_system_user(self):
+        """
+        复制为系统用户
+        """
+        app_config = self.env["wecom.app_config"].sudo()
+        contacts_allow_add_system_users = app_config.get_param(
+            self.company_id.contacts_app_id.id, "contacts_allow_add_system_users"
+        )  # 允许创建用户
+
+        if contacts_allow_add_system_users:
+            # 允许 通讯录 生成系统用户
+            login = tools.ustr(self.userid)
+            domain=[('wecom_userid','=',login),"|",("active", "=", True),("active", "=", False)]
+            user = self.env["res.users"].search(domain, limit=1)
+            if not user:
+                # 不存在系统用户，则创建系统用户
+
+                group_portal_id = self.env["ir.model.data"]._xmlid_to_res_id("base.group_portal")  # 门户用户组
+                user.create({
+                    "name": self.name if self.name else login,
+                    "login": login,
+                    "groups_id": [(6, 0, [group_portal_id])],
+                    "share": False,
+                    "active": True if self.status == 1 else False,
+                    # "image_1920": self.avatar,
+                    "company_id": self.company_id.id,
+                    # 以下为企业微信字段
+                    "wecom_userid": login,
+                    "wecom_openid": self.open_userid,
+                    "is_wecom_user": True,
+                    "qr_code": self.qr_code,
+                    "wecom_user_order": self.order,
+                })
+        else:
+            # 不允许 通讯录 生成系统用户
+            msg = {
+                "title": _("Error!"),
+                "message": _("The current configuration does not allow replication as a system user!"),
+                "sticky": False
+            }
+            return self.env["wecomapi.tools.action"].WecomWarningNotification(msg)
+
+
+
     # ------------------------------------------------------------
     # 企微用户下载
     # ------------------------------------------------------------
@@ -307,7 +352,7 @@ class WecomUser(models.Model):
         """
         user = self.sudo().search(
             [
-                ("userid", "=", wecom_user["userid"]),
+                ("userid", "=", wecom_user["userid"].lower()),
                 ("company_id", "=", company.id),
             ],
             limit=1,

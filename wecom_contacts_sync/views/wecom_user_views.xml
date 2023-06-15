@@ -30,17 +30,19 @@
                 <!-- widget="wecom_contacts_display_component" type="userName" -->
                 <tree string="User" create="false" delete="false" multi_edit="false" import="false" export_xlsx="false" sample="1" js_class="wecom_contacts_display_component_list">
                     <field name="company_id" invisible="1"/>
-                    <field name="id"/>
-                    <!-- widget="wecom_contacts_display_component" -->
-                    <field name="userid" readonly="1"  type="userName" />
+                    <field name="id" invisible="1"/>
+                    <field name="userid" readonly="1" widget="wecom_contacts_display_component"  type="userName" />
+                    <field name="name" />
+                    <field name="open_userid" />
                     <!-- <field name="main_department"/>
                     <field name="department"/>
-                    <field name="name" />
+
                     <field name="gender_name" />
                     <field name="department_complete_name" />
                     <field name="is_leader_in_dept" />
                     <field name="direct_leader"/>
                     <field name="status_name" /> -->
+                    <button string="Get OpenID" class="btn btn-outline-primary" type="object" icon="fa-openid" name="get_open_userid" attrs="{'invisible': [('open_userid', '!=',False)]}"/>
                 </tree>
             </field>
         </record>
@@ -126,6 +128,13 @@
                                     <span class="o_stat_text">user information</span>
                                 </div>
                             </button>
+                            <button class="btn oe_stat_button btn-succes" name="copy_as_system_user" type="object">
+                                <div role="img" class="fa fa-files-o o_button_icon" aria-label="Copy as System User" title="Copy as System User"/>
+                                <div class="o_stat_info">
+                                    <span class="o_stat_value">Copy</span>
+                                    <span class="o_stat_text">As System User</span>
+                                </div>
+                            </button>
                         </div>
                         <field name="active" invisible="1"/>
                         <field name="company_id" invisible="1"/>
@@ -159,13 +168,6 @@
                             </group>
                         </group>
                         <notebook>
-                            <page name="public" string="Work Information">
-                                <group>
-                                    <field name="address"/>
-                                    <field name="direct_leader" options="{'type':'user','show':'simple'}"/>
-                                    <field name="external_position"/>
-                                </group>
-                            </page>
                             <page name="personal_information" string="Private Information">
                                 <group>
                                     <group string="Private Contact">
@@ -181,9 +183,16 @@
                                         <label for="open_userid"/>
                                         <div class="o_row">
                                             <field name="open_userid"/>
-                                            <button string="Get OpenID" class="btn btn-outline-primary" type="object" icon="fa-openid" name="get_open_userid" attrs="{'invisible': [('open_userid', '!=', False)]}"/>
+                                            <button string="Get OpenID" class="btn btn-outline-primary" type="object" icon="fa-openid" name="get_open_userid" attrs="{'invisible': [('open_userid', '!=',False)]}"/>
                                         </div>
                                     </group>
+                                </group>
+                            </page>
+                            <page name="public" string="Work Information">
+                                <group>
+                                    <field name="address"/>
+                                    <field name="direct_leader" options="{'type':'user','show':'simple'}"/>
+                                    <field name="external_position"/>
                                 </group>
                             </page>
                             <page name="external_attributes" string="External attributes">

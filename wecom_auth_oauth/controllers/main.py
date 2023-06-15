@@ -137,7 +137,7 @@ class OAuthController(http.Controller):
                 .get_server_api_call("GET_USER_INFO_BY_CODE"),
                 {"code": code,},
             )
-            print(response)
+
             dbname = state["d"]
             if not http.db_filter([dbname]):
                 return BadRequest()
@@ -231,7 +231,7 @@ class OAuthController(http.Controller):
                 .get_server_api_call("GET_USER_INFO_BY_CODE"),
                 {"code": code,},
             )
-
+            
             state = json.loads(kw["state"].replace("M", '"'))
             dbname = state["d"]
             if not http.db_filter([dbname]):
