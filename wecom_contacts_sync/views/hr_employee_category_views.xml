@@ -61,7 +61,8 @@
             <field name="inherit_id" ref="hr.view_employee_category_list"/>
             <field name="arch" type="xml">
                 <xpath expr="//tree" position="replace">
-                    <tree string="Tags" js_class="hr_category_download">
+                    <!-- js_class="hr_category_download" -->
+                    <tree string="Tags">
                         <field name="company_id" groups="base.group_multi_company"/>
                         <!-- <field name="company_id" readonly="1" groups="base.group_multi_company" options="{ 'no_open': True}"/> -->
                         <field name="name"/>

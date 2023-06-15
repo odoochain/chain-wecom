@@ -48,7 +48,9 @@ class WizardSyncTags(models.TransientModel):
             "res_model": "wizard.wecom.tag",
             "res_id": self.id,
             "view_id": False,
-            "views": [[form_view.id, "form"],],
+            "views": [
+                [form_view.id, "form"],
+            ],
             "type": "ir.actions.act_window",
             "context": {
                 "form_view_ref": "hrms_syncing.dialog_wecom_contacts_sync_tag_result"

@@ -95,9 +95,9 @@
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.view_employee_tree"/>
             <field name="arch" type="xml">
-                <xpath expr="//tree" position="attributes">
+                <!-- <xpath expr="//tree" position="attributes">
                     <attribute name="js_class">hrms_employee_tree_sync</attribute>
-                </xpath>
+                </xpath> -->
                 <xpath expr="//field[@name='name']" position="before">
                     <field name="company_id" invisible="1"/>
                     <field name="is_wecom_organization" invisible="1"/>

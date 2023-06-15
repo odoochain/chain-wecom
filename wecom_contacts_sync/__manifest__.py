@@ -2,22 +2,27 @@
 {
     "name": "WeCom Contacts Synchronized",
     "author": "RStudio",
-    "website": "https://gitee.com/rainbowstudio/wecom",
+    "website": "https://eis-solution.coding.net/public/odoo/oec/git",
     "sequence": 603,
     "installable": True,
-    "application": False,
+    "application": True,
     "auto_install": False,
     "category": "WeCom Suites/CRM",
-    "version": "15.0.0.1",
+    "version": "16.0.0.1",
     "summary": """
-        
+
         """,
     "description": """
 
 
         """,
-    "depends": ["wecom_contacts", "hr",],
-    "external_dependencies": {"python": ["pandas"],},
+    "depends": [
+        "wecom_contacts",
+        "hr",
+    ],
+    "external_dependencies": {
+        "python": ["pandas"],
+    },
     "data": [
         "security/ir.model.access.csv",
         "data/wecom_app_config_data.xml",
@@ -48,9 +53,8 @@
         "web.assets_backend": [
             # SCSSS
             # JS
-            "wecom_contacts_sync/static/src/js/*.js",
+            # "wecom_contacts_sync/static/src/js/*.js",
         ],
-        "web.assets_qweb": ["wecom_contacts_sync/static/src/xml/*.xml",],
     },
-    "license": "LGPL-3",
+    "license": "AGPL-3",
 }

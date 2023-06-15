@@ -25,7 +25,9 @@ class WecomContactsSyncWizard(models.TransientModel):
         默认公司
         """
         company_ids = self.env["res.company"].search(
-            [("is_wecom_organization", "=", True),]
+            [
+                ("is_wecom_organization", "=", True),
+            ]
         )
         return company_ids
 
@@ -36,10 +38,12 @@ class WecomContactsSyncWizard(models.TransientModel):
         company = self.env.user.company_id
         if not company:
             company = self.env.company
-        return company  
+        return company
 
     manage_multiple_companies = fields.Boolean(
-        string="Manage multiple companies", readonly=True, default=_default_right,
+        string="Manage multiple companies",
+        readonly=True,
+        default=_default_right,
     )
     sync_all = fields.Boolean(
         string="Synchronize all companies",
@@ -55,14 +59,13 @@ class WecomContactsSyncWizard(models.TransientModel):
         domain="[('is_wecom_organization', '=', True)]",
         store=True,
         # default=_default_company_id,
-    )    
+    )
 
     @api.depends("manage_multiple_companies")
     def _compute_sync_all(self):
         # 有管理多公司的权限，则默认同步所有公司
         if not self.manage_multiple_companies:
             self.sync_all = False
-
 
     @api.depends("sync_all")
     def _compute_sync_companies(self):
@@ -98,7 +101,9 @@ class WecomContactsSyncWizard(models.TransientModel):
     )
     sync_result = fields.Text("Sync result", readonly=1)
     total_time = fields.Float(
-        string="Total time(seconds)", digits=(16, 3), readonly=True,
+        string="Total time(seconds)",
+        digits=(16, 3),
+        readonly=True,
     )
 
     # 企微部门
@@ -168,7 +173,7 @@ class WecomContactsSyncWizard(models.TransientModel):
 
         if self.sync_all:
             # 同步所有公司
-            
+
             companies = (
                 self.sudo()
                 .env["res.company"]
@@ -251,14 +256,16 @@ class WecomContactsSyncWizard(models.TransientModel):
             "res_model": "wecom.contacts.sync.wizard",
             "res_id": self.id,
             "view_id": False,
-            "views": [[form_view.id, "form"],],
+            "views": [
+                [form_view.id, "form"],
+            ],
             "type": "ir.actions.act_window",
             # 'context': '{}',
             # 'context': self.env.context,
             "context": {
                 # "form_view_ref": "hrms_syncing.dialog_wecom_contacts_sync_result"
             },
-            "target": "new",  # target: 打开新视图的方式，current是在本视图打开， new 是弹出一个窗口打开
+            "target": "new",  # target: 打开新视图的方式， current 是在本视图打开， new 是弹出一个窗口打开
             # 'auto_refresh': 0, #为1时在视图中添加一个刷新功能
             # 'auto_search': False, #加载默认视图后，自动搜索
             # 'multi': False, #视图中有个更多按钮，若multi设为True, 更多按钮显示在tree视图，否则显示在form视图

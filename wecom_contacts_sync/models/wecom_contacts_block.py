@@ -14,7 +14,11 @@ class WxworkContactsBlock(models.Model):
     _description = "Wecom contacts synchronization block list"
 
     name = fields.Char(
-        string="Name", readonly=True, copy=False, compute="_compute_name", store=True,
+        string="Name",
+        readonly=True,
+        copy=False,
+        compute="_compute_name",
+        store=True,
     )  # required=True,readonly=True, store=True
     company_id = fields.Many2one(
         "res.company",

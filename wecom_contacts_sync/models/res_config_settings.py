@@ -11,6 +11,17 @@ _logger = logging.getLogger(__name__)
 class ResConfigSettings(models.TransientModel):
     _inherit = "res.config.settings"
 
+    # 自建应用
+    self_built_app_id = fields.Many2one(
+        related="company_id.self_built_app_id", readonly=False
+    )
+    self_built_app_agentid = fields.Integer(
+        related="self_built_app_id.agentid", readonly=False
+    )
+    self_built_app_secret = fields.Char(
+        related="self_built_app_id.secret", readonly=False
+    )
+
     def generate_service(self):
         """
         生成服务
@@ -38,4 +49,3 @@ class ResConfigSettings(models.TransientModel):
                 else:
                     record.contacts_app_id.with_context(code=code).generate_parameters()
         # super(ResConfigSettings, self).generate_parameters()
-

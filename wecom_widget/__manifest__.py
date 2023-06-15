@@ -6,37 +6,25 @@
     "category": "WeCom Suites/Widget",
     "summary": "WeCom Widget",
     "website": "https://gitee.com/rainbowstudio/wecom",
-    "version": "15.0.0.1",
-    "description": """ 
+    "version": "16.0.0.1",
+    "description": """
 
 """,
-    "depends": ["web",],
+    "depends": [
+        "web",
+    ],
     "data": [],
     "assets": {
+        "web.assets_common": [],
         "web.assets_backend": [
-            # SCSSS
-            "wecom_widget/static/src/scss/jsoneditor.scss",
-            "wecom_widget/static/src/scss/dialog.scss",
-            "wecom_widget/static/src/scss/showpassword.scss",
-            "wecom_widget/static/src/scss/wecom_config.scss",
-            "wecom_widget/static/src/scss/contacts_display.scss",
-            "wecom_widget/static/src/legacy/scss/erp_pro_tag.scss",
-            # js
-            "wecom_widget/static/src/legacy/js/fields/erp_pro_tag.js",
-            "wecom_widget/static/src/js/wecom_markdown.js",
-            "wecom_widget/static/src/js/show_password.js",
-            "wecom_widget/static/src/js/wecom_widget_image_url.js",
-            "wecom_widget/static/src/js/jsoneditor.js",
-            "wecom_widget/static/src/js/dialog.js",
-            "wecom_widget/static/src/js/wecom_config.js",
-            "wecom_widget/static/src/js/wecom_contacts_display.js",
-            "wecom_widget/static/src/js/wecom_contacts_leader.js",
+            "wecom_widget/static/src/webclient/**/*",
+            # "wecom_widget/static/src/views/**/*",
+            "wecom_widget/static/src/components/**/*",
         ],
-        "web.assets_qweb": ["wecom_widget/static/src/xml/*.xml",],
     },
     "sequence": 600,
     "installable": True,
     "auto_install": True,
     "application": False,
-    "license": "LGPL-3",
+    "license": "AGPL-3",
 }

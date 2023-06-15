@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import logging
-import datetime
+import time
+from datetime import datetime, timedelta
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
@@ -15,10 +16,16 @@ class WeComApps(models.Model):
     _order = "sequence"
 
     name = fields.Char(
-        string="Name", copy=False, compute="_compute_name", store=True, index=True,
+        string="Name",
+        copy=False,
+        compute="_compute_name",
+        store=True,
+        index=True,
     )  # 企业应用名称
     app_name = fields.Char(
-        string="Application Name", translate=True, copy=True,
+        string="Application Name",
+        translate=True,
+        copy=True,
     )  # 应用名称
 
     company_id = fields.Many2one(
@@ -39,7 +46,10 @@ class WeComApps(models.Model):
     )
     type_id = fields.Many2one("wecom.app.type", string="Application Types", store=True)
 
-    subtype_ids = fields.Many2many("wecom.app.subtype", string="Application Subtype",)
+    subtype_ids = fields.Many2many(
+        "wecom.app.subtype",
+        string="Application Subtype",
+    )
     type_code = fields.Char(
         string="Application type code",
         store=True,
@@ -138,13 +148,22 @@ class WeComApps(models.Model):
 
     sequence = fields.Integer(default=0, copy=True)
     menu_body = fields.Text(
-        "Application menu data", translate=True, default="{}", copy=False,
+        "Application menu data",
+        translate=True,
+        default="{}",
+        copy=False,
     )
 
     # 访问令牌
     access_token = fields.Char(string="Access Token", readonly=True, copy=False)
-    expiration_time = fields.Datetime(
-        string="Expiration Time", readonly=True, copy=False
+    token_expiration_time = fields.Datetime(
+        string="Token Expiration Time", readonly=True, copy=False
+    )
+
+    # 应用的jsapi_ticket
+    jsapi_ticket = fields.Char(string="JSAPI Ticket", readonly=True, copy=False)
+    jsapi_ticket_expiration_time = fields.Datetime(
+        string="JSAPI Ticket Expiration Time", readonly=True, copy=False
     )
 
     _sql_constraints = [
@@ -261,7 +280,6 @@ class WeComApps(models.Model):
     # ————————————————————————————————————
     # 应用信息
     # ————————————————————————————————————
-
     def get_app_info(self):
         """
         获取企业应用信息
@@ -341,7 +359,7 @@ class WeComApps(models.Model):
                 ex, raise_exception=True
             )
         # finally:
-        #     if self.expiration_time and self.expiration_time > datetime.now():
+        #     if self.token_expiration_time and self.token_expiration_time > datetime.now():
         #         # 令牌未过期，则直接返回 提示信息
         #         msg = {
         #             "title": _("Tips"),
@@ -362,3 +380,66 @@ class WeComApps(models.Model):
                 % (app.name, app.company_id.name)
             )
             app.get_access_token()
+
+    # ————————————————————————————————————
+    # 应用 jsapi_ticket
+    # ————————————————————————————————————
+    def get_app_jsapi_ticket(self):
+        """
+        获取应用的jsapi_ticket
+        """
+        ir_config = self.env["ir.config_parameter"].sudo()
+        debug = ir_config.get_param("wecom.debug_enabled")
+        if debug:
+            _logger.info(
+                _("Start getting app [%s] ticket for company [%s]")
+                % (self.name, self.company_id.name)
+            )
+        try:
+            if (
+                self.jsapi_ticket_expiration_time
+                and self.jsapi_ticket_expiration_time > datetime.now()
+            ):
+                # 未过期，
+                # print("未过期")
+                msg = {
+                    "title": _("Tips"),
+                    "message": _("Ticket is still valid, and no update is required!"),
+                    "sticky": False,
+                }
+                return self.env["wecomapi.tools.action"].WecomInfoNotification(msg)
+            else:
+                # print("过期")
+                wecom_api = self.env["wecom.service_api"].InitServiceApi(
+                    self.company_id.corpid, self.secret
+                )
+                response = wecom_api.httpCall(
+                    self.env["wecom.service_api_list"].get_server_api_call(
+                        "AGENT_GET_TICKET"
+                    ),
+                    {"type": "agent_config"},
+                )
+        except ApiException as ex:
+            return self.env["wecomapi.tools.action"].ApiExceptionDialog(
+                ex, raise_exception=True
+            )
+        else:
+            if response["errcode"] == 0:
+                self.write(
+                    {
+                        "jsapi_ticket": response["ticket"],
+                        "jsapi_ticket_expiration_time": datetime.now()
+                        + timedelta(seconds=response["expires_in"]),
+                    }
+                )
+                msg = {
+                    "title": _("Tips"),
+                    "message": _("Successfully obtained application ticket!"),
+                    "sticky": False,
+                    "next": {
+                        "type": "ir.actions.client",
+                        "tag": "reload",
+                    },
+                }
+        finally:
+            return self.env["wecomapi.tools.action"].WecomSuccessNotification(msg)

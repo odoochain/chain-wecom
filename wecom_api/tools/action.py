@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, models, tools, _
-
+from odoo import models, _
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -12,7 +11,9 @@ class WecomApiToolsAction(models.AbstractModel):
     _description = "Wecom API Tools - Action"
 
     def ApiExceptionDialog(
-        self, ex, raise_exception=False,
+        self,
+        ex,
+        raise_exception=False,
     ):
         """
         API 错误弹框
@@ -30,28 +31,26 @@ class WecomApiToolsAction(models.AbstractModel):
             params = {
                 "title": _("Failed"),
                 "message": _(
-                    """<div class="bg-warning">
-                            Error code: %s</br>
-                            Error description: %s</br>
-                            Error troubleshooting method: %s</br>
-                            Error Details:</br>%s
-                        </div>"""
+                    "Error code: %s,Error description: %s,Error troubleshooting method: %s,Error Details:%s"
                 )
                 % (
                     str(ex.errCode),
                     str(error["name"]),
-                    str(error["method"]),
+                    error["method"],
                     ex.errMsg,
                 ),
-                "size": "medium",
+                "size": "md",  # medium
             }
             action = {
                 "type": "ir.actions.client",
-                "tag": "wecom_api_dialog",
+                "tag": "wecom_api_error_dialogs",
                 "params": {
                     "title": params["title"],
                     "size": params["size"],
-                    "$content": params["message"],
+                    "code": str(ex.errCode),
+                    "description": str(error["name"]),
+                    "method": str(error["method"]),
+                    "details": ex.errMsg,
                 },
             }
             return action

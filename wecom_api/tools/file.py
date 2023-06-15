@@ -25,6 +25,7 @@ class WecomApiToolsFile(models.AbstractModel):
             filepath = path.replace("\\", "/") + subpath + "/"
         else:
             filepath = path + subpath + "/"
+        # print(filepath)
         if not os.path.exists(filepath):
             os.makedirs(filepath)
         return filepath

@@ -96,7 +96,7 @@ class User(models.Model):
                 "share": False,
                 "active": object.active,
                 "image_1920": object.image_1920,
-                "password": self.env["wecom.tools"].random_passwd(8),
+                "password": self.env["wecomapi.tools.security"].random_passwd(8),
                 "company_ids": [(6, 0, [object.company_id.id])],
                 "company_id": object.company_id.id,
                 "employee_ids": [(6, 0, [object.id])],
@@ -240,7 +240,11 @@ class User(models.Model):
                 blocks = (
                     self.env["wecom.contacts.block"]
                     .sudo()
-                    .search([("company_id", "=", company.id),])
+                    .search(
+                        [
+                            ("company_id", "=", company.id),
+                        ]
+                    )
                 )
                 block_list = []
 
@@ -336,7 +340,15 @@ class User(models.Model):
 
         try:
             groups_id = (
-                self.sudo().env["res.groups"].search([("id", "=", 9),], limit=1,).id
+                self.sudo()
+                .env["res.groups"]
+                .search(
+                    [
+                        ("id", "=", 9),
+                    ],
+                    limit=1,
+                )
+                .id
             )  # id=1是内部用户, id=9是门户用户
             user.create(
                 {
@@ -345,13 +357,15 @@ class User(models.Model):
                     "company_id": user.company_id.id,
                     "name": wecom_user["name"],
                     "login": wecom_user["userid"].lower(),  # 登陆账号 使用 企业微信用户id的小写
-                    "password": self.env["wecom.tools"].random_passwd(8),
+                    "password": self.env["wecomapi.tools.security"].random_passwd(8),
                     "email": wecom_user["email"],
                     "work_phone": wecom_user["telephone"],
                     "mobile_phone": wecom_user["mobile"],
                     "employee_phone": wecom_user["mobile"],
                     "work_email": wecom_user["email"],
-                    "gender": self.env["wecom.tools"].sex2gender(wecom_user["gender"]),
+                    "gender": self.env["wecomapi.tools.convert"].sex2gender(
+                        wecom_user["gender"]
+                    ),
                     "wecom_userid": wecom_user["userid"].lower(),
                     "image_1920": self.env["wecomapi.tools.file"].get_avatar_base64(
                         contacts_use_default_avatar,
@@ -407,7 +421,9 @@ class User(models.Model):
                     "mobile_phone": wecom_user["mobile"],
                     "employee_phone": wecom_user["mobile"],
                     "work_email": wecom_user["email"],
-                    "gender": self.env["wecom.tools"].sex2gender(wecom_user["gender"]),
+                    "gender": self.env["wecomapi.tools.convert"].sex2gender(
+                        wecom_user["gender"]
+                    ),
                     "wecom_userid": wecom_user["userid"].lower(),
                     # "image_1920": self.env["wecomapi.tools.file"].get_avatar_base64(
                     #     contacts_use_default_avatar,
@@ -453,7 +469,8 @@ class User(models.Model):
         ]
         user = self.sudo().search([("company_id", "=", company_id.id)] + domain)
         callback_user = user.search(
-            [("wecom_userid", "=", dic["UserID"].lower())] + domain, limit=1,
+            [("wecom_userid", "=", dic["UserID"].lower())] + domain,
+            limit=1,
         )
         # print("用户CMD", cmd)
         if callback_user:
@@ -464,7 +481,8 @@ class User(models.Model):
             # 如果不存在且不允许添加系统用户，停止
             app_config = self.env["wecom.app_config"].sudo()
             allow_add_system_users = app_config.get_param(
-                company_id.contacts_app_id.id, "contacts_allow_add_system_users",
+                company_id.contacts_app_id.id,
+                "contacts_allow_add_system_users",
             )  # 使用系统微信默认头像的标识
             if allow_add_system_users is False:
                 return
@@ -496,7 +514,9 @@ class User(models.Model):
                             else:
                                 update_dict.update({"active": False})
                         elif WECOM_USER_MAPPING_ODOO_USER[key] == "gender":
-                            gender = self.env["wecom.tools"].sex2gender(value)
+                            gender = self.env["wecomapi.tools.convert"].sex2gender(
+                                value
+                            )
                             update_dict.update({"gender": gender})
                         else:
                             update_dict[WECOM_USER_MAPPING_ODOO_USER[key]] = value
@@ -510,7 +530,9 @@ class User(models.Model):
 
         if cmd == "create":
             update_dict.update(
-                {"is_wecom_user": True,}
+                {
+                    "is_wecom_user": True,
+                }
             )
             try:
                 wecomapi = self.env["wecom.service_api"].InitServiceApi(
@@ -532,7 +554,9 @@ class User(models.Model):
             callback_user.write(update_dict)
         elif cmd == "delete":
             callback_user.write(
-                {"active": False,}
+                {
+                    "active": False,
+                }
             )
 
 
@@ -553,7 +577,11 @@ class ChangeTypeWizard(models.TransientModel):
             (
                 0,
                 0,
-                {"user_id": user.id, "user_login": user.login, "user_name": user.name,},
+                {
+                    "user_id": user.id,
+                    "user_login": user.login,
+                    "user_name": user.name,
+                },
             )
             for user in self.env["res.users"].browse(user_ids)
         ]
@@ -581,11 +609,18 @@ class ChangeTypeUser(models.TransientModel):
     user_id = fields.Many2one(
         "res.users", string="User", required=True, ondelete="cascade"
     )
-    user_login = fields.Char(string="Login account", readonly=True,)
+    user_login = fields.Char(
+        string="Login account",
+        readonly=True,
+    )
     user_name = fields.Char(string="Login name", readonly=True)
     # 用户类型参见res_group
     new_type = fields.Selection(
-        [("1", _("Internal User")), ("9", _("Portal User")), ("10", _("Public User")),],
+        [
+            ("1", _("Internal User")),
+            ("9", _("Portal User")),
+            ("10", _("Public User")),
+        ],
         string="User Type",
         default="1",
     )

@@ -19,20 +19,27 @@
             </field>
         </record>
 
+
         <record id="view_wecom_user_tree" model="ir.ui.view">
             <field name="name">wecom.user.tree</field>
             <field name="model">wecom.user</field>
             <field name="arch" type="xml">
-                <tree string="User" create="false" delete="false" multi_edit="false" import="false" export_xlsx="false" sample="1" js_class="wecom_user_tree_sync">
+                <!-- widget="wecom_contacts_display_component" -->
+                <!-- is_wecom_contacts_display_component="true" type="userName" js_class="wecom_contacts_display_component_list"-->
+                <!-- is_wecom_contacts_display_component="true" type="departmentName" component_type="userName" options="{'type': 'userName'}"-->
+                <!-- widget="wecom_contacts_display_component" type="userName" -->
+                <tree string="User" create="false" delete="false" multi_edit="false" import="false" export_xlsx="false" sample="1" js_class="wecom_contacts_display_component_list">
                     <field name="company_id" invisible="1"/>
-                    <field name="userid" />
+                    <field name="id"/>
+                    <field name="userid" readonly="1" widget="wecom_contacts_display_component" type="userName" />
+                    <!-- <field name="main_department"/>
                     <field name="department"/>
                     <field name="name" />
                     <field name="gender_name" />
                     <field name="department_complete_name" />
-                    <field name="is_leader_in_dept" widget="wecom_contacts_leader"/>
-                    <field name="direct_leader" widget="wecom_contact_display" options="{'type':'user','show':'simple'}"/>
-                    <field name="status_name" />
+                    <field name="is_leader_in_dept" />
+                    <field name="direct_leader"/>
+                    <field name="status_name" /> -->
                 </tree>
             </field>
         </record>
@@ -41,7 +48,8 @@
             <field name="name">wecom.user.kanban</field>
             <field name="model">wecom.user</field>
             <field name="arch" type="xml">
-                <kanban string="User" create="false" delete="false" multi_edit="false" import="false" sample="1" js_class="wecom_user_kanban_sync">
+                <!-- js_class="wecom_user_kanban_sync" -->
+                <kanban string="User" create="false" delete="false" multi_edit="false" import="false" sample="1">
                     <field name="name" />
                     <field name="gender" />
                     <field name="userid" />
@@ -141,7 +149,7 @@
                             </group>
                             <group>
                                 <group>
-                                    <field name="is_leader_in_dept" widget="wecom_contacts_leader"/>
+                                    <field name="is_leader_in_dept" />
                                     <field name="department" invisible="1"/>
                                     <field name="department_id" options="{'no_open': True, 'no_create': True}"/>
                                     <field name="department_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
@@ -152,7 +160,7 @@
                             <page name="public" string="Work Information">
                                 <group>
                                     <field name="address"/>
-                                    <field name="direct_leader" widget="wecom_contact_display" options="{'type':'user','show':'simple'}"/>
+                                    <field name="direct_leader" options="{'type':'user','show':'simple'}"/>
                                     <field name="external_position"/>
                                 </group>
                             </page>

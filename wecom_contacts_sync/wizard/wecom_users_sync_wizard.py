@@ -27,12 +27,16 @@ class WecomUsersSyncWizard(models.TransientModel):
         默认公司
         """
         company_ids = self.env["res.company"].search(
-            [("is_wecom_organization", "=", True),]
+            [
+                ("is_wecom_organization", "=", True),
+            ]
         )
         return company_ids
 
     sync_all = fields.Boolean(
-        string="Select all companies", default=True, required=True,
+        string="Select all companies",
+        default=True,
+        required=True,
     )
     companies = fields.Char(
         string="Selected company", compute="_compute_sync_companies"
@@ -81,7 +85,9 @@ class WecomUsersSyncWizard(models.TransientModel):
     )
     error_info = fields.Text("Error info", readonly=1)
     total_time = fields.Float(
-        string="Total time(seconds)", digits=(16, 3), readonly=True,
+        string="Total time(seconds)",
+        digits=(16, 3),
+        readonly=True,
     )
 
     def wizard_generate_users(self):
@@ -144,7 +150,9 @@ class WecomUsersSyncWizard(models.TransientModel):
             "res_model": "wecom.users.sync.wizard",
             "res_id": self.id,
             "view_id": False,
-            "views": [[form_view.id, "form"],],
+            "views": [
+                [form_view.id, "form"],
+            ],
             "type": "ir.actions.act_window",
             # 'context': '{}',
             # 'context': self.env.context,
@@ -179,7 +187,10 @@ class WecomUsersSyncWizard(models.TransientModel):
 
         # 查询员工
         employees = self.env["hr.employee"].search(
-            [("company_id", "=", company.id), ("is_wecom_user", "=", True),]
+            [
+                ("company_id", "=", company.id),
+                ("is_wecom_user", "=", True),
+            ]
         )
         # 创建用户
         results = []

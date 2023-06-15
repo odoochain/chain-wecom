@@ -25,7 +25,11 @@ class WecomTag(models.Model):
     )
 
     name = fields.Char(string="Name", readonly=True, compute="_compute_name")  # 标签名称
-    tagid = fields.Integer(string="Tag ID", readonly=True, default="0",)  # 标签id
+    tagid = fields.Integer(
+        string="Tag ID",
+        readonly=True,
+        default="0",
+    )  # 标签id
     tagname = fields.Char(string="Tag name", readonly=True, default="")  # 标签名称
     userlist = fields.Text(
         string="User list", readonly=True, default="[]"
@@ -118,7 +122,10 @@ class WecomTag(models.Model):
         下载标签
         """
         tag = self.sudo().search(
-            [("tagid", "=", wecom_tag["tagid"]), ("company_id", "=", company.id),],
+            [
+                ("tagid", "=", wecom_tag["tagid"]),
+                ("company_id", "=", company.id),
+            ],
             limit=1,
         )
         result = {}
@@ -136,12 +143,12 @@ class WecomTag(models.Model):
             response["userlist"] = [user["userid"] for user in response["userlist"]]
             wecom_tag.update(
                 {
-                    "userlist": self.env["wecom.tools"].check_dictionary_keywords(
-                        response, "userlist"
-                    ),
-                    "partylist": self.env["wecom.tools"].check_dictionary_keywords(
-                        response, "partylist"
-                    ),
+                    "userlist": self.env[
+                        "wecomapi.tools.dictionary"
+                    ].check_dictionary_keywords(response, "userlist"),
+                    "partylist": self.env[
+                        "wecomapi.tools.dictionary"
+                    ].check_dictionary_keywords(response, "partylist"),
                 }
             )
 
@@ -261,7 +268,7 @@ class WecomTag(models.Model):
             self.write(
                 {
                     "tagname": response["tagname"],
-                    "userlist":response["userlist"],
+                    "userlist": response["userlist"],
                     "partylist": response["partylist"],
                 }
             )
@@ -304,7 +311,10 @@ class WecomTag(models.Model):
                 "sticky": False,  # 延时关闭
                 "className": "bg-success",
                 "type": "success",
-                "next": {"type": "ir.actions.client", "tag": "reload",},  # 刷新窗体
+                "next": {
+                    "type": "ir.actions.client",
+                    "tag": "reload",
+                },  # 刷新窗体
             }
         finally:
             action = {
@@ -324,108 +334,107 @@ class WecomTag(models.Model):
         xml_tree = self.env.context.get("xml_tree")
         company_id = self.env.context.get("company_id")
         tag_dict = xmltodict.parse(xml_tree)["xml"]
- 
+
         tags = self.sudo().search([("company_id", "=", company_id.id)])
         callback_tag = tags.search(
-            [("tagid", "=", tag_dict["TagId"])] , limit=1,
+            [("tagid", "=", tag_dict["TagId"])],
+            limit=1,
         )
 
         update_dict = {}
 
         for key, value in tag_dict.items():
             if key.lower() in self._fields.keys():
-                update_dict.update({
-                    key.lower(): value
-                })
+                update_dict.update({key.lower(): value})
             else:
-                if key=="AddUserItems":
+                if key == "AddUserItems":
                     # 标签中新增的成员userid列表，用逗号分隔
-                    update_dict.update({
-                        "add_users": value
-                    })
-                if key=="DelUserItems":
+                    update_dict.update({"add_users": value})
+                if key == "DelUserItems":
                     # 标签中删除的成员userid列表，用逗号分隔
-                    update_dict.update({
-                        "del_users": value
-                    })
-                if key=="AddPartyItems":
+                    update_dict.update({"del_users": value})
+                if key == "AddPartyItems":
                     # 标签中新增的部门id列表，用逗号分隔
-                    update_dict.update({
-                        "add_departments": value
-                    })
-                if key=="DelPartyItems":
+                    update_dict.update({"add_departments": value})
+                if key == "DelPartyItems":
                     # 标签中删除的部门id列表，用逗号分隔
-                    update_dict.update({
-                        "del_departments": value
-                    })
-        
+                    update_dict.update({"del_departments": value})
 
         if callback_tag:
             userlist = json.loads(callback_tag.userlist)
             partylist = json.loads(callback_tag.partylist)
 
-
             if "add_users" in update_dict:
                 # 需要增加的成员
                 userids = update_dict["add_users"].split(",")
-                add_users_set = self.env["wecomapi.tools.data"].difference_data_set(set(userids),set(userlist))
+                add_users_set = self.env["wecomapi.tools.data"].difference_data_set(
+                    set(userids), set(userlist)
+                )
                 add_users = list(add_users_set)
 
                 for userid in add_users:
                     userlist.append(userid)
 
                 del update_dict["add_users"]
-            
+
             if "del_users" in update_dict:
                 # 需要删除的成员
                 userids = update_dict["del_users"].split(",")
-                del_users_set = self.env["wecomapi.tools.data"].intersection_data_set(set(userlist),set(userids))
+                del_users_set = self.env["wecomapi.tools.data"].intersection_data_set(
+                    set(userlist), set(userids)
+                )
                 del_users = list(del_users_set)
 
                 for user in del_users:
                     if user in userlist:
                         userlist.remove(user)
 
-                del update_dict["del_users"]    
-  
+                del update_dict["del_users"]
+
             if "add_departments" in update_dict:
                 # 需要增加的部门
                 department_ids = update_dict["add_departments"].split(",")
-                add_departments_set = self.env["wecomapi.tools.data"].difference_data_set(set(department_ids),set(partylist))
+                add_departments_set = self.env[
+                    "wecomapi.tools.data"
+                ].difference_data_set(set(department_ids), set(partylist))
                 add_departments = list(add_departments_set)
                 for department_id in add_departments:
                     partylist.append(department_id)
-                
-                del update_dict["add_departments"]   
+
+                del update_dict["add_departments"]
 
             if "del_departments" in update_dict:
                 # 需要删除的部门
                 department_ids = update_dict["del_departments"].split(",")
-                del_departments_set = self.env["wecomapi.tools.data"].intersection_data_set(set(department_ids),set(partylist))
+                del_departments_set = self.env[
+                    "wecomapi.tools.data"
+                ].intersection_data_set(set(department_ids), set(partylist))
                 del_departments = list(del_departments_set)
 
                 for department in del_departments:
                     if department in partylist:
                         partylist.remove(department)
-                
-                del update_dict["del_departments"]  
 
-            update_dict.update({
-                "userlist": json.dumps(
-                    userlist,
-                    sort_keys=False,
-                    indent=2,
-                    separators=(",", ":"),
-                    ensure_ascii=False,
-                ),
-                "partylist": json.dumps(
-                    partylist,
-                    sort_keys=False,
-                    indent=2,
-                    separators=(",", ":"),
-                    ensure_ascii=False,
-                ),
-            })
+                del update_dict["del_departments"]
+
+            update_dict.update(
+                {
+                    "userlist": json.dumps(
+                        userlist,
+                        sort_keys=False,
+                        indent=2,
+                        separators=(",", ":"),
+                        ensure_ascii=False,
+                    ),
+                    "partylist": json.dumps(
+                        partylist,
+                        sort_keys=False,
+                        indent=2,
+                        separators=(",", ":"),
+                        ensure_ascii=False,
+                    ),
+                }
+            )
 
             del update_dict["tagid"]
             callback_tag.write(update_dict)

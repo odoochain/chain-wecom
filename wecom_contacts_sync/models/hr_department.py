@@ -7,8 +7,6 @@ import time
 from lxml import etree
 from odoo import api, fields, models, _
 
-# from lxml_to_dict import lxml_to_dict
-# from xmltodict import lxml_to_dict
 import xmltodict
 from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
 
@@ -35,17 +33,24 @@ class Department(models.Model):
     )
 
     wecom_department_id = fields.Integer(
-        string="WeCom department ID", readonly=True, default="0",
+        string="WeCom department ID",
+        readonly=True,
+        default="0",
     )
 
     wecom_department_parent_id = fields.Integer(
-        "WeCom parent department ID", readonly=True,
+        "WeCom parent department ID",
+        readonly=True,
     )
     wecom_department_order = fields.Char(
-        "WeCom department sort", default="1", readonly=True,
+        "WeCom department sort",
+        default="1",
+        readonly=True,
     )
     is_wecom_department = fields.Boolean(
-        string="WeCom Department", readonly=True, default=False,
+        string="WeCom Department",
+        readonly=True,
+        default=False,
     )
 
     # ------------------------------------------------------------
@@ -64,10 +69,12 @@ class Department(models.Model):
         tasks = []
 
         app_config = self.env["wecom.app_config"].sudo()
-        contacts_sync_hr_department_id = int(app_config.get_param(
-            company.contacts_app_id.id, "contacts_sync_hr_department_id"
-        ))  # 需要同步的企业微信部门ID
-        print(contacts_sync_hr_department_id,type(contacts_sync_hr_department_id))
+        contacts_sync_hr_department_id = int(
+            app_config.get_param(
+                company.contacts_app_id.id, "contacts_sync_hr_department_id"
+            )
+        )  # 需要同步的企业微信部门ID
+        print(contacts_sync_hr_department_id, type(contacts_sync_hr_department_id))
         return tasks
 
     def department_data_cleaning(self, departments):
@@ -188,7 +195,9 @@ class Department(models.Model):
                 else:
                     try:
                         department.write(
-                            {"parent_id": parent_department.id,}
+                            {
+                                "parent_id": parent_department.id,
+                            }
                         )
                     except Exception as e:
                         result = _(
@@ -242,7 +251,8 @@ class Department(models.Model):
             .search([("company_id", "=", company_id.id)] + domain)
         )
         callback_department = department.search(
-            [("wecom_department_id", "=", dic["Id"])] + domain, limit=1,
+            [("wecom_department_id", "=", dic["Id"])] + domain,
+            limit=1,
         )
 
         update_dict = {}
@@ -252,7 +262,8 @@ class Department(models.Model):
                 pass
             else:
                 parent_department = department.search(
-                    [("wecom_department_id", "=", int(dic["ParentId"]))], limit=1,
+                    [("wecom_department_id", "=", int(dic["ParentId"]))],
+                    limit=1,
                 )
         for key, value in dic.items():
             if (

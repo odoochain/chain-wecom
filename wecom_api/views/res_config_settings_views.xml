@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="content-group">
                                     <div class="mt8">
-                                        <field name="contacts_secret" widget="wecom_password" />
+                                        <field name="contacts_secret" widget="DisplayPasswordChar" require_encryption="True" />
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                                 <div class="row">
                                     <div class="content-group">
                                         <div class="mt4">
-                                            <field name="contacts_app_config_ids" widget="wecom_config" help="description" class="w-100 pl-3">
+                                            <field name="contacts_app_config_ids" widget="one2many_config" help="description" class="w-100 pl-3" t-translation="off">
                                                 <tree create="0" edit="true" delete="0" editable="bottom" help="description">
                                                     <field name="name" readonly="1"/>
                                                     <field name="key" readonly="1"/>
@@ -113,7 +113,7 @@
                                 <div class="row">
                                     <div class="content-group">
                                         <div class="mt4">
-                                            <field name="contacts_app_callback_service_ids" widget="wecom_config" help="description" class="w-100 pl-3">
+                                            <field name="contacts_app_callback_service_ids" widget="one2many_config" help="description" class="w-100 pl-3">
                                                 <tree create="0" edit="true" delete="0" editable="bottom" help="description">
                                                     <field name="name" readonly="1"/>
                                                     <field name="callback_url" readonly="1" widget="CopyClipboardChar"/>
@@ -178,7 +178,7 @@
                             </div>
                             <div class="o_setting_right_pane" id="wecom_auth_oauth_settings">
                                 <label for="module_wecom_auth_oauth"/>
-                                <div class="text-muted">                                    
+                                <div class="text-muted">
                                     Enterprise wechat provides OAuth's authorized login mode, which allows you to obtain the identity information of members from the web page opened by the enterprise wechat terminal, thus eliminating the login link.
                                     <br/>
                                     Enterprise wechat provides OAuth code scanning login authorization method, which can guide members to use enterprise wechat code scanning login authorization when the enterprise website is opened in the browser, so as to obtain the identity information of members and avoid the login link.

@@ -5,7 +5,8 @@
             <field name="name">wecom.department.tree</field>
             <field name="model">wecom.department</field>
             <field name="arch" type="xml">
-                <tree string="Department" create="false" delete="false" multi_edit="false" import="false" export_xlsx="false" sample="1" js_class="wecom_department_tree_sync">
+                <!-- js_class="wecom_department_tree_sync" -->
+                <tree string="Department" create="false" delete="false" multi_edit="false" import="false" export_xlsx="false" sample="1">
                     <field name="company_id" groups="base.group_multi_company"/>
                     <field name="department_id" widget="integer" options="{'format': false}"/>
                     <field name="parentid" widget="integer" options="{'format': false}"/>
@@ -13,7 +14,7 @@
                     <field name="name_en" />
                     <field name="parent_id" />
                     <field name="complete_name" />
-                    <field name="department_leader" widget="wecom_contact_display" options="{'type':'user','show':'simple'}"/>
+                    <field name="department_leader" options="{'type':'user','show':'simple'}"/>
                 </tree>
             </field>
         </record>
@@ -40,7 +41,7 @@
                             <field name="name_en"/>
                             <field name="parent_id" options="{'no_open': True, 'no_create': True}"/>
                             <field name="complete_name"/>
-                            <field name="department_leader" widget="wecom_contact_display" options="{'type':'user','show':'simple'}"/>
+                            <field name="department_leader" options="{'type':'user','show':'simple'}"/>
                             <field name="company_id" options="{'no_open': True, 'no_create': True}" groups="base.group_multi_company"/>
                             <field name="user_ids" widget="many2many_tags"/>
                         </group>

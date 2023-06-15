@@ -27,9 +27,9 @@
             <field name="field_parent">child_ids</field>
             <field name="inherit_id" ref="hr.view_department_tree"/>
             <field name="arch" type="xml">
-                <xpath expr="//tree" position="attributes">
+                <!-- <xpath expr="//tree" position="attributes">
                     <attribute name="js_class">hrms_department_tree_sync</attribute>
-                </xpath>
+                </xpath> -->
                 <xpath expr="//field[@name='company_id']" position="replace"/>
                 <xpath expr="//field[@name='display_name']" position="before">
                     <field name="company_id" groups="base.group_multi_company"/>
@@ -42,7 +42,7 @@
             </field>
         </record>
 
-        <record id="view_hrms_department_kanban" model="ir.ui.view">
+        <!-- <record id="view_hrms_department_kanban" model="ir.ui.view">
             <field name="name">hrms.department.kanban</field>
             <field name="model">hr.department</field>
             <field name="inherit_id" ref="hr.hr_department_view_kanban"/>
@@ -51,7 +51,7 @@
                     <attribute name="js_class">hrms_department_kanban_sync</attribute>
                 </xpath>
             </field>
-        </record>
+        </record> -->
 
     </data>
 </odoo>

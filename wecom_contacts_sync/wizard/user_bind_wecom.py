@@ -15,9 +15,16 @@ class UserBindWecom(models.TransientModel):
     _description = "Users bind enterprise wechat members"
 
     name = fields.Char(
-        string="Name", required=True, compute="_compute_user", store=True,
+        string="Name",
+        required=True,
+        compute="_compute_user",
+        store=True,
     )
-    avatar = fields.Char(string="Avatar", compute="_compute_user", store=True,)
+    avatar = fields.Char(
+        string="Avatar",
+        compute="_compute_user",
+        store=True,
+    )
     wecom_userid = fields.Char(string="Enterprise wechat user Id", required=True)
     user_id = fields.Many2one(
         "res.users", string="Related User", required=True, readonly=True
@@ -89,4 +96,3 @@ class UserBindWecom(models.TransientModel):
                     "qr_code": RESPONSE["qr_code"],
                 }
             )
-

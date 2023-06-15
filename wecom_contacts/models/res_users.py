@@ -15,13 +15,16 @@ class User(models.Model):
         for user in self:
             try:
                 wxapi = self.env["wecom.service_api"].InitServiceApi(
-                    user.company_id.corpid, user.company_id.contacts_app_id.secret,
+                    user.company_id.corpid,
+                    user.company_id.contacts_app_id.secret,
                 )
                 response = wxapi.httpCall(
                     self.env["wecom.service_api_list"].get_server_api_call(
                         "USERID_TO_OPENID"
                     ),
-                    {"userid": user.wecom_userid,},
+                    {
+                        "userid": user.wecom_userid,
+                    },
                 )
             except ApiException as ex:
                 self.env["wecomapi.tools.action"].ApiExceptionDialog(
@@ -29,4 +32,3 @@ class User(models.Model):
                 )
             else:
                 user.wecom_openid = response["openid"]
-

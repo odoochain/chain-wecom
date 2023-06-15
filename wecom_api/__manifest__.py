@@ -8,9 +8,9 @@
     "application": False,
     "auto_install": False,
     "category": "WeCom Suites/Settings",
-    "version": "15.0.0.1",
+    "version": "16.0.0.1",
     "summary": """
-WeCom Service-side API and Client-side API              
+WeCom Service-side API and Client-side API
         """,
     "description": """
  WeCom Service-side API and Client-side API
@@ -27,7 +27,7 @@ WeCom Service-side API and Client-side API
     "assets": {
         "web.assets_common": [
             # JS
-            "wecom_api/static/src/js/*.js",
+            # "wecom_api/static/src/js/*.js",
         ],
         "web.assets_backend": [
             # JS
@@ -37,13 +37,11 @@ WeCom Service-side API and Client-side API
         "python": [
             "requests_toolbelt",
             "pandas",
-            # "pypandoc==1.7.0",
-            # "lxml_to_dict",
             "xmltodict",
             "pycryptodome",
             "html2text",
         ],
     },
-    "license": "LGPL-3",
+    "license": "AGPL-3",
     # "post_init_hook": "post_init_hook",
 }

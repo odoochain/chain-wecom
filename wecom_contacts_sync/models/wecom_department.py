@@ -21,7 +21,12 @@ class WecomDepartment(models.Model):
     department_id = fields.Integer(
         string="Department ID", readonly=True, default=0
     )  # 部门id
-    name = fields.Char(string="Name", readonly=True, default="",compute="_compute_name",)  # 部门名称
+    name = fields.Char(
+        string="Name",
+        readonly=True,
+        default="",
+        compute="_compute_name",
+    )  # 部门名称
     name_en = fields.Char(string="English name", readonly=True, default="")  # 英部门文名称
     department_leader = fields.Char(
         string="Department Leader", readonly=True, default="[]"
@@ -30,7 +35,7 @@ class WecomDepartment(models.Model):
         string="Parent department id",
         readonly=True,
         default=0,
-        domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]"
+        domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
     )  # 父部门id。根部门为1
     order = fields.Integer(
         string="Sequence",
@@ -77,24 +82,28 @@ class WecomDepartment(models.Model):
     )
     color = fields.Integer("Color Index")
 
-    @api.depends("department_id","company_id")
+    @api.depends("department_id", "company_id")
     def _compute_name(self):
         for department in self:
             if not department.name:
-                department.name = "%s:%s" % (department.company_id.name, department.department_id)
+                department.name = "%s:%s" % (
+                    department.company_id.name,
+                    department.department_id,
+                )
 
-    @api.depends("parentid","company_id")
+    @api.depends("parentid", "company_id")
     def _compute_parent_id(self):
         for department in self:
             if department.parentid:
                 parent_department = self.sudo().search(
                     [
-                        ("department_id", "=", department.parentid),("company_id", "=", department.company_id.id)
+                        ("department_id", "=", department.parentid),
+                        ("company_id", "=", department.company_id.id),
                     ]
                 )
                 department.parent_id = parent_department.id
 
-    @api.depends("name", "parent_id","company_id")
+    @api.depends("name", "parent_id", "company_id")
     def _compute_complete_name(self):
         for department in self:
             if department.parent_id:
@@ -123,7 +132,7 @@ class WecomDepartment(models.Model):
         下载部门列表
         """
         start_time = time.time()
-        
+
         company = self.env.context.get("company_id")
         if type(company) == int:
             company = self.env["res.company"].browse(company)
@@ -204,9 +213,9 @@ class WecomDepartment(models.Model):
             limit=1,
         )
 
-        result = {}        
+        result = {}
 
-        if not department:                
+        if not department:
             result = self.create_department(company, department, wecom_department)
         else:
             result = self.update_department(company, department, wecom_department)
@@ -358,9 +367,9 @@ class WecomDepartment(models.Model):
             self.sudo().write(
                 {
                     "name": department["name"],
-                    "name_en": self.env["wecom.tools"].check_dictionary_keywords(
-                        department, "name_en"
-                    ),
+                    "name_en": self.env[
+                        "wecomapi.tools.dictionary"
+                    ].check_dictionary_keywords(department, "name_en"),
                     "department_leader": department["department_leader"],
                     "parentid": department["parentid"],
                     "order": department["order"],
@@ -425,7 +434,6 @@ class WecomDepartment(models.Model):
         xml_tree = self.env.context.get("xml_tree")
         company_id = self.env.context.get("company_id")
         department_dict = xmltodict.parse(xml_tree)["xml"]
- 
 
         departments = self.sudo().search([("company_id", "=", company_id.id)])
         callback_department = departments.search(

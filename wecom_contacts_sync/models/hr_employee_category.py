@@ -23,7 +23,6 @@ WECOM_USER_MAPPING_ODOO_EMPLOYEE_CATEGORY = {
 
 
 class EmployeeCategory(models.Model):
-
     _inherit = "hr.employee.category"
 
     company_id = fields.Many2one(
@@ -51,8 +50,15 @@ class EmployeeCategory(models.Model):
         domain="[('company_id', '=', company_id)]",
     )
 
-    tagid = fields.Integer(string="WeCom Tag ID", readonly=True, default=0,)
-    is_wecom_tag = fields.Boolean(string="WeCom Tag", default=False,)
+    tagid = fields.Integer(
+        string="WeCom Tag ID",
+        readonly=True,
+        default=0,
+    )
+    is_wecom_tag = fields.Boolean(
+        string="WeCom Tag",
+        default=False,
+    )
 
     @api.depends("is_wecom_tag")
     def _compute_display_name(self):
@@ -129,7 +135,10 @@ class EmployeeCategory(models.Model):
                     "message": message,
                     "sticky": False,  # 延时关闭
                     "className": "bg-success",
-                    "next": {"type": "ir.actions.client", "tag": "reload",},  # 刷新窗体
+                    "next": {
+                        "type": "ir.actions.client",
+                        "tag": "reload",
+                    },  # 刷新窗体
                 }
                 action = {
                     "type": "ir.actions.client",
@@ -245,7 +254,12 @@ class EmployeeCategory(models.Model):
             if response["errmsg"] == "created":
                 self.write({"tagid": tagid})
                 params.update(
-                    {"next": {"type": "ir.actions.client", "tag": "reload",},}  # 刷新窗体
+                    {
+                        "next": {
+                            "type": "ir.actions.client",
+                            "tag": "reload",
+                        },
+                    }  # 刷新窗体
                 )
 
         finally:
@@ -367,7 +381,10 @@ class EmployeeCategory(models.Model):
                     "type": "success",
                     "sticky": True,  # 延时关闭
                     "className": "bg-success",
-                    "next": {"type": "ir.actions.client", "tag": "reload",},
+                    "next": {
+                        "type": "ir.actions.client",
+                        "tag": "reload",
+                    },
                 }
             )
         finally:
@@ -444,7 +461,10 @@ class EmployeeCategory(models.Model):
                         )
                     else:
                         category.write(
-                            {"name": tag["tagname"], "is_wecom_tag": True,}
+                            {
+                                "name": tag["tagname"],
+                                "is_wecom_tag": True,
+                            }
                         )
                     result = self.download_wecom_tag_member(
                         category, wxapi, tag["tagid"], company
@@ -588,11 +608,20 @@ class EmployeeCategory(models.Model):
                     "message": _("Tag: %s deleted successfully.") % self.name,
                     "sticky": False,  # 延时关闭
                     "className": "bg-success",
-                    "next": {"type": "ir.actions.client", "tag": "reload",},  # 刷新窗体
+                    "next": {
+                        "type": "ir.actions.client",
+                        "tag": "reload",
+                    },  # 刷新窗体
                 }
-                tag = self.search([("tagid", "=", self.tagid)], limit=1,)
+                tag = self.search(
+                    [("tagid", "=", self.tagid)],
+                    limit=1,
+                )
                 tag.write(
-                    {"is_wecom_tag": False, "tagid": 0,}
+                    {
+                        "is_wecom_tag": False,
+                        "tagid": 0,
+                    }
                 )
                 # tag.unlink()
             else:
@@ -602,7 +631,10 @@ class EmployeeCategory(models.Model):
                     "message": _("Tag: %s deletion failed.") % self.name,
                     "sticky": False,  # 延时关闭
                     "className": "bg-success",
-                    "next": {"type": "ir.actions.client", "tag": "reload",},  # 刷新窗体
+                    "next": {
+                        "type": "ir.actions.client",
+                        "tag": "reload",
+                    },  # 刷新窗体
                 }
             action = {
                 "type": "ir.actions.client",
@@ -635,7 +667,8 @@ class EmployeeCategory(models.Model):
         dic = lxml_to_dict(xml_tree_str)["xml"]
 
         callback_tag = self.sudo().search(
-            [("company_id", "=", company_id.id), ("tagid", "=", dic["TagId"])], limit=1,
+            [("company_id", "=", company_id.id), ("tagid", "=", dic["TagId"])],
+            limit=1,
         )
         domain = [
             "|",
@@ -703,14 +736,16 @@ class EmployeeCategory(models.Model):
             for wecom_department_id in update_dict["add_department_ids"].split(","):
                 add_department_list.append(
                     department.search(
-                        [("wecom_department_id", "=", wecom_department_id)], limit=1,
+                        [("wecom_department_id", "=", wecom_department_id)],
+                        limit=1,
                     ).id
                 )
         elif "del_department_ids" in update_dict.keys():
             for wecom_department_id in update_dict["del_department_ids"].split(","):
                 del_department_list.append(
                     department.search(
-                        [("wecom_department_id", "=", wecom_department_id)], limit=1,
+                        [("wecom_department_id", "=", wecom_department_id)],
+                        limit=1,
                     ).id
                 )
 

@@ -9,17 +9,17 @@
     "auto_install": False,
     "category": "WeCom Suites/Settings",
     "website": "https://gitee.com/rainbowstudio/wecom",
-    "version": "15.0.0.1",
+    "version": "16.0.0.1",
     "summary": """
-        
+
         """,
     "description": """
 
         """,
-    "depends": ["base_setup", "wecom_l10n", "wecom_widget", "wecom_api"],
+    "depends": ["base_setup", "wecom_widget", "wecom_api"],
     "data": [
         "security/wecom_security.xml",
-        "security/ir.model.access.csv",        
+        "security/ir.model.access.csv",
         "data/ir_module_category_data.xml",
         "data/ir_config_parameter.xml",
         "data/ir_cron_data.xml",
@@ -35,21 +35,15 @@
         "views/wecom_app_event_type_views.xml",
         "views/wecom_app_type_views.xml",
         "views/wecom_app_subtype_views.xml",
+        "views/wecom_base_views.xml",
         "views/menu_views.xml",
     ],
     "assets": {
         "web.assets_backend": [
-            # SCSSS
-            "wecom_base/static/src/scss/wecom_settings_navigation.scss",
-            # JS
-            "wecom_base/static/src/js/wecom_settings_navigation.js",            
-            "wecom_base/static/src/js/list_header_button.js",
-        ],
-        "web.assets_qweb": [
-            "wecom_base/static/src/xml/*.xml",
+            "wecom_base/static/src/views/**/*",
         ],
     },
-    "license": "LGPL-3",
+    "license": "AGPL-3",
     "bootstrap": True,
-    # "post_init_hook": "_open_wecom_settings",
+    "post_init_hook": "post_init_hook",
 }

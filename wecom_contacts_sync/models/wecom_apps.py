@@ -25,20 +25,6 @@ class WeComApps(models.Model):
     # ————————————————————————————————————
     # 应用回调服务
     # ————————————————————————————————————
-    # def generate_service(self):
-    #     """
-    #     生成服务
-    #     :return:
-    #     """
-    #     params = self.env["ir.config_parameter"].sudo()
-    #     base_url = params.get_param("web.base.url")
-    #     if not self.app_id:
-    #         raise ValidationError(_("Please bind contact app!"))
-    #     else:
-    #         self.callback_url = base_url + "/wecom_callback/%s/%s" % (
-    #             self.app_id.company_id.id,
-    #             self.code,
-    #         )
 
     def generate_service_by_code(self, code):
         """
@@ -75,7 +61,7 @@ class WeComApps(models.Model):
                     {
                         "name": _("Contacts synchronization"),
                         "code": code,
-                        "callback_url": service.generate_service(),
+                        "callback_url": service.generate_contact_service(),
                         "description": _(
                             "When members modify their personal information, the modified information will be pushed to the following URL in the form of events to ensure the synchronization of the address book."
                         ),
@@ -103,7 +89,8 @@ class WeComApps(models.Model):
                 1
             ]  # 1
             contacts_sync_hr_department_id = ir_model_data.get_object_reference(
-                "wecom_contacts_sync", "wecom_app_config_contacts_sync_hr_department_id"
+                "wecom_contacts_sync",
+                "wecom_app_config_contacts_sync_hr_department_id",
             )[
                 1
             ]  # 2
@@ -323,25 +310,24 @@ Synchronize Wecom tag results:
         同步通讯录
         """
         # result = {
-            
+
         # }
         result = {}
-        result.update({
-            "company_name": self.company_id.name, 
-            "sync_state": "completed",
-
-            "wecom_department_sync_state": "fail",
-            "wecom_department_sync_times": 0,
-            "wecom_department_sync_result": "",
-
-            "wecom_user_sync_state": "fail",
-            "wecom_user_sync_times": 0,
-            "wecom_user_sync_result": "",
-
-            "wecom_tag_sync_state": "fail",
-            "wecom_tag_sync_times": 0,
-            "wecom_tag_sync_result": "",
-        })
+        result.update(
+            {
+                "company_name": self.company_id.name,
+                "sync_state": "completed",
+                "wecom_department_sync_state": "fail",
+                "wecom_department_sync_times": 0,
+                "wecom_department_sync_result": "",
+                "wecom_user_sync_state": "fail",
+                "wecom_user_sync_times": 0,
+                "wecom_user_sync_result": "",
+                "wecom_tag_sync_state": "fail",
+                "wecom_tag_sync_times": 0,
+                "wecom_tag_sync_result": "",
+            }
+        )
 
         # 同步企微部门
         sync_department_result = (

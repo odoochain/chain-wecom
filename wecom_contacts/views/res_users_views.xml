@@ -2,22 +2,6 @@
 <odoo>
     <data>
 
-        <record id="view_users_search" model="ir.ui.view">
-            <field name="name">res.users.search</field>
-            <field name="model">res.users</field>
-            <field name="inherit_id" ref="base.view_users_search"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='company_ids']" position="after">
-                    <field name="company_id" string="Company" groups="base.group_multi_company"/>
-                </xpath>
-                <xpath expr="//filter[last()]" position="after">
-                    <searchpanel>
-                        <field name="company_id" groups="base.group_multi_company" icon="fa-building" enable_counters="1"/>
-                    </searchpanel>
-                </xpath>
-            </field>
-        </record>
-
         <record id="wecom_res_users_tree" model="ir.ui.view">
             <field name="name">wecom users list</field>
             <field name="model">res.users</field>

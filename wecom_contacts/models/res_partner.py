@@ -26,13 +26,11 @@ class Partner(models.Model):
     )
     qr_code = fields.Char(
         string="Personal QR code",
-        help="Personal QR code, Scan can be added as external contact",
         readonly=True,
     )
     wecom_user_order = fields.Char(
         "WeCom User sequence",
         default="0",
-        help="The sort value in the department, the default is 0. The number must be the same as the department. The larger the number, the higher the order.The value range is [0, 2^32)",
         readonly=True,
     )
 
@@ -61,5 +59,3 @@ class Partner(models.Model):
                 )
             else:
                 partner.wecom_openid = response["openid"]
-
- 

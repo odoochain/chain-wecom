@@ -2,7 +2,6 @@
 
 from datetime import datetime, timedelta
 from odoo import _, api, fields, models
-from odoo.tools.translate import translate
 from odoo.exceptions import ValidationError
 
 
@@ -89,7 +88,7 @@ class WeComAppCallbackService(models.Model):
 
     def generate_contact_service(self):
         """
-        生成通讯录服务
+        生成通讯录回调服务
         :return:
         """
         params = self.env["ir.config_parameter"].sudo()
@@ -97,7 +96,8 @@ class WeComAppCallbackService(models.Model):
         if not self.app_id:
             raise ValidationError(_("Please bind contact app!"))
         else:
-            self.callback_url = base_url + "/wecom_callback/%s/%s" % (
+            callback_url = base_url + "/wecom_callback/%s/%s" % (
                 self.app_id.company_id.id,
                 self.code,
             )
+            return callback_url

@@ -11,13 +11,11 @@
         </record>
 
 
-        <!-- 2022-08-03更新 -->
-        <!-- # 生成 排查方法, 企业全局错误码 页面最下面的 “排查方法” 内容 -->
-        <!-- # methods_elements = tree.xpath("//ul[@data-sign='12309549435022fd54b0549f5968b4c2']/li") #  -->
-        <record model="ir.config_parameter" id="wecom_global_error_code_troubleshooting_method_node">
-            <field name="key">wecom.global_error_code_troubleshooting_method_node</field>
-            <!-- <field name="value">//ul[@data-sign='12309549435022fd54b0549f5968b4c2']/li</field> -->
-            <field name="value">@data-sign='12309549435022fd54b0549f5968b4c2'</field>
+        <!-- !2022-10-03更新 -->
+        <!-- ! 用于定位 错误代码 的路径表达式-->
+        <record model="ir.config_parameter" id="global_error_code_item_selection_code">
+            <field name="key">wecom.global_error_code_item_selection_code</field>
+            <field name="value">//h5</field>
         </record>
 
 

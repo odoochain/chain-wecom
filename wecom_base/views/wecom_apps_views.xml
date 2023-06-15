@@ -20,38 +20,43 @@
             <field name="name">wecom.apps.kanban</field>
             <field name="model">wecom.apps</field>
             <field name="arch" type="xml">
-                <kanban sample="1" group_create="false" group_delete="false" group_edit="false" column_edit="false" create="false" edit="false" delete="false" records_draggable="0" quick_create="false">
+                <kanban sample="1" group_create="false" group_delete="false" group_edit="false" column_edit="false" create="false" edit="false" delete="false" records_draggable="0" quick_create="false" class="o_kanban_mobile">
                     <field name="app_name"/>
                     <field name="company_id"/>
                     <field name="square_logo_url"/>
                     <field name="close"/>
                     <templates>
+                        <!-- class="o_kanban_image_fill_left" -->
                         <t t-name="kanban-box">
-                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
-                                <field name="square_logo_url" widget="image_url" class="o_kanban_image_fill_left" options='{"size": [80, 80]}'/>
-
-                                <div class="oe_kanban_details ml8">
-                                    <div class="o_kanban_record_top">
-                                        <div class="o_kanban_record_headings">
-                                            <strong class="o_kanban_record_title">
-                                                <div class="float-right">
-                                                    <span t-if="!record.close.raw_value" class="fa fa-circle text-success" role="img" aria-label="Enable" title="Enable">
-                                                    </span>
-                                                    <span t-if="record.close.raw_value" class="fa fa-circle text-danger" role="img" aria-label="Disabled" title="Disabled">
-                                                    </span>
-                                                </div>
-
-                                                <field name="app_name" />
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <field name="square_logo_url" widget="image_url" options='{"size": [60, 60]}'/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <ul>
+                                        <li class="text-success float-end mb4" t-if="!record.close.raw_value">
+                                            <i class="fa fa-circle" role="img" aria-label="Enable" title="Enable"></i>
+                                        </li>
+                                        <li class="text-danger float-end mb4" t-if="record.close.raw_value">
+                                            <i class="fa fa-circle" role="img" aria-label="Disabled" title="Disabled"></i>
+                                        </li>
+                                        <li class="mb4">
+                                            <strong>
+                                                <field name="app_name"/>
                                             </strong>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <field name="agentid" widget="integer" options="{'format': false}"/>
-                                        <field name="type" widget="badge" decoration-success="type == 'manage'" decoration-info="type == 'base'" decoration-warning="type == 'self'" decoration-secondary="type == 'third'"/>
-                                    </div>
-                                    <div class="oe_kanban_content">
-                                        <field name="description" class="text-muted"/>
-                                    </div>
+                                        </li>
+                                        <li class="float-end mb4">
+                                            <field name="type" widget="badge" decoration-success="type == 'manage'" decoration-info="type == 'base'" decoration-warning="type == 'self'" decoration-secondary="type == 'third'"/>
+                                        </li>
+                                        <li class="mb4">
+                                            <strong>
+                                                <field name="agentid" widget="integer" options="{'format': false}"/>
+                                            </strong>
+                                        </li>
+                                        <li class="mb4">
+                                            <field name="description" class="text-muted"/>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </t>
@@ -73,6 +78,7 @@
                             <!-- <button class="oe_stat_button" name="set_app_info" string="Set application" type="object" icon="fa-cloud-upload" attrs="{'invisible': ['|','|',('agentid','=',0),('type','=','manage'),('type','=','base'),]}"/> -->
                             <button class="oe_stat_button" name="get_access_token" string="Get Access Token" type="object" icon="fa-key" attrs="{'invisible': ['|',('company_id','=', False),('type','=', 'self')]}"/>
                             <!-- <button class="oe_stat_button" name="get_type_code" string="Get Type Code" type="object" icon="fa-key" /> -->
+                            <button class="oe_stat_button" name="get_app_jsapi_ticket" string="Get JSAPI Ticket" type="object" icon="fa-ticket" attrs="{'invisible': [('company_id','=', False)]}"/>
                         </div>
 
                         <field name="square_logo_url" widget="image_url" options='{"size": [80, 80]}' class="oe_right"/>
@@ -113,7 +119,7 @@
                                 <field name="agentid" widget="integer" options="{'format': false}" attrs="{'readonly': [('type','=','manage')]}"/>
                             </group>
                             <group>
-                                <field name="secret" widget="wecom_password"/>
+                                <field name="secret" widget="DisplayPasswordChar" require_encryption="True"/>
                             </group>
                         </group>
                         <group>
@@ -147,14 +153,32 @@
                                 <p class="text-warning">
                                     Developers need to cache access_token for subsequent interface calls (note: gettoken interfaces cannot be called frequently or are frequently blocked). When access_token expires or expires, it needs to be re-acquired.
                                 </p>
-                                <group>
+                                <div class="o_row">
+                                    <label for="access_token"/>
                                     <field name="access_token" widget="CopyClipboardText" force_save="1"/>
-                                    <field name="expiration_time" force_save="1"/>
-                                </group>
+                                </div>
+                                <div class="o_row">
+                                    <label for="token_expiration_time"/>
+                                    <field name="token_expiration_time" force_save="1"/>
+                                </div>
+                            </page>
+                            <page name="jsapi_ticket" string="JSAPI Ticket">
+                                <p class="text-info">
+                                    Normally, the app's jsapi_ticket is valid for 7200 seconds and is obtained by access_token. Since the number of API calls to get jsapi_ticket is very limited (each application cannot exceed 100 times in an hour), frequent refresh jsapi_ticket will cause the API call to be limited, affecting their own business, and developers must globally cache the jsapi_ticket of the application in their own services.
+                                </p>
+
+                                <div class="o_row">
+                                    <label for="jsapi_ticket"/>
+                                    <field name="jsapi_ticket" widget="CopyClipboardText" force_save="1" class="w-100"/>
+                                </div>
+                                <div class="o_row">
+                                    <label for="jsapi_ticket_expiration_time"/>
+                                    <field name="jsapi_ticket_expiration_time" force_save="1" />
+                                </div>
                             </page>
                             <page name="parameter" string="Parameter">
-                                <group>
-                                    <field name="app_config_ids" widget="wecom_config" mode="tree" help="description" nolabel="1">
+                                <form>
+                                    <field name="app_config_ids" widget="one2many_config" mode="tree" help="description" nolabel="1" t-translation="off">
                                         <tree create="0" edit="1" delete="0" nolabel="1" editable="bottom">
                                             <field name="name" readonly="1"/>
                                             <field name="key" readonly="1"/>
@@ -162,17 +186,14 @@
                                             <field name="description" invisible="1" />
                                         </tree>
                                     </field>
-                                </group>
-                                <group>
                                     <div class="btn-group float-right" role="group" aria-label="Button group">
                                         <button class="oe_highlight" name="generate_parameters" string="Generate parameters" type="object" icon="fa-cogs"/>
-
                                     </div>
-                                </group>
+                                </form>
                             </page>
                             <page name="callback" string="Callback service settings">
-                                <group>
-                                    <field name="app_callback_service_ids" options="{'no_open': True, 'no_create': True}" widget="wecom_config" mode="tree" help="description" nolabel="1">
+                                <form>
+                                    <field name="app_callback_service_ids" options="{'no_open': True, 'no_create': True}" widget="one2many_config" mode="tree" help="description" nolabel="1" t-translation="off">
                                         <tree create="0" edit="1" delete="0" nolabel="1" editable="bottom">
                                             <field name="name" readonly="1" />
                                             <field name="callback_url" readonly="1" widget="CopyClipboardChar"/>
@@ -182,32 +203,29 @@
                                             <field name="description" invisible="1"/>
                                         </tree>
                                     </field>
-                                </group>
-                                <group class="text-right">
-                                    <button class="oe_highlight" name="generate_service" string="Generate service" type="object" icon="fa-server" />
-                                </group>
-                                <group>
-                                    <ul class="text-info">
-                                        <li class="text-info">
-                                        Setting method
-                                        </li>
-                                        <li class="text-danger">
-                                            <b>Controller:</b> Make sure the "Callback Service Name" exists in your controller code.
-                                        </li>
-                                        <li>
-                                            <b>Callback URL:</b> Copy the automatically generated callback URL to the URL in the "event receiving server" of the enterprise wechat application.
-                                        </li>
-                                        <li>
-                                            <b>Callback URL Token:</b> Copy the randomly generated "Token" in the "event receiving server" of the enterprise wechat application to the "callback URL token" input box of the current page.
-                                        </li>
-                                        <li>
-                                            <b>Callback AES Key:</b> Copy the randomly generated "EncodingAESKey" in the "event receiving server" of the enterprise wechat application to the "callback AES key" input box on the current page.
-                                        </li>
-                                        <li class="text-danger">
-                                            <b>Change:</b> When the value of "receiving event server" of the current page and enterprise wechat application changes, please ensure that the values at both ends are consistent.
-                                        </li>
-                                    </ul>
-                                </group>
+                                    <div class="btn-group float-right" role="group" aria-label="Button group">
+                                        <button class="oe_highlight" name="generate_service" string="Generate service" type="object" icon="fa-server" />
+                                    </div>
+                                </form>
+                                <hr></hr>
+                                <h3>Setting method</h3>
+                                <ul class="text-info">
+                                    <li class="text-danger">
+                                        <b>Controller:</b> Make sure the "Callback Service Name" exists in your controller code.
+                                    </li>
+                                    <li>
+                                        <b>Callback URL:</b> Copy the automatically generated callback URL to the URL in the "event receiving server" of the enterprise wechat application.
+                                    </li>
+                                    <li>
+                                        <b>Callback URL Token:</b> Copy the randomly generated "Token" in the "event receiving server" of the enterprise wechat application to the "callback URL token" input box of the current page.
+                                    </li>
+                                    <li>
+                                        <b>Callback AES Key:</b> Copy the randomly generated "EncodingAESKey" in the "event receiving server" of the enterprise wechat application to the "callback AES key" input box on the current page.
+                                    </li>
+                                    <li class="text-danger">
+                                        <b>Change:</b> When the value of "receiving event server" of the current page and enterprise wechat application changes, please ensure that the values at both ends are consistent.
+                                    </li>
+                                </ul>
                             </page>
                         </notebook>
                     </sheet>

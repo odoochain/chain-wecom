@@ -8,7 +8,7 @@
     "application": True,
     "auto_install": False,
     "category": "WeCom Suites/CRM",
-    "version": "15.0.0.1",
+    "version": "16.0.0.1",
     "summary": """
         WeCom Contacts
         """,
@@ -16,7 +16,12 @@
 
 
         """,
-    "depends": ["contacts","hr", "wecom_base",],
+    "depends": [
+        "contacts",
+        "hr",
+        "wecom_base",
+        "wecom_widget",
+    ],
     "data": [
         "security/ir.model.access.csv",
         "data/ir_cron_data.xml",
@@ -31,15 +36,13 @@
     ],
     "assets": {
         "web.assets_backend": [
-            # SCSSS
-            # JS
-            "wecom_contacts/static/src/js/download_contacts.js",
-            "wecom_contacts/static/src/js/download_tags.js",
+            "wecom_contacts/static/src/webclient/**/*",
         ],
-        "web.assets_qweb": ["wecom_contacts/static/src/xml/*.xml",],
     },
-    "external_dependencies": {"python": [],},
-    # "pre_init_hook": "pre_init_hook",
-    "license": "LGPL-3",
+    "external_dependencies": {
+        "python": [],
+    },
+    "post_init_hook": "post_init_hook",
+    "license": "AGPL-3",
     "bootstrap": True,
 }

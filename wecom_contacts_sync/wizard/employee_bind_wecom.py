@@ -16,9 +16,16 @@ class EmployeeBindWecom(models.TransientModel):
     _description = "Employees bind enterprise wechat members"
 
     name = fields.Char(
-        string="Name", required=True, compute="_compute_user", store=True,
+        string="Name",
+        required=True,
+        compute="_compute_user",
+        store=True,
     )
-    avatar = fields.Char(string="Avatar", compute="_compute_user", store=True,)
+    avatar = fields.Char(
+        string="Avatar",
+        compute="_compute_user",
+        store=True,
+    )
     wecom_userid = fields.Char(string="Enterprise wechat user Id", required=True)
     employee_id = fields.Many2one(
         "hr.employee", string="Related Employee", required=True, readonly=True
@@ -31,7 +38,7 @@ class EmployeeBindWecom(models.TransientModel):
     def _compute_user(self):
         for employee in self:
             if employee.employee_id.company_id and employee.wecom_userid:
-                company = employee.employee_id.company_id 
+                company = employee.employee_id.company_id
                 try:
                     wxapi = self.env["wecom.service_api"].InitServiceApi(
                         company.corpid, company.contacts_app_id.secret
@@ -103,4 +110,3 @@ class EmployeeBindWecom(models.TransientModel):
                 #     self.env["res.users"].sudo().browse(self.employee_id.user_id),
                 #     bool(self.employee_id.image_1920),
                 # )
-

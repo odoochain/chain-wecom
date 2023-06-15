@@ -6,12 +6,13 @@
             <field name="name">wecom.tag.tree</field>
             <field name="model">wecom.tag</field>
             <field name="arch" type="xml">
-                <tree string="Tag" create="false" delete="false" multi_edit="false" import="false" export_xlsx="false" sample="1" js_class="wecom_tag_tree_sync">
+                <!-- js_class="wecom_tag_tree_sync" -->
+                <tree string="Tag" create="false" delete="false" multi_edit="false" import="false" export_xlsx="false" sample="1">
                     <field name="company_id" groups="base.group_multi_company"/>
                     <field name="name" />
                     <field name="tagid" />
-                    <field name="userlist" widget="wecom_contact_display" options="{'type':'user','show':'simple'}"/>
-                    <field name="partylist" widget="wecom_contact_display" options="{'type':'department','show':'simple'}" />
+                    <field name="userlist" options="{'type':'user','show':'simple'}"/>
+                    <field name="partylist" options="{'type':'department','show':'simple'}" />
                 </tree>
             </field>
         </record>
@@ -38,10 +39,10 @@
                             <field name="name"/>
                         </group>
                         <group col="4" string="Users">
-                            <field name="userlist" no_label="1" widget="wecom_contact_display" options="{'type':'user','show':'details'}"/>
+                            <field name="userlist" no_label="1" options="{'type':'user','show':'details'}"/>
                         </group>
                         <group col="4" string="Departments">
-                            <field name="partylist" no_label="1" widget="wecom_contact_display" options="{'type':'department','show':'details'}"/>
+                            <field name="partylist" no_label="1" options="{'type':'department','show':'details'}"/>
                         </group>
                     </sheet>
                 </form>

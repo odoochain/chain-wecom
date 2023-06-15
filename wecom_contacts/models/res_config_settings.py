@@ -23,7 +23,8 @@ class ResConfigSettings(models.TransientModel):
     )
 
     wecom_api_domain_ip = fields.Char(
-        "Wecom API Domain IP", config_parameter="wecom.api_domain_ip",
+        "Wecom API Domain IP",
+        config_parameter="wecom.api_domain_ip",
     )
 
     # 加入企微微信二维码
@@ -40,7 +41,7 @@ class ResConfigSettings(models.TransientModel):
         related="company_id.wecom_contacts_join_qrcode_last_time", readonly=False
     )
 
-    # 通讯录
+    # 通讯录应用
     contacts_app_id = fields.Many2one(
         related="company_id.contacts_app_id", readonly=False
     )
@@ -50,19 +51,19 @@ class ResConfigSettings(models.TransientModel):
     # contacts_access_token = fields.Char(related="contacts_app_id.access_token")
 
     contacts_app_config_ids = fields.One2many(
-        related="contacts_app_id.app_config_ids", readonly=False,
+        related="contacts_app_id.app_config_ids",
+        readonly=False,
     )
 
     contacts_app_callback_service_ids = fields.One2many(
         related="contacts_app_id.app_callback_service_ids", readonly=False
     )
 
+    # 其他应用
     module_wecom_contacts_sync = fields.Boolean("WeCom Contacts Synchronized")
-
     module_wecom_material = fields.Boolean("WeCom Material")
     module_wecom_auth_oauth = fields.Boolean("WeCom Authentication")
     module_wecom_message = fields.Boolean("WeCom Message")
-    module_portal = fields.Boolean("Customer Portal")
     module_wecom_portal = fields.Boolean("Wecom Portal")
     module_wecom_msgaudit = fields.Boolean("Wecom Session Content Archive")
     module_wecom_attendance = fields.Boolean("WeCom Attendances")
@@ -190,6 +191,7 @@ class ResConfigSettings(models.TransientModel):
                             "wecom_contacts_join_qrcode_last_time": datetime.datetime.now(),
                         }
                     )
+                    return {"type": "ir.actions.client", "tag": "reload"}  # 刷新页面
                     # self.contacts_join_qrcode=response["join_qrcode"]
                     # self.contacts_join_qrcode_last_time =  datetime.datetime.now()
 
@@ -231,7 +233,10 @@ class ResConfigSettings(models.TransientModel):
                 {},
             )
             if response["errcode"] == 0:
-                ir_config.sudo().set_param("wecom.api_domain_ip", response["ip_list"])
+                self.env["ir.config_parameter"].set_param(
+                    "wecom.api_domain_ip", response["ip_list"]
+                )
+                return {"type": "ir.actions.client", "tag": "reload"}  # 刷新页面
 
         except ApiException as ex:
             return self.env["wecomapi.tools.action"].ApiExceptionDialog(
@@ -243,4 +248,3 @@ class ResConfigSettings(models.TransientModel):
                 _logger.info(
                     _("End obtaining enterprise wechat API domain name IP segment")
                 )
-

@@ -28,7 +28,7 @@ class WecomUser(models.Model):
     english_name = fields.Char(
         string="English name", readonly=True, default=""
     )  # 英部门文名称
-    mobile = fields.Char(string="mobile phone", readonly=True,default="")  # 手机号码
+    mobile = fields.Char(string="mobile phone", readonly=True, default="")  # 手机号码
     department = fields.Char(
         string="Multiple Department ID", readonly=True, store=True, default="[]"
     )  # 成员所属部门id列表
@@ -235,7 +235,7 @@ class WecomUser(models.Model):
                 {}
                 # {"department_id": "1", "fetch_child": "1",},
             )
-            
+
         except ApiException as ex:
             end_time = time.time()
 
@@ -265,7 +265,7 @@ class WecomUser(models.Model):
             if response["errcode"] == 0:
                 # 1. 合并多部门
                 dept_user = response["dept_user"]
-                d = defaultdict(lambda : defaultdict(list))
+                d = defaultdict(lambda: defaultdict(list))
                 for dic in dept_user:
                     userid, department = dic["userid"], dic["department"]
                     d[userid]["userid"] = userid
@@ -312,7 +312,7 @@ class WecomUser(models.Model):
             ],
             limit=1,
         )
-   
+
         result = {}
         if not user:
             result = self.create_user(company, user, wecom_user)
@@ -333,9 +333,7 @@ class WecomUser(models.Model):
                 }
             )
         except Exception as e:
-            result = _(
-                "Error creating company [%s]'s user [%s], error reason: %s"
-            ) % (
+            result = _("Error creating company [%s]'s user [%s], error reason: %s") % (
                 company.userid,
                 wecom_user["userid"].lower(),
                 repr(e),
@@ -402,9 +400,9 @@ class WecomUser(models.Model):
             self.write(
                 {
                     "name": response["name"],
-                    "english_name": self.env["wecom.tools"].check_dictionary_keywords(
-                        response, "english_name"
-                    ),
+                    "english_name": self.env[
+                        "wecomapi.tools.dictionary"
+                    ].check_dictionary_keywords(response, "english_name"),
                     "mobile": response["mobile"],
                     "department": response["department"],
                     "main_department": response["main_department"],
@@ -421,19 +419,19 @@ class WecomUser(models.Model):
                     "alias": response["alias"],
                     "extattr": response["extattr"],
                     "external_profile": self.env[
-                        "wecom.tools"
+                        "wecomapi.tools.dictionary"
                     ].check_dictionary_keywords(response, "external_profile"),
                     "external_position": self.env[
-                        "wecom.tools"
+                        "wecomapi.tools.dictionary"
                     ].check_dictionary_keywords(response, "external_position"),
                     "status": response["status"],
                     "qr_code": response["qr_code"],
-                    "address": self.env["wecom.tools"].check_dictionary_keywords(
-                        response, "address"
-                    ),
-                    "open_userid": self.env["wecom.tools"].check_dictionary_keywords(
-                        response, "open_userid"
-                    ),
+                    "address": self.env[
+                        "wecomapi.tools.dictionary"
+                    ].check_dictionary_keywords(response, "address"),
+                    "open_userid": self.env[
+                        "wecomapi.tools.dictionary"
+                    ].check_dictionary_keywords(response, "open_userid"),
                 }
             )
         except ApiException as ex:
