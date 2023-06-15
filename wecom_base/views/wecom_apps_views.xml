@@ -155,7 +155,7 @@
                                 </p>
                                 <div class="o_row">
                                     <label for="access_token"/>
-                                    <field name="access_token" widget="CopyClipboardText" force_save="1"/>
+                                    <field name="access_token" readonly="1" widget="CopyClipboardText" force_save="1"/>
                                 </div>
                                 <div class="o_row">
                                     <label for="token_expiration_time"/>
@@ -169,7 +169,7 @@
 
                                 <div class="o_row">
                                     <label for="jsapi_ticket"/>
-                                    <field name="jsapi_ticket" widget="CopyClipboardText" force_save="1" class="w-100"/>
+                                    <field name="jsapi_ticket" readonly="1" widget="CopyClipboardText" force_save="1" class="w-100"/>
                                 </div>
                                 <div class="o_row">
                                     <label for="jsapi_ticket_expiration_time"/>

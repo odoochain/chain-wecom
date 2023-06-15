@@ -31,7 +31,8 @@
                 <tree string="User" create="false" delete="false" multi_edit="false" import="false" export_xlsx="false" sample="1" js_class="wecom_contacts_display_component_list">
                     <field name="company_id" invisible="1"/>
                     <field name="id"/>
-                    <field name="userid" readonly="1" widget="wecom_contacts_display_component" type="userName" />
+                    <!-- widget="wecom_contacts_display_component" -->
+                    <field name="userid" readonly="1"  type="userName" />
                     <!-- <field name="main_department"/>
                     <field name="department"/>
                     <field name="name" />
@@ -133,7 +134,8 @@
                         <field name="avatar" widget='image_url' class="oe_avatar" options='{"zoom": true, "preview_image":"thumb_avatar"}'/>
                         <div class="oe_title">
                             <h1 class="d-flex">
-                                <field name="name" placeholder="Employee's Name" required="True"/>
+                                <!-- required="True" -->
+                                <field name="name" placeholder="Employee's Name" />
                             </h1>
                             <h2>
                                 <field name="position" placeholder="Job Position" />
