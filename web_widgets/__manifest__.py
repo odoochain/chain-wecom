@@ -13,6 +13,11 @@
     "depends": [
         "web",
     ],
+    "external_dependencies": {
+        "python": [
+            "pyzbar",
+        ],
+    },
     "data": [],
     "assets": {
         "web.assets_common": [

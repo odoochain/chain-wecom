@@ -25,10 +25,10 @@ export class OfficeViewerField extends Component {
 		// ! props.value 为 office文档的路径
 		// ! props.record.resModel 为 当前表单的模型
 
-		console.log('props', this.props);
-		console.log('state', this.state);
+		// console.log('props', this.props);
+		// console.log('state', this.state);
 		onWillUpdateProps((nextProps) => {
-			console.log('nextProps', nextProps);
+			// console.log('nextProps', nextProps);
 			if (nextProps.readonly) {
 			    this.state.filePath = nextProps.record.data[nextProps.filePathField] || "";
 			    this.state.objectUrl = "";
@@ -56,7 +56,7 @@ export class OfficeViewerField extends Component {
 	}
 
 	update({ data, name }) {
-		console.log(name, data);
+		// console.log(name, data);
 		this.state.fileName = name || '';
 		const { fileNameField, record } = this.props;
 		const changes = { [this.props.name]: data || false };
@@ -87,7 +87,7 @@ export class OfficeViewerField extends Component {
 			objectUrl = result['web_path'];
 			this.state.isValid = true;
 			this.state.objectUrl = objectUrl;
-			console.log('完成上传', this.state);
+			// console.log('完成上传', this.state);
 			this.notification.add(
 				result['msg'],
 				{
@@ -127,7 +127,7 @@ OfficeViewerField.props = {
 OfficeViewerField.displayName = _lt('Microsoft Office Documents Viewer');
 OfficeViewerField.supportedTypes = ['char'];
 OfficeViewerField.extractProps = ({ attrs }) => {
-	console.log('accept', attrs.accept);
+	// console.log('accept', attrs.accept);
 	return {
 		filePathField: attrs.filePath,
 		previewImage: attrs.options.preview_image,
