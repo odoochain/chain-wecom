@@ -1,5 +1,21 @@
 # 企微 Widget
 
+## Json编辑器
+
+创建一个 `fields.Json` 的字段，然后在视图中使用 `json_editor` 的 `widget`，即可使用 `json` 编辑器
+```python
+report_data_set = fields.Json(string="Report Data Set", translate=False, help="Report Data Set.")
+```
+```xml
+<field name="report_data_set" widget="json_editor" options="{'mode': 'code', 'modes':['code', 'form', 'text', 'tree', 'view', 'preview']}" force_save="1" readonly="1"/>
+```
+> `options` 参数说明:
+
+| 选项|   说明 |
+|----------|-----:|
+|mode| 默认模式 |
+|modes| 模式清单，可选有： `code`, `form`, `text`, `tree`, `view`, `preview`|
+
 ## 扫码
 1. 支持条码及二维码
 2. 支持同时扫码多个条码及二维码
