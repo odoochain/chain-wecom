@@ -16,6 +16,35 @@ report_data_set = fields.Json(string="Report Data Set", translate=False, help="R
 |mode| 默认模式 |
 |modes| 模式清单，可选有： `code`, `form`, `text`, `tree`, `view`, `preview`|
 
+
+## Markdown 编辑器
+
+### 使用
+```xml
+<field name="description" widget="markdown_editor"  options="{'height': 'auto','theme': 'dark', 'previewStyle':'vertical', }"/>
+```
+
+> `options` 参数说明:
+
+| 选项|  类型 |说明 |
+|----------|-----:|-----:|
+|height|字符串 |高度 例如 `300px` 或者 `auto`|
+|theme|字符串 |主题 `dark` 或者为 空 |
+|previewStyle| 字符串|预览样式，可选有： 选项卡 `tab`, 垂直 `vertical`|
+|userPlugin| 布尔值|使用组件，默认为`false`|
+
+
+> 组件列表说明：
+
+| 名称|  说明 |链接 |
+|----------|-----:|-----:|
+|chart|图表插件,`测试无法正常使用`| <a href="https://nhn.github.io/tui.editor/latest/tutorial-example07-editor-with-chart-plugin" target="_blank">打开链接</a>|
+|code-syntax-highlight|代码语法突出显示插件,`可以正常使用`| <a href="https://nhn.github.io/tui.editor/latest/tutorial-example08-editor-with-code-syntax-highlight-plugin" target="_blank">打开链接</a>|
+|colorSyntax|颜色语法插件,`测试无法正常使用`| <a href="https://nhn.github.io/tui.editor/latest/tutorial-example09-editor-with-color-syntax-plugin" target="_blank">打开链接</a>|
+|tableMergedCell|表格合并单元格插件,`测试无法正常使用`| <a href="https://nhn.github.io/tui.editor/latest/tutorial-example10-editor-with-table-merged-cell-plugin" target="_blank">打开链接</a>|
+|uml|UML 插件,`测试无法正常使用`| <a href="https://nhn.github.io/tui.editor/latest/tutorial-example11-editor-with-uml-plugin" target="_blank">打开链接</a>|
+
+
 ## 扫码
 1. 支持条码及二维码
 2. 支持同时扫码多个条码及二维码
