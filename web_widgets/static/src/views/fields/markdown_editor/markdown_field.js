@@ -17,7 +17,7 @@ export class MarkdownField extends Component {
 		this.markdownEditor = null;
 		this.editorRef = useRef('editor');
 		this.lang = this.env.model.root.context.lang;
-
+		
 		onWillStart(async () => {
 			let jsLibs = [];
 			let cssLibs = [];
@@ -84,7 +84,7 @@ export class MarkdownField extends Component {
 
 		onPatched(() => {
 			// console.log('onPatched', this.props.value,);
-			if (this.markdownEditor) {
+			if (this.markdownEditor && this.props.value!=="") {
 				this.markdownEditor.setMarkdown(this.props.value);
 			}
         });
@@ -94,19 +94,21 @@ export class MarkdownField extends Component {
 		const self = this;
 		this.markdownEditor = this.editorRef.el;
 		// const { Editor } = toastui.Editor;
-		// const Editor = toastui.Editor;
-		const { Editor } = toastui;
-
+		const Editor = toastui.Editor;
+		// const { Editor } = toastui;
+		let markdownContent = "";
+		if (this.props.value) {
+			markdownContent = this.props.value;
+		}
 		let options = {
 			viewer: true,
 			el: self.editorRef.el,
 			initialEditType: 'markdown',
-			initialValue: self.props.value,
+			initialValue:  markdownContent,
 			hideModeSwitch: true,
 			placeholder: _lt('Please enter text.'),
 			useCommandShortcut: true, // 使用命令快捷方式
 			usageStatistics: false, // 使用情况统计
-			// language: 'zh_CN'
 			language: self.lang,
 			events: {
 				change: () => {
