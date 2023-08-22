@@ -14,7 +14,7 @@ pd.set_option("display.max_columns", 30)  # 设置最大列数
 pd.set_option("expand_frame_repr", False)  # 当列太多时不换行
 import time
 
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException    # type: ignore
 
 _logger = logging.getLogger(__name__)
 
@@ -33,9 +33,9 @@ class WeComApps(models.Model):
         :return:
         """
         if code == "contacts":
-            service = self.app_callback_service_ids.sudo().search(
+            service = self.app_callback_service_ids.sudo().search(   # type: ignore
                 [
-                    ("app_id", "=", self.id),
+                    ("app_id", "=", self.id),    # type: ignore
                     ("code", "=", code),
                     "|",
                     ("active", "=", True),
@@ -46,7 +46,7 @@ class WeComApps(models.Model):
             if not service:
                 service.create(
                     {
-                        "app_id": self.id,
+                        "app_id": self.id,   # type: ignore
                         "name": _("Contacts synchronization"),
                         "code": code,
                         "callback_url_token": "",
@@ -77,10 +77,10 @@ class WeComApps(models.Model):
         根据code生成参数
         :param code:
         :return:
-        注意：14使用 get_object_reference 方法，15 没有此方法，
-        故在 \wecom_base\models\ir_model.py 添加了 get_object_reference方法
+        注意： 14使用 get_object_reference 方法, 15 没有此方法,
+        故在 '\wecom_base\models\ir_model.py' 添加了 get_object_reference方 法
         """
-        if code == "contacts":
+        if code == "contacts_sync":
             # 从xml 获取数据
             ir_model_data = self.env["ir.model.data"]
             contacts_allow_sync_hr = ir_model_data.get_object_reference(
@@ -157,14 +157,14 @@ class WeComApps(models.Model):
                 app_config = (
                     self.env["wecom.app_config"]
                     .sudo()
-                    .search([("app_id", "=", self.id), ("key", "=", app_config_id.key)])
+                    .search([("app_id", "=", self.id), ("key", "=", app_config_id.key)]) # type: ignore
                 )
 
                 if not app_config:
                     app_config.sudo().create(
                         {
                             "name": app_config_id.name,
-                            "app_id": self.id,
+                            "app_id": self.id,   # type: ignore
                             "key": app_config_id.key,
                             "ttype": app_config_id.ttype,
                             "value": ""
@@ -182,7 +182,7 @@ class WeComApps(models.Model):
                         }
                     )
 
-        super(WeComApps, self).generate_parameters_by_code(code)
+        super(WeComApps, self).generate_parameters_by_code(code) # type: ignore
 
     # ————————————————————————————————————
     # 通讯录
@@ -200,7 +200,7 @@ class WeComApps(models.Model):
         sync_start_time = time.time()
 
         for app in self.search(
-            [("company_id", "!=", False), ("type_code", "=", "['contacts']")]
+            [("company_id", "!=", False), ("type_code", "=", "['contacts']")]   # type: ignore
         ):
             _logger.info(
                 _(
@@ -315,7 +315,7 @@ Synchronize Wecom tag results:
         result = {}
         result.update(
             {
-                "company_name": self.company_id.name,
+                "company_name": self.company_id.name,    # type: ignore
                 "sync_state": "completed",
                 "wecom_department_sync_state": "fail",
                 "wecom_department_sync_times": 0,
@@ -332,7 +332,7 @@ Synchronize Wecom tag results:
         # 同步企微部门
         sync_department_result = (
             self.env["wecom.department"]
-            .with_context(company_id=self.company_id)
+            .with_context(company_id=self.company_id)    # type: ignore
             .download_wecom_deps()
         )
         # [{'name': 'download_department_data', 'state': True, 'time': 0.3037421703338623, 'msg': 'Department list sync completed.'}]
@@ -341,7 +341,7 @@ Synchronize Wecom tag results:
             wecom_department_sync_state,
             wecom_department_sync_times,
             wecom_department_sync_result,
-        ) = self.handle_sync_task_state(sync_department_result, self.company_id)
+        ) = self.handle_sync_task_state(sync_department_result, self.company_id)     # type: ignore
 
         result.update(
             {
@@ -357,14 +357,14 @@ Synchronize Wecom tag results:
         # 同步企微用户
         sync_user_result = (
             self.env["wecom.user"]
-            .with_context(company_id=self.company_id)
+            .with_context(company_id=self.company_id)    # type: ignore
             .download_wecom_users()
         )
         (
             wecom_user_sync_state,
             wecom_user_sync_times,
             wecom_user_sync_result,
-        ) = self.handle_sync_task_state(sync_user_result, self.company_id)
+        ) = self.handle_sync_task_state(sync_user_result, self.company_id)   # type: ignore
         result.update(
             {
                 "wecom_user_sync_state": wecom_user_sync_state,
@@ -379,14 +379,14 @@ Synchronize Wecom tag results:
         # 同步企微标签
         sync_wecom_tag_result = (
             self.env["wecom.tag"]
-            .with_context(company_id=self.company_id)
+            .with_context(company_id=self.company_id)    # type: ignore
             .download_wecom_tags()
         )
         (
             wecom_tag_sync_state,
             wecom_tag_sync_times,
             wecom_tag_sync_result,
-        ) = self.handle_sync_task_state(sync_wecom_tag_result, self.company_id)
+        ) = self.handle_sync_task_state(sync_wecom_tag_result, self.company_id)  # type: ignore
         result.update(
             {
                 "wecom_tag_sync_state": wecom_tag_sync_state,
@@ -482,7 +482,7 @@ Synchronize Wecom tag results:
         return (
             sync_state,
             wecom_department_sync_state,
-            wecom_user_sync_state,
+            wecom_user_sync_state,   # type: ignore
             wecom_tag_sync_state,
         )
 

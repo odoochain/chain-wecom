@@ -234,8 +234,8 @@ msgstr "通讯录展示组件"
 
 #. module: wecom_contacts
 #: model:wecom.apps,app_name:wecom_contacts.wecom_app_contacts
-msgid "Contacts synchronization"
-msgstr "通讯录同步"
+msgid "Contacts"
+msgstr "通讯录"
 
 #. module: wecom_contacts
 #: model:ir.model.fields,field_description:wecom_contacts.field_res_config_settings__module_portal

@@ -38,7 +38,7 @@ class WeComApps(models.Model):
                 app_config = (
                     self.env["wecom.app_config"]
                     .sudo()
-                    .search([("app_id", "=", self.id), ("key", "=", app_config_id.key)])
+                    .search([("app_id", "=", self.id), ("key", "=", app_config_id.key)]) # type: ignore
                 )
                 if not app_config:
                     app_config = (
@@ -47,7 +47,7 @@ class WeComApps(models.Model):
                         .create(
                             {
                                 "name": app_config_id.name,
-                                "app_id": self.id,
+                                "app_id": self.id,   # type: ignore
                                 "key": app_config_id.key,
                                 "ttype": app_config_id.ttype,
                                 "value": app_config_id.value,
@@ -63,7 +63,7 @@ class WeComApps(models.Model):
                             "description": app_config_id.description,
                         }
                     )
-        super(WeComApps, self).generate_parameters_by_code(code)
+        super(WeComApps, self).generate_parameters_by_code(code)     # type: ignore
 
     # ————————————————————————————————————
     # 设置认证应用配置
@@ -72,8 +72,8 @@ class WeComApps(models.Model):
         web_base_url = self.env["ir.config_parameter"].get_param("web.base.url")
         auth_redirect_uri = None
         qr_redirect_uri = None
-        if len(self.app_config_ids) > 0:
-            for record in self.app_config_ids:
+        if len(self.app_config_ids) > 0:     # type: ignore
+            for record in self.app_config_ids:   # type: ignore
                 if record["key"] == "auth_redirect_uri":
                     auth_redirect_uri = record
                 if record["key"] == "qr_redirect_uri":
@@ -81,21 +81,21 @@ class WeComApps(models.Model):
 
                 # print(auth_redirect_uri, qr_redirect_uri)
             new_auth_redirect_uri = (
-                urllib.parse.urlparse(web_base_url).scheme
+                urllib.parse.urlparse(web_base_url).scheme   # type: ignore
                 + "://"
-                + urllib.parse.urlparse(web_base_url).netloc
-                + urllib.parse.urlparse(auth_redirect_uri.value).path
+                + urllib.parse.urlparse(web_base_url).netloc     # type: ignore
+                + urllib.parse.urlparse(auth_redirect_uri.value).path    # type: ignore
             )
             new_qr_redirect_uri = (
-                urllib.parse.urlparse(web_base_url).scheme
+                urllib.parse.urlparse(web_base_url).scheme   # type: ignore
                 + "://"
-                + urllib.parse.urlparse(web_base_url).netloc
-                + urllib.parse.urlparse(qr_redirect_uri.value).path
+                + urllib.parse.urlparse(web_base_url).netloc     # type: ignore
+                + urllib.parse.urlparse(qr_redirect_uri.value).path  # type: ignore
             )
 
             # 设置应用参数中的回调链接地址
-            auth_redirect_uri.write({"value": new_auth_redirect_uri})
-            qr_redirect_uri.write({"value": new_qr_redirect_uri})
+            auth_redirect_uri.write({"value": new_auth_redirect_uri})    # type: ignore
+            qr_redirect_uri.write({"value": new_qr_redirect_uri})    # type: ignore
 
             auth_endpoint = "https://open.weixin.qq.com/connect/oauth2/authorize"
             qr_auth_endpoint = "https://open.work.weixin.qq.com/wwopen/sso/qrConnect"

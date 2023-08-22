@@ -13,3 +13,9 @@ class Company(models.Model):
         string="Self-built Application",
         domain="[('company_id', '=', current_company_id)]",
     )
+
+    contacts_sync_app_id = fields.Many2one(
+        "wecom.apps",
+        string="Contacts Synchronization Application",
+        domain="[('company_id', '=', current_company_id)]",
+    )

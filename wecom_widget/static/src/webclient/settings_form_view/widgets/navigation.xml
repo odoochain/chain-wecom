@@ -12,6 +12,10 @@
                 <i class="fa fa-book"/>
                 <sapn>Contacts settings</sapn>
             </a>
+            <a type="button" role="button" class="btn btn-outline-secondary wecom_jump_anchor" href="#wecom_contact" t-on-click="_jumpAnchor">
+                <i class="fa fa-refresh"/>
+                <sapn>Contacts synchronization settings</sapn>
+            </a>
         </div>
 
     </t>

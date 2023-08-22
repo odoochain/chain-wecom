@@ -5,7 +5,7 @@ from odoo import models, fields, api, _
 from odoo.exceptions import UserError, ValidationError
 import time
 
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException  # type: ignore
 
 import logging
 
@@ -50,17 +50,17 @@ class ResConfigSettings(models.TransientModel):
 
     # contacts_access_token = fields.Char(related="contacts_app_id.access_token")
 
-    contacts_app_config_ids = fields.One2many(
-        related="contacts_app_id.app_config_ids",
-        readonly=False,
-    )
+    # contacts_app_config_ids = fields.One2many(
+    #     related="contacts_app_id.app_config_ids",
+    #     readonly=False,
+    # )
 
     contacts_app_callback_service_ids = fields.One2many(
         related="contacts_app_id.app_callback_service_ids", readonly=False
     )
 
     # 其他应用
-    module_wecom_contacts_sync = fields.Boolean("WeCom Contacts Synchronized")
+
     module_wecom_material = fields.Boolean("WeCom Material")
     module_wecom_auth_oauth = fields.Boolean("WeCom Authentication")
     module_wecom_message = fields.Boolean("WeCom Message")
@@ -162,11 +162,11 @@ class ResConfigSettings(models.TransientModel):
         if debug:
             _logger.info(
                 _("Start getting join enterprise QR code of company [%s]")
-                % (self.company_id.name)
+                % (self.company_id.name) # type: ignore
             )
         try:
             wecomapi = self.env["wecom.service_api"].InitServiceApi(
-                self.company_id.corpid, self.contacts_app_id.secret
+                self.company_id.corpid, self.contacts_app_id.secret # type: ignore
             )
 
             last_time = self.contacts_join_qrcode_last_time
@@ -185,7 +185,7 @@ class ResConfigSettings(models.TransientModel):
                     {"size_type": size_type},
                 )
                 if response["errcode"] == 0:
-                    self.company_id.write(
+                    self.company_id.write( # type: ignore
                         {
                             "wecom_contacts_join_qrcode": response["join_qrcode"],
                             "wecom_contacts_join_qrcode_last_time": datetime.datetime.now(),
@@ -204,7 +204,7 @@ class ResConfigSettings(models.TransientModel):
             if debug:
                 _logger.info(
                     _("End getting join enterprise QR code of company [%s]")
-                    % (self.company_id.name)
+                    % (self.company_id.name)  # type: ignore
                 )
 
     # TODO: 使用任务 获取IP
@@ -223,7 +223,7 @@ class ResConfigSettings(models.TransientModel):
             _logger.info(_("Start to get enterprise wechat API domain name IP segment"))
         try:
             wecomapi = self.env["wecom.service_api"].InitServiceApi(
-                self.company_id.corpid, self.contacts_app_id.secret
+                self.company_id.corpid, self.contacts_app_id.secret # type: ignore
             )
 
             response = wecomapi.httpCall(

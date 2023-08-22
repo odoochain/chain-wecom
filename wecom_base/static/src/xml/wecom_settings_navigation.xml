@@ -9,6 +9,9 @@
             <a type="button" role="button" class="btn btn-secondary fa fa-book wecom_jump_anchor" href="#wecom_contact">
                 <h5 style="display:inline;">Contacts settings</h5>
             </a>
+            <a type="button" role="button" class="btn btn-secondary fa fa-refresh wecom_jump_anchor" href="#wecom_contact_sync">
+                <h5 style="display:inline;">Contacts synchronization settings</h5>
+            </a>
         </div>
     </t>
 

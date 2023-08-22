@@ -3,7 +3,7 @@
 from datetime import datetime, timedelta
 from odoo.http import request
 from odoo import api, fields, models, tools, _
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException   # type: ignore
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -52,29 +52,25 @@ class Company(models.Model):
         定时任务，每隔两小时更新企业的jsapi_ticket
         """
         for company in self:
-            if (
-                company.is_wecom_organization
-                and company.corpid
-                and company.contacts_app_id
-            ):
+            if ( company.is_wecom_organization and company.corpid and company.contacts_app_id): # type: ignore
                 _logger.info(
                     _("Automatic tasks:Start getting JSAPI ticket for company [%s]")
-                    % (company.name)
+                    % (company.name)    # type: ignore
                 )
                 if (
-                    company.wecom_jsapi_ticket_expiration_time
-                    and company.wecom_jsapi_ticket_expiration_time > datetime.now()
+                    company.wecom_jsapi_ticket_expiration_time  # type: ignore
+                    and company.wecom_jsapi_ticket_expiration_time > datetime.now() # type: ignore
                 ):
                     _logger.info(
                         _(
                             "The company [%s] ticket is still valid and does not need to be updated!"
                         )
-                        % (company.name)
+                        % (company.name)    # type: ignore
                     )
                 else:
                     try:
                         wecom_api = self.env["wecom.service_api"].InitServiceApi(
-                            self.company_id.corpid, self.contacts_app_id.secret
+                            self.company_id.corpid, self.contacts_app_id.secret # type: ignore
                         )
                         response = wecom_api.httpCall(
                             self.env["wecom.service_api_list"].get_server_api_call(
@@ -85,7 +81,7 @@ class Company(models.Model):
                     except ApiException as ex:
                         _logger.error(
                             _("Error in obtaining company [%s] ticket, reason: %s")
-                            % (company.name, ex)
+                            % (company.name, ex)    # type: ignore
                         )
                     else:
                         if response["errcode"] == 0:
@@ -99,5 +95,5 @@ class Company(models.Model):
                     finally:
                         _logger.info(
                             _("Automatic tasks:End of company [%s] JSAPI ticket update")
-                            % (company.name)
+                            % (company.name)    # type: ignore
                         )

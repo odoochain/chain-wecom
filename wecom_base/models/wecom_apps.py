@@ -5,7 +5,7 @@ import time
 from datetime import datetime, timedelta
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException # type: ignore
 
 _logger = logging.getLogger(__name__)
 
@@ -59,18 +59,16 @@ class WeComApps(models.Model):
 
     def write(self, vals):
         for app in self:
-            labels = dict(self.fields_get(allfields=["type"])["type"]["selection"])[
-                app.type
-            ]
+            labels = dict(self.fields_get(allfields=["type"])["type"]["selection"])[app.type] # type: ignore
             if "company_id" in vals:
-                company = app.company_id
+                company = app.company_id # type: ignore
                 vals["name"] = "%s/%s/%s" % (
                     company.abbreviated_name,
                     labels,
-                    app.app_name,
+                    app.app_name, # type: ignore
                 )
             else:
-                vals["name"] = "%s/%s" % (labels, app.app_name)
+                vals["name"] = "%s/%s" % (labels, app.app_name) # type: ignore
         result = super(WeComApps, self).write(vals)
 
         return result
@@ -81,7 +79,7 @@ class WeComApps(models.Model):
         计算应用类型代码
         """
         if self.subtype_ids:
-            self.type_code = str(self.subtype_ids.mapped("code"))
+            self.type_code = str(self.subtype_ids.mapped("code")) # type: ignore
         else:
             self.type_code = "[]"
 
@@ -89,7 +87,7 @@ class WeComApps(models.Model):
         """
         测试代码
         """
-        type_code = str(self.subtype_ids.mapped("code"))
+        type_code = str(self.subtype_ids.mapped("code")) # type: ignore
         print(type_code, type(type_code))
 
     @api.onchange("subtype_ids")
@@ -98,7 +96,7 @@ class WeComApps(models.Model):
         变更子类型
         :return:
         """
-        if self.type_id.code == "manage" or self.type_id.code == "base":
+        if self.type_id.code == "manage" or self.type_id.code == "base":    # type: ignore
             if len(self.subtype_ids) > 1:
                 raise UserError(
                     _("Only one subtype can be selected for the current app type!")
@@ -121,7 +119,7 @@ class WeComApps(models.Model):
         #     self.type_id = False
         #     return {"domain": {"subtype": []}}
         if self.subtype_ids:
-            self.type_code = str(self.subtype_ids.mapped("code"))
+            self.type_code = str(self.subtype_ids.mapped("code"))   # type: ignore
         else:
             self.type_code = "[]"
 
@@ -186,17 +184,11 @@ class WeComApps(models.Model):
     @api.depends("company_id", "app_name", "type")
     def _compute_name(self):
         for app in self:
-            labels = dict(self.fields_get(allfields=["type"])["type"]["selection"])[
-                app.type
-            ]
-            if app.company_id:
-                app.name = "%s/%s/%s" % (
-                    app.company_id.abbreviated_name,
-                    labels,
-                    app.app_name,
-                )
+            labels = dict(self.fields_get(allfields=["type"])["type"]["selection"])[app.type]   # type: ignore
+            if app.company_id:  # type: ignore
+                app.name = "%s/%s/%s" % (app.company_id.abbreviated_name,labels,app.app_name,) # type: ignore
             else:
-                app.name = "%s/%s" % (labels, app.app_name)
+                app.name = "%s/%s" % (labels, app.app_name) # type: ignore
 
     # 回调服务
     app_callback_service_ids = fields.One2many(
@@ -238,7 +230,7 @@ class WeComApps(models.Model):
         通过子类型生成生成回调服务
         """
         for record in self.subtype_ids:
-            self.generate_service_by_code(record.code)
+            self.generate_service_by_code(record.code) # type: ignore
 
     def generate_service_by_code(self, code):
         """
@@ -268,7 +260,7 @@ class WeComApps(models.Model):
         通过子类型生成生成参数
         """
         for record in self.subtype_ids:
-            self.generate_parameters_by_code(record.code)
+            self.generate_parameters_by_code(record.code)   # type: ignore
 
     def generate_parameters_by_code(self, code):
         """
@@ -288,12 +280,10 @@ class WeComApps(models.Model):
         """
         for record in self:
             try:
-                wecomapi = self.env["wecom.service_api"].InitServiceApi(
-                    record.company_id.corpid, record.secret
-                )
+                wecomapi = self.env["wecom.service_api"].InitServiceApi(record.company_id.corpid, record.secret) # type: ignore
                 response = wecomapi.httpCall(
                     self.env["wecom.service_api_list"].get_server_api_call("AGENT_GET"),
-                    {"agentid": str(record.agentid)},
+                    {"agentid": str(record.agentid)},   # type: ignore
                 )
             except ApiException as e:
                 return self.env["wecomapi.tools.action"].ApiExceptionDialog(
@@ -347,13 +337,10 @@ class WeComApps(models.Model):
         debug = ir_config.get_param("wecom.debug_enabled")
         if debug:
             _logger.info(
-                _("Start getting app [%s] token for company [%s]")
-                % (self.name, self.company_id.name)
+                _("Start getting app [%s] token for company [%s]")% (self.name, self.company_id.name)   # type: ignore
             )
         try:
-            wecom_api = self.env["wecom.service_api"].InitServiceApi(
-                self.company_id.corpid, self.secret
-            )
+            wecom_api = self.env["wecom.service_api"].InitServiceApi(self.company_id.corpid, self.secret)   # type: ignore
         except ApiException as ex:
             return self.env["wecomapi.tools.action"].ApiExceptionDialog(
                 ex, raise_exception=True
@@ -372,7 +359,7 @@ class WeComApps(models.Model):
         """
         自动任务定时获取应用token
         """
-        for app in self.search([("company_id", "!=", False)]):
+        for app in self.search([("company_id", "!=", False)]):  # type: ignore
             _logger.info(
                 _(
                     "Automatic task: start to get the application [%s] token of company [%s]"
@@ -393,7 +380,7 @@ class WeComApps(models.Model):
         if debug:
             _logger.info(
                 _("Start getting app [%s] ticket for company [%s]")
-                % (self.name, self.company_id.name)
+                % (self.name, self.company_id.name) # type: ignore
             )
         try:
             if (
@@ -411,7 +398,7 @@ class WeComApps(models.Model):
             else:
                 # print("过期")
                 wecom_api = self.env["wecom.service_api"].InitServiceApi(
-                    self.company_id.corpid, self.secret
+                    self.company_id.corpid, self.secret # type: ignore
                 )
                 response = wecom_api.httpCall(
                     self.env["wecom.service_api_list"].get_server_api_call(
@@ -442,4 +429,4 @@ class WeComApps(models.Model):
                     },
                 }
         finally:
-            return self.env["wecomapi.tools.action"].WecomSuccessNotification(msg)
+            return self.env["wecomapi.tools.action"].WecomSuccessNotification(msg)  # type: ignore
