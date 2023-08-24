@@ -156,7 +156,7 @@ class WecomDepartment(models.Model):
         except ApiException as ex:
             end_time = time.time()
             self.env["wecomapi.tools.action"].ApiExceptionDialog(
-                ex, raise_exception=False
+                str(ex), raise_exception=False
             )
             tasks = [
                 {

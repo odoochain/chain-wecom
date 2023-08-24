@@ -352,26 +352,24 @@ Synchronize Wecom tag results:
             return result
 
         # 同步企微用户
-        # sync_user_result = (
-        #     self.env["wecom.user"]
-        #     .with_context(company_id=self.company_id)    # type: ignore
-        #     .download_wecom_users()
-        # )
-        # (
-        #     wecom_user_sync_state,
-        #     wecom_user_sync_times,
-        #     wecom_user_sync_result,
-        # ) = self.handle_sync_task_state(sync_user_result, self.company_id)   # type: ignore
-        # result.update(
-        #     {
-        #         "wecom_user_sync_state": wecom_user_sync_state,
-        #         "wecom_user_sync_times": wecom_user_sync_times,
-        #         "wecom_user_sync_result": wecom_user_sync_result,
-        #     }
-        # )
+        sync_user_result = self.env["wecom.user"].with_context(company_id=self.company_id).download_wecom_users() # type: ignore
+        print("sync_user_result",sync_user_result)
+        print("--------------")
+        (
+            wecom_user_sync_state,
+            wecom_user_sync_times,
+            wecom_user_sync_result,
+        ) = self.handle_sync_task_state(sync_user_result, self.company_id)   # type: ignore
+        result.update(
+            {
+                "wecom_user_sync_state": wecom_user_sync_state,
+                "wecom_user_sync_times": wecom_user_sync_times,
+                "wecom_user_sync_result": wecom_user_sync_result,
+            }
+        )
 
-        # if result["wecom_user_sync_state"] == "fail":
-        #     return result
+        if result["wecom_user_sync_state"] == "fail":
+            return result
 
         # # 同步企微标签
         # sync_wecom_tag_result = (
@@ -428,9 +426,7 @@ Synchronize Wecom tag results:
         fail_state_rows = len(df[df["sync_state"] == "fail"])  # 获取失败行数
 
         # 获取部门失败行数
-        fail_department_state_rows = len(
-            df[df["wecom_department_sync_state"] == "fail"]
-        )
+        fail_department_state_rows = len(df[df["wecom_department_sync_state"] == "fail"])
 
         # 获取用户失败行数
         fail_user_state_rows = len(df[df["wecom_user_sync_state"] == "fail"])
@@ -440,7 +436,7 @@ Synchronize Wecom tag results:
 
         sync_state = None
         wecom_department_sync_state = None
-        wecom_employee_sync_state = None
+        wecom_user_sync_state = None
         wecom_tag_sync_state = None
 
         if fail_state_rows == all_state_rows:

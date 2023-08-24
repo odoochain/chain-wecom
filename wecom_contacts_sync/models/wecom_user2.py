@@ -33,7 +33,7 @@ class WecomUser(models.Model):
         string="Multiple Department ID", readonly=True, store=True, default="[]"
     )  # 成员所属部门id列表
 
-    main_department = fields.Integer(
+    main_department = fields.Char(
         string="Main department", readonly=True, default=""
     )  # 主部门
     order = fields.Char(
@@ -66,9 +66,6 @@ class WecomUser(models.Model):
     external_position = fields.Char(
         string="External position", readonly=True, default=""
     )  # 对外职务，如果设置了该值，则以此作为对外展示的职务，否则以position来展示。
-    enable = fields.Integer(string="Enable", readonly=True, default=1)  # 启用/禁用成员。1表示启用成员，0表示禁用成员
-    isleader = fields.Integer(string="Is leader", readonly=True, default=0)  # 上级字段，标识是否为上级。第三方仅通讯录应用可获取
-    hide_mobile = fields.Integer(string="Hide mobile", readonly=True, default=0)  # 是否隐藏手机号
     status = fields.Integer(
         string="Status", readonly=True, default=""
     )  # 激活状态: status 1=已激活，2=已禁用，4=未激活，5=退出企业。已激活代表已激活企业微信或已关注微信插件（原企业号）。未激活代表既未激活企业微信又未关注微信插件（原企业号）。
@@ -268,13 +265,14 @@ class WecomUser(models.Model):
         if type(company) == int:
             company = self.env["res.company"].browse(company)
 
+        tasks = []
 
         app_config = self.env["wecom.app_config"].sudo()
-        contacts_sync_hr_department_id = "1" # 需要同步的企业微信部门ID
+        contacts_sync_hr_department_id = 1 # 需要同步的企业微信部门ID
         sync_hr_department_id = app_config.get_param(company.contacts_app_id.id, "contacts_sync_hr_department_id")
         if sync_hr_department_id:
-            contacts_sync_hr_department_id = sync_hr_department_id
-        tasks = []
+            contacts_sync_hr_department_id = int(sync_hr_department_id)
+
         try:
             wxapi = self.env["wecom.service_api"].InitServiceApi(
                 company.corpid, company.contacts_sync_app_id.secret
@@ -293,6 +291,7 @@ class WecomUser(models.Model):
                     "fetch_child": "1",
                 },
             )
+
         except ApiException as ex:
             end_time = time.time()
 
@@ -320,27 +319,23 @@ class WecomUser(models.Model):
         else:
             if response["errcode"] == 0:
                 userlist = response["userlist"]
+                # 1. 合并多部门
+                dept_user = response["dept_user"]
+                d = defaultdict(lambda: defaultdict(list))
+                for dic in dept_user:
+                    userid, department = dic["userid"], dic["department"]
+                    d[userid]["userid"] = userid
+                    d[userid]["department"].extend(str(department))
 
-                # 1.获取block, 生成 block_list
-                blocks = (
-                    self.env["wecom.contacts.block"]
-                    .sudo()
-                    .search([("company_id", "=", company.id),])
-                )
-
-                block_list = []
-                if len(blocks) > 0:
-                    for obj in blocks:
-                        if obj.wecom_userid != None:
-                            # block_list.append({"userid": obj.wecom_userid})
-                            block_list.append(obj.wecom_userid)
-
-                # 从user_list移除block
-                for b in block_list:
-                    for item in userlist:
-                        # userid不区分大小写
-                        if item["userid"].lower() == b.lower():
-                            userlist.remove(item)
+                userlist = []
+                for key, value in d.items():
+                    dept_user = {}
+                    department = []
+                    userid = value["userid"]
+                    departments = value["department"]
+                    for dep in departments:
+                        department.append(int(dep))
+                    userlist.append({"userid": userid, "department": department})
 
                 # 2.下载用户
                 if userlist:
@@ -349,10 +344,6 @@ class WecomUser(models.Model):
                         if download_user_result:
                             for r in download_user_result:
                                 tasks.append(r)  # 加入 下载员工失败结果
-
-                # 3.设置直属上级
-
-                # 4.判断企业微信员工list为空，为空跳过同步离职员工
 
                 # 3.完成下载
                 end_time = time.time()
@@ -374,9 +365,6 @@ class WecomUser(models.Model):
             [
                 ("userid", "=", wecom_user["userid"].lower()),
                 ("company_id", "=", company.id),
-                "|",
-                ("active", "=", True),
-                ("active", "=", False),
             ],
             limit=1,
         )
@@ -395,23 +383,8 @@ class WecomUser(models.Model):
         try:
             user.create(
                 {
-                    "userid": wecom_user["userid"].lower(),
-                    "name": wecom_user["name"],
+                    "userid": wecom_user["userid"],
                     "department": wecom_user["department"],
-                    "position": wecom_user["position"],
-                    "status": wecom_user["status"],
-                    "enable": wecom_user["enable"],
-                    "isleader": wecom_user["isleader"],
-                    "extattr": wecom_user["extattr"],
-                    "hide_mobile": wecom_user["hide_mobile"],
-                    "telephone": wecom_user["telephone"],
-                    "order": wecom_user["order"],
-                    "external_profile": wecom_user["external_profile"],
-                    "main_department": wecom_user["main_department"],
-                    "alias": wecom_user["alias"],
-                    "is_leader_in_dept": wecom_user["is_leader_in_dept"],
-                    "direct_leader": wecom_user["direct_leader"],
-                    "user_json": wecom_user,
                     "company_id": company.id,
                 }
             )
@@ -423,7 +396,12 @@ class WecomUser(models.Model):
             )
 
             _logger.warning(result)
-            return {"name": "add_user","state": False,"time": 0,"msg": result,}
+            return {
+                "name": "add_user",
+                "state": False,
+                "time": 0,
+                "msg": result,
+            }
 
     def update_user(self, company, user, wecom_user):
         """
@@ -432,23 +410,7 @@ class WecomUser(models.Model):
         try:
             user.sudo().write(
                 {
-                    "userid": wecom_user["userid"].lower() ,
-                    "name": wecom_user["name"],
                     "department": wecom_user["department"],
-                    "position": wecom_user["position"],
-                    "status": wecom_user["status"],
-                    "enable": wecom_user["enable"],
-                    "isleader": wecom_user["isleader"],
-                    "extattr": wecom_user["extattr"],
-                    "hide_mobile": wecom_user["hide_mobile"],
-                    "telephone": wecom_user["telephone"],
-                    "order": wecom_user["order"],
-                    "external_profile": wecom_user["external_profile"],
-                    "main_department": wecom_user["main_department"],
-                    "alias": wecom_user["alias"],
-                    "is_leader_in_dept": wecom_user["is_leader_in_dept"],
-                    "direct_leader": wecom_user["direct_leader"],
-                    "user_json": wecom_user,
                 }
             )
 
@@ -494,7 +456,9 @@ class WecomUser(models.Model):
             self.write(
                 {
                     "name": response["name"],
-                    "english_name": self.env["wecomapi.tools.dictionary"].check_dictionary_keywords(response, "english_name"),
+                    "english_name": self.env[
+                        "wecomapi.tools.dictionary"
+                    ].check_dictionary_keywords(response, "english_name"),
                     "mobile": response["mobile"],
                     "department": response["department"],
                     "main_department": response["main_department"],
@@ -510,12 +474,20 @@ class WecomUser(models.Model):
                     "telephone": response["telephone"],
                     "alias": response["alias"],
                     "extattr": response["extattr"],
-                    "external_profile": self.env["wecomapi.tools.dictionary"].check_dictionary_keywords(response, "external_profile"),
-                    "external_position": self.env["wecomapi.tools.dictionary"].check_dictionary_keywords(response, "external_position"),
+                    "external_profile": self.env[
+                        "wecomapi.tools.dictionary"
+                    ].check_dictionary_keywords(response, "external_profile"),
+                    "external_position": self.env[
+                        "wecomapi.tools.dictionary"
+                    ].check_dictionary_keywords(response, "external_position"),
                     "status": response["status"],
                     "qr_code": response["qr_code"],
-                    "address": self.env["wecomapi.tools.dictionary"].check_dictionary_keywords(response, "address"),
-                    "open_userid": self.env["wecomapi.tools.dictionary"].check_dictionary_keywords(response, "open_userid"),
+                    "address": self.env[
+                        "wecomapi.tools.dictionary"
+                    ].check_dictionary_keywords(response, "address"),
+                    "open_userid": self.env[
+                        "wecomapi.tools.dictionary"
+                    ].check_dictionary_keywords(response, "open_userid"),
                 }
             )
         except ApiException as ex:

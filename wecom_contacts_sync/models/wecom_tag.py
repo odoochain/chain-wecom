@@ -67,7 +67,7 @@ class WecomTag(models.Model):
 
         try:
             wxapi = self.env["wecom.service_api"].InitServiceApi(
-                company.corpid, company.contacts_app_id.secret
+                company.corpid, company.contacts_sync_app_id.secret
             )
             response = wxapi.httpCall(
                 self.env["wecom.service_api_list"].get_server_api_call("TAG_GET_LIST")

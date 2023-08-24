@@ -28,20 +28,20 @@
                 <!-- is_wecom_contacts_display_component="true" type="userName" js_class="wecom_contacts_display_component_list"-->
                 <!-- is_wecom_contacts_display_component="true" type="departmentName" component_type="userName" options="{'type': 'userName'}"-->
                 <!-- widget="wecom_contacts_display_component" type="userName" -->
-                <tree string="User" create="false" delete="false" multi_edit="false" import="false" export_xlsx="false" sample="1" js_class="wecom_contacts_display_component_list">
+                <tree string="User" create="false" delete="false" multi_edit="false" import="false" export_xlsx="false" sample="1">
                     <field name="company_id" invisible="1"/>
                     <field name="id" invisible="1"/>
-                    <field name="userid" readonly="1" widget="wecom_contacts_display_component"  type="userName" />
+                    <field name="userid" readonly="1" />
                     <field name="name" />
                     <field name="open_userid" />
-                    <!-- <field name="main_department"/>
-                    <field name="department"/>
+                    <field name="department_id"/>
+                    <field name="department_ids"/>
 
                     <field name="gender_name" />
                     <field name="department_complete_name" />
                     <field name="is_leader_in_dept" />
                     <field name="direct_leader"/>
-                    <field name="status_name" /> -->
+                    <field name="status_name" />
                     <button string="Get OpenID" class="btn btn-outline-primary" type="object" icon="fa-openid" name="get_open_userid" attrs="{'invisible': [('open_userid', '!=',False)]}"/>
                 </tree>
             </field>
@@ -200,6 +200,9 @@
                             </page>
                             <page name="external_profile" string="External attributes">
                                 <field name="external_profile"/>
+                            </page>
+                            <page name="json" string="Metadata">
+                                <field name="user_json" widget="json_editor"/>
                             </page>
                         </notebook>
                     </sheet>
