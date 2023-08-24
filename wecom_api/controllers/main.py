@@ -5,7 +5,7 @@ import logging
 import xml.etree.cElementTree as ET
 from lxml import etree
 import sys
-from odoo.addons.wecom_api.api.wecom_msg_crtpt import WecomMsgCrypt
+from odoo.addons.wecom_api.api.wecom_msg_crtpt import WecomMsgCrypt  # type: ignore
 from odoo import http, models, fields, _
 from odoo.http import request
 from odoo.http import Response
@@ -22,7 +22,7 @@ class StripeController(http.Controller):
         auth="public",
         methods=["GET", "POST"],
     )
-    def WecomCallbackService(self):
+    def WecomCallbackService(self):  # type: ignore
         """
         企业微信回调服务
         """
@@ -41,7 +41,7 @@ class StripeController(http.Controller):
         :param service: 回调服务名称 code
         文档URL: https://work.weixin.qq.com/api/doc/90000/90135/90930#3.2%20%E6%94%AF%E6%8C%81Http%20Post%E8%AF%B7%E6%B1%82%E6%8E%A5%E6%94%B6%E4%B8%9A%E5%8A%A1%E6%95%B0%E6%8D%AE
         """
-        company_id = request.env["res.company"].sudo().search([("id", "=", id)])
+        company_id = request.env["res.company"].sudo().search([("id", "=", id)])     # type: ignore
         sCorpID = company_id.corpid
 
         callback_service = (
@@ -73,7 +73,7 @@ class StripeController(http.Controller):
             sVerifyTimeStamp = kw["timestamp"]
             sVerifyNonce = kw["nonce"]
 
-            if request.httprequest.method == "GET":
+            if request.httprequest.method == "GET":      # type: ignore
                 # ^ 假设企业的接收消息的URL设置为http://api.3dept.com。
                 # ^ 企业管理员在保存回调配置信息时，企业微信会发送一条验证消息到填写的URL，请求内容如下:
                 # ^ 请求方式：GET
@@ -92,7 +92,7 @@ class StripeController(http.Controller):
                     sys.exit(1)
                 return msg
 
-            if request.httprequest.method == "POST":
+            if request.httprequest.method == "POST":     # type: ignore
                 # ^ 假设企业的接收消息的URL设置为http://api.3dept.com。
                 # ^ 当用户触发回调行为时，企业微信会发送回调消息到填写的URL，请求内容如下：
                 # ^ 请求方式：POST
@@ -104,7 +104,7 @@ class StripeController(http.Controller):
                 # ^ ToUserName: 企业微信的CorpID，当为第三方应用回调事件时，CorpID的内容为suiteid
                 # ^ AgentID: 接收的应用id，可在应用的设置页面获取。仅应用相关的回调会带该字段。
                 # ^ Encrypt: 消息结构体加密后的字符串
-                sReqData = request.httprequest.data
+                sReqData = request.httprequest.data      # type: ignore
                 ret, msg = wxcpt.DecryptMsg(
                     sReqData, sVerifyMsgSig, sVerifyTimeStamp, sVerifyNonce
                 )
@@ -116,7 +116,7 @@ class StripeController(http.Controller):
                 # print("解密成功", msg)
                 try:
                     return (
-                        request.env["wecom.app.event_type"]
+                        request.env["wecom.app.event_type"]      # type: ignore
                         .sudo()
                         .with_context(xml_tree=msg, company_id=company_id)
                         .handle_event()

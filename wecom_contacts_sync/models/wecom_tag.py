@@ -6,7 +6,7 @@ import time
 from odoo import fields, models, api, Command, tools, _
 from odoo.exceptions import UserError
 import xmltodict
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException   # type: ignore
 from odoo.addons.base.models.ir_mail_server import MailDeliveryException
 
 _logger = logging.getLogger(__name__)
@@ -49,7 +49,7 @@ class WecomTag(models.Model):
 
     def _compute_name(self):
         for tag in self:
-            tag.name = tag.tagname
+            tag.name = tag.tagname  # type: ignore
 
     # ------------------------------------------------------------
     # 企微标签下载
@@ -245,7 +245,7 @@ class WecomTag(models.Model):
         message = ""
         try:
             wxapi = self.env["wecom.service_api"].InitServiceApi(
-                company.corpid, company.contacts_app_id.secret
+                company.corpid, company.contacts_app_id.secret  # type: ignore
             )
             response = wxapi.httpCall(
                 self.env["wecom.service_api_list"].get_server_api_call(
@@ -336,7 +336,7 @@ class WecomTag(models.Model):
         tag_dict = xmltodict.parse(xml_tree)["xml"]
 
         tags = self.sudo().search([("company_id", "=", company_id.id)])
-        callback_tag = tags.search(
+        callback_tag = tags.search( # type: ignore
             [("tagid", "=", tag_dict["TagId"])],
             limit=1,
         )
@@ -344,7 +344,7 @@ class WecomTag(models.Model):
         update_dict = {}
 
         for key, value in tag_dict.items():
-            if key.lower() in self._fields.keys():
+            if key.lower() in self._fields.keys():  # type: ignore
                 update_dict.update({key.lower(): value})
             else:
                 if key == "AddUserItems":
@@ -361,8 +361,8 @@ class WecomTag(models.Model):
                     update_dict.update({"del_departments": value})
 
         if callback_tag:
-            userlist = json.loads(callback_tag.userlist)
-            partylist = json.loads(callback_tag.partylist)
+            userlist = json.loads(callback_tag.userlist)    # type: ignore
+            partylist = json.loads(callback_tag.partylist)  # type: ignore
 
             if "add_users" in update_dict:
                 # 需要增加的成员
@@ -437,4 +437,4 @@ class WecomTag(models.Model):
             )
 
             del update_dict["tagid"]
-            callback_tag.write(update_dict)
+            callback_tag.write(update_dict) # type: ignore

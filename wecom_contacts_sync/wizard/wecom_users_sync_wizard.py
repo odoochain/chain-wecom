@@ -12,7 +12,7 @@ pd.set_option("display.max_columns", 30)  # 设置最大列数
 pd.set_option("expand_frame_repr", False)  # 当列太多时不换行
 import time
 
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException   # type: ignore
 
 _logger = logging.getLogger(__name__)
 
@@ -65,12 +65,12 @@ class WecomUsersSyncWizard(models.TransientModel):
             companies_names = [company.name for company in companies]
             self.companies = ",".join(companies_names)
         else:
-            self.companies = self.company_id.name
+            self.companies = self.company_id.name   # type: ignore
 
     @api.onchange("company_id")
     def onchange_company_id(self):
         if self.sync_all is False:
-            self.companies = self.company_id.name
+            self.companies = self.company_id.name   # type: ignore
 
     state = fields.Selection(
         [
@@ -148,7 +148,7 @@ class WecomUsersSyncWizard(models.TransientModel):
             "view_type": "form",
             "view_mode": "form",
             "res_model": "wecom.users.sync.wizard",
-            "res_id": self.id,
+            "res_id": self.id,  # type: ignore
             "view_id": False,
             "views": [
                 [form_view.id, "form"],

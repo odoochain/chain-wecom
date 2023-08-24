@@ -44,15 +44,15 @@ class WecomServerApi(models.TransientModel):
                     "secret": secret,
                 }
             )
-        if api["access_token"] is False or api["access_token"] == "":
+        if api["access_token"] is False or api["access_token"] == "":    # type: ignore
             # token为空，刷新API令牌记录
-            api.refreshAccessToken()
+            api.refreshAccessToken()     # type: ignore
         if (
-            api["token_expiration_time"] is False
-            or api["token_expiration_time"] < datetime.now()
+            api["token_expiration_time"] is False    # type: ignore
+            or api["token_expiration_time"] < datetime.now()     # type: ignore
         ):
             # token过期，刷新API令牌记录
-            api.refreshAccessToken()
+            api.refreshAccessToken()     # type: ignore
 
         return api
 
@@ -69,7 +69,7 @@ class WecomServerApi(models.TransientModel):
         刷新模型 'wecom.service_api' 的令牌
         同时刷新发起请求的模型 'wecom.apps' 的令牌
         """
-        response = self.httpCall(
+        response = self.httpCall(    # type: ignore
             self.env["wecom.service_api_list"].get_server_api_call("GET_ACCESS_TOKEN"),
             {"corpid": self.corpid, "corpsecret": self.secret},
         )

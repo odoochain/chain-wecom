@@ -3,7 +3,7 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, ValidationError
 
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException   # type: ignore
 
 
 import werkzeug.urls
@@ -37,7 +37,7 @@ class ResConfigSettings(models.TransientModel):
     )
 
     def set_oauth_provider_wecom(self):
-        self.auth_app_id.set_oauth_provider_wecom()
+        self.auth_app_id.set_oauth_provider_wecom() # type: ignore
 
     def generate_parameters(self):
         """
@@ -50,8 +50,8 @@ class ResConfigSettings(models.TransientModel):
                 # if not record.contacts_app_id:
                 #     raise ValidationError(_("Please bind contact app!"))
                 # else:
-                record.auth_app_id.with_context(code=code).generate_parameters()
-        super(ResConfigSettings, self).generate_parameters()
+                record.auth_app_id.with_context(code=code).generate_parameters()    # type: ignore
+        super(ResConfigSettings, self).generate_parameters()    # type: ignore
 
     def get_app_info(self):
         """
@@ -61,9 +61,9 @@ class ResConfigSettings(models.TransientModel):
         app = self.env.context.get("app")
         for record in self:
             if app == "auth" and (
-                record.auth_app_id.agentid == 0 or record.auth_app_id.secret == ""
+                record.auth_app_id.agentid == 0 or record.auth_app_id.secret == ""  # type: ignore
             ):
                 raise UserError(_("Auth application ID and secret cannot be empty!"))
             else:
-                record.auth_app_id.get_app_info()
-        super(ResConfigSettings, self).get_app_info()
+                record.auth_app_id.get_app_info()   # type: ignore
+        super(ResConfigSettings, self).get_app_info()   # type: ignore

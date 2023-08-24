@@ -44,9 +44,9 @@ class WecomServerApiError(models.Model):
             limit=1,
         )
         return {
-            "code": res.code,
-            "name": res.name,
-            "method": res.method,
+            "code": res.code,        # type: ignore
+            "name": res.name,    # type: ignore
+            "method": res.method, # type: ignore
         }
 
     def cron_pull_global_error_code(self):
@@ -68,7 +68,7 @@ class WecomServerApiError(models.Model):
         try:
             _logger.info(_("Start pulling the global error code of WeCom."))
             page_text = requests.get(url=url).text
-            tree = etree.HTML(page_text)
+            tree = etree.HTML(page_text)     # type: ignore
 
             codes_elements = tree.xpath(codes)
 
@@ -79,7 +79,7 @@ class WecomServerApiError(models.Model):
                 error_code = code_element_str.split("：", 1)[1:][0]
 
                 method_element = code_element.getnext()
-                method = etree.tostring(method_element, encoding="utf-8", pretty_print=True ).decode()
+                method = etree.tostring(method_element, encoding="utf-8", pretty_print=True ).decode()   # type: ignore
 
                 if " " in error_code:
                     # 一个元素存在多个错误码
@@ -97,7 +97,7 @@ class WecomServerApiError(models.Model):
 
             table = tree.xpath("//div[@class='cherry-table-container']/table")  # 取出表格
             table = etree.tostring(
-                table[0], encoding="utf-8"
+                table[0], encoding="utf-8"   # type: ignore
             ).decode()  # 将第一个表格转成string格式
             table = table.replace("<th>错误码</th>", "<th>code</th>")
             table = table.replace("<th>错误说明</th>", "<th>name</th>")
@@ -139,7 +139,7 @@ class WecomServerApiError(models.Model):
                         }
                     )
                 else:
-                    res.sudo().write(
+                    res.sudo().write(    # type: ignore
                         {
                             "name": error["name"],
                             "method": error["method"],

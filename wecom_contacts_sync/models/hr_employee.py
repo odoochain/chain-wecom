@@ -53,7 +53,7 @@ class HrEmployeePrivate(models.Model):
     # 故重写了 将  related='address_home_id.email'去掉，并添加 store 属性
     # ----------------------------------------------------------------------------------
     # private_email = fields.Char(string="Private Email", groups="hr.group_hr_user",store=True,)
-    
+
     is_wecom_organization = fields.Boolean(
         related="company_id.is_wecom_organization", readonly=False
     )
@@ -87,9 +87,9 @@ class HrEmployeePrivate(models.Model):
         self.write(
             {"is_wecom_user": False, "wecom_userid": None, "qr_code": None,}
         )
-        if self.user_id:
+        if self.user_id:    # type: ignore
             # 关联了User
-            self.user_id.write(
+            self.user_id.write( # type: ignore
                 {"is_wecom_user": False, "wecom_userid": None, "qr_code": None,}
             )
 
@@ -110,8 +110,8 @@ class HrEmployeePrivate(models.Model):
 
         for employee in self:
             params = {}
-            if employee.wecom_openid is False:
-                employee.get_wecom_openid()
+            if employee.wecom_openid is False:  # type: ignore
+                employee.get_wecom_openid() # type: ignore
 
             try:
                 res_user_id = self.env["res.users"]._get_or_create_user_by_wecom_userid(
@@ -120,7 +120,7 @@ class HrEmployeePrivate(models.Model):
             except Exception as e:
                 message = _(
                     "Failed to copy employee [%s] as system user, reason:%s"
-                ) % (employee.name, repr(e),)
+                ) % (employee.name, repr(e),)   # type: ignore
                 _logger.warning(message)
                 params = {
                     "title": _("Fail"),
@@ -131,7 +131,7 @@ class HrEmployeePrivate(models.Model):
                 }
             else:
                 message = _("Successfully copied employee [%s] as system user") % (
-                    employee.name
+                    employee.name   # type: ignore
                 )
                 params = {
                     "title": _("Success"),
@@ -149,7 +149,7 @@ class HrEmployeePrivate(models.Model):
                 }
                 return action
 
-    
+
     # ------------------------------------------------------------
     # 从 模型 wecom.user 同步员工
     # ------------------------------------------------------------
@@ -164,9 +164,9 @@ class HrEmployeePrivate(models.Model):
         else:
             company = self.env.company
             print("2",company)
-        
+
         # if not company:
         #     company = self.env.company
-        
+
 
         return {}

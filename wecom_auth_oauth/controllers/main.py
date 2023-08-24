@@ -14,11 +14,10 @@ from odoo import api, http, SUPERUSER_ID, _
 from odoo.exceptions import AccessDenied
 from odoo.http import request
 from odoo import registry as registry_get
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
-
-from odoo.addons.auth_signup.controllers.main import AuthSignupHome as Home
-from odoo.addons.auth_oauth.controllers.main import fragment_to_query_string
-from odoo.addons.web.controllers.utils import ensure_db, _get_login_redirect_url
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException   # type: ignore
+from odoo.addons.auth_signup.controllers.main import AuthSignupHome as Home # type: ignore
+from odoo.addons.auth_oauth.controllers.main import fragment_to_query_string    # type: ignore
+from odoo.addons.web.controllers.utils import ensure_db, _get_login_redirect_url    # type: ignore
 
 import urllib
 import requests
@@ -40,7 +39,7 @@ class OAuthLogin(Home):
     def list_providers(self):
         try:
             providers = (
-                request.env["auth.oauth.provider"]
+                request.env["auth.oauth.provider"]  # type: ignore
                 .sudo()
                 .search_read([("enabled", "=", True)])
             )
@@ -54,7 +53,7 @@ class OAuthLogin(Home):
             ):
                 # 一键登录
                 return_url = (
-                    request.httprequest.url_root + "wxowrk_auth_oauth/authorize"
+                    request.httprequest.url_root + "wxowrk_auth_oauth/authorize"    # type: ignore
                 )
 
                 state = self.get_state(provider)
@@ -68,7 +67,7 @@ class OAuthLogin(Home):
                 )
                 provider["auth_link"] = "%s?%s%s" % (
                     provider["auth_endpoint"],
-                    werkzeug.urls.url_encode(params),
+                    werkzeug.urls.url_encode(params),   # type: ignore
                     "#wechat_redirect",
                 )
             elif (
@@ -76,7 +75,7 @@ class OAuthLogin(Home):
                 in provider["auth_endpoint"]
             ):
                 # 扫描登录
-                return_url = request.httprequest.url_root + "wxowrk_auth_oauth/qr"
+                return_url = request.httprequest.url_root + "wxowrk_auth_oauth/qr"  # type: ignore
 
                 state = self.get_state(provider)
 
@@ -88,10 +87,10 @@ class OAuthLogin(Home):
                 )
                 provider["auth_link"] = "%s?%s" % (
                     provider["auth_endpoint"],
-                    werkzeug.urls.url_encode(params),
+                    werkzeug.urls.url_encode(params),   # type: ignore
                 )
             else:
-                return_url = request.httprequest.url_root + "auth_oauth/signin"
+                return_url = request.httprequest.url_root + "auth_oauth/signin" # type: ignore
                 state = self.get_state(provider)
                 params = dict(
                     response_type="token",
@@ -116,7 +115,7 @@ class OAuthController(http.Controller):
         code = kw.pop("code", None)
         state = json.loads(kw["state"])
         company = (
-            request.env["res.company"]
+            request.env["res.company"]  # type: ignore
             .sudo()
             .search(
                 [("corpid", "=", state["a"]), ("is_wecom_organization", "=", True),],
@@ -125,14 +124,14 @@ class OAuthController(http.Controller):
 
         try:
             wxapi = (
-                request.env["wecom.service_api"]
+                request.env["wecom.service_api"]    # type: ignore
                 .sudo()
                 .InitServiceApi(company.corpid, company.sudo().auth_app_id.secret)
             )
 
             # 根据code获取成员信息
             response = wxapi.httpCall(
-                request.env["wecom.service_api_list"]
+                request.env["wecom.service_api_list"]   # type: ignore
                 .sudo()
                 .get_server_api_call("GET_USER_INFO_BY_CODE"),
                 {"code": code,},
@@ -165,14 +164,14 @@ class OAuthController(http.Controller):
                         url = "/web#menu_id=%s" % menu
                     # resp = login_and_redirect(*credentials, redirect_url=url)
 
-                    pre_uid = request.session.authenticate(db, login, key)
-                    resp = request.redirect(_get_login_redirect_url(pre_uid, url), 303)
+                    pre_uid = request.session.authenticate(db, login, key)  # type: ignore
+                    resp = request.redirect(_get_login_redirect_url(pre_uid, url), 303) # type: ignore
                     resp.autocorrect_location_header = False
 
                     # Since /web is hardcoded, verify user has right to land on it
                     if werkzeug.urls.url_parse(
                         resp.location
-                    ).path == "/web" and not request.env.user.has_group(
+                    ).path == "/web" and not request.env.user.has_group(    # type: ignore
                         "base.group_user"
                     ):
                         resp.location = "/"
@@ -202,17 +201,17 @@ class OAuthController(http.Controller):
                     _logger.exception("OAuth2: %s" % str(e))
                     url = "/web/login?oauth_error=2"
 
-            redirect = request.redirect(url, 303)
+            redirect = request.redirect(url, 303)   # type: ignore
             redirect.autocorrect_location_header = False
             return redirect
         except ApiException as e:
-            return request.env["wecomapi.tools.action"].ApiExceptionDialog(e)
+            return request.env["wecomapi.tools.action"].ApiExceptionDialog(e)   # type: ignore
 
     @http.route("/wxowrk_auth_oauth/qr", type="http", auth="none")
     def wecom_qr_authorize(self, **kw):
         code = kw.pop("code", None)
         company = (
-            request.env["res.company"]
+            request.env["res.company"]  # type: ignore
             .sudo()
             .search(
                 [("corpid", "=", kw["appid"]), ("is_wecom_organization", "=", True),],
@@ -221,17 +220,17 @@ class OAuthController(http.Controller):
 
         try:
             wxapi = (
-                request.env["wecom.service_api"]
+                request.env["wecom.service_api"]    # type: ignore
                 .sudo()
                 .InitServiceApi(company.corpid, company.sudo().auth_app_id.secret)
             )
             response = wxapi.httpCall(
-                request.env["wecom.service_api_list"]
+                request.env["wecom.service_api_list"]   # type: ignore
                 .sudo()
                 .get_server_api_call("GET_USER_INFO_BY_CODE"),
                 {"code": code,},
             )
-            
+
             state = json.loads(kw["state"].replace("M", '"'))
             dbname = state["d"]
             if not http.db_filter([dbname]):
@@ -260,13 +259,13 @@ class OAuthController(http.Controller):
                     elif menu:
                         url = "/web#menu_id=%s" % menu
 
-                    pre_uid = request.session.authenticate(db, login, key)
-                    resp = request.redirect(_get_login_redirect_url(pre_uid, url), 303)
+                    pre_uid = request.session.authenticate(db, login, key)  # type: ignore
+                    resp = request.redirect(_get_login_redirect_url(pre_uid, url), 303) # type: ignore
                     resp.autocorrect_location_header = False
 
                     if werkzeug.urls.url_parse(
                         resp.location
-                    ).path == "/web" and not request.env.user.has_group(
+                    ).path == "/web" and not request.env.user.has_group(    # type: ignore
                         "base.group_user"
                     ):
                         resp.location = "/"
@@ -291,11 +290,11 @@ class OAuthController(http.Controller):
                     # signup error
                     _logger.exception("OAuth2: %s" % str(e))
                     url = "/web/login?oauth_error=2"
-            redirect = request.redirect(url, 303)
+            redirect = request.redirect(url, 303)   # type: ignore
             redirect.autocorrect_location_header = False
             return redirect
         except ApiException as e:
-            return request.env["wecomapi.tools.action"].ApiExceptionDialog(e)
+            return request.env["wecomapi.tools.action"].ApiExceptionDialog(e)   # type: ignore
 
     @http.route("/wxowrk_login_info", type="json", auth="none")
     def wecom_get_login_info(self, **kwargs):
@@ -320,7 +319,7 @@ class OAuthController(http.Controller):
             }
 
         # 获取 标记为 企业微信组织 的公司
-        companies = request.env["res.company"].search(
+        companies = request.env["res.company"].search(  # type: ignore
             [(("is_wecom_organization", "=", True))]
         )
 

@@ -5,7 +5,7 @@ from odoo import api, models, fields, _
 from odoo.exceptions import UserError
 
 
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException   # type: ignore
 
 import logging
 
@@ -38,7 +38,7 @@ class WizardSyncTags(models.TransientModel):
             self.times,
             self.sync_tag_result,
             self.result,
-        ) = EmployeeCategory.sync_employee_tags(self.env["hr.employee.category"])
+        ) = EmployeeCategory.sync_employee_tags(self.env["hr.employee.category"])   # type: ignore
 
         form_view = self.env.ref("hrms_syncing.dialog_wecom_contacts_sync_tag_result")
         return {
@@ -46,7 +46,7 @@ class WizardSyncTags(models.TransientModel):
             "view_type": "form",
             "view_mode": "form",
             "res_model": "wizard.wecom.tag",
-            "res_id": self.id,
+            "res_id": self.id,  # type: ignore
             "view_id": False,
             "views": [
                 [form_view.id, "form"],

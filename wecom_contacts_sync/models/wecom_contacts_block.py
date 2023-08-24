@@ -3,7 +3,7 @@
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
 
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException    # type: ignore
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -41,8 +41,8 @@ class WxworkContactsBlock(models.Model):
     @api.depends("company_id", "wecom_userid")
     def _compute_name(self):
         for block in self:
-            if block.company_id and block.wecom_userid:
-                company = block.company_id
+            if block.company_id and block.wecom_userid:  # type: ignore
+                company = block.company_id   # type: ignore
                 name = ""
                 try:
                     wxapi = self.env["wecom.service_api"].InitServiceApi(
@@ -52,7 +52,7 @@ class WxworkContactsBlock(models.Model):
                         self.env["wecom.service_api_list"].get_server_api_call(
                             "USER_GET"
                         ),
-                        {"userid": block.wecom_userid},
+                        {"userid": block.wecom_userid},  # type: ignore
                     )
                     name = response["name"]
                 except ApiException as ex:
@@ -60,4 +60,4 @@ class WxworkContactsBlock(models.Model):
                         ex, raise_exception=True
                     )
                 finally:
-                    block.name = name
+                    block.name = name    # type: ignore

@@ -4,7 +4,7 @@ import logging
 from odoo import api, models, _
 
 
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException   # type: ignore
 
 from datetime import datetime, timedelta
 import pytz

@@ -7,7 +7,7 @@ import time
 from odoo import fields, models, api, Command, tools, _
 from odoo.exceptions import UserError
 import xmltodict
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException   # type: ignore
 from odoo.addons.base.models.ir_mail_server import MailDeliveryException
 
 _logger = logging.getLogger(__name__)
@@ -146,33 +146,33 @@ class WecomUser(models.Model):
     @api.depends("status")
     def _compute_status_name(self):
         for user in self:
-            user.status_name = str(user.status)
+            user.status_name = str(user.status) # type: ignore
 
     @api.depends("status")
     def _compute_active(self):
         for user in self:
-            if user.status == 1:
-                user.active = True
+            if user.status == 1:    # type: ignore
+                user.active = True  # type: ignore
             else:
-                user.active = False
+                user.active = False # type: ignore
 
     @api.depends("main_department")
     def _compute_department_id(self):
         for user in self:
             department_id = self.env["wecom.department"].search(
                 [
-                    ("department_id", "=", user.main_department),
-                    ("company_id", "=", user.company_id.id),
+                    ("department_id", "=", user.main_department),   # type: ignore
+                    ("company_id", "=", user.company_id.id),    # type: ignore
                 ],
                 limit=1,
             )
             if department_id:
-                user.department_id = department_id
+                user.department_id = department_id  # type: ignore
 
     @api.depends("gender")
     def _compute_gender_name(self):
         for user in self:
-            user.gender_name = str(user.gender)
+            user.gender_name = str(user.gender) # type: ignore
 
     @api.depends("department")
     def _compute_department_ids(self):
@@ -180,9 +180,9 @@ class WecomUser(models.Model):
         计算多部门  eval( )
         """
         for user in self:
-            department_list = eval(user.department)
+            department_list = eval(user.department) # type: ignore
             department_ids = self.get_parent_department(
-                user.company_id, department_list
+                user.company_id, department_list    # type: ignore
             )
 
             user.write({"department_ids": [(6, 0, department_ids)]})
@@ -211,7 +211,7 @@ class WecomUser(models.Model):
         """
         app_config = self.env["wecom.app_config"].sudo()
         contacts_allow_add_system_users = app_config.get_param(
-            self.company_id.contacts_app_id.id, "contacts_allow_add_system_users"
+            self.company_id.contacts_app_id.id, "contacts_allow_add_system_users"   # type: ignore
         )  # 允许创建用户
 
         if contacts_allow_add_system_users:
@@ -230,7 +230,7 @@ class WecomUser(models.Model):
                     "share": False,
                     "active": True if self.status == 1 else False,
                     # "image_1920": self.avatar,
-                    "company_id": self.company_id.id,
+                    "company_id": self.company_id.id,   # type: ignore
                     # 以下为企业微信字段
                     "wecom_userid": login,
                     "wecom_openid": self.open_userid,
@@ -426,7 +426,7 @@ class WecomUser(models.Model):
         message = ""
         try:
             wxapi = self.env["wecom.service_api"].InitServiceApi(
-                company.corpid, company.contacts_app_id.secret
+                company.corpid, company.contacts_app_id.secret  # type: ignore
             )
             response = wxapi.httpCall(
                 self.env["wecom.service_api_list"].get_server_api_call("USER_GET"),
@@ -524,15 +524,15 @@ class WecomUser(models.Model):
         for user in self:
             try:
                 wxapi = self.env["wecom.service_api"].InitServiceApi(
-                    user.company_id.corpid,
-                    user.company_id.contacts_app_id.secret,
+                    user.company_id.corpid, # type: ignore
+                    user.company_id.contacts_app_id.secret, # type: ignore
                 )
                 response = wxapi.httpCall(
                     self.env["wecom.service_api_list"].get_server_api_call(
                         "USERID_TO_OPENID"
                     ),
                     {
-                        "userid": user.userid,
+                        "userid": user.userid,  # type: ignore
                     },
                 )
             except ApiException as ex:
@@ -540,7 +540,7 @@ class WecomUser(models.Model):
                     ex, raise_exception=True
                 )
             else:
-                user.open_userid = response["openid"]
+                user.open_userid = response["openid"]   # type: ignore
 
     # ------------------------------------------------------------
     # 企微通讯录事件
@@ -560,7 +560,7 @@ class WecomUser(models.Model):
         ]
 
         users = self.sudo().search([("company_id", "=", company_id.id)] + domain)
-        callback_user = users.search(
+        callback_user = users.search(   # type: ignore
             [("userid", "=", user_dict["UserID"])],
             limit=1,
         )
@@ -576,7 +576,7 @@ class WecomUser(models.Model):
         update_dict = {}
 
         for key, value in user_dict.items():
-            if key.lower() in self._fields.keys():
+            if key.lower() in self._fields.keys():  # type: ignore
                 update_dict.update({key.lower(): value})
             else:
                 if key == "MainDepartment":
@@ -589,13 +589,13 @@ class WecomUser(models.Model):
                     update_dict.update({"biz_mail": value})
         if cmd == "create":
             update_dict.update({"company_id": company_id.id})
-            callback_user.create(update_dict)
+            callback_user.create(update_dict)   # type: ignore
         elif cmd == "update":
             if "userid" in update_dict:
                 del update_dict["userid"]
-            callback_user.write(update_dict)
+            callback_user.write(update_dict)    # type: ignore
         elif cmd == "delete":
-            callback_user.write(
+            callback_user.write(    # type: ignore
                 {
                     "active": False,
                 }

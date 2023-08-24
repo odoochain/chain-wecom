@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api, _
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException   # type: ignore
 
 
 import werkzeug.urls
@@ -29,16 +29,16 @@ class Company(models.Model):
         web_base_url = self.env["ir.config_parameter"].get_param("web.base.url")
 
         new_auth_redirect_uri = (
-            urllib.parse.urlparse(web_base_url).scheme
+            urllib.parse.urlparse(web_base_url).scheme  # type: ignore
             + "://"
-            + urllib.parse.urlparse(web_base_url).netloc
-            + urllib.parse.urlparse(self.auth_redirect_uri).path
+            + urllib.parse.urlparse(web_base_url).netloc    # type: ignore
+            + urllib.parse.urlparse(self.auth_redirect_uri).path    # type: ignore
         )
         new_qr_redirect_uri = (
-            urllib.parse.urlparse(web_base_url).scheme
+            urllib.parse.urlparse(web_base_url).scheme  # type: ignore
             + "://"
-            + urllib.parse.urlparse(web_base_url).netloc
-            + urllib.parse.urlparse(self.qr_redirect_uri).path
+            + urllib.parse.urlparse(web_base_url).netloc    # type: ignore
+            + urllib.parse.urlparse(self.qr_redirect_uri).path  # type: ignore
         )
 
         # 设置回调链接地址

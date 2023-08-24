@@ -9,7 +9,7 @@ from odoo import api, fields, models, _
 # from lxml_to_dict import lxml_to_dict
 # from xmltodict import lxml_to_dict
 import xmltodict
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException    # type: ignore
 
 _logger = logging.getLogger(__name__)
 
@@ -64,10 +64,10 @@ class EmployeeCategory(models.Model):
     def _compute_display_name(self):
         tag = _("WeCom Tag")
         for rec in self:
-            if rec.is_wecom_tag:
-                rec.display_name = "%s:%s" % (tag, rec.name)
+            if rec.is_wecom_tag:     # type: ignore
+                rec.display_name = "%s:%s" % (tag, rec.name)     # type: ignore
             else:
-                rec.display_name = rec.name
+                rec.display_name = rec.name  # type: ignore
 
     @api.onchange("employee_ids")
     def _onchange_employee_ids(self):
@@ -84,8 +84,8 @@ class EmployeeCategory(models.Model):
             self.env["ir.config_parameter"].sudo().get_param("wecom.del_wecom_tag")
         )
         for tag in self:
-            if tag.is_wecom_tag and del_wecom_tag:
-                tag.delete_wecom_tag()
+            if tag.is_wecom_tag and del_wecom_tag:   # type: ignore
+                tag.delete_wecom_tag()   # type: ignore
         return super(EmployeeCategory, self).unlink()
 
     # ------------------------------------------------------------
@@ -103,7 +103,7 @@ class EmployeeCategory(models.Model):
         params = {}
         try:
             wxapi = self.env["wecom.service_api"].InitServiceApi(
-                company.corpid, company.contacts_app_id.secret
+                company.corpid, company.contacts_app_id.secret   # type: ignore
             )
             if self.tagid:
                 if debug:
@@ -165,7 +165,7 @@ class EmployeeCategory(models.Model):
         params = {}
         try:
             wxapi = self.env["wecom.service_api"].InitServiceApi(
-                self.company_id.corpid, self.company_id.contacts_app_id.secret
+                self.company_id.corpid, self.company_id.contacts_app_id.secret   # type: ignore
             )
             tagid = 0
             # 创建标签和更新标签
@@ -293,11 +293,11 @@ class EmployeeCategory(models.Model):
         local_partylist = []
         if self.employee_ids:
             for user in self.employee_ids:
-                local_userlist.append(user.wecom_userid)
+                local_userlist.append(user.wecom_userid)     # type: ignore
 
         if self.department_ids:
             for department in self.department_ids:
-                local_partylist.append(department.wecom_department_id)
+                local_partylist.append(department.wecom_department_id)   # type: ignore
 
         # 本地与远程的差集，及需要在远程增加的数据
         remote_add_userlist = list(set(local_userlist).difference(set(remote_userlist)))
@@ -329,7 +329,7 @@ class EmployeeCategory(models.Model):
         params = {}
         try:
             wxapi = self.env["wecom.service_api"].InitServiceApi(
-                self.company_id.corpid, self.company_id.contacts_app_id.secret
+                self.company_id.corpid, self.company_id.contacts_app_id.secret   # type: ignore
             )
 
             tag_response = wxapi.httpCall(
@@ -452,7 +452,7 @@ class EmployeeCategory(models.Model):
                     )
 
                     if not category:
-                        category.create(
+                        category.create(     # type: ignore
                             {
                                 "name": tag["tagname"],
                                 "tagid": tag["tagid"],
@@ -460,7 +460,7 @@ class EmployeeCategory(models.Model):
                             }
                         )
                     else:
-                        category.write(
+                        category.write(  # type: ignore
                             {
                                 "name": tag["tagname"],
                                 "is_wecom_tag": True,
@@ -524,7 +524,7 @@ class EmployeeCategory(models.Model):
                 "name": "download_tag_members",
                 "state": False,
                 "time": 0,
-                "msg": repr(e),
+                "msg": repr(ex),  # type: ignore
             }
         except Exception as e:
             res = {
@@ -594,7 +594,7 @@ class EmployeeCategory(models.Model):
         params = {}
         try:
             wxapi = self.env["wecom.service_api"].InitServiceApi(
-                company.corpid, company.contacts_app_id.secret
+                company.corpid, company.contacts_app_id.secret   # type: ignore
             )
             response = wxapi.httpCall(
                 self.env["wecom.service_api_list"].get_server_api_call("TAG_DELETE"),
@@ -617,7 +617,7 @@ class EmployeeCategory(models.Model):
                     [("tagid", "=", self.tagid)],
                     limit=1,
                 )
-                tag.write(
+                tag.write(   # type: ignore
                     {
                         "is_wecom_tag": False,
                         "tagid": 0,
@@ -663,8 +663,8 @@ class EmployeeCategory(models.Model):
         """
         xml_tree = self.env.context.get("xml_tree")
         company_id = self.env.context.get("company_id")
-        xml_tree_str = etree.fromstring(bytes.decode(xml_tree))
-        dic = lxml_to_dict(xml_tree_str)["xml"]
+        xml_tree_str = etree.fromstring(bytes.decode(xml_tree))  # type: ignore
+        dic = lxml_to_dict(xml_tree_str)["xml"]  # type: ignore
 
         callback_tag = self.sudo().search(
             [("company_id", "=", company_id.id), ("tagid", "=", dic["TagId"])],
@@ -756,18 +756,18 @@ class EmployeeCategory(models.Model):
         #     del_department_list,
         # )
         if len(add_employee_list) > 0:
-            callback_tag.write(
+            callback_tag.write(  # type: ignore
                 {"employee_ids": [(4, res, False) for res in add_employee_list]}
             )
         if len(del_employee_list) > 0:
-            callback_tag.write(
+            callback_tag.write(  # type: ignore
                 {"employee_ids": [(3, res, False) for res in del_employee_list]}
             )
         if len(add_department_list) > 0:
-            callback_tag.write(
+            callback_tag.write(  # type: ignore
                 {"department_ids": [(4, res, False) for res in add_department_list]}
             )
         if len(del_department_list) > 0:
-            callback_tag.write(
+            callback_tag.write(  # type: ignore
                 {"department_ids": [(3, res, False) for res in del_department_list]}
             )

@@ -6,7 +6,7 @@ import time
 from odoo import fields, models, api, Command, tools, _
 from odoo.exceptions import UserError
 import xmltodict
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException    # type: ignore
 from odoo.addons.base.models.ir_mail_server import MailDeliveryException
 
 _logger = logging.getLogger(__name__)
@@ -25,8 +25,8 @@ class WecomDepartment(models.Model):
         string="Name",
         readonly=True,
         default="",
-        compute="_compute_name",
-    )  # 部门名称
+
+    )  # 部门名称 compute="_compute_name",
     name_en = fields.Char(string="English name", readonly=True, default="")  # 英部门文名称
     department_leader = fields.Char(
         string="Department Leader", readonly=True, default="[]"
@@ -66,6 +66,7 @@ class WecomDepartment(models.Model):
     complete_name = fields.Char(
         "Complete Name", compute="_compute_complete_name", recursive=True, store=True
     )
+    department_leader = fields.Char(string="Department Leader", readonly=True, default="[]")
     department_leader_ids = fields.Many2many(
         "wecom.user",
         "user_department_rel",
@@ -82,37 +83,39 @@ class WecomDepartment(models.Model):
     )
     color = fields.Integer("Color Index")
 
+    department_json = fields.Json(string="Department Json", readonly=True)
+
     @api.depends("department_id", "company_id")
     def _compute_name(self):
         for department in self:
-            if not department.name:
-                department.name = "%s:%s" % (
-                    department.company_id.name,
-                    department.department_id,
+            if not department.name:  # type: ignore
+                department.name = "%s:%s" % (    # type: ignore
+                    department.company_id.name,  # type: ignore
+                    department.department_id,    # type: ignore
                 )
 
     @api.depends("parentid", "company_id")
     def _compute_parent_id(self):
         for department in self:
-            if department.parentid:
+            if department.parentid:  # type: ignore
                 parent_department = self.sudo().search(
                     [
-                        ("department_id", "=", department.parentid),
-                        ("company_id", "=", department.company_id.id),
+                        ("department_id", "=", department.parentid),     # type: ignore
+                        ("company_id", "=", department.company_id.id),   # type: ignore
                     ]
                 )
-                department.parent_id = parent_department.id
+                department.parent_id = parent_department.id  # type: ignore
 
     @api.depends("name", "parent_id", "company_id")
     def _compute_complete_name(self):
         for department in self:
-            if department.parent_id:
-                department.complete_name = "%s / %s" % (
-                    department.parent_id.complete_name,
-                    department.name,
+            if department.parent_id:     # type: ignore
+                department.complete_name = "%s / %s" % (     # type: ignore
+                    department.parent_id.complete_name,  # type: ignore
+                    department.name,     # type: ignore
                 )
             else:
-                department.complete_name = department.name
+                department.complete_name = department.name   # type: ignore
 
     # @api.onchange('parent_id')
     # def _onchange_parentid(self):
@@ -141,14 +144,13 @@ class WecomDepartment(models.Model):
 
         try:
             wxapi = self.env["wecom.service_api"].InitServiceApi(
-                company.corpid, company.contacts_app_id.secret
-            )
+                company.corpid, company.contacts_sync_app_id.secret
+            ) # 使用自建应用
 
-            # 2022-08-10 按官方建议进行重构
-            # 官方建议换用 获取子部门ID列表 与 获取单个部门详情 组合的方式获取部门
+            # 2023-08-24 使用自建应用获取数据
             response = wxapi.httpCall(
                 self.env["wecom.service_api_list"].get_server_api_call(
-                    "DEPARTMENT_SIMPLELIST"
+                    "DEPARTMENT_LIST"
                 ),
             )
         except ApiException as ex:
@@ -176,8 +178,7 @@ class WecomDepartment(models.Model):
             ]
         else:
             if response["errcode"] == 0:
-                # 获取只有 'id' , 'parentid' , 'order' 字段的列表
-                wecom_departments = response["department_id"]
+                wecom_departments = response["department"]
 
                 # 1.下载部门
                 for wecom_department in wecom_departments:
@@ -186,7 +187,7 @@ class WecomDepartment(models.Model):
                     )
                     if download_department_result:
                         for r in download_department_result:
-                            tasks.append(r)  # 加入 下载员工失败结果
+                            tasks.append(r)  # 加入 下载部门失败结果
 
                 # 3.完成
                 end_time = time.time()
@@ -219,6 +220,8 @@ class WecomDepartment(models.Model):
             result = self.create_department(company, department, wecom_department)
         else:
             result = self.update_department(company, department, wecom_department)
+
+
         return result
 
     def create_department(self, company, department, wecom_department):
@@ -228,9 +231,12 @@ class WecomDepartment(models.Model):
         try:
             department.create(
                 {
+                    "name": wecom_department["name"],
                     "department_id": wecom_department["id"],
                     "parentid": wecom_department["parentid"],
                     "order": wecom_department["order"],
+                    "department_leader": wecom_department["department_leader"],
+                    "department_json": wecom_department,
                     "company_id": company.id,
                 }
             )
@@ -251,6 +257,7 @@ class WecomDepartment(models.Model):
                 "msg": result,
             }
 
+
     def update_department(self, company, department, wecom_department):
         """
         更新部门
@@ -258,8 +265,11 @@ class WecomDepartment(models.Model):
         try:
             department.write(
                 {
+                    "name": wecom_department["name"],
                     "parentid": wecom_department["parentid"],
                     "order": wecom_department["order"],
+                    "department_leader": wecom_department["department_leader"],
+                    "department_json": wecom_department,
                 }
             )
         except Exception as e:
@@ -282,6 +292,7 @@ class WecomDepartment(models.Model):
                 "msg": result,
             }
 
+
     def set_parent_department(self, company):
         """[summary]
         由于json数据是无序的，故在同步到本地数据库后，需要设置新增企业微信部门的上级部门
@@ -292,7 +303,7 @@ class WecomDepartment(models.Model):
         departments = self.search([("company_id", "=", company.id)])
 
         results = []
-        for department in departments:
+        for department in departments:   # type: ignore
             if department.parentid and department.parentid != 0:
                 # 忽略 parentid 为 0的部门
                 parent_department = self.get_parent_department_by_department_id(
@@ -302,7 +313,7 @@ class WecomDepartment(models.Model):
                 try:
                     department.write(
                         {
-                            "parent_id": parent_department.id,
+                            "parent_id": parent_department.id,   # type: ignore
                         }
                     )
                 except Exception as e:
@@ -345,7 +356,7 @@ class WecomDepartment(models.Model):
         message = ""
         try:
             wxapi = self.env["wecom.service_api"].InitServiceApi(
-                company.corpid, company.contacts_app_id.secret
+                company.corpid, company.contacts_app_id.secret   # type: ignore
             )
             response = wxapi.httpCall(
                 self.env["wecom.service_api_list"].get_server_api_call(
@@ -436,31 +447,31 @@ class WecomDepartment(models.Model):
         department_dict = xmltodict.parse(xml_tree)["xml"]
 
         departments = self.sudo().search([("company_id", "=", company_id.id)])
-        callback_department = departments.search(
+        callback_department = departments.search(    # type: ignore
             [("department_id", "=", department_dict["Id"])],
             limit=1,
         )
         update_dict = {}
 
         for key, value in department_dict.items():
-            if key.lower() in self._fields.keys():
+            if key.lower() in self._fields.keys():   # type: ignore
                 update_dict.update({key.lower(): value})
             else:
                 if key == "Id":
                     update_dict.update({"department_id": value})
 
         if "parentid" in update_dict:
-            parent_id = departments.search(
+            parent_id = departments.search(  # type: ignore
                 [("department_id", "=", update_dict["parentid"])],
                 limit=1,
-            ).id
+            ).id     # type: ignore
             update_dict.update({"parent_id": parent_id})
 
         if cmd == "create":
-            callback_department.create(update_dict)
+            callback_department.create(update_dict)  # type: ignore
         elif cmd == "update":
             if "department_id" in update_dict:
                 del update_dict["department_id"]
-            callback_department.write(update_dict)
+            callback_department.write(update_dict)   # type: ignore
         elif cmd == "delete":
-            callback_department.unlink()
+            callback_department.unlink()     # type: ignore

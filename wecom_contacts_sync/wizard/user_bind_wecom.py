@@ -2,7 +2,7 @@
 
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException   # type: ignore
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -35,8 +35,8 @@ class UserBindWecom(models.TransientModel):
     @api.depends("company_id", "wecom_userid")
     def _compute_user(self):
         for user in self:
-            if user.company_id and user.wecom_userid:
-                company = user.company_id
+            if user.company_id and user.wecom_userid:   # type: ignore
+                company = user.company_id   # type: ignore
                 try:
                     wxapi = self.env["wecom.service_api"].InitServiceApi(
                         company.corpid, company.contacts_app_id.secret
@@ -45,19 +45,19 @@ class UserBindWecom(models.TransientModel):
                         self.env["wecom.service_api_list"].get_server_api_call(
                             "USER_GET"
                         ),
-                        {"userid": user.wecom_userid},
+                        {"userid": user.wecom_userid},  # type: ignore
                     )
                     global RESPONSE
                     RESPONSE = response
-                    user.name = response["name"]
-                    user.avatar = response["thumb_avatar"]
+                    user.name = response["name"]    # type: ignore
+                    user.avatar = response["thumb_avatar"]  # type: ignore
                 except ApiException as ex:
                     return self.env["wecomapi.tools.action"].ApiExceptionDialog(
                         ex, raise_exception=True
                     )
             else:
-                user.name = None
-                user.avatar = None
+                user.name = None    # type: ignore
+                user.avatar = None  # type: ignore
 
     def bind_wecom_member(self):
         user = (
@@ -67,7 +67,7 @@ class UserBindWecom(models.TransientModel):
                 [
                     ("wecom_userid", "=", self.wecom_userid.lower()),
                     ("is_wecom_user", "=", True),
-                    ("company_id", "=", self.company_id.id),
+                    ("company_id", "=", self.company_id.id),    # type: ignore
                     "|",
                     ("active", "=", True),
                     ("active", "=", False),
@@ -77,7 +77,7 @@ class UserBindWecom(models.TransientModel):
         if len(user) > 0:
             raise UserError(_("User with ID [%s] already exists") % (self.wecom_userid))
         else:
-            self.user_id.write(
+            self.user_id.write( # type: ignore
                 {
                     "is_wecom_user": True,
                     "wecom_userid": RESPONSE["userid"],
@@ -88,7 +88,7 @@ class UserBindWecom(models.TransientModel):
             )
             # print(self.user_id.employee_id)
             # for employee in self.user_id.employee_ids:
-            self.user_id.employee_id.write(
+            self.user_id.employee_id.write( # type: ignore
                 {
                     "is_wecom_user": True,
                     "wecom_userid": RESPONSE["userid"],

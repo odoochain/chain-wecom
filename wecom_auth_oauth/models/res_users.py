@@ -39,10 +39,10 @@ class ResUsers(models.Model):
                     ("active", "=", True),
                 ]
             )
-   
+
             if not oauth_user or len(oauth_user) > 1:
                 return AccessDenied
-            return (self.env.cr.dbname, oauth_user.login, oauth_userid)
+            return (self.env.cr.dbname, oauth_user.login, oauth_userid) # type: ignore
         else:
             return AccessDenied
 
@@ -50,7 +50,7 @@ class ResUsers(models.Model):
     def _check_credentials(self, password, env):
         # password为企业微信的用户ID
         try:
-            return super(ResUsers, self)._check_credentials(password, env)
+            return super(ResUsers, self)._check_credentials(password, env)  # type: ignore
         except AccessDenied:
             res = self.sudo().search(
                 [("id", "=", self.env.uid), ("wecom_userid", "=", password)]

@@ -22,7 +22,7 @@ class WxTools(models.AbstractModel):
     _name = "wecom.tools"
     _description = "Wecom Tools"
 
-    def recipients_split(text):
+    def recipients_split(text): # type: ignore
         """
         使用 | 拆分企业微信消息的接收对象
         """
@@ -35,9 +35,9 @@ class WxTools(models.AbstractModel):
         :param value:
         :return:
         """
-        if self.value == "0":
+        if self.value == "0":   # type: ignore
             self.result = False
-        if self.value == "1":
+        if self.value == "1":   # type: ignore
             self.result = True
         return self.result
 
@@ -72,13 +72,13 @@ class WxTools(models.AbstractModel):
                 base_url + "/wecom_api/static/src/img/default_female_image.png"
             )
 
-        return default_image_url
+        return default_image_url    # type: ignore
 
     def encode_image_as_base64(self):
-        if not self.value:
+        if not self.value:  # type: ignore
             pass
         else:
-            with open(self.value, "rb") as f:
+            with open(self.value, "rb") as f:   # type: ignore
                 encoded_string = base64.b64encode(f.read())
             return encoded_string
 
@@ -87,7 +87,7 @@ class WxTools(models.AbstractModel):
         判断是否存在值
         :return:
         """
-        if not self.value:
+        if not self.value:  # type: ignore
             self.result = False
         else:
             self.result = True
@@ -98,8 +98,8 @@ class WxTools(models.AbstractModel):
         判断是否存在值
         :return:
         """
-        if not self.value:
+        if not self.value:  # type: ignore
             self.result = ""
         else:
-            self.result = self.value
+            self.result = self.value    # type: ignore
         return self.result

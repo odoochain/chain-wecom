@@ -13,7 +13,7 @@ class WeComAppConfig(models.Model):
     # _rec_name = "key"
     _order = "id"
 
-    app_id = fields.Many2one(
+    app_id = fields.Many2one(   # type: ignore
         "wecom.apps",
         string="Application",
         copy=False,
@@ -47,7 +47,7 @@ class WeComAppConfig(models.Model):
         :return:
         """
         res = self.browse(res_id)
-        return res.ttype
+        return res.ttype        # type: ignore
         # return {
         #     "id": res_id,
         #     "value_type": res.ttype,
@@ -95,11 +95,11 @@ class WeComAppConfig(models.Model):
                 new_app_config = self.create(
                     {
                         "app_id": app_id,
-                        "name": copy_app_config.name,
-                        "key": copy_app_config.key,
-                        "ttype": copy_app_config.ttype,
-                        "value": copy_app_config.value,
-                        "description": copy_app_config.description,
+                        "name": copy_app_config.name,   # type: ignore
+                        "key": copy_app_config.key, # type: ignore
+                        "ttype": copy_app_config.ttype, # type: ignore
+                        "value": copy_app_config.value, # type: ignore
+                        "description": copy_app_config.description, # type: ignore
                     }
                 )
                 value = new_app_config.value
@@ -131,12 +131,12 @@ class WeComAppConfig(models.Model):
         """
         param = self.search([("app_id", "=", app_id), ("key", "=", key)])
         if param:
-            old = param.value
+            old = param.value   # type: ignore
             if value is not False and value is not None:
                 if str(value) != old:
-                    param.write({"value": value})
+                    param.write({"value": value})   # type: ignore
             else:
-                param.unlink()
+                param.unlink()  # type: ignore
             return old
         else:
             if value is not False and value is not None:

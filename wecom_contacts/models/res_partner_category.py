@@ -8,7 +8,7 @@ from odoo import api, fields, models, _
 
 # from lxml_to_dict import lxml_to_dict
 import xmltodict
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException   # type: ignore
 
 _logger = logging.getLogger(__name__)
 
@@ -47,10 +47,10 @@ class PartnerCategory(models.Model):
     def _compute_display_name(self):
         tag = _("WeCom Tag")
         for rec in self:
-            if rec.is_wecom_tag:
-                rec.display_name = "%s:%s" % (tag, rec.name)
+            if rec.is_wecom_tag:    # type: ignore
+                rec.display_name = "%s:%s" % (tag, rec.name)    # type: ignore
             else:
-                rec.display_name = rec.name
+                rec.display_name = rec.name # type: ignore
 
     @api.model
     def download_wecom_contact_tags(self):
@@ -109,7 +109,7 @@ class PartnerCategory(models.Model):
                     )
 
                     if not category:
-                        category.create(
+                        category.create(    # type: ignore
                             {
                                 "name": tag["tagname"],
                                 "tagid": tag["tagid"],
@@ -117,7 +117,7 @@ class PartnerCategory(models.Model):
                             }
                         )
                     else:
-                        category.write(
+                        category.write( # type: ignore
                             {
                                 "name": tag["tagname"],
                                 "is_wecom_tag": True,
@@ -181,7 +181,7 @@ class PartnerCategory(models.Model):
                 "name": "download_tag_members",
                 "state": False,
                 "time": 0,
-                "msg": repr(e),
+                "msg": repr(ex),
             }
         except Exception as e:
             res = {

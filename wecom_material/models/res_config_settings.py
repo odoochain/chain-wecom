@@ -28,8 +28,8 @@ class ResConfigSettings(models.TransientModel):
         """
         for record in self:
             # print(record.material_agentid,record.material_secret)
-            if record.material_agentid== 0 or record.material_secret == '':
+            if record.material_agentid== 0 or record.material_secret == '': # type: ignore
                 raise UserError(_("Material application ID and secret cannot be empty!"))
             else:
-                record.material_app_id.get_app_info()
+                record.material_app_id.get_app_info()   # type: ignore
 

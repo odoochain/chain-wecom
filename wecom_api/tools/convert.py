@@ -22,9 +22,9 @@ class WecomApiToolsTypeConvert(models.AbstractModel):
         """
         # return self.value.lower() in ("yes", "true", "t", "1")
 
-        if self.value.lower() in ["true", "t", "1"]:
+        if self.value.lower() in ["true", "t", "1"]:     # type: ignore
             return True
-        elif self.value.lower() in ["false", "f", "0"]:
+        elif self.value.lower() in ["false", "f", "0"]:  # type: ignore
             return False
         else:
             return False

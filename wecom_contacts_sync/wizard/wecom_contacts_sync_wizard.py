@@ -81,12 +81,12 @@ class WecomContactsSyncWizard(models.TransientModel):
             companies_names = [company.name for company in companies]
             self.companies = ",".join(companies_names)
         else:
-            self.companies = self.company_id.name
+            self.companies = self.company_id.name # type: ignore
 
     @api.onchange("company_id")
     def onchange_company_id(self):
         if self.sync_all is False:
-            self.companies = self.company_id.name
+            self.companies = self.company_id.name   # type: ignore
 
     state = fields.Selection(
         [
@@ -182,7 +182,7 @@ class WecomContactsSyncWizard(models.TransientModel):
 
             for company in companies:
                 # 遍历公司,判断是否绑定了通讯录应用
-                if company.contacts_app_id:
+                if company.contacts_sync_app_id:
                     result = self.sync_contacts(company)
                     results.append(result)
                 else:
@@ -254,7 +254,7 @@ class WecomContactsSyncWizard(models.TransientModel):
             "view_type": "form",
             "view_mode": "form",
             "res_model": "wecom.contacts.sync.wizard",
-            "res_id": self.id,
+            "res_id": self.id,  # type: ignore
             "view_id": False,
             "views": [
                 [form_view.id, "form"],
@@ -275,7 +275,7 @@ class WecomContactsSyncWizard(models.TransientModel):
         """
         同步通讯录
         """
-        contacts_app = company.contacts_app_id
+        contacts_app = company.contacts_sync_app_id
         result = contacts_app.sync_contacts()
         return result
 

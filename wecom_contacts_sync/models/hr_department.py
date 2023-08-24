@@ -8,7 +8,7 @@ from lxml import etree
 from odoo import api, fields, models, _
 
 import xmltodict
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException    # type: ignore
 
 _logger = logging.getLogger(__name__)
 
@@ -185,7 +185,7 @@ class Department(models.Model):
         )
 
         results = []
-        for department in departments:
+        for department in departments:   # type: ignore
             if department.wecom_department_parent_id:
                 parent_department = self.get_parent_department_by_wecom_department_id(
                     department, company
@@ -196,7 +196,7 @@ class Department(models.Model):
                     try:
                         department.write(
                             {
-                                "parent_id": parent_department.id,
+                                "parent_id": parent_department.id,   # type: ignore
                             }
                         )
                     except Exception as e:
@@ -236,8 +236,8 @@ class Department(models.Model):
     def wecom_event_change_contact_party(self, cmd):
         xml_tree = self.env.context.get("xml_tree")
         company_id = self.env.context.get("company_id")
-        xml_tree_str = etree.fromstring(bytes.decode(xml_tree))
-        dic = lxml_to_dict(xml_tree_str)["xml"]
+        xml_tree_str = etree.fromstring(bytes.decode(xml_tree))  # type: ignore
+        dic = lxml_to_dict(xml_tree_str)["xml"]  # type: ignore
         # print("department dic", dic)
 
         domain = [

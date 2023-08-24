@@ -15,7 +15,7 @@ codes = "//h5"
 methods ="//p[@data-type='p']"
 
 page_text = requests.get(url=url).text
-tree = etree.HTML(page_text)
+tree = etree.HTML(page_text)     # type: ignore
 
 anchor_elemen = tree.xpath(anchor)
 codes_elements = tree.xpath(codes)
@@ -26,8 +26,8 @@ for code_element in codes_elements:
     code_element_str = code_element.xpath("text()")[0]
     error_code = code_element_str.split("：", 1)[1:][0]
     method_element = code_element.getnext()
-    method = etree.tostring(method_element, encoding="utf-8", pretty_print=True ).decode()
-    
+    method = etree.tostring(method_element, encoding="utf-8", pretty_print=True ).decode()   # type: ignore
+
     if " " in error_code:
         # 一个元素存在多个错误码
         multiple_codes = error_code.split(" ", 1)
@@ -41,10 +41,10 @@ for code_element in codes_elements:
         dic["code"] = error_code
         dic["method"] = method
         methods.append(dic)
-        
+
 table = tree.xpath("//div[@class='cherry-table-container']/table")  # 取出表格
 table = etree.tostring(
-    table[0], encoding="utf-8"
+    table[0], encoding="utf-8"   # type: ignore
 ).decode()  # 将第一个表格转成string格式
 table = table.replace("<th>错误码</th>", "<th>code</th>")
 table = table.replace("<th>错误说明</th>", "<th>name</th>")
@@ -58,7 +58,7 @@ error_results = list(df.T.to_dict().values())  # 转换成列表嵌套字典的�
 errors = []
 for index, error in enumerate(error_results):
     error["sequence"] = index
-    
+
     errors.append(error)
 df = pd.DataFrame(errors)
 print(df)

@@ -330,11 +330,8 @@ Synchronize Wecom tag results:
         )
 
         # 同步企微部门
-        sync_department_result = (
-            self.env["wecom.department"]
-            .with_context(company_id=self.company_id)    # type: ignore
-            .download_wecom_deps()
-        )
+        sync_department_result = (self.env["wecom.department"].with_context(company_id=self.company_id).download_wecom_deps())  # type: ignore
+
         # [{'name': 'download_department_data', 'state': True, 'time': 0.3037421703338623, 'msg': 'Department list sync completed.'}]
 
         (
@@ -355,48 +352,48 @@ Synchronize Wecom tag results:
             return result
 
         # 同步企微用户
-        sync_user_result = (
-            self.env["wecom.user"]
-            .with_context(company_id=self.company_id)    # type: ignore
-            .download_wecom_users()
-        )
-        (
-            wecom_user_sync_state,
-            wecom_user_sync_times,
-            wecom_user_sync_result,
-        ) = self.handle_sync_task_state(sync_user_result, self.company_id)   # type: ignore
-        result.update(
-            {
-                "wecom_user_sync_state": wecom_user_sync_state,
-                "wecom_user_sync_times": wecom_user_sync_times,
-                "wecom_user_sync_result": wecom_user_sync_result,
-            }
-        )
+        # sync_user_result = (
+        #     self.env["wecom.user"]
+        #     .with_context(company_id=self.company_id)    # type: ignore
+        #     .download_wecom_users()
+        # )
+        # (
+        #     wecom_user_sync_state,
+        #     wecom_user_sync_times,
+        #     wecom_user_sync_result,
+        # ) = self.handle_sync_task_state(sync_user_result, self.company_id)   # type: ignore
+        # result.update(
+        #     {
+        #         "wecom_user_sync_state": wecom_user_sync_state,
+        #         "wecom_user_sync_times": wecom_user_sync_times,
+        #         "wecom_user_sync_result": wecom_user_sync_result,
+        #     }
+        # )
 
-        if result["wecom_user_sync_state"] == "fail":
-            return result
+        # if result["wecom_user_sync_state"] == "fail":
+        #     return result
 
-        # 同步企微标签
-        sync_wecom_tag_result = (
-            self.env["wecom.tag"]
-            .with_context(company_id=self.company_id)    # type: ignore
-            .download_wecom_tags()
-        )
-        (
-            wecom_tag_sync_state,
-            wecom_tag_sync_times,
-            wecom_tag_sync_result,
-        ) = self.handle_sync_task_state(sync_wecom_tag_result, self.company_id)  # type: ignore
-        result.update(
-            {
-                "wecom_tag_sync_state": wecom_tag_sync_state,
-                "wecom_tag_sync_times": wecom_tag_sync_times,
-                "wecom_tag_sync_result": wecom_tag_sync_result,
-            }
-        )
+        # # 同步企微标签
+        # sync_wecom_tag_result = (
+        #     self.env["wecom.tag"]
+        #     .with_context(company_id=self.company_id)    # type: ignore
+        #     .download_wecom_tags()
+        # )
+        # (
+        #     wecom_tag_sync_state,
+        #     wecom_tag_sync_times,
+        #     wecom_tag_sync_result,
+        # ) = self.handle_sync_task_state(sync_wecom_tag_result, self.company_id)  # type: ignore
+        # result.update(
+        #     {
+        #         "wecom_tag_sync_state": wecom_tag_sync_state,
+        #         "wecom_tag_sync_times": wecom_tag_sync_times,
+        #         "wecom_tag_sync_result": wecom_tag_sync_result,
+        #     }
+        # )
 
-        if result["wecom_tag_sync_state"] == "fail":
-            return result
+        # if result["wecom_tag_sync_state"] == "fail":
+        #     return result
 
         return result
 

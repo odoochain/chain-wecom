@@ -61,13 +61,13 @@ class WeComAppCallbackService(models.Model):
         base_url = params.get_param("web.base.url")
         callback_url = ""
         for server in self:
-            if server.app_id.company_id and server.code:
-                callback_url = base_url + "/wecom_callback/%s/%s" % (
-                    server.app_id.company_id.id,
-                    server.code,
+            if server.app_id.company_id and server.code:        # type: ignore
+                callback_url = base_url + "/wecom_callback/%s/%s" % (           # type: ignore
+                    server.app_id.company_id.id,        # type: ignore
+                    server.code,        # type: ignore
                 )
 
-            server.callback_url = callback_url
+            server.callback_url = callback_url      # type: ignore
 
     @api.onchange("app_id", "code")
     def _onchange_callback_url(self):
@@ -80,7 +80,7 @@ class WeComAppCallbackService(models.Model):
 
         if self.app_id:
             self.callback_url = base_url + "/wecom_callback/%s/%s" % (
-                self.app_id.company_id.id,
+                self.app_id.company_id.id,      # type: ignore
                 self.code,
             )
         else:
@@ -97,7 +97,7 @@ class WeComAppCallbackService(models.Model):
             raise ValidationError(_("Please bind contact app!"))
         else:
             callback_url = base_url + "/wecom_callback/%s/%s" % (
-                self.app_id.company_id.id,
+                self.app_id.company_id.id,      # type: ignore
                 self.code,
             )
             return callback_url

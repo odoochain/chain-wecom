@@ -33,7 +33,7 @@ class WecomServerApiList(models.Model):
         string="Api Type",
         required=True,
         default="GET",
-    )  
+    )
 
     name = fields.Char("Request Name", required=True,)
     function_name = fields.Char("Request Function Name", required=True, readonly=True,)
@@ -62,6 +62,6 @@ class WecomServerApiList(models.Model):
         # ['/cgi-bin/gettoken', 'GET']
         data = []
         res = self.search([("function_name", "=", function_name)], limit=1,)
-        data.append(res.short_url)
-        data.append(res.request_type)
+        data.append(res.short_url)   # type: ignore
+        data.append(res.request_type)    # type: ignore
         return data

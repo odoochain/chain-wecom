@@ -48,8 +48,8 @@ class WeComAppEventType(models.Model):
         """
         xml_tree = self.env.context.get("xml_tree")
         company_id = self.env.context.get("company_id")
-        event_str = etree.fromstring(xml_tree).find("Event").text
-        changetype_str = etree.fromstring(xml_tree).find("ChangeType").text
+        event_str = etree.fromstring(xml_tree).find("Event").text       # type: ignore
+        changetype_str = etree.fromstring(xml_tree).find("ChangeType").text     # type: ignore
 
         _logger.info(
             _(
@@ -100,7 +100,7 @@ class WeComAppEventType(models.Model):
         cmd = self.command
 
         for m in self.model_ids:
-            model_obj = self.env.get(m.model)
+            model_obj = self.env.get(m.model)       # type: ignore
             if hasattr(model_obj, func_name):
                 # 存在函数
                 func = getattr(model_obj.with_context(xml_tree=xml_tree, company_id=company_id), func_name)

@@ -61,9 +61,9 @@ class WecomAbstractApi(models.AbstractModel):
             try:
                 if "POST" == method:
                     url = self.__makeUrl(shortUrl)
-                    if "agentid" in args and include_agentid:
-                        url = self.__appendArgs(url, {"agentid": args["agentid"]})
-                        del args["agentid"]
+                    if "agentid" in args and include_agentid: # type: ignore
+                        url = self.__appendArgs(url, {"agentid": args["agentid"]})  # type: ignore
+                        del args["agentid"] # type: ignore
                     response = self.__httpPost(url, args)
                 elif "GET" == method:
                     url = self.__makeUrl(shortUrl)
@@ -153,7 +153,7 @@ class WecomAbstractApi(models.AbstractModel):
     def __post_file(self, url, media_file):
         if self.get_api_debug() is True:
             print("Wecom API POST FILE", url, media_file)
-        return requests.post(url, file=media_file).json()
+        return requests.post(url, file=media_file).json()   # type: ignore
 
     def __httpGet(self, url):
         realUrl = self.__appendToken(url)

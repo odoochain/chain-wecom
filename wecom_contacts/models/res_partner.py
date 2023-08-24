@@ -3,7 +3,7 @@
 import logging
 from odoo import api, fields, models, Command, _
 
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException   # type: ignore
 
 _logger = logging.getLogger(__name__)
 
@@ -39,18 +39,18 @@ class Partner(models.Model):
         获取企微OpenID
         """
         for partner in self:
-            print(partner.company_id)
+            print(partner.company_id)    # type: ignore
             try:
                 wxapi = self.env["wecom.service_api"].InitServiceApi(
-                    partner.company_id.corpid,
-                    partner.company_id.contacts_app_id.secret,
+                    partner.company_id.corpid,   # type: ignore
+                    partner.company_id.contacts_app_id.secret,   # type: ignore
                 )
                 response = wxapi.httpCall(
                     self.env["wecom.service_api_list"].get_server_api_call(
                         "USERID_TO_OPENID"
                     ),
                     {
-                        "userid": partner.wecom_userid,
+                        "userid": partner.wecom_userid,  # type: ignore
                     },
                 )
             except ApiException as ex:
@@ -58,4 +58,4 @@ class Partner(models.Model):
                     ex, raise_exception=True
                 )
             else:
-                partner.wecom_openid = response["openid"]
+                partner.wecom_openid = response["openid"]    # type: ignore

@@ -6,14 +6,14 @@ import platform
 import subprocess
 import logging
 import time
-from pydub import AudioSegment
+from pydub import AudioSegment  # type: ignore
 from datetime import datetime, timedelta
 import pytz
 
 from odoo import _, api, fields, models, tools
 from odoo.exceptions import UserError, ValidationError, Warning
 
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException   # type: ignore
 
 from requests_toolbelt.multipart.encoder import MultipartEncoder
 
@@ -159,8 +159,8 @@ class WeComMaterial(models.Model):
                         )
                         headers = {"Content-Type": multipart_encoder.content_type}
                         wxapi = self.env["wecom.service_api"].InitServiceApi(
-                            self.company_id.corpid,
-                            self.company_id.material_app_id.secret,
+                            self.company_id.corpid, # type: ignore
+                            self.company_id.material_app_id.secret, # type: ignore
                         )
                         response = wxapi.httpPostFile(
                             self.env["wecom.service_api_list"].get_server_api_call(
@@ -190,8 +190,8 @@ class WeComMaterial(models.Model):
                     """
                     try:
                         wxapi = self.env["wecom.service_api"].InitServiceApi(
-                            self.company_id.corpid,
-                            self.company_id.material_app_id.secret,
+                            self.company_id.corpid, # type: ignore
+                            self.company_id.material_app_id.secret, # type: ignore
                         )
                         # files = {"media": open(file_path, "rb")}
                         multipart_encoder = MultipartEncoder(
@@ -321,7 +321,7 @@ class WeComMaterial(models.Model):
                     fp.close()
                     # return full_path
             except IOError:
-                raise UserError(_("Error saving file to path %s!"), full_path)
+                raise UserError(_("Error saving file to path %s!"), full_path)  # type: ignore
 
         if platform.system() == "Windows":
             full_path = full_path.replace("/", "\\")
@@ -343,10 +343,10 @@ class WeComMaterial(models.Model):
             file_size_list = extensions_and_size["voice"]["size"]
             # 语音文件先上传到本地文件夹进行时长检查
             file_path = self._check_file_path(file, "material", filename)
-            duration, path = self.get_amr_duration(file_path)
+            duration, path = self.get_amr_duration(file_path)   # type: ignore
             if int(duration) > 60:
                 # 语音文件时长超过了60秒,删除mp3文件
-                os.remove(os.path.abspath(path))
+                os.remove(os.path.abspath(path))    # type: ignore
                 raise ValidationError(
                     _("The duration of the voice file exceeds 60 seconds!")
                 )
@@ -390,7 +390,7 @@ class WeComMaterial(models.Model):
         )
         if os.path.exists(mp3_transformat_path):
             mp3_audio = AudioSegment.from_file(
-                os.path.abspath(mp3_transformat_path), format="mp3"
+                os.path.abspath(mp3_transformat_path), format="mp3" # type: ignore
             )
             return mp3_audio.duration_seconds, mp3_transformat_path
 
