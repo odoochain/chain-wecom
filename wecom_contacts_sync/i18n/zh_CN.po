@@ -4,20 +4,21 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0beta\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-09 11:24+0000\n"
-"PO-Revision-Date: 2022-10-09 19:25+0800\n"
+"POT-Creation-Date: 2023-08-25 12:55+0000\n"
+"PO-Revision-Date: 2023-08-25 21:08+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
-"X-Generator: Poedit 3.1.1\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_apps.py:0
 #, python-format
 msgid ""
@@ -63,13 +64,6 @@ msgstr ""
 "======================================================================================================================="
 
 #. module: wecom_contacts_sync
-#. openerp-web
-#: code:addons/wecom_contacts_sync/static/src/js/wecom_contacts_sync.js:0
-#, python-format
-msgid "%s It takes %s seconds"
-msgstr "%s 花费了 %s秒"
-
-#. module: wecom_contacts_sync
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.res_config_settings_view_form
 msgid "<i class=\"fa fa-cogs fa-lg\" aria-label=\"Contacts Configuration\"/>"
 msgstr "<i class=\"fa fa-cogs fa-lg\" aria-label=\"通讯录配置\"/>"
@@ -81,13 +75,31 @@ msgstr "<i class=\"fa fa-id-card-o fa-lg\" aria-label=\"企微通讯录展示组
 
 #. module: wecom_contacts_sync
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.res_config_settings_view_form
+msgid ""
+"<i class=\"fa fa-list-ol fa-lg\" aria-label=\"Contacts Synchronization Application Agentid\"/"
+">"
+msgstr "<i class=\"fa fa-list-ol fa-lg\" aria-label=\"通讯录同步应用ID/>"
+
+#. module: wecom_contacts_sync
+#: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.res_config_settings_view_form
 msgid "<i class=\"fa fa-list-ol fa-lg\" aria-label=\"Self-built Application Agentid\"/>"
 msgstr "<i class=\"fa fa-list-ol fa-lg\" aria-label=\"自建应用ID\"/>"
 
 #. module: wecom_contacts_sync
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.res_config_settings_view_form
+msgid ""
+"<i class=\"fa fa-lock fa-lg\" aria-label=\"Contacts Synchronization Application Secret\"/>"
+msgstr "<i class=\"fa fa-lock fa-lg\" aria-label=\"通讯录同步应用密钥\"/>"
+
+#. module: wecom_contacts_sync
+#: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.res_config_settings_view_form
 msgid "<i class=\"fa fa-lock fa-lg\" aria-label=\"Self-built Application Secret\"/>"
 msgstr "<i class=\"fa fa-lock fa-lg\" aria-label=\"自建应用密钥\"/>"
+
+#. module: wecom_contacts_sync
+#: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.res_config_settings_view_form
+msgid "<i class=\"fa fa-puzzle-piece fa-lg\" aria-label=\"Wecom Contacts Synchronization Application\"/>"
+msgstr "<i class=\"fa fa-puzzle-piece fa-lg\" aria-label=\"企微通讯录同步应用\"/>"
 
 #. module: wecom_contacts_sync
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.res_config_settings_view_form
@@ -102,8 +114,8 @@ msgstr ""
 #. module: wecom_contacts_sync
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.view_wecom_user_kanban
 msgid ""
-"<span class=\"fa fa-user text-muted\" role=\"img\" aria-label=\"Undefined\" title=\"Undefined"
-"\" name=\"Undefined\">\n"
+"<span class=\"fa fa-user text-muted\" role=\"img\" aria-label=\"Undefined\" "
+"title=\"Undefined\" name=\"Undefined\">\n"
 "                                                    </span>"
 msgstr ""
 "<span class=\"fa fa-user text-muted\" role=\"img\" aria-label=\"未定义\" title=\"未定义\" "
@@ -113,12 +125,12 @@ msgstr ""
 #. module: wecom_contacts_sync
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.view_wecom_user_kanban
 msgid ""
-"<span class=\"fa fa-user text-primary\" role=\"img\" aria-label=\"Male\" title=\"Male\" name="
-"\"Male\">\n"
+"<span class=\"fa fa-user text-primary\" role=\"img\" aria-label=\"Male\" title=\"Male\" "
+"name=\"Male\">\n"
 "                                                    </span>"
 msgstr ""
-"<span class=\"fa fa-user text-primary\" role=\"img\" aria-label=\"男性\" title=\"男性\" name="
-"\"男性\">\n"
+"<span class=\"fa fa-user text-primary\" role=\"img\" aria-label=\"男性\" title=\"男性\" "
+"name=\"男性\">\n"
 "                                                    </span>"
 
 #. module: wecom_contacts_sync
@@ -128,15 +140,15 @@ msgid ""
 "name=\"Female\">\n"
 "                                                    </span>"
 msgstr ""
-"<span class=\"fa fa-user text-warning\" role=\"img\" aria-label=\"女性\" title=\"女性\" name="
-"\"女性\">\n"
+"<span class=\"fa fa-user text-warning\" role=\"img\" aria-label=\"女性\" title=\"女性\" "
+"name=\"女性\">\n"
 "                                                    </span>"
 
 #. module: wecom_contacts_sync
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.hrms_kanban_view_employees
 msgid ""
-"<span class=\"fa fa-weixin text-info mr4\" role=\"img\" aria-label=\"Wecom Employee\" title="
-"\"Wecom Employee\">\n"
+"<span class=\"fa fa-weixin text-info mr4\" role=\"img\" aria-label=\"Wecom Employee\" "
+"title=\"Wecom Employee\">\n"
 "                        </span>"
 msgstr ""
 "<span class=\"fa fa-weixin text-info mr4\" role=\"img\" aria-label=\"企微员工\" title=\"企微"
@@ -151,6 +163,24 @@ msgid ""
 msgstr ""
 "<span class=\"o_stat_value\">绑定</span>\n"
 "                            <span class=\"o_stat_text\">企微成员</span>"
+
+#. module: wecom_contacts_sync
+#: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.view_wecom_user_form
+msgid ""
+"<span class=\"o_stat_value\">Copy</span>\n"
+"                                    <span class=\"o_stat_text\">As Employee</span>"
+msgstr ""
+"<span class=\"o_stat_value\">复制</span>\n"
+"                                    <span class=\"o_stat_text\">为员工</span>"
+
+#. module: wecom_contacts_sync
+#: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.view_wecom_user_form
+msgid ""
+"<span class=\"o_stat_value\">Copy</span>\n"
+"                                    <span class=\"o_stat_text\">As System Employee</span>"
+msgstr ""
+"<span class=\"o_stat_value\">复制</span>\n"
+"                                    <span class=\"o_stat_text\">为系统用户</span>"
 
 #. module: wecom_contacts_sync
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.view_wecom_tag_form
@@ -208,13 +238,16 @@ msgstr ""
 "                    <br>值: True 或 False"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_employee_category.py:0
 #, python-format
 msgid "API error: %s, error name: %s, error message: %s"
 msgstr "API错误：%s，错误名称：%s，出错消息：%s"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_user.py:0
+#: code:addons/wecom_contacts_sync/models/wecom_user2.py:0
 #: model:ir.model.fields.selection,name:wecom_contacts_sync.selection__wecom_user__status_name__1
 #, python-format
 msgid "Activated"
@@ -243,6 +276,7 @@ msgid ""
 msgstr "第一次从员工生成用户后，建议启动“通讯簿同步”事件服务，创建和更新员工和用户。"
 
 #. module: wecom_contacts_sync
+#: model:ir.model.fields,field_description:wecom_contacts_sync.field_res_config_settings__contacts_sync_app_agentid
 #: model:ir.model.fields,field_description:wecom_contacts_sync.field_res_config_settings__self_built_app_agentid
 msgid "Agent ID"
 msgstr "应用ID"
@@ -255,6 +289,7 @@ msgid "Alias"
 msgstr "别名"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_apps.py:0
 #: model:ir.model.fields.selection,name:wecom_contacts_sync.selection__wecom_contacts_sync_wizard__state__completed
 #: model:ir.model.fields.selection,name:wecom_contacts_sync.selection__wecom_contacts_sync_wizard__wecom_department_sync_state__completed
@@ -266,6 +301,7 @@ msgid "All completed"
 msgstr "全部完成"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_apps.py:0
 #: model:ir.model.fields.selection,name:wecom_contacts_sync.selection__wecom_contacts_sync_wizard__state__fail
 #: model:ir.model.fields.selection,name:wecom_contacts_sync.selection__wecom_contacts_sync_wizard__wecom_department_sync_state__fail
@@ -292,6 +328,11 @@ msgid "Allow wecom contacts to synchronize HR"
 msgstr "允许企微通讯录同步人力资源"
 
 #. module: wecom_contacts_sync
+#: model:ir.model.fields,field_description:wecom_contacts_sync.field_res_config_settings__contacts_sync_app_config_ids
+msgid "Application Configuration"
+msgstr "应用配置"
+
+#. module: wecom_contacts_sync
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.res_config_settings_view_form
 msgid ""
 "Application Management→Application→Open the application that needs to be verified and "
@@ -316,6 +357,7 @@ msgid "Are you sure to release the binding with Wecom members ?"
 msgstr "您确定要解除与企微成员的绑定吗？"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_apps.py:0
 #, python-format
 msgid ""
@@ -324,6 +366,7 @@ msgid ""
 msgstr "自动任务：结束同步公司[%s]的企业微信组织架构"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_apps.py:0
 #, python-format
 msgid ""
@@ -350,6 +393,7 @@ msgid "Batch generate users from employees"
 msgstr "从员工批量生成用户"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/res_users.py:0
 #, python-format
 msgid "Before clicking the 'Change User Type' button, you must modify the new user type"
@@ -456,6 +500,7 @@ msgid "Complete Name"
 msgstr "完整名称"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/wizard/wecom_users_sync_wizard.py:0
 #, python-format
 msgid "Complete batch generation of system users from employees."
@@ -482,6 +527,13 @@ msgid "Contacts Sync"
 msgstr "通讯录同步"
 
 #. module: wecom_contacts_sync
+#: model:ir.model.fields,field_description:wecom_contacts_sync.field_res_company__contacts_sync_app_id
+#: model:ir.model.fields,field_description:wecom_contacts_sync.field_res_config_settings__contacts_sync_app_id
+#: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.res_config_settings_view_form
+msgid "Contacts Synchronization Application"
+msgstr "通讯录同步应用"
+
+#. module: wecom_contacts_sync
 #: model:wecom.app.event_type,name:wecom_contacts_sync.wecom_app_event_change_contact_asyn_task_completion_notification
 msgid "Contacts asynchronous task completion notification"
 msgstr "通讯录异步任务完成通知"
@@ -497,16 +549,23 @@ msgid "Contacts display component needs to be bound to a self-built application.
 msgstr "通讯录展示组件需要绑定自建应用。"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/res_users.py:0
 #, python-format
 msgid "Contacts list downloaded successfully."
 msgstr "联系人列表下载成功。"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_apps.py:0
 #, python-format
 msgid "Contacts synchronization"
 msgstr "通讯录同步"
+
+#. module: wecom_contacts_sync
+#: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.view_wecom_user_form
+msgid "Copy as System User"
+msgstr "复制为系统用户"
 
 #. module: wecom_contacts_sync
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.hrms_base_employee_form
@@ -514,6 +573,7 @@ msgid "Copy as system user"
 msgstr "复制为系统用户"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_employee_category.py:0
 #, python-format
 msgid "Create contacts tags: %s to WeCom"
@@ -558,6 +618,7 @@ msgid "Delete Department events"
 msgstr "删除部门事件"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_employee_category.py:0
 #, python-format
 msgid "Delete contacts tags: %s to WeCom"
@@ -571,7 +632,6 @@ msgstr "删除成员事件"
 #. module: wecom_contacts_sync
 #: model:ir.actions.act_window,name:wecom_contacts_sync.actions_wecom_contacts_department
 #: model:ir.model,name:wecom_contacts_sync.model_hr_department
-#: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_user__department_id
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.view_wecom_department_tree
 msgid "Department"
 msgstr "部门"
@@ -587,18 +647,26 @@ msgid "Department ID to be synchronized"
 msgstr "需要同步的部门ID"
 
 #. module: wecom_contacts_sync
+#: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_department__department_json
+msgid "Department Json"
+msgstr "部门Json"
+
+#. module: wecom_contacts_sync
 #: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_department__department_leader
 #: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_department__department_leader_ids
+#: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_user__department_leader
 msgid "Department Leader"
 msgstr "部门负责人"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_department.py:0
 #, python-format
 msgid "Department [id:%s, name:%s] downloaded successfully"
 msgstr "部门[id:%s, 名称:%s] 下载成功"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_department.py:0
 #, python-format
 msgid "Department [id:%s, name:%s] failed to download,Reason: %s"
@@ -608,6 +676,13 @@ msgstr "部门[id:%s, 名称:%s] 下载失败，原因%s"
 #: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_user__department_complete_name
 msgid "Department complete Name"
 msgstr "部门完整名称"
+
+#. module: wecom_contacts_sync
+#. odoo-python
+#: code:addons/wecom_contacts_sync/models/wecom_user.py:0
+#, python-format
+msgid "Department head [%s]: %s ;"
+msgstr "部门[%s]的负责人：%s ；"
 
 #. module: wecom_contacts_sync
 #: model_terms:wecom.app_config,description:wecom_contacts_sync.wecom_app_config_contacts_sync_hr_department_id
@@ -620,6 +695,7 @@ msgstr ""
 "                    <br>值：部门id。"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_department.py:0
 #, python-format
 msgid "Department list sync completed."
@@ -638,11 +714,14 @@ msgstr "部门"
 
 #. module: wecom_contacts_sync
 #: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_user__direct_leader
+#: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_user__direct_leader_id
 msgid "Direct Leader"
 msgstr "直属上级"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_user.py:0
+#: code:addons/wecom_contacts_sync/models/wecom_user2.py:0
 #: model:ir.model.fields.selection,name:wecom_contacts_sync.selection__wecom_user__status_name__2
 #, python-format
 msgid "Disabled"
@@ -669,9 +748,11 @@ msgid "Do not send mail to new users by default."
 msgstr "默认不向新用户发送邮件。"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_department.py:0
 #: code:addons/wecom_contacts_sync/models/wecom_tag.py:0
 #: code:addons/wecom_contacts_sync/models/wecom_user.py:0
+#: code:addons/wecom_contacts_sync/models/wecom_user2.py:0
 #, python-format
 msgid "Download Success!"
 msgstr "下载成功！"
@@ -692,21 +773,14 @@ msgid "Download department information"
 msgstr "下载部门信息"
 
 #. module: wecom_contacts_sync
-#. openerp-web
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_department.py:0
 #: code:addons/wecom_contacts_sync/models/wecom_tag.py:0
 #: code:addons/wecom_contacts_sync/models/wecom_user.py:0
-#: code:addons/wecom_contacts_sync/static/src/js/hr_sync_tags.js:0
+#: code:addons/wecom_contacts_sync/models/wecom_user2.py:0
 #, python-format
 msgid "Download failed!"
 msgstr "下载失败！"
-
-#. module: wecom_contacts_sync
-#. openerp-web
-#: code:addons/wecom_contacts_sync/static/src/js/hr_sync_tags.js:0
-#, python-format
-msgid "Download succeeded!"
-msgstr "下载成功！"
 
 #. module: wecom_contacts_sync
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.view_wecom_user_form
@@ -734,13 +808,14 @@ msgid "Employee Tags"
 msgstr "员工标签"
 
 #. module: wecom_contacts_sync
-#. openerp-web
-#: code:addons/wecom_contacts_sync/static/src/js/hr_sync_staffs.js:0
+#. odoo-javascript
+#: code:addons/wecom_contacts_sync/static/src/js/hr_employee_sync_wecom.js:0
 #, python-format
 msgid "Employee Termination"
-msgstr ""
+msgstr "员工解聘"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/wizard/employee_bind_wecom.py:0
 #, python-format
 msgid "Employee with ID [%s] already exists"
@@ -762,6 +837,11 @@ msgstr "员工"
 #: model:ir.model,name:wecom_contacts_sync.model_wecom_employee_bind_wecom_wizard
 msgid "Employees bind enterprise wechat members"
 msgstr "员工绑定企微成员"
+
+#. module: wecom_contacts_sync
+#: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_user__enable
+msgid "Enable"
+msgstr "启用"
 
 #. module: wecom_contacts_sync
 #: model_terms:wecom.app_config,description:wecom_contacts_sync.wecom_app_config_contacts_use_default_avatar_when_adding_employees
@@ -803,31 +883,37 @@ msgid "Enterprise wechat user Id"
 msgstr "企微用户Id"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_department.py:0
 #, python-format
 msgid "Error creating Department [%s], error details:%s"
 msgstr "创建部门 [%s] 时出错，错误详情：%s"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/res_users.py:0
 #, python-format
 msgid "Error creating company %s partner %s %s, error reason: %s"
 msgstr "创建公司 [%s] 合作伙伴 [%s %s]时出错，错误原因：%s"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_department.py:0
 #, python-format
 msgid "Error creating company [%s]'s department [%s], error reason: %s"
 msgstr "创建公司 [%s] 的部门 [%s] 时出错，错误原因：%s"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_tag.py:0
 #, python-format
 msgid "Error creating company [%s]'s tag [%s], error reason: %s"
 msgstr "创建公司 [%s] 的标签 [%s] 时出错，错误原因：%s"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_user.py:0
+#: code:addons/wecom_contacts_sync/models/wecom_user2.py:0
 #, python-format
 msgid "Error creating company [%s]'s user [%s], error reason: %s"
 msgstr "创建公司 [%s] 的用户 [%s] 时出错，错误原因：%s"
@@ -838,36 +924,43 @@ msgid "Error info"
 msgstr "错误信息"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_department.py:0
 #, python-format
 msgid "Error setting parent department for company %s, Error details:%s"
 msgstr "设置公司[%s]的上级部门时出错，错误详细信息：%s"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_department.py:0
 #, python-format
 msgid "Error setting parent department for company [%s], Error details:%s"
 msgstr "设置公司[%s]的上级部门时出错，错误详细信息：%s"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_department.py:0
 #, python-format
 msgid "Error update company [%s]'s Department [%s], error reason: %s"
 msgstr "更新公司 [%s] 的部门 [%s] 时出错，错误原因：%s"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_tag.py:0
 #, python-format
 msgid "Error update company [%s]'s tag [%s], error reason: %s"
 msgstr "更新公司[%s]的标签[%s]时出错，错误原因：%s"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_user.py:0
+#: code:addons/wecom_contacts_sync/models/wecom_user2.py:0
 #, python-format
 msgid "Error update company [%s]'s user [%s], error reason: %s"
 msgstr "更新公司 [%s] 的用户 [%s] 时出错，错误原因：%s"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_department.py:0
 #: code:addons/wecom_contacts_sync/models/wecom_department.py:0
 #, python-format
@@ -875,7 +968,17 @@ msgid "Error updating Department [%s], error details:%s"
 msgstr "更新部门 [%s] 时出错，错误详细：%s"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_user.py:0
+#: code:addons/wecom_contacts_sync/models/wecom_user2.py:0
+#, python-format
+msgid "Error!"
+msgstr "错误！"
+
+#. module: wecom_contacts_sync
+#. odoo-python
+#: code:addons/wecom_contacts_sync/models/wecom_user.py:0
+#: code:addons/wecom_contacts_sync/models/wecom_user2.py:0
 #: model:ir.model.fields.selection,name:wecom_contacts_sync.selection__wecom_user__status_name__5
 #, python-format
 msgid "Exit the enterprise"
@@ -898,6 +1001,7 @@ msgid "External position"
 msgstr "对外职务"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_employee.py:0
 #: code:addons/wecom_contacts_sync/models/hr_employee_category.py:0
 #, python-format
@@ -905,12 +1009,14 @@ msgid "Fail"
 msgstr "失败"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_employee_category.py:0
 #, python-format
 msgid "Failed"
 msgstr "失败"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_employee.py:0
 #: code:addons/wecom_contacts_sync/wizard/wecom_users_sync_wizard.py:0
 #, python-format
@@ -918,13 +1024,16 @@ msgid "Failed to copy employee [%s] as system user, reason:%s"
 msgstr "无法将员工[%s]复制为系统用户，原因：%s"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_employee_category.py:0
 #, python-format
 msgid "Failed to download tag [%s] member of company [%s]!"
 msgstr "下载标签 [%s] 成员失败， 公司[%s]!"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_user.py:0
+#: code:addons/wecom_contacts_sync/models/wecom_user2.py:0
 #: model:ir.model.fields.selection,name:wecom_contacts_sync.selection__wecom_user__gender_name__2
 #, python-format
 msgid "Female"
@@ -943,6 +1052,7 @@ msgid "Generate parameters"
 msgstr "生成参数"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/wizard/wecom_users_sync_wizard.py:0
 #, python-format
 msgid "Generate results using the wizard"
@@ -955,6 +1065,7 @@ msgstr "生成服务"
 
 #. module: wecom_contacts_sync
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.view_wecom_user_form
+#: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.view_wecom_user_tree
 msgid "Get OpenID"
 msgstr "获取OpenID"
 
@@ -968,6 +1079,11 @@ msgstr "分组"
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.view_form_wecom_users_sync_wizard
 msgid "Help"
 msgstr "帮助"
+
+#. module: wecom_contacts_sync
+#: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_user__hide_mobile
+msgid "Hide mobile"
+msgstr "隐藏手机"
 
 #. module: wecom_contacts_sync
 #: model:ir.model.fields,field_description:wecom_contacts_sync.field_change_type_user__id
@@ -1024,6 +1140,7 @@ msgid "Info"
 msgstr "信息"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/res_users.py:0
 #: model:ir.model.fields.selection,name:wecom_contacts_sync.selection__change_type_user__new_type__1
 #, python-format
@@ -1039,6 +1156,11 @@ msgstr "内部用户占用系统资源。"
 #: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_user__is_leader_in_dept
 msgid "Is Department Leader"
 msgstr "是部门负责人"
+
+#. module: wecom_contacts_sync
+#: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_user__isleader
+msgid "Is leader"
+msgstr "是负责人"
 
 #. module: wecom_contacts_sync
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.view_form_wecom_users_sync_wizard
@@ -1110,12 +1232,19 @@ msgid "Login name"
 msgstr "登陆名称"
 
 #. module: wecom_contacts_sync
+#: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_user__department_id
+msgid "Main Department"
+msgstr "部门"
+
+#. module: wecom_contacts_sync
 #: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_user__main_department
 msgid "Main department"
 msgstr "主部门"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_user.py:0
+#: code:addons/wecom_contacts_sync/models/wecom_user2.py:0
 #: model:ir.model.fields.selection,name:wecom_contacts_sync.selection__wecom_user__gender_name__1
 #, python-format
 msgid "Male"
@@ -1146,6 +1275,11 @@ msgstr "成员管理"
 #: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_tag__user_ids
 msgid "Members"
 msgstr "成员"
+
+#. module: wecom_contacts_sync
+#: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.view_wecom_user_form
+msgid "Metadata"
+msgstr "元数据"
 
 #. module: wecom_contacts_sync
 #: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_user__department
@@ -1187,7 +1321,16 @@ msgid "New departmental events"
 msgstr "新增部门事件"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_user.py:0
+#, python-format
+msgid "No"
+msgstr "否"
+
+#. module: wecom_contacts_sync
+#. odoo-python
+#: code:addons/wecom_contacts_sync/models/wecom_user.py:0
+#: code:addons/wecom_contacts_sync/models/wecom_user2.py:0
 #: model:ir.model.fields.selection,name:wecom_contacts_sync.selection__wecom_user__status_name__4
 #, python-format
 msgid "Not active"
@@ -1209,6 +1352,7 @@ msgid "Parent department id"
 msgstr "上级部门Id"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_apps.py:0
 #: model:ir.model.fields.selection,name:wecom_contacts_sync.selection__wecom_contacts_sync_wizard__state__partially
 #: model:ir.model.fields.selection,name:wecom_contacts_sync.selection__wecom_contacts_sync_wizard__wecom_department_sync_state__partially
@@ -1231,12 +1375,21 @@ msgid "Personal QR code"
 msgstr "个人二维码"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/res_config_settings.py:0
 #, python-format
-msgid "Please bind contact app!"
+msgid "Please bind contact application!"
 msgstr "请绑定通讯录应用！"
 
 #. module: wecom_contacts_sync
+#. odoo-python
+#: code:addons/wecom_contacts_sync/models/res_config_settings.py:0
+#, python-format
+msgid "Please bind contact synchronization application!"
+msgstr "请绑定通讯录同步应用！"
+
+#. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/res_users.py:0
 #: model:ir.model.fields.selection,name:wecom_contacts_sync.selection__change_type_user__new_type__9
 #, python-format
@@ -1264,6 +1417,7 @@ msgid "Private Information"
 msgstr "私人信息"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/res_users.py:0
 #: model:ir.model.fields.selection,name:wecom_contacts_sync.selection__change_type_user__new_type__10
 #, python-format
@@ -1271,11 +1425,8 @@ msgid "Public User"
 msgstr "公众用户"
 
 #. module: wecom_contacts_sync
-#. openerp-web
-#: code:addons/wecom_contacts_sync/static/src/js/hr_sync_deps.js:0
-#: code:addons/wecom_contacts_sync/static/src/js/hr_sync_staffs.js:0
-#: code:addons/wecom_contacts_sync/static/src/js/hr_sync_tags.js:0
-#: code:addons/wecom_contacts_sync/static/src/js/wecom_contacts_sync.js:0
+#. odoo-javascript
+#: code:addons/wecom_contacts_sync/static/src/js/hr_employee_sync_wecom.js:0
 #, python-format
 msgid "Refresh"
 msgstr "刷新"
@@ -1291,6 +1442,7 @@ msgid "Related User"
 msgstr "关联用户"
 
 #. module: wecom_contacts_sync
+#: model:ir.model.fields,field_description:wecom_contacts_sync.field_res_config_settings__contacts_sync_secret
 #: model:ir.model.fields,field_description:wecom_contacts_sync.field_res_config_settings__self_built_app_secret
 msgid "Secret"
 msgstr "密钥"
@@ -1372,6 +1524,7 @@ msgid "Status"
 msgstr "状态"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_employee.py:0
 #: code:addons/wecom_contacts_sync/models/hr_employee_category.py:0
 #, python-format
@@ -1379,12 +1532,14 @@ msgid "Success"
 msgstr "成功"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_employee.py:0
 #, python-format
 msgid "Successfully copied employee [%s] as system user"
 msgstr "成功复制 [%s] 为系统用户"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_employee_category.py:0
 #, python-format
 msgid "Successfully updated tag."
@@ -1396,34 +1551,32 @@ msgid "Sync Companies"
 msgstr "同步公司"
 
 #. module: wecom_contacts_sync
-#. openerp-web
+#. odoo-javascript
 #: code:addons/wecom_contacts_sync/static/src/xml/wecom_organization.xml:0
 #, python-format
 msgid "Sync Contacts Department"
-msgstr ""
+msgstr "同步通讯录部门"
 
 #. module: wecom_contacts_sync
-#. openerp-web
+#. odoo-javascript
 #: code:addons/wecom_contacts_sync/static/src/xml/wecom_organization.xml:0
 #, python-format
 msgid "Sync Contacts Member"
-msgstr ""
+msgstr "同步通讯录成员"
 
 #. module: wecom_contacts_sync
-#. openerp-web
+#. odoo-javascript
 #: code:addons/wecom_contacts_sync/static/src/xml/wecom_organization.xml:0
 #, python-format
 msgid "Sync Contacts Tag"
-msgstr ""
+msgstr "同步通讯录标签"
 
 #. module: wecom_contacts_sync
-#. openerp-web
-#: code:addons/wecom_contacts_sync/static/src/js/hr_sync_deps.js:0
-#: code:addons/wecom_contacts_sync/static/src/js/hr_sync_staffs.js:0
-#: code:addons/wecom_contacts_sync/static/src/js/wecom_contacts_sync.js:0
+#. odoo-javascript
+#: code:addons/wecom_contacts_sync/static/src/js/hr_employee_sync_wecom.js:0
 #, python-format
 msgid "Sync failed!"
-msgstr ""
+msgstr "同步失败！"
 
 #. module: wecom_contacts_sync
 #: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_contacts_sync_wizard__sync_result
@@ -1431,10 +1584,8 @@ msgid "Sync result"
 msgstr "同步结果"
 
 #. module: wecom_contacts_sync
-#. openerp-web
-#: code:addons/wecom_contacts_sync/static/src/js/hr_sync_deps.js:0
-#: code:addons/wecom_contacts_sync/static/src/js/hr_sync_staffs.js:0
-#: code:addons/wecom_contacts_sync/static/src/js/wecom_contacts_sync.js:0
+#. odoo-javascript
+#: code:addons/wecom_contacts_sync/static/src/js/hr_employee_sync_wecom.js:0
 #, python-format
 msgid "Sync succeeded!"
 msgstr "同步成功！"
@@ -1445,25 +1596,25 @@ msgid "Sync wecom contacts"
 msgstr "同步企微通讯录"
 
 #. module: wecom_contacts_sync
-#. openerp-web
+#. odoo-javascript
 #: code:addons/wecom_contacts_sync/static/src/xml/hr_templates.xml:0
 #, python-format
 msgid "Sync wecom department"
-msgstr ""
+msgstr "同步企微部门"
 
 #. module: wecom_contacts_sync
-#. openerp-web
+#. odoo-javascript
 #: code:addons/wecom_contacts_sync/static/src/xml/hr_templates.xml:0
 #, python-format
 msgid "Sync wecom employee"
-msgstr ""
+msgstr "同步企微员工"
 
 #. module: wecom_contacts_sync
-#. openerp-web
+#. odoo-javascript
 #: code:addons/wecom_contacts_sync/static/src/xml/hr_templates.xml:0
 #, python-format
 msgid "Sync wecom tag"
-msgstr ""
+msgstr "同步企微标签"
 
 #. module: wecom_contacts_sync
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.view_form_wecom_contacts_sync_result
@@ -1481,6 +1632,7 @@ msgid "Synchronize all companies?"
 msgstr "同步所有公司？"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/wizard/wecom_contacts_sync_wizard.py:0
 #, python-format
 msgid "Synchronize results using the wizard"
@@ -1498,12 +1650,14 @@ msgid "Tag ID"
 msgstr "标签ID"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_tag.py:0
 #, python-format
 msgid "Tag [id:%s, name:%s] downloaded successfully"
 msgstr "标签[id:%s, 名称:%s] 下载成功"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_tag.py:0
 #, python-format
 msgid "Tag [id:%s, name:%s] failed to download,Reason: %s"
@@ -1515,24 +1669,28 @@ msgid "Tag change events"
 msgstr "标签变更事件"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_employee_category.py:0
 #, python-format
 msgid "Tag downloaded failed."
 msgstr "标签下载失败。"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_employee_category.py:0
 #, python-format
 msgid "Tag downloaded successfully."
 msgstr "标签下载成功。"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_employee_category.py:0
 #, python-format
 msgid "Tag list downloaded successfully."
 msgstr "标签列表下载成功。"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_tag.py:0
 #, python-format
 msgid "Tag list sync completed."
@@ -1549,18 +1707,21 @@ msgid "Tag name"
 msgstr "标签名称"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_employee_category.py:0
 #, python-format
 msgid "Tag successfully created."
 msgstr "标签成功创建。"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_employee_category.py:0
 #, python-format
 msgid "Tag: %s deleted successfully."
 msgstr "标签：%s 删除成功。"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_employee_category.py:0
 #, python-format
 msgid "Tag: %s deletion failed."
@@ -1583,6 +1744,7 @@ msgid "Telephone"
 msgstr "固话"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_employee_category.py:0
 #: code:addons/wecom_contacts_sync/models/res_users.py:0
 #, python-format
@@ -1590,6 +1752,14 @@ msgid ""
 "The current company does not identify the enterprise wechat organization. Please configure "
 "or switch the company."
 msgstr "当前公司未标识为企业微信组织。请配置或切换公司。"
+
+#. module: wecom_contacts_sync
+#. odoo-python
+#: code:addons/wecom_contacts_sync/models/wecom_user.py:0
+#: code:addons/wecom_contacts_sync/models/wecom_user2.py:0
+#, python-format
+msgid "The current configuration does not allow replication as a system user!"
+msgstr "当前配置不允许复制为系统用户！"
 
 #. module: wecom_contacts_sync
 #: model:ir.model.fields,help:wecom_contacts_sync.field_wecom_user_bind_wecom_wizard__company_id
@@ -1607,6 +1777,7 @@ msgid "The user ID of each company must be unique!"
 msgstr "每个公司的用户ID必须唯一！"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_department.py:0
 #: code:addons/wecom_contacts_sync/models/hr_employee_category.py:0
 #: code:addons/wecom_contacts_sync/models/res_users.py:0
@@ -1615,25 +1786,34 @@ msgid "There is no mapping for field [%s], please contact the developer."
 msgstr "字段[%s]没有映射，请与开发人员联系。"
 
 #. module: wecom_contacts_sync
+#: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.res_config_settings_view_form
+msgid "To synchronize contacts, you need to bind a self-built application."
+msgstr "要同步通讯录，您需要绑定一个自建的应用程序。"
+
+#. module: wecom_contacts_sync
 #: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_contacts_sync_wizard__total_time
 #: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_users_sync_wizard__total_time
 msgid "Total time(seconds)"
 msgstr "总时间（秒）"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_user.py:0
+#: code:addons/wecom_contacts_sync/models/wecom_user2.py:0
 #: model:ir.model.fields.selection,name:wecom_contacts_sync.selection__wecom_user__gender_name__0
 #, python-format
 msgid "Undefined"
 msgstr "未定义"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_apps.py:0
 #, python-format
 msgid "Unknown"
 msgstr "未知"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_employee_category.py:0
 #, python-format
 msgid "Update contacts tags: %s to WeCom"
@@ -1686,18 +1866,27 @@ msgid "User ID"
 msgstr "用户ID"
 
 #. module: wecom_contacts_sync
+#: model:ir.model.fields,field_description:wecom_contacts_sync.field_wecom_user__user_json
+msgid "User Json"
+msgstr "用户Json"
+
+#. module: wecom_contacts_sync
 #: model:ir.model.fields,field_description:wecom_contacts_sync.field_change_type_user__new_type
 msgid "User Type"
 msgstr "用户类型"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_user.py:0
+#: code:addons/wecom_contacts_sync/models/wecom_user2.py:0
 #, python-format
 msgid "User [id:%s, name:%s] downloaded successfully"
 msgstr "用户[id:%s, 名称:%s] 下载成功"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_user.py:0
+#: code:addons/wecom_contacts_sync/models/wecom_user2.py:0
 #, python-format
 msgid "User [id:%s, name:%s] failed to download,Reason: %s"
 msgstr "用户[id:%s, 名称:%s] 下载失败，原因: %s"
@@ -1713,12 +1902,15 @@ msgid "User list"
 msgstr "用户列表"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_user.py:0
+#: code:addons/wecom_contacts_sync/models/wecom_user2.py:0
 #, python-format
 msgid "User list sync completed."
 msgstr "用户列表同步完成。"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/wizard/user_bind_wecom.py:0
 #, python-format
 msgid "User with ID [%s] already exists"
@@ -1764,6 +1956,7 @@ msgid "WeCom Open Userid"
 msgstr "企微用户OpenID"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/hr_employee_category.py:0
 #: model:ir.model.fields,field_description:wecom_contacts_sync.field_hr_employee_category__is_wecom_tag
 #, python-format
@@ -1821,6 +2014,7 @@ msgid "WeCom settings"
 msgstr "企微设置"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/wizard/wizard_wecom_sync_tag.py:0
 #, python-format
 msgid "WeCom tags synchronization results"
@@ -1844,7 +2038,6 @@ msgstr "企微用户排序"
 #. module: wecom_contacts_sync
 #: model:ir.actions.server,name:wecom_contacts_sync.ir_cron_sync_wecom_contacts_ir_actions_server
 #: model:ir.cron,cron_name:wecom_contacts_sync.ir_cron_sync_wecom_contacts
-#: model:ir.cron,name:wecom_contacts_sync.ir_cron_sync_wecom_contacts
 msgid "WeCom: Synchronize contacts"
 msgstr "企微：同步通讯录"
 
@@ -1854,6 +2047,7 @@ msgid "WeCom: Synchronize contacts regularly"
 msgstr "企微：定时同步通讯录"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_tag.py:0
 #, python-format
 msgid "Wecom API acquisition company[%s]'s tag [id:%s] member failed, error details: %s"
@@ -1950,6 +2144,7 @@ msgid "Wecom user synchronization time (seconds)"
 msgstr "企微用户同步时间（秒）"
 
 #. module: wecom_contacts_sync
+#. odoo-python
 #: code:addons/wecom_contacts_sync/models/wecom_apps.py:0
 #, python-format
 msgid ""
@@ -1960,15 +2155,15 @@ msgstr "当成员修改个人信息时，被修改的信息将以事件的形式
 #. module: wecom_contacts_sync
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.view_form_wecom_users_sync_wizard
 msgid ""
-"When you have a large number of employees, it is recommended to <b class=\"text-danger"
-"\">turn off</b> \"send mail\"."
+"When you have a large number of employees, it is recommended to <b class=\"text-"
+"danger\">turn off</b> \"send mail\"."
 msgstr "当您有大量员工时，建议您<b class=\"\\&quot;text-danger\\&quot;\">关闭</b>“发送邮件”。"
 
 #. module: wecom_contacts_sync
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.view_form_wecom_users_sync_wizard
 msgid ""
-"When you have a large number of employees, it is recommended to <b class=\"text-danger"
-"\">turn off</b> \"send message\"."
+"When you have a large number of employees, it is recommended to <b class=\"text-"
+"danger\">turn off</b> \"send message\"."
 msgstr "当您有大量员工时，建议您<b class=\"\\&quot;text-danger\\&quot;\">关闭</b>“发送消息”。"
 
 #. module: wecom_contacts_sync
@@ -1985,6 +2180,13 @@ msgstr "变更用户类型向导(企微)"
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.view_wecom_user_form
 msgid "Work Information"
 msgstr "工作信息"
+
+#. module: wecom_contacts_sync
+#. odoo-python
+#: code:addons/wecom_contacts_sync/models/wecom_user.py:0
+#, python-format
+msgid "Yes"
+msgstr "是"
 
 #. module: wecom_contacts_sync
 #: model_terms:ir.ui.view,arch_db:wecom_contacts_sync.view_wecom_department_form

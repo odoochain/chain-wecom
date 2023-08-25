@@ -4,18 +4,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0beta\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-11 01:33+0000\n"
-"PO-Revision-Date: 2022-10-11 09:42+0800\n"
+"POT-Creation-Date: 2023-08-25 13:12+0000\n"
+"PO-Revision-Date: 2023-08-25 21:14+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
-"X-Generator: Poedit 3.1.1\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #. module: wecom_base
 #: model_terms:ir.ui.view,arch_db:wecom_base.view_wecom_apps_form
@@ -65,8 +65,8 @@ msgstr "<b>控制器：</b>确保控制器代码中存在“回调服务名称�
 #. module: wecom_base
 #: model_terms:ir.ui.view,arch_db:wecom_base.res_config_settings_view_form
 msgid ""
-"<i class=\"fa fa-archive fa-lg\" role=\"img\" aria-label=\"WeCom resources\" title="
-"\"Wecom resources\"/>"
+"<i class=\"fa fa-archive fa-lg\" role=\"img\" aria-label=\"WeCom resources\" "
+"title=\"Wecom resources\"/>"
 msgstr ""
 "<i class=\"fa fa-archive fa-lg\" role=\"img\" aria-label=\"企微资源\" title=\"企微资源\"/"
 ">"
@@ -89,8 +89,8 @@ msgstr "<i class=\"fa fa-flag fa-lg\" role=\"img\" aria-label=\"企业ID\"/>"
 #. module: wecom_base
 #: model_terms:ir.ui.view,arch_db:wecom_base.res_config_settings_view_form
 msgid ""
-"<i class=\"fa fa-link fa-lg\" role=\"img\" aria-label=\"WeCom global error code page URL"
-"\"/>"
+"<i class=\"fa fa-link fa-lg\" role=\"img\" aria-label=\"WeCom global error code page "
+"URL\"/>"
 msgstr ""
 "<i class=\"fa fa-link fa-lg\" role=\"img\" aria-label=\"企微全局错误代码页面URL\"/>"
 
@@ -101,11 +101,6 @@ msgid ""
 "selection code\"/>"
 msgstr ""
 "<i class=\"fa fa-list-ul fa-lg\" role=\"img\" aria-label=\"全局错误代码项路径选择代码\"/>"
-
-#. module: wecom_base
-#: model_terms:ir.ui.view,arch_db:wecom_base.res_config_settings_view_form
-msgid "<i class=\"fa fa-ticket fa-lg\" role=\"img\" aria-label=\"JSAPI Ticket\"/>"
-msgstr "<i class=\"fa fa-ticket fa-lg\" role=\"img\" aria-label=\"JSAPI临时凭证\"/>"
 
 #. module: wecom_base
 #: model_terms:ir.ui.view,arch_db:wecom_base.res_config_settings_view_form
@@ -245,6 +240,7 @@ msgid "Authentication"
 msgstr "身份验证"
 
 #. module: wecom_base
+#. odoo-python
 #: code:addons/wecom_base/models/wecom_apps.py:0
 #, python-format
 msgid "Automatic task: start to get the application [%s] token of company [%s]"
@@ -266,6 +262,7 @@ msgid "Callback service settings"
 msgstr "回调服务设置"
 
 #. module: wecom_base
+#. odoo-python
 #: code:addons/wecom_base/models/wecom_app_event_type.py:0
 #, python-format
 msgid "Cannot find [%s] change type for executing company [%s], ignoring it."
@@ -299,6 +296,7 @@ msgid "Code and Command"
 msgstr "代码和指令"
 
 #. module: wecom_base
+#. odoo-python
 #: code:addons/wecom_base/models/wecom_app_subtype.py:0
 #: code:addons/wecom_base/models/wecom_app_type.py:0
 #: model:ir.model.constraint,message:wecom_base.constraint_wecom_app_subtype_code_uniq
@@ -318,7 +316,7 @@ msgid "Companies"
 msgstr "公司"
 
 #. module: wecom_base
-#. openerp-web
+#. odoo-javascript
 #: code:addons/wecom_base/static/src/xml/wecom_settings_navigation.xml:0
 #, python-format
 msgid "Companies settings"
@@ -352,11 +350,18 @@ msgid "Contacts management"
 msgstr "通讯录管理"
 
 #. module: wecom_base
-#. openerp-web
+#. odoo-javascript
 #: code:addons/wecom_base/static/src/xml/wecom_settings_navigation.xml:0
 #, python-format
 msgid "Contacts settings"
 msgstr "通讯录设置"
+
+#. module: wecom_base
+#. odoo-javascript
+#: code:addons/wecom_base/static/src/xml/wecom_settings_navigation.xml:0
+#, python-format
+msgid "Contacts synchronization settings"
+msgstr "通讯录同步设置"
 
 #. module: wecom_base
 #: model:ir.model.fields,field_description:wecom_base.field_res_company__corpid
@@ -491,10 +496,9 @@ msgid "Event Type"
 msgstr "事件类型"
 
 #. module: wecom_base
-#: model_terms:ir.ui.view,arch_db:wecom_base.res_config_settings_view_form
-msgid "Expiration time"
-msgstr "有效时间"
-
+#: model:ir.model.fields,field_description:wecom_base.field_res_config_settings__wecom_jsapi_ticket_expiration_time
+msgid "Expiration time of JSAPI Ticket"
+msgstr "JSAPI临时凭证的有效时间"
 
 #. module: wecom_base
 #: model:ir.model.fields,field_description:wecom_base.field_res_company__wecom_jsapi_ticket_expiration_time
@@ -512,6 +516,7 @@ msgid "Field Type"
 msgstr "字段类型"
 
 #. module: wecom_base
+#. odoo-python
 #: code:addons/wecom_base/models/wecom_app_event_type.py:0
 #, python-format
 msgid "Function [%s] does not exist in model [%s]"
@@ -538,7 +543,6 @@ msgid "Get Access Token"
 msgstr "获取访问令牌"
 
 #. module: wecom_base
-#: model_terms:ir.ui.view,arch_db:wecom_base.res_config_settings_view_form
 #: model_terms:ir.ui.view,arch_db:wecom_base.view_wecom_apps_form
 msgid "Get JSAPI Ticket"
 msgstr "获取JSAPI临时凭证"
@@ -554,21 +558,21 @@ msgid "Get application"
 msgstr "获取应用"
 
 #. module: wecom_base
-#. openerp-web
+#. odoo-javascript
 #: code:addons/wecom_base/static/src/views/get_api_error_code.xml:0
 #, python-format
 msgid "Get error code"
 msgstr "获取错误代码"
 
 #. module: wecom_base
-#. openerp-web
+#. odoo-javascript
 #: code:addons/wecom_base/static/src/views/api_error_list_view.js:0
 #, python-format
 msgid "Get failed!"
 msgstr "获取失败！"
 
 #. module: wecom_base
-#. openerp-web
+#. odoo-javascript
 #: code:addons/wecom_base/static/src/views/api_error_list_view.js:0
 #, python-format
 msgid "Get successfully!"
@@ -709,6 +713,7 @@ msgid "Message push"
 msgstr "消息推送"
 
 #. module: wecom_base
+#. odoo-python
 #: code:addons/wecom_base/models/wecom_app_event_type.py:0
 #, python-format
 msgid "Method [%s] to execute model [%s]"
@@ -735,7 +740,7 @@ msgid "Name"
 msgstr "名称"
 
 #. module: wecom_base
-#. openerp-web
+#. odoo-javascript
 #: code:addons/wecom_base/static/src/xml/wecom_settings_navigation.xml:0
 #, python-format
 msgid "Navigation"
@@ -781,10 +786,16 @@ msgid "Officer"
 msgstr "主管"
 
 #. module: wecom_base
+#. odoo-python
 #: code:addons/wecom_base/models/wecom_apps.py:0
 #, python-format
 msgid "Only one subtype can be selected for the current app type!"
 msgstr "当前应用类型只能选择一个子类型！"
+
+#. module: wecom_base
+#: model:ir.actions.client,name:wecom_base.action_open_wecom_configurator
+msgid "Open Wecom Configurator"
+msgstr "打开企微配置"
 
 #. module: wecom_base
 #: model:ir.model.fields,field_description:wecom_base.field_wecom_apps__report_location_flag
@@ -812,6 +823,7 @@ msgid "Parent type"
 msgstr "父类型"
 
 #. module: wecom_base
+#. odoo-python
 #: code:addons/wecom_base/models/wecom_app_callback_service.py:0
 #, python-format
 msgid "Please bind contact app!"
@@ -839,6 +851,7 @@ msgid "Receive event service"
 msgstr "接收事件服务"
 
 #. module: wecom_base
+#. odoo-python
 #: code:addons/wecom_base/models/wecom_app_event_type.py:0
 #, python-format
 msgid ""
@@ -903,18 +916,21 @@ msgid "Square Logo"
 msgstr "方形Logo"
 
 #. module: wecom_base
+#. odoo-python
 #: code:addons/wecom_base/models/wecom_apps.py:0
 #, python-format
 msgid "Start getting app [%s] ticket for company [%s]"
 msgstr "还是获取应用 [%s] 的临时凭证，公司 [%s]"
 
 #. module: wecom_base
+#. odoo-python
 #: code:addons/wecom_base/models/wecom_apps.py:0
 #, python-format
 msgid "Start getting app [%s] token for company [%s]"
 msgstr "开始为应用 [%s] 的令牌，公司 [%s]"
 
 #. module: wecom_base
+#. odoo-python
 #: code:addons/wecom_base/models/res_config_settings.py:0
 #, python-format
 msgid "Start getting ticket for company [%s]"
@@ -926,12 +942,14 @@ msgid "SubType"
 msgstr "子类型"
 
 #. module: wecom_base
+#. odoo-python
 #: code:addons/wecom_base/models/wecom_apps.py:0
 #, python-format
 msgid "Successfully obtained application ticket!"
 msgstr "成功获取到了应用的临时凭证！"
 
 #. module: wecom_base
+#. odoo-python
 #: code:addons/wecom_base/models/res_config_settings.py:0
 #, python-format
 msgid "Successfully obtained ticket!"
@@ -943,6 +961,7 @@ msgid "The URL of the enterprise WeChat API global error code page for automatic
 msgstr "用于自动爬取的企业微信API全局错误代码页面的URL。"
 
 #. module: wecom_base
+#. odoo-python
 #: code:addons/wecom_base/models/wecom_apps.py:0
 #: model:ir.model.constraint,message:wecom_base.constraint_wecom_apps_company_id_key_uniq
 #, python-format
@@ -950,6 +969,7 @@ msgid "The application name of each company must be unique !"
 msgstr "每个公司的应用程序名称必须是唯一的！"
 
 #. module: wecom_base
+#. odoo-python
 #: code:addons/wecom_base/models/wecom_app_callback_service.py:0
 #: model:ir.model.constraint,message:wecom_base.constraint_wecom_app_callback_service_app_code_uniq
 #, python-format
@@ -957,6 +977,7 @@ msgid "The code of each application must be unique !"
 msgstr "每个应用的代码必须是唯一的！"
 
 #. module: wecom_base
+#. odoo-python
 #: code:addons/wecom_base/models/wecom_app_config.py:0
 #: model:ir.model.constraint,message:wecom_base.constraint_wecom_app_config_app_id_key_uniq
 #, python-format
@@ -1006,11 +1027,7 @@ msgid "This company is an WeCom organization"
 msgstr "此公司为企业微信组织"
 
 #. module: wecom_base
-#: model_terms:ir.ui.view,arch_db:wecom_base.res_config_settings_view_form
-msgid "This module modifies the web addon to provide responsiveness."
-msgstr "此模块修改web模块以提供响应式能力。"
-
-#. module: wecom_base
+#. odoo-python
 #: code:addons/wecom_base/models/res_config_settings.py:0
 #: code:addons/wecom_base/models/wecom_apps.py:0
 #, python-format
@@ -1018,6 +1035,7 @@ msgid "Ticket is still valid, and no update is required!"
 msgstr "临时凭证仍然有效，不需要更新！"
 
 #. module: wecom_base
+#. odoo-python
 #: code:addons/wecom_base/models/res_config_settings.py:0
 #: code:addons/wecom_base/models/wecom_apps.py:0
 #, python-format
@@ -1055,6 +1073,7 @@ msgid "URL"
 msgstr ""
 
 #. module: wecom_base
+#. odoo-python
 #: code:addons/wecom_base/models/wecom_app_event_type.py:0
 #, python-format
 msgid "Unable to execute [%s] change type for company [%s], ignoring it. reason: %s"
@@ -1064,6 +1083,13 @@ msgstr "无法为公司 [%s] 执行 [%s] 变更类型，将忽略它。原因：
 #: model_terms:ir.ui.view,arch_db:wecom_base.res_config_settings_view_form
 msgid "Update Info"
 msgstr "更新信息"
+
+#. module: wecom_base
+#: model_terms:ir.ui.view,arch_db:wecom_base.res_config_settings_view_form
+msgid ""
+"Used for event triggered synchronization of address book information, such as "
+"departments, members, tags, etc."
+msgstr "用于事件触发的通讯录信息同步，如部门、成员、标签等。"
 
 #. module: wecom_base
 #: model:ir.model.fields,field_description:wecom_base.field_wecom_app_config__value
@@ -1096,6 +1122,11 @@ msgid "WeCom Contacts"
 msgstr "企微通讯录"
 
 #. module: wecom_base
+#: model:ir.model.fields,field_description:wecom_base.field_res_config_settings__module_wecom_contacts_sync
+msgid "WeCom Contacts Synchronized"
+msgstr "企微通讯录同步"
+
+#. module: wecom_base
 #: model_terms:ir.ui.view,arch_db:wecom_base.view_company_form
 msgid "WeCom Information"
 msgstr "企业微信信息"
@@ -1120,7 +1151,6 @@ msgstr "企业微信资源存储路径"
 #. module: wecom_base
 #: model:ir.actions.server,name:wecom_base.ir_cron_get_app_token_ir_actions_server
 #: model:ir.cron,cron_name:wecom_base.ir_cron_get_app_token
-#: model:ir.cron,name:wecom_base.ir_cron_get_app_token
 msgid "WeCom: Get app token"
 msgstr "企微：获取应用令牌"
 
@@ -1133,7 +1163,6 @@ msgstr "企微：获取应用令牌。"
 #: model:ir.actions.act_window,name:wecom_base.ir_cron_act_pull_wecom_service_api_error
 #: model:ir.actions.server,name:wecom_base.ir_cron_pull_wecom_service_api_error_ir_actions_server
 #: model:ir.cron,cron_name:wecom_base.ir_cron_pull_wecom_service_api_error
-#: model:ir.cron,name:wecom_base.ir_cron_pull_wecom_service_api_error
 msgid "WeCom: Get the global error code of WeCom."
 msgstr "企微: 获取企微的全局错误代码。"
 
@@ -1199,9 +1228,19 @@ msgid "Wecom Companies settings"
 msgstr "企微公司设置"
 
 #. module: wecom_base
+#: model:ir.actions.act_window,name:wecom_base.wecom_configurator
+msgid "Wecom Configurator"
+msgstr "企微配置"
+
+#. module: wecom_base
 #: model_terms:ir.ui.view,arch_db:wecom_base.res_config_settings_view_form
 msgid "Wecom Contact Settings"
 msgstr "企微通讯录设置"
+
+#. module: wecom_base
+#: model_terms:ir.ui.view,arch_db:wecom_base.res_config_settings_view_form
+msgid "Wecom Contact Synchronization Settings"
+msgstr "企微通讯录同步设置"
 
 #. module: wecom_base
 #: model:ir.ui.menu,name:wecom_base.menu_wecom_contacts
@@ -1283,6 +1322,10 @@ msgstr ""
 msgid "integer"
 msgstr "整数"
 
+#. module: wecom_base
+#: model:ir.model.fields.selection,name:wecom_base.selection__wecom_app_config__ttype__json
+msgid "json"
+msgstr ""
 
 #. module: wecom_base
 #: model:ir.model.fields.selection,name:wecom_base.selection__wecom_app_config__ttype__many2many

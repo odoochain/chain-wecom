@@ -353,8 +353,7 @@ Synchronize Wecom tag results:
 
         # 同步企微用户
         sync_user_result = self.env["wecom.user"].with_context(company_id=self.company_id).download_wecom_users() # type: ignore
-        print("sync_user_result",sync_user_result)
-        print("--------------")
+
         (
             wecom_user_sync_state,
             wecom_user_sync_times,
