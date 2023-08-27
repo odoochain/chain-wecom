@@ -98,22 +98,23 @@ class WecomTag(models.Model):
                 }
             ]
         else:
-            wecom_tags = response["taglist"]  # 列表类型数据
+            if response["errcode"] == 0:
+                wecom_tags = response["taglist"]  # 列表类型数据
 
-            # 下载标签
-            for wecom_tag in wecom_tags:
-                download_tag_result = self.download_tag(company, wecom_tag)
-                if download_tag_result:
-                    for r in download_tag_result:
-                        tasks.append(r)  # 加入 下载标签失败结果
-            end_time = time.time()
-            task = {
-                "name": "download_tag_data",
-                "state": True,
-                "time": end_time - start_time,
-                "msg": _("Tag list sync completed."),
-            }
-            tasks.append(task)
+                # 下载标签
+                for wecom_tag in wecom_tags:
+                    download_tag_result = self.download_tag(company, wecom_tag)
+                    if download_tag_result:
+                        for r in download_tag_result:
+                            tasks.append(r)  # 加入 下载标签失败结果
+                end_time = time.time()
+                task = {
+                    "name": "download_tag_data",
+                    "state": True,
+                    "time": end_time - start_time,
+                    "msg": _("Tag list sync completed."),
+                }
+                tasks.append(task)
         finally:
             return tasks  # 返回结果
 

@@ -370,27 +370,23 @@ Synchronize Wecom tag results:
         if result["wecom_user_sync_state"] == "fail":
             return result
 
-        # # 同步企微标签
-        # sync_wecom_tag_result = (
-        #     self.env["wecom.tag"]
-        #     .with_context(company_id=self.company_id)    # type: ignore
-        #     .download_wecom_tags()
-        # )
-        # (
-        #     wecom_tag_sync_state,
-        #     wecom_tag_sync_times,
-        #     wecom_tag_sync_result,
-        # ) = self.handle_sync_task_state(sync_wecom_tag_result, self.company_id)  # type: ignore
-        # result.update(
-        #     {
-        #         "wecom_tag_sync_state": wecom_tag_sync_state,
-        #         "wecom_tag_sync_times": wecom_tag_sync_times,
-        #         "wecom_tag_sync_result": wecom_tag_sync_result,
-        #     }
-        # )
+        # 同步企微标签
+        sync_wecom_tag_result = (self.env["wecom.tag"].with_context(company_id=self.company_id).download_wecom_tags())  # type: ignore
+        (
+            wecom_tag_sync_state,
+            wecom_tag_sync_times,
+            wecom_tag_sync_result,
+        ) = self.handle_sync_task_state(sync_wecom_tag_result, self.company_id)  # type: ignore
+        result.update(
+            {
+                "wecom_tag_sync_state": wecom_tag_sync_state,
+                "wecom_tag_sync_times": wecom_tag_sync_times,
+                "wecom_tag_sync_result": wecom_tag_sync_result,
+            }
+        )
 
-        # if result["wecom_tag_sync_state"] == "fail":
-        #     return result
+        if result["wecom_tag_sync_state"] == "fail":
+            return result
 
         return result
 
