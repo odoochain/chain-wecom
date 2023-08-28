@@ -43,7 +43,7 @@ class ResConfigSettings(models.TransientModel):
 
     # 通讯录应用
     contacts_app_id = fields.Many2one(
-        related="company_id.contacts_app_id", readonly=False
+        related="company_id.contacts_app_id", readonly=False, store=True
     )
 
     contacts_secret = fields.Char(related="contacts_app_id.secret", readonly=False)
@@ -207,8 +207,6 @@ class ResConfigSettings(models.TransientModel):
                     % (self.company_id.name)  # type: ignore
                 )
 
-    # TODO: 使用任务 获取IP
-
     def get_wecom_api_domain_ip(self):
         """
         获取企业微信API域名IP段
@@ -216,15 +214,13 @@ class ResConfigSettings(models.TransientModel):
         ir_config = self.env["ir.config_parameter"].sudo()
         debug = ir_config.get_param("wecom.debug_enabled")
 
-        if not self.contacts_app_id:
-            raise ValidationError(_("Please bind contact app!"))
+        if not self.company_id.contacts_app_id: # type: ignore
+                raise ValidationError(_("Please bind contact app!"))
 
         if debug:
             _logger.info(_("Start to get enterprise wechat API domain name IP segment"))
         try:
-            wecomapi = self.env["wecom.service_api"].InitServiceApi(
-                self.company_id.corpid, self.contacts_app_id.secret # type: ignore
-            )
+            wecomapi = self.env["wecom.service_api"].InitServiceApi(self.company_id.corpid, self.company_id.contacts_app_id.secret) # type: ignore
 
             response = wecomapi.httpCall(
                 self.env["wecom.service_api_list"].get_server_api_call(

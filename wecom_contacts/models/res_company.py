@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+from ast import literal_eval
+from collections import defaultdict
+
+from odoo.exceptions import UserError, ValidationError
 from datetime import datetime, timedelta
 from odoo.http import request
 from odoo import api, fields, models, tools, _
@@ -97,3 +101,46 @@ class Company(models.Model):
                             _("Automatic tasks:End of company [%s] JSAPI ticket update")
                             % (company.name)    # type: ignore
                         )
+
+    # TODO: 使用任务 获取IP
+
+    # def cron_get_wecom_api_domain_ip(self):
+    def get_wecom_api_domain_ip(self):
+        """
+        获取企业微信API域名IP段
+        """
+        ir_config = self.env["ir.config_parameter"].sudo()
+        debug = ir_config.get_param("wecom.debug_enabled")
+        companies = self.search([])
+
+        for company in companies: # type: ignore
+            if not company.contacts_app_id: # type: ignore
+                raise ValidationError(_("Please bind contact app!"))
+
+            if debug:
+                _logger.info(_("Start to get enterprise wechat API domain name IP segment"))
+            try:
+                wecomapi = self.env["wecom.service_api"].InitServiceApi(company.corpid, company.contacts_app_id.secret) # type: ignore
+
+                response = wecomapi.httpCall(
+                    self.env["wecom.service_api_list"].get_server_api_call(
+                        "GET_API_DOMAIN_IP"
+                    ),
+                    {},
+                )
+                if response["errcode"] == 0:
+                    self.env["ir.config_parameter"].set_param(
+                        "wecom.api_domain_ip", response["ip_list"]
+                    )
+                    return {"type": "ir.actions.client", "tag": "reload"}  # 刷新页面
+
+            except ApiException as ex:
+                return self.env["wecomapi.tools.action"].ApiExceptionDialog(
+                    ex, raise_exception=True
+                )
+
+            finally:
+                if debug:
+                    _logger.info(
+                        _("End obtaining enterprise wechat API domain name IP segment")
+                    )
