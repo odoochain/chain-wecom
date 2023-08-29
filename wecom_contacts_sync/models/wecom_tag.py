@@ -44,12 +44,49 @@ class WecomTag(models.Model):
         "wecom_user_tag_rel",
         "wecom_tag_id",
         "wecom_user_id",
-        string="Members",
+        string="Members",compute="_compute_user_ids",
     )
+
+    department_ids = fields.Many2many("wecom.department","wecom_department_tag_rel","wecom_tag_id","wecom_department_id",string="Departments",compute="_compute_department_ids",)
+
+    tag_json = fields.Json(string="Tag Json", readonly=True)
 
     def _compute_name(self):
         for tag in self:
             tag.name = tag.tagname  # type: ignore
+
+    @api.depends("userlist")
+    def _compute_user_ids(self):
+        """
+        计算用户  eval( )
+        """
+        for tag in self:
+            users = eval(tag.userlist) # type: ignore
+            user_ids = []
+            for user in users:
+                user_id = self.env["wecom.user"].search(
+                    [("userid", "=", user)],limit=1,
+                )
+                if user_id:
+                    user_ids.append(user_id.id)
+            tag.write({"user_ids": [(6, 0, user_ids)]})
+
+    @api.depends("partylist")
+    def _compute_department_ids(self):
+        """
+        计算部门  eval( )
+        """
+        for tag in self:
+            departments = eval(tag.partylist) # type: ignore
+            department_ids = []
+            for department in departments:
+                department_id = self.env["wecom.department"].search(
+                    [("department_id", "=", department)],limit=1,
+                )
+                if department_id:
+                    department_ids.append(department_id.id)
+            tag.write({"department_ids": [(6, 0, department_ids)]})
+
 
     # ------------------------------------------------------------
     # 企微标签下载
@@ -175,13 +212,13 @@ class WecomTag(models.Model):
                     )
                     wecom_tag[key] = json_str
             if not tag:
-                result = self.create_tag(company, tag, wecom_tag)
+                result = self.create_tag(company, tag, wecom_tag,response)
             else:
-                result = self.update_tag(company, tag, wecom_tag)
+                result = self.update_tag(company, tag, wecom_tag,response)
         finally:
             return result
 
-    def create_tag(self, company, tag, wecom_tag):
+    def create_tag(self, company, tag, wecom_tag,response):
         """
         创建标签
         """
@@ -192,6 +229,7 @@ class WecomTag(models.Model):
                     "tagid": wecom_tag["tagid"],
                     "userlist": wecom_tag["userlist"],
                     "partylist": wecom_tag["partylist"],
+                    "tag_json": response,
                     "company_id": company.id,
                 }
             )
@@ -210,16 +248,18 @@ class WecomTag(models.Model):
                 "msg": result,
             }  # 返回失败结果
 
-    def update_tag(self, company, tag, wecom_tag):
+    def update_tag(self, company, tag, wecom_tag,response):
         """
         更新标签
         """
         try:
+            # print(wecom_tag,type(wecom_tag))
             tag.write(
                 {
                     "tagname": wecom_tag["tagname"],
                     "userlist": wecom_tag["userlist"],
                     "partylist": wecom_tag["partylist"],
+                    "tag_json": response,
                 }
             )
         except Exception as e:

@@ -81,6 +81,7 @@ class WecomDepartment(models.Model):
         "user_id",
         string="Members",
     )
+    tag_ids = fields.Many2many("wecom.tag","wecom_department_tag_rel","wecom_department_id","wecom_tag_id",string="Tags",)
     color = fields.Integer("Color Index")
 
     department_json = fields.Json(string="Department Json", readonly=True)

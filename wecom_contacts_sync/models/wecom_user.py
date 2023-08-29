@@ -64,6 +64,7 @@ class WecomUser(models.Model):
     direct_leader_id = fields.Many2one("wecom.user","Direct Leader",domain="[('company_id', '=', company_id)]", compute="_compute_direct_leader_id",store=True,) #
 
     tag_ids = fields.Many2many("wecom.tag","wecom_user_tag_rel","wecom_user_id","wecom_tag_id",string="Tags",)
+    
     department_complete_name = fields.Char(string="Department complete Name", related="department_id.complete_name")
     order_in_department = fields.Integer(string="Sequence in department",readonly=True,default="0",)  # 成员在对应部门中的排序值，默认为0。数量必须和department一致
     status_name = fields.Selection([("1", _("Activated")),("2", _("Disabled")),("4", _("Not active")),("5", _("Exit the enterprise")),],string="Status",readonly=True,compute="_compute_status_name")  # 激活状态: 1=已激活，2=已禁用，4=未激活，5=退出企业。已激活代表已激活企业微信或已关注微信插件（原企业号）。未激活代表既未激活企业微信又未关注微信插件（原企业号）。  ,
@@ -150,7 +151,7 @@ class WecomUser(models.Model):
         """
         for user in self:
             user_id = self.env["wecom.user"].search([("userid", "=", user.direct_leader),("company_id", "=", user.company_id.id),],limit=1,)   # type: ignore
-            print(user_id)
+            # print(user_id)
             if user_id:
                 user.direct_leader_id = user_id  # type: ignore
 
