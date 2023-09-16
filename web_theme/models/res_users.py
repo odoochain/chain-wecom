@@ -86,7 +86,7 @@ class ResUsers(models.Model):
         result = {}
         try:
             user = self.browse(uid)
-            user.theme_id.write(theme)  # type: ignore
+            user.theme_id.sudo().write(theme)  # type: ignore
         except Exception as e:
             result = {
                 "state": False,

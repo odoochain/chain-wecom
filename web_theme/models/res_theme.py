@@ -43,7 +43,7 @@ class ResTheme(models.Model):
     # ------------------------------------------------------------
     # 1.main
     # ------------------------------------------------------------
-    main_open_action_in_tabs = fields.Boolean(string="Open action in tabs", default=True) #multiple open page in tab
+    main_open_action_in_tabs = fields.Boolean(string="Open action in tabs", default=False) #multiple open page in tab
     main_submenu_position = fields.Selection(
         string="Submenu Position",
         selection=[
