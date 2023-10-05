@@ -24,6 +24,10 @@ This module modifies the web plug-in to provide the following functions:
 5) Support custom browser window title name
 """,
     "depends": ["web", "mail", "calendar", "portal", "spreadsheet"],
+    
+    "excludes": [
+        "web_enterprise",
+    ],
     "data": [
         "security/ir.model.access.csv",
         "data/ir_config_parameter.xml",
