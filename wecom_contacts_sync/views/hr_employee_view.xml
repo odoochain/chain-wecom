@@ -59,21 +59,18 @@
                                 <field name="qr_code" widget="image_url" class="oe_avatar"/>
                             </group>
                         </group>
-                        <group col="4" groups="base.group_no_one">
-                            <field name="wecom_user_info" widget="ace" options="{'mode': 'python'}" class="w-100"/>
-                        </group>
                     </page>
                 </xpath>
             </field>
         </record>
 
-        <record id="hr_kanban_view_employees" model="ir.ui.view">
+        <record id="hrms_kanban_view_employees" model="ir.ui.view">
             <field name="name">hr.employee.kanban</field>
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
             <field name="arch" type="xml">
                 <xpath expr="//kanban" position="attributes">
-                    <attribute name="js_class">hr_employee_kanban_sync</attribute>
+                    <attribute name="js_class">hrms_employee_kanban_sync</attribute>
                 </xpath>
                 <xpath expr="//templates" position="before">
                     <field name="is_wecom_user"/>
@@ -94,7 +91,7 @@
             <field name="inherit_id" ref="hr.view_employee_tree"/>
             <field name="arch" type="xml">
                 <xpath expr="//tree" position="attributes">
-                    <attribute name="js_class">hr_employee_tree_sync</attribute>
+                    <attribute name="js_class">hrms_employee_tree_sync</attribute>
                 </xpath>
                 <xpath expr="//field[@name='name']" position="before">
                     <field name="company_id" invisible="1"/>
