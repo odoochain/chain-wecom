@@ -7,7 +7,7 @@
     "sequence": 600,
     "installable": True,
     "application": False,
-    "auto_install": True,
+    "auto_install": False,
     "category": "WeCom Suites/Localizations",
     "version": "15.0.0.1",
     "summary": """

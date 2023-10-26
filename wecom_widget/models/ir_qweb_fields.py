@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import markdown
+# import markdown
 
 from odoo import api, models, _
 
@@ -9,6 +9,6 @@ class MarkdownConverter(models.AbstractModel):
     _description = "Qweb Field Markdown"
     _inherit = "ir.qweb.field"
 
-    @api.model
-    def value_to_html(self, value, options):
-        return markdown.markdown(value)
+    # @api.model
+    # def value_to_html(self, value, options):
+    #     return markdown.markdown(value)
