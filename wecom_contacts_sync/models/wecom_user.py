@@ -92,9 +92,7 @@ class WecomUser(models.Model):
     open_userid = fields.Char(
         string="Open userid", readonly=True, default=None
     )  # 开放用户Id,全局唯一,对于同一个服务商，不同应用获取到企业内同一个成员的open_userid是相同的，最多64个字节。仅第三方应用可获取
-    user_json = fields.Json(
-        string="User Json",
-    )  # readonly=True
+    user_json = fields.Json(string="User Json",readonly=True)  #
 
     # odoo 字段
     company_id = fields.Many2one(
