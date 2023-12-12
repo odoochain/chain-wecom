@@ -7,7 +7,7 @@ from odoo.exceptions import UserError
 from lxml import etree
 
 import xmltodict
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException    # type: ignore
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException  # type: ignore
 from odoo.addons.base.models.ir_mail_server import MailDeliveryException
 
 _logger = logging.getLogger(__name__)
@@ -466,7 +466,7 @@ class User(models.Model):
             ("active", "=", False),
         ]
         user = self.sudo().search([("company_id", "=", company_id.id)] + domain)
-        callback_user = user.search(     # type: ignore
+        callback_user = user.search(  # type: ignore
             [("wecom_userid", "=", dic["UserID"].lower())] + domain,
             limit=1,
         )
@@ -545,13 +545,13 @@ class User(models.Model):
             except:
                 pass
 
-            callback_user.create(update_dict)    # type: ignore
+            callback_user.create(update_dict)  # type: ignore
         elif cmd == "update":
             if "wecom_userid" in update_dict:
                 del update_dict["wecom_userid"]
-            callback_user.write(update_dict)     # type: ignore
+            callback_user.write(update_dict)  # type: ignore
         elif cmd == "delete":
-            callback_user.write(     # type: ignore
+            callback_user.write(  # type: ignore
                 {
                     "active": False,
                 }
@@ -590,7 +590,7 @@ class ChangeTypeWizard(models.TransientModel):
 
     def change_type_button(self):
         self.ensure_one()
-        self.user_ids.change_type_button()   # type: ignore
+        self.user_ids.change_type_button()  # type: ignore
         if self.env.user in self.mapped("user_ids.user_id"):
             return {"type": "ir.actions.client", "tag": "reload"}
         return {"type": "ir.actions.act_window_close"}
@@ -625,7 +625,7 @@ class ChangeTypeUser(models.TransientModel):
 
     def change_type_button(self):
         for line in self:
-            if not line.new_type:    # type: ignore
+            if not line.new_type:  # type: ignore
                 raise UserError(
                     _(
                         "Before clicking the 'Change User Type' button, you must modify the new user type"
@@ -633,7 +633,7 @@ class ChangeTypeUser(models.TransientModel):
                 )
             if (
                 # 排除初始系统自带的用户
-                line.user_id.id == 1     # type: ignore
+                line.user_id.id == 1  # type: ignore
                 or line.user_id.id == 2  # type: ignore
                 or line.user_id.id == 3  # type: ignore
                 or line.user_id.id == 4  # type: ignore
@@ -641,19 +641,19 @@ class ChangeTypeUser(models.TransientModel):
             ):
                 pass
             else:
-                if line.new_type == "1":     # type: ignore
+                if line.new_type == "1":  # type: ignore
                     try:
-                        line.user_id.employee_id = (     # type: ignore
+                        line.user_id.employee_id = (  # type: ignore
                             self.env["hr.employee"].search(
                                 [
-                                    ("id", "in", line.user_id.employee_ids.ids),     # type: ignore
-                                    ("company_id", "=", line.user_id.company_id.id),     # type: ignore
+                                    ("id", "in", line.user_id.employee_ids.ids),  # type: ignore
+                                    ("company_id", "=", line.user_id.company_id.id),  # type: ignore
                                 ],
                                 limit=1,
                             ),
                         )
                     except Exception as e:
-                        print("用户 %s 类型变更错误,错误:%s" % (line.user_id.name, repr(e)))     # type: ignore
+                        print("用户 %s 类型变更错误,错误:%s" % (line.user_id.name, repr(e)))  # type: ignore
 
-                line.user_id.write({"groups_id": [(6, 0, line.new_type)]})   # type: ignore
+                line.user_id.write({"groups_id": [(6, 0, line.new_type)]})  # type: ignore
         self.write({"new_type": False})

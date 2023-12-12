@@ -92,7 +92,7 @@ class WecomUser(models.Model):
     open_userid = fields.Char(
         string="Open userid", readonly=True, default=None
     )  # 开放用户Id,全局唯一,对于同一个服务商，不同应用获取到企业内同一个成员的open_userid是相同的，最多64个字节。仅第三方应用可获取
-    user_json = fields.Json(string="User Json",readonly=True)  #
+    user_json = fields.Json(string="User Json", readonly=True)  #
 
     # odoo 字段
     company_id = fields.Many2one(
@@ -300,8 +300,9 @@ class WecomUser(models.Model):
         """
         app_config = self.env["wecom.app_config"].sudo()
         contacts_allow_add_system_users = app_config.get_param(
-            self.company_id.contacts_app_id.id, "contacts_allow_add_system_users"  # type: ignore
+            self.company_id.contacts_sync_app_id.id, "contacts_allow_add_system_users"  # type: ignore
         )  # 允许创建用户
+        print(contacts_allow_add_system_users, type(contacts_allow_add_system_users))
 
         if contacts_allow_add_system_users:
             # 允许 通讯录 生成系统用户
@@ -369,7 +370,7 @@ class WecomUser(models.Model):
         app_config = self.env["wecom.app_config"].sudo()
         contacts_sync_hr_department_id = "1"  # 需要同步的企业微信部门ID
         sync_hr_department_id = app_config.get_param(
-            company.contacts_app_id.id, "contacts_sync_hr_department_id"
+            company.contacts_sync_app_id.id, "contacts_sync_hr_department_id"
         )
         if sync_hr_department_id:
             contacts_sync_hr_department_id = sync_hr_department_id
@@ -704,7 +705,7 @@ class WecomUser(models.Model):
             try:
                 wxapi = self.env["wecom.service_api"].InitServiceApi(
                     user.company_id.corpid,  # type: ignore
-                    user.company_id.contacts_app_id.secret,  # type: ignore
+                    user.company_id.contacts_sync_app_id.secret,  # type: ignore
                 )
                 response = wxapi.httpCall(
                     self.env["wecom.service_api_list"].get_server_api_call(
