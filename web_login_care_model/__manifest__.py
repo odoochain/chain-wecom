@@ -6,7 +6,7 @@
     "author": "RStudio",
     "category": "Website/Website",
     "sequence": 21,
-    "summary": "Registration and filing with MIIT and Public Security Bureau",
+    "summary": "Login page care mode",
     "description": """The text is larger and clearer.
 Stronger colors for better recognition.
 The button is larger and easier to use.
@@ -20,7 +20,11 @@ The button is larger and easier to use.
     "application": True,
     "data": [],
     "assets": {
-        "web.assets_frontend": [],
+        "web.assets_frontend": [
+            "web_login_care_model/static/**/*.js",
+            "web_login_care_model/static/**/*.xml",
+            "web_login_care_model/static/**/*.scss",
+        ],
     },
-    "license": "OEEL-1",
+    "license": "Other proprietary",
 }
