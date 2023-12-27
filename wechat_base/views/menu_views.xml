@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--  ROOT   -->
+        <menuitem id="menu_wechat_root" name="WeChat Settings" groups="" web_icon="wechat_base,static/description/icon.png" sequence="498"/>
+
+        <!-- 1.设置-->
+        <menuitem id="menu_wechat_configuration" name="WeChat Settings" parent="wechat_base.menu_wechat_root" sequence="1" action="wechat_base.wechat_config_settings_action" groups="group_wechat_settings_manager"/>
+    </data>
+</odoo>

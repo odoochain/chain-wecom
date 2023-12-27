@@ -1,0 +1,146 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* wechat_auth_oauth
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-27 06:49+0000\n"
+"PO-Revision-Date: 2023-12-27 14:56+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.4.1\n"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
+msgid ""
+"<i class=\"fa fa-cube\" role=\"img\" aria-label=\"Action Scope\" "
+"title=\"Action Scope\"/>"
+msgstr ""
+"<i class=\"fa fa-cube\" role=\"img\" aria-label=\"作用域\" title=\"作用域"
+"\"/>"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
+msgid ""
+"<i class=\"fa fa-cubes\" role=\"img\" aria-label=\"Response Type\" "
+"title=\"Response Type\"/>"
+msgstr ""
+"<i class=\"fa fa-cubes\" role=\"img\" aria-label=\"响应类型\" title=\"响"
+"应类型\"/>"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
+msgid ""
+"<i class=\"fa fa-language\" role=\"img\" aria-label=\"Ui Language\" "
+"title=\"Ui Language\"/>"
+msgstr ""
+"<i class=\"fa fa-language\" role=\"img\" aria-label=\"界面语言\" "
+"title=\"界面语言\"/>"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
+msgid ""
+"<i class=\"fa fa-link\" role=\"img\" aria-label=\"Redirect URL\" "
+"title=\"Redirect URL\"/>"
+msgstr ""
+"<i class=\"fa fa-link\" role=\"img\" aria-label=\"重定向URL\" title=\"重"
+"定向URL\"/>"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
+msgid ""
+"<i class=\"fa fa-puzzle-piece fa-lg\" aria-label=\"Authentication "
+"Application\"/>"
+msgstr ""
+"<i class=\"fa fa-puzzle-piece fa-lg\" aria-label=\"身份验证应用\"/>"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields.selection,name:wechat_auth_oauth.selection__res_company__wechat_website_auth_lang__cn
+msgid "Chinese"
+msgstr "中文"
+
+#. module: wechat_auth_oauth
+#: model:ir.model,name:wechat_auth_oauth.model_res_company
+msgid "Companies"
+msgstr "公司"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__company_id
+msgid "Company"
+msgstr "公司"
+
+#. module: wechat_auth_oauth
+#: model:ir.model,name:wechat_auth_oauth.model_res_config_settings
+msgid "Config Settings"
+msgstr "配置设置"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields.selection,name:wechat_auth_oauth.selection__res_company__wechat_website_auth_lang__en
+msgid "English"
+msgstr "英文"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
+msgid "Login on WeChat"
+msgstr "使用微信登录"
+
+#. module: wechat_auth_oauth
+#: model:ir.actions.act_window,name:wechat_auth_oauth.wechat_config_settings_action
+msgid "Settings"
+msgstr "设置"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
+msgid ""
+"Used to maintain the status of requests and callbacks, authorized "
+"requests are brought back to third parties in their original state. This "
+"parameter can be used to prevent CSRF attacks (cross site request "
+"forgery attacks).<br/>\n"
+"                                        Automatically refresh every hour."
+msgstr ""
+"用于保持请求和回调的状态，授权请求后原样带回给第三方。该参数可用于防止"
+"csrf攻击（跨站请求伪造攻击）。<br/>\n"
+"                                        每小时自动刷新一次。"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_company__wechat_website_auth_appid
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_appid
+msgid "WeChat website application ID"
+msgstr "微信网站应用ID"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_company__wechat_website_auth_scope
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_scope
+msgid "WeChat website application authorization scope"
+msgstr "微信网站应用授权作用域"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_company__wechat_website_auth_response_type
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_response_type
+msgid "WeChat website application response type"
+msgstr "微信网站应用响应类型"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_company__wechat_website_auth_state
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_state
+msgid "WeChat website application state"
+msgstr "微信网站应用请求和回调的状态"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_company__wechat_website_auth_lang
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_lang
+msgid "WeChat website application ui language"
+msgstr "微信网站应用界面语言"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_company__wechat_website_auth_redirect_uri
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_redirect_uri
+msgid "WeChat website application redirect uri"
+msgstr "微信网站应用重定向URL"

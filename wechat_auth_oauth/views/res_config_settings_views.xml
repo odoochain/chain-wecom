@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">WeChat settings</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="wechat_base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@id='select_company']" position="after">
+
+                    <div id="wechat_auth">
+                        <h2>Login on WeChat</h2>
+                        <div class="row mt8 o_settings_container">
+
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <i class="fa fa-puzzle-piece fa-lg" aria-label="Authentication Application"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="wechat_website_auth_appid" />
+                                    <div class="row">
+                                        <div class="text-muted col-md-12">
+                                        </div>
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="mt8">
+                                            <field name="wechat_website_auth_appid" widget="integer" options="{'format': false}" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <i class="fa fa-link" role="img" aria-label="Redirect URL" title="Redirect URL"></i>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="wechat_website_auth_redirect_uri"/>
+                                    <div class="o_row">
+                                        <field name="wechat_website_auth_redirect_uri" />
+                                    </div>
+                                    <div class="text-muted">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <i class="fa fa-cubes" role="img" aria-label="Response Type" title="Response Type"></i>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="wechat_website_auth_response_type"/>
+                                    <div class="o_row">
+                                        <field name="wechat_website_auth_response_type" />
+                                    </div>
+                                    <div class="text-muted">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <i class="fa fa-cube" role="img" aria-label="Action Scope" title="Action Scope"></i>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="wechat_website_auth_scope"/>
+                                    <div class="o_row">
+                                        <field name="wechat_website_auth_scope" />
+                                    </div>
+                                    <div class="text-muted">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="wechat_website_auth_state"/>
+                                    <div class="o_row">
+                                        <field name="wechat_website_auth_state" class="o_input"/>
+                                    </div>
+                                    <div class="text-muted">
+                                        Used to maintain the status of requests and callbacks, authorized requests are brought back to third parties in their original state. This parameter can be used to prevent CSRF attacks (cross site request forgery attacks).<br/>
+                                        Automatically refresh every hour.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <i class="fa fa-language" role="img" aria-label="Ui Language" title="Ui Language"></i>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="wechat_website_auth_lang"/>
+                                    <div class="o_row">
+                                        <field name="wechat_website_auth_lang" />
+                                    </div>
+                                    <div class="text-muted">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </xpath>
+            </field>
+        </record>
+
+        <record id="wechat_config_settings_action" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_id" ref="res_config_settings_view_form"/>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{ 'module' : 'wechat_auth_oauth', 'bin_size': False}</field>
+        </record>
+
+    </data>
+</odoo>

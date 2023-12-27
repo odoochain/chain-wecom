@@ -26,5 +26,8 @@ The button is larger and easier to use.
             "web_login_care_model/static/**/*.scss",
         ],
     },
+    "external_dependencies": {
+        "python": [],
+    },
     "license": "Other proprietary",
 }
