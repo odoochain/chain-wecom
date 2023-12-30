@@ -1,0 +1,261 @@
+.o_web_client_card_model {
+    font-size: 140%;
+
+    .o_navbar {
+        .o_main_navbar {
+            .o_menu_toggle {
+                svg {
+                    height: 18px;
+                    width: 18px;
+                }
+            }
+
+            .o_menu_brand {
+                font-size: 140%;
+            }
+
+            .o_menu_sections {
+                .dropdown-toggle {
+                    font-size: 120%;
+                }
+
+                .o_nav_entry {
+                    font-size: 120%;
+                }
+
+                .o-dropdown {
+                    font-size: 120%;
+
+                    .dropdown-menu {
+                        .dropdown-item {
+                            font-size: 120%;
+                        }
+                    }
+                }
+
+                .dropdown.show>.dropdown-toggle {
+                    font-size: 120%;
+                }
+            }
+
+
+            .o_menu_systray {
+                i {
+                    font-size: 120%;
+                }
+
+                .o_user_menu {
+                    .dropdown-toggle {
+                        .oe_topbar_name {
+                            font-size: 120% !important;
+
+                        }
+                    }
+
+                    .dropdown.show>.dropdown-toggle {
+                        font-size: 100% !important;
+
+                        .oe_topbar_name {
+                            font-size: 100% !important
+                        }
+                    }
+
+                    .dropdown-menu {
+                        .dropdown-item {
+                            font-size: 120%;
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    .o_action_manager {
+        .o_view_controller {
+            >.o_control_panel {
+                .o_cp_top {
+                    .o_cp_top_left {
+                        .breadcrumb {
+                            .breadcrumb-item {
+                                font-size: 120%;
+                            }
+                        }
+                    }
+
+                    .o_cp_bottom_right {
+                        font-size: 120%;
+
+                        .o_cp_action_menus {
+                            font-size: 120%;
+
+                            .o-dropdown {
+                                .dropdown-toggle {
+                                    i {
+                                        font-size: 120%;
+                                    }
+
+                                    .o_dropdown_title {
+                                        font-size: 120%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .o_cp_bottom {
+                    .o_cp_bottom_left {
+                        .o_cp_buttons {
+                            .o_list_buttons {
+                                // font-size: 120%;
+
+                                button {
+                                    font-size: 100%;
+                                }
+
+                                .fa {
+                                    font-size: 120%;
+                                }
+                            }
+                        }
+                    }
+
+                    .o_cp_bottom_right {
+                        .o_search_options {
+                            .o-dropdown {
+                                .dropdown-toggle {
+                                    font-size: 100%;
+                                }
+                            }
+
+                            .dropdown.show {
+                                .dropdown-menu {
+                                    font-size: 100%;
+
+                                    .dropdown {
+                                        .dropdown-item {
+                                            &::after {
+                                                font-size: 100%;
+                                            }
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+
+                        .o_cp_pager {
+                            font-size: 120%;
+
+                            .o_pager {
+                                .btn-group {
+                                    .btn {
+                                        font-size: 100%;
+                                    }
+                                }
+                            }
+                        }
+
+                        .o_cp_switch_buttons {
+                            .o_switch_view {
+                                font-size: 100%;
+                            }
+                        }
+
+
+                    }
+                }
+            }
+
+            &.o_list_view {
+                font-size: 120%;
+            }
+
+            &.o_form_view {
+                .o_form_view_container {
+                    font-size: 120%;
+
+                    .o_content {
+                        .o_form_editable {
+                            .o_form_sheet_bg {
+                                .o_form_sheet {
+                                    .o_group {
+                                        .o_inner_group {
+                                            .o_wrap_field {
+                                                .o_form_label {
+                                                    font-size: 100%;
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    .o_inner_group {
+                                        .o_wrap_field {
+                                            .o_form_label {
+                                                font-size: 100%;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                >.o_form_label {
+                                    font-size: 100%;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+
+        }
+    }
+
+    .o-main-components-container {
+        .o_dialog_container.modal-open {
+            font-size: 120%;
+
+            .o_dialog {
+                .modal {
+                    .modal-dialog {
+                        .modal-content {
+                            .modal-header {
+                                h4 {
+                                    font-size: 100%;
+                                }
+                            }
+
+                            .modal-body {
+                                .o_form_editable {
+                                    .o_form_sheet_bg {
+                                        .o_form_sheet {
+                                            .o_inner_group {
+                                                .o_wrap_field {
+                                                    .o_form_label {
+                                                        font-size: 100%;
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        >.o_form_label {
+                                            font-size: 100%;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .modal-footer {
+                                button {
+                                    font-size: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

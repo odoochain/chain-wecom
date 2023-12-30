@@ -6,7 +6,7 @@
     "author": "RStudio",
     "category": "Website/Website",
     "sequence": 21,
-    "summary": "Login page care mode",
+    "summary": "Web care mode",
     "description": """The text is larger and clearer.
 Stronger colors for better recognition.
 The button is larger and easier to use.
@@ -21,13 +21,15 @@ The button is larger and easier to use.
     "data": [],
     "assets": {
         "web.assets_frontend": [
-            "web_login_care_model/static/**/*.js",
-            "web_login_care_model/static/**/*.xml",
-            "web_login_care_model/static/**/*.scss",
+            "web_care_model/static/src/legacy/**/*",
         ],
+        "web.assets_backend": [
+            "web_care_model/static/src/webclient/**/*",
+        ]
     },
     "external_dependencies": {
         "python": [],
     },
     "license": "Other proprietary",
+    "bootstrap": True,  # 加载登录屏幕的翻译，
 }
