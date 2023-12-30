@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-inherit="web.FormStatusIndicator" t-inherit-mode="extension" owl="1">
+
+        <xpath expr="//div[hasclass('o_form_status_indicator_buttons')]/button[hasclass('o_form_button_save')]/i"
+        position="after">Save</xpath>
+
+        <xpath expr="//div[hasclass('o_form_status_indicator_buttons')]/button[hasclass('o_form_button_cancel')]/i"
+        position="after">Discard</xpath>
+
+    </t>
+
+</templates>

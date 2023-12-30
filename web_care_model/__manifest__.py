@@ -25,6 +25,7 @@ The button is larger and easier to use.
         ],
         "web.assets_backend": [
             "web_care_model/static/src/webclient/**/*",
+            "web_care_model/static/src/views/**/*",
         ]
     },
     "external_dependencies": {
