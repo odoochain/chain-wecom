@@ -5,7 +5,7 @@
         <record id="res_config_settings_view_form" model="ir.ui.view">
             <field name="name">WeChat settings</field>
             <field name="model">res.config.settings</field>
-            <field name="inherit_id" ref="wechat_base.res_config_settings_view_form"/>
+            <field name="inherit_id" ref="wechat_base.res_config_settings_view_form" />
             <field name="arch" type="xml">
                 <xpath expr="//div[@id='select_company']" position="after">
 
@@ -15,7 +15,22 @@
 
                             <div class="col-xs-12 col-md-6 o_setting_box">
                                 <div class="o_setting_left_pane">
-                                    <i class="fa fa-puzzle-piece fa-lg" aria-label="Authentication Application"/>
+                                    <field name="allow_wechat_website_auth" />
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="allow_wechat_website_auth" />
+                                    <div class="row">
+                                        <div class="text-muted col-md-12">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-md-6 o_setting_box"
+                                attrs="{'invisible': [('allow_wechat_website_auth','=',False)]}">
+                                <div class="o_setting_left_pane">
+                                    <i class="fa fa-puzzle-piece fa-lg"
+                                        aria-label="Authentication Application" />
                                 </div>
                                 <div class="o_setting_right_pane">
                                     <label for="wechat_website_auth_appid" />
@@ -25,18 +40,20 @@
                                     </div>
                                     <div class="content-group">
                                         <div class="mt8">
-                                            <field name="wechat_website_auth_appid" widget="integer" options="{'format': false}" />
+                                            <field name="wechat_website_auth_appid" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-12 col-lg-6 o_setting_box">
+                            <!-- <div class="col-12 col-lg-6 o_setting_box"
+                                attrs="{'invisible': [('allow_wechat_website_auth','=',False)]}">
                                 <div class="o_setting_left_pane">
-                                    <i class="fa fa-link" role="img" aria-label="Redirect URL" title="Redirect URL"></i>
+                                    <i class="fa fa-link fa-lg" role="img" aria-label="Redirect URL"
+                                        title="Redirect URL"></i>
                                 </div>
                                 <div class="o_setting_right_pane">
-                                    <label for="wechat_website_auth_redirect_uri"/>
+                                    <label for="wechat_website_auth_redirect_uri" />
                                     <div class="o_row">
                                         <field name="wechat_website_auth_redirect_uri" />
                                     </div>
@@ -44,16 +61,38 @@
 
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
-                            <div class="col-12 col-lg-6 o_setting_box">
+                            <!-- <div class="col-12 col-lg-6 o_setting_box"
+                                attrs="{'invisible': [('allow_wechat_website_auth','=',False)]}">
                                 <div class="o_setting_left_pane">
-                                    <i class="fa fa-cubes" role="img" aria-label="Response Type" title="Response Type"></i>
+
                                 </div>
                                 <div class="o_setting_right_pane">
-                                    <label for="wechat_website_auth_response_type"/>
+                                    <label for="wechat_website_auth_state" />
                                     <div class="o_row">
-                                        <field name="wechat_website_auth_response_type" />
+                                        <field name="wechat_website_auth_state"
+                                            class="o_input fw-bold" />
+                                    </div>
+                                    <div class="text-muted"> Used to maintain the status of requests
+                                        and callbacks, authorized requests are brought back to third
+                                        parties in their original state. This parameter can be used
+                                        to prevent CSRF attacks (cross site request forgery
+                                        attacks).<br /> Automatically refresh every hour. </div>
+                                </div>
+                            </div> -->
+
+                            <div class="col-12 col-lg-6 o_setting_box"
+                                attrs="{'invisible': [('allow_wechat_website_auth','=',False)]}">
+                                <div class="o_setting_left_pane">
+                                    <i class="fa fa-qrcode fa-lg" role="img"
+                                        aria-label="QR code display method"
+                                        title="QR code display method"></i>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="wechat_website_auth_qrcode_display_method" />
+                                    <div class="o_row">
+                                        <field name="wechat_website_auth_qrcode_display_method" />
                                     </div>
                                     <div class="text-muted">
 
@@ -61,43 +100,15 @@
                                 </div>
                             </div>
 
-                            <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="col-12 col-lg-6 o_setting_box"
+                                attrs="{'invisible': [('allow_wechat_website_auth','=',False)]}">
                                 <div class="o_setting_left_pane">
-                                    <i class="fa fa-cube" role="img" aria-label="Action Scope" title="Action Scope"></i>
+                                    <i class="fa fa-language fa-lg" role="img"
+                                        aria-label="Ui Language"
+                                        title="Ui Language"></i>
                                 </div>
                                 <div class="o_setting_right_pane">
-                                    <label for="wechat_website_auth_scope"/>
-                                    <div class="o_row">
-                                        <field name="wechat_website_auth_scope" />
-                                    </div>
-                                    <div class="text-muted">
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-lg-6 o_setting_box">
-                                <div class="o_setting_left_pane">
-
-                                </div>
-                                <div class="o_setting_right_pane">
-                                    <label for="wechat_website_auth_state"/>
-                                    <div class="o_row">
-                                        <field name="wechat_website_auth_state" class="o_input"/>
-                                    </div>
-                                    <div class="text-muted">
-                                        Used to maintain the status of requests and callbacks, authorized requests are brought back to third parties in their original state. This parameter can be used to prevent CSRF attacks (cross site request forgery attacks).<br/>
-                                        Automatically refresh every hour.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-lg-6 o_setting_box">
-                                <div class="o_setting_left_pane">
-                                    <i class="fa fa-language" role="img" aria-label="Ui Language" title="Ui Language"></i>
-                                </div>
-                                <div class="o_setting_right_pane">
-                                    <label for="wechat_website_auth_lang"/>
+                                    <label for="wechat_website_auth_lang" />
                                     <div class="o_row">
                                         <field name="wechat_website_auth_lang" />
                                     </div>
@@ -118,7 +129,7 @@
             <field name="name">Settings</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">res.config.settings</field>
-            <field name="view_id" ref="res_config_settings_view_form"/>
+            <field name="view_id" ref="res_config_settings_view_form" />
             <field name="view_mode">form</field>
             <field name="target">inline</field>
             <field name="context">{ 'module' : 'wechat_auth_oauth', 'bin_size': False}</field>

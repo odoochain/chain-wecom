@@ -5,19 +5,30 @@
         <record id="res_config_settings_view_form" model="ir.ui.view">
             <field name="name">WeCom base settings</field>
             <field name="model">res.config.settings</field>
-            <field name="priority" eval="20"/>
-            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="priority" eval="20" />
+            <field name="inherit_id" ref="base.res_config_settings_view_form" />
             <field name="arch" type="xml">
                 <xpath expr="//div[hasclass('settings')]" position="inside">
-                    <field name="company_id" invisible="1"/>
-                    <div class="app_settings_block" data-string="Wechat" string="Wechat Settings" data-key="wechat_base" groups="base.group_system">
-                        <div class="app_settings_header pt-1 pb-1 bg-warning bg-opacity-25" id="select_company" >
+                    <field name="company_id" invisible="1" />
+                    <div class="app_settings_block" data-string="Wechat" string="Wechat Settings"
+                        data-key="wechat_base" groups="base.group_system">
+                        <div class="app_settings_header pt-1 pb-1 bg-warning bg-opacity-25"
+                            id="select_company">
                             <div class="col-xs-12 col-md-6 ms-0 o_setting_box">
                                 <div class="o_setting_right_pane border-start-0 ms-0 ps-0">
                                     <div class="content-group">
                                         <div class="row flex-row flex-nowrap mt8 align-items-center">
-                                            <label class="col text-nowrap ml8 flex-nowrap" string="Companies" for="company_id"/>
-                                            <field name="company_id" class="w-50" options="{'no_open': True, 'no_create': True}" />
+                                            <label class="col text-nowrap ml8 flex-nowrap"
+                                                string="Companies" for="company_id" />
+                                            <field name="company_id" class="w-50"
+                                                options="{'no_open': True, 'no_create': True}" />
+                                        </div>
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="row flex-row flex-nowrap mt8 align-items-center">
+                                            <label class="col text-nowrap ml8 flex-nowrap"
+                                                for="company_shortname" />
+                                            <field name="company_shortname" class="w-50" />
                                         </div>
                                     </div>
                                 </div>
@@ -25,7 +36,7 @@
                         </div>
 
 
-                        <div id="wechat_bottom"/>
+                        <div id="wechat_bottom" />
                     </div>
                 </xpath>
             </field>
@@ -35,7 +46,7 @@
             <field name="name">Settings</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">res.config.settings</field>
-            <field name="view_id" ref="res_config_settings_view_form"/>
+            <field name="view_id" ref="res_config_settings_view_form" />
             <field name="view_mode">form</field>
             <field name="target">inline</field>
             <field name="context">{ 'module' : 'wechat_base', 'bin_size': False}</field>
