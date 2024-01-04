@@ -15,5 +15,5 @@ _logger = logging.getLogger(__name__)
 class Company(models.Model):
     _inherit = "res.company"
 
-    shortname =  fields.Char(string="Short name",)
+    shortname =  fields.Char(string="Company Short Name",)
 

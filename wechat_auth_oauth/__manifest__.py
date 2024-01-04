@@ -14,19 +14,21 @@ Allow users to log in through WeChat.
     "description": """
 Allow users to log in through WeChat.
         """,
-    "depends": ["portal", "auth_oauth","wechat_base"],
+    "depends": ["web","auth_oauth","wechat_base"],
     "data": [
         "data/wechat_oauth_data.xml",
         "views/res_config_settings_views.xml",
+        "views/auth_signup_login_templates.xml",
     ],
-    "assets": {
-        "web.assets_backend": [
-            "wechat_auth_oauth/static/src/webclient/**/*",
-        ],
-        "web.assets_frontend": [
-            "wechat_auth_oauth/static/src/frontend/**/*",
-        ],
-    },
     "bootstrap": True,  # 加载登录屏幕的翻译，
+    "assets": {
+        "web.assets_frontend": [
+            'wechat_auth_oauth/static/**/*.js',
+            'wechat_auth_oauth/static/**/*.xml',
+            'wechat_auth_oauth/static/**/*.scss',
+        ],
+
+    },
+
     "license": "Other proprietary",
 }

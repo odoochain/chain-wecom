@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-03 08:40+0000\n"
-"PO-Revision-Date: 2024-01-03 16:41+0800\n"
+"POT-Creation-Date: 2024-01-04 04:31+0000\n"
+"PO-Revision-Date: 2024-01-04 12:32+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -20,16 +20,29 @@ msgstr ""
 #. module: wechat_auth_oauth
 #: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
 msgid ""
-"<i class=\"fa fa-language fa-lg\" role=\"img\" aria-label=\"Ui Language\" "
-"title=\"Ui Language\"/>"
+"<i class=\"fa fa fa-paint-brush fa-lg\" role=\"img\" aria-label=\"Style\" title=\"Style\"/>"
 msgstr ""
-"<i class=\"fa fa-language\" role=\"img\" aria-label=\"界面语言\" title=\"界面语言\"/"
+"<i class=\"fa fa fa-paint-brush fa-lg\" role=\"img\" aria-label=\"样式\" title=\"样式\"/>"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
+msgid ""
+"<i class=\"fa fa-eyedropper fa-lg\" role=\"img\" aria-label=\"Color Style\" title=\"Color "
+"Style\"/>"
+msgstr ""
+"<i class=\"fa fa-eyedropper fa-lg\" role=\"img\" aria-label=\"颜色风格\" title=\"颜色风格\"/"
 ">"
 
 #. module: wechat_auth_oauth
 #: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
 msgid ""
-"<i class=\"fa fa-puzzle-piece fa-lg\" aria-label=\"Authentication Application\"/>"
+"<i class=\"fa fa-language fa-lg\" role=\"img\" aria-label=\"Ui Language\" title=\"Ui "
+"Language\"/>"
+msgstr "<i class=\"fa fa-language\" role=\"img\" aria-label=\"界面语言\" title=\"界面语言\"/>"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
+msgid "<i class=\"fa fa-puzzle-piece fa-lg\" aria-label=\"Authentication Application\"/>"
 msgstr "<i class=\"fa fa-puzzle-piece fa-lg\" aria-label=\"身份验证应用\"/>"
 
 #. module: wechat_auth_oauth
@@ -38,14 +51,29 @@ msgid ""
 "<i class=\"fa fa-qrcode fa-lg\" role=\"img\" aria-label=\"QR code display method\" "
 "title=\"QR code display method\"/>"
 msgstr ""
-"<i class=\"fa fa-qrcode fa-lg\" role=\"img\" aria-label=\"QR code display method\" "
-"title=\"二维码显示方式\"/>"
+"<i class=\"fa fa-qrcode fa-lg\" role=\"img\" aria-label=\"二维码显示方式\" title=\"二维码显"
+"示方式\"/>"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">QR code style</span>"
+msgstr "<span class=\"o_form_label\">二维码样式</span>"
 
 #. module: wechat_auth_oauth
 #: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_company__allow_wechat_website_auth
 #: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__allow_wechat_website_auth
 msgid "Allow WeChat website app login"
 msgstr "允许微信网站应用程序登录"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields.selection,name:wechat_auth_oauth.selection__res_config_settings__wechat_website_auth_qrcode_style__black
+msgid "Black"
+msgstr "黑色"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields.selection,name:wechat_auth_oauth.selection__res_config_settings__wechat_website_auth_qrcode_status_text_align__center
+msgid "Center"
+msgstr "居中"
 
 #. module: wechat_auth_oauth
 #: model:ir.model.fields.selection,name:wechat_auth_oauth.selection__res_company__wechat_website_auth_lang__cn
@@ -56,11 +84,6 @@ msgstr "中文"
 #. module: wechat_auth_oauth
 #: model:ir.model,name:wechat_auth_oauth.model_res_company
 msgid "Companies"
-msgstr "公司"
-
-#. module: wechat_auth_oauth
-#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__company_id
-msgid "Company"
 msgstr "公司"
 
 #. module: wechat_auth_oauth
@@ -85,24 +108,80 @@ msgid "English"
 msgstr "英文"
 
 #. module: wechat_auth_oauth
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_qrcode_hide_status_icon
+msgid "Hide QR code status icon"
+msgstr "隐藏二维码状态图标"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_qrcode_hide_title
+msgid "Hide QR code title"
+msgstr "隐藏二维码标题"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_qrcode_status_text_align
+msgid "Horizontal alignment of QR code status"
+msgstr "二维码状态的水平对齐"
+
+#. module: wechat_auth_oauth
 #: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_qrcode_display_method
 msgid "How to display the login QR code of WeChat website"
 msgstr "如何显示微信网站的登录二维码"
 
 #. module: wechat_auth_oauth
-#: model:auth.oauth.provider,body:wechat_auth_oauth.provider_wechat
-msgid "Log in with Wechat"
-msgstr "使用微信登录"
+#: model:ir.model.fields.selection,name:wechat_auth_oauth.selection__res_config_settings__wechat_website_auth_qrcode_status_text_align__left
+msgid "Left"
+msgstr "居左"
 
 #. module: wechat_auth_oauth
-#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
-msgid "Login on WeChat"
-msgstr "使用微信登录"
+#: model:auth.oauth.provider,body:wechat_auth_oauth.provider_wechat
+msgid "Scan the code to log in on WeChat"
+msgstr "微信扫码登录"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_qrcode_style
+msgid "QR Code Color Style"
+msgstr "二维码颜色样式"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_qrcode_width
+msgid "QR Code Width (px)"
+msgstr "二维码宽度（px）"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_qrcode_info_width
+msgid "QR code information text width (px)"
+msgstr "二维码信息文本宽度（px）"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields.selection,name:wechat_auth_oauth.selection__res_config_settings__wechat_website_auth_qrcode_status_text_align__right
+msgid "Right"
+msgstr "居右"
 
 #. module: wechat_auth_oauth
 #: model:ir.actions.act_window,name:wechat_auth_oauth.wechat_config_settings_action
 msgid "Settings"
 msgstr "设置"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_company__shortname
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__company_shortname
+msgid "Short name"
+msgstr "简称"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
+msgid ""
+"The login page should have a light\n"
+"                                        background and black should be selected. <br/> The\n"
+"                                        loginpage should have a dark background and white "
+"should\n"
+"                                        beselected."
+msgstr "登录页面为浅色背景，应选择黑色。<br/> 登录页面的背景为深色，应选择白色。"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
+msgid "Use WeChat to scan the QR code to log in to the website"
+msgstr "使用微信扫码登录网站"
 
 #. module: wechat_auth_oauth
 #: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_company__wechat_website_auth_appid
@@ -121,3 +200,8 @@ msgstr "微信网站应用重定向URL"
 #: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_lang
 msgid "WeChat website application ui language"
 msgstr "微信网站应用界面语言"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields.selection,name:wechat_auth_oauth.selection__res_config_settings__wechat_website_auth_qrcode_style__white
+msgid "White"
+msgstr ""
