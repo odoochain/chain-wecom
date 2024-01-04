@@ -11,5 +11,10 @@
             parent="wechat_base.menu_wechat_root" sequence="1"
             action="wechat_base.wechat_config_settings_action"
             groups="group_wechat_settings_manager" />
+
+        <!-- 99.自动任务-->
+        <menuitem id="menu_wechat_cron" name="Wechat schedule tasks"
+            parent="wechat_base.menu_wechat_root"
+            sequence="99" groups="group_wechat_settings_manager" />
     </data>
 </odoo>

@@ -12,22 +12,17 @@
         """,
     "description": """
         """,
-    "depends": [
-        "base_setup"
-    ],
+    "depends": ["base_setup"],
     "data": [
         "security/wechat_security.xml",
         "security/ir.model.access.csv",
         "views/res_config_settings_views.xml",
+        "views/res_users_views.xml",
         "views/menu_views.xml",
     ],
     "assets": {
-        "web.assets_backend": [
-
-        ],
-        "web.assets_frontend": [
-
-        ],
+        "web.assets_backend": [],
+        "web.assets_frontend": [],
     },
     "license": "Other proprietary",
 }

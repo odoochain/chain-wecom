@@ -7,7 +7,7 @@
             <field name="model">res.config.settings</field>
             <field name="inherit_id" ref="wechat_base.res_config_settings_view_form" />
             <field name="arch" type="xml">
-                <xpath expr="//div[@id='select_company']" position="after">
+                <xpath expr="//div[@id='wechat_base']" position="after">
 
                     <div id="wechat_auth">
                         <h2>Use WeChat to scan the QR code to log in to the website</h2>

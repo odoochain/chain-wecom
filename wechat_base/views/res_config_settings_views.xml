@@ -34,7 +34,25 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div id="wechat_base">
+                            <h2>WeChat Basic Settings</h2>
+                            <div class="row mt8 o_settings_container">
+                                <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_left_pane">
+                                        <i class="fa fa-user fa-lg"
+                                            aria-label="Default User Type" />
+                                    </div>
+                                    <div class="o_setting_right_pane">
+                                        <label for="wechat_default_user_type" />
+                                        <div class="content-group">
+                                            <div class="mt8">
+                                                <field name="wechat_default_user_type" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div id="wechat_bottom" />
                     </div>

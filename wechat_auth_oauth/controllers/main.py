@@ -65,22 +65,41 @@ class OAuthController(http.Controller):
         ICP = request.env['ir.config_parameter'].sudo()
         appid = ICP.get_param('wechat_website_auth_appid')
         secret = ICP.get_param('wechat_website_auth_secret')
-        api_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=%s&secret=%s&code=%s&grant_type=authorization_code" % (appid,secret,code)
-        print(api_url)
+        get_access_token_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=%s&secret=%s&code=%s&grant_type=authorization_code" % (appid,secret,code)
         try:
-            response = requests.get(api_url).json()
+            response = requests.get(get_access_token_url).json()
         except Exception as e:
             print(str(e))
         finally:
             # {'access_token': '76_m0rO2g3nm53SBINskXRD4diQyuVgkATexDme3dAoTzhKSnfGAlt6IaYrTiwlwcfNMuPFilkQ7kjw8R4r22gu__TVRTpJ100M0SE9VQn1Ojw', 'expires_in': 7200, 'refresh_token': '76_nJoO-eipbCsbtokIQ4R9VxsXRwdRajhjKfZe750SAGfbzUzfAANoKPC1s6ARrRwihqRzKV4Lc5HCMefeQ3LxGPR7YpXiKzcfLIZxHPrtDQA', 'openid': 'oNaRq69tMYE3TUbURk9SpA6qGPSI', 'scope': 'snsapi_login', 'unionid': 'oN6TO6UDTTSDl_i147wc671KB-po'}
+            # {'access_token': '76_bMJ3fRCKjSS90f3WgNe6slpNz9TXRoMgrRDMGi-si8j-9swGCM1sdTeW9tLvn83mJkjKFIJmoSUEX8j9dwfuOwtXj5bz1CM4geV6E2oLwaU', 'expires_in': 7200, 'refresh_token': '76_FOSIyYIXXwfSSiAjD7-jMqK0U_gSRLc8BGwdt-5b6fDJvc6iA_Kdpx39Xl7-Yj1DWWBUxt4STNUo-va4md5xkpU_jcOSpcDj7B7sRLV0YoQ', 'openid': 'oNaRq69tMYE3TUbURk9SpA6qGPSI', 'scope': 'snsapi_login', 'unionid': 'oN6TO6UDTTSDl_i147wc671KB-po'}
+            # {'access_token': '76_WMbCOVGrFyDGPWBvrPoPu_ZulSeUXGS3Mvyifw5L8nSo5cfz26xabZ42Zm4nrIQeU9Ao9qPkTv7CbiynGaDW84LCDU6Y8s7V4Wm4kHfSe8w', 'expires_in': 7200, 'refresh_token': '76_uUqSJY--ROj12yP3gYmUgo1v6wmd2987502AOuoEwckMa0XCRS9HAiJgHCFA7ZRwevRp_KXymoD1JbA1CqTJbo6xXbhN6K0zySeuQ4i3dic', 'openid': 'oNaRq60RuNGD78GyONvWUzP1-Oc0', 'scope': 'snsapi_login', 'unionid': 'oN6TO6TdR7IIgWx9i7bn7JVfDm7A'}
             print(response)
-            # print(response["access_token"])
-            # print(response["expires_in"])
-            # print(response["refresh_token"])
-            # print(response["openid"])
-            # print(response["scope"])
-            # print(response["unionid"])
-            print("---------------")
+            access_token = response["access_token"]
+            expires_in = response["expires_in"]
+            refresh_token = response["refresh_token"]
+            openid = response["openid"]
+            scope = response["scope"]
+            unionid = response["unionid"]
+
+            # 通过 access_token 拉取用户信息
+            # -----------------------------------------------------------------------------------------------
+            # 授权作用域（scope）	  接口	                          接口说明
+            # -----------------------------------------------------------------------------------------------
+            # snsapi_base	        /sns/oauth2/access_token	    通过code换取access_token、refresh_token和已授权scope
+            # snsapi_base	        /sns/oauth2/refresh_token	    刷新或续期access_token使用
+            # snsapi_base	        /sns/auth	                    检查access_token有效性
+            # snsapi_userinfo	    /sns/userinfo           	    获取用户个人信息
+            if access_token:
+                get_userinfo_url = "https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s" % (access_token,openid)
+                try:
+                    response = requests.get(get_userinfo_url).json()
+                except Exception as e:
+                    print(str(e))
+                finally:
+                    print(response)
+                    # {'openid': 'oNaRq69tMYE3TUbURk9SpA6qGPSI', 'nickname': 'ð\x9f\x8c\x88å½©è\x99¹å·¥ä½\x9cå®¤', 'sex': 0, 'language': '', 'city': '', 'province': '', 'country': '', 'headimgurl': '', 'privilege': [], 'unionid': 'oN6TO6UDTTSDl_i147wc671KB-po'}
+
 
 
     @http.route("/get_provider_wechat", type="json", auth="none")

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_users_search" model="ir.ui.view">
+            <field name="name">res.users.search</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_search" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_ids']" position="after">
+                    <field name="company_id" string="Company" groups="base.group_multi_company" />
+                </xpath>
+                <xpath expr="//filter[last()]" position="after">
+                    <searchpanel>
+                        <field name="company_id" groups="base.group_multi_company"
+                            icon="fa-building" enable_counters="1" />
+                    </searchpanel>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_wechat_users_tree" model="ir.ui.view">
+            <field name="name">wechat users list</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='login']" position="after">
+                    <field name="wechat_nickname" />
+                    <field name="wechat_openid" />
+                    <field name="wechat_unionid" />
+                    <field name="is_wechat_user" />
+                    <field name="share" />
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="view_wechat_res_users_kanban" model="ir.ui.view">
+            <field name="name">res.users.kanban</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_res_users_kanban" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='id']" position="after">
+                    <field name="is_wechat_user" />
+                </xpath>
+                <xpath expr="//div[@class='oe_kanban_details']/ul/li[last()]" position="before">
+                    <li class="text-info float-right mb4" t-if="record.is_wechat_user.raw_value">
+                        <i class="fa fa-weixin text-primary" role="img" aria-label="WeChat user"
+                            title="WeChat userr"></i>
+                    </li>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_wechat_users_form" model="ir.ui.view">
+            <field name="name">wechat users form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//label[@for='login']" position="replace">
+                    <label for="login" string="Login account" />
+                    <field name="is_wechat_user" invisible="1" />
+                </xpath>
+
+                <xpath expr="//page[last()]" position="after">
+                    <page name="WeChat" string="WeChat"
+                        attrs="{'invisible': [('is_wechat_user', '=', False)]}">
+                        <group>
+                            <group>
+                                <field name="wechat_nickname" />
+                                <field name="wechat_openid" />
+                                <field name="wechat_unionid" />
+                            </group>
+                            <group>
+                                <field name="wechat_access_token" />
+                                <field name="wechat_access_token_expires_in" />
+                                <field name="wechat_refresh_token" />
+                                <field name="wechat_refresh_token_expires_in" />
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
