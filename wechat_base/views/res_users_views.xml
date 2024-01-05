@@ -25,9 +25,6 @@
             <field name="inherit_id" ref="base.view_users_tree" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='login']" position="after">
-                    <field name="wechat_nickname" />
-                    <field name="wechat_openid" />
-                    <field name="wechat_unionid" />
                     <field name="is_wechat_user" />
                     <field name="share" />
                 </xpath>
@@ -46,7 +43,7 @@
                 <xpath expr="//div[@class='oe_kanban_details']/ul/li[last()]" position="before">
                     <li class="text-info float-right mb4" t-if="record.is_wechat_user.raw_value">
                         <i class="fa fa-weixin text-primary" role="img" aria-label="WeChat user"
-                            title="WeChat userr"></i>
+                            title="WeChat user"></i>
                     </li>
                 </xpath>
             </field>

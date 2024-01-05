@@ -56,7 +56,7 @@ odoo.define('wechat_auth_oauth.login', function (require) {
                         $provider.attr("id", "wechat_qrcode_container");
                         const provider = self.wechat_provider_info;
                         var obj = new WxLogin({
-                            self_redirect: true, // true：手机点击确认登录后可以在 iframe 内跳转到 redirect_uri，false：手机点击确认登录后可以在 top window 跳转到 redirect_uri。默认为 false
+                            self_redirect: false, // true：手机点击确认登录后可以在 iframe 内跳转到 redirect_uri，false：手机点击确认登录后可以在 top window 跳转到 redirect_uri。默认为 false
                             id: "wechat_qrcode_container", // 第三方页面显示二维码的容器id
                             appid: provider["appid"], // 应用唯一标识，在微信开放平台提交应用审核通过后获得
                             scope: provider["scope"], // 应用授权作用域，拥有多个作用域用逗号（,）分隔，网页应用目前仅填写snsapi_login即可

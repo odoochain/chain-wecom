@@ -12,7 +12,7 @@
         """,
     "description": """
         """,
-    "depends": ["base_setup"],
+    "depends": ["base_setup", "wechat_api"],
     "data": [
         "security/wechat_security.xml",
         "security/ir.model.access.csv",

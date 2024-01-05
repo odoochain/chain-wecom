@@ -26,23 +26,23 @@ class ResUsers(models.Model):
     # refresh_token拥有较长的有效期（30天），当refresh_token失效的后，需要用户重新授权，所以，请开发者在refresh_token即将过期时（如第29天时），进行定时的自动刷新并保存好它。
 
     wechat_access_token = fields.Char(
-        string="WeChat website application access token",
+        string="WeChat user access token",
         readonly=True,
         store=True,
     )
     wechat_access_token_expires_in = fields.Datetime(
-        string="WeChat website app access token expiration date",
+        string="WeChat user access token expiration date",
         readonly=True,
         store=True,
     )
 
     wechat_refresh_token = fields.Char(
-        string="WeChat website application refresh token",
+        string="WeChat user refresh token",
         readonly=True,
         store=True,
     )
     wechat_refresh_token_expires_in = fields.Datetime(
-        string="WeChat website app refresh token expiration date",
+        string="WeChat user refresh token expiration date",
         readonly=True,
         store=True,
     )

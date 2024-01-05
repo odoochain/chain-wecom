@@ -19,13 +19,27 @@ class ResConfigSettings(models.TransientModel):
         related="company_id.shortname", readonly=False, required=True
     )
 
+    wechat_default_user_company = fields.Many2one(
+        "res.company",
+        string="Default registered company for WeChat users",
+        required=True,
+        default=lambda self: self.env.company,
+        config_parameter="wechat_default_user_company",
+    )
+
     wechat_default_user_type = fields.Selection(
         string="Default registered user type for WeChat users",
         selection=[
-            ("internal", "Internal User"),  # 内部用户
-            ("portal", "Portal User"),  # 门户用户
-            ("public", "Public User"),  # 公开用户
+            ("1", "Internal User"),  # 内部用户
+            ("10", "Portal User"),  # 门户用户
+            ("11", "Public User"),  # 公开用户
         ],
-        default="portal",
+        default="10",
         required=True,
+        config_parameter="wechat_default_user_type",
+    )
+
+    # 模块
+    module_wechat_auth_oauth = fields.Boolean(
+        "Log in to the website using WeChat authentication (OAuth)"
     )

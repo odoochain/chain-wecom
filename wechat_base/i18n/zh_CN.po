@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-03 08:44+0000\n"
-"PO-Revision-Date: 2024-01-03 16:44+0800\n"
+"POT-Creation-Date: 2024-01-05 02:27+0000\n"
+"PO-Revision-Date: 2024-01-05 10:29+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -18,19 +18,99 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 
 #. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "<i class=\"fa fa-building fa-lg\" aria-label=\"Default User Company\"/>"
+msgstr "<i class=\"fa fa-building fa-lg\" aria-label=\"默认用户公司\"/>"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "<i class=\"fa fa-user fa-lg\" aria-label=\"Default User Type\"/>"
+msgstr "<i class=\"fa fa-user fa-lg\" aria-label=\"默认用户类型\"/>"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_wechat_res_users_kanban
+msgid ""
+"<i class=\"fa fa-weixin text-primary\" role=\"img\" aria-label=\"WeChat user\" title=\"WeChat "
+"user\"/>"
+msgstr ""
+"<i class=\"fa fa-weixin text-primary\" role=\"img\" aria-label=\"微信用户\" title=\"微信用户\"/>"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid ""
+"<strong>Save</strong>\n"
+"                                                this page and come back here to set up the feature."
+msgstr ""
+"<strong>保存</strong>\n"
+"                                                此页面并返回此处以设置该功能。"
+
+#. module: wechat_base
 #: model:res.groups,name:wechat_base.group_wechat_settings_manager
 msgid "Administrator"
 msgstr "管理员"
 
 #. module: wechat_base
+#: model:ir.model,name:wechat_base.model_res_company
 #: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
 msgid "Companies"
 msgstr "公司"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__company_id
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_search
+msgid "Company"
+msgstr "公司"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_company__shortname
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__company_shortname
+msgid "Company Short Name"
+msgstr "公司简称"
+
+#. module: wechat_base
+#: model:ir.model,name:wechat_base.model_res_config_settings
+msgid "Config Settings"
+msgstr "配置设置"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__wechat_default_user_company
+msgid "Default registered company for WeChat users"
+msgstr "微信用户默认注册公司"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__wechat_default_user_type
+msgid "Default registered user type for WeChat users"
+msgstr "微信用户的默认注册用户类型"
+
+#. module: wechat_base
+#: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_default_user_type__1
+msgid "Internal User"
+msgstr "内部用户"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__module_wechat_auth_oauth
+msgid "Log in to the website using WeChat authentication (OAuth)"
+msgstr "使用微信身份验证登录网站（OAuth）"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_wechat_users_form
+msgid "Login account"
+msgstr "登录帐户"
+
+#. module: wechat_base
 #: model:res.groups,name:wechat_base.group_wechat_settings_user
 msgid "Officer"
 msgstr "职员"
+
+#. module: wechat_base
+#: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_default_user_type__10
+msgid "Portal User"
+msgstr "门户用户"
+
+#. module: wechat_base
+#: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_default_user_type__11
+msgid "Public User"
+msgstr "公开用户"
 
 #. module: wechat_base
 #: model:ir.actions.act_window,name:wechat_base.wechat_config_settings_action
@@ -44,15 +124,34 @@ msgstr "用户将能够批准员工创建的文档。"
 
 #. module: wechat_base
 #: model:res.groups,comment:wechat_base.group_wechat_settings_manager
-msgid ""
-"The user will have access to the wechat configuration as well as statistic "
-"reports."
+msgid "The user will have access to the wechat configuration as well as statistic reports."
 msgstr "用户将可以访问微信配置以及统计报告。"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_unionid
+msgid "Unified identification of WeChat user"
+msgstr "微信用户统一标识"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_openid
+msgid "Unique identification of WeChat authorized user"
+msgstr "微信授权用户的唯一标识"
+
+#. module: wechat_base
+#: model:ir.model,name:wechat_base.model_res_users
+msgid "User"
+msgstr "用户"
+
+#. module: wechat_base
 #: model:ir.ui.menu,name:wechat_base.menu_wechat_root
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_wechat_users_form
 msgid "WeChat"
 msgstr "微信"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "WeChat Basic Settings"
+msgstr "微信基础设置"
 
 #. module: wechat_base
 #: model:ir.ui.menu,name:wechat_base.menu_wechat_configuration
@@ -60,6 +159,46 @@ msgid "WeChat Settings"
 msgstr "微信配置"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__is_wechat_user
+msgid "WeChat user"
+msgstr "微信用户"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_access_token
+msgid "WeChat user access token"
+msgstr "微信用户访问令牌"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_access_token_expires_in
+msgid "WeChat user access token expiration date"
+msgstr "微信用户访问令牌到期时间"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "WeChat user login website"
+msgstr "微信用户登录网站"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_refresh_token
+msgid "WeChat user refresh token"
+msgstr "微信用户刷新令牌"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_refresh_token_expires_in
+msgid "WeChat user refresh token expiration date"
+msgstr "微信用户刷新令牌到期时间"
+
+#. module: wechat_base
 #: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
 msgid "Wechat Settings"
 msgstr "微信配置"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_nickname
+msgid "Wechat nickname"
+msgstr "微信昵称"
+
+#. module: wechat_base
+#: model:ir.ui.menu,name:wechat_base.menu_wechat_cron
+msgid "Wechat schedule tasks"
+msgstr "微信计划任务"

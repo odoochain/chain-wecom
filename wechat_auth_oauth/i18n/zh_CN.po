@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-04 04:31+0000\n"
-"PO-Revision-Date: 2024-01-04 12:32+0800\n"
+"POT-Creation-Date: 2024-01-05 02:48+0000\n"
+"PO-Revision-Date: 2024-01-05 10:52+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -26,12 +26,22 @@ msgstr ""
 
 #. module: wechat_auth_oauth
 #: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
+msgid "<i class=\"fa fa-code fa-lg\" aria-label=\"Authentication Application\"/>"
+msgstr "<i class=\"fa fa-code fa-lg\" aria-label=\"身份验证应用\"/>"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
 msgid ""
 "<i class=\"fa fa-eyedropper fa-lg\" role=\"img\" aria-label=\"Color Style\" title=\"Color "
 "Style\"/>"
 msgstr ""
 "<i class=\"fa fa-eyedropper fa-lg\" role=\"img\" aria-label=\"颜色风格\" title=\"颜色风格\"/"
 ">"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
+msgid "<i class=\"fa fa-key fa-lg\" aria-label=\"Authentication secret key\"/>"
+msgstr "<i class=\"fa fa-key fa-lg\" aria-label=\"身份验证密钥\"/>"
 
 #. module: wechat_auth_oauth
 #: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
@@ -60,12 +70,6 @@ msgid "<span class=\"o_form_label\">QR code style</span>"
 msgstr "<span class=\"o_form_label\">二维码样式</span>"
 
 #. module: wechat_auth_oauth
-#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_company__allow_wechat_website_auth
-#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__allow_wechat_website_auth
-msgid "Allow WeChat website app login"
-msgstr "允许微信网站应用程序登录"
-
-#. module: wechat_auth_oauth
 #: model:ir.model.fields.selection,name:wechat_auth_oauth.selection__res_config_settings__wechat_website_auth_qrcode_style__black
 msgid "Black"
 msgstr "黑色"
@@ -76,7 +80,6 @@ msgid "Center"
 msgstr "居中"
 
 #. module: wechat_auth_oauth
-#: model:ir.model.fields.selection,name:wechat_auth_oauth.selection__res_company__wechat_website_auth_lang__cn
 #: model:ir.model.fields.selection,name:wechat_auth_oauth.selection__res_config_settings__wechat_website_auth_lang__cn
 msgid "Chinese"
 msgstr "中文"
@@ -102,7 +105,6 @@ msgid "Embedded"
 msgstr "内嵌"
 
 #. module: wechat_auth_oauth
-#: model:ir.model.fields.selection,name:wechat_auth_oauth.selection__res_company__wechat_website_auth_lang__en
 #: model:ir.model.fields.selection,name:wechat_auth_oauth.selection__res_config_settings__wechat_website_auth_lang__en
 msgid "English"
 msgstr "英文"
@@ -133,9 +135,14 @@ msgid "Left"
 msgstr "居左"
 
 #. module: wechat_auth_oauth
-#: model:auth.oauth.provider,body:wechat_auth_oauth.provider_wechat
-msgid "Scan the code to log in on WeChat"
-msgstr "微信扫码登录"
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_state
+msgid "Maintain the state of requests and callbacks"
+msgstr "维护请求和回调的状态"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
+msgid "OAuth Providers"
+msgstr "OAuth提供程序"
 
 #. module: wechat_auth_oauth
 #: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_qrcode_style
@@ -158,45 +165,55 @@ msgid "Right"
 msgstr "居右"
 
 #. module: wechat_auth_oauth
+#: model:auth.oauth.provider,body:wechat_auth_oauth.provider_wechat
+msgid "Scan the code to log in on WeChat"
+msgstr "微信扫码登录"
+
+#. module: wechat_auth_oauth
 #: model:ir.actions.act_window,name:wechat_auth_oauth.wechat_config_settings_action
 msgid "Settings"
 msgstr "设置"
 
 #. module: wechat_auth_oauth
-#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_company__shortname
-#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__company_shortname
-msgid "Short name"
-msgstr "简称"
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
+msgid "Status code"
+msgstr "状态码"
 
 #. module: wechat_auth_oauth
 #: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
 msgid ""
-"The login page should have a light\n"
-"                                        background and black should be selected. <br/> The\n"
-"                                        loginpage should have a dark background and white "
-"should\n"
-"                                        beselected."
-msgstr "登录页面为浅色背景，应选择黑色。<br/> 登录页面的背景为深色，应选择白色。"
+"The login page should have a light background\n"
+"                                and black should be selected. <br/> The loginpage should "
+"have a\n"
+"                                dark background and white should beselected."
+msgstr "登录页面应具有浅色背景应当选择黑色。<br/> 登录页面具有深色背景，应选择白色。"
 
 #. module: wechat_auth_oauth
 #: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
-msgid "Use WeChat to scan the QR code to log in to the website"
-msgstr "使用微信扫码登录网站"
+msgid ""
+"Used to maintain the status of requests and\n"
+"                                callbacks, authorized requests are brought back to third "
+"parties in\n"
+"                                their original state. This parameter can be used to prevent "
+"CSRF\n"
+"                                attacks (cross site request forgery attacks).<br/> "
+"Automatically\n"
+"                                refresh every hour."
+msgstr ""
+"用于维护请求和回调的状态，授权的请求会以原始状态返回给第三方。此参数可用于防止CSRF攻击（跨站"
+"点请求伪造攻击）。<br/> 每小时自动刷新一次。"
 
 #. module: wechat_auth_oauth
-#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_company__wechat_website_auth_appid
 #: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_appid
 msgid "WeChat website application ID"
 msgstr "微信网站应用ID"
 
 #. module: wechat_auth_oauth
-#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_company__wechat_website_auth_redirect_uri
-#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_redirect_uri
-msgid "WeChat website application redirect uri"
-msgstr "微信网站应用重定向URL"
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_secret
+msgid "WeChat website application secret key"
+msgstr "微信网站应用密钥"
 
 #. module: wechat_auth_oauth
-#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_company__wechat_website_auth_lang
 #: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_auth_lang
 msgid "WeChat website application ui language"
 msgstr "微信网站应用界面语言"
@@ -204,4 +221,4 @@ msgstr "微信网站应用界面语言"
 #. module: wechat_auth_oauth
 #: model:ir.model.fields.selection,name:wechat_auth_oauth.selection__res_config_settings__wechat_website_auth_qrcode_style__white
 msgid "White"
-msgstr ""
+msgstr "白色"

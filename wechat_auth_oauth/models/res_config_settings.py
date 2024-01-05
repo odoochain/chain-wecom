@@ -31,12 +31,6 @@ class ResConfigSettings(models.TransientModel):
 
         return code
 
-    allow_wechat_website_auth = fields.Boolean(
-        string="Allow WeChat website app login",
-        default=False,
-        config_parameter="allow_wechat_website_auth",
-    )
-
     wechat_website_auth_appid = fields.Char(
         string="WeChat website application ID",
         config_parameter="wechat_website_auth_appid",
