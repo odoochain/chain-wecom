@@ -10,6 +10,7 @@ from odoo.exceptions import UserError
 import xmltodict
 from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException  # type: ignore
 from odoo.addons.base.models.ir_mail_server import MailDeliveryException
+import ast
 
 import re
 
@@ -209,10 +210,10 @@ class WecomUser(models.Model):
     @api.depends("department")
     def _compute_department_ids(self):
         """
-        计算多部门  eval( )
+        计算多部门  ast.literal_eval( )
         """
         for user in self:
-            department_list = eval(user.department)  # type: ignore
+            department_list = ast.literal_eval(user.department)  # type: ignore
             department_ids = self.get_parent_department(
                 user.company_id, department_list  # type: ignore
             )
