@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0+e\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-05 02:27+0000\n"
-"PO-Revision-Date: 2024-01-05 10:29+0800\n"
+"POT-Creation-Date: 2024-01-09 16:03+0000\n"
+"PO-Revision-Date: 2024-01-10 00:09+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -16,6 +16,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.4.2\n"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid ""
+", have an approved website application,\n"
+"                                            and obtain the corresponding AppID and AppSecret. "
+"After\n"
+"                                            applying for WeChat login and passing the review, the\n"
+"                                            access process can begin."
+msgstr ""
+"，并拥有一个已审核通过的网站应用，并获得相应的AppID和AppSecret，申请微信登录且通过审核后，可开始接"
+"入流程。"
 
 #. module: wechat_base
 #: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
@@ -40,9 +52,7 @@ msgstr ""
 msgid ""
 "<strong>Save</strong>\n"
 "                                                this page and come back here to set up the feature."
-msgstr ""
-"<strong>保存</strong>\n"
-"                                                此页面并返回此处以设置该功能。"
+msgstr "<strong>保存</strong>此页面并返回此处以设置该功能。"
 
 #. module: wechat_base
 #: model:res.groups,name:wechat_base.group_wechat_settings_manager
@@ -51,19 +61,16 @@ msgstr "管理员"
 
 #. module: wechat_base
 #: model:ir.model,name:wechat_base.model_res_company
-#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
 msgid "Companies"
 msgstr "公司"
 
 #. module: wechat_base
 #: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__company_id
-#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_search
 msgid "Company"
 msgstr "公司"
 
 #. module: wechat_base
 #: model:ir.model.fields,field_description:wechat_base.field_res_company__shortname
-#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__company_shortname
 msgid "Company Short Name"
 msgstr "公司简称"
 
@@ -86,11 +93,6 @@ msgstr "微信用户的默认注册用户类型"
 #: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_default_user_type__1
 msgid "Internal User"
 msgstr "内部用户"
-
-#. module: wechat_base
-#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__module_wechat_auth_oauth
-msgid "Log in to the website using WeChat authentication (OAuth)"
-msgstr "使用微信身份验证登录网站（OAuth）"
 
 #. module: wechat_base
 #: model_terms:ir.ui.view,arch_db:wechat_base.view_wechat_users_form
@@ -128,6 +130,18 @@ msgid "The user will have access to the wechat configuration as well as statisti
 msgstr "用户将可以访问微信配置以及统计报告。"
 
 #. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid ""
+"The website application WeChat\n"
+"                                            login is a WeChat OAuth2.0 authorization login system\n"
+"                                            built based on the OAuth2.0 protocol standard. Before\n"
+"                                            conducting WeChat OAuth2.0 authorization login and\n"
+"                                            access, register a developer account on the"
+msgstr ""
+"网站应用微信登录是基于OAuth2.0协议标准构建的微信OAuth2.0授权登录系统。 在进行微信OAuth2.0授权登录接"
+"入之前，注册开发者账号，"
+
+#. module: wechat_base
 #: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_unionid
 msgid "Unified identification of WeChat user"
 msgstr "微信用户统一标识"
@@ -150,8 +164,34 @@ msgstr "微信"
 
 #. module: wechat_base
 #: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid ""
+"WeChat\n"
+"                                            open platform"
+msgstr "微信开放平台"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid ""
+"WeChat\n"
+"                                            public platform"
+msgstr "微信公众平台"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
 msgid "WeChat Basic Settings"
 msgstr "微信基础设置"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__module_wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "WeChat OAuth2 Authentication"
+msgstr "使用微信身份验证登录网站（OAuth）"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__module_wechat_official_accounts
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "WeChat Official accounts"
+msgstr "微信公众号"
 
 #. module: wechat_base
 #: model:ir.ui.menu,name:wechat_base.menu_wechat_configuration
@@ -174,11 +214,6 @@ msgid "WeChat user access token expiration date"
 msgstr "微信用户访问令牌到期时间"
 
 #. module: wechat_base
-#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
-msgid "WeChat user login website"
-msgstr "微信用户登录网站"
-
-#. module: wechat_base
 #: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_refresh_token
 msgid "WeChat user refresh token"
 msgstr "微信用户刷新令牌"
@@ -187,6 +222,16 @@ msgstr "微信用户刷新令牌"
 #: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_refresh_token_expires_in
 msgid "WeChat user refresh token expiration date"
 msgstr "微信用户刷新令牌到期时间"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "WeChat website application"
+msgstr "微信网站应用"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__module_wechat_website_application
+msgid "Website application WeChat login"
+msgstr "微信网站应用登录"
 
 #. module: wechat_base
 #: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
@@ -202,3 +247,12 @@ msgstr "微信昵称"
 #: model:ir.ui.menu,name:wechat_base.menu_wechat_cron
 msgid "Wechat schedule tasks"
 msgstr "微信计划任务"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid ""
+"is a new service platform that\n"
+"                                            provides business services and user management\n"
+"                                            capabilities for individuals, enterprises, and\n"
+"                                            organizations."
+msgstr "给个人、企业和组织提供业务服务与用户管理能力的全新服务平台。"

@@ -15,9 +15,9 @@ class ResConfigSettings(models.TransientModel):
         required=True,
         default=lambda self: self.env.company,
     )
-    company_shortname = fields.Char(
-        related="company_id.shortname", readonly=False, required=True
-    )
+    # company_shortname = fields.Char(
+    #     related="company_id.shortname", readonly=False, required=True
+    # )
 
     wechat_default_user_company = fields.Many2one(
         "res.company",
@@ -40,6 +40,12 @@ class ResConfigSettings(models.TransientModel):
     )
 
     # 模块
+    module_wechat_official_accounts = fields.Boolean(
+        "WeChat Official accounts"
+    )
+    module_wechat_website_application = fields.Boolean(
+        "Website application WeChat login"
+    )
     module_wechat_auth_oauth = fields.Boolean(
-        "Log in to the website using WeChat authentication (OAuth)"
+        "WeChat OAuth2 Authentication"
     )

@@ -2,7 +2,7 @@
 <odoo>
     <data>
 
-        <record id="view_users_search" model="ir.ui.view">
+        <!-- <record id="view_users_search" model="ir.ui.view">
             <field name="name">res.users.search</field>
             <field name="model">res.users</field>
             <field name="inherit_id" ref="base.view_users_search" />
@@ -17,7 +17,7 @@
                     </searchpanel>
                 </xpath>
             </field>
-        </record>
+        </record> -->
 
         <record id="view_wechat_users_tree" model="ir.ui.view">
             <field name="name">wechat users list</field>

@@ -7,20 +7,12 @@
             <field name="model">res.config.settings</field>
             <field name="inherit_id" ref="wechat_base.res_config_settings_view_form" />
             <field name="arch" type="xml">
-                <div id="msg_module_wechat_auth_oauth" position="replace">
-                    <div class="content-group"
-                        attrs="{'invisible': [('module_wechat_auth_oauth','=',False)]}">
-                        <div class="mt8">
-                            <button type="action" name="%(auth_oauth.action_oauth_provider)d"
-                                string="OAuth Providers" icon="fa-arrow-right" class="btn-link" />
-                        </div>
-                    </div>
-                </div>
+                <div id="msg_module_wechat_website_application" position="replace" />
 
-                <div id="module_wechat_auth_oauth" position="after">
+                <div id="module_wechat_website_application" position="after">
 
                     <div class="col-xs-12 col-md-6 o_setting_box"
-                        attrs="{'invisible': [('module_wechat_auth_oauth','=',False)]}">
+                        attrs="{'invisible': [('module_wechat_website_application','=',False)]}">
                         <div class="o_setting_left_pane">
                             <i class="fa fa-puzzle-piece fa-lg"
                                 aria-label="Authentication Application" />
@@ -30,14 +22,14 @@
                             <div class="content-group">
                                 <div class="mt8">
                                     <field name="wechat_website_auth_appid"
-                                        attrs="{'required': [('module_wechat_auth_oauth', '=', True)]}" />
+                                        attrs="{'required': [('module_wechat_website_application', '=', True)]}" />
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-xs-12 col-md-6 o_setting_box"
-                        attrs="{'invisible': [('module_wechat_auth_oauth','=',False)]}">
+                        attrs="{'invisible': [('module_wechat_website_application','=',False)]}">
                         <div class="o_setting_left_pane">
                             <i class="fa fa-key fa-lg"
                                 aria-label="Authentication secret key" />
@@ -49,14 +41,14 @@
                                     <field name="wechat_website_auth_secret"
                                         widget="DisplayPasswordChar"
                                         require_encryption="True"
-                                        attrs="{'required': [('module_wechat_auth_oauth', '=', True)]}" />
+                                        attrs="{'required': [('module_wechat_website_application', '=', True)]}" />
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- <div class="col-12 col-lg-6 o_setting_box"
-                        attrs="{'invisible': [('module_wechat_auth_oauth','=',False)]}">
+                        attrs="{'invisible': [('module_wechat_website_application','=',False)]}">
                         <div class="o_setting_left_pane">
                             <i class="fa fa-code fa-lg"
                                 aria-label="Authentication Application" />
@@ -76,7 +68,7 @@
                     </div> -->
 
                     <!-- <div class="col-12 col-lg-6 o_setting_box"
-                        attrs="{'invisible': [('module_wechat_auth_oauth','=',False)]}">
+                        attrs="{'invisible': [('module_wechat_website_application','=',False)]}">
                         <div class="o_setting_left_pane">
                             <i class="fa fa-link fa-lg" role="img" aria-label="Redirect URL"
                                 title="Redirect URL"></i>
@@ -94,7 +86,7 @@
 
 
                     <div class="col-12 col-lg-6 o_setting_box"
-                        attrs="{'invisible': [('module_wechat_auth_oauth','=',False)]}">
+                        attrs="{'invisible': [('module_wechat_website_application','=',False)]}">
                         <div class="o_setting_left_pane">
                             <i class="fa fa-qrcode fa-lg" role="img"
                                 aria-label="QR code display method"
@@ -112,7 +104,7 @@
                     </div>
 
                     <div class="col-12 col-lg-6 o_setting_box"
-                        attrs="{'invisible': ['|',('module_wechat_auth_oauth','=',False),('wechat_website_auth_qrcode_display_method','=','embedded')]}">
+                        attrs="{'invisible': ['|',('module_wechat_website_application','=',False),('wechat_website_auth_qrcode_display_method','=','embedded')]}">
                         <div class="o_setting_left_pane">
                             <i class="fa fa-language fa-lg" role="img"
                                 aria-label="Ui Language"
@@ -130,7 +122,7 @@
                     </div>
 
                     <div class="col-12 col-lg-6 o_setting_box"
-                        attrs="{'invisible': ['|',('module_wechat_auth_oauth','=',False),('wechat_website_auth_qrcode_display_method','=','dialog')]}">
+                        attrs="{'invisible': ['|',('module_wechat_website_application','=',False),('wechat_website_auth_qrcode_display_method','=','dialog')]}">
                         <div class="o_setting_left_pane">
                             <i class="fa fa-eyedropper fa-lg" role="img"
                                 aria-label="Color Style"
@@ -148,7 +140,7 @@
                     </div>
 
                     <div class="col-12 col-lg-6 o_setting_box"
-                        attrs="{'invisible': ['|',('module_wechat_auth_oauth','=',False),('wechat_website_auth_qrcode_display_method','=','dialog')]}">
+                        attrs="{'invisible': ['|',('module_wechat_website_application','=',False),('wechat_website_auth_qrcode_display_method','=','dialog')]}">
                         <div class="o_setting_left_pane">
                             <i class="fa fa fa-paint-brush fa-lg" role="img"
                                 aria-label="Style"

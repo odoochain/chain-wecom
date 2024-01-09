@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "WeChat Authentication",
+    "name": "WeChat OAuth2 Authentication",
     "author": "RStudio",
     "sequence": 705,
     "installable": True,

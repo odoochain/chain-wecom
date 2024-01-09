@@ -7,20 +7,30 @@
             <value eval="{'enabled': False}" />
         </function>
 
-        <record id="provider_wechat" model="auth.oauth.provider">
-            <field name="name">Wechat OAuth2</field>
+        <record id="provider_wechat_scan_code" model="auth.oauth.provider">
+            <field name="name">Wechat Scan Code OAuth2</field>
             <field name="auth_endpoint">https://open.weixin.qq.com/connect/qrconnect</field>
             <field name="scope">snsapi_login</field>
             <field name="validation_endpoint"></field>
-            <field name="css_class">fa fa-fw fa-wechat text-primary</field>
+            <field name="css_class">fa fa-fw fa-wechat text-primary wechat_scan_code</field>
             <field name="body">Scan the code to log in on WeChat</field>
+            <field name="enabled" eval="True" />
+        </record>
+
+        <record id="provider_wechat_one_click_login" model="auth.oauth.provider">
+            <field name="name">Wechat one-click login OAuth2</field>
+            <field name="auth_endpoint">https://open.weixin.qq.com/connect/oauth2/authorize</field>
+            <field name="scope">snsapi_userinfo</field>
+            <field name="validation_endpoint"></field>
+            <field name="css_class">fa fa-fw fa-wechat text-primary wechat_one_click</field>
+            <field name="body">One click login on WeChat</field>
             <field name="enabled" eval="True" />
         </record>
     </data>
 
     <data noupdate="0">
-        <record id="provider_wechat" model="auth.oauth.provider">
-            <field name="name">Wechat OAuth2</field>
+        <record id="provider_wechat_scan_code" model="auth.oauth.provider">
+            <field name="name">Wechat Scan Code OAuth2</field>
             <field name="auth_endpoint">https://open.weixin.qq.com/connect/qrconnect</field>
             <field name="scope">snsapi_login</field>
             <field name="validation_endpoint"></field>
@@ -28,6 +38,17 @@
             <field name="body">Scan the code to log in on WeChat</field>
             <field name="enabled" eval="True" />
         </record>
+
+        <record id="provider_wechat_one_click_login" model="auth.oauth.provider">
+            <field name="name">Wechat one-click login OAuth2</field>
+            <field name="auth_endpoint">https://open.weixin.qq.com/connect/oauth2/authorize</field>
+            <field name="scope">snsapi_userinfo</field>
+            <field name="validation_endpoint"></field>
+            <field name="css_class">fa fa-fw fa-wechat text-primary wechat_one_click</field>
+            <field name="body">One click login on WeChat</field>
+            <field name="enabled" eval="True" />
+        </record>
+
         <!-- <function model="auth.oauth.provider" name="write">
             <value eval="[ref('wechat_auth_oauth.provider_wechat')]" />
             <value
@@ -38,5 +59,6 @@
                 'data_endpoint': ''
             }" />
         </function> -->
+
     </data>
 </odoo>

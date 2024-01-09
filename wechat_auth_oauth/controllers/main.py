@@ -2,13 +2,13 @@
 
 # !参考 \addons\auth_oauth\controllers\main.py
 import time
-import requests
+import requests # type: ignore
 import logging
 import json
-import werkzeug.urls
-import werkzeug.utils
+import werkzeug.urls # type: ignore
+import werkzeug.utils # type: ignore
 from urllib.parse import urlparse, urlencode
-from werkzeug.exceptions import BadRequest
+from werkzeug.exceptions import BadRequest # type: ignore
 
 from odoo import api, http, SUPERUSER_ID, _
 from odoo.exceptions import AccessDenied
@@ -21,6 +21,14 @@ from odoo.addons.wechat_api.tools.security import WeChatApiToolsSecurity  # type
 
 _logger = logging.getLogger(__name__)
 
+WECHAT_BROWSER_MESSAGES = {
+    "not_wechat_browser": _(
+        "The current browser is not an Wechat built-in browser, so the one-click login function cannot be used."
+    ),
+    "is_wechat_browser": _(
+        "It is detected that the page is opened in the built-in browser of Wechat, please select company."
+    ),
+}
 
 class OAuthLogin(Home):
     def list_providers(self):
@@ -65,6 +73,34 @@ class OAuthLogin(Home):
                     werkzeug.urls.url_encode(params),
                     "#wechat_redirect",
                 )
+
+            elif (
+                "https://open.weixin.qq.com/connect/oauth2/authorize"
+                in provider["auth_endpoint"]
+            ):
+                return_url = (
+                    request.httprequest.url_root + "wechat_scan_register_or_login"
+                )
+                state = self.get_state(provider)
+                ICP = request.env["ir.config_parameter"].sudo()
+                appid = ICP.get_param("wechat_website_auth_appid")
+                params = dict(
+                    appid=appid,
+                    response_type="code",
+                    redirect_uri=return_url,
+                    scope=provider["scope"],
+                    state=json.dumps(state).replace(" ", ""),
+                )
+                # -------------------------------------------------------
+                # 请求CODE 的链接格式
+                # "https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=snsapi_userinfo&state=SCOPE#wechat_redirect"
+                # -------------------------------------------------------
+                provider["auth_link"] = "%s?%s%s" % (
+                    provider["auth_endpoint"],
+                    werkzeug.urls.url_encode(params),
+                    "#wechat_redirect",
+                )
+
         return providers
 
 

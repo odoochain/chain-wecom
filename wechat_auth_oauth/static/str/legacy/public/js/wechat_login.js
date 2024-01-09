@@ -40,41 +40,45 @@ odoo.define('wechat_auth_oauth.login', function (require) {
         initWechatProvider: function () {
             let self = this;
             let $oauth_providers = this.$el.find("a");
+            console.log("是微信浏览器：", self.is_wechat_browser);
             console.log("微信验证方式信息", self.wechat_provider_info);
             _.forEach($oauth_providers, function (provider) {
                 let $provider = $(provider);
                 let url = $provider.attr("href");
                 if (url.indexOf("https://open.weixin.qq.com/connect/qrconnect") >= 0) {
-                    // if (self.is_wechat_browser) {
-                    //     $provider.removeClass("o_hidden").addClass("border rounded");
-                    // } else {
-                    //     $provider.addClass("o_hidden");
-                    // }
-                    if (self.wechat_provider_info["qrcode_display_method"] === "embedded") {
-                        $provider.removeClass("o_hidden");
-                        $provider.addClass("d-flex justify-content-center");
-                        $provider.attr("id", "wechat_qrcode_container");
-                        const provider = self.wechat_provider_info;
-                        var obj = new WxLogin({
-                            self_redirect: false, // true：手机点击确认登录后可以在 iframe 内跳转到 redirect_uri，false：手机点击确认登录后可以在 top window 跳转到 redirect_uri。默认为 false
-                            id: "wechat_qrcode_container", // 第三方页面显示二维码的容器id
-                            appid: provider["appid"], // 应用唯一标识，在微信开放平台提交应用审核通过后获得
-                            scope: provider["scope"], // 应用授权作用域，拥有多个作用域用逗号（,）分隔，网页应用目前仅填写snsapi_login即可
-                            redirect_uri: provider["redirect_uri"], // 重定向地址，需要进行UrlEncode
-                            state: provider["state"], // 用于保持请求和回调的状态，授权请求后原样带回给第三方。该参数可用于防止csrf攻击（跨站请求伪造攻击），建议第三方带上该参数，可设置为简单的随机数加session进行校验
-                            style: provider["style"], // 提供"black"、"white"可选，默认为黑色文字描述。
-                            href: provider["href"]// 自定义样式链接，第三方可根据实际需求覆盖默认样式。
-                        });
-
+                    if (self.is_wechat_browser) {
+                        $provider.addClass("o_hidden");
                     } else {
-                        $provider.removeClass("o_hidden")
+                        if (self.wechat_provider_info["qrcode_display_method"] === "embedded") {
+                            $provider.removeClass("o_hidden");
+                            $provider.addClass("d-flex justify-content-center");
+                            $provider.attr("id", "wechat_qrcode_container");
+                            const provider = self.wechat_provider_info;
+                            var obj = new WxLogin({
+                                self_redirect: false, // true：手机点击确认登录后可以在 iframe 内跳转到 redirect_uri，false：手机点击确认登录后可以在 top window 跳转到 redirect_uri。默认为 false
+                                id: "wechat_qrcode_container", // 第三方页面显示二维码的容器id
+                                appid: provider["appid"], // 应用唯一标识，在微信开放平台提交应用审核通过后获得
+                                scope: provider["scope"], // 应用授权作用域，拥有多个作用域用逗号（,）分隔，网页应用目前仅填写snsapi_login即可
+                                redirect_uri: provider["redirect_uri"], // 重定向地址，需要进行UrlEncode
+                                state: provider["state"], // 用于保持请求和回调的状态，授权请求后原样带回给第三方。该参数可用于防止csrf攻击（跨站请求伪造攻击），建议第三方带上该参数，可设置为简单的随机数加session进行校验
+                                style: provider["style"], // 提供"black"、"white"可选，默认为黑色文字描述。
+                                href: provider["href"]// 自定义样式链接，第三方可根据实际需求覆盖默认样式。
+                            });
+
+                        } else {
+                            $provider.removeClass("o_hidden")
+                        }
                     }
-
-
+                } else if (url.indexOf("https://open.weixin.qq.com/connect/oauth2/authorize") >= 0) {
+                    if (self.is_wechat_browser) {
+                        $provider.removeClass("o_hidden");
+                    } else {
+                        $provider.addClass("o_hidden");
+                    }
                 }
             });
         },
-        initWecharQRCodeContainer() { },
+
         is_wechat_browser: function () {
             var ua = navigator.userAgent.toLowerCase();
             let isWx = ua.match(/MicroMessenger/i) == "micromessenger";
@@ -84,28 +88,28 @@ odoo.define('wechat_auth_oauth.login', function (require) {
                 return true;
             }
         },
-        // is_wecom_browser: function () {
-        //     var ua = navigator.userAgent.toLowerCase();
-        //     let isWx = ua.match(/MicroMessenger/i) == "micromessenger";
-        //     if (!isWx) {
-        //         return false;
-        //     } else {
-        //         let isWxWork = ua.match(/WxWork/i) == "wxwork";
-        //         if (isWxWork) {
-        //             return true;
-        //         } else {
-        //             return false;
-        //         }
-        //     }
-        // },
-        // is_ios: function () {
-        //     var isIphoneOrIpad = /iphone|ipad/i.test(navigator.userAgent);
-        //     if (isIphoneOrIpad) {
-        //         return true;
-        //     } else {
-        //         return false;
-        //     }
-        // },
+        is_wecom_browser: function () {
+            var ua = navigator.userAgent.toLowerCase();
+            let isWx = ua.match(/MicroMessenger/i) == "micromessenger";
+            if (!isWx) {
+                return false;
+            } else {
+                let isWxWork = ua.match(/WxWork/i) == "wxwork";
+                if (isWxWork) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        },
+        is_ios: function () {
+            var isIphoneOrIpad = /iphone|ipad/i.test(navigator.userAgent);
+            if (isIphoneOrIpad) {
+                return true;
+            } else {
+                return false;
+            }
+        },
         _onClick: async function (ev) {
             ev.preventDefault(); //阻止默认行为
 
