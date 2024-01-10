@@ -26,7 +26,7 @@ WECHAT_BROWSER_MESSAGES = {
         "The current browser is not an Wechat built-in browser, so the one-click login function cannot be used."
     ),
     "is_wechat_browser": _(
-        "It is detected that the page is opened in the built-in browser of Wechat, please select company."
+        "It is detected that the page is opened in the built-in browser of Wechat."
     ),
 }
 
