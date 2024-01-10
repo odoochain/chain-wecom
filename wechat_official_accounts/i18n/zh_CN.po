@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-10 02:09+0000\n"
-"PO-Revision-Date: 2024-01-10 10:10+0800\n"
+"POT-Creation-Date: 2024-01-10 15:46+0000\n"
+"PO-Revision-Date: 2024-01-10 23:47+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -16,6 +16,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.4.2\n"
+
+#. module: wechat_official_accounts
+#: model_terms:ir.ui.view,arch_db:wechat_official_accounts.social_sidebar
+msgid ""
+"<i class=\"fa fa-2x fa-wechat\"/>\n"
+"                    <span class=\"overflow-hidden text-nowrap\">WeChat Official Accounts</span>"
+msgstr ""
+"<i class=\"fa fa-2x fa-wechat\"/>\n"
+"                    <span class=\"overflow-hidden text-nowrap\">微信公众号</span>"
 
 #. module: wechat_official_accounts
 #: model_terms:ir.ui.view,arch_db:wechat_official_accounts.res_config_settings_view_form
@@ -28,9 +37,41 @@ msgid "<i class=\"fa fa-puzzle-piece fa-lg\" aria-label=\"Developer ID\"/>"
 msgstr "<i class=\"fa fa-puzzle-piece fa-lg\" aria-label=\"开发者ID\"/>"
 
 #. module: wechat_official_accounts
+#: model_terms:ir.ui.view,arch_db:wechat_official_accounts.res_config_settings_view_form
+msgid "<i class=\"fa fa-qrcode fa-lg\" aria-label=\"Official Accounts QR code\"/>"
+msgstr "<i class=\"fa fa-qrcode fa-lg\" aria-label=\"公众号二维码\"/>"
+
+#. module: wechat_official_accounts
+#: model:ir.model,name:wechat_official_accounts.model_res_company
+msgid "Companies"
+msgstr "公司"
+
+#. module: wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_res_config_settings__company_id
+msgid "Company"
+msgstr "公司"
+
+#. module: wechat_official_accounts
 #: model:ir.model,name:wechat_official_accounts.model_res_config_settings
 msgid "Config Settings"
 msgstr "配置设置"
+
+#. module: wechat_official_accounts
+#: model:auth.oauth.provider,body:wechat_official_accounts.provider_wechat_one_click_login
+msgid "One click login on WeChat"
+msgstr "微信一键登录"
+
+#. module: wechat_official_accounts
+#: model_terms:ir.ui.view,arch_db:wechat_official_accounts.social_sidebar
+msgid "Pay attention to our WeChat official account."
+msgstr "关注我们的微信公众号。"
+
+#. module: wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_res_company__social_wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_res_config_settings__social_wechat_official_accounts
+#: model_terms:ir.ui.view,arch_db:wechat_official_accounts.social_sidebar
+msgid "WeChat Official Accounts QR Code"
+msgstr "微信公众号二维码"
 
 #. module: wechat_official_accounts
 #: model:ir.model.fields,field_description:wechat_official_accounts.field_res_config_settings__wechat_official_accounts_developer_appid

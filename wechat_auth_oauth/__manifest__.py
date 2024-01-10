@@ -14,7 +14,7 @@ Allow users to log in through WeChat.
     "description": """
 Allow users to log in through WeChat.
         """,
-    "depends": ["web","auth_oauth","wechat_website_application","wechat_official_accounts"],
+    "depends": ["web","auth_oauth"],
     "data": [
         "data/wechat_oauth_data.xml",
         "views/res_config_settings_views.xml",

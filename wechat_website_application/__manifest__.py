@@ -12,8 +12,9 @@
         """,
     "description": """
         """,
-    "depends": ["wechat_base",],
+    "depends": ["auth_oauth","wechat_base",],
     "data": [
+        "data/wechat_oauth_data.xml",
         "views/res_config_settings_views.xml",
     ],
     "assets": {
