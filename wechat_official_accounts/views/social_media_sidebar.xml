@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="social_sidebar" name="Social Sidebar Panel" inherit_id="web.frontend_layout">
+        <xpath expr="//main" position="after">
+            <div class="social_sidebar" >
+
+                <a  href="#" style="" class="btn btn-sm btn-default wechat_attention_qrcode" target="_blank" title="Pay attention to our WeChat official account.">
+                    <i class="fa fa-2x fa-wechat"/>
+                    <span class="overflow-hidden text-nowrap">WeChat Official Accounts</span>
+                    <img t-attf-src="/web/binary/wechat_official_accounts{{ '?dbname='+db if db else '' }}" class="thumbnail img-responsive" alt="WeChat Official Accounts QR Code"/>
+                </a>
+            </div>
+        </xpath>
+    </template>
+</odoo>

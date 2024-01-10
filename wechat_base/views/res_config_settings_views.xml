@@ -14,6 +14,29 @@
                         data-key="wechat_base" groups="base.group_system">
                         <field name="company_id" invisible="1" />
 
+                        <div class="app_settings_header pt-1 pb-1 bg-warning bg-opacity-25"
+                            id="select_company">
+                            <div class="col-xs-12 col-md-6 ms-0 o_setting_box">
+                                <div class="o_setting_right_pane border-start-0 ms-0 ps-0">
+                                    <div class="content-group">
+                                        <div class="row flex-row flex-nowrap mt8 align-items-center">
+                                            <label class="col text-nowrap ml8 flex-nowrap"
+                                                string="Companies" for="company_id" />
+                                            <field name="company_id" class="w-50"
+                                                options="{'no_open': True, 'no_create': True}" />
+                                        </div>
+                                    </div>
+                                    <!-- <div class="content-group">
+                                        <div class="row flex-row flex-nowrap mt8 align-items-center">
+                                            <label class="col text-nowrap ml8 flex-nowrap"
+                                                for="company_shortname" />
+                                            <field name="company_shortname" class="w-50" />
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+
                         <div id="wechat_base">
                             <h2>WeChat Basic Settings</h2>
                             <div class="row mt8 o_settings_container">
@@ -62,16 +85,14 @@
                                     <div class="o_setting_right_pane">
                                         <label for="module_wechat_official_accounts" />
                                         <div class="text-muted">
-                                            <a href="https://open.weixin.qq.com/" target="_blank">WeChat
-                                            public platform</a> is a new service platform that
-                                            provides business services and user management
-                                            capabilities for individuals, enterprises, and
-                                            organizations. </div>
+                                            <a href="https://open.weixin.qq.com/" target="_blank">WeChat public platform</a> is a new service platform that provides business services and user management capabilities for individuals, enterprises, and organizations.
+                                        </div>
                                         <div class="content-group mt16"
                                             attrs="{'invisible': [('module_wechat_official_accounts','=',False)]}"
                                             id="msg_module_wechat_official_accounts">
-                                            <div class="mt16 text-warning"><strong>Save</strong>
-                                                this page and come back here to set up the feature.</div>
+                                            <div class="mt16 text-warning">
+                                                <strong>Save</strong> this page and come back here to set up the feature.
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -88,21 +109,14 @@
                                     </div>
                                     <div class="o_setting_right_pane">
                                         <label for="module_wechat_website_application" />
-                                        <div class="text-muted"> The website application WeChat
-                                            login is a WeChat OAuth2.0 authorization login system
-                                            built based on the OAuth2.0 protocol standard. Before
-                                            conducting WeChat OAuth2.0 authorization login and
-                                            access, register a developer account on the <a
-                                                href="https://open.weixin.qq.com/" target="_blank">WeChat
-                                            open platform</a>, have an approved website application,
-                                            and obtain the corresponding AppID and AppSecret. After
-                                            applying for WeChat login and passing the review, the
-                                            access process can begin. </div>
+                                        <div class="text-muted"> The website application WeChat login is a WeChat OAuth2.0 authorization login system built based on the OAuth2.0 protocol standard. Before conducting WeChat OAuth2.0 authorization login and access, register a developer account on the <a href="https://open.weixin.qq.com/" target="_blank">WeChat open platform</a>, have an approved website application, and obtain the corresponding AppID and AppSecret. After applying for WeChat login and passing the review, the access process can begin.
+                                        </div>
                                         <div class="content-group mt16"
                                             attrs="{'invisible': [('module_wechat_website_application','=',False)]}"
                                             id="msg_module_wechat_website_application">
-                                            <div class="mt16 text-warning"><strong>Save</strong>
-                                                this page and come back here to set up the feature.</div>
+                                            <div class="mt16 text-warning">
+                                                <strong>Save</strong> this page and come back here to set up the feature.
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -123,8 +137,9 @@
                                         <div class="content-group mt16"
                                             attrs="{'invisible': [('module_wechat_auth_oauth','=',False)]}"
                                             id="msg_module_wechat_auth_oauth">
-                                            <div class="mt16 text-warning"><strong>Save</strong>
-                                                this page and come back here to set up the feature.</div>
+                                            <div class="mt16 text-warning">
+                                                <strong>Save</strong> this page and come back here to set up the feature.
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

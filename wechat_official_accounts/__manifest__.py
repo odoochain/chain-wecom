@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "WeChat Official accounts",
+    "name": "WeChat Official Accounts",
     "author": "RStudio",
     "sequence": 702,
     "installable": True,
@@ -12,13 +12,19 @@
         """,
     "description": """
         """,
-    "depends": ["wechat_base"],
+    "depends": ["mass_mailing","wechat_base"],
     "data": [
-
+        "data/res_company_data.xml",
+        "views/res_config_settings_views.xml",
+        "views/social_media_sidebar.xml",
     ],
     "assets": {
         "web.assets_backend": [],
-        "web.assets_frontend": [],
+        "web.assets_frontend": [
+            'wechat_official_accounts/static/**/*.js',
+            'wechat_official_accounts/static/**/*.xml',
+            'wechat_official_accounts/static/**/*.scss',
+        ],
     },
     "license": "Other proprietary",
 }

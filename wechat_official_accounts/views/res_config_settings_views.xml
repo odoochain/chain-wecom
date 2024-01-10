@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">WeChat settings</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="wechat_base.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+                <div id="msg_module_wechat_official_accounts" position="replace" />
+
+                <div id="module_wechat_official_accounts" position="after">
+
+                    <div class="col-xs-12 col-md-6 o_setting_box"
+                        attrs="{'invisible': [('module_wechat_official_accounts','=',False)]}">
+                        <div class="o_setting_left_pane">
+                            <i class="fa fa-qrcode fa-lg"
+                                aria-label="Official Accounts QR code" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="social_wechat_official_accounts" />
+                            <div class="content-group">
+                                <div class="mt8">
+                                    <field name="social_wechat_official_accounts"
+                                        attrs="{'required': [('module_wechat_official_accounts', '=', True)]}" widget="image" class="oe_avatar" options='{"size": [120, 120]}'/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 o_setting_box"
+                        attrs="{'invisible': [('module_wechat_official_accounts','=',False)]}">
+                        <div class="o_setting_left_pane">
+                            <i class="fa fa-puzzle-piece fa-lg"
+                                aria-label="Developer ID" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="wechat_official_accounts_developer_appid" />
+                            <div class="content-group">
+                                <div class="mt8">
+                                    <field name="wechat_official_accounts_developer_appid"
+                                        attrs="{'required': [('module_wechat_official_accounts', '=', True)]}" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 o_setting_box"
+                        attrs="{'invisible': [('module_wechat_official_accounts','=',False)]}">
+                        <div class="o_setting_left_pane">
+                            <i class="fa fa-key fa-lg"
+                                aria-label="Developer secret key" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="wechat_official_accounts_developer_secret" />
+                            <div class="content-group">
+                                <div class="mt8">
+                                    <field name="wechat_official_accounts_developer_secret"
+                                        widget="DisplayPasswordChar"
+                                        require_encryption="True"
+                                        attrs="{'required': [('module_wechat_website_application', '=', True)]}" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>
