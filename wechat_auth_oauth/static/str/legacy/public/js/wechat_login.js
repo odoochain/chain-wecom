@@ -45,12 +45,13 @@ odoo.define('wechat_auth_oauth.login', function (require) {
             _.forEach($oauth_providers, function (provider) {
                 let $provider = $(provider);
                 let url = $provider.attr("href");
+
                 if (url.indexOf("https://open.weixin.qq.com/connect/qrconnect") >= 0) {
                     if (self.is_wechat_browser) {
                         $provider.addClass("o_hidden");
                     } else {
                         if (self.wechat_provider_info["qrcode_display_method"] === "embedded") {
-                            $provider.removeClass("o_hidden");
+                            $provider.removeClass("o_hidden").addClass("border rounded");
                             $provider.addClass("d-flex justify-content-center");
                             $provider.attr("id", "wechat_qrcode_container");
                             const provider = self.wechat_provider_info;
@@ -66,12 +67,12 @@ odoo.define('wechat_auth_oauth.login', function (require) {
                             });
 
                         } else {
-                            $provider.removeClass("o_hidden")
+                            $provider.removeClass("o_hidden").addClass("border rounded");
                         }
                     }
                 } else if (url.indexOf("https://open.weixin.qq.com/connect/oauth2/authorize") >= 0) {
                     if (self.is_wechat_browser) {
-                        $provider.removeClass("o_hidden");
+                        $provider.removeClass("o_hidden").addClass("border rounded");
                     } else {
                         $provider.addClass("o_hidden");
                     }
@@ -130,8 +131,12 @@ odoo.define('wechat_auth_oauth.login', function (require) {
                     dialog.appendTo($(document.body));
                 }
                 dialog.modal('show');
-            } else {
-                window.open(url);
+            } else if (auth_url.indexOf("https://open.weixin.qq.com/connect/oauth2/authorize") >= 0) {
+                console.log("使用公众号登录", auth_url);
+                window.open(auth_url);
+            }
+            else {
+                window.open(auth_url);
             }
 
         },

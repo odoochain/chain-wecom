@@ -43,3 +43,18 @@ class ResConfigSettings(models.TransientModel):
 			# print(new_image)
 			# image_io = io.BytesIO()
 			new_image.save(img_path, format="PNG")
+
+
+	def wechat_official_accounts_web_authorization(self):
+		"""
+		代公众号发起网页授权
+		"""
+		ICP = self.env["ir.config_parameter"].sudo()
+		appid = ICP.get_param("wechat_official_accounts_developer_appid")
+		secret = ICP.get_param("wechat_official_accounts_developer_secret")
+		return_url = ICP.get_param("web.base.url")
+
+		print(return_url)
+		# 第一步：请求 CODE
+
+		get_code_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=%s&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE&component_appid=component_appid#wechat_redirect" % (appid)

@@ -45,7 +45,6 @@ class OAuthLogin(Home):
                 "https://open.weixin.qq.com/connect/qrconnect"
                 in provider["auth_endpoint"]
             ):
-                # 判断是微信登录
                 return_url = (
                     request.httprequest.url_root + "wechat_scan_register_or_login"
                 )
@@ -73,6 +72,7 @@ class OAuthLogin(Home):
                     werkzeug.urls.url_encode(params),
                     "#wechat_redirect",
                 )
+                print("网站应用",provider["auth_link"])
 
             elif (
                 "https://open.weixin.qq.com/connect/oauth2/authorize"
@@ -83,23 +83,26 @@ class OAuthLogin(Home):
                 )
                 state = self.get_state(provider)
                 ICP = request.env["ir.config_parameter"].sudo()
-                appid = ICP.get_param("wechat_website_auth_appid")
+                appid = ICP.get_param("wechat_official_accounts_developer_appid")
                 params = dict(
                     appid=appid,
                     response_type="code",
                     redirect_uri=return_url,
                     scope=provider["scope"],
+                    forcePopup=True,
                     state=json.dumps(state).replace(" ", ""),
                 )
                 # -------------------------------------------------------
                 # 请求CODE 的链接格式
                 # "https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=snsapi_userinfo&state=SCOPE#wechat_redirect"
                 # -------------------------------------------------------
+
                 provider["auth_link"] = "%s?%s%s" % (
                     provider["auth_endpoint"],
                     werkzeug.urls.url_encode(params),
                     "#wechat_redirect",
                 )
+                print("公众号",provider["auth_link"])
 
         return providers
 
@@ -160,67 +163,56 @@ class OAuthController(http.Controller):
                 except Exception as e:
                     print(str(e))
                 finally:
+                    # 确保 request.session.db 和 state['d'] 相同，更新会话并重试请求
                     dbname = state["d"]
                     if not http.db_filter([dbname]):
                         return BadRequest()
                     ensure_db(db=dbname)
 
                     provider = state["p"]
-                    context = {"no_user_creation": True}
-                    registry = registry_get(dbname)
+                    # context = {"no_user_creation": True}
+                    # registry = registry_get(dbname)
 
-                    with registry.cursor() as cr:
-                        try:
-                            # auth_oauth可能会创建一个新用户，提交使下面的 authenticate() 自己的事务可见
-                            # db, login, key = (
-                            #     request.env["res.users"]
-                            #     .with_user(SUPERUSER_ID)
-                            #     .wechat_auth_oauth(provider, response)
-                            # )
-                            # request.env.cr.commit()
-                            env = api.Environment(cr, SUPERUSER_ID, context)
-                            db, login, key = (
-                                env["res.users"]
-                                .sudo()
-                                .wechat_auth_oauth(provider, response)
-                            )
-                            cr.commit()
+                    # with registry.cursor() as cr:
+                    try:
+                        # auth_oauth可能会创建一个新用户，提交使下面的 authenticate() 自己的事务可见
+                        db, login, key = request.env['res.users'].with_user(SUPERUSER_ID).wechat_auth_oauth(provider, response)
+                        request.env.cr.commit()
 
-                            print(db, login, key)
+                        action = state.get("a")
+                        menu = state.get("m")
+                        redirect = state["r"] if state.get("r") else False
+                        print(redirect)
+                        url = "/web"
+                        if redirect:
+                            url = redirect
+                        elif action:
+                            url = "/web#action=%s" % action
+                        elif menu:
+                            url = "/web#menu_id=%s" % menu
 
-                            action = state.get("a")
-                            menu = state.get("m")
-                            redirect = state["r"] if state.get("r") else False
-                            print(redirect)
-                            url = "/web"
-                            if redirect:
-                                url = redirect
-                            elif action:
-                                url = "/web#action=%s" % action
-                            elif menu:
-                                url = "/web#menu_id=%s" % menu
+                        pre_uid = request.session.authenticate(db, login, key)  # type: ignore
+                        resp = request.redirect(_get_login_redirect_url(pre_uid, url), 303)  # type: ignore
+                        resp.autocorrect_location_header = False
 
-                            pre_uid = request.session.authenticate(db, login, key)  # type: ignore
-                            resp = request.redirect(_get_login_redirect_url(pre_uid, url), 303)  # type: ignore
-                            resp.autocorrect_location_header = False
+                        # 由于/web是硬编码的，请验证用户是否有权登录
+                        if not request.env.user.has_group("base.group_user"):
+                            resp.location = "/my"
+                        elif werkzeug.urls.url_parse(resp.location).path == "/web" and not request.env.user.has_group("base.group_user"):
+                            resp.location = "/"
 
-                            # Since /web is hardcoded, verify user has right to land on it
-                            if werkzeug.urls.url_parse(
-                                resp.location
-                            ).path == "/web" and not request.env.user.has_group(  # type: ignore
-                                "base.group_user"
-                            ):
-                                resp.location = "/"
-                            return resp
-                        except AttributeError:
-                            # auth_signup is not installed
-                            url = "/web/login?oauth_error=1"
-                        except AccessDenied:
-                            # oauth credentials not valid, user could be on a temporary session
-                            url = "/web/login?oauth_error=3"
-                        except Exception as e:
-                            # signup error
-                            url = "/web/login?oauth_error=2"
+
+                        print("resp----------2",resp.location)
+                        return resp
+                    except AttributeError:
+                        # auth_signup is not installed
+                        url = "/web/login?oauth_error=1"
+                    except AccessDenied:
+                        # oauth credentials not valid, user could be on a temporary session
+                        url = "/web/login?oauth_error=3"
+                    except Exception as e:
+                        # signup error
+                        url = "/web/login?oauth_error=2"
 
     @http.route("/get_provider_wechat", type="json", auth="none")
     def get_provider_wechat(self, **kwargs):

@@ -9,7 +9,7 @@ class ResUsers(models.Model):
     _inherit = "res.users"
 
     # ---------------------
-    # 微信验证
+    # 检索并登录与提供程序和已验证的访问令牌对应的微信用户
     # ---------------------
     @api.model
     def wechat_auth_oauth(self, provider, params):

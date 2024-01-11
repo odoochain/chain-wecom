@@ -63,6 +63,23 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-xs-12 col-md-6 o_setting_box"
+                        attrs="{'invisible': [('module_wechat_official_accounts','=',False)]}">
+                        <div class="o_setting_left_pane">
+                            <i class="fa fa-sign-in fa-lg"
+                                aria-label="Initiate web page authorization" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label fw-bolder">Initiate web page authorization on behalf of official account</span>
+                            <div class="content-group">
+                                <div class="mt8">
+                                    <button class="oe_highlight ml-1" name="wechat_official_accounts_web_authorization"  string="Authorized by the official account webpage" type="object" icon="fa-sign-in fa-lg" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
             </field>
