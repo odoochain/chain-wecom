@@ -7,17 +7,6 @@
             <value eval="{'enabled': False}" />
         </function>
 
-        <!-- <function model="auth.oauth.provider" name="write">
-            <value eval="[ref('wechat_official_accounts.provider_wechat_one_click_login')]" />
-            <value eval="{'enabled': True}" />
-        </function>
-
-        <function model="auth.oauth.provider" name="write">
-            <value eval="[ref('wechat_website_application.provider_wechat_scan_code')]" />
-            <value eval="{'enabled': True}" />
-        </function> -->
-
-
     </data>
 
     <data noupdate="0">

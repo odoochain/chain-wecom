@@ -28,6 +28,17 @@ class ResConfigSettings(models.TransientModel):
 		string="WeChat Official accounts Developer secret key",
 		config_parameter="wechat_official_accounts_developer_secret",
 	)
+	wechat_official_accounts_web_auth_lang = fields.Selection(
+        string="The national and regional language version authorized by the WeChat official account webpage",
+        selection=[
+            ("zh_CN", "Chinese (Simplified)"),
+            ("zh_TW", "Chinese (Traditional)"),
+            ("en", "English"),
+        ],
+        default="zh_CN",
+        required=True,
+        config_parameter="wechat_official_accounts_web_auth_lang",
+    )
 
 
 	@api.onchange('social_wechat_official_accounts')

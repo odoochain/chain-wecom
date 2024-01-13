@@ -20,8 +20,11 @@ class ResUsers(models.Model):
         :param params: {'access_token': '', 'expires_in': 7200, 'refresh_token': '', 'openid': '', 'scope': 'snsapi_login', 'unionid': ''}
         :return
         """
+        print(params)
         wechat_open_endpoint = "https://open.weixin.qq.com/connect/qrconnect"
+        wechat_official_accounts_endpoint = "https://open.weixin.qq.com/connect/oauth2/authorize"
 
+        auth_type= ""
         wechat_providers = (
             self.env["auth.oauth.provider"]
             .sudo()
@@ -31,6 +34,13 @@ class ResUsers(models.Model):
                 ]
             )
         )
+        if wechat_open_endpoint in wechat_providers["auth_endpoint"]:
+            auth_type="scan"
+        elif wechat_official_accounts_endpoint in wechat_providers["auth_endpoint"]:
+            auth_type="one_click"
+
+        if auth_type=="":
+            return AccessDenied
 
         ICP = self.env["ir.config_parameter"].sudo()
         default_user_company = ICP.get_param("wechat_default_user_company")
@@ -45,7 +55,7 @@ class ResUsers(models.Model):
         elif default_user_type == "11":
             group_id = self.env["ir.model.data"]._xmlid_to_res_id("base.group_public")
 
-        # print("当前时间", current_time)
+        # 用户信息
         # {'openid': '', 'nickname': 'ð\x9f\x8c\x88å½©è\x99¹å·¥ä½\x9cå®¤', 'sex': 0, 'language': '', 'city': '', 'province': '', 'country': '', 'headimgurl': '', 'privilege': [], 'unionid': ''}
 
         # 查询用户是否存在
@@ -62,7 +72,7 @@ class ResUsers(models.Model):
             ],
             limit=1,
         )
-
+        print(oauth_user)
         if not oauth_user:
             # 创建用户
             nickname = params["nickname"].encode("ISO-8859-1").decode("utf-8")
@@ -76,11 +86,14 @@ class ResUsers(models.Model):
                     "groups_id": [(6, 0, [group_id])],
                     "company_ids": [(6, 0, [int(default_user_company)])],
                     "company_id": int(default_user_company),
-                    # 以下为微信字段
+                    # 以下为微信专有字段
                     "is_wechat_user": True,
                     "wechat_openid": params["openid"],
                     "wechat_nickname": nickname,
                     "wechat_unionid": params["unionid"],
+                    "wechat_access_token": params["access_token"],
+                    # "wechat_access_token_expires_in": params["expires_in"],
+                    "wechat_refresh_token": params["refresh_token"],
                 }
             )
         print(oauth_user.id)

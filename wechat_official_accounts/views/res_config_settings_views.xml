@@ -64,7 +64,25 @@
                         </div>
                     </div>
 
-                    <div class="col-xs-12 col-md-6 o_setting_box"
+                    <div class="col-12 col-lg-6 o_setting_box"
+                        attrs="{'invisible': [('module_wechat_official_accounts','=',False)]}">
+                        <div class="o_setting_left_pane">
+                            <i class="fa fa-language fa-lg" role="img"
+                                aria-label="Country/Region Language Version"
+                                title="Country/Region Language Version"></i>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="wechat_official_accounts_web_auth_lang" />
+                            <div class="o_row">
+                                <field name="wechat_official_accounts_web_auth_lang" />
+                            </div>
+                            <div class="text-muted">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="col-xs-12 col-md-6 o_setting_box"
                         attrs="{'invisible': [('module_wechat_official_accounts','=',False)]}">
                         <div class="o_setting_left_pane">
                             <i class="fa fa-sign-in fa-lg"
@@ -78,7 +96,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="social_sidebar" name="Social Sidebar Panel" inherit_id="web.frontend_layout">
+    <!-- <template id="social_sidebar" name="Social Sidebar Panel" inherit_id="web.frontend_layout">
         <xpath expr="//main" position="after">
             <div class="social_sidebar" >
 
@@ -11,5 +11,5 @@
                 </a>
             </div>
         </xpath>
-    </template>
+    </template> -->
 </odoo>

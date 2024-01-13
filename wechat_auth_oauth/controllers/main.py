@@ -72,14 +72,13 @@ class OAuthLogin(Home):
                     werkzeug.urls.url_encode(params),
                     "#wechat_redirect",
                 )
-                print("网站应用",provider["auth_link"])
 
             elif (
                 "https://open.weixin.qq.com/connect/oauth2/authorize"
                 in provider["auth_endpoint"]
             ):
                 return_url = (
-                    request.httprequest.url_root + "wechat_scan_register_or_login"
+                    request.httprequest.url_root + "wechat_one_click_register_or_login"
                 )
                 state = self.get_state(provider)
                 ICP = request.env["ir.config_parameter"].sudo()
@@ -102,12 +101,12 @@ class OAuthLogin(Home):
                     werkzeug.urls.url_encode(params),
                     "#wechat_redirect",
                 )
-                print("公众号",provider["auth_link"])
 
         return providers
 
 
 class OAuthController(http.Controller):
+
     @http.route(
         "/wechat_scan_register_or_login",
         type="http",
@@ -130,7 +129,7 @@ class OAuthController(http.Controller):
                 state.update({state_object[0]: state_object[1]})
             elif len(state_object) == 3:
                 state.update({state_object[0]: state_object[1] + ":" + state_object[2]})
-        # 参考文档 https://www.cnblogs.com/mayanan/p/16177596.html
+
 
         ICP = request.env["ir.config_parameter"].sudo()
         appid = ICP.get_param("wechat_website_auth_appid")
@@ -159,7 +158,7 @@ class OAuthController(http.Controller):
                     % (access_token, openid)
                 )
                 try:
-                    response = requests.get(get_userinfo_url).json()
+                    userinfo = requests.get(get_userinfo_url).json()
                 except Exception as e:
                     print(str(e))
                 finally:
@@ -170,19 +169,20 @@ class OAuthController(http.Controller):
                     ensure_db(db=dbname)
 
                     provider = state["p"]
-                    # context = {"no_user_creation": True}
-                    # registry = registry_get(dbname)
-
-                    # with registry.cursor() as cr:
+                    userinfo.update({
+                        "access_token":response["access_token"],
+                        "expires_in":response["expires_in"],
+                        "refresh_token":response["refresh_token"],
+                    })
                     try:
                         # auth_oauth可能会创建一个新用户，提交使下面的 authenticate() 自己的事务可见
-                        db, login, key = request.env['res.users'].with_user(SUPERUSER_ID).wechat_auth_oauth(provider, response)
+                        db, login, key = request.env['res.users'].with_user(SUPERUSER_ID).wechat_auth_oauth(provider, userinfo)
                         request.env.cr.commit()
 
                         action = state.get("a")
                         menu = state.get("m")
                         redirect = state["r"] if state.get("r") else False
-                        print(redirect)
+
                         url = "/web"
                         if redirect:
                             url = redirect
@@ -200,9 +200,6 @@ class OAuthController(http.Controller):
                             resp.location = "/my"
                         elif werkzeug.urls.url_parse(resp.location).path == "/web" and not request.env.user.has_group("base.group_user"):
                             resp.location = "/"
-
-
-                        print("resp----------2",resp.location)
                         return resp
                     except AttributeError:
                         # auth_signup is not installed
@@ -213,6 +210,108 @@ class OAuthController(http.Controller):
                     except Exception as e:
                         # signup error
                         url = "/web/login?oauth_error=2"
+
+
+    @http.route(
+        "/wechat_one_click_register_or_login",
+        type="http",
+        auth="none",
+    )
+    @fragment_to_query_string
+    def wechat_one_click_register_or_login(self,**kw):
+        """
+        微信内置浏览器一键注册和登录
+        """
+        # 通过code换取网页授权access_token
+        code = kw.pop("code", None)
+        state_str = kw["state"]
+        if "\\" in state_str:
+            state_str = state_str.replace("\\", "")
+        state_array = state_str.replace("{", "").replace("}", "").split(",")
+        state = {}
+        for state_item in state_array:
+            state_object = state_item.split(":")
+            if len(state_object) == 2:
+                state.update({state_object[0]: state_object[1]})
+            elif len(state_object) == 3:
+                state.update({state_object[0]: state_object[1] + ":" + state_object[2]})
+
+        ICP = request.env["ir.config_parameter"].sudo()
+        appid = ICP.get_param("wechat_official_accounts_developer_appid")
+        secret = ICP.get_param("wechat_official_accounts_developer_secret")
+        lang  = ICP.get_param("wechat_official_accounts_web_auth_lang")
+        get_access_token_url = (
+            "https://api.weixin.qq.com/sns/oauth2/access_token?appid=%s&secret=%s&code=%s&grant_type=authorization_code"
+            % (appid, secret, code)
+        )
+        try:
+            response = requests.get(get_access_token_url).json()
+        except Exception as e:
+            print(str(e))
+        finally:
+            # {'access_token': '', 'expires_in': 7200, 'refresh_token': '', 'openid': '', 'scope': ''}
+            current_time = time.time()  # 当前时间戳
+            access_token = response["access_token"]
+            expires_in = response["expires_in"]
+            refresh_token = response["refresh_token"]
+            openid = response["openid"]
+            scope = response["scope"]
+
+            # 拉取用户信息(需scope为 snsapi_userinfo)
+            get_userinfo_url = "https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s&lang=%s" % (access_token, openid, lang)
+            try:
+                userinfo = requests.get(get_userinfo_url).json()
+            except Exception as e:
+                print(str(e))
+            finally:
+                # 确保 request.session.db 和 state['d'] 相同，更新会话并重试请求
+                dbname = state["d"]
+                if not http.db_filter([dbname]):
+                    return BadRequest()
+                ensure_db(db=dbname)
+
+                provider = state["p"]
+                userinfo.update({
+                    "access_token":response["access_token"],
+                    "expires_in":response["expires_in"],
+                    "refresh_token":response["refresh_token"],
+                })
+                try:
+                    # auth_oauth可能会创建一个新用户，提交使下面的 authenticate() 自己的事务可见
+                    db, login, key = request.env['res.users'].with_user(SUPERUSER_ID).wechat_auth_oauth(provider, userinfo)
+                    request.env.cr.commit()
+
+                    action = state.get("a")
+                    menu = state.get("m")
+                    redirect = state["r"] if state.get("r") else False
+
+                    url = "/web"
+                    if redirect:
+                        url = redirect
+                    elif action:
+                        url = "/web#action=%s" % action
+                    elif menu:
+                        url = "/web#menu_id=%s" % menu
+
+                    pre_uid = request.session.authenticate(db, login, key)  # type: ignore
+                    resp = request.redirect(_get_login_redirect_url(pre_uid, url), 303)  # type: ignore
+                    resp.autocorrect_location_header = False
+
+                    # 由于/web是硬编码的，请验证用户是否有权登录
+                    if not request.env.user.has_group("base.group_user"):
+                        resp.location = "/my"
+                    elif werkzeug.urls.url_parse(resp.location).path == "/web" and not request.env.user.has_group("base.group_user"):
+                        resp.location = "/"
+                    return resp
+                except AttributeError:
+                    # auth_signup is not installed
+                    url = "/web/login?oauth_error=1"
+                except AccessDenied:
+                    # oauth credentials not valid, user could be on a temporary session
+                    url = "/web/login?oauth_error=3"
+                except Exception as e:
+                    # signup error
+                    url = "/web/login?oauth_error=2"
 
     @http.route("/get_provider_wechat", type="json", auth="none")
     def get_provider_wechat(self, **kwargs):
