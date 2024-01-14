@@ -22,9 +22,9 @@
     "assets": {
         "web.assets_backend": [],
         "web.assets_frontend": [
-            'wechat_official_accounts/static/**/*.js',
-            'wechat_official_accounts/static/**/*.xml',
-            'wechat_official_accounts/static/**/*.scss',
+            # 'wechat_official_accounts/static/**/*.js',
+            # 'wechat_official_accounts/static/**/*.xml',
+            # 'wechat_official_accounts/static/**/*.scss',
         ],
     },
     "license": "Other proprietary",

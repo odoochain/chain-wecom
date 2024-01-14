@@ -12,6 +12,12 @@
             action="wechat_base.wechat_config_settings_action"
             groups="group_wechat_settings_manager" />
 
+        <!-- 2.微信用户-->
+        <menuitem id="menu_wechat_users" name="WeChat Users"
+            parent="wechat_base.menu_wechat_root" sequence="2"
+            action="wechat_base.wechat_users_action"
+            groups="group_wechat_settings_manager" />
+
         <!-- 99.自动任务-->
         <menuitem id="menu_wechat_cron" name="Wechat schedule tasks"
             parent="wechat_base.menu_wechat_root"

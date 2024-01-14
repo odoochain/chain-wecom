@@ -224,18 +224,26 @@ class OAuthController(http.Controller):
         """
         # 通过code换取网页授权access_token
         code = kw.pop("code", None)
-        state_str = kw["state"]
-        if "\\" in state_str:
-            state_str = state_str.replace("\\", "")
-        state_array = state_str.replace("{", "").replace("}", "").split(",")
-        state = {}
-        for state_item in state_array:
-            state_object = state_item.split(":")
-            if len(state_object) == 2:
-                state.update({state_object[0]: state_object[1]})
-            elif len(state_object) == 3:
-                state.update({state_object[0]: state_object[1] + ":" + state_object[2]})
+        # print(kw["state"],type(kw["state"]))
+        state = json.loads(kw['state'])
+        # print(state,type(state))
+        # state_str = kw["state"]
+        # if "\\" in state_str:
+        #     state_str = state_str.replace("\\", "")
+        # state_array = state_str.replace("{", "").replace("}", "").split(",")
+        # state = {}
+        # for state_item in state_array:
+        #     state_object = state_item.split(":")
+        #     print(state_object,type(state_object))
+        #     for index, s in enumerate(state_object):
+        #         if "'" in s:
+        #             state_object[index] = state_object[index].replace("'", "")
 
+        #     if len(state_object) == 2:
+        #         state.update({state_object[0]: state_object[1]})
+        #     elif len(state_object) == 3:
+        #         state.update({state_object[0]: state_object[1] + ":" + state_object[2]})
+        # print(state,type(state))
         ICP = request.env["ir.config_parameter"].sudo()
         appid = ICP.get_param("wechat_official_accounts_developer_appid")
         secret = ICP.get_param("wechat_official_accounts_developer_secret")
@@ -265,6 +273,7 @@ class OAuthController(http.Controller):
                 print(str(e))
             finally:
                 # 确保 request.session.db 和 state['d'] 相同，更新会话并重试请求
+                # print(state,type(state))
                 dbname = state["d"]
                 if not http.db_filter([dbname]):
                     return BadRequest()
@@ -283,6 +292,7 @@ class OAuthController(http.Controller):
 
                     action = state.get("a")
                     menu = state.get("m")
+                    # print(state["r"])
                     redirect = state["r"] if state.get("r") else False
 
                     url = "/web"

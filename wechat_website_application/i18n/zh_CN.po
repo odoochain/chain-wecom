@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-09 16:22+0000\n"
-"PO-Revision-Date: 2024-01-10 00:26+0800\n"
+"POT-Creation-Date: 2024-01-14 05:41+0000\n"
+"PO-Revision-Date: 2024-01-14 13:43+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -20,20 +20,18 @@ msgstr ""
 #. module: wechat_website_application
 #: model_terms:ir.ui.view,arch_db:wechat_website_application.res_config_settings_view_form
 msgid ""
-"<i class=\"fa fa fa-paint-brush fa-lg\" role=\"img\" aria-label=\"Style\" "
-"title=\"Style\"/>"
+"<i class=\"fa fa fa-paint-brush fa-lg\" role=\"img\" aria-label=\"Style\" title=\"Style\"/>"
 msgstr ""
-"<i class=\"fa fa fa-paint-brush fa-lg\" role=\"img\" aria-label=\"样式\" "
-"title=\"样式\"/>"
+"<i class=\"fa fa fa-paint-brush fa-lg\" role=\"img\" aria-label=\"样式\" title=\"样式\"/>"
 
 #. module: wechat_website_application
 #: model_terms:ir.ui.view,arch_db:wechat_website_application.res_config_settings_view_form
 msgid ""
-"<i class=\"fa fa-eyedropper fa-lg\" role=\"img\" aria-label=\"Color Style\" "
-"title=\"Color Style\"/>"
+"<i class=\"fa fa-eyedropper fa-lg\" role=\"img\" aria-label=\"Color Style\" title=\"Color "
+"Style\"/>"
 msgstr ""
-"<i class=\"fa fa-eyedropper fa-lg\" role=\"img\" aria-label=\"颜色风格\" "
-"title=\"颜色风格\"/>"
+"<i class=\"fa fa-eyedropper fa-lg\" role=\"img\" aria-label=\"颜色风格\" title=\"颜色风格\"/"
+">"
 
 #. module: wechat_website_application
 #: model_terms:ir.ui.view,arch_db:wechat_website_application.res_config_settings_view_form
@@ -43,27 +41,24 @@ msgstr "<i class=\"fa fa-key fa-lg\" aria-label=\"身份验证密钥\"/>"
 #. module: wechat_website_application
 #: model_terms:ir.ui.view,arch_db:wechat_website_application.res_config_settings_view_form
 msgid ""
-"<i class=\"fa fa-language fa-lg\" role=\"img\" aria-label=\"Ui Language\" "
-"title=\"Ui Language\"/>"
+"<i class=\"fa fa-language fa-lg\" role=\"img\" aria-label=\"Ui Language\" title=\"Ui "
+"Language\"/>"
 msgstr ""
-"<i class=\"fa fa-language fa-lg\" role=\"img\" aria-label=\"界面语言\" "
-"title=\"界面语言\"/>"
+"<i class=\"fa fa-language fa-lg\" role=\"img\" aria-label=\"界面语言\" title=\"界面语言\"/>"
 
 #. module: wechat_website_application
 #: model_terms:ir.ui.view,arch_db:wechat_website_application.res_config_settings_view_form
-msgid ""
-"<i class=\"fa fa-puzzle-piece fa-lg\" aria-label=\"Authentication "
-"Application\"/>"
+msgid "<i class=\"fa fa-puzzle-piece fa-lg\" aria-label=\"Authentication Application\"/>"
 msgstr "<i class=\"fa fa-puzzle-piece fa-lg\" aria-label=\"身份验证应用\"/>"
 
 #. module: wechat_website_application
 #: model_terms:ir.ui.view,arch_db:wechat_website_application.res_config_settings_view_form
 msgid ""
-"<i class=\"fa fa-qrcode fa-lg\" role=\"img\" aria-label=\"QR code display "
-"method\" title=\"QR code display method\"/>"
+"<i class=\"fa fa-qrcode fa-lg\" role=\"img\" aria-label=\"QR code display method\" "
+"title=\"QR code display method\"/>"
 msgstr ""
-"<i class=\"fa fa-qrcode fa-lg\" role=\"img\" aria-label=\"二维码显示方式\" "
-"title=\"二维码显示方式\"/>"
+"<i class=\"fa fa-qrcode fa-lg\" role=\"img\" aria-label=\"二维码显示方式\" title=\"二维码显"
+"示方式\"/>"
 
 #. module: wechat_website_application
 #: model_terms:ir.ui.view,arch_db:wechat_website_application.res_config_settings_view_form
@@ -161,19 +156,18 @@ msgid "Right"
 msgstr "居右"
 
 #. module: wechat_website_application
-#: model:ir.actions.act_window,name:wechat_website_application.wechat_config_settings_action
-msgid "Settings"
-msgstr "设置"
+#: model:auth.oauth.provider,body:wechat_website_application.provider_wechat_scan_code
+msgid "Scan the code to log in on WeChat"
+msgstr "扫码登录微信"
 
 #. module: wechat_website_application
 #: model_terms:ir.ui.view,arch_db:wechat_website_application.res_config_settings_view_form
 msgid ""
 "The login page should have a light background\n"
-"                                and black should be selected. <br/> The "
-"loginpage should have a\n"
+"                                and black should be selected. <br/> The loginpage should "
+"have a\n"
 "                                dark background and white should beselected."
-msgstr ""
-"登录页面具有浅色背景应当选择黑色。<br/> 登录页面具有深色背景，应选择白色。"
+msgstr "登录页面具有浅色背景应当选择黑色。<br/> 登录页面具有深色背景，应选择白色。"
 
 #. module: wechat_website_application
 #: model:ir.model,name:wechat_website_application.model_res_users
@@ -194,6 +188,11 @@ msgstr "微信网站应用密钥"
 #: model:ir.model.fields,field_description:wechat_website_application.field_res_config_settings__wechat_website_auth_lang
 msgid "WeChat website application ui language"
 msgstr "微信网站应用界面语言"
+
+#. module: wechat_website_application
+#: model:auth.oauth.provider,name:wechat_website_application.provider_wechat_scan_code
+msgid "Wechat Scan Code OAuth2"
+msgstr "微信扫码OAuth2"
 
 #. module: wechat_website_application
 #: model:ir.model.fields.selection,name:wechat_website_application.selection__res_config_settings__wechat_website_auth_qrcode_style__white
