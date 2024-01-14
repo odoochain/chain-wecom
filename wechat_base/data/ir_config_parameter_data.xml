@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="default_template_wechat_user_config" model="ir.config_parameter">
+            <field name="key">wechat_template_portal_user_id</field>
+            <field name="value" ref="base.template_portal_user_id"/>
+        </record>
+
+    </data>
+
+</odoo>

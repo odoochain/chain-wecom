@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-10 02:02+0000\n"
-"PO-Revision-Date: 2024-01-10 10:05+0800\n"
+"POT-Creation-Date: 2024-01-14 15:14+0000\n"
+"PO-Revision-Date: 2024-01-14 23:15+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -39,6 +39,13 @@ msgid "<i class=\"fa fa-user fa-lg\" aria-label=\"Default User Type\"/>"
 msgstr "<i class=\"fa fa-user fa-lg\" aria-label=\"默认用户类型\"/>"
 
 #. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid ""
+"<i class=\"fa fa-users fa-lg\" aria-label=\"How to register and create new "
+"users\"/>"
+msgstr "<i class=\"fa fa-users fa-lg\" aria-label=\"如何注册和创建新用户\"/>"
+
+#. module: wechat_base
 #: model_terms:ir.ui.view,arch_db:wechat_base.view_wechat_res_users_kanban
 msgid ""
 "<i class=\"fa fa-weixin text-primary\" role=\"img\" aria-label=\"WeChat "
@@ -60,6 +67,7 @@ msgstr "管理员"
 
 #. module: wechat_base
 #: model:ir.model,name:wechat_base.model_res_company
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
 msgid "Companies"
 msgstr "公司"
 
@@ -84,12 +92,17 @@ msgid "Default registered company for WeChat users"
 msgstr "微信用户默认注册公司"
 
 #. module: wechat_base
-#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__wechat_default_user_type
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__wechat_auth_signup_default_user_type
 msgid "Default registered user type for WeChat users"
 msgstr "微信用户的默认注册用户类型"
 
 #. module: wechat_base
-#: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_default_user_type__1
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__wechat_auth_signup_type
+msgid "How to create new users through WeChat registration"
+msgstr "如何通过微信注册创建新用户"
+
+#. module: wechat_base
+#: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_auth_signup_default_user_type__1
 msgid "Internal User"
 msgstr "内部用户"
 
@@ -99,17 +112,32 @@ msgid "Login account"
 msgstr "登录帐户"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_auth_oauth_provider__description
+msgid "OAuth description"
+msgstr "OAuth描述"
+
+#. module: wechat_base
+#: model:ir.model,name:wechat_base.model_auth_oauth_provider
+msgid "OAuth2 provider"
+msgstr "OAuth2服务商"
+
+#. module: wechat_base
 #: model:res.groups,name:wechat_base.group_wechat_settings_user
 msgid "Officer"
 msgstr "职员"
 
 #. module: wechat_base
-#: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_default_user_type__10
+#: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_auth_signup_default_user_type__10
 msgid "Portal User"
 msgstr "门户用户"
 
 #. module: wechat_base
-#: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_default_user_type__11
+#: model:ir.model.fields,field_description:wechat_base.field_auth_oauth_provider__name
+msgid "Provider name"
+msgstr "服务商名称"
+
+#. module: wechat_base
+#: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_auth_signup_default_user_type__11
 msgid "Public User"
 msgstr "公开用户"
 
@@ -117,6 +145,11 @@ msgstr "公开用户"
 #: model:ir.actions.act_window,name:wechat_base.wechat_config_settings_action
 msgid "Settings"
 msgstr "设置"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__wechat_auth_signup_template_user_id
+msgid "Template user for new users created through WeChat registration"
+msgstr "通过微信注册创建的新用户模板用户"
 
 #. module: wechat_base
 #: model:res.groups,comment:wechat_base.group_wechat_settings_user
@@ -158,6 +191,16 @@ msgid "User"
 msgstr "用户"
 
 #. module: wechat_base
+#: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_auth_signup_type__group
+msgid "User group"
+msgstr "用户组"
+
+#. module: wechat_base
+#: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_auth_signup_type__template
+msgid "User template"
+msgstr "用户模板"
+
+#. module: wechat_base
 #: model:ir.ui.menu,name:wechat_base.menu_wechat_root
 #: model_terms:ir.ui.view,arch_db:wechat_base.view_wechat_users_form
 msgid "WeChat"
@@ -184,6 +227,11 @@ msgstr "微信公众号"
 #: model:ir.ui.menu,name:wechat_base.menu_wechat_configuration
 msgid "WeChat Settings"
 msgstr "微信配置"
+
+#. module: wechat_base
+#: model:ir.ui.menu,name:wechat_base.menu_wechat_users
+msgid "WeChat Users"
+msgstr "微信用户"
 
 #. module: wechat_base
 #: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
@@ -234,6 +282,11 @@ msgstr "微信网站应用登录"
 #: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
 msgid "Wechat Settings"
 msgstr "微信配置"
+
+#. module: wechat_base
+#: model:ir.actions.act_window,name:wechat_base.wechat_users_action
+msgid "Wechat User"
+msgstr "微信用户"
 
 #. module: wechat_base
 #: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_nickname

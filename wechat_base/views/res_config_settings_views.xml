@@ -56,16 +56,48 @@
                                     </div>
                                 </div>
 
+
+
                                 <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_left_pane">
+                                        <i class="fa fa-users fa-lg"
+                                            aria-label="How to register and create new users" />
+                                    </div>
+                                    <div class="o_setting_right_pane">
+                                        <label for="wechat_auth_signup_type" />
+                                        <div class="content-group">
+                                            <div class="mt8">
+                                                <field name="wechat_auth_signup_type" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('wechat_auth_signup_type','!=','template')]}">
                                     <div class="o_setting_left_pane">
                                         <i class="fa fa-user fa-lg"
                                             aria-label="Default User Type" />
                                     </div>
                                     <div class="o_setting_right_pane">
-                                        <label for="wechat_default_user_type" />
+                                        <label for="wechat_auth_signup_template_user_id" />
                                         <div class="content-group">
                                             <div class="mt8">
-                                                <field name="wechat_default_user_type" />
+                                                <field name="wechat_auth_signup_template_user_id" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('wechat_auth_signup_type','!=','group')]}">
+                                    <div class="o_setting_left_pane">
+                                        <i class="fa fa-user fa-lg"
+                                            aria-label="Default User Type" />
+                                    </div>
+                                    <div class="o_setting_right_pane">
+                                        <label for="wechat_auth_signup_default_user_type" />
+                                        <div class="content-group">
+                                            <div class="mt8">
+                                                <field name="wechat_auth_signup_default_user_type" />
                                             </div>
                                         </div>
                                     </div>

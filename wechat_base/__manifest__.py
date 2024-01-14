@@ -14,6 +14,7 @@
         """,
     "depends": ["base_setup","auth_oauth", "wechat_api"],
     "data": [
+        "data/ir_config_parameter_data.xml",
         "security/wechat_security.xml",
         "security/ir.model.access.csv",
         "views/res_config_settings_views.xml",

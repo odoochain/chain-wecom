@@ -27,7 +27,26 @@ class ResConfigSettings(models.TransientModel):
         config_parameter="wechat_default_user_company",
     )
 
-    wechat_default_user_type = fields.Selection(
+    wechat_auth_signup_type = fields.Selection(
+        string="How to create new users through WeChat registration",
+        selection=[
+            ("group", "User group"),  # 用户组
+            ("template", "User template"),  # 用户模板
+        ],
+        default="group",
+        required=True,
+        config_parameter="wechat_auth_signup_type",
+    )
+
+    wechat_auth_signup_template_user_id = fields.Many2one(
+        'res.users',
+        string='Template user for new users created through WeChat registration',
+        required=True,
+        config_parameter='wechat_template_portal_user_id',
+        default=5,
+        )
+
+    wechat_auth_signup_default_user_type = fields.Selection(
         string="Default registered user type for WeChat users",
         selection=[
             ("1", "Internal User"),  # 内部用户
@@ -36,7 +55,7 @@ class ResConfigSettings(models.TransientModel):
         ],
         default="10",
         required=True,
-        config_parameter="wechat_default_user_type",
+        config_parameter="wechat_auth_signup_default_user_type",
     )
 
     # 模块

@@ -224,26 +224,34 @@ class OAuthController(http.Controller):
         """
         # 通过code换取网页授权access_token
         code = kw.pop("code", None)
-        # print(kw["state"],type(kw["state"]))
-        state = json.loads(kw['state'])
-        # print(state,type(state))
-        # state_str = kw["state"]
-        # if "\\" in state_str:
-        #     state_str = state_str.replace("\\", "")
-        # state_array = state_str.replace("{", "").replace("}", "").split(",")
-        # state = {}
-        # for state_item in state_array:
-        #     state_object = state_item.split(":")
-        #     print(state_object,type(state_object))
-        #     for index, s in enumerate(state_object):
-        #         if "'" in s:
-        #             state_object[index] = state_object[index].replace("'", "")
 
-        #     if len(state_object) == 2:
-        #         state.update({state_object[0]: state_object[1]})
-        #     elif len(state_object) == 3:
-        #         state.update({state_object[0]: state_object[1] + ":" + state_object[2]})
-        # print(state,type(state))
+        print(kw["state"],type(kw["state"]))
+        # 微信开者工具和手机首位生成的 state 值 不一致，故需要进行 try except 进行处理
+        # {d:wechat,p:13,r:https://genealogy.odooeasy.cn/web} <class 'str'>  微信开发者工具的值
+        # {"d":"wechat","p":13,"r":"https%3A%2F%2Fgenealogy.odooeasy.cn%2Fweb"} <class 'str'> 手机微信的值
+        try:
+            print("--------1",kw['state'],type(kw['state']))
+            state = json.loads(kw['state'])
+        except:
+            print("--------2",kw['state'],type(kw['state']))
+            state_str = kw["state"]
+            if "\\" in state_str:
+                state_str = state_str.replace("\\", "")
+            state_array = state_str.replace("{", "").replace("}", "").split(",")
+            state = {}
+            for state_item in state_array:
+                state_object = state_item.split(":")
+                print(state_object,type(state_object))
+                for index, s in enumerate(state_object):
+                    if "'" in s:
+                        state_object[index] = state_object[index].replace("'", "")
+
+                if len(state_object) == 2:
+                    state.update({state_object[0]: state_object[1]})
+                elif len(state_object) == 3:
+                    state.update({state_object[0]: state_object[1] + ":" + state_object[2]})
+
+        print("--------3",state,type(state))
         ICP = request.env["ir.config_parameter"].sudo()
         appid = ICP.get_param("wechat_official_accounts_developer_appid")
         secret = ICP.get_param("wechat_official_accounts_developer_secret")

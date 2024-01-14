@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
+
+from ast import literal_eval
 import urllib
 from urllib import parse
 from odoo import models, api, _
 from odoo.exceptions import AccessDenied
-
+from odoo.tools.misc import ustr
+from odoo.addons.auth_signup.models.res_partner import SignupError, now
 
 class ResUsers(models.Model):
     _inherit = "res.users"
@@ -20,7 +23,8 @@ class ResUsers(models.Model):
         :param params: {'access_token': '', 'expires_in': 7200, 'refresh_token': '', 'openid': '', 'scope': 'snsapi_login', 'unionid': ''}
         :return
         """
-        print(params)
+
+        ICP = self.env["ir.config_parameter"].sudo()
         wechat_open_endpoint = "https://open.weixin.qq.com/connect/qrconnect"
         wechat_official_accounts_endpoint = "https://open.weixin.qq.com/connect/oauth2/authorize"
 
@@ -42,26 +46,9 @@ class ResUsers(models.Model):
         if auth_type=="":
             return AccessDenied
 
-        ICP = self.env["ir.config_parameter"].sudo()
-        default_user_company = ICP.get_param("wechat_default_user_company")
-        default_user_type = ICP.get_param("wechat_default_user_type")
-
-        # 用户类型
-        group_id = self.env["ir.model.data"]._xmlid_to_res_id("base.group_portal")
-        if default_user_type == "1":
-            group_id = self.env["ir.model.data"]._xmlid_to_res_id("base.group_user")
-        elif default_user_type == "10":
-            group_id = self.env["ir.model.data"]._xmlid_to_res_id("base.group_portal")
-        elif default_user_type == "11":
-            group_id = self.env["ir.model.data"]._xmlid_to_res_id("base.group_public")
-
-        # 用户信息
-        # {'openid': '', 'nickname': 'ð\x9f\x8c\x88å½©è\x99¹å·¥ä½\x9cå®¤', 'sex': 0, 'language': '', 'city': '', 'province': '', 'country': '', 'headimgurl': '', 'privilege': [], 'unionid': ''}
-
         # 查询用户是否存在
-        SudoUser = self.sudo()
         oauth_openid = params["openid"]
-        oauth_user = SudoUser.search(
+        oauth_user = self.sudo().search(
             [
                 "|",
                 ("wechat_openid", "=", params["openid"]),
@@ -72,37 +59,97 @@ class ResUsers(models.Model):
             ],
             limit=1,
         )
-        print(oauth_user)
+
         if not oauth_user:
             # 创建用户
+            # 用户信息
+        # {'openid': '', 'nickname': 'ð\x9f\x8c\x88å½©è\x99¹å·¥ä½\x9cå®¤', 'sex': 0, 'language': '', 'city': '', 'province': '', 'country': '', 'headimgurl': '', 'privilege': [], 'unionid': ''}
+            user_company = ICP.get_param("wechat_default_user_company")
             nickname = params["nickname"].encode("ISO-8859-1").decode("utf-8")
-            oauth_user = SudoUser.create(
-                {
-                    "name": nickname,
-                    "login": params["openid"],
-                    "password": self.env["wechat.tools.security"].random_passwd(8),
-                    "share": False,
-                    "active": True,
-                    "groups_id": [(6, 0, [group_id])],
-                    "company_ids": [(6, 0, [int(default_user_company)])],
-                    "company_id": int(default_user_company),
-                    # 以下为微信专有字段
-                    "is_wechat_user": True,
-                    "wechat_openid": params["openid"],
-                    "wechat_nickname": nickname,
-                    "wechat_unionid": params["unionid"],
-                    "wechat_access_token": params["access_token"],
-                    # "wechat_access_token_expires_in": params["expires_in"],
-                    "wechat_refresh_token": params["refresh_token"],
-                }
-            )
-        print(oauth_user.id)
+            values = {
+                "name": nickname,
+                "login": params["openid"],
+                "password": self.env["wechat.tools.security"].random_passwd(8),
+                "share": False,
+                "active": True,
+                "company_ids": [(6, 0, [int(user_company)])],
+                "company_id": int(user_company),
+                # 以下为微信专有字段
+                "is_wechat_user": True,
+                "wechat_openid": params["openid"],
+                "wechat_nickname": nickname,
+                "wechat_unionid": params["unionid"],
+                "wechat_access_token": params["access_token"],
+                # "wechat_access_token_expires_in": params["expires_in"],
+                "wechat_refresh_token": params["refresh_token"],
+            }
+            oauth_user = self._wechat_signup_create_user(values,ICP)
+
         if oauth_user:
             print("验证成功--------")
             return (self.env.cr.dbname, oauth_user.login, oauth_openid)  # type: ignore
         else:
             return AccessDenied
 
+
+    def _wechat_signup_create_user(self,values,ICP):
+        """
+        微信注册新用户
+        """
+        auth_signup_type = ICP.get_param("wechat_auth_signup_type")
+
+        if auth_signup_type=="group":
+            return self._wechet_create_user_from_group(values,ICP)
+        elif auth_signup_type=="template":
+            return self._wechet_create_user_from_template(values,ICP)
+        else:
+            return False
+
+    def _wechet_create_user_from_group(self,values,ICP):
+        """
+        从用户组创建新用户
+        """
+        user_type = ICP.get_param("wechat_auth_signup_default_user_type")
+        group_id = self.env["ir.model.data"]._xmlid_to_res_id("base.group_portal")
+        if user_type == "1":
+            group_id = self.env["ir.model.data"]._xmlid_to_res_id("base.group_user")
+        elif user_type == "10":
+            group_id = self.env["ir.model.data"]._xmlid_to_res_id("base.group_portal")
+        elif user_type == "11":
+            group_id = self.env["ir.model.data"]._xmlid_to_res_id("base.group_public")
+        values.update({
+            "groups_id": [(6, 0, [group_id])]
+        })
+        try:
+            return self.sudo().create(values)
+        except Exception as e:
+            # print("从用户组创建新用户,错误:",str(e))
+            return False
+
+    def _wechet_create_user_from_template(self,values,ICP):
+        """
+        从模板创建新用户
+        """
+        user_template = ICP.get_param("wechat_template_portal_user_id")
+        template_user_id = literal_eval(self.env['ir.config_parameter'].sudo().get_param('wechat_template_portal_user_id', 'False'))
+        template_user = self.browse(template_user_id)
+        if not template_user.exists():
+            raise ValueError(_('Wechat Signup: invalid template user'))
+        try:
+            groups = template_user.groups_id
+            group_ids = []
+            for group in groups:
+                group_ids.append(group.id)
+            values.update({
+                "groups_id": [(6, 0, group_ids)]
+            })
+
+            return self.sudo().create(values)
+            # return template_user.with_context(no_reset_password=True).copy(values)
+        except Exception as e:
+            # copy may failed if asked login is not available.
+            # print("从模板创建新用户,错误:",str(e))
+            return False
     def _check_credentials(self, password, env):
         # password为微信的用户 openid
         try:
