@@ -23,7 +23,7 @@ class ResUsers(models.Model):
         :param params: {'access_token': '', 'expires_in': 7200, 'refresh_token': '', 'openid': '', 'scope': 'snsapi_login', 'unionid': ''}
         :return
         """
-
+        print(provider, params)
         ICP = self.env["ir.config_parameter"].sudo()
         wechat_open_endpoint = "https://open.weixin.qq.com/connect/qrconnect"
         wechat_official_accounts_endpoint = "https://open.weixin.qq.com/connect/oauth2/authorize"
@@ -47,7 +47,8 @@ class ResUsers(models.Model):
             return AccessDenied
 
         # 查询用户是否存在
-        oauth_openid = params["openid"]
+        # oauth_openid = params["openid"]
+        oauth_unionid = params["unionid"]
         oauth_user = self.sudo().search(
             [
                 "|",
@@ -59,7 +60,7 @@ class ResUsers(models.Model):
             ],
             limit=1,
         )
-
+        print(oauth_user)
         if not oauth_user:
             # 创建用户
             # 用户信息
@@ -87,7 +88,7 @@ class ResUsers(models.Model):
 
         if oauth_user:
             print("验证成功--------")
-            return (self.env.cr.dbname, oauth_user.login, oauth_openid)  # type: ignore
+            return (self.env.cr.dbname, oauth_user.login, oauth_unionid)  # type: ignore
         else:
             return AccessDenied
 
@@ -150,13 +151,17 @@ class ResUsers(models.Model):
             # copy may failed if asked login is not available.
             # print("从模板创建新用户,错误:",str(e))
             return False
+
+
     def _check_credentials(self, password, env):
-        # password为微信的用户 openid
+        # password为微信的用户 unionid
         try:
             return super(ResUsers, self)._check_credentials(password, env)  # type: ignore
         except AccessDenied:
+            # print(self.env.uid)
             res = self.sudo().search(
-                [("id", "=", self.env.uid), ("wechat_openid", "=", password)]
+                [("id", "=", self.env.uid), ("wechat_unionid", "=", password)]
             )
+            # print(res)
             if not res:
                 raise

@@ -143,9 +143,11 @@ class OAuthController(http.Controller):
         except Exception as e:
             print(str(e))
         finally:
-            print(response)
-            if response["errcode"] == 40125:
+            # print(response)
+            if "errcode" in response and response["errcode"] == 40125:
                 raise UserError(_("Invalid WeChat Secret, please contact the administrator."))
+            if "errcode" in response and response["errcode"] == 40163:
+                raise UserError(_("code been used, please contact the administrator."))
             current_time = time.time()  # 当前时间戳
             access_token = response["access_token"]
             expires_in = response["expires_in"]
@@ -199,10 +201,11 @@ class OAuthController(http.Controller):
                         resp.autocorrect_location_header = False
 
                         # 由于/web是硬编码的，请验证用户是否有权登录
-                        if not request.env.user.has_group("base.group_user"):
-                            resp.location = "/my"
-                        elif werkzeug.urls.url_parse(resp.location).path == "/web" and not request.env.user.has_group("base.group_user"):
-                            resp.location = "/"
+                        if request.env.user._is_internal():
+                            resp.location = '/web'
+                        else:
+                            resp.location = '/my'
+                        print(resp.location )
                         return resp
                     except AttributeError:
                         # auth_signup is not installed
