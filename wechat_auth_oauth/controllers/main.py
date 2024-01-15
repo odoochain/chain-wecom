@@ -11,7 +11,7 @@ from urllib.parse import urlparse, urlencode
 from werkzeug.exceptions import BadRequest # type: ignore
 
 from odoo import api, http, SUPERUSER_ID, _
-from odoo.exceptions import AccessDenied
+from odoo.exceptions import AccessDenied, ValidationError, UserError
 from odoo.http import request, Response
 from odoo import registry as registry_get
 from odoo.addons.auth_signup.controllers.main import AuthSignupHome as Home  # type: ignore
@@ -143,6 +143,9 @@ class OAuthController(http.Controller):
         except Exception as e:
             print(str(e))
         finally:
+            print(response)
+            if response["errcode"] == 40125:
+                raise UserError(_("Invalid WeChat Secret, please contact the administrator."))
             current_time = time.time()  # 当前时间戳
             access_token = response["access_token"]
             expires_in = response["expires_in"]
@@ -300,7 +303,7 @@ class OAuthController(http.Controller):
 
                     action = state.get("a")
                     menu = state.get("m")
-                    # print(state["r"])
+                    print(state["r"])
                     redirect = state["r"] if state.get("r") else False
 
                     url = "/web"
@@ -316,10 +319,11 @@ class OAuthController(http.Controller):
                     resp.autocorrect_location_header = False
 
                     # 由于/web是硬编码的，请验证用户是否有权登录
-                    if not request.env.user.has_group("base.group_user"):
-                        resp.location = "/my"
-                    elif werkzeug.urls.url_parse(resp.location).path == "/web" and not request.env.user.has_group("base.group_user"):
-                        resp.location = "/"
+                    if request.env.user._is_internal():
+                        resp.location = '/web'
+                    else:
+                        resp.location = '/my'
+
                     return resp
                 except AttributeError:
                     # auth_signup is not installed
