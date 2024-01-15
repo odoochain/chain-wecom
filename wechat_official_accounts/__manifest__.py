@@ -2,7 +2,7 @@
 {
     "name": "WeChat Official Accounts",
     "author": "RStudio",
-    "sequence": 702,
+    "sequence": 703,
     "installable": True,
     "application": True,
     "auto_install": False,

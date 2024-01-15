@@ -1,1 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+wechat_error_codes_access_right,access.wechat.error_codes,model_wechat_error_codes,wechat_base.group_wechat_settings_manager,1,1,1,1
+wechat_error_codes_access_right_user,access.wechat.error_codes,model_wechat_error_codes,wechat_base.group_wechat_settings_user,1,0,0,0

@@ -69,7 +69,7 @@ class ResUsers(models.Model):
             nickname = params["nickname"].encode("ISO-8859-1").decode("utf-8")
             values = {
                 "name": nickname,
-                "login": params["openid"],
+                "login": params["unionid"],
                 "password": self.env["wechat.tools.security"].random_passwd(8),
                 "share": False,
                 "active": True,

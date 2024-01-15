@@ -12,9 +12,20 @@
             action="wechat_base.wechat_config_settings_action"
             groups="group_wechat_settings_manager" />
 
-        <!-- 2.微信用户-->
-        <menuitem id="menu_wechat_users" name="WeChat Users"
+        <!-- 2.API-->
+        <menuitem id="menu_wechat_api" name="WeChat API"
             parent="wechat_base.menu_wechat_root" sequence="2"
+            groups="group_wechat_settings_manager" />
+
+        <!-- 2.1 错误码 -->
+        <menuitem id="menu_wechat_error_codes" name="Error Code"
+            parent="wechat_base.menu_wechat_api"
+            groups="group_wechat_settings_manager"
+            action="action_view_wechat_error_codes" sequence="1"/>
+
+        <!-- 3.微信用户-->
+        <menuitem id="menu_wechat_users" name="WeChat Users"
+            parent="wechat_base.menu_wechat_root" sequence="3"
             action="wechat_base.wechat_users_action"
             groups="group_wechat_settings_manager" />
 

@@ -2,7 +2,7 @@
 {
     "name": "WeChat Website Application",
     "author": "RStudio",
-    "sequence": 703,
+    "sequence": 704,
     "installable": True,
     "application": True,
     "auto_install": False,

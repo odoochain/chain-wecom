@@ -30,7 +30,8 @@ WECHAT_BROWSER_MESSAGES = {
     ),
 }
 
-class OAuthLogin(Home):
+class WeChatOAuthLogin(Home):
+
     def list_providers(self):
         try:
             providers = (
@@ -104,6 +105,60 @@ class OAuthLogin(Home):
 
         return providers
 
+    @http.route()
+    def web_login(self, *args, **kw):
+        response = super(WeChatOAuthLogin, self).web_login(*args, **kw)
+        if response.is_qweb:
+            error = request.params.get('oauth_error')
+            print(error,type(error))
+            if error =="10003":
+                error = _("%s:redirect_uri domain name is inconsistent with the background configuration") % error
+            elif error =="10004":
+                error = _("%s:This official account is banned") % error
+            elif error =="10005":
+                error = _("%s:This official account does not have the permission of these scopes") % error
+            elif error =="10006":
+                error = _("%s:You must pay attention to this test official account") % error
+            elif error =="10009":
+                error = _("%s:It's too frequent, please try again later") % error
+            elif error =="10010":
+                error = _("%s:The scope cannot be empty") % error
+            elif error =="10011":
+                error = _("%s:redirect_uri can't be empty") % error
+            elif error =="10012":
+                error = _("%s:The appid cannot be empty") % error
+            elif error =="10013":
+                error = _("%s:state cannot be empty") % error
+            elif error =="10015":
+                error = _("%s:The Official Account does not authorize a third-party platform, please check the authorization status") % error
+            elif error == '10016':
+                error = _("%s:The Appid of the WeChat Open Platform is not supported, please use the Official Account Appid") % error
+            elif error == '40125':
+                error = _("%s:Invalid WeChat Secret, please contact the administrator.") % error
+            elif error == '40163':
+                error = _("%s:Code been used, please contact the administrator.") % error
+            elif error !="":
+                error = _("%s:Unknown error code") % error
+            else:
+                error = None
+
+            if error:
+                response.qcontext['error'] = error
+        return response
+
+    @http.route('/wechat_reset_login_name', type='http', auth='public', website=True, sitemap=False)
+    def web_auth_reset_login_name(self, *args, **kw):
+        """
+        重置用户名
+        """
+        print(args,kw)
+        # qcontext = self.get_auth_signup_qcontext()
+        # print(qcontext)
+
+        response = request.render('wechat_auth_oauth.reset_login_name', {})
+        response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+        response.headers['Content-Security-Policy'] = "frame-ancestors 'self'"
+        return response
 
 class OAuthController(http.Controller):
 
@@ -143,11 +198,11 @@ class OAuthController(http.Controller):
         except Exception as e:
             print(str(e))
         finally:
-            # print(response)
-            if "errcode" in response and response["errcode"] == 40125:
-                raise UserError(_("Invalid WeChat Secret, please contact the administrator."))
-            if "errcode" in response and response["errcode"] == 40163:
-                raise UserError(_("code been used, please contact the administrator."))
+            print(response)
+            if "errcode" in response:
+                url = "/web/login?oauth_error=%s" % response["errcode"]
+                return request.redirect(url)
+
             current_time = time.time()  # 当前时间戳
             access_token = response["access_token"]
             expires_in = response["expires_in"]
@@ -201,11 +256,18 @@ class OAuthController(http.Controller):
                         resp.autocorrect_location_header = False
 
                         # 由于/web是硬编码的，请验证用户是否有权登录
-                        if request.env.user._is_internal():
-                            resp.location = '/web'
+                        if request.env.user.login == request.env.user.wechat_openid or request.env.user.login == request.env.user.wechat_unionid:
+                            # 需要重置用户名
+                            resp.location = "/wechat_reset_login_name"
+                            if request.env.user._is_internal():
+                                resp.location = '/wechat_reset_login_name?redirect_uri=web'
+                            else:
+                                resp.location = '/wechat_reset_login_name?redirect_uri=my'
                         else:
-                            resp.location = '/my'
-                        print(resp.location )
+                            if request.env.user._is_internal():
+                                resp.location = '/web'
+                            else:
+                                resp.location = '/my'
                         return resp
                     except AttributeError:
                         # auth_signup is not installed
@@ -322,10 +384,19 @@ class OAuthController(http.Controller):
                     resp.autocorrect_location_header = False
 
                     # 由于/web是硬编码的，请验证用户是否有权登录
-                    if request.env.user._is_internal():
-                        resp.location = '/web'
+                    if request.env.user.login == request.env.user.wechat_openid or request.env.user.login == request.env.user.wechat_unionid:
+                        # 需要重置用户名
+                        resp.location = "/wechat_reset_login_name"
+                        if request.env.user._is_internal():
+                            resp.location = '/wechat_reset_login_name?redirect_uri=web'
+                        else:
+                            resp.location = '/wechat_reset_login_name?redirect_uri=my'
                     else:
-                        resp.location = '/my'
+                        if request.env.user._is_internal():
+                            resp.location = '/web'
+                        else:
+                            resp.location = '/my'
+                    return resp
 
                     return resp
                 except AttributeError:

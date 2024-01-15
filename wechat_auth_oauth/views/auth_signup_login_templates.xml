@@ -7,7 +7,7 @@
         </xpath>
     </template>
 
-    <template id="wechat_auth_oauth.login" inherit_id="web.login">
+    <!-- <template id="wechat_auth_oauth.login" inherit_id="web.login">
         <xpath expr="//div[@class='o_login_auth']" position="attributes">
             <attribute name="class">o_login_auth o_hidden</attribute>
         </xpath>
@@ -19,10 +19,25 @@
         </xpath>
     </template>
 
-    <template id="wechat_auth_oauth.reset_password" inherit_id="auth_signup.reset_password">
+    <template id="wechat_auth_oauth.reset_password" inherit_id="wechat_auth_oauth.reset_password">
         <xpath expr="//div[@class='o_login_auth']" position="attributes">
             <attribute name="class">o_login_auth o_hidden</attribute>
         </xpath>
+    </template> -->
+
+
+    <template id="wechat_auth_oauth.reset_login_name" name="Reset login name">
+        <t t-call="web.login_layout">
+            <div t-if="message" class="oe_login_form clearfix">
+                <p class="alert alert-success" t-if="message" role="status">
+                    <t t-esc="message"/>
+                </p>
+
+            </div>
+            <form class="oe_reset_login_name_form" role="form" method="post" t-if="not message">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            </form>
+        </t>
     </template>
 
 </odoo>
