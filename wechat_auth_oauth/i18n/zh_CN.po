@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-10 16:29+0000\n"
-"PO-Revision-Date: 2024-01-11 00:30+0800\n"
+"POT-Creation-Date: 2024-01-16 14:43+0000\n"
+"PO-Revision-Date: 2024-01-16 22:45+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -16,6 +16,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.4.2\n"
+
+#. module: wechat_auth_oauth
+#. odoo-python
+#: code:addons/wechat_auth_oauth/controllers/main.py:0
+#, python-format
+msgid "%s: %s"
+msgstr "%s: %s"
 
 #. module: wechat_auth_oauth
 #: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
@@ -47,13 +54,45 @@ msgstr "启用微信一键登录"
 #: code:addons/wechat_auth_oauth/controllers/main.py:0
 #, python-format
 msgid ""
-"It is detected that the page is opened in the built-in browser of Wechat"
-msgstr "检测到该页面是在微信内置浏览器中打开的"
+"It is detected that the page is opened in the built-in browser of Wechat."
+msgstr "检测到该页面是在微信内置浏览器中打开的。"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.reset_login_name_and_password
+msgid "Login Name"
+msgstr "登录名"
 
 #. module: wechat_auth_oauth
 #: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
 msgid "OAuth Providers"
 msgstr "OAuth提供程序"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.reset_login_name_and_password
+msgid "Password"
+msgstr "密码"
+
+#. module: wechat_auth_oauth
+#. odoo-python
+#: code:addons/wechat_auth_oauth/controllers/main.py:0
+#, python-format
+msgid "Please enter your login name and password!"
+msgstr "请输入您的登录名和密码！"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.reset_login_name_and_password
+msgid "Please use a login name that is easy to remember"
+msgstr "请使用易于记忆的登录名"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.reset_login_name_and_password
+msgid "Reset login name and password"
+msgstr "重置登录名和密码"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.reset_login_name_and_password
+msgid "Submit"
+msgstr "提交"
 
 #. module: wechat_auth_oauth
 #. odoo-python
@@ -65,6 +104,32 @@ msgid ""
 msgstr "当前浏览器不是微信内置浏览器，因此无法使用一键登录功能。"
 
 #. module: wechat_auth_oauth
+#. odoo-python
+#: code:addons/wechat_auth_oauth/controllers/main.py:0
+#, python-format
+msgid "The login name already exists!"
+msgstr "登录名已存在！"
+
+#. module: wechat_auth_oauth
 #: model:ir.model,name:wechat_auth_oauth.model_res_users
 msgid "User"
 msgstr "用户"
+
+#. module: wechat_auth_oauth
+#. odoo-python
+#: code:addons/wechat_auth_oauth/models/res_users.py:0
+#, python-format
+msgid "Wechat Signup: invalid template user"
+msgstr "微信注册：模板用户无效"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.reset_login_name_and_password
+msgid "eg: Mobile phone number or email address"
+msgstr "例如：手机号码或电子邮件地址"
+
+#. module: wechat_auth_oauth
+#. odoo-python
+#: code:addons/wechat_auth_oauth/controllers/main.py:0
+#, python-format
+msgid "unknown error"
+msgstr "未知错误"
