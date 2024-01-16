@@ -22,6 +22,32 @@
                     </div>
                 </div>
 
+                <div id="module_wechat_auth_oauth" position="after">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <i class="fa fa fa-refresh fa-lg" role="img" aria-label="Skip Reset" title="Skip Reset"></i>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label fw-bolder">Skip resetting login name and password.</span>
+                            <div class="text-muted">
+                                Skip resetting login name and password for first registration and login.
+                            </div>
+                            <div class="content-group mt8">
+                                <div class="row">
+                                    <label for="wechat_official_accounts_auth_skip_reset"
+                                        class="o_light_label col-lg-9" />
+                                    <field name="wechat_official_accounts_auth_skip_reset" class="col-lg-3 w-25" />
+                                </div>
+                                <div class="row">
+                                    <label for="wechat_website_application_auth_skip_reset"
+                                        class="o_light_label col-lg-9" />
+                                    <field name="wechat_website_application_auth_skip_reset" class="col-lg-3 w-25" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </field>
         </record>
 

@@ -11,6 +11,16 @@ from odoo.modules.module import get_resource_path  # type: ignore
 class ResConfigSettings(models.TransientModel):
     _inherit = "res.config.settings"
 
+    wechat_official_accounts_auth_skip_reset = fields.Boolean(
+        string="Official account authentication skip reset",
+        default=False,
+        config_parameter="wechat_official_accounts_auth_skip_reset"
+    )
+    wechat_website_application_auth_skip_reset = fields.Boolean(
+        string="Website Application authentication skip reset",
+        default=False,
+        config_parameter="wechat_website_application_auth_skip_reset"
+    )
 
     def enable_wechat_oauth_login(self):
         """

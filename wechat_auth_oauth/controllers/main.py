@@ -226,6 +226,9 @@ class OAuthController(http.Controller):
                 except Exception as e:
                     print(str(e))
                 finally:
+                    if "errcode" in userinfo:
+                        url = "/web/login?oauth_error=%s" % userinfo["errcode"]
+                        return request.redirect(url)
                     # 确保 request.session.db 和 state['d'] 相同，更新会话并重试请求
                     dbname = state["d"]
                     if not http.db_filter([dbname]):
@@ -259,8 +262,9 @@ class OAuthController(http.Controller):
                         resp = request.redirect(_get_login_redirect_url(pre_uid, url), 303)  # type: ignore
                         resp.autocorrect_location_header = False
 
+                        skip_reset = bool(ICP.get_param("wechat_website_application_auth_skip_reset"))
                         # 由于/web是硬编码的，请验证用户是否有权登录
-                        if request.env.user.login == request.env.user.wechat_openid or request.env.user.login == request.env.user.wechat_unionid:
+                        if (request.env.user.login == request.env.user.wechat_openid or request.env.user.login == request.env.user.wechat_unionid) and not skip_reset:
                             # 需要重置用户名
                             resp.location = "/wechat/reset_login_name_and_password"
                             if request.env.user._is_internal():
@@ -332,6 +336,10 @@ class OAuthController(http.Controller):
         except Exception as e:
             print(str(e))
         finally:
+            if "errcode" in response:
+                url = "/web/login?oauth_error=%s" % response["errcode"]
+                return request.redirect(url)
+
             # {'access_token': '', 'expires_in': 7200, 'refresh_token': '', 'openid': '', 'scope': ''}
             current_time = time.time()  # 当前时间戳
             access_token = response["access_token"]
@@ -347,6 +355,10 @@ class OAuthController(http.Controller):
             except Exception as e:
                 print(str(e))
             finally:
+                if "errcode" in userinfo:
+                    url = "/web/login?oauth_error=%s" % userinfo["errcode"]
+                    return request.redirect(url)
+
                 # 确保 request.session.db 和 state['d'] 相同，更新会话并重试请求
                 dbname = state["d"]
                 if not http.db_filter([dbname]):
@@ -380,8 +392,12 @@ class OAuthController(http.Controller):
                     resp = request.redirect(_get_login_redirect_url(pre_uid, url), 303)  # type: ignore
                     resp.autocorrect_location_header = False
 
+
+                    skip_reset = bool(ICP.get_param("wechat_official_accounts_auth_skip_reset"))
+                    # print(skip_reset,type(skip_reset))
                     # 由于/web是硬编码的，请验证用户是否有权登录
-                    if request.env.user.login == request.env.user.wechat_openid or request.env.user.login == request.env.user.wechat_unionid:
+                    if (request.env.user.login == request.env.user.wechat_openid or request.env.user.login == request.env.user.wechat_unionid) and not skip_reset:
+                        # print("不跳过")
                         # 需要重置用户名
                         resp.location = "/wechat/reset_login_name_and_password"
                         if request.env.user._is_internal():
@@ -389,6 +405,7 @@ class OAuthController(http.Controller):
                         else:
                             resp.location = '/wechat/reset_login_name_and_password?redirect=my'
                     else:
+                        # print("跳过")
                         if request.env.user._is_internal():
                             resp.location = '/web'
                         else:

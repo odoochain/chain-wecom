@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-16 14:43+0000\n"
-"PO-Revision-Date: 2024-01-16 22:45+0800\n"
+"POT-Creation-Date: 2024-01-16 15:26+0000\n"
+"PO-Revision-Date: 2024-01-16 23:28+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -22,7 +22,23 @@ msgstr ""
 #: code:addons/wechat_auth_oauth/controllers/main.py:0
 #, python-format
 msgid "%s: %s"
-msgstr "%s: %s"
+msgstr ""
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
+msgid ""
+"<i class=\"fa fa fa-refresh fa-lg\" role=\"img\" aria-label=\"Skip Reset\" "
+"title=\"Skip Reset\"/>"
+msgstr ""
+"<i class=\"fa fa fa-refresh fa-lg\" role=\"img\" aria-label=\"跳过重置\" "
+"title=\"跳过重置\"/>"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
+msgid ""
+"<span class=\"o_form_label fw-bolder\">Skip resetting login name and "
+"password.</span>"
+msgstr "<span class=\"o_form_label fw-bolder\">跳过重置登录名和密码。</span>"
 
 #. module: wechat_auth_oauth
 #: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
@@ -68,6 +84,11 @@ msgid "OAuth Providers"
 msgstr "OAuth提供程序"
 
 #. module: wechat_auth_oauth
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_official_accounts_auth_skip_reset
+msgid "Official account authentication skip reset"
+msgstr "公众号认证跳过重置"
+
+#. module: wechat_auth_oauth
 #: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.reset_login_name_and_password
 msgid "Password"
 msgstr "密码"
@@ -88,6 +109,12 @@ msgstr "请使用易于记忆的登录名"
 #: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.reset_login_name_and_password
 msgid "Reset login name and password"
 msgstr "重置登录名和密码"
+
+#. module: wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.res_config_settings_view_form
+msgid ""
+"Skip resetting login name and password for first registration and login."
+msgstr "首次注册和登录跳过重置登录名和密码。"
 
 #. module: wechat_auth_oauth
 #: model_terms:ir.ui.view,arch_db:wechat_auth_oauth.reset_login_name_and_password
@@ -114,6 +141,11 @@ msgstr "登录名已存在！"
 #: model:ir.model,name:wechat_auth_oauth.model_res_users
 msgid "User"
 msgstr "用户"
+
+#. module: wechat_auth_oauth
+#: model:ir.model.fields,field_description:wechat_auth_oauth.field_res_config_settings__wechat_website_application_auth_skip_reset
+msgid "Website Application authentication skip reset"
+msgstr "网站应用身份验证跳过重置"
 
 #. module: wechat_auth_oauth
 #. odoo-python
