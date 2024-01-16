@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
+    <!-- 40168 -->
     <data noupdate="0">
 
         <record id="wechat_error_codes_minus_1" model="wechat.error_codes">
@@ -28,6 +28,61 @@
             <field name="name">invalid credential, access_token is invalid or not latest</field>
         </record>
 
+        <record id="wechat_error_codes_40002" model="wechat.error_codes">
+            <field name="code">40002</field>
+            <field name="name">invalid grant_type</field>
+        </record>
+
+        <record id="wechat_error_codes_40003" model="wechat.error_codes">
+            <field name="code">40003</field>
+            <field name="name">invalid openid</field>
+        </record>
+
+        <record id="wechat_error_codes_40004" model="wechat.error_codes">
+            <field name="code">40004</field>
+            <field name="name">invalid media type</field>
+        </record>
+
+        <record id="wechat_error_codes_40005" model="wechat.error_codes">
+            <field name="code">40005</field>
+            <field name="name">invalid file type</field>
+        </record>
+
+        <record id="wechat_error_codes_40006" model="wechat.error_codes">
+            <field name="code">40006</field>
+            <field name="name">invalid meida size</field>
+        </record>
+
+        <record id="wechat_error_codes_40007" model="wechat.error_codes">
+            <field name="code">40007</field>
+            <field name="name">invalid media_id</field>
+        </record>
+
+        <record id="wechat_error_codes_40008" model="wechat.error_codes">
+            <field name="code">40008</field>
+            <field name="name">invalid message type</field>
+        </record>
+
+        <record id="wechat_error_codes_40009" model="wechat.error_codes">
+            <field name="code">40009</field>
+            <field name="name">invalid image size</field>
+        </record>
+
+        <record id="wechat_error_codes_40010" model="wechat.error_codes">
+            <field name="code">40010</field>
+            <field name="name">invalid voice size</field>
+        </record>
+
+        <record id="wechat_error_codes_40011" model="wechat.error_codes">
+            <field name="code">40011</field>
+            <field name="name">invalid video size</field>
+        </record>
+
+        <record id="wechat_error_codes_40012" model="wechat.error_codes">
+            <field name="code">40012</field>
+            <field name="name">invalid thumb size</field>
+        </record>
+
         <record id="wechat_error_codes_40013" model="wechat.error_codes">
             <field name="code">40013</field>
             <field name="name">invalid appid</field>
@@ -38,9 +93,539 @@
             <field name="name">invalid access_token</field>
         </record>
 
+        <record id="wechat_error_codes_40015" model="wechat.error_codes">
+            <field name="code">40015</field>
+            <field name="name">invalid menu type</field>
+        </record>
+
+        <record id="wechat_error_codes_40016" model="wechat.error_codes">
+            <field name="code">40016</field>
+            <field name="name">invalid button size</field>
+        </record>
+
+        <record id="wechat_error_codes_40017" model="wechat.error_codes">
+            <field name="code">40017</field>
+            <field name="name">invalid button type</field>
+        </record>
+
+        <record id="wechat_error_codes_40018" model="wechat.error_codes">
+            <field name="code">40018</field>
+            <field name="name">invalid button name size</field>
+        </record>
+
+        <record id="wechat_error_codes_40019" model="wechat.error_codes">
+            <field name="code">40019</field>
+            <field name="name">invalid button key size</field>
+        </record>
+
+        <record id="wechat_error_codes_40020" model="wechat.error_codes">
+            <field name="code">40020</field>
+            <field name="name">invalid button url size</field>
+        </record>
+
+        <record id="wechat_error_codes_40021" model="wechat.error_codes">
+            <field name="code">40021</field>
+            <field name="name">invalid menu version</field>
+        </record>
+
+        <record id="wechat_error_codes_40022" model="wechat.error_codes">
+            <field name="code">40022</field>
+            <field name="name">invalid sub_menu level</field>
+        </record>
+
+        <record id="wechat_error_codes_40023" model="wechat.error_codes">
+            <field name="code">40023</field>
+            <field name="name">invalid sub button size</field>
+        </record>
+
+        <record id="wechat_error_codes_40024" model="wechat.error_codes">
+            <field name="code">40024</field>
+            <field name="name">invalid sub button type</field>
+        </record>
+
+        <record id="wechat_error_codes_40025" model="wechat.error_codes">
+            <field name="code">40025</field>
+            <field name="name">invalid sub button name size</field>
+        </record>
+
+        <record id="wechat_error_codes_40026" model="wechat.error_codes">
+            <field name="code">40026</field>
+            <field name="name">invalid sub button key size</field>
+        </record>
+
+        <record id="wechat_error_codes_40027" model="wechat.error_codes">
+            <field name="code">40027</field>
+            <field name="name">invalid sub button url size</field>
+        </record>
+
+        <record id="wechat_error_codes_40028" model="wechat.error_codes">
+            <field name="code">40028</field>
+            <field name="name">invalid sub button url size</field>
+        </record>
+
+        <record id="wechat_error_codes_40029" model="wechat.error_codes">
+            <field name="code">40029</field>
+            <field name="name">invalid code</field>
+        </record>
+
+        <record id="wechat_error_codes_40030" model="wechat.error_codes">
+            <field name="code">40030</field>
+            <field name="name">invalid refresh_token</field>
+        </record>
+
+        <record id="wechat_error_codes_40031" model="wechat.error_codes">
+            <field name="code">40031</field>
+            <field name="name">invalid openid list</field>
+        </record>
+
+        <record id="wechat_error_codes_40032" model="wechat.error_codes">
+            <field name="code">40032</field>
+            <field name="name">invalid openid list size</field>
+        </record>
+
+        <record id="wechat_error_codes_40033" model="wechat.error_codes">
+            <field name="code">40033</field>
+            <field name="name">invalid charset. please check your request, if include \uxxxx will create fail!</field>
+        </record>
+
+        <record id="wechat_error_codes_40034" model="wechat.error_codes">
+            <field name="code">40034</field>
+            <field name="name">invalid template size</field>
+        </record>
+
+        <record id="wechat_error_codes_40035" model="wechat.error_codes">
+            <field name="code">40035</field>
+            <field name="name">invalid args size</field>
+        </record>
+
+        <record id="wechat_error_codes_40036" model="wechat.error_codes">
+            <field name="code">40036</field>
+            <field name="name">invalid template_id size</field>
+        </record>
+
+        <record id="wechat_error_codes_40037" model="wechat.error_codes">
+            <field name="code">40037</field>
+            <field name="name">invalid template_id</field>
+        </record>
+
+        <record id="wechat_error_codes_40038" model="wechat.error_codes">
+            <field name="code">40038</field>
+            <field name="name">invalid packaging type</field>
+        </record>
+
+        <record id="wechat_error_codes_40039" model="wechat.error_codes">
+            <field name="code">40039</field>
+            <field name="name">invalid url size</field>
+        </record>
+
+        <record id="wechat_error_codes_40040" model="wechat.error_codes">
+            <field name="code">40040</field>
+            <field name="name">invalid plugin token</field>
+        </record>
+
+        <record id="wechat_error_codes_40041" model="wechat.error_codes">
+            <field name="code">40041</field>
+            <field name="name">invalid plugin id</field>
+        </record>
+
+        <record id="wechat_error_codes_40042" model="wechat.error_codes">
+            <field name="code">40042</field>
+            <field name="name">invalid plugin session</field>
+        </record>
+
+        <record id="wechat_error_codes_40043" model="wechat.error_codes">
+            <field name="code">40043</field>
+            <field name="name">invalid fav type</field>
+        </record>
+
+        <record id="wechat_error_codes_40044" model="wechat.error_codes">
+            <field name="code">40044</field>
+            <field name="name">invalid size in link.title</field>
+        </record>
+
+        <record id="wechat_error_codes_40045" model="wechat.error_codes">
+            <field name="code">40045</field>
+            <field name="name">invalid size in link.description</field>
+        </record>
+
+        <record id="wechat_error_codes_40046" model="wechat.error_codes">
+            <field name="code">40046</field>
+            <field name="name">invalid size in link.iconurl</field>
+        </record>
+
+        <record id="wechat_error_codes_40047" model="wechat.error_codes">
+            <field name="code">40047</field>
+            <field name="name">invalid size in link.url</field>
+        </record>
+
+        <record id="wechat_error_codes_40048" model="wechat.error_codes">
+            <field name="code">40048</field>
+            <field name="name">invalid url domain</field>
+        </record>
+
+        <record id="wechat_error_codes_40049" model="wechat.error_codes">
+            <field name="code">40049</field>
+            <field name="name">invalid score report type</field>
+        </record>
+
+        <record id="wechat_error_codes_40050" model="wechat.error_codes">
+            <field name="code">40050</field>
+            <field name="name">invalid timeline type</field>
+        </record>
+
+        <record id="wechat_error_codes_40051" model="wechat.error_codes">
+            <field name="code">40051</field>
+            <field name="name">invalid group name</field>
+        </record>
+
+        <record id="wechat_error_codes_40052" model="wechat.error_codes">
+            <field name="code">40052</field>
+            <field name="name">invalid action name</field>
+        </record>
+
+        <record id="wechat_error_codes_40053" model="wechat.error_codes">
+            <field name="code">40053</field>
+            <field name="name">invalid action info, please check document</field>
+        </record>
+
+        <record id="wechat_error_codes_40054" model="wechat.error_codes">
+            <field name="code">40054</field>
+            <field name="name">invalid sub button url domain</field>
+        </record>
+
+        <record id="wechat_error_codes_40055" model="wechat.error_codes">
+            <field name="code">40055</field>
+            <field name="name">invalid button url domain</field>
+        </record>
+
+        <record id="wechat_error_codes_40056" model="wechat.error_codes">
+            <field name="code">40056</field>
+            <field name="name">invalid serial code</field>
+        </record>
+
+        <record id="wechat_error_codes_40057" model="wechat.error_codes">
+            <field name="code">40057</field>
+            <field name="name">invalid tabbar size</field>
+        </record>
+
+        <record id="wechat_error_codes_40058" model="wechat.error_codes">
+            <field name="code">40058</field>
+            <field name="name">invalid tabbar name size</field>
+        </record>
+
+        <record id="wechat_error_codes_40059" model="wechat.error_codes">
+            <field name="code">40059</field>
+            <field name="name">invalid msg id</field>
+        </record>
+
+        <record id="wechat_error_codes_40060" model="wechat.error_codes">
+            <field name="code">40060</field>
+            <field name="name">invalid article idx</field>
+        </record>
+
+        <record id="wechat_error_codes_40062" model="wechat.error_codes">
+            <field name="code">40062</field>
+            <field name="name">invalid title size</field>
+        </record>
+
+        <record id="wechat_error_codes_40063" model="wechat.error_codes">
+            <field name="code">40063</field>
+            <field name="name">invalid message_ext size</field>
+        </record>
+
+        <record id="wechat_error_codes_40064" model="wechat.error_codes">
+            <field name="code">40064</field>
+            <field name="name">invalid app type</field>
+        </record>
+
+        <record id="wechat_error_codes_40065" model="wechat.error_codes">
+            <field name="code">40065</field>
+            <field name="name">invalid msg status</field>
+        </record>
+
         <record id="wechat_error_codes_40066" model="wechat.error_codes">
             <field name="code">40066</field>
             <field name="name">invalid url</field>
+        </record>
+
+        <record id="wechat_error_codes_40067" model="wechat.error_codes">
+            <field name="code">40067</field>
+            <field name="name">invalid tvid</field>
+        </record>
+
+        <record id="wechat_error_codes_40068" model="wechat.error_codes">
+            <field name="code">40068</field>
+            <field name="name">contain mailcious url</field>
+        </record>
+
+        <record id="wechat_error_codes_40069" model="wechat.error_codes">
+            <field name="code">40069</field>
+            <field name="name">invalid hardware type</field>
+        </record>
+
+        <record id="wechat_error_codes_40070" model="wechat.error_codes">
+            <field name="code">40070</field>
+            <field name="name">invalid sku info</field>
+        </record>
+
+        <record id="wechat_error_codes_40071" model="wechat.error_codes">
+            <field name="code">40071</field>
+            <field name="name">invalid card type</field>
+        </record>
+
+        <record id="wechat_error_codes_40072" model="wechat.error_codes">
+            <field name="code">40072</field>
+            <field name="name">invalid location id</field>
+        </record>
+
+        <record id="wechat_error_codes_40073" model="wechat.error_codes">
+            <field name="code">40073</field>
+            <field name="name">invalid card id</field>
+        </record>
+
+        <record id="wechat_error_codes_40074" model="wechat.error_codes">
+            <field name="code">40074</field>
+            <field name="name">invalid pay template id</field>
+        </record>
+
+        <record id="wechat_error_codes_40075" model="wechat.error_codes">
+            <field name="code">40075</field>
+            <field name="name">invalid encrypt code</field>
+        </record>
+
+        <record id="wechat_error_codes_40076" model="wechat.error_codes">
+            <field name="code">40076</field>
+            <field name="name">invalid color id</field>
+        </record>
+
+        <record id="wechat_error_codes_40077" model="wechat.error_codes">
+            <field name="code">40077</field>
+            <field name="name">invalid score type</field>
+        </record>
+
+        <record id="wechat_error_codes_40078" model="wechat.error_codes">
+            <field name="code">40078</field>
+            <field name="name">invalid card status</field>
+        </record>
+
+        <record id="wechat_error_codes_40079" model="wechat.error_codes">
+            <field name="code">40079</field>
+            <field name="name">invalid time</field>
+        </record>
+
+        <record id="wechat_error_codes_40080" model="wechat.error_codes">
+            <field name="code">40080</field>
+            <field name="name">invalid card ext</field>
+        </record>
+
+        <record id="wechat_error_codes_40081" model="wechat.error_codes">
+            <field name="code">40081</field>
+            <field name="name">invalid template_id</field>
+        </record>
+
+        <record id="wechat_error_codes_40082" model="wechat.error_codes">
+            <field name="code">40082</field>
+            <field name="name">invalid banner picture size</field>
+        </record>
+
+        <record id="wechat_error_codes_40083" model="wechat.error_codes">
+            <field name="code">40083</field>
+            <field name="name">invalid banner url size</field>
+        </record>
+
+        <record id="wechat_error_codes_40084" model="wechat.error_codes">
+            <field name="code">40084</field>
+            <field name="name">invalid button desc size</field>
+        </record>
+
+        <record id="wechat_error_codes_40085" model="wechat.error_codes">
+            <field name="code">40085</field>
+            <field name="name">invalid button url size</field>
+        </record>
+
+        <record id="wechat_error_codes_40086" model="wechat.error_codes">
+            <field name="code">40086</field>
+            <field name="name">invalid sharelink logo size</field>
+        </record>
+
+        <record id="wechat_error_codes_40087" model="wechat.error_codes">
+            <field name="code">40087</field>
+            <field name="name">invalid sharelink desc size</field>
+        </record>
+
+        <record id="wechat_error_codes_40088" model="wechat.error_codes">
+            <field name="code">40088</field>
+            <field name="name">invalid sharelink title size</field>
+        </record>
+
+        <record id="wechat_error_codes_40089" model="wechat.error_codes">
+            <field name="code">40089</field>
+            <field name="name">invalid platform id</field>
+        </record>
+
+        <record id="wechat_error_codes_40090" model="wechat.error_codes">
+            <field name="code">40090</field>
+            <field name="name">invalid request source (bad client ip)</field>
+        </record>
+
+        <record id="wechat_error_codes_40092" model="wechat.error_codes">
+            <field name="code">40092</field>
+            <field name="name">invalid remark name</field>
+        </record>
+
+        <record id="wechat_error_codes_40093" model="wechat.error_codes">
+            <field name="code">40093</field>
+            <field name="name">not completely ok, err_item will return location_id=-1,check your required_fields in json.</field>
+        </record>
+
+        <record id="wechat_error_codes_40094" model="wechat.error_codes">
+            <field name="code">40094</field>
+            <field name="name">invalid component credential</field>
+        </record>
+
+        <record id="wechat_error_codes_40095" model="wechat.error_codes">
+            <field name="code">40095</field>
+            <field name="name">bad source of caller</field>
+        </record>
+
+        <record id="wechat_error_codes_40096" model="wechat.error_codes">
+            <field name="code">40096</field>
+            <field name="name">invalid biztype</field>
+        </record>
+
+        <record id="wechat_error_codes_40097" model="wechat.error_codes">
+            <field name="code">40097</field>
+            <field name="name">invalid args</field>
+        </record>
+
+        <record id="wechat_error_codes_40098" model="wechat.error_codes">
+            <field name="code">40098</field>
+            <field name="name">invalid poiid</field>
+        </record>
+
+        <record id="wechat_error_codes_40099" model="wechat.error_codes">
+            <field name="code">40099</field>
+            <field name="name">invalid code, this code has consumed.</field>
+        </record>
+
+        <record id="wechat_error_codes_40100" model="wechat.error_codes">
+            <field name="code">40100</field>
+            <field name="name">invalid DateInfo, Make Sure OldDateInfoType==NewDateInfoType &amp;&amp; NewBeginTime&lt;=OldBeginTime &amp;&amp; OldEndTime&lt;= NewEndTime</field>
+        </record>
+
+        <record id="wechat_error_codes_40101" model="wechat.error_codes">
+            <field name="code">40101</field>
+            <field name="name">missing parameter</field>
+        </record>
+
+        <record id="wechat_error_codes_40102" model="wechat.error_codes">
+            <field name="code">40102</field>
+            <field name="name">invalid industry id</field>
+        </record>
+
+        <record id="wechat_error_codes_40103" model="wechat.error_codes">
+            <field name="code">40103</field>
+            <field name="name">invalid industry index</field>
+        </record>
+
+        <record id="wechat_error_codes_40104" model="wechat.error_codes">
+            <field name="code">40104</field>
+            <field name="name">invalid category id</field>
+        </record>
+
+        <record id="wechat_error_codes_40105" model="wechat.error_codes">
+            <field name="code">40105</field>
+            <field name="name">invalid view type</field>
+        </record>
+
+        <record id="wechat_error_codes_40106" model="wechat.error_codes">
+            <field name="code">40106</field>
+            <field name="name">invalid user name</field>
+        </record>
+
+        <record id="wechat_error_codes_40107" model="wechat.error_codes">
+            <field name="code">40107</field>
+            <field name="name">invalid card id! 1,card status must verify ok; 2,this card must have location_id</field>
+        </record>
+
+        <record id="wechat_error_codes_40108" model="wechat.error_codes">
+            <field name="code">40108</field>
+            <field name="name">invalid client version</field>
+        </record>
+
+        <record id="wechat_error_codes_40109" model="wechat.error_codes">
+            <field name="code">40109</field>
+            <field name="name">too many code size, must &lt;= 100</field>
+        </record>
+
+        <record id="wechat_error_codes_40110" model="wechat.error_codes">
+            <field name="code">40110</field>
+            <field name="name">have empty code</field>
+        </record>
+
+        <record id="wechat_error_codes_40111" model="wechat.error_codes">
+            <field name="code">40111</field>
+            <field name="name">have same code</field>
+        </record>
+
+        <record id="wechat_error_codes_40112" model="wechat.error_codes">
+            <field name="code">40112</field>
+            <field name="name">can not set bind openid</field>
+        </record>
+
+        <record id="wechat_error_codes_40113" model="wechat.error_codes">
+            <field name="code">40113</field>
+            <field name="name">unsupported file type</field>
+        </record>
+
+        <record id="wechat_error_codes_40114" model="wechat.error_codes">
+            <field name="code">40114</field>
+            <field name="name">invalid index value</field>
+        </record>
+
+        <record id="wechat_error_codes_40115" model="wechat.error_codes">
+            <field name="code">40115</field>
+            <field name="name">invalid session from</field>
+        </record>
+
+        <record id="wechat_error_codes_40116" model="wechat.error_codes">
+            <field name="code">40116</field>
+            <field name="name">invalid code</field>
+        </record>
+
+        <record id="wechat_error_codes_40117" model="wechat.error_codes">
+            <field name="code">40117</field>
+            <field name="name">invalid button media_id size</field>
+        </record>
+
+        <record id="wechat_error_codes_40118" model="wechat.error_codes">
+            <field name="code">40118</field>
+            <field name="name">invalid sub button media_id size</field>
+        </record>
+
+        <record id="wechat_error_codes_40119" model="wechat.error_codes">
+            <field name="code">40119</field>
+            <field name="name">invalid use button type</field>
+        </record>
+
+        <record id="wechat_error_codes_40120" model="wechat.error_codes">
+            <field name="code">40120</field>
+            <field name="name">invalid use sub button type</field>
+        </record>
+
+        <record id="wechat_error_codes_40121" model="wechat.error_codes">
+            <field name="code">40121</field>
+            <field name="name">invalid media type in view_limited</field>
+        </record>
+
+        <record id="wechat_error_codes_40122" model="wechat.error_codes">
+            <field name="code">40122</field>
+            <field name="name">invalid card quantity</field>
+        </record>
+
+        <record id="wechat_error_codes_40123" model="wechat.error_codes">
+            <field name="code">40123</field>
+            <field name="name">invalid task_id</field>
         </record>
 
         <record id="wechat_error_codes_40124" model="wechat.error_codes">
@@ -91,6 +676,131 @@
         <record id="wechat_error_codes_40133" model="wechat.error_codes">
             <field name="code">40133</field>
             <field name="name">invalid encryt data</field>
+        </record>
+
+        <record id="wechat_error_codes_40135" model="wechat.error_codes">
+            <field name="code">40135</field>
+            <field name="name">invalid not supply bonus, can not change card_id which supply bonus to be not supply</field>
+        </record>
+
+        <record id="wechat_error_codes_40136" model="wechat.error_codes">
+            <field name="code">40136</field>
+            <field name="name">invalid use DepositCodeMode, make sure sku.quantity &gt; DepositCode.quantity</field>
+        </record>
+
+        <record id="wechat_error_codes_40137" model="wechat.error_codes">
+            <field name="code">40137</field>
+            <field name="name">invalid image format</field>
+        </record>
+
+        <record id="wechat_error_codes_40138" model="wechat.error_codes">
+            <field name="code">40138</field>
+            <field name="name">emphasis word can not be first neither remark</field>
+        </record>
+
+        <record id="wechat_error_codes_40139" model="wechat.error_codes">
+            <field name="code">40139</field>
+            <field name="name">invalid sub merchant id</field>
+        </record>
+
+        <record id="wechat_error_codes_40140" model="wechat.error_codes">
+            <field name="code">40140</field>
+            <field name="name">invalid sub merchant status</field>
+        </record>
+
+        <record id="wechat_error_codes_40141" model="wechat.error_codes">
+            <field name="code">40141</field>
+            <field name="name">invalid image url</field>
+        </record>
+
+        <record id="wechat_error_codes_40142" model="wechat.error_codes">
+            <field name="code">40142</field>
+            <field name="name">invalid sharecard parameters</field>
+        </record>
+
+        <record id="wechat_error_codes_40143" model="wechat.error_codes">
+            <field name="code">40143</field>
+            <field name="name">invalid least cost info, should be 0</field>
+        </record>
+
+        <record id="wechat_error_codes_40144" model="wechat.error_codes">
+            <field name="code">40144</field>
+            <field name="name">1.maybe share_card_list.num or consume_share_self_num too big; 2.maybe card_id_list also has self-card_id; 3.maybe card_id_list has many different card_id; 4.maybe both consume_share_self_num and share_card_list.num bigger than 0</field>
+        </record>
+
+        <record id="wechat_error_codes_40145" model="wechat.error_codes">
+            <field name="code">40145</field>
+            <field name="name">invalid update! Can not both set PayCell and CenterCellInfo(include: center_title, center_sub_title, center_url).</field>
+        </record>
+
+        <record id="wechat_error_codes_40146" model="wechat.error_codes">
+            <field name="code">40146</field>
+            <field name="name">invalid openid! card may be marked by other user!</field>
+        </record>
+
+        <record id="wechat_error_codes_40147" model="wechat.error_codes">
+            <field name="code">40147</field>
+            <field name="name">invalid consume! Consume time overranging restricts.</field>
+        </record>
+
+        <record id="wechat_error_codes_40148" model="wechat.error_codes">
+            <field name="code">40148</field>
+            <field name="name">invalid friends card type</field>
+        </record>
+
+        <record id="wechat_error_codes_40149" model="wechat.error_codes">
+            <field name="code">40149</field>
+            <field name="name">iinvalid use time limit</field>
+        </record>
+
+        <record id="wechat_error_codes_40150" model="wechat.error_codes">
+            <field name="code">40150</field>
+            <field name="name">invalid card parameters</field>
+        </record>
+
+        <record id="wechat_error_codes_40151" model="wechat.error_codes">
+            <field name="code">40151</field>
+            <field name="name">invalid card info, text/pic hit antispam</field>
+        </record>
+
+        <record id="wechat_error_codes_40152" model="wechat.error_codes">
+            <field name="code">40152</field>
+            <field name="name">invalid group id</field>
+        </record>
+
+        <record id="wechat_error_codes_40153" model="wechat.error_codes">
+            <field name="code">40153</field>
+            <field name="name">self consume cell for friends card must need verify code</field>
+        </record>
+
+        <record id="wechat_error_codes_40154" model="wechat.error_codes">
+            <field name="code">40154</field>
+            <field name="name">invalid voip parameters</field>
+        </record>
+
+        <record id="wechat_error_codes_40155" model="wechat.error_codes">
+            <field name="code">40155</field>
+            <field name="name">please don't contain other home page url</field>
+        </record>
+
+        <record id="wechat_error_codes_40156" model="wechat.error_codes">
+            <field name="code">40156</field>
+            <field name="name">invalid face recognize parameters</field>
+        </record>
+
+        <record id="wechat_error_codes_40157" model="wechat.error_codes">
+            <field name="code">40157</field>
+            <field name="name">invalid picture, has no face</field>
+        </record>
+
+        <record id="wechat_error_codes_40158" model="wechat.error_codes">
+            <field name="code">40158</field>
+            <field name="name">invalid use_custom_code, need be false</field>
+        </record>
+
+        <record id="wechat_error_codes_40159" model="wechat.error_codes">
+            <field name="code">40159</field>
+            <field name="name">invalid length for path, or the data is not json string</field>
         </record>
 
         <record id="wechat_error_codes_40160" model="wechat.error_codes">
