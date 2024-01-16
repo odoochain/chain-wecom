@@ -13,6 +13,16 @@
             <field name="name">Request successful</field>
         </record>
 
+        <record id="wechat_error_codes_1003" model="wechat.error_codes">
+            <field name="code">1003</field>
+            <field name="name">The POST parameter is invalid</field>
+        </record>
+
+        <record id="wechat_error_codes_20002" model="wechat.error_codes">
+            <field name="code">20002</field>
+            <field name="name">Product ID does not exist</field>
+        </record>
+
         <record id="wechat_error_codes_40001" model="wechat.error_codes">
             <field name="code">40001</field>
             <field name="name">invalid credential, access_token is invalid or not latest</field>
@@ -33,9 +43,99 @@
             <field name="name">invalid url</field>
         </record>
 
+        <record id="wechat_error_codes_40124" model="wechat.error_codes">
+            <field name="code">40124</field>
+            <field name="name">too many custom field!</field>
+        </record>
+
+        <record id="wechat_error_codes_40125" model="wechat.error_codes">
+            <field name="code">40125</field>
+            <field name="name">invalid appsecret</field>
+        </record>
+
+        <record id="wechat_error_codes_40126" model="wechat.error_codes">
+            <field name="code">40126</field>
+            <field name="name">invalid text size</field>
+        </record>
+
+        <record id="wechat_error_codes_40127" model="wechat.error_codes">
+            <field name="code">40127</field>
+            <field name="name">invalid user-card status! Hint: the card was given to user, but may be deleted or expired or set unavailable !</field>
+        </record>
+
+        <record id="wechat_error_codes_40128" model="wechat.error_codes">
+            <field name="code">40128</field>
+            <field name="name">invalid media id! must be uploaded by api(cgi-bin/material/add_material)</field>
+        </record>
+
+        <record id="wechat_error_codes_40129" model="wechat.error_codes">
+            <field name="code">40129</field>
+            <field name="name">invalid openid list size, at least two openid</field>
+        </record>
+
+        <record id="wechat_error_codes_40130" model="wechat.error_codes">
+            <field name="code">40130</field>
+            <field name="name">invalid openid list size, at least two openid</field>
+        </record>
+
+        <record id="wechat_error_codes_40131" model="wechat.error_codes">
+            <field name="code">40131</field>
+            <field name="name">out of limit of ticket</field>
+        </record>
+
+        <record id="wechat_error_codes_40132" model="wechat.error_codes">
+            <field name="code">40132</field>
+            <field name="name">invalid username</field>
+        </record>
+
+        <record id="wechat_error_codes_40133" model="wechat.error_codes">
+            <field name="code">40133</field>
+            <field name="name">invalid encryt data</field>
+        </record>
+
+        <record id="wechat_error_codes_40160" model="wechat.error_codes">
+            <field name="code">40160</field>
+            <field name="name">invalid image file</field>
+        </record>
+
+        <record id="wechat_error_codes_40161" model="wechat.error_codes">
+            <field name="code">40161</field>
+            <field name="name">image file not match</field>
+        </record>
+
+        <record id="wechat_error_codes_40162" model="wechat.error_codes">
+            <field name="code">40162</field>
+            <field name="name">code been used</field>
+        </record>
+
+        <record id="wechat_error_codes_40163" model="wechat.error_codes">
+            <field name="code">40163</field>
+            <field name="name">code been used</field>
+        </record>
+
         <record id="wechat_error_codes_40164" model="wechat.error_codes">
             <field name="code">40164</field>
             <field name="name">invalid ip, not in whitelist</field>
+        </record>
+
+        <record id="wechat_error_codes_40165" model="wechat.error_codes">
+            <field name="code">40165</field>
+            <field name="name">invalid weapp pagepath</field>
+        </record>
+
+        <record id="wechat_error_codes_40166" model="wechat.error_codes">
+            <field name="code">40166</field>
+            <field name="name">invalid weapp appid</field>
+        </record>
+
+        <record id="wechat_error_codes_40167" model="wechat.error_codes">
+            <field name="code">40167</field>
+            <field name="name">there is no relation with plugin appid</field>
+        </record>
+
+        <record id="wechat_error_codes_40168" model="wechat.error_codes">
+            <field name="code">40168</field>
+            <field name="name">unlinked weapp card</field>
         </record>
 
         <record id="wechat_error_codes_41001" model="wechat.error_codes">

@@ -47,7 +47,7 @@ class WeChatOAuthLogin(Home):
                 in provider["auth_endpoint"]
             ):
                 return_url = (
-                    request.httprequest.url_root + "wechat_scan_register_or_login"
+                    request.httprequest.url_root + "wechat/scan_register_or_login"
                 )
                 state = self.get_state(provider)
                 ICP = request.env["ir.config_parameter"].sudo()
@@ -79,7 +79,7 @@ class WeChatOAuthLogin(Home):
                 in provider["auth_endpoint"]
             ):
                 return_url = (
-                    request.httprequest.url_root + "wechat_one_click_register_or_login"
+                    request.httprequest.url_root + "wechat/one_click_register_or_login"
                 )
                 state = self.get_state(provider)
                 ICP = request.env["ir.config_parameter"].sudo()
@@ -110,35 +110,15 @@ class WeChatOAuthLogin(Home):
         response = super(WeChatOAuthLogin, self).web_login(*args, **kw)
         if response.is_qweb:
             error = request.params.get('oauth_error')
-            print(error,type(error))
-            if error =="10003":
-                error = _("%s:redirect_uri domain name is inconsistent with the background configuration") % error
-            elif error =="10004":
-                error = _("%s:This official account is banned") % error
-            elif error =="10005":
-                error = _("%s:This official account does not have the permission of these scopes") % error
-            elif error =="10006":
-                error = _("%s:You must pay attention to this test official account") % error
-            elif error =="10009":
-                error = _("%s:It's too frequent, please try again later") % error
-            elif error =="10010":
-                error = _("%s:The scope cannot be empty") % error
-            elif error =="10011":
-                error = _("%s:redirect_uri can't be empty") % error
-            elif error =="10012":
-                error = _("%s:The appid cannot be empty") % error
-            elif error =="10013":
-                error = _("%s:state cannot be empty") % error
-            elif error =="10015":
-                error = _("%s:The Official Account does not authorize a third-party platform, please check the authorization status") % error
-            elif error == '10016':
-                error = _("%s:The Appid of the WeChat Open Platform is not supported, please use the Official Account Appid") % error
-            elif error == '40125':
-                error = _("%s:Invalid WeChat Secret, please contact the administrator.") % error
-            elif error == '40163':
-                error = _("%s:Code been used, please contact the administrator.") % error
-            elif error !="":
-                error = _("%s:Unknown error code") % error
+            if error:
+                error_code = request.env["wechat.error_codes"].sudo().search_read(
+                    domain=[("code_text", "=", error)],
+                    fields=['name'],
+                    )
+                if error_code:
+                    error = _("%s: %s") % (error, error_code[0]["name"])
+                else:
+                    error = _("%s: %s") % (error, _("unknown error"))
             else:
                 error = None
 
@@ -146,24 +126,48 @@ class WeChatOAuthLogin(Home):
                 response.qcontext['error'] = error
         return response
 
-    @http.route('/wechat_reset_login_name', type='http', auth='public', website=True, sitemap=False)
-    def web_auth_reset_login_name(self, *args, **kw):
+    @http.route('/wechat/reset_login_name', type='http', auth='public', website=True, sitemap=False)
+    def wechat_auth_reset_login_name(self, **kw):
         """
         重置用户名
         """
-        print(args,kw)
-        # qcontext = self.get_auth_signup_qcontext()
-        # print(qcontext)
+        qcontext = self.get_auth_signup_qcontext()
+        print(kw)
+        if "login" in kw:
+            login_name = kw.get("login")
+            user = request.env['res.users'].sudo().search([('login', '=', login_name)])
 
-        response = request.render('wechat_auth_oauth.reset_login_name', {})
+            if len(user) > 0:
+                qcontext['error'] = _("The login name already exists!")
+                response = request.render('wechat_auth_oauth.reset_login_name', qcontext)
+                response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+                response.headers['Content-Security-Policy'] = "frame-ancestors 'self'"
+                return response
+            else:
+                try:
+                    request.env.user.sudo().update({
+                        "login":login_name
+                    })
+                except Exception as e:
+                    qcontext['error'] = str(e)
+                    return response
+                else:
+                    if "redirect" in kw:
+                        return request.redirect("/%s" %  kw.get("redirect"))
+                    else:
+                        return request.redirect("/")
+
+
+        response = request.render('wechat_auth_oauth.reset_login_name', qcontext)
         response.headers['X-Frame-Options'] = 'SAMEORIGIN'
         response.headers['Content-Security-Policy'] = "frame-ancestors 'self'"
         return response
 
+
 class OAuthController(http.Controller):
 
     @http.route(
-        "/wechat_scan_register_or_login",
+        "/wechat/scan_register_or_login",
         type="http",
         auth="none",
     )
@@ -185,7 +189,7 @@ class OAuthController(http.Controller):
             elif len(state_object) == 3:
                 state.update({state_object[0]: state_object[1] + ":" + state_object[2]})
 
-
+        # print(state)
         ICP = request.env["ir.config_parameter"].sudo()
         appid = ICP.get_param("wechat_website_auth_appid")
         secret = ICP.get_param("wechat_website_auth_secret")
@@ -198,7 +202,7 @@ class OAuthController(http.Controller):
         except Exception as e:
             print(str(e))
         finally:
-            print(response)
+            # print(response)
             if "errcode" in response:
                 url = "/web/login?oauth_error=%s" % response["errcode"]
                 return request.redirect(url)
@@ -250,7 +254,7 @@ class OAuthController(http.Controller):
                             url = "/web#action=%s" % action
                         elif menu:
                             url = "/web#menu_id=%s" % menu
-
+                        # print(url)
                         pre_uid = request.session.authenticate(db, login, key)  # type: ignore
                         resp = request.redirect(_get_login_redirect_url(pre_uid, url), 303)  # type: ignore
                         resp.autocorrect_location_header = False
@@ -258,11 +262,11 @@ class OAuthController(http.Controller):
                         # 由于/web是硬编码的，请验证用户是否有权登录
                         if request.env.user.login == request.env.user.wechat_openid or request.env.user.login == request.env.user.wechat_unionid:
                             # 需要重置用户名
-                            resp.location = "/wechat_reset_login_name"
+                            resp.location = "/wechat/reset_login_name"
                             if request.env.user._is_internal():
-                                resp.location = '/wechat_reset_login_name?redirect_uri=web'
+                                resp.location = '/wechat/reset_login_name?redirect=web'
                             else:
-                                resp.location = '/wechat_reset_login_name?redirect_uri=my'
+                                resp.location = '/wechat/reset_login_name?redirect=my'
                         else:
                             if request.env.user._is_internal():
                                 resp.location = '/web'
@@ -281,7 +285,7 @@ class OAuthController(http.Controller):
 
 
     @http.route(
-        "/wechat_one_click_register_or_login",
+        "/wechat/one_click_register_or_login",
         type="http",
         auth="none",
     )
@@ -293,15 +297,15 @@ class OAuthController(http.Controller):
         # 通过code换取网页授权access_token
         code = kw.pop("code", None)
 
-        print(kw["state"],type(kw["state"]))
+        # print(kw["state"],type(kw["state"]))
         # 微信开者工具和手机首位生成的 state 值 不一致，故需要进行 try except 进行处理
         # {d:wechat,p:13,r:https://genealogy.odooeasy.cn/web} <class 'str'>  微信开发者工具的值
         # {"d":"wechat","p":13,"r":"https%3A%2F%2Fgenealogy.odooeasy.cn%2Fweb"} <class 'str'> 手机微信的值
         try:
-            print("--------1",kw['state'],type(kw['state']))
+            # print("--------1",kw['state'],type(kw['state']))
             state = json.loads(kw['state'])
         except:
-            print("--------2",kw['state'],type(kw['state']))
+            # print("--------2",kw['state'],type(kw['state']))
             state_str = kw["state"]
             if "\\" in state_str:
                 state_str = state_str.replace("\\", "")
@@ -309,7 +313,7 @@ class OAuthController(http.Controller):
             state = {}
             for state_item in state_array:
                 state_object = state_item.split(":")
-                print(state_object,type(state_object))
+                # print(state_object,type(state_object))
                 for index, s in enumerate(state_object):
                     if "'" in s:
                         state_object[index] = state_object[index].replace("'", "")
@@ -319,7 +323,7 @@ class OAuthController(http.Controller):
                 elif len(state_object) == 3:
                     state.update({state_object[0]: state_object[1] + ":" + state_object[2]})
 
-        print("--------3",state,type(state))
+        # print("--------3",state,type(state))
         ICP = request.env["ir.config_parameter"].sudo()
         appid = ICP.get_param("wechat_official_accounts_developer_appid")
         secret = ICP.get_param("wechat_official_accounts_developer_secret")
@@ -368,7 +372,7 @@ class OAuthController(http.Controller):
 
                     action = state.get("a")
                     menu = state.get("m")
-                    print(state["r"])
+                    # print(state["r"])
                     redirect = state["r"] if state.get("r") else False
 
                     url = "/web"
@@ -386,11 +390,11 @@ class OAuthController(http.Controller):
                     # 由于/web是硬编码的，请验证用户是否有权登录
                     if request.env.user.login == request.env.user.wechat_openid or request.env.user.login == request.env.user.wechat_unionid:
                         # 需要重置用户名
-                        resp.location = "/wechat_reset_login_name"
+                        resp.location = "/wechat/reset_login_name"
                         if request.env.user._is_internal():
-                            resp.location = '/wechat_reset_login_name?redirect_uri=web'
+                            resp.location = '/wechat/reset_login_name?redirect=web'
                         else:
-                            resp.location = '/wechat_reset_login_name?redirect_uri=my'
+                            resp.location = '/wechat/reset_login_name?redirect=my'
                     else:
                         if request.env.user._is_internal():
                             resp.location = '/web'
@@ -409,12 +413,12 @@ class OAuthController(http.Controller):
                     # signup error
                     url = "/web/login?oauth_error=2"
 
-    @http.route("/get_provider_wechat", type="json", auth="none")
+    @http.route("/wechat/get_provider", type="json", auth="none")
     def get_provider_wechat(self, **kwargs):
         # TODO if "is_wechat_browser" in kwargs:
         data = {}
 
-        return_url = request.httprequest.url_root + "wechat_scan_register_or_login"
+        return_url = request.httprequest.url_root + "/wechat/scan_register_or_login"
         css_url = (
             request.httprequest.url_root
             + "wechat_auth_oauth/static/str/legacy/public/css/wehcat_qrcode.css"

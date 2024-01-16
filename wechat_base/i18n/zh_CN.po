@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-16 03:51+0000\n"
-"PO-Revision-Date: 2024-01-16 11:56+0800\n"
+"POT-Creation-Date: 2024-01-16 04:19+0000\n"
+"PO-Revision-Date: 2024-01-16 12:23+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -193,6 +193,11 @@ msgid "Portal User"
 msgstr "门户用户"
 
 #. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_20002
+msgid "Product ID does not exist"
+msgstr "商品id不存在"
+
+#. module: wechat_base
 #: model:ir.model.fields,field_description:wechat_base.field_auth_oauth_provider__name
 msgid "Provider name"
 msgstr "服务商名称"
@@ -216,6 +221,11 @@ msgstr "设置"
 #: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__wechat_auth_signup_template_user_id
 msgid "Template user for new users created through WeChat registration"
 msgstr "通过微信注册创建的新用户模板用户"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_1003
+msgid "The POST parameter is invalid"
+msgstr "POST参数无效"
 
 #. module: wechat_base
 #: model:res.groups,comment:wechat_base.group_wechat_settings_user
@@ -451,6 +461,11 @@ msgid "invalid appid"
 msgstr "不合法的appid"
 
 #. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40125
+msgid "invalid appsecret"
+msgstr "不合法的 AppID ，请开发者检查 AppID 的正确性，避免异常字符，注意大小写"
+
+#. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40001
 msgid "invalid credential, access_token is invalid or not latest"
 msgstr ""
@@ -458,14 +473,50 @@ msgstr ""
 "对 AppSecret 的正确性，或查看是否正在为恰当的公众号调用接口"
 
 #. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40133
+msgid "invalid encryt data"
+msgstr "无效的加密数据"
+
+#. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40164
 msgid "invalid ip, not in whitelist"
 msgstr "无效ip，不在白名单中"
 
 #. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40128
+msgid ""
+"invalid media id! must be uploaded by api(cgi-bin/material/add_material)"
+msgstr "无效的媒体id！必须通过API上传（cgi-bin/material/add_material）"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40129
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40130
+msgid "invalid openid list size, at least two openid"
+msgstr "openid列表大小无效，至少有两个openid"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40126
+msgid "invalid text size"
+msgstr "无效的文本大小"
+
+#. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40066
 msgid "invalid url"
 msgstr "不合法的 url ，递交的页面被sitemap标记为拦截"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40127
+msgid ""
+"invalid user-card status! Hint: the card was given to user, but may be "
+"deleted or expired or set unavailable !"
+msgstr ""
+"无效的用户卡状态！提示：该卡已提供给用户，但可能会被删除、过期或设置为不可"
+"用！"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40132
+msgid "invalid username"
+msgstr "微信号不合法"
 
 #. module: wechat_base
 #: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
@@ -483,6 +534,11 @@ msgstr "缺少 component_appid"
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61014
 msgid "must use component token for component api"
 msgstr "请按照文档使用 component_access_token 调用api"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40131
+msgid "out of limit of ticket"
+msgstr "超出ticket限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45009
@@ -508,6 +564,11 @@ msgstr "需要 HTTPS 请求"
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_minus_1
 msgid "system error"
 msgstr "系统繁忙，此时请开发者稍候再试"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40124
+msgid "too many custom field!"
+msgstr "自定义字段太多！"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_50002

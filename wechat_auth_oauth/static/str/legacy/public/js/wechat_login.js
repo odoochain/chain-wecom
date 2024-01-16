@@ -21,7 +21,7 @@ odoo.define('wechat_auth_oauth.login', function (require) {
             var self = this;
             this.is_wechat_browser = self.is_wechat_browser();
             this.wechat_provider_info = self._rpc({
-                route: "/get_provider_wechat",
+                route: "/wechat/get_provider",
                 params: {
                     is_wechat_browser: self.is_wechat_browser,
                 },

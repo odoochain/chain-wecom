@@ -23,7 +23,6 @@ class ResUsers(models.Model):
         :param params: {'access_token': '', 'expires_in': 7200, 'refresh_token': '', 'openid': '', 'scope': 'snsapi_login', 'unionid': ''}
         :return
         """
-        print(provider, params)
         ICP = self.env["ir.config_parameter"].sudo()
         wechat_open_endpoint = "https://open.weixin.qq.com/connect/qrconnect"
         wechat_official_accounts_endpoint = "https://open.weixin.qq.com/connect/oauth2/authorize"
@@ -60,7 +59,7 @@ class ResUsers(models.Model):
             ],
             limit=1,
         )
-        print(oauth_user)
+
         if not oauth_user:
             # 创建用户
             # 用户信息
