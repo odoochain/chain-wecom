@@ -10,12 +10,13 @@ class WecomServerApiError(models.Model):
 
     _name = "wechat.error_codes"
     _description = "WeChat public error code"
-    _order = "sequence"
+    _order = "code"
 
     name = fields.Char(
         "Error description",
         required=True,
         readonly=True,
+        translate=True
     )
     code = fields.Integer(
         "Error code",
@@ -24,8 +25,12 @@ class WecomServerApiError(models.Model):
     )
     code_text = fields.Char(
         "Error code text",
-        required=True,
+        compute="_compute_code_text",
+        store=True,
         readonly=True,
     )
 
-    sequence = fields.Integer(default=0)
+    @api.depends("code")
+    def _compute_code_text(self):
+        for code in self:
+            code.code_text = str(code.code)

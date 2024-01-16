@@ -18,7 +18,7 @@
             groups="group_wechat_settings_manager" />
 
         <!-- 2.1 错误码 -->
-        <menuitem id="menu_wechat_error_codes" name="Error Code"
+        <menuitem id="menu_wechat_error_codes" name="WeChat Public Error Code"
             parent="wechat_base.menu_wechat_api"
             groups="group_wechat_settings_manager"
             action="action_view_wechat_error_codes" sequence="1"/>

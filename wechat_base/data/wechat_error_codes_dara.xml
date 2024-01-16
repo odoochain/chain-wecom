@@ -1,7 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
 
+    <data noupdate="0">
+
+        <record id="wechat_error_codes_minus_1" model="wechat.error_codes">
+            <field name="code">-1</field>
+            <field name="name">system error</field>
+        </record>
+
+        <record id="wechat_error_codes_0" model="wechat.error_codes">
+            <field name="code">0</field>
+            <field name="name">Request successful</field>
+        </record>
+
+        <record id="wechat_error_codes_40001" model="wechat.error_codes">
+            <field name="code">40001</field>
+            <field name="name">invalid credential, access_token is invalid or not latest</field>
+        </record>
+
+        <record id="wechat_error_codes_40013" model="wechat.error_codes">
+            <field name="code">40013</field>
+            <field name="name">invalid appid</field>
+        </record>
+
+        <record id="wechat_error_codes_40014" model="wechat.error_codes">
+            <field name="code">40014</field>
+            <field name="name">invalid access_token</field>
+        </record>
+
+        <record id="wechat_error_codes_40066" model="wechat.error_codes">
+            <field name="code">40066</field>
+            <field name="name">invalid url</field>
+        </record>
+
+        <record id="wechat_error_codes_40164" model="wechat.error_codes">
+            <field name="code">40164</field>
+            <field name="name">invalid ip, not in whitelist</field>
+        </record>
+
+        <record id="wechat_error_codes_41001" model="wechat.error_codes">
+            <field name="code">41001</field>
+            <field name="name">access_token missing</field>
+        </record>
+
+        <record id="wechat_error_codes_41002" model="wechat.error_codes">
+            <field name="code">41002</field>
+            <field name="name">appid missing</field>
+        </record>
+
+        <record id="wechat_error_codes_41018" model="wechat.error_codes">
+            <field name="code">41018</field>
+            <field name="name">missing component_appid</field>
+        </record>
+
+        <record id="wechat_error_codes_42001" model="wechat.error_codes">
+            <field name="code">42001</field>
+            <field name="name">require https</field>
+        </record>
+
+        <record id="wechat_error_codes_43001" model="wechat.error_codes">
+            <field name="code">43001</field>
+            <field name="name">require GET method</field>
+        </record>
+
+        <record id="wechat_error_codes_43002" model="wechat.error_codes">
+            <field name="code">43002</field>
+            <field name="name">require POST method</field>
+        </record>
+
+        <record id="wechat_error_codes_43003" model="wechat.error_codes">
+            <field name="code">43001</field>
+            <field name="name">access_token expired</field>
+        </record>
+
+        <record id="wechat_error_codes_45002" model="wechat.error_codes">
+            <field name="code">45002</field>
+            <field name="name">content size out of limit</field>
+        </record>
+
+        <record id="wechat_error_codes_45009" model="wechat.error_codes">
+            <field name="code">45009</field>
+            <field name="name">reach max api daily quota limit</field>
+        </record>
+
+        <record id="wechat_error_codes_45011" model="wechat.error_codes">
+            <field name="code">45011</field>
+            <field name="name">api minute-quota reach limit, must slower, retry next minute</field>
+        </record>
+
+        <record id="wechat_error_codes_45035" model="wechat.error_codes">
+            <field name="code">45035</field>
+            <field name="name">access clientip is not registered, not in ip-white-list</field>
+        </record>
+
+        <record id="wechat_error_codes_48001" model="wechat.error_codes">
+            <field name="code">48001</field>
+            <field name="name">api unauthorized</field>
+        </record>
+
+        <record id="wechat_error_codes_48004" model="wechat.error_codes">
+            <field name="code">48004</field>
+            <field name="name">api forbidden for irregularities, view detail on mp.weixin.qq.com</field>
+        </record>
+
+        <record id="wechat_error_codes_50002" model="wechat.error_codes">
+            <field name="code">50002</field>
+            <field name="name">user limited</field>
+        </record>
+
+        <record id="wechat_error_codes_61004" model="wechat.error_codes">
+            <field name="code">61004</field>
+            <field name="name">access clientip is not registered</field>
+        </record>
+
+        <record id="wechat_error_codes_61007" model="wechat.error_codes">
+            <field name="code">61007</field>
+            <field name="name">api is unauthorized to component</field>
+        </record>
+
+        <record id="wechat_error_codes_61014" model="wechat.error_codes">
+            <field name="code">61014</field>
+            <field name="name">must use component token for component api</field>
+        </record>
+
+        <record id="wechat_error_codes_61016" model="wechat.error_codes">
+            <field name="code">61016</field>
+            <field name="name">function category of API need be confirmed by component</field>
+        </record>
 
     </data>
 </odoo>

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-14 15:14+0000\n"
-"PO-Revision-Date: 2024-01-14 23:15+0800\n"
+"POT-Creation-Date: 2024-01-16 03:51+0000\n"
+"PO-Revision-Date: 2024-01-16 11:56+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -87,6 +87,16 @@ msgid "Config Settings"
 msgstr "配置设置"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_error_codes__create_uid
+msgid "Created by"
+msgstr "创建人"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_error_codes__create_date
+msgid "Created on"
+msgstr "创建时间"
+
+#. module: wechat_base
 #: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__wechat_default_user_company
 msgid "Default registered company for WeChat users"
 msgstr "微信用户默认注册公司"
@@ -97,14 +107,65 @@ msgid "Default registered user type for WeChat users"
 msgstr "微信用户的默认注册用户类型"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_error_codes__display_name
+msgid "Display Name"
+msgstr "显示名称"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_wechat_error_codes_tree
+msgid "Error"
+msgstr "错误"
+
+#. module: wechat_base
+#: model:ir.actions.act_window,name:wechat_base.action_view_wechat_error_codes
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_error_codes__code
+msgid "Error code"
+msgstr "错误代码"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_error_codes__code_text
+msgid "Error code text"
+msgstr "错误代码文本"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_error_codes__name
+msgid "Error description"
+msgstr "错误描述"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_wechat_error_codes_filter
+msgid "Errors"
+msgstr "错误"
+
+#. module: wechat_base
 #: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__wechat_auth_signup_type
 msgid "How to create new users through WeChat registration"
 msgstr "如何通过微信注册创建新用户"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_error_codes__id
+msgid "ID"
+msgstr ""
+
+#. module: wechat_base
 #: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_auth_signup_default_user_type__1
 msgid "Internal User"
 msgstr "内部用户"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_error_codes____last_update
+msgid "Last Modified on"
+msgstr "最后修改时间"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_error_codes__write_uid
+msgid "Last Updated by"
+msgstr "最后更新人"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_error_codes__write_date
+msgid "Last Updated on"
+msgstr "最后更新时间"
 
 #. module: wechat_base
 #: model_terms:ir.ui.view,arch_db:wechat_base.view_wechat_users_form
@@ -140,6 +201,11 @@ msgstr "服务商名称"
 #: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_auth_signup_default_user_type__11
 msgid "Public User"
 msgstr "公开用户"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_0
+msgid "Request successful"
+msgstr "请求成功"
 
 #. module: wechat_base
 #: model:ir.actions.act_window,name:wechat_base.wechat_config_settings_action
@@ -207,6 +273,11 @@ msgid "WeChat"
 msgstr "微信"
 
 #. module: wechat_base
+#: model:ir.ui.menu,name:wechat_base.menu_wechat_api
+msgid "WeChat API"
+msgstr "微信API"
+
+#. module: wechat_base
 #: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
 msgid "WeChat Basic Settings"
 msgstr "微信基础设置"
@@ -224,6 +295,11 @@ msgid "WeChat Official accounts"
 msgstr "微信公众号"
 
 #. module: wechat_base
+#: model:ir.ui.menu,name:wechat_base.menu_wechat_error_codes
+msgid "WeChat Public Error Code"
+msgstr "错误代码"
+
+#. module: wechat_base
 #: model:ir.ui.menu,name:wechat_base.menu_wechat_configuration
 msgid "WeChat Settings"
 msgstr "微信配置"
@@ -237,6 +313,11 @@ msgstr "微信用户"
 #: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
 msgid "WeChat open platform"
 msgstr "微信开放平台"
+
+#. module: wechat_base
+#: model:ir.model,name:wechat_base.model_wechat_error_codes
+msgid "WeChat public error code"
+msgstr "微信公共错误代码"
 
 #. module: wechat_base
 #: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
@@ -299,8 +380,136 @@ msgid "Wechat schedule tasks"
 msgstr "微信计划任务"
 
 #. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61004
+msgid "access clientip is not registered"
+msgstr "把ip加入白名单ip列表再重试"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45035
+msgid "access clientip is not registered, not in ip-white-list"
+msgstr "访问客户端ip未注册，不在ip白名单中"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43003
+msgid "access_token expired"
+msgstr ""
+"access_token 超时，请检查 access_token 的有效期，请参考基础支持 - 获取 "
+"access_token 中，对 access_token 的详细机制说明"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41001
+msgid "access_token missing"
+msgstr "缺少 access_token 参数"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_48004
+msgid "api forbidden for irregularities, view detail on mp.weixin.qq.com"
+msgstr "api 接口被封禁，请登录 mp.weixin.qq.com 查看详情"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61007
+msgid "api is unauthorized to component"
+msgstr "api未经组件授权"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45011
+msgid "api minute-quota reach limit, must slower, retry next minute"
+msgstr "API 调用太频繁，请稍候再试"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_48001
+msgid "api unauthorized"
+msgstr ""
+"api 功能未授权，请确认公众号已获得该接口，可以在公众平台官网 - 开发者中心页中"
+"查看接口权限"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41002
+msgid "appid missing"
+msgstr "缺少 appid 参数"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45002
+msgid "content size out of limit"
+msgstr "消息内容超过限制"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61016
+msgid "function category of API need be confirmed by component"
+msgstr "API的功能类别需要通过组件确认"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40014
+msgid "invalid access_token"
+msgstr ""
+"不合法的 access_token ，请开发者认真比对 access_token 的有效性（如是否过"
+"期），或查看是否正在为恰当的公众号调用接口"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40013
+msgid "invalid appid"
+msgstr "不合法的appid"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40001
+msgid "invalid credential, access_token is invalid or not latest"
+msgstr ""
+"获取 access_token 时 AppSecret 错误，或者 access_token 无效。请开发者认真比"
+"对 AppSecret 的正确性，或查看是否正在为恰当的公众号调用接口"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40164
+msgid "invalid ip, not in whitelist"
+msgstr "无效ip，不在白名单中"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40066
+msgid "invalid url"
+msgstr "不合法的 url ，递交的页面被sitemap标记为拦截"
+
+#. module: wechat_base
 #: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
 msgid ""
 "is a new service platform that provides business services and user "
 "management capabilities for individuals, enterprises, and organizations."
 msgstr "给个人、企业和组织提供业务服务与用户管理能力的全新服务平台。"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41018
+msgid "missing component_appid"
+msgstr "缺少 component_appid"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61014
+msgid "must use component token for component api"
+msgstr "请按照文档使用 component_access_token 调用api"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45009
+msgid "reach max api daily quota limit"
+msgstr "接口调用超过限制"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43001
+msgid "require GET method"
+msgstr "需要 GET 请求"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43002
+msgid "require POST method"
+msgstr "需要 POST 请求"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_42001
+msgid "require https"
+msgstr "需要 HTTPS 请求"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_minus_1
+msgid "system error"
+msgstr "系统繁忙，此时请开发者稍候再试"
+
+#. module: wechat_base
+#: model:wechat.error_codes,name:wechat_base.wechat_error_codes_50002
+msgid "user limited"
+msgstr "用户受限，可能是用户账号被冻结或注销"
