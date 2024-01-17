@@ -848,6 +848,116 @@
             <field name="name">unlinked weapp card</field>
         </record>
 
+        <record id="wechat_error_codes_40169" model="wechat.error_codes">
+            <field name="code">40169</field>
+            <field name="name">invalid length for scene, or the data is not json string</field>
+        </record>
+
+        <record id="wechat_error_codes_40170" model="wechat.error_codes">
+            <field name="code">40170</field>
+            <field name="name">args count exceed count limit</field>
+        </record>
+
+        <record id="wechat_error_codes_40171" model="wechat.error_codes">
+            <field name="code">40171</field>
+            <field name="name">product id can not empty and the length cannot exceed 32</field>
+        </record>
+
+        <record id="wechat_error_codes_40172" model="wechat.error_codes">
+            <field name="code">40172</field>
+            <field name="name">can not have same product id</field>
+        </record>
+
+        <record id="wechat_error_codes_40173" model="wechat.error_codes">
+            <field name="code">40173</field>
+            <field name="name">there is no bind relation</field>
+        </record>
+
+        <record id="wechat_error_codes_40174" model="wechat.error_codes">
+            <field name="code">40174</field>
+            <field name="name">not card user</field>
+        </record>
+
+        <record id="wechat_error_codes_40175" model="wechat.error_codes">
+            <field name="code">40175</field>
+            <field name="name">invalid material id</field>
+        </record>
+
+        <record id="wechat_error_codes_40176" model="wechat.error_codes">
+            <field name="code">40176</field>
+            <field name="name">invalid template id</field>
+        </record>
+
+        <record id="wechat_error_codes_40177" model="wechat.error_codes">
+            <field name="code">40177</field>
+            <field name="name">invalid product id</field>
+        </record>
+
+        <record id="wechat_error_codes_40178" model="wechat.error_codes">
+            <field name="code">40178</field>
+            <field name="name">invalid sign</field>
+        </record>
+
+        <record id="wechat_error_codes_40179" model="wechat.error_codes">
+            <field name="code">40179</field>
+            <field name="name">Function is adjusted, rules are not allowed to add or update</field>
+        </record>
+
+        <record id="wechat_error_codes_40180" model="wechat.error_codes">
+            <field name="code">40180</field>
+            <field name="name">invalid client tmp token</field>
+        </record>
+
+        <record id="wechat_error_codes_40181" model="wechat.error_codes">
+            <field name="code">40181</field>
+            <field name="name">invalid opengid</field>
+        </record>
+
+        <record id="wechat_error_codes_40182" model="wechat.error_codes">
+            <field name="code">40182</field>
+            <field name="name">invalid pack_id</field>
+        </record>
+
+        <record id="wechat_error_codes_40183" model="wechat.error_codes">
+            <field name="code">40183</field>
+            <field name="name">invalid product_appid, product_appid should bind with wxa_appid</field>
+        </record>
+
+        <record id="wechat_error_codes_40184" model="wechat.error_codes">
+            <field name="code">40184</field>
+            <field name="name">invalid url path</field>
+        </record>
+
+        <record id="wechat_error_codes_40185" model="wechat.error_codes">
+            <field name="code">40185</field>
+            <field name="name">invalid auth_token, or auth_token is expired</field>
+        </record>
+
+        <record id="wechat_error_codes_40186" model="wechat.error_codes">
+            <field name="code">40186</field>
+            <field name="name">invalid delegate</field>
+        </record>
+
+        <record id="wechat_error_codes_40187" model="wechat.error_codes">
+            <field name="code">40187</field>
+            <field name="name">invalid ip</field>
+        </record>
+
+        <record id="wechat_error_codes_40188" model="wechat.error_codes">
+            <field name="code">40188</field>
+            <field name="name">invalid scope</field>
+        </record>
+
+        <record id="wechat_error_codes_40189" model="wechat.error_codes">
+            <field name="code">40189</field>
+            <field name="name">invalid width</field>
+        </record>
+
+        <record id="wechat_error_codes_40190" model="wechat.error_codes">
+            <field name="code">40190</field>
+            <field name="name">invalid delegate time</field>
+        </record>
+
         <record id="wechat_error_codes_41001" model="wechat.error_codes">
             <field name="code">41001</field>
             <field name="name">access_token missing</field>
