@@ -1,17 +1,15 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
 
 # ----------------------------------------
 #   使用爬虫爬取微信错误码 生成 XML 数据文件
 # ----------------------------------------
-
+import os
+from io import BytesIO
 import requests
-import pandas as pd
-from lxml import etree, builder, objectify
-import xml.etree.ElementTree as ET
+from lxml import etree
 
 
-# nodes = "//div[hasclass('table-wrp')]"
 nodes = "//table/tbody/tr"
 url = "https://developers.weixin.qq.com/doc/oplatform/Return_codes/Return_code_descriptions_new.html"
 page_text = requests.get(url=url).text
@@ -27,6 +25,7 @@ for line in lines:
         name = line.xpath("./td[2]/text()")[0]
     except:
         name = line.xpath("./td[3]/text()")[0]
+        # print(name)
 
     # xml 转义
     if '"' in name:
@@ -37,6 +36,7 @@ for line in lines:
         name.replace('"', "&lt;")
     if "<" in name:
         name.replace(">", "&gt;")
+
     codes.append(
         {
             "code": int(code),
@@ -48,20 +48,16 @@ for line in lines:
 new_codes = sorted(codes, key=lambda c: int(c["code"]))
 
 # ----------------------------
-# https://docs.python.org/zh-cn/3/library/xml.etree.elementtree.html#building-xml-documents
-# https://www.blog.pythonlibrary.org/2014/03/26/python-creating-xml-with-lxml-objectify/
 # https://lxml.de/tutorial.html
 # ----------------------------
 # 生成生成根节点
 root = etree.Element("odoo")  # type: ignore
 
 # 生成 data 节点
-data_node = etree.Element("data",attrib={"noupdate":"0"})  # type: ignore
+data_node = etree.Element("data", attrib={"noupdate": "0"})  # type: ignore
 root.append(data_node)
 
 for code in new_codes:
-    Field = builder.E.field
-
     id = "wechat_error_codes_"
     if code == -1:
         id += "minus_1"
@@ -72,17 +68,31 @@ for code in new_codes:
         "id": id,
         "model": "wechat.error_codes",
     }
-    record = etree.Element("record", attrib=record_attrs)  # type: ignore
-    # record.append(Field(name, name='name'))
-    data_node.append(record)
+    record_node = etree.Element("record", attrib=record_attrs)  # type: ignore
 
-# 将这个xml树写进test.xml
-# tree.write('test.xml', encoding='utf-8', xml_declaration=True)
-# print(etree.tostring(root))
+    code_field_node = etree.Element("field", attrib={"name": "code"})  # type: ignore
+    code_field_node.text = str(code["code"])
+    name_field_node = etree.Element("field", attrib={"name": "name"})  # type: ignore
+    name_field_node.text = code["name"]
+    record_node.append(code_field_node)
+    record_node.append(name_field_node)
+    data_node.append(record_node)
+
+# 保存xml
+xml = (
+    """<?xml version="1.0" encoding="utf-8"?>
+%s
+"""
+    % etree.tostring(root, pretty_print=True).decode()
+)
 
 
-def prettyprint(element, **kwargs):
-    xml = etree.tostring(element, pretty_print=True, **kwargs) # type: ignore
-    print(xml.decode(), end='')
+current_dir = os.path.dirname(os.path.abspath(__file__))
+xml_file_name = "reptile.xml"
+xml_file_path = os.path.join(current_dir, xml_file_name)
 
-prettyprint(root)
+if not os.path.exists(xml_file_path):
+    os.system(r"touch {}".format(xml_file_path))  # 调用系统命令行来创建文件
+
+with open(xml_file_path, "w", encoding="gb2312") as f:
+    f.write(xml)
