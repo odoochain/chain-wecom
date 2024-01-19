@@ -5638,9 +5638,11 @@
       <field name="code">93021</field>
       <field name="name">company_name field is empty</field>
     </record>
+
+    <!-- TODO -->
     <record id="wechat_error_codes_93022" model="wechat.error_codes">
       <field name="code">93022</field>
-      <field name="name">The Kredentiar field is empty</field>
+      <field name="name">The credential field is empty</field>
     </record>
     <record id="wechat_error_codes_93023" model="wechat.error_codes">
       <field name="code">93023</field>
@@ -5836,7 +5838,8 @@
     </record>
     <record id="wechat_error_codes_300012" model="wechat.error_codes">
       <field name="code">300012</field>
-      <field name="name">No arraignment quota (500 arraignments per day)</record>
+      <field name="name">No arraignment quota (500 arraignments per day)</field>
+    </record>
     <record id="wechat_error_codes_300013" model="wechat.error_codes">
       <field name="code">300013</field>
       <field name="name">Arraignment failed</field>
