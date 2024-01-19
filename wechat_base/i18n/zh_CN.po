@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-19 03:07+0000\n"
-"PO-Revision-Date: 2024-01-19 17:20+0800\n"
+"PO-Revision-Date: 2024-01-20 00:08+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -930,7 +930,7 @@ msgstr "通过微信注册创建的新用户模板用户"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_82304
 msgid "Temporary files expire"
-msgstr "\t临时文件过期"
+msgstr "临时文件过期"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_80006
@@ -2394,7 +2394,7 @@ msgstr "appid 错误"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41004
 msgid "appsecret missing"
-msgstr "\t缺少 secret 参数"
+msgstr "缺少 secret 参数"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_52006
@@ -2419,7 +2419,8 @@ msgstr "参数错误"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_47003
 msgid "argument invalid!"
-msgstr "模板参数不准确，可能为空或者不满足规则，errmsg会提示具体是哪个字段出错"
+msgstr ""
+"模板参数不准确，可能为空或者不满足规则，errmsg会提示具体是哪个字段出错!"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45008
@@ -3313,7 +3314,7 @@ msgstr "data_list是空的"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61500
 msgid "date format error"
-msgstr "\t日期格式错误"
+msgstr "日期格式错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61501
@@ -4287,7 +4288,7 @@ msgstr "不合法的appid"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300534
 msgid "invalid appid, not same body"
-msgstr "\tadd_source=2时，wx_appid和当前小程序不同主体"
+msgstr "add_source=2时，wx_appid和当前小程序不同主体"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40097
@@ -4518,7 +4519,7 @@ msgstr "改名状态不合法"
 msgid ""
 "invalid charset. please check your request, if include \\uxxxx will create  "
 "fail!"
-msgstr "不合法的请求字符，不能包含 \\uxxxx 格式的字符"
+msgstr "不合法的请求字符，不能包含 \\uxxxx 格式的字符!"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40202
@@ -4558,7 +4559,7 @@ msgstr "无效的检查运算符"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65203
 msgid "invalid check ticket"
-msgstr "无效的支票票证 "
+msgstr "无效的支票票证"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65204
@@ -4620,62 +4621,62 @@ msgstr "颜色无效"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40076
 msgid "invalid color id"
-msgstr ""
+msgstr "颜色 ID 无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45072
 msgid "invalid command"
-msgstr ""
+msgstr "command字段取值不对"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61011
 msgid "invalid component"
-msgstr ""
+msgstr "无效组件"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40094
 msgid "invalid component credential"
-msgstr ""
+msgstr "无效的组件凭据"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40091
 msgid "invalid component ticket"
-msgstr ""
+msgstr "无效的组件票证"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61000
 msgid "invalid component type"
-msgstr ""
+msgstr "无效的组件类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40147
 msgid "invalid consume! Consume time overranging restricts."
-msgstr ""
+msgstr "无效消费！消费时间超过限制。"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45166
 msgid "invalid content"
-msgstr ""
+msgstr "无效内容"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45076
 msgid "invalid count"
-msgstr ""
+msgstr "无效计数"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_81014
 msgid "invalid count! count must equal or less than 100"
-msgstr ""
+msgstr "无效计数！计数必须等于或小于 100"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65312
 msgid "invalid country info"
-msgstr ""
+msgstr "不合法的国家信息"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300022
 msgid "invalid cover_url"
-msgstr ""
+msgstr "无效cover_url"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40001
@@ -4687,52 +4688,52 @@ msgstr ""
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65401
 msgid "invalid custom service account"
-msgstr ""
+msgstr "无效的自定义服务帐户"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300703
 msgid "invalid date"
-msgstr ""
+msgstr "无效日期"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40198
 msgid "invalid default msg article size,  must be same as show_num"
-msgstr ""
+msgstr "无效的默认 msg 文章大小，必须与show_num相同"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40186
 msgid "invalid delegate"
-msgstr ""
+msgstr "无效的委托"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40190
 msgid "invalid delegate time"
-msgstr ""
+msgstr "无效的委托时间"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300520
 msgid "invalid delivery id"
-msgstr ""
+msgstr "无效的快递id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40216
 msgid "invalid desc"
-msgstr ""
+msgstr "无效的desc"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61301
 msgid "invalid detail info"
-msgstr ""
+msgstr "无效的详细信息"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_51008
 msgid "invalid email"
-msgstr ""
+msgstr "无效的电子邮件"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40075
 msgid "invalid encrypt code"
-msgstr ""
+msgstr "无效的加密代码"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40133
@@ -4742,163 +4743,163 @@ msgstr "无效的加密数据"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_51003
 msgid "invalid enterprise child list size"
-msgstr ""
+msgstr "无效的企业子列表大小"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85013
 msgid "invalid ext_json, parse fail or containing invalid path"
-msgstr ""
+msgstr "无效的自定义配置"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40156
 msgid "invalid face recognize parameters"
-msgstr ""
+msgstr "人脸识别参数无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68017
 msgid "invalid fast mail no"
-msgstr ""
+msgstr "无效的快速邮件编号"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40043
 msgid "invalid fav type"
-msgstr ""
+msgstr "无效的fav类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_600001
 msgid "invalid file name"
-msgstr ""
+msgstr "文件名无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40005
 msgid "invalid file type"
-msgstr ""
+msgstr "上传素材文件格式不对"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41028
 msgid "invalid form id"
-msgstr ""
+msgstr "表单 ID 无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40148
 msgid "invalid friends card type"
-msgstr ""
+msgstr "无效的好友卡类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300023
 msgid "invalid gen_limit"
-msgstr ""
+msgstr "无效的gen_limit"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72009
 msgid "invalid get limit, can not over 50"
-msgstr ""
+msgstr "无效的 GET 限制，不能超过 50"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40002
 msgid "invalid grant_type"
-msgstr ""
+msgstr "不合法的凭证类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85081
 msgid "invalid gray percentage"
-msgstr ""
+msgstr "无效的发布比例"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40152
 msgid "invalid group id"
-msgstr ""
+msgstr "无效的组 ID"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45090
 msgid "invalid group msg ticket"
-msgstr ""
+msgstr "无效的组消息票证"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40051
 msgid "invalid group name"
-msgstr ""
+msgstr "分组名字不合法"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40069
 msgid "invalid hardware type"
-msgstr ""
+msgstr "无效的硬件类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300021
 msgid "invalid help_max_times"
-msgstr ""
+msgstr "无效的 help_max_times"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40213
 msgid "invalid href tag"
-msgstr ""
+msgstr "无效的 href 标签"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40214
 msgid "invalid href text"
-msgstr ""
+msgstr "无效的 href 文本"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_84001
 msgid "invalid identify id"
-msgstr ""
+msgstr "无效的标识id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40215
 msgid "invalid image count"
-msgstr ""
+msgstr "无效的图像计数"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40160
 msgid "invalid image file"
-msgstr ""
+msgstr "无效的图像文件"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40137
 msgid "invalid image format"
-msgstr ""
+msgstr "不支持的图片格式"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40009
 msgid "invalid image size"
-msgstr ""
+msgstr "图片尺寸太大"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_101000
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40141
 msgid "invalid image url"
-msgstr ""
+msgstr "无效的图像url"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40114
 msgid "invalid index value"
-msgstr ""
+msgstr "索引值无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40102
 msgid "invalid industry id"
-msgstr ""
+msgstr "无效的行业 ID"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40103
 msgid "invalid industry index"
-msgstr ""
+msgstr "无效的行业指数"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61350
 msgid "invalid input data"
-msgstr ""
+msgstr "无效的输入数据"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72017
 msgid "invalid invoice title"
-msgstr ""
+msgstr "无效的发票抬头"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40187
 msgid "invalid ip"
-msgstr ""
+msgstr "无效的 IP"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40164
@@ -4908,113 +4909,115 @@ msgstr "无效ip，不在白名单中"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68008
 msgid "invalid kefu phone number"
-msgstr ""
+msgstr "无效的客服电话号码"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68006
 msgid "invalid kefu type"
-msgstr ""
+msgstr "无效的客服类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68007
 msgid "invalid kefu wxa path"
-msgstr ""
+msgstr "无效的客服WXA 路径"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_87082
 msgid "invalid key"
-msgstr ""
+msgstr "无效的 key"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61305
 msgid "invalid key info"
-msgstr ""
+msgstr "无效的 key 信息"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45075
 msgid "invalid keyword id"
-msgstr ""
+msgstr "关键字 ID 无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61452
 msgid "invalid kf_account"
-msgstr ""
+msgstr "无效客服账号"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61454
 msgid "invalid kf_acount length"
 msgstr ""
+"客服账号名长度超过限制 ( 仅允许 10 个英文字符，不包括 @ 及 @ 后的公众号的微信"
+"号 )"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40143
 msgid "invalid least cost info, should be 0"
-msgstr ""
+msgstr "无效的最小成本信息，应为 0"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72008
 msgid "invalid least cost, most larger than reduce cost"
-msgstr ""
+msgstr "无效的最小成本，最大大于降低成本"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40159
 msgid "invalid length for path, or the data is not json string"
-msgstr ""
+msgstr "路径长度无效，或者数据不是 JSON 字符串"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40169
 msgid "invalid length for scene, or the data is not json string"
-msgstr ""
+msgstr "场景长度无效，或者数据不是 JSON 字符串"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40162
 msgid "invalid lifespan"
-msgstr ""
+msgstr "无效的生命周期"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45165
 msgid "invalid limit"
-msgstr ""
+msgstr "无效的限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61315
 msgid "invalid local ext info"
-msgstr ""
+msgstr "无效的本地分机信息"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40072
 msgid "invalid location id"
-msgstr ""
+msgstr "位置 ID 无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300017
 msgid "invalid logic for membership"
-msgstr ""
+msgstr "无效的成员逻辑"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300018
 msgid "invalid logic for tinyapp new/old user"
-msgstr ""
+msgstr "tinyapp 新/旧用户的逻辑无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40175
 msgid "invalid material id"
-msgstr ""
+msgstr "无效的素材 ID"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300005
 msgid "invalid max_partic_times"
-msgstr ""
+msgstr "无效的 max_partic_times"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_94010
 msgid "invalid mch_id"
-msgstr ""
+msgstr "无效的 mch_id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72010
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72030
 msgid "invalid mchid"
-msgstr ""
+msgstr "无效的 mchid"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40128
@@ -5025,100 +5028,100 @@ msgstr "无效的媒体id！必须通过API上传（cgi-bin/material/add_materia
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61311
 msgid "invalid media info"
-msgstr ""
+msgstr "无效的媒体信息"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40004
 msgid "invalid media type"
-msgstr ""
+msgstr "不合法的媒体文件类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40121
 msgid "invalid media type in view_limited"
-msgstr ""
+msgstr "不合法的 media_id 类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40007
 msgid "invalid media_id"
-msgstr ""
+msgstr "不合法的媒体文件 id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40006
 msgid "invalid meida size"
-msgstr ""
+msgstr "上传素材文件大小超出限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40028
 msgid "invalid menu api user"
-msgstr ""
+msgstr "不合法的自定义菜单使用用户"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40015
 msgid "invalid menu type"
-msgstr ""
+msgstr "不合法的菜单类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40021
 msgid "invalid menu version"
-msgstr ""
+msgstr "不合法的菜单版本号"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40008
 msgid "invalid message type"
-msgstr ""
+msgstr "不合法的消息类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40063
 msgid "invalid message_ext size"
-msgstr ""
+msgstr "message_ext大小无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_82027
 msgid "invalid miniprogram appid"
-msgstr ""
+msgstr "无效的小程序 appid"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40059
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9402004
 msgid "invalid msg id"
-msgstr ""
+msgstr "无效的 msg id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40065
 msgid "invalid msg status"
-msgstr ""
+msgstr "无效的 msg 状态"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_51006
 msgid "invalid nick name"
-msgstr ""
+msgstr "昵称无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_91004
 msgid "invalid nickname"
-msgstr ""
+msgstr "昵称无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85030
 msgid "invalid nickname size(4-30)"
-msgstr ""
+msgstr "昵称大小无效（4-30）"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40135
 msgid ""
 "invalid not supply bonus, can not  change card_id which supply bonus to be "
 "not supply"
-msgstr ""
+msgstr "不提供奖金无效，不能将提供奖金的card_id更改为不提供"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45164
 msgid "invalid offset"
-msgstr ""
+msgstr "无效的偏移量"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40181
 msgid "invalid opengid"
-msgstr ""
+msgstr "无效的 opengid"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40003
@@ -5126,17 +5129,17 @@ msgstr ""
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_87081
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_90007
 msgid "invalid openid"
-msgstr ""
+msgstr "无效的 openid"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40031
 msgid "invalid openid list"
-msgstr ""
+msgstr "不合法的 openid 列表"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40032
 msgid "invalid openid list size"
-msgstr ""
+msgstr "不合法的 openid 列表长度"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40130
@@ -5146,286 +5149,286 @@ msgstr "openid列表大小无效，至少有两个openid"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40146
 msgid "invalid openid! card may be marked by other user!"
-msgstr ""
+msgstr "无效的 openid！卡可能被其他用户标记！"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_87083
 msgid "invalid operation"
-msgstr ""
+msgstr "无效操作"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_87084
 msgid "invalid opnum"
-msgstr ""
+msgstr "无效的 opnum"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61012
 msgid "invalid option name"
-msgstr ""
+msgstr "选项名称无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61013
 msgid "invalid option value"
-msgstr ""
+msgstr "选项值无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68046
 msgid "invalid order deliver type"
-msgstr ""
+msgstr "订单交付类型无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_90001
 msgid "invalid order id"
-msgstr ""
+msgstr "订单 ID 无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68045
 msgid "invalid order type"
-msgstr ""
+msgstr "订单类型无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_81012
 msgid "invalid order_id"
-msgstr ""
+msgstr "无效order_id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_71002
 msgid "invalid orderid, may be the other  parameter not fit with orderid"
-msgstr ""
+msgstr "无效的 orderid，可能是其他参数不适合 orderid"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40182
 msgid "invalid pack_id"
-msgstr ""
+msgstr "无效的pack_id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40038
 msgid "invalid packaging type"
-msgstr ""
+msgstr "不合法的请求格式"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41030
 msgid "invalid page"
-msgstr ""
+msgstr "page路径不正确，需要保证在现网版本小程序中存在，与app.json保持一致"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_81011
 msgid "invalid page_id"
-msgstr ""
+msgstr "无效的page"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61451
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_90018
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9301001
 msgid "invalid parameter"
-msgstr ""
+msgstr "参数错误 "
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_71001
 msgid "invalid parameter, parameter is zero or missing"
-msgstr ""
+msgstr "参数无效，参数为零或缺失"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72031
 msgid "invalid params"
-msgstr ""
+msgstr "无效的参数"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_49010
 msgid "invalid partner id"
-msgstr ""
+msgstr "合作伙伴 ID 无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40074
 msgid "invalid pay template id"
-msgstr ""
+msgstr "无效的付款模板 ID"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68016
 msgid "invalid pay type"
-msgstr ""
+msgstr "无效的付款类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65105
 msgid "invalid photo url"
-msgstr ""
+msgstr "无效的照片网址"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40191
 msgid "invalid pic_url"
-msgstr ""
+msgstr "无效pic_url"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40157
 msgid "invalid picture, has no face"
-msgstr ""
+msgstr "无效图片，无面部"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_90005
 msgid "invalid platform"
-msgstr ""
+msgstr "无效的平台"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40089
 msgid "invalid platform id"
-msgstr ""
+msgstr "无效的平台 ID"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40041
 msgid "invalid plugin id"
-msgstr ""
+msgstr "无效的插件 ID"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40042
 msgid "invalid plugin session"
-msgstr ""
+msgstr "无效的插件会话"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40040
 msgid "invalid plugin token"
-msgstr ""
+msgstr "无效的插件令牌"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40098
 msgid "invalid poiid"
-msgstr ""
+msgstr "无效的 poiid"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85092
 msgid "invalid preview_info format"
-msgstr ""
+msgstr "preview_info格式错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85093
 msgid "invalid preview_info size"
-msgstr ""
+msgstr "preview_info 视频或者图片个数超限"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68015
 msgid "invalid product"
-msgstr ""
+msgstr "无效的产品"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40177
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61304
 msgid "invalid product id"
-msgstr ""
+msgstr "无效的产品 ID"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68025
 msgid "invalid product sku"
-msgstr ""
+msgstr "无效的产品 SKU"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68026
 msgid "invalid product spu"
-msgstr ""
+msgstr "无效的产品 SPU"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40183
 msgid "invalid product_appid, product_appid  should bind with wxa_appid"
-msgstr ""
+msgstr "无效product_appid，product_appid应与wxa_appid绑定"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9402101
 msgid "invalid product_id"
-msgstr ""
+msgstr "无效的product_id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_51028
 msgid "invalid program name"
-msgstr ""
+msgstr "程序名称无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65113
 msgid "invalid province"
-msgstr ""
+msgstr "不合法的省份"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65313
 msgid "invalid province info"
-msgstr ""
+msgstr "不合法的省份信息"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_51009
 msgid "invalid pwd"
-msgstr ""
+msgstr "无效的 PWD"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45096
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_49008
 msgid "invalid qrcode"
-msgstr ""
+msgstr "无效的二维码"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61314
 msgid "invalid qrcode extinfo"
-msgstr ""
+msgstr "无效的二维码extinfo"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45097
 msgid "invalid qrcode prefix"
-msgstr ""
+msgstr "无效的 二维码 前缀"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40212
 msgid "invalid query"
-msgstr ""
+msgstr "paegs 当中存在不合法的query，query格式遵循URL标准，即k1=v1&k2=v2"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61051
 msgid "invalid realname type"
-msgstr ""
+msgstr "无效的实名类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68014
 msgid "invalid receiver info"
-msgstr ""
+msgstr "无效的接收者信息"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63157
 msgid "invalid recommend"
-msgstr ""
+msgstr "无效推荐"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40193
 msgid "invalid recommend length"
-msgstr ""
+msgstr "建议长度无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72007
 msgid "invalid reduce cost, can not less than 100"
-msgstr ""
+msgstr "降低成本无效，不可低于100"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40030
 msgid "invalid refresh_token"
-msgstr ""
+msgstr "不合法的 refresh_token"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68037
 msgid "invalid refund info"
-msgstr ""
+msgstr "无效的退款信息"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40092
 msgid "invalid remark name"
-msgstr ""
+msgstr "无效的备注名称"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40222
 msgid "invalid request idc domain"
-msgstr ""
+msgstr "请求idc域无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40090
 msgid "invalid request source (bad client ip)"
-msgstr ""
+msgstr "无效的请求源（错误的客户端 IP）"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68043
 msgid "invalid role"
-msgstr ""
+msgstr "无效角色"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40129
@@ -5435,53 +5438,53 @@ msgstr "openid列表大小无效，至少有两个openid"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40188
 msgid "invalid scope"
-msgstr ""
+msgstr "无效的作用域"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40211
 msgid "invalid scope_data"
-msgstr ""
+msgstr "无效的scope_data"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40049
 msgid "invalid score report type"
-msgstr ""
+msgstr "无效的分数报告类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40077
 msgid "invalid score type"
-msgstr ""
+msgstr "无效的分数类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40056
 msgid "invalid serial code"
-msgstr ""
+msgstr "序列号无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68041
 msgid "invalid service create time, it must  bigger than the time of order"
-msgstr ""
+msgstr "无效的服务创建时间，必须大于订单时间"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68021
 msgid "invalid service status"
-msgstr ""
+msgstr "无效的服务状态"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68020
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300510
 msgid "invalid service type"
-msgstr ""
+msgstr "无效的服务类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68044
 msgid "invalid service_available args"
-msgstr ""
+msgstr "无效的 service_available 参数"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68022
 msgid "invalid service_id"
-msgstr ""
+msgstr "无效的 service_id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40115
@@ -5491,269 +5494,269 @@ msgstr ""
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40142
 msgid "invalid sharecard parameters"
-msgstr ""
+msgstr "无效的共享卡参数"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40087
 msgid "invalid sharelink desc size"
-msgstr ""
+msgstr "无效的共享链接desc大小"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40086
 msgid "invalid sharelink logo size"
-msgstr ""
+msgstr "无效的共享链接徽标大小"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40088
 msgid "invalid sharelink title size"
-msgstr ""
+msgstr "无效的共享链接标题大小"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300535
 msgid "invalid shop arg"
-msgstr ""
+msgstr "shop字段商品缩略图 url、商品名称为空或者非法，或者商品数量为0"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40195
 msgid "invalid show_num"
-msgstr ""
+msgstr "无效的show_num"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_87008
 msgid "invalid sig_method"
-msgstr ""
+msgstr "无效的sig_method"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40178
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9291006
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_94003
 msgid "invalid sign"
-msgstr ""
+msgstr "无效的签名"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63002
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_87009
 msgid "invalid signature"
-msgstr ""
+msgstr "无效的签名"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63003
 msgid "invalid signature method"
-msgstr ""
+msgstr "无效的签名方法"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40045
 msgid "invalid size in link.description"
-msgstr ""
+msgstr "link.description 中的大小无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40046
 msgid "invalid size in link.iconurl"
-msgstr ""
+msgstr "link.iconurl 中的大小无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40044
 msgid "invalid size in link.title"
-msgstr ""
+msgstr "link.title 中的大小无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40047
 msgid "invalid size in link.url"
-msgstr ""
+msgstr "link.url 中的大小无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45100
 msgid "invalid size of keyword_id_list"
-msgstr ""
+msgstr "keyword_id_list大小无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_600003
 msgid "invalid size of source"
-msgstr ""
+msgstr "源大小无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40070
 msgid "invalid sku info"
-msgstr ""
+msgstr "源大小无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40197
 msgid "invalid smartmsg media num"
-msgstr ""
+msgstr "无效的 SmartMsg 媒体编号"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40196
 msgid "invalid smartmsg media_id"
-msgstr ""
+msgstr "无效的 smartmsg media_id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45163
 msgid "invalid sort_method"
-msgstr ""
+msgstr "无效sort_method"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9002044
 msgid ""
 "invalid ssid, can not include none  utf8 characters, and should be between 1 "
 "and 32 bytes"
-msgstr ""
+msgstr "ssid无效，不能包含任何utf8字符，并且应介于1到32个字节之间"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_51022
 msgid "invalid stamp range"
-msgstr ""
+msgstr "无效的标记范围"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63154
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68013
 msgid "invalid status"
-msgstr ""
+msgstr "无效状态"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68003
 msgid "invalid store name"
-msgstr ""
+msgstr "商店名称无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68002
 msgid "invalid store type"
-msgstr ""
+msgstr "无效的商店类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68004
 msgid "invalid store wxa path"
-msgstr ""
+msgstr "无效的存储 WXA 路径"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68501
 msgid "invalid store_id"
-msgstr ""
+msgstr "无效的store_id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40026
 msgid "invalid sub button key size"
-msgstr ""
+msgstr "不合法的子菜单按钮 KEY 长度"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40118
 msgid "invalid sub button media_id size"
-msgstr ""
+msgstr "media_id 大小不合法"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40025
 msgid "invalid sub button name size"
-msgstr ""
+msgstr "\t不合法的子菜单按钮名字长度"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40023
 msgid "invalid sub button size"
-msgstr ""
+msgstr "不合法的子菜单按钮个数"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40024
 msgid "invalid sub button type"
-msgstr ""
+msgstr "不合法的子菜单按钮类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40054
 msgid "invalid sub button url domain"
-msgstr ""
+msgstr "不合法的子菜单按钮 url 域名"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40027
 msgid "invalid sub button url size"
-msgstr ""
+msgstr "不合法的子菜单按钮 URL 长度"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68009
 msgid "invalid sub mch id"
-msgstr ""
+msgstr "无效的子 MCH ID"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40139
 msgid "invalid sub merchant id"
-msgstr ""
+msgstr "子商家 ID 无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40140
 msgid "invalid sub merchant status"
-msgstr ""
+msgstr "无效的子商家状态"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40022
 msgid "invalid sub_menu level"
-msgstr ""
+msgstr "不合法的子菜单级数"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40058
 msgid "invalid tabbar name size"
-msgstr ""
+msgstr "选项卡栏名称大小无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40057
 msgid "invalid tabbar size"
-msgstr ""
+msgstr "无效的选项卡栏大小"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63156
 msgid "invalid tag"
-msgstr ""
+msgstr "无效的标签"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45159
 msgid "invalid tag id"
-msgstr ""
+msgstr "无效的标签id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45157
 msgid "invalid tag name"
-msgstr ""
+msgstr "无效的标签名称"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300533
 msgid "invalid tagid_list"
-msgstr ""
+msgstr "无效的 tagid_list"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40123
 msgid "invalid task_id"
-msgstr ""
+msgstr "无效的task_id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85060
 msgid "invalid taskid"
-msgstr ""
+msgstr "无效的taskid"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65111
 msgid "invalid telephone"
-msgstr ""
+msgstr "无效的电话"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40176
 msgid "invalid template id"
-msgstr ""
+msgstr "模板 ID 无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40034
 msgid "invalid template size"
-msgstr ""
+msgstr "模板大小无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85043
 msgid "invalid template, something wrong?"
-msgstr ""
+msgstr "模板错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40037
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40081
 msgid "invalid template_id"
-msgstr ""
+msgstr "不合法的 template_id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40036
 msgid "invalid template_id size"
-msgstr ""
+msgstr "不合法的 template_id 长度"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40126
@@ -5763,76 +5766,76 @@ msgstr "无效的文本大小"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40012
 msgid "invalid thumb size"
-msgstr ""
+msgstr "不合法的缩略图文件大小"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61058
 msgid "invalid ticket"
-msgstr ""
+msgstr "无效的ticket"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40079
 msgid "invalid time"
-msgstr ""
+msgstr "无效时间"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40050
 msgid "invalid timeline type"
-msgstr ""
+msgstr "不合法的分组 id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_94008
 msgid "invalid timestamp"
-msgstr ""
+msgstr "无效的时间戳"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300008
 msgid "invalid tiny appid"
-msgstr ""
+msgstr "无效的 tiny appid"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40062
 msgid "invalid title size"
-msgstr ""
+msgstr "无效的标题大小"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_48012
 msgid "invalid token"
-msgstr ""
+msgstr "令牌无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300507
 msgid ""
 "invalid token, can't decryption or  decryption result is different from the "
 "plaintext"
-msgstr ""
+msgstr "Token 不正确，无法解密或解密结果与明文不同"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68042
 msgid ""
 "invalid total cost, it must be  smaller than the sum of product and shipping "
 "cost"
-msgstr ""
+msgstr "无效的总成本，它必须小于产品和运输成本的总和"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89300
 msgid "invalid trade"
-msgstr ""
+msgstr "订单无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40067
 msgid "invalid tvid"
-msgstr ""
+msgstr "无效的 tvid"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_49007
 msgid "invalid two_dim_code"
-msgstr ""
+msgstr "无效two_dim_code"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45162
 msgid "invalid type"
-msgstr ""
+msgstr "类型无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40145
@@ -5840,11 +5843,13 @@ msgid ""
 "invalid update! Can not both set  PayCell and CenterCellInfo(include: "
 "center_title, center_sub_title,  center_url)."
 msgstr ""
+"无效更新！不能同时设置 PayCell 和 CenterCellInfo（包括：center_title、"
+"center_sub_title、center_url）。"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300517
 msgid "invalid update_type, please use [bind] or [unbind]"
-msgstr ""
+msgstr "update_type 不正确,请使用\"bind\" 或者“unbind”"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40066
@@ -5856,53 +5861,53 @@ msgstr "不合法的 url ，递交的页面被sitemap标记为拦截"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40048
 msgid "invalid url domain"
-msgstr ""
+msgstr "无效的url"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40184
 msgid "invalid url path"
-msgstr ""
+msgstr "无效的url路径"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40039
 msgid "invalid url size"
-msgstr ""
+msgstr "不合法的 URL 长度"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40136
 msgid ""
 "invalid use DepositCodeMode, make  sure sku.quantity>DepositCode.quantity"
-msgstr ""
+msgstr "无效使用 DepositCodeMode，请确保 sku.quantity>DepositCode.quantity"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40119
 msgid "invalid use button type"
-msgstr ""
+msgstr "button 类型错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40120
 msgid "invalid use sub button type"
-msgstr ""
+msgstr "子 button 类型错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40149
 msgid "invalid use time limit"
-msgstr ""
+msgstr "无效的使用时限"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40158
 msgid "invalid use_custom_code, need be false"
-msgstr ""
+msgstr "use_custom_code无效，需要为false"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40106
 msgid "invalid user name"
-msgstr ""
+msgstr "用户名无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_94005
 msgid "invalid user token"
-msgstr ""
+msgstr "无效的用户令牌"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40127
@@ -5921,162 +5926,162 @@ msgstr "微信号不合法"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40217
 msgid "invalid video count"
-msgstr ""
+msgstr "无效的视频计数"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40218
 msgid "invalid video id"
-msgstr ""
+msgstr "无效的视频id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40011
 msgid "invalid video size"
-msgstr ""
+msgstr "不合法的视频文件大小"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40105
 msgid "invalid view type"
-msgstr ""
+msgstr "无效的视图类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40010
 msgid "invalid voice size"
-msgstr ""
+msgstr "不合法的语音文件大小"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45167
 msgid "invalid voip call key"
-msgstr ""
+msgstr "无效的voip呼叫密钥"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40154
 msgid "invalid voip parameters"
-msgstr ""
+msgstr "无效的voip参数"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300512
 msgid "invalid waybill template format"
-msgstr ""
+msgstr "模板格式错误，渲染失败"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300528
 msgid "invalid waybill_id"
-msgstr ""
+msgstr "无效的 waybill_id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40166
 msgid "invalid weapp appid"
-msgstr ""
+msgstr "无效的weapp appid"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40165
 msgid "invalid weapp pagepath"
-msgstr ""
+msgstr "无效的weapp页面路径"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_86004
 msgid "invalid wechat"
-msgstr ""
+msgstr "无效的微信"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68039
 msgid "invalid wechat pay no"
-msgstr ""
+msgstr "无效的微信支付号码"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85057
 msgid "invalid widget data format"
-msgstr ""
+msgstr "无效的小组件数据格式"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40189
 msgid "invalid width"
-msgstr ""
+msgstr "宽度无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_73103
 msgid "invalid wxa appid in url_cell, wxa  appid is need to bind biz appid"
-msgstr ""
+msgstr "url_cell中无效的 wxa appid，需要绑定 biz appid 的 wxa appid"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300536
 msgid "invalid wxa_appid"
-msgstr ""
+msgstr "add_source=2时，wx_appid无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72034
 msgid "invlid rule id"
-msgstr ""
+msgstr "Invlid 规则 ID"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72027
 msgid "invoice action error"
-msgstr ""
+msgstr "发票操作错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72023
 msgid "invoice has been lock by others"
-msgstr ""
+msgstr "发票已被他人锁定"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72036
 msgid "invoice is busy, try again please"
-msgstr ""
+msgstr "发票繁忙，请重试"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72039
 msgid "invoice must be lock first"
-msgstr ""
+msgstr "发票必须先锁定"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72029
 msgid "invoice never set auth field"
-msgstr ""
+msgstr "发票从不设置身份验证字段"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72028
 msgid "invoice never set pay mch info"
-msgstr ""
+msgstr "发票从未设置付款mch信息"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72038
 msgid "invoice order never auth"
-msgstr ""
+msgstr "发票订单从不授权"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72037
 msgid "invoice owner error"
-msgstr ""
+msgstr "发票所有者错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72040
 msgid "invoice pdf error"
-msgstr ""
+msgstr "发票pdf错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72024
 msgid "invoice status error"
-msgstr ""
+msgstr "发票状态错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72025
 msgid "invoice token error"
-msgstr ""
+msgstr "发票令牌错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72054
 msgid "invoices is inserting, wait a moment please"
-msgstr ""
+msgstr "发票正在插入，请稍候"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9201009
 msgid "ip error"
-msgstr ""
+msgstr "IP 错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9202003
 msgid "ip limit"
-msgstr ""
+msgstr "ip限制"
 
 #. module: wechat_base
 #: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
@@ -6088,12 +6093,12 @@ msgstr "给个人、企业和组织提供业务服务与用户管理能力的全
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_81016
 msgid "is_banner is more than 1"
-msgstr ""
+msgstr "is_banner大于1"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65417
 msgid "it is too long from the starttime to endtime"
-msgstr ""
+msgstr "从开始时间到结束时间太长"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63166
@@ -6103,17 +6108,17 @@ msgstr ""
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63167
 msgid "item not published"
-msgstr ""
+msgstr "项目未发布"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85023
 msgid "item size is not in valid range"
-msgstr ""
+msgstr "审核列表填写的项目数不在 1-5 以内"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45049
 msgid "ivr use invalid type"
-msgstr ""
+msgstr "ivr使用无效类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_73012
@@ -6123,77 +6128,77 @@ msgstr ""
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_73100
 msgid "kaipiao plat error"
-msgstr ""
+msgstr "开票平台错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61335
 msgid "key apply fail"
-msgstr ""
+msgstr "key应用失败"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61316
 msgid "key conflict"
-msgstr ""
+msgstr "key冲突"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_83209
 msgid "key exist repeated"
-msgstr ""
+msgstr "key存在重复"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_83205
 msgid "key is not string"
-msgstr ""
+msgstr "key不是字符串"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_83208
 msgid "key or value is empty"
-msgstr ""
+msgstr "key或value为空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61343
 msgid "keystandard error"
-msgstr ""
+msgstr "keystandard 错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61342
 msgid "keystandard not match"
-msgstr ""
+msgstr "keystandard 不匹配"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45168
 msgid "keyword in blacklist"
-msgstr ""
+msgstr "黑名单中的关键字"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_44998
 msgid "keyword string media size out of limit"
-msgstr ""
+msgstr "关键字字符串媒体大小超出限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_44999
 msgid "keywords list size out of limit"
-msgstr ""
+msgstr "关键字列表大小超出限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61401
 msgid "kf system alredy transfer"
-msgstr ""
+msgstr "客服系统已转移"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61456
 msgid "kf_account count exceeded"
-msgstr ""
+msgstr "客服账号个数超过限制 (10 个客服账号 )"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61400
 msgid "kf_account error"
-msgstr ""
+msgstr "客服账号错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61453
 msgid "kf_account exsited"
-msgstr ""
+msgstr "客服账号已存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_73006
@@ -6208,299 +6213,299 @@ msgstr ""
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65119
 msgid "lack of qualification for relevant principals"
-msgstr ""
+msgstr "缺乏相关负责人的资格"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89254
 msgid "lack of some component rights"
-msgstr ""
+msgstr "缺少某些组件权限"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89251
 msgid "legal person checking"
-msgstr ""
+msgstr "模板消息已下发，待法人人脸核身校验"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45042
 msgid "limit card type, this card type can  NOT create by sub merchant"
-msgstr ""
+msgstr "限制卡类型，此卡类型不能由子商户创建"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45030
 msgid "limit cardid, not support this function"
-msgstr ""
+msgstr "限制cardid，不支持此功能"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_71006
 msgid "limit coin count, 1 <= coin_count <= 100000"
-msgstr ""
+msgstr "限制硬币数量，1 <= coin_count <= 100000"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72020
 msgid "limit consume in use limit"
-msgstr ""
+msgstr "限制使用中的消费限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_71005
 msgid "limit exe count"
-msgstr ""
+msgstr "限制exe计数"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72019
 msgid "limit msg operation card list size, must <= 5"
-msgstr ""
+msgstr "限制消息操作卡列表大小，必须<=5"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9402001
 msgid "limit too large"
-msgstr ""
+msgstr "限制过大"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63174
 msgid "link card user sum limit"
-msgstr ""
+msgstr "链接卡用户金额限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89010
 msgid "link message has sent"
-msgstr ""
+msgstr "链接消息已发送"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89035
 msgid "linking from mp"
-msgstr ""
+msgstr "从mp链接"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9410000
 msgid "live room not exsits"
-msgstr ""
+msgstr "直播间列表为空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_91013
 msgid "lock name too more"
-msgstr ""
+msgstr "占用名字过多"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_81019
 msgid "lock order fail! the order is refunding by another request"
-msgstr ""
+msgstr "锁单失败！该订单正在通过另一个请求退款"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85055
 msgid "map_poi_id is invalid"
-msgstr ""
+msgstr "map_poi_id无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45052
 msgid "masssend msg use invalid type"
-msgstr ""
+msgstr "批量发送消息使用无效类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65304
 msgid "match rule empty"
-msgstr ""
+msgstr "MatchRule 信息为空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_95103
 msgid "material id list size out of limit"
-msgstr ""
+msgstr "素材d列表大小超出限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45074
 msgid ""
 "material list size out of limit, you  should delete the useless material"
-msgstr ""
+msgstr "素材列表大小超出限制，应删除无用的素材"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_74010
 msgid "maybe not support report mode"
-msgstr ""
+msgstr "可能不支持报告模式"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45061
 msgid "maybe the update frequency is too often, please try again"
-msgstr ""
+msgstr "可能是更新频率太频繁，请再试一次"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9201012
 msgid "mch_id error"
-msgstr ""
+msgstr "mch_id错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72002
 msgid "mchid is not bind appid"
-msgstr ""
+msgstr "mchid 未绑定 appid"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72004
 msgid "mchid is occupied by the other appid"
-msgstr ""
+msgstr "mchid 被另一个 appid 占用"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41005
 msgid "media data missing"
-msgstr ""
+msgstr "缺少多媒体文件数据，传输素材无视频或图片内容"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_46001
 msgid "media data no exist"
-msgstr ""
+msgstr "不存在媒体数据，media_id 不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45034
 msgid "media file count is out of limit"
-msgstr ""
+msgstr "媒体文件计数超出限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45060
 msgid "media is applied in ivr or menu, can not be deleted"
-msgstr ""
+msgstr "媒体应用于 IVR 或菜单中，无法删除"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45001
 msgid "media size out of limit"
-msgstr ""
+msgstr "多媒体文件大小超过限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41006
 msgid "media_id missing"
-msgstr ""
+msgstr "缺少 media_id 参数"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85056
 msgid "mediaid is invalid"
-msgstr ""
+msgstr "mediaid无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300819
 msgid "mediaid is wrong"
-msgstr ""
+msgstr "mediaid 有误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300016
 msgid "membership or new/old tinyapp user only support one"
-msgstr ""
+msgstr "会员资格或新/旧 tinyapp 用户仅支持一个"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65305
 msgid "menu count limit"
-msgstr ""
+msgstr "个性化菜单数量受限"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_46003
 msgid "menu no exist"
-msgstr ""
+msgstr "不存在的菜单数据"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45048
 msgid "menu use invalid type"
-msgstr ""
+msgstr "菜单使用无效类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_46002
 msgid "menu version no exist"
-msgstr ""
+msgstr "不存在的菜单版本"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61320
 msgid "merchant info not exist"
-msgstr ""
+msgstr "商家信息不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89245
 msgid "mini program forbidden to link"
-msgstr ""
+msgstr "禁止链接的小程序"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85080
 msgid "miniprogram commit not approved"
-msgstr ""
+msgstr "小程序提交的审核未审核通过"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85079
 msgid "miniprogram has no online release"
-msgstr ""
+msgstr "小程序没有线上版本，不能进行灰度"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_86002
 msgid "miniprogram have not completed init procedure"
-msgstr ""
+msgstr "小程序还未设置昵称、头像、简介。请先设置完后再重新提交"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68012
 msgid "miss create time"
-msgstr ""
+msgstr "缺少创建时间"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68034
 msgid "miss product number"
-msgstr ""
+msgstr "缺少产品编号"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68019
 msgid "miss product sku"
-msgstr ""
+msgstr "缺少产品 SKU"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68027
 msgid "miss product spu"
-msgstr ""
+msgstr "缺少产品 SPU"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68024
 msgid "miss service wxa path"
-msgstr ""
+msgstr "缺少服务 WXA 路径"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68011
 msgid "miss store name"
-msgstr ""
+msgstr "缺少店名"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68005
 msgid "miss store wxa path"
-msgstr ""
+msgstr "缺少商店 WXA 路径"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68035
 msgid "miss wxa order detail path"
-msgstr ""
+msgstr "缺少WXA 订单详细信息路径"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41024
 msgid "missing \"display\" field"
-msgstr ""
+msgstr "缺少“显示”字段"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_49009
 msgid "missing arg qrcode"
-msgstr ""
+msgstr "缺少 arg 二维码"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_49006
 msgid "missing arg two_dim_code"
-msgstr ""
+msgstr "缺少arg two_dim_code"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41012
 msgid "missing card id"
-msgstr ""
+msgstr "缺少卡id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_94001
 msgid "missing cert_serialno"
-msgstr ""
+msgstr "缺少cert_serialno"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41008
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41013
 msgid "missing code"
-msgstr ""
+msgstr "缺少代码"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41021
 msgid "missing component_access_token"
-msgstr ""
+msgstr "缺少component_access_token"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41018
@@ -6510,67 +6515,67 @@ msgstr "缺少 component_appid"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41026
 msgid "missing image list info, text maybe empty"
-msgstr ""
+msgstr "缺少图像列表信息，文本可能为空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41009
 msgid "missing openid"
-msgstr ""
+msgstr "缺少 OpenID"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40101
 msgid "missing parameter"
-msgstr ""
+msgstr "缺少参数"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41019
 msgid "missing platform_secret"
-msgstr ""
+msgstr "缺少platform_secret"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41020
 msgid "missing platform_ticket"
-msgstr ""
+msgstr "缺少platform_ticket"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85010
 msgid "missing required data"
-msgstr ""
+msgstr "缺少所需数据"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41011
 msgid "missing required fields! please  check document and request json!"
-msgstr ""
+msgstr "缺少必填字段！请检查文档并请求 json！"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41016
 msgid "missing screening_room"
-msgstr ""
+msgstr "缺少screening_room"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41017
 msgid "missing seat_number"
-msgstr ""
+msgstr "缺少seat_number"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41015
 msgid "missing show_time"
-msgstr ""
+msgstr "缺少show_time"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41014
 msgid "missing ticket_class"
-msgstr ""
+msgstr "缺少ticket_class"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41010
 msgid "missing url"
-msgstr ""
+msgstr "缺失 url 参数"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41027
 msgid "missing voip call key"
-msgstr ""
+msgstr "缺少VoIP呼叫key"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61067
@@ -6590,72 +6595,72 @@ msgstr ""
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_52011
 msgid "mod_action is invalid"
-msgstr ""
+msgstr "mod_action无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_53202
 msgid "modify avatar quota limit exceed"
-msgstr ""
+msgstr "本月头像修改次数已用完"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_53200
 msgid "modify signature quota limit exceed"
-msgstr ""
+msgstr "本月功能介绍修改次数已用完"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63165
 msgid "module info not exist"
-msgstr ""
+msgstr "模块信息不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63164
 msgid "module type not exist"
-msgstr ""
+msgstr "模块类型不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_95105
 msgid "mp is importing products, api is rejected to import"
-msgstr ""
+msgstr "MP 正在导入产品，API 被拒绝导入"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_90009
 msgid "mp_sig error"
-msgstr ""
+msgstr "mp_sig错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_88001
 msgid "msg_data is not exists"
-msgstr ""
+msgstr "msg_data不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45000
 msgid "msg_id size out of limit"
-msgstr ""
+msgstr "msg_id尺寸超出限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45099
 msgid "msgmenu item content size is out of limit"
-msgstr ""
+msgstr "消息菜单项内容大小超出限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45098
 msgid "msgmenu list size is out of limit"
-msgstr ""
+msgstr "消息菜单列表大小超出限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85086
 msgid "must commit before submit audit"
-msgstr ""
+msgstr "提交代码审核之前需提前上传代码"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61024
 msgid "must use api(api_component_token) to  get token for component acct"
-msgstr ""
+msgstr "必须使用 api（api_component_token） 获取组件 acct 的令牌"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61015
 msgid "must use biz account token for not component api"
-msgstr ""
+msgstr "必须将商业帐户令牌用于非组件 API"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61014
@@ -6665,7 +6670,7 @@ msgstr "请按照文档使用 component_access_token 调用api"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65318
 msgid "must use utf-8 charset"
-msgstr ""
+msgstr "使用utf-8字符集"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300602
@@ -6675,154 +6680,155 @@ msgstr ""
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_91016
 msgid "name more owner"
-msgstr ""
+msgstr "名称占用者 ≥2"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_84006
 msgid "name or id_card_number empty"
-msgstr ""
+msgstr "name或id_card_number为空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61070
 msgid "name, idcard, wechat name not in accordance"
-msgstr ""
+msgstr "姓名、身份证、微信名称不一致"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85087
 msgid "navigatetominiprogram appid list empty"
 msgstr ""
+"小程序已使用 api navigateToMiniProgram，请声明跳转 appid 列表后再次提交"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85042
 msgid "nearby reach limit"
-msgstr ""
+msgstr "附近可达极限"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85094
 msgid "need add ugc declare"
-msgstr ""
+msgstr "需提供审核机制说明信息"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85024
 msgid "need complete material"
-msgstr ""
+msgstr "需要完整的材料"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_87080
 msgid "need friend"
-msgstr ""
+msgstr "需要朋友"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45082
 msgid "need icp license for the url domain"
-msgstr ""
+msgstr "url域需要icp许可证"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_51014
 msgid "need modify pwd"
-msgstr ""
+msgstr "需要修改pwd"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45080
 msgid ""
 "need sending message to user, or  recving message from user in the last 30 "
 "seconds before typing"
-msgstr ""
+msgstr "下发输入状态，需要之前30秒内跟用户有过消息交互"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72026
 msgid "need set wx_activate true"
-msgstr ""
+msgstr "需要设置wx_activate true"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61052
 msgid "need to be certified"
-msgstr ""
+msgstr "需要认证"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_51012
 msgid "need verify code"
-msgstr ""
+msgstr "需要验证码"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72049
 msgid "never auth"
-msgstr ""
+msgstr "从不身份验证"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43105
 msgid "news has no binding relation with template_id"
-msgstr ""
+msgstr "news与template_id没有绑定关系"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_47102
 msgid "next_page_info error"
-msgstr ""
+msgstr "next_page_info参数错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_53012
 msgid "nickname ban"
-msgstr ""
+msgstr "禁止使用该名称"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_53013
 msgid "nickname has been occupied"
-msgstr ""
+msgstr "公众号：名称与已有公众号名称重复;小程序：该名称与已有小程序名称重复"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85029
 msgid "nickname has used"
-msgstr ""
+msgstr "昵称已使用"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_53018
 msgid "nickname hit alias"
-msgstr ""
+msgstr "名称命中微信号"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_53010
 msgid "nickname invalid"
-msgstr ""
+msgstr "名称格式不合法"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85032
 msgid "nickname is complained"
-msgstr ""
+msgstr "昵称被投诉"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85031
 msgid "nickname is forbidden"
-msgstr ""
+msgstr "昵称被禁止"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85035
 msgid "nickname is forbidden for different contractor"
-msgstr ""
+msgstr "昵称是禁止用于其他承包商的"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45079
 msgid "nickname is forbidden!(matched forbidden keyword)"
-msgstr ""
+msgstr "昵称是被禁止的！（匹配的 forbidden 关键字）"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85033
 msgid "nickname is illegal"
-msgstr ""
+msgstr "昵称是非法的"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45078
 msgid "nickname is illegal!"
-msgstr ""
+msgstr "昵称是非法的！"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85034
 msgid "nickname is protected"
-msgstr ""
+msgstr "昵称受到保护"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_91009
 msgid "nickname need proof"
-msgstr ""
+msgstr "需要提交材料"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_91005
@@ -6833,27 +6839,27 @@ msgstr ""
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_53019
 msgid "nickname protected by infringement"
-msgstr ""
+msgstr "名称在保护期内"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_91007
 msgid "nickname used"
-msgstr ""
+msgstr "昵称已被占用"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_91006
 msgid "nickname used by username"
-msgstr ""
+msgstr "昵称命中微信号"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63004
 msgid "no authroize"
-msgstr ""
+msgstr "没有 authroize"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89256
 msgid "no component info"
-msgstr ""
+msgstr "token 信息有误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85017
@@ -6861,164 +6867,165 @@ msgid ""
 "no domain to modify after filtered, please confirm the domain has been  set "
 "in miniprogram or open"
 msgstr ""
+"没有新增域名，请确认小程序已经添加了域名或该域名是否没有在第三方平台添加"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65413
 msgid "no effective session for the customer"
-msgstr ""
+msgstr "没有对客户有效的会话"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_83200
 msgid "no exist service"
-msgstr ""
+msgstr "不存在服务"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72001
 msgid "no match card"
-msgstr ""
+msgstr "无匹配卡"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_48008
 msgid "no permission for this msgtype"
-msgstr ""
+msgstr "没有该类型消息的发送权限"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_600002
 msgid "no permission to upload file"
-msgstr ""
+msgstr "没有上载文件的权限"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45064
 msgid "no permission to use weapp in menu"
-msgstr ""
+msgstr "创建菜单包含未关联的小程序"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_90017
 msgid "no privilege"
-msgstr ""
+msgstr "没有特权"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85088
 msgid "no qbase privilege"
-msgstr ""
+msgstr "没有qbase权限"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45093
 msgid "no quota to send msg"
-msgstr ""
+msgstr "没有发送消息的配额"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_87013
 msgid "no quota to undo code"
-msgstr ""
+msgstr "撤回次数达到上限（每天5次，每个月 10 次）"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9202002
 msgid "no refund permission"
-msgstr ""
+msgstr "不允许退款"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_6000101
 msgid "no response data"
-msgstr ""
+msgstr "无响应数据"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_90010
 msgid "no session"
-msgstr ""
+msgstr "无会话"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65302
 msgid "no such user"
-msgstr ""
+msgstr "没有相应的用户"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89257
 msgid "no such version"
-msgstr ""
+msgstr "该插件版本不支持快速更新"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85058
 msgid "no valid audit_id exist"
-msgstr ""
+msgstr "不存在有效的audit_id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85019
 msgid "no version is under auditing"
-msgstr ""
+msgstr "没有审核版本"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45092
 msgid "no voice data"
-msgstr ""
+msgstr "没有语音数据"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_73005
 msgid "not a commercial"
-msgstr ""
+msgstr "不是商业广告"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_51007
 msgid "not a enterprise account"
-msgstr ""
+msgstr "不是企业帐户"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_51005
 msgid "not a enterprise child account"
-msgstr ""
+msgstr "不是企业子帐户"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_51004
 msgid "not a enterprise father account"
-msgstr ""
+msgstr "不是企业父账户"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43106
 msgid "not allow to add template, for punishment"
-msgstr ""
+msgstr "不允许添加模板，进行处罚"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65319
 msgid "not allow to create menu"
-msgstr ""
+msgstr "不允许创建菜单"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45095
 msgid "not allow to modify stock for the advertisement batch"
-msgstr ""
+msgstr "不允许修改广告批次的库存"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9207011
 msgid "not allow to reverse when user paying"
-msgstr ""
+msgstr "用户付款时不允许冲销"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45094
 msgid ""
 "not allow to send custom message  when user enter session, for punishment"
-msgstr ""
+msgstr "不允许在用户进入会话时发送自定义消息，以进行惩罚"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41032
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41034
 msgid "not allow to send message with  submitted form id, for punishment"
-msgstr ""
+msgstr "不允许发送带有已提交表单id的消息，以进行处罚"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41035
 msgid "not allow to send message with prepay id, for punishment"
-msgstr ""
+msgstr "不允许发送带有预付id的消息，以进行处罚"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9002041
 msgid ""
 "not allowed to modify, ensure you  are an certified or component account"
-msgstr ""
+msgstr "不允许修改，请确保您是经过认证的或组件帐户"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40174
 msgid "not card user"
-msgstr ""
+msgstr "非卡用户"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9202016
@@ -7028,7 +7035,7 @@ msgstr ""
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9201026
 msgid "not combined order_id"
-msgstr ""
+msgstr "未组合的order_id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40093
@@ -7036,287 +7043,291 @@ msgid ""
 "not completely ok, err_item will  return location_id=-1,check your "
 "required_fields in json."
 msgstr ""
+"不完全可以，err_item将返回 location_id=-1，检查你的 JSON required_fields。"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300704
 msgid "not currently available"
-msgstr ""
+msgstr "当前不可用"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_101002
 msgid "not enough market quota"
-msgstr ""
+msgstr "市场配额不足"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_49300
 msgid "not existed feedbackid"
-msgstr ""
+msgstr "不存在反馈ID"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_49005
 msgid "not existed transid"
-msgstr ""
+msgstr "不存在 transid"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65315
 msgid "not fans"
-msgstr ""
+msgstr "不是粉丝"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_91001
 msgid "not fast register"
 msgstr ""
+"不是复用公众号接口快速创建的小程序 ，也不是通过快速注册企业小程序api创建的小"
+"程序"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_74000
 msgid "not find this wx_hotel_id info"
-msgstr ""
+msgstr "没有找到此wx_hotel_id信息"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45032
 msgid "not inner ip for special acct in white-list"
-msgstr ""
+msgstr "非白名单中特殊账户的内部ip"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45073
 msgid "not inner vip for sns in white list"
-msgstr ""
+msgstr "不是白名单中sns的内部vip"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_49003
 msgid "not match openid with appid"
-msgstr ""
+msgstr "openid与appid不匹配"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_49004
 msgid "not match signature"
-msgstr ""
+msgstr "与签名不匹配"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61019
 msgid "not need confirm"
-msgstr ""
+msgstr "不需要确认"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9402016
 msgid "not open to low quality provider"
-msgstr ""
+msgstr "不向低质量提供商开放"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9402014
 msgid "not open to personal body type"
-msgstr ""
+msgstr "对个人类型不开放"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9402015
 msgid "not open to violation body type"
-msgstr ""
+msgstr "不开放违规类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_930568
 msgid "not personal account"
-msgstr ""
+msgstr "不支持个人类型小程序"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85074
 msgid "not published"
-msgstr ""
+msgstr "小程序未发布, 小程序必须先发布代码才可以发布二维码跳转规则"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_49001
 msgid "not same appid with appid of access_token"
-msgstr ""
+msgstr "与access_token的appid不相同"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89001
 msgid "not same contractor"
-msgstr ""
+msgstr "Authorizer 与开放平台账号主体不相同"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89231
 msgid "not support single"
-msgstr ""
+msgstr "个人小程序不支持调用 setwebviewdomain 接口"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_930566
 msgid "not support, plz auth at mp.weixin.qq.com"
-msgstr ""
+msgstr "不支持，plz auth在mp.weixin.qq.com"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63176
 msgid "not this type"
-msgstr ""
+msgstr "不是这种类型"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_75009
 msgid "notify order status failed"
-msgstr ""
+msgstr "通知订单状态失败"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_73009
 msgid "nsrdh empty"
-msgstr ""
+msgstr "nsrdh 空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_73008
 msgid "nsrdz empty"
-msgstr ""
+msgstr "nsrdz 空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_73007
 msgid "nsrmc empty"
-msgstr ""
+msgstr "nsrmc 空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_73016
 msgid "nsrsbh empty"
-msgstr ""
+msgstr "nsrsbh 空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_73101
 msgid "nsrsbh not cmp"
-msgstr ""
+msgstr "nsrsbh 不是 cmp"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45077
 msgid "number of business account reach limit"
-msgstr ""
+msgstr "企业账户数量限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85002
 msgid "number of tester reach bind limit"
-msgstr ""
+msgstr "小程序绑定的体验者数量达到上限"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_83204
 msgid "object has not key"
-msgstr ""
+msgstr "对象没key"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_83206
 msgid "object has not value"
-msgstr ""
+msgstr "对象没value"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89240
 msgid "only applying status can be agreed or refused"
-msgstr ""
+msgstr "只能同意或拒绝申请身份"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63170
 msgid "only banner or media"
-msgstr ""
+msgstr "仅横幅或媒体"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89241
 msgid "only refused status can be deleted, please refused first"
-msgstr ""
+msgstr "只有被拒绝状态才能删除，请先拒绝"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89003
 msgid "open is not created by api"
-msgstr ""
+msgstr "该开放平台账号并非通过 api 创建，不允许操作"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89002
 msgid "open not exists"
-msgstr ""
+msgstr "该公众号/小程序未绑定微信开放平台账号。"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89020
 msgid "open's webview domain is null! Need to set open's webview domain first!"
 msgstr ""
+"尚未设置小程序业务域名，请先在第三方平台中设置小程序业务域名后在调用本接口"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9291001
 msgid "openid appid not match"
-msgstr ""
+msgstr "openid appid不匹配"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9201007
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9291000
 msgid "openid error"
-msgstr ""
+msgstr "OpenID错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63179
 msgid "openid num limit"
-msgstr ""
+msgstr "openid数量限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63182
 msgid "openid_list empty"
-msgstr ""
+msgstr "openid_list为空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45046
 msgid "operate field conflict, CenterCell,  PayCell, SelfConsumeCell conflict"
-msgstr ""
+msgstr "操作字段冲突、CenterCell、PayCell、SelfConsumeCell 冲突"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89030
 msgid "operation reach month limit"
-msgstr ""
+msgstr "操作达到月限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85078
 msgid "operator info error"
-msgstr ""
+msgstr "操作员信息错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300524
 msgid "order already canceled"
-msgstr ""
+msgstr "订单已取消（一般为重复取消订单）"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_930562
 msgid "order already exists"
-msgstr ""
+msgstr "订单已存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_53101
 msgid "order already paid"
-msgstr ""
+msgstr "订单已付款"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_53103
 msgid "order can not do refill"
-msgstr ""
+msgstr "订单无法进行补货"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9207013
 msgid "order closed"
-msgstr ""
+msgstr "订单已关闭"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_52018
 msgid "order delivery param is invalid"
-msgstr ""
+msgstr "订单交付参数无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_90012
 msgid "order exist"
-msgstr ""
+msgstr "订单存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_52017
 msgid "order express param is invalid"
-msgstr ""
+msgstr "订单快递参数无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_52016
 msgid "order filter param is invalid"
-msgstr ""
+msgstr "订单筛选器参数无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_71007
 msgid "order finish"
-msgstr ""
+msgstr "订单完成"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_930565
 msgid "order finished"
-msgstr ""
+msgstr "订单完成"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_90015
@@ -7326,47 +7337,47 @@ msgstr ""
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_90014
 msgid "order has been confirmed"
-msgstr ""
+msgstr "订单已被取消"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300508
 msgid "order id has been used"
-msgstr ""
+msgstr "订单 ID 已被使用"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_52015
 msgid "order id is not existed"
-msgstr ""
+msgstr "订单 ID 不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_90016
 msgid "order is being processed"
-msgstr ""
+msgstr "订单正在处理中"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_75006
 msgid "order not exist please check order_id and buyer_appid"
-msgstr ""
+msgstr "订单不存在，请检查order_id和buyer_appid"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_930563
 msgid "order not exists"
-msgstr ""
+msgstr "订单不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_53100
 msgid "order not found"
-msgstr ""
+msgstr "未找到订单"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9200002
 msgid "order of other biz"
-msgstr ""
+msgstr "其他业务订单"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9207012
 msgid "order paid"
-msgstr ""
+msgstr "已付订单"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9207007
@@ -7376,42 +7387,42 @@ msgstr ""
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9202020
 msgid "order status error"
-msgstr ""
+msgstr "订单状态错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_81017
 msgid "order status error, please check pay status or gifting_status"
-msgstr ""
+msgstr "订单状态错误，请检查付款状态或礼品状态"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_71008
 msgid "order time out"
-msgstr ""
+msgstr "订单超时"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9201010
 msgid "order_id error"
-msgstr ""
+msgstr "order_id错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9200001
 msgid "order_id not exist"
-msgstr ""
+msgstr "order_id不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72056
 msgid "order_id repeated, please check order_id"
-msgstr ""
+msgstr "order_id重复，请检查order_id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_91017
 msgid "other diff master plus"
-msgstr ""
+msgstr "+号规则 不同类型关联名主体不一致"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9202000
 msgid "other user paying"
-msgstr ""
+msgstr "其他用户付费"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40131
@@ -7421,205 +7432,205 @@ msgstr "超出ticket限制"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72005
 msgid "out of mchid size limit"
-msgstr ""
+msgstr "超出 MCHID 大小限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300513
 msgid "out of quota"
-msgstr ""
+msgstr "超出配额"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45047
 msgid "out of response count limit"
-msgstr ""
+msgstr "客服接口下行条数超过上限"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9205101
 msgid "out order id not exist"
-msgstr ""
+msgstr "输出订单 ID 不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61061
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85059
 msgid "overseas access deny"
-msgstr ""
+msgstr "拒绝海外访问"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89008
 msgid "overseas account can not link"
-msgstr ""
+msgstr "海外账户无法链接"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85044
 msgid "package exceed max limit"
-msgstr ""
+msgstr "代码包超过大小限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85007
 msgid "page is in invalid format"
-msgstr ""
+msgstr "页面路径错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85046
 msgid "pagepath missing in tabbar list"
-msgstr ""
+msgstr "tabBar 中缺少 path"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85047
 msgid "pages are empty"
-msgstr ""
+msgstr "pages 字段为空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40219
 msgid "pages is empty"
-msgstr ""
+msgstr "pages不存在或者参数为空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_75002
 msgid "param illegal please check"
-msgstr ""
+msgstr "参数非法，请检查"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65416
 msgid "param invalid, please check"
-msgstr ""
+msgstr "参数无效，请检查"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9002008
 msgid "params invalid"
-msgstr ""
+msgstr "参数无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_83202
 msgid "params is not json or not json array"
-msgstr ""
+msgstr "params 不是 json 或不是 json 数组"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_83203
 msgid "params num exceed 10"
-msgstr ""
+msgstr "参数数量超过10"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85048
 msgid "parse ext_json fail"
-msgstr ""
+msgstr "ext_json 解析失败"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45501
 msgid ""
 "part or whole of the requests from  the very app is temporary blocked by "
 "supervisor"
-msgstr ""
+msgstr "来自该应用的部分或全部请求被主管临时阻止"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9201027
 msgid "partial sub order is test"
-msgstr ""
+msgstr "部分子订单是测试"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9002012
 msgid "passsword can not include chinese"
-msgstr ""
+msgstr "密码不能包含中文"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9002013
 msgid "password must be between 8 and 24 characters"
-msgstr ""
+msgstr "密码必须介于 8 到 24 个字符之间"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9402013
 msgid "path need html suffix"
-msgstr ""
+msgstr "路径需要html后缀"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9402011
 msgid "path not exist"
-msgstr ""
+msgstr "路径不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9207003
 msgid "pay error"
-msgstr ""
+msgstr "支付错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72032
 msgid "pay gift card rule expired"
-msgstr ""
+msgstr "支付礼品卡规则已过期"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72033
 msgid "pay gift card rule status err"
-msgstr ""
+msgstr "支付礼品卡规则状态错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9202001
 msgid "pay process not finish"
-msgstr ""
+msgstr "付款过程未完成"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9201004
 msgid "payment expire date format error"
-msgstr ""
+msgstr "付款到期日期格式错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9201002
 msgid "payment info incorrect"
-msgstr ""
+msgstr "付款信息不正确"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9200233
 msgid "payment notice canceled"
-msgstr ""
+msgstr "付款通知已取消"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9200211
 msgid "payment notice disabled"
-msgstr ""
+msgstr "付款通知已禁用"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9200235
 msgid "payment notice expired"
-msgstr ""
+msgstr "付款通知已过期"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9200231
 msgid "payment notice not exist"
-msgstr ""
+msgstr "付款通知不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9200232
 msgid "payment notice paid"
-msgstr ""
+msgstr "已付款通知"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9201006
 msgid "payment order id error"
-msgstr ""
+msgstr "付款单id错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9201018
 msgid "payment_notice_no error"
-msgstr ""
+msgstr "payment_notice_no错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9201020
 msgid "payment_notice_type error"
-msgstr ""
+msgstr "payment_notice_type错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72047
 msgid "pdf billing_code or pdf billing_no is error"
-msgstr ""
+msgstr "pdf billing_code或pdf billing_no错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72046
 msgid "pdf_url is invalid"
-msgstr ""
+msgstr "pdf_url无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65114
 msgid "photo list empty"
-msgstr ""
+msgstr "照片列表为空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_74011
@@ -7629,258 +7640,258 @@ msgstr ""
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_52000
 msgid "pic is not from cdn"
-msgstr ""
+msgstr "pic 不是来自 CDN"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45006
 msgid "picurl size out of limit"
-msgstr ""
+msgstr "图片链接字段超过限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300603
 msgid "plate_no is invalid"
-msgstr ""
+msgstr "plate_no无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45007
 msgid "playtime out of limit"
-msgstr ""
+msgstr "语音播放时间超过限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85053
 msgid "please apply merchant first"
-msgstr ""
+msgstr "请先申请商户"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40155
 msgid "please don't contain other home page url"
-msgstr ""
+msgstr "请不要包含其他主页网址"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65400
 msgid ""
 "please enable new custom service, or  wait for a while if you have enabled"
-msgstr ""
+msgstr "请启用新的自定义服务，如果已启用，请稍等片刻"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_62003
 msgid "please provide at least one platform"
-msgstr ""
+msgstr "请至少提供一个平台"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89244
 msgid "plugin appid is no in the plugin list, make sure plugin appid is right"
-msgstr ""
+msgstr "不存在该插件 appid"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89238
 msgid "plugin count reach limit"
-msgstr ""
+msgstr "申请或使用的插件已经达到上限"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89237
 msgid "plugin has send apply message or already bind"
-msgstr ""
+msgstr "已经添加该插件"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89239
 msgid "plugin no exist"
-msgstr ""
+msgstr "该插件不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_42004
 msgid "plugin token expired"
-msgstr ""
+msgstr "插件令牌已过期"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89246
 msgid "plugins with special category are  used only by specific apps"
-msgstr ""
+msgstr "具有特殊类别的插件仅由特定应用程序使用"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65106
 msgid "poi audit state must be approved"
-msgstr ""
+msgstr "必须批准poi审核状态"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65116
 msgid "poi has been deleted"
-msgstr ""
+msgstr "POI 已被删除"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_46005
 msgid "poi no exist"
-msgstr ""
+msgstr "POI 不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65107
 msgid "poi not allowed modify now"
-msgstr ""
+msgstr "POI 不允许立即修改"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65115
 msgid "poi_id is not exist"
-msgstr ""
+msgstr "poi_id不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85054
 msgid "poi_id is null, please upgrade first"
-msgstr ""
+msgstr "poi_id为 null，请先升级"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41025
 msgid "poi_list empty"
-msgstr ""
+msgstr "poi_list空的"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45025
 msgid "poiid count is out of limit"
-msgstr ""
+msgstr "poiid计数超出限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85071
 msgid "prefix added repeated"
-msgstr ""
+msgstr "已添加该链接，请勿重复添加"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85073
 msgid "prefix beyond limit"
-msgstr ""
+msgstr "二维码规则已满"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85070
 msgid "prefix in black list"
-msgstr ""
+msgstr "URL命中黑名单，无法添加"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85072
 msgid "prefix owned by other"
-msgstr ""
+msgstr "该链接已被占用"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63160
 msgid "priceinfo invalid"
-msgstr ""
+msgstr "价格信息无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_53001
 msgid "principal in black list"
-msgstr ""
+msgstr "黑名单中的本金"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_53000
 msgid "principal limit exceed"
-msgstr ""
+msgstr "本金限额超过"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61337
 msgid "product already exists"
-msgstr ""
+msgstr "产品已存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_75008
 msgid "product has exist please use new id"
-msgstr ""
+msgstr "产品已存在，请使用新id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40171
 msgid "product id can not empty and the length cannot exceed 32"
-msgstr ""
+msgstr "产品id不能为空，长度不能超过32"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_52003
 msgid "product id not existed"
-msgstr ""
+msgstr "产品id不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45069
 msgid "product list size out of limit"
-msgstr ""
+msgstr "产品列表大小超出限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_75005
 msgid "product not exist please check your product_id"
-msgstr ""
+msgstr "产品不存在，请检查您的product_id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61334
 msgid "product not exists"
-msgstr ""
+msgstr "产品不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61200
 msgid "product wording not set"
-msgstr ""
+msgstr "未设置产品措辞"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_51026
 msgid "program name size out of limit"
-msgstr ""
+msgstr "程序名称大小超出限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9007003
 msgid "protocol type is not same with the exist device"
-msgstr ""
+msgstr "协议类型与现有设备不同"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45029
 msgid "qrcode count out of limit"
-msgstr ""
+msgstr "二维码计数超出限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_93024
 msgid "qualification_list field is empty"
-msgstr ""
+msgstr "qualification_list字段为空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_93020
 msgid "qualification_list is invalid"
-msgstr ""
+msgstr "qualification_list无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_52005
 msgid "quantity is zero"
-msgstr ""
+msgstr "数量为零"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9210000
 msgid "query finance error"
-msgstr ""
+msgstr "查询财务错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_87015
 msgid "query timeout, try a content with less size"
-msgstr ""
+msgstr "查询超时，请尝试较小的内容"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300523
 msgid "quota is not enough; go to charge please"
-msgstr ""
+msgstr "配额不够；请去充值"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_930564
 msgid "quota run out, try next day"
-msgstr ""
+msgstr "沙盒环境调用无配额"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45024
 msgid "rank template number is out of limit"
-msgstr ""
+msgstr "排名模板数量超出限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89017
 msgid "reach different realname quota"
-msgstr ""
+msgstr "达到不同的实名配额"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_73104
 msgid "reach frequency limit"
-msgstr ""
+msgstr "达到频率限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85049
 msgid "reach headimg or introduction quota limit"
-msgstr ""
+msgstr "达到 Headimg 或 Introduction 配额限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45009
@@ -7890,127 +7901,127 @@ msgstr "接口调用超过限制"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45104
 msgid "reach max domain quota limit"
-msgstr ""
+msgstr "达到最大域配额限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45040
 msgid "reach max monthly quota limit"
-msgstr ""
+msgstr "达到每月最大配额限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89016
 msgid "reach same realname quota"
-msgstr ""
+msgstr "达到相同实名配额"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9206910
 msgid "read 3rd resp error"
-msgstr ""
+msgstr "读取第 3 个 RESP 错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9206911
 msgid "read 3rd resp timeout"
-msgstr ""
+msgstr "读取第 3 个 RESP 超时"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61025
 msgid "read-only option"
-msgstr ""
+msgstr "只读选项"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61053
 msgid "realname exceed limits"
-msgstr ""
+msgstr "实名超出限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61054
 msgid "realname in black list"
-msgstr ""
+msgstr "黑名单中的实名制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9201011
 msgid "reason error"
-msgstr ""
+msgstr "错误原因"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_42002
 msgid "refresh_token expired"
-msgstr ""
+msgstr "efresh_token 超时"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61023
 msgid "refresh_token is invalid"
-msgstr ""
+msgstr "refresh_token无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41003
 msgid "refresh_token missing"
-msgstr ""
+msgstr "缺少 refresh_token 参数"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9202012
 msgid "refund exceed total fee"
-msgstr ""
+msgstr "退款超过总费用"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_81018
 msgid "refund reduplicate, the order is already refunded"
-msgstr ""
+msgstr "退款重复，订单已退款"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9202010
 msgid "refund request repeated"
-msgstr ""
+msgstr "退款请求重复"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9201024
 msgid "refund_out_id error"
-msgstr ""
+msgstr "refund_out_id错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65310
 msgid "region info: country is empty"
-msgstr ""
+msgstr "填写了省份或城市信息，国家信息不能为空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65311
 msgid "region info: province is empty"
-msgstr ""
+msgstr "填写了城市信息，省份信息不能为空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9201021
 msgid "region_code error"
-msgstr ""
+msgstr "region_code错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61026
 msgid "register access deny"
-msgstr ""
+msgstr "注册访问拒绝"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61027
 msgid "register limit exceed"
-msgstr ""
+msgstr "超过注册限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_51010
 msgid "repeated email"
-msgstr ""
+msgstr "重复的电子邮件"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_44007
 msgid "repeated msg id"
-msgstr ""
+msgstr "重复的 msg id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_88007
 msgid "reply content beyond max len or content len is zero"
-msgstr ""
+msgstr "回复内容超过最大len或内容len为零"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_88009
 msgid "reply is not exists"
-msgstr ""
+msgstr "回复不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_74040
@@ -8025,33 +8036,33 @@ msgstr ""
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_80201
 msgid "report_type is invalid"
-msgstr ""
+msgstr "report_type无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_73204
 msgid "request card not exist"
-msgstr ""
+msgstr "请求卡不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89021
 msgid "request domain is not open's webview domain!"
-msgstr ""
+msgstr "请求保存的域名不是第三方平台中已设置的小程序业务域名或子域名"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_74001
 msgid "request some param empty"
-msgstr ""
+msgstr "请求一些参数为空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_74002
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_74003
 msgid "request some param error"
-msgstr ""
+msgstr "请求一些参数错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9203000
 msgid "request to notification url fail"
-msgstr ""
+msgstr "对通知 URL 的请求失败"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43001
@@ -8066,27 +8077,27 @@ msgstr "需要 POST 请求"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43015
 msgid "require authorize by wechat team to use this function!"
-msgstr ""
+msgstr "需要微信团队授权才能使用此功能！"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43008
 msgid "require biz pay auth"
-msgstr ""
+msgstr "需要 Biz Pay 身份验证"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43007
 msgid "require bizuser authorize"
-msgstr ""
+msgstr "需要 BizUser 授权"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43014
 msgid "require check agent"
-msgstr ""
+msgstr "需要检查代理"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43005
 msgid "require friend relations"
-msgstr ""
+msgstr "需要好友关系"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43003
@@ -8098,695 +8109,695 @@ msgstr ""
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43017
 msgid "require location id!"
-msgstr ""
+msgstr "需要位置id！"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43006
 msgid "require not block"
-msgstr ""
+msgstr "不需要阻止"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43019
 msgid "require remove blacklist"
-msgstr ""
+msgstr "需要将接收者从黑名单中移除"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68500
 msgid "require store_id"
-msgstr ""
+msgstr "需要store_id"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43004
 msgid "require subscribe"
-msgstr ""
+msgstr "需要接收者关注"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43016
 msgid "require verify"
-msgstr ""
+msgstr "小程序未认证"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_6000102
 msgid "response data too big"
-msgstr ""
+msgstr "响应数据过大"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45015
 msgid "response out of time limit or subscription is canceled"
-msgstr ""
+msgstr "回复时间超过限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_46008
 msgid "result id not exist"
-msgstr ""
+msgstr "结果 ID 不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_82001
 msgid "result_page_style_id not exist"
-msgstr ""
+msgstr "result_page_style_id 不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63159
 msgid "retail_price empty"
-msgstr ""
+msgstr "retail_price为空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9201008
 msgid "return_url error"
-msgstr ""
+msgstr "return_url错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_87014
 msgid "risky content"
-msgstr ""
+msgstr "有风险的内容"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65201
 msgid "room_name is empty, please check your input"
-msgstr ""
+msgstr "room_name为空，请检查您的输入"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45066
 msgid "same clientmsgid retry too fast"
-msgstr ""
+msgstr "相同 clientmsgid 重试速度过快，请间隔1分钟重试"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9301004
 msgid "save data error"
-msgstr ""
+msgstr "保存数据错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72044
 msgid "scan text out of time"
-msgstr ""
+msgstr "扫描文本超时"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_47101
 msgid "search results count more than limit"
-msgstr ""
+msgstr "搜索结果总数超过了1000条"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85084
 msgid "search status invalid"
-msgstr ""
+msgstr "非法的 status 值，只能填 0 或者 1"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85083
 msgid "search status is banned"
-msgstr ""
+msgstr "搜索标记位被封禁，无法修改"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85091
 msgid "search status was turned off"
-msgstr ""
+msgstr "小程序的搜索开关被关闭。请访问设置页面打开开关再重试"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40153
 msgid "self consume cell for friends card must need verify code"
-msgstr ""
+msgstr "朋友卡的自消费手机必须需要验证码"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9402005
 msgid "send msg too quick"
-msgstr ""
+msgstr "发送消息过快"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9402007
 msgid "send to all user too quick"
-msgstr ""
+msgstr "发送给所有用户太快"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9402006
 msgid "send to single user too quick"
-msgstr ""
+msgstr "发送给单个用户过快"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9402008
 msgid "send type error"
-msgstr ""
+msgstr "发送类型错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_82026
 msgid "service disabled"
-msgstr ""
+msgstr "服务已禁用"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9301012
 msgid "service timeout"
-msgstr ""
+msgstr "服务超时"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68023
 msgid "service_id has exist"
-msgstr ""
+msgstr "service_id已经存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_81009
 msgid "service_phone is invalid"
-msgstr ""
+msgstr "service_phone无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_80202
 msgid "service_type invalid"
-msgstr ""
+msgstr "service_type无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_87007
 msgid "session_key is not existd or expired"
-msgstr ""
+msgstr "session_key不存在或已过期"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63152
 msgid "set ticket fail"
-msgstr ""
+msgstr "设置票证失败"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61102
 msgid "share relation not existed"
-msgstr ""
+msgstr "共享关系不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_52013
 msgid "shelf component is empty"
-msgstr ""
+msgstr "机框组件为空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_52012
 msgid "shelf components count is greater than 20"
-msgstr ""
+msgstr "机框组件数大于20"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_52014
 msgid "shelf id is not existed"
-msgstr ""
+msgstr "机架id不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68038
 msgid "shipped but no fast mail info"
-msgstr ""
+msgstr "已发货，但没有快件信息"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_930567
 msgid "shop arg error"
-msgstr ""
+msgstr "商店 arg 错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9002052
 msgid "shop id has not be audited, this bar type is not enable"
-msgstr ""
+msgstr "商店 ID 尚未审核，此条形图类型未启用"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9002009
 msgid "shop id not exist"
-msgstr ""
+msgstr "商店 ID 不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_930560
 msgid "shopid need bind first"
-msgstr ""
+msgstr "shopid 需要先绑定"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63153
 msgid "shortid decode fail"
-msgstr ""
+msgstr "shortid 解码失败"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_86000
 msgid "should be called only from third party"
-msgstr ""
+msgstr "不是由第三方代小程序进行调用"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_90011
 msgid "sig error"
-msgstr ""
+msgstr "签名错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_53201
 msgid "signature in black list, can not use"
-msgstr ""
+msgstr "功能介绍内容命中黑名单关键字"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_53204
 msgid "signature invalid"
-msgstr ""
+msgstr "签名无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9402002
 msgid "single send been blocked"
-msgstr ""
+msgstr "单次发送被阻止"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68029
 msgid "sku and spu duplicated"
-msgstr ""
+msgstr "SKU 和 SPU 重复"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45021
 msgid ""
 "some argument may be out of length  limit! please check document and request "
 "json!"
-msgstr ""
+msgstr "有些参数可能超出了长度限制！请检查文档并请求 json！"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63001
 msgid "some arguments is empty"
-msgstr ""
+msgstr "部分参数为空"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300015
 msgid "some card_id is invalid status"
-msgstr ""
+msgstr "某些card_id无效状态"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300014
 msgid "some card_id is out of stock"
-msgstr ""
+msgstr "部分card_id缺货"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85077
 msgid ""
 "some category you choose is no longger supported, please choose other  "
 "category"
-msgstr ""
+msgstr "小程序类目信息失效（类目中含有官方下架的类目，请重新选择类目）"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_87016
 msgid "some key-value in list meet length exceed"
-msgstr ""
+msgstr "列表中的某些键值满足长度超过"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_87019
 msgid "some keys in list meet length exceed"
-msgstr ""
+msgstr "列表中的某些键的长度超过"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_75001
 msgid "some param emtpy please check"
-msgstr ""
+msgstr "一些参数为空，请检查"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85045
 msgid "some path in ext_json not exist"
-msgstr ""
+msgstr "ext_json 有不存在的路径"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300509
 msgid "speed limit, retry too fast"
-msgstr ""
+msgstr "速度限制，重试过快"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45085
 msgid "speed server err"
-msgstr ""
+msgstr "速度服务器错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63177
 msgid "src or secretkey or version or expired_time is wrong"
-msgstr ""
+msgstr "src 或 secretkey 或版本或expired_time错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9002011
 msgid "ssid can not include chinese"
-msgstr ""
+msgstr "ssid不能包括中文"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9007004
 msgid "ssid not exist"
-msgstr ""
+msgstr "ssid不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9002010
 msgid "ssid or password should start with \"WX\""
-msgstr ""
+msgstr "ssid或密码应以“WX”开头"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_51021
 msgid "stamp crossed"
-msgstr ""
+msgstr "印章交叉"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_51023
 msgid "stamp not match date"
-msgstr ""
+msgstr "印章与日期不匹配"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85020
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85021
 msgid "status not allowed"
-msgstr ""
+msgstr "审核状态未满足发布"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45031
 msgid "stock is out of limit"
-msgstr ""
+msgstr "库存已超出限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85038
 msgid "store has added"
-msgstr ""
+msgstr "商店已添加"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85039
 msgid "store has added by others"
-msgstr ""
+msgstr "店铺已由他人添加"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85040
 msgid "store has added by yourseld"
-msgstr ""
+msgstr "商店已由您的seld添加"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68010
 msgid "store id has exist"
-msgstr ""
+msgstr "商店 ID 已存在 "
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_75012
 msgid "store image key to kv error, please try again"
-msgstr ""
+msgstr "将图像密钥存储到KV错误，请重试"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68033
 msgid "store no exist"
-msgstr ""
+msgstr "商店不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65118
 msgid "store status is invalid"
-msgstr ""
+msgstr "商店状态无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9202018
 msgid "sub order error"
-msgstr ""
+msgstr "子订单错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9201031
 msgid "sub order list size error"
-msgstr ""
+msgstr "子订单列表大小错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9201032
 msgid "sub order repeated"
-msgstr ""
+msgstr "子订单重复"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41007
 msgid "sub_menu data missing"
-msgstr ""
+msgstr "缺少子菜单数据"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85085
 msgid "submit audit reach limit  pleasetry later"
-msgstr ""
+msgstr "小程序提审数量已达本月上限，请查看《自助临时申请额度》"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_47004
 msgid "submit pages count more than each quota"
-msgstr ""
+msgstr "每次提交的页面数超过1000（备注：每次提交页面数应小于或等于1000）"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_47006
 msgid "submit pages count reach daily limit, please try tomorrow"
-msgstr ""
+msgstr "当天提交页面数达到了配额上限，请明天再试"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9201035
 msgid "sum of other fees exceed total fee"
-msgstr ""
+msgstr "其他费用的总和超过总费用"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89014
 msgid "support version error"
-msgstr ""
+msgstr "支持版本错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9200297
 msgid "suspend payment at current time"
-msgstr ""
+msgstr "目前暂停付款"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9205010
 msgid "symmetric key conf not exist"
-msgstr ""
+msgstr "对称密钥配置不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_75003
 msgid "sys error kv store error"
-msgstr ""
+msgstr "系统错误kv存储错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_75004
 msgid "sys error kvstring store error"
-msgstr ""
+msgstr "系统错误kv字符串存储错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_73000
 msgid "sys error make out invoice failed"
-msgstr ""
+msgstr "系统错误制作发票失败"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_930555
 msgid "sysem error"
-msgstr ""
+msgstr "系统错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9203999
 msgid "system busy, please try again later"
-msgstr ""
+msgstr "系统繁忙，请稍后再试"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_-1
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61450
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_83001
 msgid "system error"
-msgstr ""
+msgstr "系统错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_47005
 msgid "tabbar no exist"
-msgstr ""
+msgstr "tabbar 不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85006
 msgid "tag is in invalid format"
-msgstr ""
+msgstr "标签格式错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45158
 msgid "tag name too long"
-msgstr ""
+msgstr "标签名称太长"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_47502
 msgid "target_state error"
-msgstr ""
+msgstr "参数 target_state 错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72014
 msgid "task card share stock can not modify stock"
-msgstr ""
+msgstr "任务卡共享库存不能修改库存"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300540
 msgid "task not exist"
-msgstr ""
+msgstr "任务不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89249
 msgid "task running"
-msgstr ""
+msgstr "任务运行"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72064
 msgid "tbc error"
-msgstr ""
+msgstr "TBC 错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72065
 msgid "tbc logic error"
-msgstr ""
+msgstr "TBC 逻辑错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45027
 msgid "template conflict with industry"
-msgstr ""
+msgstr "模板与行业冲突"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85065
 msgid "template list is full"
-msgstr ""
+msgstr "模板库已满"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45014
 msgid "template message size out of limit"
-msgstr ""
+msgstr "模板邮件大小超出限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45051
 msgid "template msg use invalid link"
-msgstr ""
+msgstr "模板消息使用无效链接"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85014
 msgid "template not exist"
-msgstr ""
+msgstr "无效的模板编号"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85064
 msgid "template not found"
-msgstr ""
+msgstr "找不到模板"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45026
 msgid "template num exceeds limit"
-msgstr ""
+msgstr "模板数量超出限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45012
 msgid "template size out of limit"
-msgstr ""
+msgstr "模板大小超过限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85068
 msgid "test url is not the sub prefix"
-msgstr ""
+msgstr "测试链接不是子链接"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63173
 msgid "text num limit"
-msgstr ""
+msgstr "文本数量限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43103
 msgid "the api only can cancel the subscription"
-msgstr ""
+msgstr "API 只能取消订阅"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_88002
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_88011
 msgid "the article is limit for safety"
-msgstr ""
+msgstr "为了安全起见，这件物品是限量的"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45070
 msgid "the business account have been created"
-msgstr ""
+msgstr "企业帐户已创建"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72066
 msgid "the card is send for advertisement,  not allow modify time and budget"
-msgstr ""
+msgstr "该卡是为广告而发送的，不允许修改时间和预算"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45055
 msgid "the code is not in consume verify code charset"
-msgstr ""
+msgstr "代码不在消费验证代码字符集中"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45155
 msgid "the consume verify code is existed"
-msgstr ""
+msgstr "消费验证代码已存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45154
 msgid "the consume verify code not found"
-msgstr ""
+msgstr "找不到消费验证代码"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45156
 msgid "the consume verify code's length not invalid"
-msgstr ""
+msgstr "消费验证代码的长度不是无效的"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65412
 msgid "the custom service account have been  bound by a wechat user"
-msgstr ""
+msgstr "自定义服务账号已绑定微信用户"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65402
 msgid "the custom service account need to bind a wechat user"
-msgstr ""
+msgstr "自定义服务账号需要绑定微信用户"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_41031
 msgid "the form id have been blocked!"
-msgstr ""
+msgstr "表单 ID 已被阻止！"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300521
 msgid "the orderid is in our system, and waybill is generating"
-msgstr ""
+msgstr "orderID 在我们的系统中，并且正在生成 waybill"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9002026
 msgid "the size of query list reach limit"
-msgstr ""
+msgstr "查询列表到达限制的大小"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45083
 msgid "the speed out of range"
-msgstr ""
+msgstr "速度超出范围"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43102
 msgid "the tempalte is not subscriptiontype"
-msgstr ""
+msgstr "tempalte 不是 subscriptiontype"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61002
 msgid "the third appid is not open KF"
-msgstr ""
+msgstr "第三个 appid 未打开 KF"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_73214
 msgid "the user is already a member"
-msgstr ""
+msgstr "用户已是成员"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65407
 msgid "the wechat user have been one of your workers"
-msgstr ""
+msgstr "微信用户是您的员工之一"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65415
 msgid "the worker is not online"
-msgstr ""
+msgstr "工作人员未在线"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40173
 msgid "there is no bind relation"
-msgstr ""
+msgstr "没有绑定关系"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_68036
 msgid "there is no enough products to refund"
-msgstr ""
+msgstr "没有足够的产品可以退款"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40167
 msgid "there is no relation with plugin appid"
-msgstr ""
+msgstr "与插件appid没有关系"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65303
 msgid "there is no selfmenu, please create selfmenu first"
-msgstr ""
+msgstr "没有默认菜单，不能创建个性化菜单"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_46009
 msgid "there is no user data"
-msgstr ""
+msgstr "没有用户数据"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_83000
 msgid "there is some param not exist"
-msgstr ""
+msgstr "有一些参数不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45102
 msgid "this api have been blocked temporarily."
-msgstr ""
+msgstr "此 API 已被暂时阻止。"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_46101
@@ -8794,162 +8805,164 @@ msgid ""
 "this api have been not supported  since 2020-01-11 00:00:00, please use new "
 "api(subscribeMessage)!"
 msgstr ""
+"自 2020-01-11 00：00：00 以来，此 API 已不再支持，请使用 new api"
+"（subscribeMessage）！"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_48009
 msgid "this api is expired"
-msgstr ""
+msgstr "此 API 已过期"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_63180
 msgid "this app msg not found"
-msgstr ""
+msgstr "这个应用 msg 未找到"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_43104
 msgid "this appid does not have permission"
-msgstr ""
+msgstr "此 appid 没有权限"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45041
 msgid "this card reach total sku quantity limit!"
-msgstr ""
+msgstr "此卡达到 SKU 总数量限制！"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300702
 msgid "this code has been used"
-msgstr ""
+msgstr "此代码已被使用"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72062
 msgid "this code_auth_key is limited, try  other code_auth_key please"
-msgstr ""
+msgstr "此code_auth_key有限，请尝试其他的code_auth_key"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85028
 msgid "this contractor reach bind limit"
-msgstr ""
+msgstr "此承包商达到绑定限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_74009
 msgid "this hotel routecode info error contract developer"
-msgstr ""
+msgstr "此酒店路线代码信息错误，联系开发人员"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_74008
 msgid "this hotel routecode not exist"
-msgstr ""
+msgstr "此酒店的路线代码不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85027
 msgid "this idcard reach bind limit"
-msgstr ""
+msgstr "此身份证达到绑定限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72060
 msgid "this invoice has been cancelled,  check the reimburse_status please"
-msgstr ""
+msgstr "此发票已被取消，请检查reimburse_status"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72061
 msgid "this invoice has been closed, check  the reimburse_status please"
-msgstr ""
+msgstr "此发票已关闭，请检查reimburse_status"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72059
 msgid "this invoice is giving to others, wait a moment please"
-msgstr ""
+msgstr "这张发票是给别人的，请稍等片刻"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61502
 msgid "this is game miniprogram, data api is not supported"
-msgstr ""
+msgstr "这是游戏小程序，不支持数据API"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_87006
 msgid "this is game miniprogram, submit audit is forbidden"
-msgstr ""
+msgstr "小游戏不能提交"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_75019
 msgid "this key is empty, user may not upload file"
-msgstr ""
+msgstr "此key为空，用户可能无法上传文件"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_75015
 msgid "this key is expired"
-msgstr ""
+msgstr "此 key 已过期"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_75014
 msgid "this key is not belong to you"
-msgstr ""
+msgstr "此 key 不属于你"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65301
 msgid "this menu is not conditionalmenu"
-msgstr ""
+msgstr "不存在此 menuid 对应的个性化菜单"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300522
 msgid "this orderid is repeated"
-msgstr ""
+msgstr "此 orderID 重复"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85062
 msgid "this phone in black list"
-msgstr ""
+msgstr "这部手机被列入黑名单"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85025
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85061
 msgid "this phone reach bind limit"
-msgstr ""
+msgstr "此手机达到绑定限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_89236
 msgid "this plugin can not apply"
-msgstr ""
+msgstr "该插件不能申请"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45161
 msgid "this video id must be generated by calling upload api"
-msgstr ""
+msgstr "此视频 ID 必须通过调用上传 API 生成"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85026
 msgid "this wechat account reach bind limit"
-msgstr ""
+msgstr "此微信账号达到绑定限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61317
 msgid "ticket invalid"
-msgstr ""
+msgstr "票证无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_94011
 msgid "timestamp expired"
-msgstr ""
+msgstr "时间戳已过期"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_85011
 msgid "title is in invalid format"
-msgstr ""
+msgstr "标题填写错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45003
 msgid "title size out of limit"
-msgstr ""
+msgstr "标题字段超过限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72057
 msgid "today insert limit"
-msgstr ""
+msgstr "今日插入限制"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40109
 msgid "too many code size, must <= 100"
-msgstr ""
+msgstr "代码大小过多，必须 <= 100"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_40124
@@ -8959,77 +8972,77 @@ msgstr "自定义字段太多！"
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_65410
 msgid "too many custom service accounts bound by the worker"
-msgstr ""
+msgstr "工作人员绑定的自定义服务帐户过多"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45018
 msgid "too many group now, no need to add new"
-msgstr ""
+msgstr "分组数量超过上限"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45020
 msgid "too many image, please input less"
-msgstr ""
+msgstr "图片太多，请少输入"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_72055
 msgid "too many invoices"
-msgstr ""
+msgstr "发票过多"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45019
 msgid "too many openid, please input less"
-msgstr ""
+msgstr "openid太多，请少输入"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45056
 msgid "too many tag now, no need to add new"
-msgstr ""
+msgstr "现在标签太多，无需添加新标签"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9300539
 msgid "too many task"
-msgstr ""
+msgstr "任务太多"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_45013
 msgid "too many template args"
-msgstr ""
+msgstr "模板参数过多"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_61341
 msgid "too many white list uin"
-msgstr ""
+msgstr "白名单 UIN 过多"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9207032
 msgid "trade error"
-msgstr ""
+msgstr "交易错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9207033
 msgid "trade time invalid"
-msgstr ""
+msgstr "交易时间无效"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_9201015
 msgid "trade_type error"
-msgstr ""
+msgstr "trade_type错误"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_62001
 msgid "trying to access other's app"
-msgstr ""
+msgstr "尝试访问他人的应用"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_51020
 msgid "tv info not exist"
-msgstr ""
+msgstr "电视信息不存在"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_83201
 msgid "uin has not the service"
-msgstr ""
+msgstr "uin没有服务"
 
 #. module: wechat_base
 #: model:wechat.error_codes,name:wechat_base.wechat_error_codes_74023

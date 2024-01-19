@@ -5496,7 +5496,7 @@
     </record>
     <record id="wechat_error_codes_91005" model="wechat.error_codes">
       <field name="code">91005</field>
-      <field name="name">nickname protected</field>
+      <field name="name">Nickname 15 day subject protection/field>
     </record>
     <record id="wechat_error_codes_91006" model="wechat.error_codes">
       <field name="code">91006</field>
@@ -5508,7 +5508,7 @@
     </record>
     <record id="wechat_error_codes_91008" model="wechat.error_codes">
       <field name="code">91008</field>
-      <field name="name">nickname protected</field>
+      <field name="name">Nickname hit with a 7-day infringement protection period</field>
     </record>
     <record id="wechat_error_codes_91009" model="wechat.error_codes">
       <field name="code">91009</field>
