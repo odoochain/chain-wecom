@@ -18,13 +18,14 @@ class ResConfigSettings(models.TransientModel):
     contacts_sync_app_agentid = fields.Integer(
         related="contacts_sync_app_id.agentid", readonly=False
     )
-    contacts_sync_secret = fields.Char(related="contacts_sync_app_id.secret", readonly=False)
+    contacts_sync_secret = fields.Char(
+        related="contacts_sync_app_id.secret", readonly=False
+    )
 
     contacts_sync_app_config_ids = fields.One2many(
         related="contacts_sync_app_id.app_config_ids",
         readonly=False,
     )
-
 
     # 自建应用
     self_built_app_id = fields.Many2one(
@@ -37,6 +38,8 @@ class ResConfigSettings(models.TransientModel):
         related="self_built_app_id.secret", readonly=False
     )
 
+    module_wecom_hr_sync = fields.Boolean("WeCom HR synchronization")
+
     def generate_service(self):
         """
         生成服务
@@ -45,10 +48,10 @@ class ResConfigSettings(models.TransientModel):
         code = self.env.context.get("code")
         if bool(code) and code == "contacts":
             for record in self:
-                if not record.contacts_app_id: # type: ignore
+                if not record.contacts_app_id:  # type: ignore
                     raise ValidationError(_("Please bind contact application!"))
                 else:
-                    record.contacts_app_id.with_context(code=code).generate_service()   # type: ignore
+                    record.contacts_app_id.with_context(code=code).generate_service()  # type: ignore
         # super(ResConfigSettings, self).generate_service()
 
     def generate_parameters(self):
@@ -60,7 +63,9 @@ class ResConfigSettings(models.TransientModel):
         if bool(code) and code == "contacts_sync":
             for record in self:
                 if not record.contacts_sync_app_id:  # type: ignore
-                    raise ValidationError(_("Please bind contact synchronization application!"))
+                    raise ValidationError(
+                        _("Please bind contact synchronization application!")
+                    )
                 else:
-                    record.contacts_sync_app_id.with_context(code=code).generate_parameters()    # type: ignore
+                    record.contacts_sync_app_id.with_context(code=code).generate_parameters()  # type: ignore
         # super(ResConfigSettings, self).generate_parameters()

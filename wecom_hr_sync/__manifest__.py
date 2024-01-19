@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 {
-    "name": "WeCom HR",
+    "name": "WeCom HR synchronization",
     "author": "RStudio",
     "website": "https://gitee.com/rainbowstudio/wecom",
     "sequence": 604,
@@ -15,5 +15,8 @@
 
         """,
     "depends": ["wecom_contacts_sync", "hr"],
+    "data": [
+        "views/res_config_settings_views.xml",
+    ],
     "license": "LGPL-3",
 }
