@@ -3932,19 +3932,19 @@
     </record>
     <record id="wechat_error_codes_73215" model="wechat.error_codes">
       <field name="code">73215</field>
-      <field name="name">&#25903;&#20184;&#25171;&#36890;&#21048;&#33021;&#21147;&#24050;&#19979;&#32447;&#65292;&#35831;&#30452;&#25509;&#20351;&#29992;&#24494;&#20449;&#25903;&#20184;&#20195;&#37329;&#21048;API&#65306;https://pay.weixin.qq.com/wiki/doc/apiv3/wxpay/marketing/convention/chapter1_1.shtml</field>
+      <field name="name">The payment voucher capability has been discontinued, please use the WeChat Pay voucher API: https://pay.weixin.qq.com/wiki/doc/apiv3/wxpay/marketing/convention/chapter1_1.shtml</field>
     </record>
     <record id="wechat_error_codes_73216" model="wechat.error_codes">
       <field name="code">73216</field>
-      <field name="name">&#19981;&#21512;&#27861;&#30340;&#25353;&#38062;&#21517;&#23383;&#65292;&#35831;&#20174;&#20013;&#36873;&#25321;&#19968;&#20010;:&#20351;&#29992;&#31036;&#21697;&#21345;/&#31435;&#21363;&#20351;&#29992;/&#21435;&#28857;&#22806;&#21334;</field>
+      <field name="name">Illegal button names, please choose one of them: Use Gift Card/Use Now/Go to Takeout</field>
     </record>
     <record id="wechat_error_codes_73217" model="wechat.error_codes">
       <field name="code">73217</field>
-      <field name="name">&#31036;&#21697;&#21345;&#26412;&#36523;&#27809;&#26377;&#35774;&#32622;appname&#21644;path&#65292;&#19981;&#20801;&#35768;&#22312;&#20462;&#25913;&#25509;&#21475;&#35774;&#32622;</field>
+      <field name="name">The gift card itself does not have appname and path set, and it is not allowed to modify the interface settings</field>
     </record>
     <record id="wechat_error_codes_73218" model="wechat.error_codes">
       <field name="code">73218</field>
-      <field name="name">&#26410;&#25480;&#26435;&#20351;&#29992;&#31036;&#21697;&#21345;&#33853;&#22320;&#39029;&#36339;&#36716;&#23567;&#31243;&#24207;&#21151;&#33021;</field>
+      <field name="name">Unauthorized use of the gift card landing page jump Mini Program function</field>
     </record>
     <record id="wechat_error_codes_74000" model="wechat.error_codes">
       <field name="code">74000</field>
@@ -4088,155 +4088,155 @@
     </record>
     <record id="wechat_error_codes_80000" model="wechat.error_codes">
       <field name="code">80000</field>
-      <field name="name">&#31995;&#32479;&#38169;&#35823;&#65292;&#35831;&#31245;&#21518;&#20877;&#35797;</field>
+      <field name="name">System error, please try again later</field>
     </record>
     <record id="wechat_error_codes_80001" model="wechat.error_codes">
       <field name="code">80001</field>
-      <field name="name">&#21442;&#25968;&#26684;&#24335;&#26657;&#39564;&#38169;&#35823;</field>
+      <field name="name">The parameter format is incorrect</field>
     </record>
     <record id="wechat_error_codes_80002" model="wechat.error_codes">
       <field name="code">80002</field>
-      <field name="name">&#31614;&#21517;&#22833;&#36133;</field>
+      <field name="name">Signature failed</field>
     </record>
     <record id="wechat_error_codes_80003" model="wechat.error_codes">
       <field name="code">80003</field>
-      <field name="name">&#35813;&#26085;&#26399;&#35746;&#21333;&#26410;&#29983;&#25104;</field>
+      <field name="name">The order was not generated on that date</field>
     </record>
     <record id="wechat_error_codes_80004" model="wechat.error_codes">
       <field name="code">80004</field>
-      <field name="name">&#29992;&#25143;&#26410;&#32465;&#21345;</field>
+      <field name="name">The user does not have a card attached</field>
     </record>
     <record id="wechat_error_codes_80005" model="wechat.error_codes">
       <field name="code">80005</field>
-      <field name="name">&#22995;&#21517;&#19981;&#31526;</field>
+      <field name="name">The names do not match</field>
     </record>
     <record id="wechat_error_codes_80006" model="wechat.error_codes">
       <field name="code">80006</field>
-      <field name="name">&#36523;&#20221;&#35777;&#19981;&#31526;</field>
+      <field name="name">The ID card does not match</field>
     </record>
     <record id="wechat_error_codes_80007" model="wechat.error_codes">
       <field name="code">80007</field>
-      <field name="name">&#33719;&#21462;&#22478;&#24066;&#20449;&#24687;&#22833;&#36133;</field>
+      <field name="name">Failed to get city information</field>
     </record>
     <record id="wechat_error_codes_80008" model="wechat.error_codes">
       <field name="code">80008</field>
-      <field name="name">&#26410;&#25214;&#21040;&#25351;&#23450;&#23569;&#20799;&#20449;&#24687;</field>
+      <field name="name">No information was found for the specified child</field>
     </record>
     <record id="wechat_error_codes_80009" model="wechat.error_codes">
       <field name="code">80009</field>
-      <field name="name">&#23569;&#20799;&#36523;&#20221;&#35777;&#19981;&#31526;</field>
+      <field name="name">The children's ID card does not match</field>
     </record>
     <record id="wechat_error_codes_80010" model="wechat.error_codes">
       <field name="code">80010</field>
-      <field name="name">&#23569;&#20799;&#26410;&#32465;&#23450;</field>
+      <field name="name">Children are not bound</field>
     </record>
     <record id="wechat_error_codes_80011" model="wechat.error_codes">
       <field name="code">80011</field>
-      <field name="name">&#31614;&#32422;&#21495;&#19981;&#31526;</field>
+      <field name="name">The contract number does not match</field>
     </record>
     <record id="wechat_error_codes_80012" model="wechat.error_codes">
       <field name="code">80012</field>
-      <field name="name">&#35813;&#22320;&#21306;&#23616;&#26041;&#37197;&#32622;&#19981;&#23384;&#22312;</field>
+      <field name="name">The regional local configuration does not exist</field>
     </record>
     <record id="wechat_error_codes_80013" model="wechat.error_codes">
       <field name="code">80013</field>
-      <field name="name">&#35843;&#29992;&#26041;appid&#19982;&#23616;&#26041;&#37197;&#32622;&#19981;&#21305;&#37197;</field>
+      <field name="name">The appid of the caller does not match the configuration of the central office</field>
     </record>
     <record id="wechat_error_codes_80014" model="wechat.error_codes">
       <field name="code">80014</field>
-      <field name="name">&#33719;&#21462;&#28040;&#24687;&#36134;&#21495;&#22833;&#36133;</field>
+      <field name="name">Failed to obtain the message account</field>
     </record>
     <record id="wechat_error_codes_80066" model="wechat.error_codes">
       <field name="code">80066</field>
-      <field name="name">&#38750;&#27861;&#30340;&#25554;&#20214;&#29256;&#26412;</field>
+      <field name="name">Illegal plugin versions</field>
     </record>
     <record id="wechat_error_codes_80067" model="wechat.error_codes">
       <field name="code">80067</field>
-      <field name="name">&#25214;&#19981;&#21040;&#20351;&#29992;&#30340;&#25554;&#20214;</field>
+      <field name="name">Can't find the plugin to use</field>
     </record>
     <record id="wechat_error_codes_80082" model="wechat.error_codes">
       <field name="code">80082</field>
-      <field name="name">&#27809;&#26377;&#26435;&#38480;&#20351;&#29992;&#35813;&#25554;&#20214;</field>
+      <field name="name">There is no permission to use the plugin</field>
     </record>
     <record id="wechat_error_codes_80101" model="wechat.error_codes">
       <field name="code">80101</field>
-      <field name="name">&#21830;&#23478;&#26410;&#25509;&#20837;</field>
+      <field name="name">The merchant is not connected</field>
     </record>
     <record id="wechat_error_codes_80111" model="wechat.error_codes">
       <field name="code">80111</field>
-      <field name="name">&#23454;&#21517;&#26657;&#39564;code&#19981;&#23384;&#22312;</field>
+      <field name="name">The real-name verification code does not exist</field>
     </record>
     <record id="wechat_error_codes_80112" model="wechat.error_codes">
       <field name="code">80112</field>
-      <field name="name">code&#24182;&#21457;&#20914;&#31361;</field>
+      <field name="name">Code concurrency conflicts</field>
     </record>
     <record id="wechat_error_codes_80113" model="wechat.error_codes">
       <field name="code">80113</field>
-      <field name="name">&#26080;&#25928;code</field>
+      <field name="name">Invalid code</field>
     </record>
     <record id="wechat_error_codes_80201" model="wechat.error_codes">
       <field name="code">80201</field>
-      <field name="name">report_type&#26080;&#25928;</field>
+      <field name="name">report_type is invalid</field>
     </record>
     <record id="wechat_error_codes_80202" model="wechat.error_codes">
       <field name="code">80202</field>
-      <field name="name">service_type&#26080;&#25928;</field>
+      <field name="name">service_type invalid</field>
     </record>
     <record id="wechat_error_codes_80300" model="wechat.error_codes">
       <field name="code">80300</field>
-      <field name="name">&#30003;&#35831;&#21333;&#19981;&#23384;&#22312;</field>
+      <field name="name">The requisition does not exist</field>
     </record>
     <record id="wechat_error_codes_80301" model="wechat.error_codes">
       <field name="code">80301</field>
-      <field name="name">&#30003;&#35831;&#21333;&#19981;&#23646;&#20110;&#35813;&#36134;&#21495;</field>
+      <field name="name">The application does not belong to the account</field>
     </record>
     <record id="wechat_error_codes_80302" model="wechat.error_codes">
       <field name="code">80302</field>
-      <field name="name">&#28608;&#27963;&#21495;&#27573;&#26377;&#37325;&#21472;</field>
+      <field name="name">There is an overlap in the activation number segments</field>
     </record>
     <record id="wechat_error_codes_80303" model="wechat.error_codes">
       <field name="code">80303</field>
-      <field name="name">&#30721;&#26684;&#24335;&#38169;&#35823;</field>
+      <field name="name">The code format is incorrect</field>
     </record>
     <record id="wechat_error_codes_80304" model="wechat.error_codes">
       <field name="code">80304</field>
-      <field name="name">&#35813;&#30721;&#26410;&#28608;&#27963;</field>
+      <field name="name">The code is not activated</field>
     </record>
     <record id="wechat_error_codes_80305" model="wechat.error_codes">
       <field name="code">80305</field>
-      <field name="name">&#28608;&#27963;&#22833;&#36133;</field>
+      <field name="name">Activation failed</field>
     </record>
     <record id="wechat_error_codes_80306" model="wechat.error_codes">
       <field name="code">80306</field>
-      <field name="name">&#30721;&#32034;&#24341;&#36229;&#20986;&#30003;&#35831;&#33539;&#22260;</field>
+      <field name="name">The code index is out of scope of the application</field>
     </record>
     <record id="wechat_error_codes_80307" model="wechat.error_codes">
       <field name="code">80307</field>
-      <field name="name">&#30003;&#35831;&#24050;&#23384;&#22312;</field>
+      <field name="name">The application already exists</field>
     </record>
     <record id="wechat_error_codes_80308" model="wechat.error_codes">
       <field name="code">80308</field>
-      <field name="name">&#23376;&#20219;&#21153;&#26410;&#23436;&#25104;</field>
+      <field name="name">The subtask is not completed</field>
     </record>
     <record id="wechat_error_codes_80309" model="wechat.error_codes">
       <field name="code">80309</field>
-      <field name="name">&#23376;&#20219;&#21153;&#25991;&#20214;&#36807;&#26399;</field>
+      <field name="name">The subtask file is out of date</field>
     </record>
     <record id="wechat_error_codes_80310" model="wechat.error_codes">
       <field name="code">80310</field>
-      <field name="name">&#23376;&#20219;&#21153;&#19981;&#23384;&#22312;</field>
+      <field name="name">The subtask does not exist</field>
     </record>
     <record id="wechat_error_codes_80311" model="wechat.error_codes">
       <field name="code">80311</field>
-      <field name="name">&#33719;&#21462;&#25991;&#20214;&#22833;&#36133;</field>
+      <field name="name">Failed to get the file</field>
     </record>
     <record id="wechat_error_codes_80312" model="wechat.error_codes">
       <field name="code">80312</field>
-      <field name="name">&#21152;&#23494;&#25968;&#25454;&#22833;&#36133;</field>
+      <field name="name">Failed to encrypt data</field>
     </record>
     <record id="wechat_error_codes_80313" model="wechat.error_codes">
       <field name="code">80313</field>
-      <field name="name">&#21152;&#23494;&#25968;&#25454;&#23494;&#38053;&#19981;&#23384;&#22312;&#65292;&#35831;&#32852;&#31995;&#25509;&#21475;&#20154;&#30003;&#35831;</field>
+      <field name="name">If the encryption key does not exist, contact the API to apply for it</field>
     </record>
     <record id="wechat_error_codes_81000" model="wechat.error_codes">
       <field name="code">81000</field>
@@ -4436,59 +4436,59 @@
     </record>
     <record id="wechat_error_codes_82200" model="wechat.error_codes">
       <field name="code">82200</field>
-      <field name="name">&#20844;&#20247;&#24179;&#21488;&#36134;&#21495;&#19982;&#26381;&#21153;id&#19981;&#21305;&#37197;</field>
+      <field name="name">The Official Accounts account does not match the service ID</field>
     </record>
     <record id="wechat_error_codes_82201" model="wechat.error_codes">
       <field name="code">82201</field>
-      <field name="name">&#35813;&#20572;&#36710;&#22330;&#24050;&#23384;&#22312;&#65292;&#35831;&#21247;&#37325;&#22797;&#28155;&#21152;</field>
+      <field name="name">This parking lot already exists, please do not add it repeatedly</field>
     </record>
     <record id="wechat_error_codes_82202" model="wechat.error_codes">
       <field name="code">82202</field>
-      <field name="name">&#35813;&#20572;&#36710;&#22330;&#20449;&#24687;&#19981;&#23384;&#22312;&#65292;&#35831;&#20808;&#23548;&#20837;</field>
+      <field name="name">The parking lot information does not exist, so please import it first</field>
     </record>
     <record id="wechat_error_codes_82203" model="wechat.error_codes">
       <field name="code">82203</field>
-      <field name="name">&#20572;&#36710;&#22330;&#20215;&#26684;&#26684;&#24335;&#19981;&#27491;&#30830;</field>
+      <field name="name">Parking lot prices are not formatted correctly</field>
     </record>
     <record id="wechat_error_codes_82204" model="wechat.error_codes">
       <field name="code">82204</field>
-      <field name="name">appid&#19982;code&#19981;&#21305;&#37197;</field>
+      <field name="name">The appid does not match the code</field>
     </record>
     <record id="wechat_error_codes_82205" model="wechat.error_codes">
       <field name="code">82205</field>
-      <field name="name">wx_park_code&#23383;&#27573;&#20026;&#31354;</field>
+      <field name="name">wx_park_code field is empty</field>
     </record>
     <record id="wechat_error_codes_82206" model="wechat.error_codes">
       <field name="code">82206</field>
-      <field name="name">wx_park_code&#26080;&#25928;&#25110;&#24050;&#36807;&#26399;</field>
+      <field name="name">wx_park_code is invalid or expired</field>
     </record>
     <record id="wechat_error_codes_82207" model="wechat.error_codes">
       <field name="code">82207</field>
-      <field name="name">&#30005;&#35805;&#23383;&#27573;&#20026;&#31354;</field>
+      <field name="name">The Phone field is empty</field>
     </record>
     <record id="wechat_error_codes_82208" model="wechat.error_codes">
       <field name="code">82208</field>
-      <field name="name">&#20851;&#38381;&#26102;&#38388;&#26684;&#24335;&#19981;&#27491;&#30830;</field>
+      <field name="name">The closing time format is incorrect</field>
     </record>
     <record id="wechat_error_codes_82300" model="wechat.error_codes">
       <field name="code">82300</field>
-      <field name="name">&#35813;appid&#19981;&#25903;&#25345;&#24320;&#36890;&#22478;&#24066;&#26381;&#21153;&#25554;&#20214;</field>
+      <field name="name">This appid does not support the activation of city service plug-ins</field>
     </record>
     <record id="wechat_error_codes_82301" model="wechat.error_codes">
       <field name="code">82301</field>
-      <field name="name">&#28155;&#21152;&#25554;&#20214;&#22833;&#36133;</field>
+      <field name="name">Failed to add plugin</field>
     </record>
     <record id="wechat_error_codes_82302" model="wechat.error_codes">
       <field name="code">82302</field>
-      <field name="name">&#26410;&#28155;&#21152;&#22478;&#24066;&#26381;&#21153;&#25554;&#20214;</field>
+      <field name="name">No city service plug-in has been added</field>
     </record>
     <record id="wechat_error_codes_82303" model="wechat.error_codes">
       <field name="code">82303</field>
-      <field name="name">fileid&#26080;&#25928;</field>
+      <field name="name">The fileid is invalid</field>
     </record>
     <record id="wechat_error_codes_82304" model="wechat.error_codes">
       <field name="code">82304</field>
-      <field name="name">&#20020;&#26102;&#25991;&#20214;&#36807;&#26399;</field>
+      <field name="name">Temporary files expire</field>
     </record>
     <record id="wechat_error_codes_83000" model="wechat.error_codes">
       <field name="code">83000</field>
@@ -4652,7 +4652,7 @@
     </record>
     <record id="wechat_error_codes_85015" model="wechat.error_codes">
       <field name="code">85015</field>
-      <field name="name">&#35813;&#36134;&#21495;&#19981;&#26159;&#23567;&#31243;&#24207;&#36134;&#21495;</field>
+      <field name="name">This account is not a Mini Program account</field>
     </record>
     <record id="wechat_error_codes_85016" model="wechat.error_codes">
       <field name="code">85016</field>
@@ -4664,7 +4664,7 @@
     </record>
     <record id="wechat_error_codes_85018" model="wechat.error_codes">
       <field name="code">85018</field>
-      <field name="name">&#22495;&#21517;&#27809;&#26377;&#22312;&#31532;&#19977;&#26041;&#24179;&#21488;&#35774;&#32622;</field>
+      <field name="name">The domain name is not set up on a third-party platform</field>
     </record>
     <record id="wechat_error_codes_85019" model="wechat.error_codes">
       <field name="code">85019</field>
@@ -4964,11 +4964,11 @@
     </record>
     <record id="wechat_error_codes_85101" model="wechat.error_codes">
       <field name="code">85101</field>
-      <field name="name">&#23567;&#31243;&#24207;&#19981;&#33021;&#21457;&#36865;&#35813;&#36816;&#21160;&#31867;&#22411;&#25110;&#36816;&#21160;&#31867;&#22411;&#19981;&#23384;&#22312;</field>
+      <field name="name">The Mini Program cannot send the motion type or the motion type does not exist</field>
     </record>
     <record id="wechat_error_codes_85102" model="wechat.error_codes">
       <field name="code">85102</field>
-      <field name="name">&#25968;&#20540;&#24322;&#24120;</field>
+      <field name="name">The numerical value is abnormal</field>
     </record>
     <record id="wechat_error_codes_86000" model="wechat.error_codes">
       <field name="code">86000</field>
@@ -5000,19 +5000,19 @@
     </record>
     <record id="wechat_error_codes_86007" model="wechat.error_codes">
       <field name="code">86007</field>
-      <field name="name">&#23567;&#31243;&#24207;&#31105;&#27490;&#25552;&#20132;</field>
+      <field name="name">Mini Program submission is prohibited</field>
     </record>
     <record id="wechat_error_codes_86008" model="wechat.error_codes">
       <field name="code">86008</field>
-      <field name="name">&#26381;&#21153;&#21830;&#34987;&#22788;&#32602;&#65292;&#38480;&#21046;&#20840;&#37096;&#20195;&#30721;&#25552;&#23457;&#33021;&#21147;</field>
+      <field name="name">The service provider was penalized and the ability to review all codes was restricted</field>
     </record>
     <record id="wechat_error_codes_86009" model="wechat.error_codes">
       <field name="code">86009</field>
-      <field name="name">&#26381;&#21153;&#21830;&#26032;&#22686;&#23567;&#31243;&#24207;&#20195;&#30721;&#25552;&#23457;&#33021;&#21147;&#34987;&#38480;&#21046;</field>
+      <field name="name">Service providers have limited the ability to review the code of the new Mini Program</field>
     </record>
     <record id="wechat_error_codes_86010" model="wechat.error_codes">
       <field name="code">86010</field>
-      <field name="name">&#26381;&#21153;&#21830;&#36845;&#20195;&#23567;&#31243;&#24207;&#20195;&#30721;&#25552;&#23457;&#33021;&#21147;&#34987;&#38480;&#21046;</field>
+      <field name="name">The service provider's ability to iterate on the code of the Mini Program is restricted</field>
     </record>
     <record id="wechat_error_codes_87006" model="wechat.error_codes">
       <field name="code">87006</field>
@@ -5156,7 +5156,7 @@
     </record>
     <record id="wechat_error_codes_89004" model="wechat.error_codes">
       <field name="code">89004</field>
-      <field name="name">&#35813;&#24320;&#25918;&#24179;&#21488;&#36134;&#21495;&#25152;&#32465;&#23450;&#30340;&#20844;&#20247;&#21495;/&#23567;&#31243;&#24207;&#24050;&#36798;&#19978;&#38480;&#65288;100  &#20010;&#65289;</field>
+      <field name="name">The number of Official Accounts/Mini Programs bound to the Open Platform account has reached the upper limit (100)</field>
     </record>
     <record id="wechat_error_codes_89005" model="wechat.error_codes">
       <field name="code">89005</field>
@@ -5364,51 +5364,51 @@
     </record>
     <record id="wechat_error_codes_89401" model="wechat.error_codes">
       <field name="code">89401</field>
-      <field name="name">&#31995;&#32479;&#19981;&#31283;&#23450;&#65292;&#35831;&#31245;&#21518;&#20877;&#35797;&#65292;&#22914;&#22810;&#27425;&#22833;&#36133;&#35831;&#36890;&#36807;&#31038;&#21306;&#21453;&#39304;</field>
+      <field name="name">The system is unstable, please try again later, if it fails multiple times, please feedback through the community</field>
     </record>
     <record id="wechat_error_codes_89402" model="wechat.error_codes">
       <field name="code">89402</field>
-      <field name="name">&#35813;&#23567;&#31243;&#24207;&#19981;&#22312;&#24453;&#23457;&#26680;&#38431;&#21015;&#65292;&#35831;&#26816;&#26597;&#26159;&#21542;&#24050;&#25552;&#20132;&#23457;&#26680;&#25110;&#24050;&#23457;&#23436;</field>
+      <field name="name">The Mini Program is not in the pending review queue, please check whether it has been submitted for review or has been reviewed</field>
     </record>
     <record id="wechat_error_codes_89403" model="wechat.error_codes">
       <field name="code">89403</field>
-      <field name="name">&#26412;&#21333;&#23646;&#20110;&#24179;&#21488;&#19981;&#25903;&#25345;&#21152;&#24613;&#31181;&#31867;&#65292;&#35831;&#31561;&#24453;&#27491;&#24120;&#23457;&#26680;&#27969;&#31243;</field>
+      <field name="name">This order belongs to the platform does not support the urgent category, please wait for the normal review process</field>
     </record>
     <record id="wechat_error_codes_89404" model="wechat.error_codes">
       <field name="code">89404</field>
-      <field name="name">&#26412;&#21333;&#24050;&#21152;&#36895;&#25104;&#21151;&#65292;&#35831;&#21247;&#37325;&#22797;&#25552;&#20132;</field>
+      <field name="name">This order has been accelerated, please do not submit it repeatedly</field>
     </record>
     <record id="wechat_error_codes_89405" model="wechat.error_codes">
       <field name="code">89405</field>
-      <field name="name">&#26412;&#26376;&#21152;&#24613;&#39069;&#24230;&#24050;&#29992;&#23436;&#65292;&#35831;&#25552;&#39640;&#25552;&#23457;&#36136;&#37327;&#20197;&#33719;&#21462;&#26356;&#22810;&#39069;&#24230;</field>
+      <field name="name">You've run out of expedited credits this month, so improve the quality of your arraignments to get more</field>
     </record>
     <record id="wechat_error_codes_89501" model="wechat.error_codes">
       <field name="code">89501</field>
-      <field name="name">&#20844;&#20247;&#21495;&#26377;&#26410;&#22788;&#29702;&#30340;&#30830;&#35748;&#35831;&#27714;&#65292;&#35831;&#31245;&#20505;&#37325;&#35797;</field>
+      <field name="name">There are unprocessed confirmation requests on the Official Account, please try again later</field>
     </record>
     <record id="wechat_error_codes_89502" model="wechat.error_codes">
       <field name="code">89502</field>
-      <field name="name">&#35831;&#32784;&#24515;&#31561;&#24453;&#31649;&#29702;&#21592;&#30830;&#35748;</field>
+      <field name="name">Please be patient and wait for the administrator to confirm</field>
     </record>
     <record id="wechat_error_codes_89503" model="wechat.error_codes">
       <field name="code">89503</field>
-      <field name="name">&#27492;&#27425;&#35843;&#29992;&#38656;&#35201;&#31649;&#29702;&#21592;&#30830;&#35748;&#65292;&#35831;&#32784;&#24515;&#31561;&#20505;</field>
+      <field name="name">This call needs to be confirmed by the administrator, so please be patient</field>
     </record>
     <record id="wechat_error_codes_89504" model="wechat.error_codes">
       <field name="code">89504</field>
-      <field name="name">&#27491;&#22312;&#31561;&#31649;&#29702;&#21592;&#30830;&#35748;&#65292;&#35831;&#32784;&#24515;&#31561;&#24453;</field>
+      <field name="name">Waiting for confirmation from the administrator, please be patient</field>
     </record>
     <record id="wechat_error_codes_89505" model="wechat.error_codes">
       <field name="code">89505</field>
-      <field name="name">&#27491;&#22312;&#31561;&#31649;&#29702;&#21592;&#30830;&#35748;&#65292;&#35831;&#31245;&#20505;&#37325;&#35797;</field>
+      <field name="name">Waiting for confirmation from the administrator, please try again later</field>
     </record>
     <record id="wechat_error_codes_89506" model="wechat.error_codes">
       <field name="code">89506</field>
-      <field name="name">&#35813;IP&#35843;&#29992;&#27714;&#35831;&#27714;&#24050;&#34987;&#20844;&#20247;&#21495;&#31649;&#29702;&#21592;&#25298;&#32477;&#65292;&#35831;24&#23567;&#26102;&#21518;&#20877;&#35797;&#65292;&#24314;&#35758;&#35843;&#29992;&#21069;&#19982;&#31649;&#29702;&#21592;&#27807;&#36890;&#30830;&#35748;</field>
+      <field name="name">The request has been rejected by the Official Account administrator, please try again in 24 hours, and it is recommended to communicate with the administrator to confirm before the call</field>
     </record>
     <record id="wechat_error_codes_89507" model="wechat.error_codes">
       <field name="code">89507</field>
-      <field name="name">&#35813;IP&#35843;&#29992;&#27714;&#35831;&#27714;&#24050;&#34987;&#20844;&#20247;&#21495;&#31649;&#29702;&#21592;&#25298;&#32477;&#65292;&#35831;1&#23567;&#26102;&#21518;&#20877;&#35797;&#65292;&#24314;&#35758;&#35843;&#29992;&#21069;&#19982;&#31649;&#29702;&#21592;&#27807;&#36890;&#30830;&#35748;</field>
+      <field name="name">The request has been rejected by the administrator of the Official Account, please try again in 1 hour, and it is recommended to communicate with the administrator to confirm before the call</field>
     </record>
     <record id="wechat_error_codes_90001" model="wechat.error_codes">
       <field name="code">90001</field>
@@ -5516,15 +5516,15 @@
     </record>
     <record id="wechat_error_codes_91010" model="wechat.error_codes">
       <field name="code">91010</field>
-      <field name="name">&#20854;&#20182;&#38169;&#35823;</field>
+      <field name="name">Other errors</field>
     </record>
     <record id="wechat_error_codes_91011" model="wechat.error_codes">
       <field name="code">91011</field>
-      <field name="name">&#26597;&#19981;&#21040;&#26165;&#31216;&#20462;&#25913;&#23457;&#26680;&#21333;&#20449;&#24687;</field>
+      <field name="name">The nickname modification audit form information cannot be found</field>
     </record>
     <record id="wechat_error_codes_91012" model="wechat.error_codes">
       <field name="code">91012</field>
-      <field name="name">&#20854;&#23427;&#38169;&#35823;</field>
+      <field name="name">Other errors</field>
     </record>
     <record id="wechat_error_codes_91013" model="wechat.error_codes">
       <field name="code">91013</field>
@@ -5548,111 +5548,111 @@
     </record>
     <record id="wechat_error_codes_91018" model="wechat.error_codes">
       <field name="code">91018</field>
-      <field name="name">&#32452;&#32455;&#31867;&#22411;&#23567;&#31243;&#24207;&#21457;&#24067;&#21518;&#65292;&#20405;&#26435;&#34987;&#28165;&#31354;&#26165;&#31216;&#65292;&#38656;&#36208;&#35748;&#35777;&#25913;&#21517;</field>
+      <field name="name">After the release of the organization type Mini Program, the infringement is cleared of the nickname, and the name needs to be changed through certification</field>
     </record>
     <record id="wechat_error_codes_91019" model="wechat.error_codes">
       <field name="code">91019</field>
-      <field name="name">&#23567;&#31243;&#24207;&#27491;&#22312;&#23457;&#26680;&#20013;</field>
+      <field name="name">The Mini Program is under review</field>
     </record>
     <record id="wechat_error_codes_92000" model="wechat.error_codes">
       <field name="code">92000</field>
-      <field name="name">&#35813;&#32463;&#33829;&#36164;&#36136;&#24050;&#28155;&#21152;&#65292;&#35831;&#21247;&#37325;&#22797;&#28155;&#21152;</field>
+      <field name="name">The business qualification has been added, please do not add it repeatedly</field>
     </record>
     <record id="wechat_error_codes_92002" model="wechat.error_codes">
       <field name="code">92002</field>
-      <field name="name">&#38468;&#36817;&#22320;&#28857;&#28155;&#21152;&#25968;&#37327;&#36798;&#21040;&#19978;&#32447;&#65292;&#26080;&#27861;&#32487;&#32493;&#28155;&#21152;</field>
+      <field name="name">The number of nearby locations added has reached the upper limit, and you cannot continue to add them</field>
     </record>
     <record id="wechat_error_codes_92003" model="wechat.error_codes">
       <field name="code">92003</field>
-      <field name="name">&#22320;&#28857;&#24050;&#34987;&#20854;&#23427;&#23567;&#31243;&#24207;&#21344;&#29992;</field>
+      <field name="name">The location is already occupied by other Mini Programs</field>
     </record>
     <record id="wechat_error_codes_92004" model="wechat.error_codes">
       <field name="code">92004</field>
-      <field name="name">&#38468;&#36817;&#21151;&#33021;&#34987;&#23553;&#31105;</field>
+      <field name="name">Nearby features are blocked</field>
     </record>
     <record id="wechat_error_codes_92005" model="wechat.error_codes">
       <field name="code">92005</field>
-      <field name="name">&#22320;&#28857;&#27491;&#22312;&#23457;&#26680;&#20013;</field>
+      <field name="name">The location is under review</field>
     </record>
     <record id="wechat_error_codes_92006" model="wechat.error_codes">
       <field name="code">92006</field>
-      <field name="name">&#22320;&#28857;&#27491;&#22312;&#23637;&#31034;&#23567;&#31243;&#24207;</field>
+      <field name="name">The location is showing the Mini Program</field>
     </record>
     <record id="wechat_error_codes_92007" model="wechat.error_codes">
       <field name="code">92007</field>
-      <field name="name">&#22320;&#28857;&#23457;&#26680;&#22833;&#36133;</field>
+      <field name="name">The site audit failed</field>
     </record>
     <record id="wechat_error_codes_92008" model="wechat.error_codes">
       <field name="code">92008</field>
-      <field name="name">&#23567;&#31243;&#24207;&#26410;&#23637;&#31034;&#22312;&#35813;&#22320;&#28857;</field>
+      <field name="name">The Mini Program is not displayed at the location</field>
     </record>
     <record id="wechat_error_codes_93009" model="wechat.error_codes">
       <field name="code">93009</field>
-      <field name="name">&#23567;&#31243;&#24207;&#26410;&#19978;&#26550;&#25110;&#19981;&#21487;&#35265;</field>
+      <field name="name">The Mini Program is not available or visible</field>
     </record>
     <record id="wechat_error_codes_93010" model="wechat.error_codes">
       <field name="code">93010</field>
-      <field name="name">&#22320;&#28857;&#19981;&#23384;&#22312;</field>
+      <field name="name">The location does not exist</field>
     </record>
     <record id="wechat_error_codes_93011" model="wechat.error_codes">
       <field name="code">93011</field>
-      <field name="name">&#20010;&#20154;&#31867;&#22411;&#23567;&#31243;&#24207;&#19981;&#21487;&#29992;</field>
+      <field name="name">Personal type applets are not available</field>
     </record>
     <record id="wechat_error_codes_93012" model="wechat.error_codes">
       <field name="code">93012</field>
-      <field name="name">&#38750;&#26222;&#36890;&#31867;&#22411;&#23567;&#31243;&#24207;&#65288;&#38376;&#24215;&#23567;&#31243;&#24207;&#12289;&#23567;&#24215;&#23567;&#31243;&#24207;&#31561;&#65289;&#19981;&#21487;&#29992;</field>
+      <field name="name">Non-common Mini Programs (such as store Mini Programs, Store Mini Programs, etc.) are not available</field>
     </record>
     <record id="wechat_error_codes_93013" model="wechat.error_codes">
       <field name="code">93013</field>
-      <field name="name">&#20174;&#33150;&#35759;&#22320;&#22270;&#33719;&#21462;&#22320;&#22336;&#35814;&#32454;&#20449;&#24687;&#22833;&#36133;</field>
+      <field name="name">Failed to get address details from Tencent Maps</field>
     </record>
     <record id="wechat_error_codes_93014" model="wechat.error_codes">
       <field name="code">93014</field>
-      <field name="name">&#21516;&#19968;&#36164;&#36136;&#35777;&#20214;&#21495;&#37325;&#22797;&#28155;&#21152;</field>
+      <field name="name">The same qualification certificate number is added repeatedly</field>
     </record>
     <record id="wechat_error_codes_93015" model="wechat.error_codes">
       <field name="code">93015</field>
-      <field name="name">&#38468;&#36817;&#31867;&#30446;&#23457;&#26680;&#20013;</field>
+      <field name="name">Nearby categories are under review</field>
     </record>
     <record id="wechat_error_codes_93016" model="wechat.error_codes">
       <field name="code">93016</field>
-      <field name="name">&#26381;&#21153;&#26631;&#31614;&#20010;&#25968;&#36229;&#38480;&#21046;&#65288;&#23448;&#26041;&#26368;&#22810;5&#20010;&#65292;&#33258;&#23450;&#20041;&#26368;&#22810;4&#20010;&#65289;</field>
+      <field name="name">The number of service tags exceeds the limit (up to 5 official tags and 4 custom tags)</field>
     </record>
     <record id="wechat_error_codes_93017" model="wechat.error_codes">
       <field name="code">93017</field>
-      <field name="name">&#26381;&#21153;&#26631;&#31614;&#25110;&#32773;&#23458;&#26381;&#30340;&#21517;&#23383;&#19981;&#31526;&#21512;&#35201;&#27714;</field>
+      <field name="name">The service tag or the name of the customer service does not meet the requirements</field>
     </record>
     <record id="wechat_error_codes_93018" model="wechat.error_codes">
       <field name="code">93018</field>
-      <field name="name">&#26381;&#21153;&#33021;&#21147;&#20013;&#22635;&#20889;&#30340;&#23567;&#31243;&#24207;appid&#19981;&#26159;&#21516;&#20027;&#20307;&#23567;&#31243;&#24207;</field>
+      <field name="name">The appid of the Mini Program filled in the service capability is not the same Mini Program</field>
     </record>
     <record id="wechat_error_codes_93019" model="wechat.error_codes">
       <field name="code">93019</field>
-      <field name="name">&#30003;&#35831;&#31867;&#30446;&#20043;&#21518;&#25165;&#33021;&#28155;&#21152;&#38468;&#36817;&#22320;&#28857;</field>
+      <field name="name">You can only add nearby places after you apply for a category</field>
     </record>
     <record id="wechat_error_codes_93020" model="wechat.error_codes">
       <field name="code">93020</field>
-      <field name="name">qualification_list&#26080;&#25928;</field>
+      <field name="name">qualification_list is invalid</field>
     </record>
     <record id="wechat_error_codes_93021" model="wechat.error_codes">
       <field name="code">93021</field>
-      <field name="name">company_name&#23383;&#27573;&#20026;&#31354;</field>
+      <field name="name">company_name field is empty</field>
     </record>
     <record id="wechat_error_codes_93022" model="wechat.error_codes">
       <field name="code">93022</field>
-      <field name="name">credential&#23383;&#27573;&#20026;&#31354;</field>
+      <field name="name">The Kredentiar field is empty</field>
     </record>
     <record id="wechat_error_codes_93023" model="wechat.error_codes">
       <field name="code">93023</field>
-      <field name="name">address&#23383;&#27573;&#20026;&#31354;</field>
+      <field name="name">The address field is empty</field>
     </record>
     <record id="wechat_error_codes_93024" model="wechat.error_codes">
       <field name="code">93024</field>
-      <field name="name">qualification_list&#23383;&#27573;&#20026;&#31354;</field>
+      <field name="name">qualification_list field is empty</field>
     </record>
     <record id="wechat_error_codes_93025" model="wechat.error_codes">
       <field name="code">93025</field>
-      <field name="name">&#26381;&#21153;appid&#23545;&#24212;&#30340;path&#19981;&#23384;&#22312;</field>
+      <field name="name">The path corresponding to the appid of the service does not exist</field>
     </record>
     <record id="wechat_error_codes_94001" model="wechat.error_codes">
       <field name="code">94001</field>
@@ -5700,7 +5700,7 @@
     </record>
     <record id="wechat_error_codes_94012" model="wechat.error_codes">
       <field name="code">94012</field>
-      <field name="name">appid&#21644;&#21830;&#25143;&#21495;&#30340;&#32465;&#23450;&#20851;&#31995;&#19981;&#23384;&#22312;</field>
+      <field name="name">The binding relationship between the appid and the merchant ID does not exist</field>
     </record>
     <record id="wechat_error_codes_95001" model="wechat.error_codes">
       <field name="code">95001</field>
@@ -5748,47 +5748,47 @@
     </record>
     <record id="wechat_error_codes_200002" model="wechat.error_codes">
       <field name="code">200002</field>
-      <field name="name">&#20837;&#21442;&#38169;&#35823;</field>
+      <field name="name">The input parameter is incorrect</field>
     </record>
     <record id="wechat_error_codes_200011" model="wechat.error_codes">
       <field name="code">200011</field>
-      <field name="name">&#27492;&#36134;&#21495;&#24050;&#34987;&#23553;&#31105;&#65292;&#26080;&#27861;&#25805;&#20316;</field>
+      <field name="name">This account has been banned and cannot be operated</field>
     </record>
     <record id="wechat_error_codes_200012" model="wechat.error_codes">
       <field name="code">200012</field>
-      <field name="name">&#20010;&#20154;&#27169;&#26495;&#25968;&#24050;&#36798;&#19978;&#38480;&#65292;&#19978;&#38480;25&#20010;</field>
+      <field name="name">The maximum number of personal templates has been reached, and the maximum number is 25</field>
     </record>
     <record id="wechat_error_codes_200013" model="wechat.error_codes">
       <field name="code">200013</field>
-      <field name="name">&#27492;&#27169;&#26495;&#24050;&#34987;&#23553;&#31105;&#65292;&#26080;&#27861;&#36873;&#29992;</field>
+      <field name="name">This template has been blocked and cannot be used</field>
     </record>
     <record id="wechat_error_codes_200014" model="wechat.error_codes">
       <field name="code">200014</field>
-      <field name="name">&#27169;&#26495;  tid &#21442;&#25968;&#38169;&#35823;</field>
+      <field name="name">The template tid parameter is incorrect</field>
     </record>
     <record id="wechat_error_codes_200016" model="wechat.error_codes">
       <field name="code">200016</field>
-      <field name="name">start  &#21442;&#25968;&#38169;&#35823;</field>
+      <field name="name">The start parameter is incorrect</field>
     </record>
     <record id="wechat_error_codes_200017" model="wechat.error_codes">
       <field name="code">200017</field>
-      <field name="name">limit  &#21442;&#25968;&#38169;&#35823;</field>
+      <field name="name">The limit parameter is incorrect</field>
     </record>
     <record id="wechat_error_codes_200018" model="wechat.error_codes">
       <field name="code">200018</field>
-      <field name="name">&#31867;&#30446;  ids &#32570;&#22833;</field>
+      <field name="name">Category IDS is missing</field>
     </record>
     <record id="wechat_error_codes_200019" model="wechat.error_codes">
       <field name="code">200019</field>
-      <field name="name">&#31867;&#30446;  ids &#19981;&#21512;&#27861;</field>
+      <field name="name">The category IDS is not legitimate</field>
     </record>
     <record id="wechat_error_codes_200020" model="wechat.error_codes">
       <field name="code">200020</field>
-      <field name="name">&#20851;&#38190;&#35789;&#21015;&#34920;  kidList &#21442;&#25968;&#38169;&#35823;</field>
+      <field name="name">The kidList parameter in the keyword list is incorrect</field>
     </record>
     <record id="wechat_error_codes_200021" model="wechat.error_codes">
       <field name="code">200021</field>
-      <field name="name">&#22330;&#26223;&#25551;&#36848;  sceneDesc &#21442;&#25968;&#38169;&#35823;</field>
+      <field name="name">The sceneDesc parameter in the scene description is incorrect</field>
     </record>
     <record id="wechat_error_codes_300001" model="wechat.error_codes">
       <field name="code">300001</field>
