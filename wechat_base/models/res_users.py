@@ -11,7 +11,7 @@ class ResUsers(models.Model):
         string="WeChat user", default=False, readonly=True, store=True
     )
     wechat_openid = fields.Char(
-        string="Unique identification of WeChat authorized user",
+        string="OpenID of WeChat authorized user",
         readonly=True,
         store=True,
     )

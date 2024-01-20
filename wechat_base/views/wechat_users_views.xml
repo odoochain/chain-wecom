@@ -2,10 +2,26 @@
 <odoo>
     <data>
 
+        <record id="view_users_wechat_search" model="ir.ui.view">
+            <field name="name">res.users.wechat.search</field>
+            <field name="model">res.users</field>
+            <field name="arch" type="xml">
+                <search string="Wechat Users">
+                    <field name="name" filter_domain="['|', '|', ('name','ilike',self), ('login','ilike',self), ('email','ilike',self)]" string="User"/>
+                    <field name="company_ids" string="Company" groups="base.group_multi_company"/>
+                    <field name="wechat_nickname" filter_domain="[('wechat_nickname','=',self)]" string="Nickname"/>
+                    <field name="wechat_openid" filter_domain="[('wechat_openid','=',self)]" string="OpenID"/>
+                    <field name="wechat_unionid" filter_domain="[('wechat_unionid','=',self)]" string="UnionID"/>
+                    <field name="is_wechat_user"/>
+                    <filter name="filter_is_wechat_user" string="Wechat Users" domain="[('is_wechat_user', '=', True)]"/>
+                </search>
+            </field>
+        </record>
+
         <record id="view_users_wechat_form" model="ir.ui.view">
             <field name="name">res.users.wechat.form</field>
             <field name="model">res.users</field>
-            <field name="priority">1000</field>
+            <!-- <field name="priority">1000</field> -->
             <field name="arch" type="xml">
                 <form string="Users" create="0" delete="0" edit="0">
                     <header>
@@ -73,7 +89,7 @@
         <record id="view_users_wechat_tree" model="ir.ui.view">
             <field name="name">res.users.wechat.tree</field>
             <field name="model">res.users</field>
-            <field name="priority">1000</field>
+            <!-- <field name="priority">1000</field> -->
             <field name="arch" type="xml">
                 <tree string="Users" create="0" delete="0" edit="0">
                     <field name="name"/>
@@ -89,7 +105,7 @@
         <record id="view_users_wechat_kanban" model="ir.ui.view">
             <field name="name">res.users.wechat.kanban</field>
             <field name="model">res.users</field>
-            <field name="priority">1000</field>
+            <!-- <field name="priority">1000</field> -->
             <field name="arch" type="xml">
                 <kanban string="Users" create="0" delete="0" edit="0">
                     <field name="id"/>
@@ -147,13 +163,16 @@
             <field name="res_model">res.users</field>
             <field name="view_mode">kanban,tree,form</field>
             <field name="target">inline</field>
+            <field name="search_view_id" ref="wechat_base.view_users_wechat_search"/>
             <field name="domain">[('is_wechat_user','=',True)]</field>
-            <field name="context">{ 'is_wechat_user':True,'active_test': False }</field>
+            <!-- <field name="context">{ 'is_wechat_user':True,'active_test': False }</field> -->
+            <!-- <field name="context">{'search_default_filter_is_wechat_user':1,'active_test': False }</field> -->
+            <field name="context">{'active_test': False }</field>
             <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('wechat_base.view_users_wechat_kanban')}),
             (0, 0, {'view_mode': 'tree', 'view_id': ref('wechat_base.view_users_wechat_tree')}),
             (0, 0, {'view_mode': 'form', 'view_id': ref('wechat_base.view_users_wechat_form')}),
-            (0, 0, {'view_mode': 'kanban', 'view_id': ref('wechat_base.view_users_wechat_kanban')})]"/>
-            <!-- <field name="search_view_id" ref="stock_picking_batch_filter"/> -->
+            ]"/>
         </record>
 
     </data>
