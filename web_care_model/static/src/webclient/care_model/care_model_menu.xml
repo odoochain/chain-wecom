@@ -4,7 +4,7 @@
     <t t-name="web.CareModelMenu" owl="1">
         <div class="o_care_model_menu d-flex align-items-center">
             <div class="form-check form-switch form-control-lg" t-on-click.stop.prevent="() => this.onToggle()">
-                <input class="form-check-input " type="checkbox" role="switch" id="switchCareModel" t-att-checked="state.careModel"/>
+                <input class="form-check-input border" type="checkbox" role="switch" id="switchCareModel" t-att-checked="state.careModel"/>
                 <label class="form-check-label" for="switchCareModel">
                     Care mode
                 </label>

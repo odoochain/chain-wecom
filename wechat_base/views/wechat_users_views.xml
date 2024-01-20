@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_users_wechat_form" model="ir.ui.view">
+            <field name="name">res.users.wechat.form</field>
+            <field name="model">res.users</field>
+            <field name="priority">1000</field>
+            <field name="arch" type="xml">
+                <form string="Users" create="0" delete="0" edit="0">
+                    <header>
+                    </header>
+                    <sheet>
+                        <field name="id" invisible="1"/>
+                        <field name="avatar_128" invisible="1"/>
+                        <field name="image_1920" widget='image' class="oe_avatar" options='{"preview_image": "avatar_128"}'/>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1><field name="name" placeholder="e.g. John Doe" required="1"/></h1>
+                            <field name="email" invisible="1"/>
+                            <label for="login" string="Login name"/>
+                            <h2><field name="login" placeholder="e.g. email@yourcompany.com"/></h2>
+                            <group>
+                                <field name="partner_id" readonly="1" required="0" groups="base.group_no_one"
+                                        attrs="{'invisible': [('id', '=', False)]}"/>
+                                <field name="share" invisible="1"/>
+                            </group>
+                        </div>
+
+                        <notebook colspan="4">
+                            <page name="WeChat" string="WeChat">
+                                <group>
+                                    <group>
+                                        <field name="wechat_nickname" />
+                                        <field name="wechat_openid" />
+                                        <field name="wechat_unionid" />
+                                    </group>
+                                    <group>
+                                        <field name="wechat_access_token" />
+                                        <field name="wechat_access_token_expires_in" />
+                                        <field name="wechat_refresh_token" />
+                                        <field name="wechat_refresh_token_expires_in" />
+                                    </group>
+                                </group>
+                            </page>
+                            <page name="logs" string="Logs">
+                                <group>
+                                    <group>
+                                        <field name="create_uid" readonly="1"/>
+                                        <field name="create_date" readonly="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="write_uid" readonly="1"/>
+                                        <field name="write_date" readonly="1"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <field name="login_date" readonly="1"/>
+                                    <field name="log_ids" readonly="1" options="{'no_open': True, 'no_create_edit': True}" widget="one2many" mode="tree">
+                                        <tree create="0" edit="0" delete="0" limit="30">
+                                            <field name="id" width="0.5" options="{'no_open':True,'no_create_edit':True}" />
+                                            <field name="create_date" string="Time" options="{'no_open':True,'no_create_edit':True,'no_quick_create':True,}" />
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_users_wechat_tree" model="ir.ui.view">
+            <field name="name">res.users.wechat.tree</field>
+            <field name="model">res.users</field>
+            <field name="priority">1000</field>
+            <field name="arch" type="xml">
+                <tree string="Users" create="0" delete="0" edit="0">
+                    <field name="name"/>
+                    <field name="login"/>
+                    <field name="lang"/>
+                    <field name="login_date"/>
+                    <field name="share" />
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_users_wechat_kanban" model="ir.ui.view">
+            <field name="name">res.users.wechat.kanban</field>
+            <field name="model">res.users</field>
+            <field name="priority">1000</field>
+            <field name="arch" type="xml">
+                <kanban string="Users" create="0" delete="0" edit="0">
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="login"/>
+                    <field name="lang"/>
+                    <field name="active"/>
+                    <field name="login_date"/>
+                    <field name="is_wechat_user" />
+                    <field name="wechat_nickname" />
+                    <field name="wechat_unionid" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <img alt="Avatar" t-att-src="kanban_image('res.users', 'avatar_128', record.id.raw_value)"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <ul>
+                                        <li class="text-success float-end mb4">
+                                            <i class="fa fa-circle" role="img" aria-label="Ok" title="Ok"  t-if="record.active.raw_value"></i>
+                                        </li>
+                                        <li class="text-danger float-end mb4" t-if="!record.active.raw_value">
+                                            <i class="fa fa-circle" role="img" aria-label="Invalid" title="Invalid"></i>
+                                        </li>
+
+                                        <li class="mb4">
+                                            <strong><field name="name"/></strong>
+                                        </li>
+                                        <li class="badge rounded-pill float-end mb4" t-if="record.lang.raw_value">
+                                            <field name="lang"/>
+                                        </li>
+
+                                        <li class="mb4" t-if="record.login.raw_value" title="Login">
+                                            <i class="fa fa-envelope" role="img" aria-label="Login"/><field name="login"/>
+                                        </li>
+
+                                        <li class="text-info mb4" t-if="record.is_wechat_user.raw_value">
+                                            <i class="fa fa-weixin text-success" role="img" aria-label="WeChat user"
+                                                title="WeChat user"></i>
+                                            <field name="wechat_unionid"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="wechat_users_action" model="ir.actions.act_window">
+            <field name="name">Wechat User</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.users</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="target">inline</field>
+            <field name="domain">[('is_wechat_user','=',True)]</field>
+            <field name="context">{ 'is_wechat_user':True,'active_test': False }</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('wechat_base.view_users_wechat_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('wechat_base.view_users_wechat_form')}),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('wechat_base.view_users_wechat_kanban')})]"/>
+            <!-- <field name="search_view_id" ref="stock_picking_batch_filter"/> -->
+        </record>
+
+    </data>
+</odoo>

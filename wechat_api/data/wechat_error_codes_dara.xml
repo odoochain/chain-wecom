@@ -14,6 +14,62 @@
       <field name="code">1003</field>
       <field name="name">The POST parameter is invalid</field>
     </record>
+
+    <record id="wechat_error_codes_10003" model="wechat.error_codes">
+      <field name="code">10003</field>
+      <field name="name">redirect_uri domain name is inconsistent with the background configuration</field>
+    </record>
+
+    <record id="wechat_error_codes_10004" model="wechat.error_codes">
+      <field name="code">10004</field>
+      <field name="name">This official account is banned</field>
+    </record>
+
+    <record id="wechat_error_codes_10005" model="wechat.error_codes">
+      <field name="code">10005</field>
+      <field name="name">This official account does not have the permission of these scopes</field>
+    </record>
+
+    <record id="wechat_error_codes_10006" model="wechat.error_codes">
+      <field name="code">10006</field>
+      <field name="name">You must pay attention to this test official account</field>
+    </record>
+
+    <record id="wechat_error_codes_10009" model="wechat.error_codes">
+      <field name="code">10009</field>
+      <field name="name">It's too frequent, please try again later</field>
+    </record>
+
+    <record id="wechat_error_codes_10010" model="wechat.error_codes">
+      <field name="code">10010</field>
+      <field name="name">The scope can't be empty</field>
+    </record>
+
+    <record id="wechat_error_codes_10011" model="wechat.error_codes">
+      <field name="code">10011</field>
+      <field name="name">redirect_uri can't be empty</field>
+    </record>
+
+    <record id="wechat_error_codes_10012" model="wechat.error_codes">
+      <field name="code">10012</field>
+      <field name="name">The appid can't be empty</field>
+    </record>
+
+    <record id="wechat_error_codes_10013" model="wechat.error_codes">
+      <field name="code">10013</field>
+      <field name="name">state can't be empty</field>
+    </record>
+
+    <record id="wechat_error_codes_10015" model="wechat.error_codes">
+      <field name="code">10015</field>
+      <field name="name">The Official Account does not authorize a third-party platform, please check the authorization status</field>
+    </record>
+
+    <record id="wechat_error_codes_10016" model="wechat.error_codes">
+      <field name="code">10016</field>
+      <field name="name">The Appid of the WeChat Open Platform is not supported, please use the Official Account Appid</field>
+    </record>
+
     <record id="wechat_error_codes_20002" model="wechat.error_codes">
       <field name="code">20002</field>
       <field name="name">The product ID does not exist</field>
@@ -5496,7 +5552,7 @@
     </record>
     <record id="wechat_error_codes_91005" model="wechat.error_codes">
       <field name="code">91005</field>
-      <field name="name">Nickname 15 day subject protection/field>
+      <field name="name">Nickname 15 day subject protection</field>
     </record>
     <record id="wechat_error_codes_91006" model="wechat.error_codes">
       <field name="code">91006</field>

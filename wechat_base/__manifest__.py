@@ -15,12 +15,12 @@
     "depends": ["base_setup","auth_oauth", "wechat_api"],
     "data": [
         "data/ir_config_parameter_data.xml",
-        "data/wechat_error_codes_dara.xml",
         "security/wechat_security.xml",
         "security/ir.model.access.csv",
         "views/res_config_settings_views.xml",
         "views/res_users_views.xml",
         "views/wechat_error_codes_views.xml",
+        "views/wechat_users_views.xml",
         "views/menu_views.xml",
     ],
     "assets": {

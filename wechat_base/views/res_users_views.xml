@@ -2,7 +2,7 @@
 <odoo>
     <data>
 
-        <record id="view_wechat_users_tree" model="ir.ui.view">
+        <record id="view_users_tree" model="ir.ui.view">
             <field name="name">wechat users list</field>
             <field name="model">res.users</field>
             <field name="inherit_id" ref="base.view_users_tree" />
@@ -15,7 +15,7 @@
         </record>
 
 
-        <record id="view_wechat_res_users_kanban" model="ir.ui.view">
+        <record id="view_res_users_kanban" model="ir.ui.view">
             <field name="name">res.users.kanban</field>
             <field name="model">res.users</field>
             <field name="inherit_id" ref="base.view_res_users_kanban" />
@@ -32,7 +32,7 @@
             </field>
         </record>
 
-        <record id="view_wechat_users_form" model="ir.ui.view">
+        <record id="view_users_form" model="ir.ui.view">
             <field name="name">wechat users form</field>
             <field name="model">res.users</field>
             <field name="inherit_id" ref="base.view_users_form" />
@@ -64,15 +64,6 @@
         </record>
 
 
-        <record id="wechat_users_action" model="ir.actions.act_window">
-            <field name="name">Wechat User</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">res.users</field>
-            <field name="view_id" ref="view_wechat_res_users_kanban" />
-            <field name="view_mode">kanban,tree,form</field>
-            <field name="target">inline</field>
-            <field name="domain">[('is_wechat_user','=',True)]</field>
-            <field name="context">{ 'is_wechat_user':True,'active_test': False }</field>
-        </record>
+
     </data>
 </odoo>

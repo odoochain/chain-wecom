@@ -17,7 +17,7 @@
     "depends": [],
     "data": [
         "security/ir.model.access.csv",
-
+        "data/wechat_error_codes_dara.xml",
     ],
     "assets": {
         "web.assets_common": [

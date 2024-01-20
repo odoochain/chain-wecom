@@ -80,7 +80,8 @@ class ResUsers(models.Model):
                 "wechat_nickname": nickname,
                 "wechat_unionid": params["unionid"],
                 "wechat_access_token": params["access_token"],
-                # "wechat_access_token_expires_in": params["expires_in"],
+                "wechat_access_token_expires_in": now(hours=+2),
+                "wechat_refresh_token_expires_in": now(days=+30),
                 "wechat_refresh_token": params["refresh_token"],
             }
             oauth_user = self._wechat_signup_create_user(values,ICP)
