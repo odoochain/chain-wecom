@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-20 08:35+0000\n"
-"PO-Revision-Date: 2024-01-20 16:39+0800\n"
+"POT-Creation-Date: 2024-01-20 13:42+0000\n"
+"PO-Revision-Date: 2024-01-20 21:43+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -25,7 +25,8 @@ msgid ""
 "can begin."
 msgstr ""
 "，并拥有一个已审核通过的网站应用，并获得相应的AppID和AppSecret，申请微信登录且通过审核"
-"后，可开始接入流程。"
+"后，可开始接\"\n"
+"\"入流程。"
 
 #. module: wechat_base
 #: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
@@ -94,6 +95,7 @@ msgstr "公司"
 
 #. module: wechat_base
 #: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__company_id
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_search
 msgid "Company"
 msgstr "公司"
 
@@ -163,6 +165,11 @@ msgid "Logs"
 msgstr "日志"
 
 #. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_search
+msgid "Nickname"
+msgstr "昵称"
+
+#. module: wechat_base
 #: model:ir.model.fields,field_description:wechat_base.field_auth_oauth_provider__description
 msgid "OAuth description"
 msgstr "OAuth描述"
@@ -181,6 +188,16 @@ msgstr "职员"
 #: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_kanban
 msgid "Ok"
 msgstr "Ok"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_search
+msgid "OpenID"
+msgstr "OpenID"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_openid
+msgid "OpenID of WeChat authorized user"
+msgstr "微信授权用户的唯一标识"
 
 #. module: wechat_base
 #: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_auth_signup_default_user_type__10
@@ -240,12 +257,13 @@ msgid "Unified identification of WeChat user"
 msgstr "微信用户统一标识"
 
 #. module: wechat_base
-#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_openid
-msgid "Unique identification of WeChat authorized user"
-msgstr "微信授权用户的唯一标识"
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_search
+msgid "UnionID"
+msgstr "UnionID"
 
 #. module: wechat_base
 #: model:ir.model,name:wechat_base.model_res_users
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_search
 msgid "User"
 msgstr "用户"
 
@@ -368,6 +386,11 @@ msgstr "微信配置"
 #. module: wechat_base
 #: model:ir.actions.act_window,name:wechat_base.wechat_users_action
 msgid "Wechat User"
+msgstr "微信用户"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_search
+msgid "Wechat Users"
 msgstr "微信用户"
 
 #. module: wechat_base
