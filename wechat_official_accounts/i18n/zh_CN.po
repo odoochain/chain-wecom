@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-14 05:43+0000\n"
-"PO-Revision-Date: 2024-01-14 13:45+0800\n"
+"POT-Creation-Date: 2024-01-21 08:45+0000\n"
+"PO-Revision-Date: 2024-01-21 16:48+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. module: wechat_official_accounts
 #: model_terms:ir.ui.view,arch_db:wechat_official_accounts.res_config_settings_view_form
 msgid "<i class=\"fa fa-key fa-lg\" aria-label=\"Developer secret key\"/>"
-msgstr "<i class=\"fa fa-key fa-lg\" aria-label=\"开发者密码\"/>"
+msgstr "<i class=\"fa fa-key fa-lg\" aria-label=\"开发者密钥\"/>"
 
 #. module: wechat_official_accounts
 #: model_terms:ir.ui.view,arch_db:wechat_official_accounts.res_config_settings_view_form
@@ -28,18 +28,27 @@ msgid ""
 "<i class=\"fa fa-language fa-lg\" role=\"img\" aria-label=\"Country/Region "
 "Language Version\" title=\"Country/Region Language Version\"/>"
 msgstr ""
-"<i class=\"fa fa-language fa-lg\" role=\"img\" aria-label=\"国家/地区语言版本\" "
-"title=\"国家/地区语言版本\"/>"
+"<i class=\"fa fa-language fa-lg\" role=\"img\" aria-label=\"国家/地区语言版"
+"本\" title=\"国家/地区语言版本\"/>"
 
 #. module: wechat_official_accounts
 #: model_terms:ir.ui.view,arch_db:wechat_official_accounts.res_config_settings_view_form
-msgid "<i class=\"fa fa-puzzle-piece fa-lg\" aria-label=\"Developer ID\"/>"
-msgstr "<i class=\"fa fa-puzzle-piece fa-lg\" aria-label=\"开发者ID\"/>"
+msgid "<i class=\"fa fa-list-ol fa-lg\" aria-label=\"Developer ID\"/>"
+msgstr "<i class=\"fa fa-list-ol fa-lg\" aria-label=\"开发者ID\"/>"
 
 #. module: wechat_official_accounts
 #: model_terms:ir.ui.view,arch_db:wechat_official_accounts.res_config_settings_view_form
-msgid "<i class=\"fa fa-qrcode fa-lg\" aria-label=\"Official Accounts QR code\"/>"
-msgstr "<i class=\"fa fa-qrcode fa-lg\" aria-label=\"公众号二维码\"/>"
+msgid ""
+"<i class=\"fa fa-puzzle-piece fa-lg\" aria-label=\"Official Accounts "
+"Application\"/>"
+msgstr "<i class=\"fa fa-puzzle-piece fa-lg\" aria-label=\"公众号应用\"/>"
+
+#. module: wechat_official_accounts
+#: model_terms:ir.ui.view,arch_db:wechat_official_accounts.res_config_settings_view_form
+msgid ""
+"<i class=\"fa fa-server fa-lg\" aria-label=\"Official Accounts Event "
+"Service\"/>"
+msgstr "<i class=\"fa fa-server fa-lg\" aria-label=\"公众号事件服务\"/>"
 
 #. module: wechat_official_accounts
 #: model:ir.model.fields.selection,name:wechat_official_accounts.selection__res_config_settings__wechat_official_accounts_web_auth_lang__zh_cn
@@ -72,6 +81,26 @@ msgid "English"
 msgstr "英语"
 
 #. module: wechat_official_accounts
+#: model_terms:ir.ui.view,arch_db:wechat_official_accounts.res_config_settings_view_form
+msgid "Management application"
+msgstr "管理应用"
+
+#. module: wechat_official_accounts
+#: model:wechat.applications,name:wechat_official_accounts.wechat_applications_official_account
+msgid "Official Account Application"
+msgstr "公众号应用"
+
+#. module: wechat_official_accounts
+#: model:wechat.event_service,name:wechat_official_accounts.wechat_event_service_official_account
+msgid "Official Account Events"
+msgstr "公众号事件"
+
+#. module: wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_res_config_settings__wechat_official_accounts_app
+msgid "Official Accounts Application"
+msgstr "公众号应用"
+
+#. module: wechat_official_accounts
 #: model:auth.oauth.provider,body:wechat_official_accounts.provider_wechat_one_click_login
 msgid "One click login on WeChat"
 msgstr "微信一键登录"
@@ -79,9 +108,24 @@ msgstr "微信一键登录"
 #. module: wechat_official_accounts
 #: model:ir.model.fields,field_description:wechat_official_accounts.field_res_config_settings__wechat_official_accounts_web_auth_lang
 msgid ""
-"The national and regional language version authorized by the WeChat official "
-"account webpage"
+"The national and regional language version authorized by the WeChat "
+"official account webpage"
 msgstr "微信公众号网页授权的国家和地区语言版本"
+
+#. module: wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_res_config_settings__wechat_official_accounts_developer_appid
+msgid "WeChat Official Accounts Developer ID"
+msgstr "微信公众号开发者ID"
+
+#. module: wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_res_config_settings__wechat_official_accounts_developer_secret
+msgid "WeChat Official Accounts Developer secret key"
+msgstr "微信公众号开发者密钥"
+
+#. module: wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_res_config_settings__wechat_official_accounts_event_service
+msgid "WeChat Official Accounts Event Service"
+msgstr "微信公众号事件服务"
 
 #. module: wechat_official_accounts
 #: model:ir.model.fields,field_description:wechat_official_accounts.field_res_company__social_wechat_official_accounts
@@ -90,16 +134,11 @@ msgid "WeChat Official Accounts QR Code"
 msgstr "微信公众号二维码"
 
 #. module: wechat_official_accounts
-#: model:ir.model.fields,field_description:wechat_official_accounts.field_res_config_settings__wechat_official_accounts_developer_appid
-msgid "WeChat Official accounts Developer ID"
-msgstr "微信公众号开发者ID"
-
-#. module: wechat_official_accounts
-#: model:ir.model.fields,field_description:wechat_official_accounts.field_res_config_settings__wechat_official_accounts_developer_secret
-msgid "WeChat Official accounts Developer secret key"
-msgstr "微信公众号开发者密码"
-
-#. module: wechat_official_accounts
 #: model:auth.oauth.provider,name:wechat_official_accounts.provider_wechat_one_click_login
 msgid "Wechat one-click login OAuth2"
 msgstr "微信一键登录OAuth2"
+
+#. module: wechat_official_accounts
+#: model_terms:ir.ui.view,arch_db:wechat_official_accounts.res_config_settings_view_form
+msgid "description"
+msgstr "描述"

@@ -4138,10 +4138,42 @@
       <field name="code">75018</field>
       <field name="name">bind buyer business info fail please contact us</field>
     </record>
+
     <record id="wechat_error_codes_75019" model="wechat.error_codes">
       <field name="code">75019</field>
       <field name="name">this key is empty, user may not upload file</field>
     </record>
+
+    <record id="wechat_error_codes_76001" model="wechat.error_codes">
+      <field name="code">76001</field>
+      <field name="name">rid not found</field>
+    </record>
+
+    <record id="wechat_error_codes_76002" model="wechat.error_codes">
+      <field name="code">76002</field>
+      <field name="name">rid is error</field>
+    </record>
+
+    <record id="wechat_error_codes_76003" model="wechat.error_codes">
+      <field name="code">76003</field>
+      <field name="name">could not query this rid,no permission</field>
+    </record>
+
+    <record id="wechat_error_codes_76004" model="wechat.error_codes">
+      <field name="code">76004</field>
+      <field name="name">rid time is error</field>
+    </record>
+
+    <record id="wechat_error_codes_76021" model="wechat.error_codes">
+      <field name="code">76021</field>
+      <field name="name">cgi_path not found, please check</field>
+    </record>
+
+    <record id="wechat_error_codes_76022" model="wechat.error_codes">
+      <field name="code">76022</field>
+      <field name="name">could not use this cgi_path，no permission</field>
+    </record>
+
     <record id="wechat_error_codes_80000" model="wechat.error_codes">
       <field name="code">80000</field>
       <field name="name">System error, please try again later</field>

@@ -4042,6 +4042,11 @@ msgstr "无效的应用类型"
 
 #. module: wechat_api
 #: model:wechat.error_codes,name:wechat_api.wechat_error_codes_40013
+msgid "invalid appid"
+msgstr "appid写错了；或者填入的appid与access_token代表的账号的appid不一致"
+
+#. module: wechat_api
+
 #: model:wechat.error_codes,name:wechat_api.wechat_error_codes_61306
 #: model:wechat.error_codes,name:wechat_api.wechat_error_codes_9301006
 msgid "invalid appid"
@@ -8653,6 +8658,38 @@ msgstr "小游戏不能提交"
 #: model:wechat.error_codes,name:wechat_api.wechat_error_codes_75019
 msgid "this key is empty, user may not upload file"
 msgstr "此key为空，用户可能无法上传文件"
+
+
+#. module: wechat_api
+#: model:wechat.error_codes,name:wechat_api.wechat_error_codes_75021
+msgid "cgi_path not found, please check"
+msgstr "cgi_path填错了"
+
+#. module: wechat_api
+#: model:wechat.error_codes,name:wechat_api.wechat_error_codes_75022
+msgid "could not use this cgi_path，no permission"
+msgstr "当前调用接口使用的token与api所属账号不符，详情可看注意事项的说明"
+
+#. module: wechat_api
+#: model:wechat.error_codes,name:wechat_api.wechat_error_codes_76001
+msgid "rid not found"
+msgstr "rid不存在"
+
+
+#. module: wechat_api
+#: model:wechat.error_codes,name:wechat_api.wechat_error_codes_76002
+msgid "rid is error"
+msgstr "rid为空或者格式错误"
+
+#. module: wechat_api
+#: model:wechat.error_codes,name:wechat_api.wechat_error_codes_76003
+msgid "could not query this rid,no permission"
+msgstr "当前账号无权查询该rid，该rid属于其他账号调用所产生"
+
+#. module: wechat_api
+#: model:wechat.error_codes,name:wechat_api.wechat_error_codes_76004
+msgid "rid time is error"
+msgstr "rid过期，仅支持持续7天内的rid"
 
 #. module: wechat_api
 #: model:wechat.error_codes,name:wechat_api.wechat_error_codes_75015

@@ -16,17 +16,29 @@ class ResConfigSettings(models.TransientModel):
 		required=True,
 		default=lambda self: self.env.company,
 	)
+
 	social_wechat_official_accounts = fields.Binary(
 		related="company_id.social_wechat_official_accounts", readonly=False
 	)
 
+	wechat_official_accounts_app = fields.Many2one(
+        "wechat.applications",
+		string="Official Accounts Application",
+		domain="[('app_type', '=', 'official_account')]",
+		config_parameter="wechat_official_accounts_app",
+    )
+
 	wechat_official_accounts_developer_appid = fields.Char(
-		string="WeChat Official accounts Developer ID",
-		config_parameter="wechat_official_accounts_developer_appid",
+		related="wechat_official_accounts_app.appid",
+		string="WeChat Official Accounts Developer ID",
+		# config_parameter="wechat_official_accounts_developer_appid",
+		readonly=False,
 	)
 	wechat_official_accounts_developer_secret= fields.Char(
-		string="WeChat Official accounts Developer secret key",
-		config_parameter="wechat_official_accounts_developer_secret",
+		string="WeChat Official Accounts Developer secret key",
+		related="wechat_official_accounts_app.secret",
+		# config_parameter="wechat_official_accounts_developer_secret",
+		readonly=False,
 	)
 	wechat_official_accounts_web_auth_lang = fields.Selection(
         string="The national and regional language version authorized by the WeChat official account webpage",
@@ -40,6 +52,11 @@ class ResConfigSettings(models.TransientModel):
         config_parameter="wechat_official_accounts_web_auth_lang",
     )
 
+	wechat_official_accounts_event_service = fields.One2many(
+		string="WeChat Official Accounts Event Service",
+		related="wechat_official_accounts_app.event_service_ids",
+		readonly=False
+	)
 
 	@api.onchange('social_wechat_official_accounts')
 	def _onchange_social_wechat_official_accounts(self):

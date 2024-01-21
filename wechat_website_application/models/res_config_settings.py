@@ -110,6 +110,14 @@ class ResConfigSettings(models.TransientModel):
         config_parameter="wechat_website_auth_qrcode_status_text_align",
     )
 
+    # wechat_open_platform_event_service_ids = fields.One2many(
+    #     "wechat.event_service",
+    #     "config",
+    #     string="Open Platform Events Service",
+    #     domain="[('service_type', '=', 'open_platform')",
+    #     context={"active_test": False},
+    # )
+
     @api.onchange(
         "wechat_website_auth_qrcode_width",
         "wechat_website_auth_qrcode_hide_title",

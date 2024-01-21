@@ -28,20 +28,39 @@
                         </div>
                     </div> -->
 
+
+
                     <div class="col-xs-12 col-md-6 o_setting_box"
                         attrs="{'invisible': [('module_wechat_official_accounts','=',False)]}">
                         <div class="o_setting_left_pane">
                             <i class="fa fa-puzzle-piece fa-lg"
-                                aria-label="Developer ID" />
+                                aria-label="Official Accounts Application" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="wechat_official_accounts_app" />
+                            <div class="content-group">
+                                <div class="mt8">
+                                    <field name="wechat_official_accounts_app" class="w-100 " widget="selection"/>
+                                </div>
+                            </div>
+                            <button name="%(wechat_base.wechat_applications_action)d" icon="fa-arrow-right" type="action" string="Management application" class="btn-link"/>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12 col-md-6 o_setting_box"
+                        attrs="{'invisible': [('module_wechat_official_accounts','=',False)]}">
+                        <div class="o_setting_left_pane">
+                            <i class="fa fa-list-ol fa-lg" aria-label="Developer ID" />
                         </div>
                         <div class="o_setting_right_pane">
                             <label for="wechat_official_accounts_developer_appid" />
                             <div class="content-group">
                                 <div class="mt8">
-                                    <field name="wechat_official_accounts_developer_appid"
-                                        attrs="{'required': [('module_wechat_official_accounts', '=', True)]}" />
+                                    <field name="wechat_official_accounts_developer_appid" class="w-100 " attrs="{'required': [('module_wechat_official_accounts', '=', True)]}" />
                                 </div>
                             </div>
+
                         </div>
                     </div>
 
@@ -97,6 +116,27 @@
                             </div>
                         </div>
                     </div> -->
+
+                    <div class="col-xs-12 col-md-12 o_setting_box" attrs="{'invisible': [('wechat_official_accounts_app','=',False)]}">
+                        <div class="o_setting_left_pane">
+                            <i class="fa fa-server fa-lg" aria-label="Official Accounts Event Service"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="wechat_official_accounts_event_service"/>
+                            <div class="content-group mt4">
+                                 <field name="wechat_official_accounts_event_service" widget="one2many_config" help="description" class="w-100 pl-3">
+                                    <tree create="0" edit="true" delete="0" editable="bottom" help="description">
+                                        <field name="name" readonly="1" />
+                                        <field name="url" readonly="1" widget="CopyClipboardChar"/>
+                                        <field name="token" required="1"/>
+                                        <field name="aeskey" required="1"/>
+                                        <field name="active" widget="boolean_toggle"/>
+                                        <field name="description" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 

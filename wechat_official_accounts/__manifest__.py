@@ -16,6 +16,8 @@
     "data": [
         "data/res_company_data.xml",
         "data/wechat_oauth_data.xml",
+        "data/wechat_applications_data.xml",
+        "data/wechat_event_service_data.xml",
         "views/res_config_settings_views.xml",
         "views/social_media_sidebar.xml",
     ],
