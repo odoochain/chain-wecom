@@ -16,8 +16,8 @@
                                 string="OAuth Providers" icon="fa-arrow-right" class="btn-link" />
                         </div>
                         <div class="btn-group mt8" role="group" aria-label="Button group">
-                            <button class="oe_highlight ml-1" name="enable_wechat_oauth_login" context="{'type': 'click'}" string="Enable WeChat one click login" type="object" icon="fa-hand-pointer-o fa-lg" />
-                            <button class="oe_highlight ml-1" name="enable_wechat_oauth_login" context="{'type': 'scan'}" string="Enable WeChat QR code scanning login" type="object" icon="fa-qrcode  fa-lg" />
+                            <button class="oe_highlight ml-1" name="enable_wechat_oauth_login" context="{'type': 'click'}" string="Enable WeChat one click login" type="object" icon="fa-hand-pointer-o fa-lg" attrs="{'invisible': [('module_wechat_official_accounts','=',False)]}"/>
+                            <button class="oe_highlight ml-1" name="enable_wechat_oauth_login" context="{'type': 'scan'}" string="Enable WeChat QR code scanning login" type="object" icon="fa-qrcode  fa-lg" attrs="{'invisible': [('module_wechat_website_application','=',False)]}"/>
                         </div>
                     </div>
                 </div>
@@ -33,17 +33,16 @@
                                 Skip resetting login name and password for first registration and login.
                             </div>
                             <div class="content-group mt8">
-                                <div class="row">
+                                <div class="row" attrs="{'invisible': [('module_wechat_official_accounts','=',False)]}">
                                     <label for="wechat_official_accounts_auth_skip_reset"
                                         class="o_light_label col-lg-9" />
                                     <field name="wechat_official_accounts_auth_skip_reset" class="col-lg-3 w-25" />
                                 </div>
-                                <div class="row">
+                                <div class="row"  attrs="{'invisible': [('module_wechat_website_application','=',False)]}">
                                     <label for="wechat_website_application_auth_skip_reset"
                                         class="o_light_label col-lg-9" />
                                     <field name="wechat_website_application_auth_skip_reset" class="col-lg-3 w-25" />
                                 </div>
-
                             </div>
                         </div>
                     </div>

@@ -46,16 +46,18 @@ class WeChatOAuthLogin(Home):
                 "https://open.weixin.qq.com/connect/qrconnect"
                 in provider["auth_endpoint"]
             ):
+                # 扫码
                 return_url = (
                     request.httprequest.url_root + "wechat/scan_register_or_login"
                 )
                 state = self.get_state(provider)
                 ICP = request.env["ir.config_parameter"].sudo()
-                appid = ICP.get_param("wechat_website_auth_appid")
+                wechat_app_id = ICP.get_param("wechat_website_app")
+                app = request.env["wechat.applications"].sudo().search_read([("id", "=", wechat_app_id)])[0]
                 # state = ICP.get_param("wechat_website_auth_state")
                 lang = ICP.get_param("wechat_website_auth_lang")
                 params = dict(
-                    appid=appid,
+                    appid=app["appid"],
                     response_type="code",
                     redirect_uri=return_url,
                     scope=provider["scope"],
@@ -78,14 +80,16 @@ class WeChatOAuthLogin(Home):
                 "https://open.weixin.qq.com/connect/oauth2/authorize"
                 in provider["auth_endpoint"]
             ):
+                # 一键登录
                 return_url = (
                     request.httprequest.url_root + "wechat/one_click_register_or_login"
                 )
                 state = self.get_state(provider)
                 ICP = request.env["ir.config_parameter"].sudo()
-                appid = ICP.get_param("wechat_official_accounts_developer_appid")
+                wechat_app_id = ICP.get_param("wechat_official_accounts_app")
+                app = request.env["wechat.applications"].sudo().search_read([("id", "=", wechat_app_id)])[0]
                 params = dict(
-                    appid=appid,
+                    appid=app["appid"],
                     response_type="code",
                     redirect_uri=return_url,
                     scope=provider["scope"],
@@ -192,11 +196,11 @@ class OAuthController(http.Controller):
                 state.update({state_object[0]: state_object[1] + ":" + state_object[2]})
 
         ICP = request.env["ir.config_parameter"].sudo()
-        appid = ICP.get_param("wechat_website_auth_appid")
-        secret = ICP.get_param("wechat_website_auth_secret")
+        wechat_app_id = ICP.get_param("wechat_website_app")
+        app = request.env["wechat.applications"].sudo().search_read([("id", "=", wechat_app_id)])[0]
         get_access_token_url = (
             "https://api.weixin.qq.com/sns/oauth2/access_token?appid=%s&secret=%s&code=%s&grant_type=authorization_code"
-            % (appid, secret, code)
+            % (app["appid"], app["secret"], code)
         )
         try:
             response = requests.get(get_access_token_url).json()
@@ -324,12 +328,12 @@ class OAuthController(http.Controller):
                     state.update({state_object[0]: state_object[1] + ":" + state_object[2]})
 
         ICP = request.env["ir.config_parameter"].sudo()
-        appid = ICP.get_param("wechat_official_accounts_developer_appid")
-        secret = ICP.get_param("wechat_official_accounts_developer_secret")
+        wechat_app_id = ICP.get_param("wechat_official_accounts_app")
+        app = request.env["wechat.applications"].sudo().search_read([("id", "=", wechat_app_id)])[0]
         lang  = ICP.get_param("wechat_official_accounts_web_auth_lang")
         get_access_token_url = (
             "https://api.weixin.qq.com/sns/oauth2/access_token?appid=%s&secret=%s&code=%s&grant_type=authorization_code"
-            % (appid, secret, code)
+            % (app["appid"], app["secret"], code)
         )
         try:
             response = requests.get(get_access_token_url).json()
@@ -447,8 +451,9 @@ class OAuthController(http.Controller):
                 "https://open.weixin.qq.com/connect/qrconnect"
                 in provider["auth_endpoint"]
             ):
-                # 判断是微信网站登录
-                appid = ICP.get_param("wechat_website_auth_appid")
+                # 判断是扫码登录
+                wechat_app_id = ICP.get_param("wechat_website_app")
+                app = request.env["wechat.applications"].sudo().search_read([("id", "=", wechat_app_id)])[0]
                 qrcode_display_method = ICP.get_param(
                     "wechat_website_auth_qrcode_display_method"
                 )
@@ -456,7 +461,7 @@ class OAuthController(http.Controller):
                 data.update(
                     {
                         "qrcode_display_method": qrcode_display_method,
-                        "appid": appid,
+                        "appid": app["appid"],
                         "scope": "snsapi_login",
                         "redirect_uri": return_url,
                         "state": json.dumps(self.get_state()),
