@@ -15,21 +15,38 @@
                         attrs="{'invisible': [('module_wechat_website_application','=',False)]}">
                         <div class="o_setting_left_pane">
                             <i class="fa fa-puzzle-piece fa-lg"
+                                aria-label="Website Application" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="wechat_website_app" />
+                            <div class="content-group">
+                                <div class="mt8">
+                                    <field name="wechat_website_app" class="w-100 " widget="selection"/>
+                                </div>
+                            </div>
+                            <button name="%(wechat_base.wechat_applications_action)d" icon="fa-arrow-right" type="action" string="Management application" class="btn-link"/>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 o_setting_box"
+                        attrs="{'invisible': [('wechat_website_app','=',False)]}">
+                        <div class="o_setting_left_pane">
+                            <i class="fa fa-puzzle-piece fa-lg"
                                 aria-label="Authentication Application" />
                         </div>
                         <div class="o_setting_right_pane">
                             <label for="wechat_website_auth_appid" />
                             <div class="content-group">
                                 <div class="mt8">
-                                    <field name="wechat_website_auth_appid"
-                                        attrs="{'required': [('module_wechat_website_application', '=', True)]}" />
+                                    <field name="wechat_website_auth_appid" class="w-100"
+                                        attrs="{'required': [('wechat_website_app', '!=', False)]}" />
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-xs-12 col-md-6 o_setting_box"
-                        attrs="{'invisible': [('module_wechat_website_application','=',False)]}">
+                        attrs="{'invisible': [('wechat_website_app','=',False)]}">
                         <div class="o_setting_left_pane">
                             <i class="fa fa-key fa-lg"
                                 aria-label="Authentication secret key" />
@@ -41,7 +58,7 @@
                                     <field name="wechat_website_auth_secret"
                                         widget="DisplayPasswordChar"
                                         require_encryption="True"
-                                        attrs="{'required': [('module_wechat_website_application', '=', True)]}" />
+                                        attrs="{'required': [('wechat_website_app', '!=', False)]}" />
                                 </div>
                             </div>
                         </div>
@@ -217,6 +234,26 @@
                         </div>
                     </div> -->
 
+                    <div class="col-xs-12 col-md-12 o_setting_box" attrs="{'invisible': [('wechat_website_app','=',False)]}">
+                        <div class="o_setting_left_pane">
+                            <i class="fa fa-server fa-lg" aria-label="WeChat Website Application Event Service"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="wechat_website_app_event_service"/>
+                            <div class="content-group mt4">
+                                 <field name="wechat_website_app_event_service" widget="one2many_config" help="description" class="w-100 pl-3" t-translation="off">
+                                    <tree create="0" edit="true" delete="0" editable="bottom" help="description">
+                                        <field name="name" readonly="1" />
+                                        <field name="url" readonly="1" widget="CopyClipboardChar"/>
+                                        <field name="token" max-width="80px"/>
+                                        <field name="aeskey"  max-width="200px"/>
+                                        <field name="active" widget="boolean_toggle"  max-width="30px"/>
+                                        <field name="description" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 

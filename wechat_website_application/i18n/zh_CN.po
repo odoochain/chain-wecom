@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-14 05:41+0000\n"
-"PO-Revision-Date: 2024-01-14 13:43+0800\n"
+"POT-Creation-Date: 2024-01-21 11:31+0000\n"
+"PO-Revision-Date: 2024-01-21 19:33+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -53,12 +53,23 @@ msgstr "<i class=\"fa fa-puzzle-piece fa-lg\" aria-label=\"身份验证应用\"/
 
 #. module: wechat_website_application
 #: model_terms:ir.ui.view,arch_db:wechat_website_application.res_config_settings_view_form
+msgid "<i class=\"fa fa-puzzle-piece fa-lg\" aria-label=\"Website Application\"/>"
+msgstr "<i class=\"fa fa-puzzle-piece fa-lg\" aria-label=\"网站应用\"/>"
+
+#. module: wechat_website_application
+#: model_terms:ir.ui.view,arch_db:wechat_website_application.res_config_settings_view_form
 msgid ""
 "<i class=\"fa fa-qrcode fa-lg\" role=\"img\" aria-label=\"QR code display method\" "
 "title=\"QR code display method\"/>"
 msgstr ""
 "<i class=\"fa fa-qrcode fa-lg\" role=\"img\" aria-label=\"二维码显示方式\" title=\"二维码显"
 "示方式\"/>"
+
+#. module: wechat_website_application
+#: model_terms:ir.ui.view,arch_db:wechat_website_application.res_config_settings_view_form
+msgid ""
+"<i class=\"fa fa-server fa-lg\" aria-label=\"WeChat Website Application Event Service\"/>"
+msgstr "<i class=\"fa fa-server fa-lg\" aria-label=\"微信网站应用事件服务\"/>"
 
 #. module: wechat_website_application
 #: model_terms:ir.ui.view,arch_db:wechat_website_application.res_config_settings_view_form
@@ -136,6 +147,16 @@ msgid "Maintain the state of requests and callbacks"
 msgstr "维护请求和回调的状态"
 
 #. module: wechat_website_application
+#: model_terms:ir.ui.view,arch_db:wechat_website_application.res_config_settings_view_form
+msgid "Management application"
+msgstr "管理应用"
+
+#. module: wechat_website_application
+#: model:wechat.event_service,name:wechat_website_application.wechat_event_service_open_platform
+msgid "Open Platform Events"
+msgstr "开放平台事件"
+
+#. module: wechat_website_application
 #: model:ir.model.fields,field_description:wechat_website_application.field_res_config_settings__wechat_website_auth_qrcode_style
 msgid "QR Code Color Style"
 msgstr "二维码颜色样式"
@@ -175,19 +196,30 @@ msgid "User"
 msgstr "用户"
 
 #. module: wechat_website_application
+#: model:ir.model.fields,field_description:wechat_website_application.field_res_config_settings__wechat_website_app_event_service
+msgid "WeChat Website Application Event Service"
+msgstr "微信网站应用事件服务"
+
+#. module: wechat_website_application
 #: model:ir.model.fields,field_description:wechat_website_application.field_res_config_settings__wechat_website_auth_appid
-msgid "WeChat website application ID"
+msgid "WeChat Website Application ID"
 msgstr "微信网站应用ID"
 
 #. module: wechat_website_application
 #: model:ir.model.fields,field_description:wechat_website_application.field_res_config_settings__wechat_website_auth_secret
-msgid "WeChat website application secret key"
+msgid "WeChat Website Application secret key"
 msgstr "微信网站应用密钥"
 
 #. module: wechat_website_application
 #: model:ir.model.fields,field_description:wechat_website_application.field_res_config_settings__wechat_website_auth_lang
 msgid "WeChat website application ui language"
 msgstr "微信网站应用界面语言"
+
+#. module: wechat_website_application
+#: model:ir.model.fields,field_description:wechat_website_application.field_res_config_settings__wechat_website_app
+#: model:wechat.applications,name:wechat_website_application.wechat_applications_open_platform
+msgid "Website Application"
+msgstr "网站应用"
 
 #. module: wechat_website_application
 #: model:auth.oauth.provider,name:wechat_website_application.provider_wechat_scan_code

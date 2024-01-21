@@ -17,9 +17,9 @@ class ResConfigSettings(models.TransientModel):
 		default=lambda self: self.env.company,
 	)
 
-	social_wechat_official_accounts = fields.Binary(
-		related="company_id.social_wechat_official_accounts", readonly=False
-	)
+	# social_wechat_official_accounts = fields.Binary(
+	# 	related="company_id.social_wechat_official_accounts", readonly=False
+	# )
 
 	wechat_official_accounts_app = fields.Many2one(
         "wechat.applications",
@@ -53,24 +53,24 @@ class ResConfigSettings(models.TransientModel):
     )
 
 	wechat_official_accounts_event_service = fields.One2many(
-		string="WeChat Official Accounts Event Service",
 		related="wechat_official_accounts_app.event_service_ids",
+		string="WeChat Official Accounts Event Service",
 		readonly=False
 	)
 
-	@api.onchange('social_wechat_official_accounts')
-	def _onchange_social_wechat_official_accounts(self):
-		"""
-		更新微信公众号二维码
-		"""
-		img_path = get_resource_path('wechat_official_accounts', 'static/src/img', "qrcode.png")
-		with tools.file_open(img_path, 'rb') as f:
-			# original = Image.open(f)
-			# new_image = Image.new('RGBA', original.size)
-			new_image = base64_to_image(self.social_wechat_official_accounts)
-			# print(new_image)
-			# image_io = io.BytesIO()
-			new_image.save(img_path, format="PNG")
+	# @api.onchange('social_wechat_official_accounts')
+	# def _onchange_social_wechat_official_accounts(self):
+	# 	"""
+	# 	更新微信公众号二维码
+	# 	"""
+	# 	img_path = get_resource_path('wechat_official_accounts', 'static/src/img', "qrcode.png")
+	# 	with tools.file_open(img_path, 'rb') as f:
+	# 		# original = Image.open(f)
+	# 		# new_image = Image.new('RGBA', original.size)
+	# 		new_image = base64_to_image(self.social_wechat_official_accounts)
+	# 		# print(new_image)
+	# 		# image_io = io.BytesIO()
+	# 		new_image.save(img_path, format="PNG")
 
 
 	def wechat_official_accounts_web_authorization(self):

@@ -3,7 +3,7 @@
     <data noupdate="1">
 
         <record id="wechat_applications_open_platform" model="wechat.applications">
-            <field name="name">Web Application</field>
+            <field name="name">Website Application</field>
             <field name="app_type">open_platform</field>
 
         </record>

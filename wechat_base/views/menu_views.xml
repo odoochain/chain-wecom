@@ -47,5 +47,7 @@
         <menuitem id="menu_wechat_cron" name="Wechat schedule tasks"
             parent="wechat_base.menu_wechat_root"
             sequence="99" groups="group_wechat_settings_manager" />
+
+
     </data>
 </odoo>

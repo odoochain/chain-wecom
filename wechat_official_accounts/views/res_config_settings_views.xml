@@ -11,25 +11,6 @@
 
                 <div id="module_wechat_official_accounts" position="after">
 
-                    <!-- <div class="col-xs-12 col-md-6 o_setting_box"
-                        attrs="{'invisible': [('module_wechat_official_accounts','=',False)]}">
-                        <div class="o_setting_left_pane">
-                            <i class="fa fa-qrcode fa-lg"
-                                aria-label="Official Accounts QR code" />
-                        </div>
-                        <div class="o_setting_right_pane">
-                            <label for="social_wechat_official_accounts" />
-                            <div class="content-group">
-                                <div class="mt8">
-                                    <field name="social_wechat_official_accounts"
-                                        attrs="{'required': [('module_wechat_official_accounts', '=', True)]}" widget="image" class="oe_avatar" options='{"size": [120, 120]}'/>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
-
-
                     <div class="col-xs-12 col-md-6 o_setting_box"
                         attrs="{'invisible': [('module_wechat_official_accounts','=',False)]}">
                         <div class="o_setting_left_pane">
@@ -47,9 +28,8 @@
                         </div>
                     </div>
 
-
                     <div class="col-xs-12 col-md-6 o_setting_box"
-                        attrs="{'invisible': [('module_wechat_official_accounts','=',False)]}">
+                        attrs="{'invisible': [('wechat_official_accounts_app','=',False)]}">
                         <div class="o_setting_left_pane">
                             <i class="fa fa-list-ol fa-lg" aria-label="Developer ID" />
                         </div>
@@ -57,7 +37,7 @@
                             <label for="wechat_official_accounts_developer_appid" />
                             <div class="content-group">
                                 <div class="mt8">
-                                    <field name="wechat_official_accounts_developer_appid" class="w-100 " attrs="{'required': [('module_wechat_official_accounts', '=', True)]}" />
+                                    <field name="wechat_official_accounts_developer_appid" class="w-100" attrs="{'required': [('wechat_official_accounts_app', '!=', False)]}" />
                                 </div>
                             </div>
 
@@ -65,7 +45,7 @@
                     </div>
 
                     <div class="col-xs-12 col-md-6 o_setting_box"
-                        attrs="{'invisible': [('module_wechat_official_accounts','=',False)]}">
+                        attrs="{'invisible': [('wechat_official_accounts_app','=',False)]}">
                         <div class="o_setting_left_pane">
                             <i class="fa fa-key fa-lg"
                                 aria-label="Developer secret key" />
@@ -77,7 +57,7 @@
                                     <field name="wechat_official_accounts_developer_secret"
                                         widget="DisplayPasswordChar"
                                         require_encryption="True"
-                                        attrs="{'required': [('module_wechat_website_application', '=', True)]}" />
+                                        attrs="{'required': [('wechat_official_accounts_app', '!=', False)]}" />
                                 </div>
                             </div>
                         </div>
@@ -101,22 +81,6 @@
                         </div>
                     </div>
 
-                    <!-- <div class="col-xs-12 col-md-6 o_setting_box"
-                        attrs="{'invisible': [('module_wechat_official_accounts','=',False)]}">
-                        <div class="o_setting_left_pane">
-                            <i class="fa fa-sign-in fa-lg"
-                                aria-label="Initiate web page authorization" />
-                        </div>
-                        <div class="o_setting_right_pane">
-                            <span class="o_form_label fw-bolder">Initiate web page authorization on behalf of official account</span>
-                            <div class="content-group">
-                                <div class="mt8">
-                                    <button class="oe_highlight ml-1" name="wechat_official_accounts_web_authorization"  string="Authorized by the official account webpage" type="object" icon="fa-sign-in fa-lg" />
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
                     <div class="col-xs-12 col-md-12 o_setting_box" attrs="{'invisible': [('wechat_official_accounts_app','=',False)]}">
                         <div class="o_setting_left_pane">
                             <i class="fa fa-server fa-lg" aria-label="Official Accounts Event Service"/>
@@ -124,13 +88,13 @@
                         <div class="o_setting_right_pane">
                             <label for="wechat_official_accounts_event_service"/>
                             <div class="content-group mt4">
-                                 <field name="wechat_official_accounts_event_service" widget="one2many_config" help="description" class="w-100 pl-3">
+                                 <field name="wechat_official_accounts_event_service" widget="one2many_config" help="description" class="w-100 pl-3" t-translation="off">
                                     <tree create="0" edit="true" delete="0" editable="bottom" help="description">
                                         <field name="name" readonly="1" />
                                         <field name="url" readonly="1" widget="CopyClipboardChar"/>
-                                        <field name="token" required="1"/>
-                                        <field name="aeskey" required="1"/>
-                                        <field name="active" widget="boolean_toggle"/>
+                                        <field name="token" max-width="80px"/>
+                                        <field name="aeskey"  max-width="200px"/>
+                                        <field name="active" widget="boolean_toggle"  max-width="30px"/>
                                         <field name="description" invisible="1"/>
                                     </tree>
                                 </field>

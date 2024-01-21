@@ -31,14 +31,30 @@ class ResConfigSettings(models.TransientModel):
 
         return code
 
+    wechat_website_app = fields.Many2one(
+        "wechat.applications",
+		string="Website Application",
+		domain="[('app_type', '=', 'open_platform')]",
+		config_parameter="wechat_website_app",
+    )
+
     wechat_website_auth_appid = fields.Char(
-        string="WeChat website application ID",
-        config_parameter="wechat_website_auth_appid",
+        string="WeChat Website Application ID",
+        related="wechat_website_app.appid",
+        readonly=False,
     )
     wechat_website_auth_secret = fields.Char(
-        string="WeChat website application secret key",
-        config_parameter="wechat_website_auth_secret",
+        string="WeChat Website Application secret key",
+        related="wechat_website_app.secret",
+        readonly=False,
     )
+
+    wechat_website_app_event_service = fields.One2many(
+		related="wechat_website_app.event_service_ids",
+		string="WeChat Website Application Event Service",
+		readonly=False
+	)
+
     wechat_website_auth_state = fields.Char(
         string="Maintain the state of requests and callbacks",
         readonly=True,
