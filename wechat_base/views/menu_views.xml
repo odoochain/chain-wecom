@@ -53,6 +53,10 @@
             parent="wechat_base.menu_wechat_root"
             sequence="99" groups="group_wechat_settings_manager" />
 
+        <!-- 99.1-->
+        <menuitem id="menu_wechat_app_get_token" name="Get App token"
+            parent="menu_wechat_cron"
+            action="ir_cron_act_get_wechat_app_token" sequence="1"/>
 
     </data>
 </odoo>

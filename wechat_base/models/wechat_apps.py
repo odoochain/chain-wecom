@@ -57,7 +57,8 @@ class WeChatApplications(models.Model):
                 "secret":self.secret,
                 "force_refresh":False
             }
-            response = requests.post(get_access_token_url,json=json,headers=headers).json()
+            if not self.access_token_expiration_time or (datetime.now() > self.access_token_expiration_time):
+                response = requests.post(get_access_token_url,json=json,headers=headers).json()
         except Exception as e:
             print(str(e))
         else:
@@ -66,3 +67,11 @@ class WeChatApplications(models.Model):
                 "access_token":response["access_token"],
                 "access_token_expiration_time":now(hours=+2),
             })
+
+    def cron_get_access_token(self):
+        """
+        自动任务定时获取应用token
+        """
+        for app in self:
+            if app.appid & app.secret:
+                app.get_access_token()
