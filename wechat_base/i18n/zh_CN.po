@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-21 06:28+0000\n"
-"PO-Revision-Date: 2024-01-21 14:32+0800\n"
+"POT-Creation-Date: 2024-01-22 08:14+0000\n"
+"PO-Revision-Date: 2024-01-22 16:16+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -73,6 +73,15 @@ msgstr ""
 "信用户\"/>"
 
 #. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_wechat_applications_form
+msgid ""
+"<span class=\"o_stat_value\">Get</span>\n"
+"                                <span class=\"o_stat_text\">Access Token</span>"
+msgstr ""
+"<span class=\"o_stat_value\">获取</span>\n"
+"                                <span class=\"o_stat_text\">访问令牌</span>"
+
+#. module: wechat_base
 #: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
 msgid "<strong>Save</strong> this page and come back here to set up the feature."
 msgstr "<strong>保存</strong>此页面并返回此处以设置该功能。"
@@ -81,6 +90,17 @@ msgstr "<strong>保存</strong>此页面并返回此处以设置该功能。"
 #: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service__aeskey
 msgid "AES Key"
 msgstr "AES加密密钥"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__access_token
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_wechat_applications_form
+msgid "Access Token"
+msgstr "访问令牌"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__access_token_expiration_time
+msgid "Access Token Expiration Time"
+msgstr "访问令牌过期时间"
 
 #. module: wechat_base
 #: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service__active
@@ -106,6 +126,11 @@ msgstr "应用密钥"
 #: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__app_type
 msgid "Application Type"
 msgstr "应用类型"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__appid
+msgid "Application Unique identification"
+msgstr "应用唯一标识"
 
 #. module: wechat_base
 #: model:ir.actions.act_window,name:wechat_base.wechat_applications_action
@@ -385,7 +410,7 @@ msgstr "令牌"
 #. module: wechat_base
 #: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service__url
 msgid "URL"
-msgstr "URL"
+msgstr ""
 
 #. module: wechat_base
 #: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_unionid
@@ -396,11 +421,6 @@ msgstr "微信用户统一标识"
 #: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_search
 msgid "UnionID"
 msgstr "统一标识"
-
-#. module: wechat_base
-#: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__appid
-msgid "Application Unique identification"
-msgstr "应用唯一标识"
 
 #. module: wechat_base
 #: model:ir.model,name:wechat_base.model_res_users
@@ -571,3 +591,11 @@ msgid ""
 "is a new service platform that provides business services and user management "
 "capabilities for individuals, enterprises, and organizations."
 msgstr "给个人、企业和组织提供业务服务与用户管理能力的全新服务平台。"
+
+#. module: wechat_base
+#. odoo-python
+#: code:addons/wechat_base/models/wechat_event_service.py:0
+#: model:ir.model.constraint,message:wechat_base.constraint_wechat_event_service_route_uniq
+#, python-format
+msgid "route must be unique !"
+msgstr "路由必须是唯一的！"

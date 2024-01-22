@@ -31,38 +31,32 @@ class WeChatOfficialAccountMessagePushService(WMPS):
         echostr     随机字符串
         ----------------------------------------------------------------------------
         """
-        print(kw)
         event_service = request.env["wechat.event_service"].sudo().search([("route", "=", "/wechat/event/official_account")])
         if event_service.active is False:
             _logger.info(
                 _("App [%s] did not start the event service")% event_service.name
             )
-            return Response("success", status=200)
+            return Response("error", status=403)
         else:
-            decrypt = WXBizMsgCrypt(
-                event_service.token,
-                event_service.aeskey,
-                event_service.app_id.appid,
-            )
-
             # 获取微信发送的相关参数
             sVerifyMsgSig = kw["signature"]
             sVerifyTimeStamp = kw["timestamp"]
             sVerifyNonce = kw["nonce"]
-            sVerifyEchoStr = kw["echostr"]
 
             if request.httprequest.method == "GET":
-                # 开发者接收到这(signature,timestamp,nonce,echostr)之后，根据【一定的规则】生成一个signature，跟微信服务器发过来的signature进行对比，一致则说明此次GET请求来自微信服务器，原样返回echostr参数内容，接入生效，成为开发者成功，否则接入失败。
-                # 规则如下：
+                sVerifyEchoStr = kw["echostr"]
 
-                # 1. 将token、timestamp、nonce三个参数进行字典序排序
+                #^ 开发者接收到这(signature,timestamp,nonce,echostr)之后，根据【一定的规则】生成一个signature，跟微信服务器发过来的signature进行对比，一致则说明此次GET请求来自微信服务器，原样返回echostr参数内容，接入生效，成为开发者成功，否则接入失败。
+                #^ 规则如下：
+
+                #^ 1. 将token、timestamp、nonce三个参数进行字典序排序
                 temp = [sVerifyTimeStamp, sVerifyNonce, event_service.token]
                 temp.sort()
 
-                # 2. 将三个参数字符串拼接成一个字符串进行sha1加密
+                #^ 2. 将三个参数字符串拼接成一个字符串进行sha1加密
                 temp = "".join(temp)
 
-                # 3. 开发者获得加密后的字符串可与signature对比，标识该请求来源于微信
+                #^ 3. 开发者获得加密后的字符串可与signature对比，标识该请求来源于微信
                 if (hashlib.sha1(temp.encode('utf8')).hexdigest() == sVerifyMsgSig):
                     # print("验证成功")
                     _logger.info(_("The server configuration of [%s] was successfully verified.")% event_service.name)
@@ -70,6 +64,24 @@ class WeChatOfficialAccountMessagePushService(WMPS):
                 else:
                     # print("验证失败")
                     _logger.info(_("The WeChat official account server configuration verification of [%s] failed.")% event_service.name)
-                    return Response("Not Found", status=404)
+                    return Response("error", status=403)
+
             if request.httprequest.method == "POST":
-                pass
+                xmlData = request.httprequest.data  # xml 数据
+                data = {
+                    "xml":xmlData
+                }
+                if "openid" in kw and kw.get("openid"):
+                    data.update({
+                        "openid":kw.get("openid")
+                    })
+                # print("--------------data",type(data),data)
+                try:
+                    return request.env["wechat.event_service"].sudo().with_context(data=data).handle_event()
+                except:
+                    pass
+                finally:
+                    #^ 微信服务器在五秒内收不到响应会断掉连接，并且重新发起请求，总共重试三次。
+                    #^ 假如服务器无法保证在五秒内处理并回复，可以直接回复空串，微信服务器不会对此作任何处理，并且不会发起重试。
+                    return ""
+

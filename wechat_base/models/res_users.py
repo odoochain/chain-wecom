@@ -10,8 +10,13 @@ class ResUsers(models.Model):
     is_wechat_user = fields.Boolean(
         string="WeChat user", default=False, readonly=True, store=True
     )
-    wechat_openid = fields.Char(
-        string="OpenID of WeChat authorized user",
+    wechat_open_platform_openid = fields.Char(
+        string="WeChat Open Platform User OpenID",
+        readonly=True,
+        store=True,
+    )
+    wechat_official_account_openid = fields.Char(
+        string="WeChat Officia Account User OpenID",
         readonly=True,
         store=True,
     )

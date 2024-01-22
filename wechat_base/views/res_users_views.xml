@@ -48,7 +48,7 @@
                         <group>
                             <group>
                                 <field name="wechat_nickname" />
-                                <field name="wechat_openid" />
+                                <!-- <field name="wechat_openid" /> -->
                                 <field name="wechat_unionid" />
                             </group>
                             <group>

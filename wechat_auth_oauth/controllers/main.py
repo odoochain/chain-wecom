@@ -268,7 +268,7 @@ class OAuthController(http.Controller):
 
                         skip_reset = bool(ICP.get_param("wechat_website_application_auth_skip_reset"))
                         # 由于/web是硬编码的，请验证用户是否有权登录
-                        if (request.env.user.login == request.env.user.wechat_openid or request.env.user.login == request.env.user.wechat_unionid) and not skip_reset:
+                        if (request.env.user.login == request.env.user.wechat_open_platform_openid or request.env.user.login == request.env.user.wechat_unionid) and not skip_reset:
                             # 需要重置用户名
                             resp.location = "/wechat/reset_login_name_and_password"
                             if request.env.user._is_internal():
@@ -400,7 +400,7 @@ class OAuthController(http.Controller):
                     skip_reset = bool(ICP.get_param("wechat_official_accounts_auth_skip_reset"))
                     # print(skip_reset,type(skip_reset))
                     # 由于/web是硬编码的，请验证用户是否有权登录
-                    if (request.env.user.login == request.env.user.wechat_openid or request.env.user.login == request.env.user.wechat_unionid) and not skip_reset:
+                    if (request.env.user.login == request.env.user.wechat_official_account_openid or request.env.user.login == request.env.user.wechat_unionid) and not skip_reset:
                         # print("不跳过")
                         # 需要重置用户名
                         resp.location = "/wechat/reset_login_name_and_password"

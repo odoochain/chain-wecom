@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 
+import requests # type: ignore
+from datetime import datetime, timedelta
 from odoo import api, fields, models, SUPERUSER_ID, _
 
+def now(**kwargs):
+    return datetime.now() + timedelta(**kwargs)
 
 class WeChatApplications(models.Model):
     """
@@ -19,6 +23,10 @@ class WeChatApplications(models.Model):
     )
     appid = fields.Char(string="Application Unique identification",copy=False,)  # 唯一标识
     secret = fields.Char(string="Application Secret",copy=False,)  # 应用密钥
+    access_token = fields.Char(string="Access Token", readonly=True, copy=False)
+    access_token_expiration_time = fields.Datetime(
+        string="Access Token Expiration Time", readonly=True, copy=False
+    )
 
     event_service_ids = fields.One2many(
         "wechat.event_service",
@@ -29,3 +37,32 @@ class WeChatApplications(models.Model):
     )
 
     sequence = fields.Integer(default=0, copy=True)
+
+
+
+    def get_access_token(self):
+        """
+        getAccessToken获
+        https请求方式: GET https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
+        ------------------------------------------------
+        getStableAccessToken    仅支持 POST JSON 形式的调用
+        https://api.weixin.qq.com/cgi-bin/stable_token
+        """
+        try:
+            headers = {"content-type":"application/json"}
+            get_access_token_url = "https://api.weixin.qq.com/cgi-bin/stable_token"
+            json = {
+                "grant_type":"client_credential",
+                "appid":self.appid,
+                "secret":self.secret,
+                "force_refresh":False
+            }
+            response = requests.post(get_access_token_url,json=json,headers=headers).json()
+        except Exception as e:
+            print(str(e))
+        else:
+            # print(response)
+            self.update({
+                "access_token":response["access_token"],
+                "access_token_expiration_time":now(hours=+2),
+            })
