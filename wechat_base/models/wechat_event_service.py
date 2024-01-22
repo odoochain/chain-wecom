@@ -60,7 +60,10 @@ class WechatEventService (models.Model):
         print("事件xml",even_dict)
 
         if even_dict["Event"]=="subscribe" or even_dict["Event"]=="unsubscribe":
-            self.handle_subscribe(even_dict["Event"],data["openid"])
+            print("订阅事件")
+            return self.handle_subscribe(even_dict["Event"],data["openid"])
+        else:
+            print("非订阅事件")
 
         #^ 微信服务器在五秒内收不到响应会断掉连接，并且重新发起请求，总共重试三次。
         #^ 假如服务器无法保证在五秒内处理并回复，可以直接回复空串，微信服务器不会对此作任何处理，并且不会发起重试。
@@ -71,12 +74,54 @@ class WechatEventService (models.Model):
         处理 订阅事件 和 取消订阅事件
         """
         # 获取用户的的 unionid
-        get_userinfo_url ="https://api.weixin.qq.com/cgi-bin/user/info?access_token=%s&openid=%s&lang=zh_CN" % (self.app_id.access_token,openid)
-        userinfo = requests.get(get_userinfo_url).json()
-        print(userinfo)
-        if type =="subscribe":
-            # 创建用户
+        UserSudo = self.env["res.users"].sudo()
+        user = UserSudo.search(
+            [
+                "|",
+                ("wechat_open_platform_openid", "=", openid),
+                ("wechat_official_account_openid", "=", openid),
+                "|",
+                ("active", "=", True),
+                ("active", "=", False),
+            ],
+            limit=1,
+        )
+        print(user, self.app_id.access_token,)
+        if (not user) and (type =="subscribe"):
+            # 文档：https://developers.weixin.qq.com/doc/offiaccount/User_Management/Get_users_basic_information_UnionID.html#UinonId
+            # 不存在用户且为订阅事件,创建用户
+            # get_userinfo_url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=%s&openid=%s&lang=zh_CN" % (self.app_id.access_token, openid)
+            # try:
+            #     userinfo = requests.get(get_userinfo_url).json()
+            # except Exception as e:
+            #     print(str(e))
+            # else:
+            #     print(userinfo)
+            #     ICP = self.env["ir.config_parameter"].sudo()
+            #     user_company = ICP.get_param("wechat_default_user_company")
+            #     values ={
+            #         "name": userinfo["unionid"],
+            #         "login": userinfo["unionid"],
+            #         "active":True,
+            #         "password": self.env["wechat.tools.security"].random_passwd(8),
+            #         "company_ids": [(6, 0, [int(user_company)])],
+            #         "company_id": int(user_company),
+            #         # 以下为微信专有字段
+            #         "is_wechat_user": True,
+            #         "wechat_unionid": userinfo["unionid"],
+            #         "wechat_official_account_openid": userinfo["openid"],
+            #     }
+            # TODO 日后在处理
             pass
-        elif  type =="unsubscribe":
-            # 停用用户
-            pass
+
+        elif user and type =="subscribe":
+            # 存在用户,且为订阅事件,激活用户
+            user.update({
+                "active":True
+            })
+        elif user and type =="unsubscribe":
+            # 存在用户,且为取消订阅事件,归档用户
+            user.update({
+                "active":False
+            })
+        return ""

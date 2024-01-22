@@ -77,7 +77,8 @@ class WeChatOfficialAccountMessagePushService(WMPS):
                     })
                 # print("--------------data",type(data),data)
                 try:
-                    return request.env["wechat.event_service"].sudo().with_context(data=data).handle_event()
+                    # return request.env["wechat.event_service"].sudo().with_context(data=data).handle_event()
+                    return event_service.sudo().with_context(data=data).handle_event()
                 except:
                     pass
                 finally:

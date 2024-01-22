@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_users_wechat_form" model="ir.ui.view">
+            <field name="name">wechat official accoun users form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="wechat_base.view_users_wechat_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='wechat_unionid']" position="after">
+                    <field name="wechat_official_account_openid" />
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

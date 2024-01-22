@@ -3,7 +3,7 @@
     <data>
 
         <!--  ROOT   -->
-        <menuitem id="menu_wechat_root" name="WeChat" groups=""
+        <menuitem id="menu_wechat_root" name="WeChat"
             web_icon="wechat_base,static/description/icon.png" sequence="498" />
 
         <!-- 1.设置-->
@@ -40,6 +40,11 @@
         <!-- 4.微信用户-->
         <menuitem id="menu_wechat_users" name="WeChat Users"
             parent="wechat_base.menu_wechat_root" sequence="4"
+            groups="group_wechat_settings_manager" />
+
+        <!-- 4.1微信用户-->
+        <menuitem id="menu_wechat_user_list" name="Users"
+            parent="wechat_base.menu_wechat_users" sequence="1"
             action="wechat_base.wechat_users_action"
             groups="group_wechat_settings_manager" />
 

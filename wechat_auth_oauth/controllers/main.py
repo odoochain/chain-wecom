@@ -229,6 +229,8 @@ class OAuthController(http.Controller):
                     userinfo = requests.get(get_userinfo_url).json()
                 except Exception as e:
                     print(str(e))
+                else:
+                    pass
                 finally:
                     if "errcode" in userinfo:
                         url = "/web/login?oauth_error=%s" % userinfo["errcode"]
@@ -241,7 +243,7 @@ class OAuthController(http.Controller):
 
                     provider = state["p"]
                     userinfo.update({
-                        "access_token":response["access_token"],
+
                         "expires_in":response["expires_in"],
                         "refresh_token":response["refresh_token"],
                     })
@@ -358,6 +360,8 @@ class OAuthController(http.Controller):
                 userinfo = requests.get(get_userinfo_url).json()
             except Exception as e:
                 print(str(e))
+            else:
+                pass
             finally:
                 if "errcode" in userinfo:
                     url = "/web/login?oauth_error=%s" % userinfo["errcode"]

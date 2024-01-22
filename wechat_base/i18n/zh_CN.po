@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-22 08:14+0000\n"
-"PO-Revision-Date: 2024-01-22 16:16+0800\n"
+"POT-Creation-Date: 2024-01-22 11:30+0000\n"
+"PO-Revision-Date: 2024-01-22 19:31+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -321,16 +321,6 @@ msgid "Open platform"
 msgstr "开放平台"
 
 #. module: wechat_base
-#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_search
-msgid "OpenID"
-msgstr "授权用户唯一标识"
-
-#. module: wechat_base
-#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_openid
-msgid "OpenID of WeChat authorized user"
-msgstr "微信授权用户的唯一标识"
-
-#. module: wechat_base
 #: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_auth_signup_default_user_type__10
 msgid "Portal User"
 msgstr "门户用户"
@@ -475,10 +465,20 @@ msgid "WeChat OAuth2 Authentication"
 msgstr "使用微信身份验证登录网站（OAuth）"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_official_account_openid
+msgid "WeChat Officia Account User OpenID"
+msgstr "微信公众号用户OpenID"
+
+#. module: wechat_base
 #: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__module_wechat_official_accounts
 #: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
 msgid "WeChat Official accounts"
 msgstr "微信公众号"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_open_platform_openid
+msgid "WeChat Open Platform User OpenID"
+msgstr "微信开发平台用户OpenID"
 
 #. module: wechat_base
 #: model:ir.ui.menu,name:wechat_base.menu_wechat_error_codes
