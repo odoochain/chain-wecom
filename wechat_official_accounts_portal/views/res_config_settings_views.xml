@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">WeChat settings</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="wechat_official_accounts.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+
+                <div id="msg_module_wechat_official_accounts_portal" position="after">
+                    <div class="mt8">
+                        <button type="action" name="%(wechat_official_accounts_portal.wechat_official_accounts_menus_action)d" string="Manage Menus" icon="fa-arrow-right" class="btn-link" />
+                    </div>
+                </div>
+
+                <div id="msg_module_wechat_official_accounts_portal" position="replace" />
+
+                <div id="module_wechat_official_accounts_portal" position="after">
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <i class="fa fa-file-code-o fa-lg" aria-label="Official Accounts Menu Data" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <!-- <label for="wechat_official_accounts_menu_data"/>
+                            <field name="wechat_official_accounts_menu_data" widget="json_editor"/> -->
+                        </div>
+                    </div>
+                </div>
+
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>

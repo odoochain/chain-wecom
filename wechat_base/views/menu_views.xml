@@ -3,60 +3,39 @@
     <data>
 
         <!--  ROOT   -->
-        <menuitem id="menu_wechat_root" name="WeChat"
-            web_icon="wechat_base,static/description/icon.png" sequence="498" />
+        <menuitem id="menu_wechat_root" name="WeChat" web_icon="wechat_base,static/description/icon.png" sequence="498" />
 
         <!-- 1.设置-->
-        <menuitem id="menu_wechat_configuration" name="WeChat Settings"
-            parent="wechat_base.menu_wechat_root" sequence="1"
-            action="wechat_base.wechat_config_settings_action"
-            groups="group_wechat_settings_manager" />
+        <menuitem id="menu_wechat_configuration" name="Settings" parent="wechat_base.menu_wechat_root" sequence="1" action="wechat_base.wechat_config_settings_action" groups="group_wechat_settings_manager" />
 
         <!-- 2.API-->
-        <menuitem id="menu_wechat_api" name="WeChat API"
-            parent="wechat_base.menu_wechat_root" sequence="2"
-            groups="group_wechat_settings_manager" />
+        <menuitem id="menu_wechat_api" name="API" parent="wechat_base.menu_wechat_root" sequence="2" groups="group_wechat_settings_manager" />
 
         <!-- 2.1 事件服务 -->
 
-
         <!-- 2.99 错误码 -->
-        <menuitem id="menu_wechat_error_codes" name="WeChat Public Error Code"
-            parent="wechat_base.menu_wechat_api"
-            groups="group_wechat_settings_manager"
-            action="action_view_wechat_error_codes" sequence="99"/>
+        <menuitem id="menu_wechat_error_codes" name="Public Error Code" parent="wechat_base.menu_wechat_api" groups="group_wechat_settings_manager" action="action_view_wechat_error_codes" sequence="99"/>
 
         <!-- 3.应用-->
-        <menuitem id="menu_wechat_applications" name="WeChat Applications"
-            parent="wechat_base.menu_wechat_root" sequence="3"
-            groups="group_wechat_settings_manager" />
+        <menuitem id="menu_wechat_applications" name="Applications" parent="wechat_base.menu_wechat_root" sequence="3" groups="group_wechat_settings_manager" />
 
         <!-- 3.1 应用 -->
-        <menuitem id="menu_wechat_event_service" name="Applications"
-            parent="wechat_base.menu_wechat_applications"
-            groups="group_wechat_settings_manager"
-            action="wechat_applications_action" sequence="1"/>
+        <menuitem id="menu_wechat_event_service" name="Applications" parent="wechat_base.menu_wechat_applications" groups="group_wechat_settings_manager" action="wechat_applications_action" sequence="1"/>
 
-        <!-- 4.微信用户-->
-        <menuitem id="menu_wechat_users" name="WeChat Users"
-            parent="wechat_base.menu_wechat_root" sequence="4"
-            groups="group_wechat_settings_manager" />
+        <!-- 4.公众号-->
+        <menuitem id="menu_wechat_official_accounts" name="Official Accounts" parent="wechat_base.menu_wechat_root" sequence="4" groups="group_wechat_settings_manager" />
 
-        <!-- 4.1微信用户-->
-        <menuitem id="menu_wechat_user_list" name="Users"
-            parent="wechat_base.menu_wechat_users" sequence="1"
-            action="wechat_base.wechat_users_action"
-            groups="group_wechat_settings_manager" />
+        <!-- 90.微信用户-->
+        <menuitem id="menu_wechat_users" name="Users" parent="wechat_base.menu_wechat_root" sequence="90" groups="group_wechat_settings_manager" />
+
+        <!-- 90.1微信用户-->
+        <menuitem id="menu_wechat_user_list" name="Users" parent="wechat_base.menu_wechat_users" sequence="1" action="wechat_base.wechat_users_action" groups="group_wechat_settings_manager" />
 
         <!-- 99.自动任务-->
-        <menuitem id="menu_wechat_cron" name="Wechat schedule tasks"
-            parent="wechat_base.menu_wechat_root"
-            sequence="99" groups="group_wechat_settings_manager" />
+        <menuitem id="menu_wechat_cron" name="Schedule tasks" parent="wechat_base.menu_wechat_root" sequence="99" groups="group_wechat_settings_manager" />
 
         <!-- 99.1-->
-        <menuitem id="menu_wechat_app_get_token" name="Get App token"
-            parent="menu_wechat_cron"
-            action="ir_cron_act_get_wechat_app_token" sequence="1"/>
+        <menuitem id="menu_wechat_app_get_token" name="Get App token" parent="menu_wechat_cron" action="ir_cron_act_get_wechat_app_token" sequence="1"/>
 
     </data>
 </odoo>

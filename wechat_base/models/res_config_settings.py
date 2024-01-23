@@ -39,12 +39,12 @@ class ResConfigSettings(models.TransientModel):
     )
 
     wechat_auth_signup_template_user_id = fields.Many2one(
-        'res.users',
-        string='Template user for new users created through WeChat registration',
+        "res.users",
+        string="Template user for new users created through WeChat registration",
         required=True,
-        config_parameter='wechat_template_portal_user_id',
+        config_parameter="wechat_template_portal_user_id",
         default=5,
-        )
+    )
 
     wechat_auth_signup_default_user_type = fields.Selection(
         string="Default registered user type for WeChat users",
@@ -59,12 +59,11 @@ class ResConfigSettings(models.TransientModel):
     )
 
     # 模块
-    module_wechat_official_accounts = fields.Boolean(
-        "WeChat Official accounts"
+    module_wechat_official_accounts = fields.Boolean("WeChat Official Accounts")
+    module_wechat_official_accounts_portal = fields.Boolean(
+        "WeChat Official Accounts Portal"
     )
     module_wechat_website_application = fields.Boolean(
         "Website application WeChat login"
     )
-    module_wechat_auth_oauth = fields.Boolean(
-        "WeChat OAuth2 Authentication"
-    )
+    module_wechat_auth_oauth = fields.Boolean("WeChat OAuth2 Authentication")
