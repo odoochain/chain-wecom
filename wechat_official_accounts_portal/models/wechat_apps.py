@@ -24,6 +24,11 @@ class WeChatApplications(models.Model):
         string="Official Accounts Menus Data", default={}
     )
 
+    def download_official_accounts_menu(self):
+        """
+        下载公众号菜单数据
+        """
+
     def generate_official_accounts_menu_data(self):
         """
         生成公众号菜单数据
@@ -32,16 +37,28 @@ class WeChatApplications(models.Model):
         json = {"button": []}
         for menu in self.official_accounts_menu_ids:
             if menu.active:
-                json["button"].append(
-                    {
-                        "name": menu.name,
-                        "type": menu.menu_type,
-                        "url": menu.url,
-                        "sub_button": [],
-                    }
-                )
+                res = {
+                    "name": menu.name,
+                    "type": menu.menu_type,
+                    "sub_button": [],
+                }
+                if menu.menu_type == "view":
+                    res.update({"url": menu.url})
+                if menu.menu_type == "click":
+                    res.update({"key": menu.key})
+                if menu.menu_type == "miniprogram":
+                    res.update(
+                        {
+                            "url": menu.url,
+                            "appid": menu.appid,
+                            "pagepath": menu.pagepath,
+                        }
+                    )
+                json["button"].append(res)
+
         # self.write({"official_accounts_menu_data": json})
         self.official_accounts_menu_data = json
+        return {"type": "ir.actions.client", "tag": "reload"}  # 刷新页面
 
     def upload_official_accounts_menu(self):
         """

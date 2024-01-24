@@ -4,14 +4,14 @@
 
         <record id="wechat_official_accounts_menus_home" model="wechat.official_accounts.menus">
             <field name="app_id" ref="wechat_official_accounts.wechat_applications_official_account"/>
-            <field name="name">Home</field>
+            <field name="name">ERP</field>
             <field name="menu_type">view</field>
-            <field name="route">/wechat/home</field>
+            <field name="route">/web/login?redirect=wechat</field>
             <field name="sequence">1</field>
             <field name="active" eval="True"/>
         </record>
 
-        <record id="wechat_official_accounts_menus_test" model="wechat.official_accounts.menus">
+        <!-- <record id="wechat_official_accounts_menus_test" model="wechat.official_accounts.menus">
             <field name="app_id" ref="wechat_official_accounts.wechat_applications_official_account"/>
             <field name="name">Test</field>
             <field name="menu_type">view</field>
@@ -27,7 +27,7 @@
             <field name="route">/wechat/my</field>
             <field name="sequence">3</field>
             <field name="active" eval="True"/>
-        </record>
+        </record> -->
 
     </data>
 

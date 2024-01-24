@@ -25,12 +25,7 @@ class WeChatOfficialAccountsSubMenus(models.Model):
         required=True,
     )
 
-    name = fields.Char(
-        string="Name",
-        copy=False,
-        index=True,
-        translate=True,
-    )
+    name = fields.Char(string="Name", copy=False, index=True, translate=True, size=60)
     menu_type = fields.Selection(
         string="Menu Type",
         required=True,
@@ -40,18 +35,25 @@ class WeChatOfficialAccountsSubMenus(models.Model):
             ("miniprogram", "Mini Program type"),
         ],
     )
+    route = fields.Char(string="Route", translate=False)
     url = fields.Char(
         string="Url",
         copy=False,
         translate=False,
-    )
-    key = fields.Char(
-        string="Key",
-        copy=False,
-        translate=False,
+        compute="_default_url",
+        store=True,
+        size=1024,
     )
     sequence = fields.Integer(default=0, copy=True)
     active = fields.Boolean("Active", default=False)
+
+    @api.depends("route")
+    def _default_url(self):
+        params = self.env["ir.config_parameter"].sudo()
+        base_url = params.get_param("web.base.url")
+        for menu in self:
+            if menu.menu_type == "view":
+                menu.url = base_url + menu.route
 
     @api.model_create_multi
     def create(self, vals_list):

@@ -37,6 +37,7 @@ class WeChatOfficialAccountsMenus(models.Model):
         index=True,
         translate=True,
         required=True,
+        size=16,
     )
     menu_type = fields.Selection(
         string="Menu Type",
@@ -59,13 +60,14 @@ class WeChatOfficialAccountsMenus(models.Model):
     )
     route = fields.Char(string="Route", translate=False)
     url = fields.Char(
-        string="Url", copy=False, translate=False, compute="_default_url", store=True
-    )
-    key = fields.Char(
-        string="Key",
+        string="Url",
         copy=False,
         translate=False,
+        compute="_default_url",
+        store=True,
+        size=1024,
     )
+    key = fields.Char(string="Key", copy=False, translate=False, size=128)
     sequence = fields.Integer(default=1, copy=True)
     active = fields.Boolean("Active", default=False)
 

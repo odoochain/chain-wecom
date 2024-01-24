@@ -14,7 +14,7 @@ Allow users to log in through WeChat.
     "description": """
 Allow users to log in through WeChat.
         """,
-    "depends": ["portal", "wechat_official_accounts"],
+    "depends": ["web", "portal", "wechat_official_accounts", "wecom_auth_oauth"],
     "data": [
         "security/ir.model.access.csv",
         "data/wechat_official_accounts_menus_data.xml",
@@ -22,6 +22,7 @@ Allow users to log in through WeChat.
         "views/wechat_official_accounts_menus_views.xml",
         "views/wechat_applications_views.xml",
         "views/menu_views.xml",
+        "templates/webclient.xml",
     ],
     "bootstrap": True,  # 加载登录屏幕的翻译，
     "assets": {
