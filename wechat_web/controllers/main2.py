@@ -84,7 +84,7 @@ class WeChatOfficialAccountHome(WOA):
         try:
             context = request.env["ir.http"].webclient_rendering_context()
             response = request.render(
-                "wechat_official_accounts_portal.webclient_bootstrap", qcontext=context
+                "wechat_web.webclient_bootstrap", qcontext=context
             )
             response.headers["X-Frame-Options"] = "DENY"
             return response
@@ -142,7 +142,7 @@ class WeChatOfficialAccountHome(WOA):
 
         values.update({"auth_link": self.generate_official_account_login_link()})
 
-        response = request.render("wechat_official_accounts_portal.login", values)
+        response = request.render("wechat_web.login", values)
 
         response.headers["X-Frame-Options"] = "SAMEORIGIN"
         response.headers["Content-Security-Policy"] = "frame-ancestors 'self'"

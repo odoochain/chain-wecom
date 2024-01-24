@@ -76,7 +76,7 @@ class WeChatOfficialAccountsMenus(models.Model):
         params = self.env["ir.config_parameter"].sudo()
         base_url = params.get_param("web.base.url")
         for menu in self:
-            if menu.menu_type == "view":
+            if menu.menu_type == "view" or menu.menu_type == "miniprogram":
                 menu.url = base_url + menu.route
 
     @api.model_create_multi

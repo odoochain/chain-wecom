@@ -60,9 +60,7 @@ class ResConfigSettings(models.TransientModel):
 
     # 模块
     module_wechat_official_accounts = fields.Boolean("WeChat Official Accounts")
-    module_wechat_official_accounts_portal = fields.Boolean(
-        "WeChat Official Accounts Portal"
-    )
+    module_wechat_web = fields.Boolean("WeChat Official Accounts H5 Website")
     module_wechat_website_application = fields.Boolean(
         "Website application WeChat login"
     )

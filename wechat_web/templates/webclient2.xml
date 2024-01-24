@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <template id="wechat_official_accounts_portal.frontend_layout" name="Frontend Layout" inherit_id="web.layout" primary="True">
+    <template id="wechat_web.frontend_layout" name="Frontend Layout" inherit_id="web.layout" primary="True">
         <xpath expr="//head/meta[last()]" position="after">
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
         </xpath>
@@ -55,8 +55,8 @@
         </xpath>
     </template>
 
-    <template id="wechat_official_accounts_portal.login_layout" name="Login Layout">
-        <t t-call="wechat_official_accounts_portal.frontend_layout">
+    <template id="wechat_web.login_layout" name="Login Layout">
+        <t t-call="wechat_web.frontend_layout">
             <t t-set="html_data" t-value="{'style': 'height: 100%;'}"/>
             <t t-set="body_classname" t-value="'bg-100'"/>
             <t t-set="no_header" t-value="True"/>
@@ -75,7 +75,7 @@
         </t>
     </template>
 
-    <template id="wechat_official_accounts_portal.login" name="Login">
+    <template id="wechat_web.login" name="Login">
         <t t-call="web.login_layout">
             <p class="alert alert-danger" t-if="error" role="alert">
                 <t t-esc="error"/>
@@ -86,11 +86,11 @@
             <a role="button" class="btn btn-primary btn-lg w-100" t-att-href="auth_link">
                 <i class="fa fa-sign-in fa-lg"/>
                 Tap To Logn
-            </a >
+            </a>
         </t>
     </template>
 
-    <template id="wechat_official_accounts_portal.webclient_bootstrap">
+    <template id="wechat_web.webclient_bootstrap">
         <t t-call="web.layout">
             <t t-set="head_web">
                 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>

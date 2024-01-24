@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="wechat_web.frontend_layout" name="Frontend Layout" inherit_id="web.layout" primary="True">
+
+            <xpath expr="//head/link[last()]" position="after">
+                <!-- 引入 WeUI CDN 链接 -->
+                <link rel="stylesheet" href="https://res.wx.qq.com/t/wx_fed/weui-source/res/2.6.11/weui.min.css"/>
+            </xpath>
+
+        </template>
+
+        <template id="wechat_web.login" name="Login">
+            <t t-call="web.login_layout">
+                <t t-set="no_footer" t-value="True"/>
+                <form class="oe_wechat_h5_login_form" role="form">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                    <p class="alert alert-danger" t-if="error" role="alert">
+                        <t t-esc="error"/>
+                    </p>
+                    <p class="alert alert-success" t-if="message" role="status">
+                        <t t-esc="message"/>
+                    </p>
+                    <a role="button" class="btn btn-primary btn-lg w-100" t-att-href="auth_link">
+                        <i class="fa fa-sign-in fa-lg"/>
+                        <span>Tap To Logn</span>
+                    </a>
+
+                    <input type="hidden" name="redirect" t-att-value="redirect"/>
+                </form>
+            </t>
+        </template>
+
+
+        <template id="wechat_web.login_successful" name="Login successful">
+            <t t-call="web.login_layout">
+                <div class="oe_wechat_h5_login_form">
+                    <p class="alert alert-success" role="status">
+                        You are logged in.
+                    </p>
+                    <a role="button" class="btn btn-success btn-lg w-100" href="/wechat/web">
+                        <i class="fa fa-sign-in fa-lg"/>
+                        <span>Open</span>
+                    </a>
+                </div>
+            </t>
+        </template>
+
+        <template id="wechat_web.webclient_bootstrap">
+            <t t-call="web.layout">
+            首页
+            </t>
+        </template>
+
+    </data>
+</odoo>

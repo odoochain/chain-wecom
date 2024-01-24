@@ -41,8 +41,8 @@
                             </group>
                             <group string="Parameters">
                                 <field name="active"/>
-                                <field name="route" attrs="{'invisible': [('menu_type','!=','view')],'required':[('menu_type','=','view')]}"/>
-                                <field name="url" attrs="{'invisible': [('menu_type','in',['view','miniprogram'])]}"/>
+                                <field name="route" attrs="{'invisible': [('menu_type','=','click')],'required':[('menu_type','=','view')]}"/>
+                                <field name="url" attrs="{'invisible': [('menu_type','=','click')]}"/>
                                 <field name="key" attrs="{'invisible': [('menu_type','!=','click')],'required':[('menu_type','=','click')]}"/>
                                 <field name="appid" attrs="{'invisible': [('menu_type','!=','miniprogram')],'required':[('menu_type','=','miniprogram')]}"/>
                                 <field name="pagepath" attrs="{'invisible': [('menu_type','!=','miniprogram')],'required':[('menu_type','=','miniprogram')]}"/>

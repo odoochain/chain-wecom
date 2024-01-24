@@ -6,7 +6,7 @@
             <field name="app_id" ref="wechat_official_accounts.wechat_applications_official_account"/>
             <field name="name">ERP</field>
             <field name="menu_type">view</field>
-            <field name="route">/web/login?redirect=wechat</field>
+            <field name="route">/wechat</field>
             <field name="sequence">1</field>
             <field name="active" eval="True"/>
         </record>

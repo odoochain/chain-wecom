@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "WeChat Official Accounts Portal",
+    "name": "WeChat Official Accounts H5 Website",
     "author": "RStudio",
     "sequence": 707,
     "installable": True,
@@ -14,22 +14,22 @@ Allow users to log in through WeChat.
     "description": """
 Allow users to log in through WeChat.
         """,
-    "depends": ["web", "portal", "wechat_official_accounts", "wecom_auth_oauth"],
+    "depends": ["web", "portal", "wechat_official_accounts", "wechat_auth_oauth"],
     "data": [
         "security/ir.model.access.csv",
         "data/wechat_official_accounts_menus_data.xml",
-        "views/res_config_settings_views.xml",
         "views/wechat_official_accounts_menus_views.xml",
         "views/wechat_applications_views.xml",
+        "views/res_config_settings_views.xml",
+        "views/webclient.xml",
         "views/menu_views.xml",
-        "templates/webclient.xml",
     ],
     "bootstrap": True,  # 加载登录屏幕的翻译，
     "assets": {
         "web.assets_frontend": [
-            "wechat_portal/static/**/*.js",
-            "wechat_portal/static/**/*.xml",
-            "wechat_portal/static/**/*.scss",
+            "wechat_web/static/**/*.js",
+            "wechat_web/static/**/*.xml",
+            "wechat_web/static/**/*.scss",
         ],
     },
     "license": "Other proprietary",

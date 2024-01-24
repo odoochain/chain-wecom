@@ -11,7 +11,7 @@ from odoo.modules.module import get_resource_path  # type: ignore
 class ResConfigSettings(models.TransientModel):
     _inherit = "res.config.settings"
 
-    def _wechat_official_accounts_portal_state(self):
+    def _wechat_web_state(self):
         code = ""
         for i in range(6):
             n = random.randint(0, 9)
@@ -37,8 +37,8 @@ class ResConfigSettings(models.TransientModel):
         config_parameter="wechat_official_accounts_menu_data",
     )
 
-    wechat_official_accounts_portal_state = fields.Char(
+    wechat_web_state = fields.Char(
         string="Official Accounts Menu Data",
-        default=_wechat_official_accounts_portal_state,
-        config_parameter="wechat_official_accounts_portal_state",
+        default=_wechat_web_state,
+        config_parameter="wechat_web_state",
     )
