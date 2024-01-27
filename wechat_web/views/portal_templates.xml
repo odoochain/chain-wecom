@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <template id="portal_breadcrumbs" name="Portal Breadcrumbs">
+            <ol t-if="page_name != 'home'" class="o_portal_submenu breadcrumb mb-0 py-2 flex-grow-1">
+                <li class="breadcrumb-item ms-1">
+                    <a href="/wechat/web" aria-label="Home" title="Home">
+                        <i class="fa fa-home fa-lg"/>
+                    </a>
+                </li>
+                <li t-if="page_name == 'my_account'" class="breadcrumb-item">My Account</li>
+            </ol>
+        </template>
+
+        <template id="record_pager" name="Portal Record Pager">
+            <t t-if='prev_record or next_record'>
+                <div class="record_pager btn-group" role="group">
+                    <a role="button" t-att-class="'btn btn-link %s' % ('disabled' if not prev_record else '')" t-att-href="prev_record or '#'">
+                        <i class="fa fa-chevron-left" role="img" aria-label="Previous" title="Previous"></i>
+                    </a>
+                    <a role="button" t-att-class="'btn btn-link %s' % ('disabled' if not next_record else '')" t-att-href="next_record or '#'">
+                        <i class="fa fa-chevron-right" role="img" aria-label="Next" title="Next"></i>
+                    </a>
+                </div>
+            </t>
+        </template>
+
+        <template id="frontend_layout" name="Main Frontend Layout" inherit_id="web.frontend_layout">
+            <xpath expr="//div[@id='wrapwrap']" position="attributes">
+                <attribute name="t-attf-class" add="#{request.env['res.lang']._lang_get_direction(request.env.lang) == 'rtl' and 'o_rtl' or ''}" separator=" "/>
+                <attribute name="t-attf-class" add="#{'o_wechat_portal' if is_portal else ''}" separator=" "/>
+            </xpath>
+
+            <xpath expr="//div[@id='wrapwrap']/main/t[@t-out='0']" position="before">
+                <div t-if="o_portal_fullwidth_alert" class="alert alert-info alert-dismissible rounded-0 fade show d-print-none css_editable_mode_hidden">
+                    <div class="container">
+                        <t t-out="o_portal_fullwidth_alert"/>
+                    </div>
+                </div>
+            </xpath>
+
+            <!-- 页脚导航菜单 -->
+            <xpath expr="//div[@id='footer']" position="inside">
+                <div role="tablist" aria-label="" class="weui-tabbar">
+                    <a id="tab1" role="tab" aria-labelledby="t1_title" aria-describedby="t1_tips" aria-selected="true" aria-controls="panel1" class="weui-tabbar__item weui-bar__item_on" wah-hotarea="click" href="/wechat/web/home">
+                        <div class="weui-tabbar__icon">
+                            <i class="fa fa-2x fa-fw fa-home"/>
+                        </div>
+                        <p id="t1_title" aria-hidden="true" class="weui-tabbar__label">Home</p>
+                    </a>
+                    <a id="tab4" role="tab" aria-labelledby="t4_title" aria-describedby="t4_tips" aria-selected="true" aria-controls="panel4" class="weui-tabbar__item weui-bar__item_on" wah-hotarea="click" href="/wechat/web/my">
+                        <div class="weui-tabbar__icon">
+                            <i class="fa fa-2x fa-fw fa-user"/>
+                        </div>
+                        <p class="weui-tabbar__label" aria-hidden="true" id="t4_title">My</p>
+                    </a>
+                </div>
+            </xpath>
+        </template>
+
+        <template id="portal_layout" name="Portal Layout">
+            <t t-call="wechat_web.frontend_layout">
+                <t t-set="is_portal" t-value="True"/>
+
+                <div t-if="not no_breadcrumbs and not my_account and not breadcrumbs_searchbar" class="o_portal container mt-3">
+                    <div class="row align-items-center bg-white g-0 border rounded">
+                        <div class="col-10">
+                            <t t-call="wechat_web.portal_breadcrumbs"></t>
+                        </div>
+                        <div t-if="prev_record or next_record" class="col-2 flex-grow-0 text-center">
+                            <t t-call='wechat_web.record_pager'/>
+                        </div>
+                    </div>
+                </div>
+                <div id="wrap" class='o_portal_wrap'>
+                    <div class="container mb64">
+                        <t t-out="0"/>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="home" name="My Portal">
+            <t t-call="wechat_web.portal_layout">
+
+                <div class="o_portal_my_home">
+                    <div class="oe_structure" id="oe_structure_portal_my_home_1"/>
+                    <h3>Documents</h3>
+                    <div class="o_portal_docs list-group">
+                        <div class="o_portal_doc_spinner spinner-border text-o-color-2 align-self-center mt-5"/>
+                        <p class="o_portal_no_doc_message d-none">No Documents to display</p>
+                    </div>
+                </div>
+                <div class="oe_structure" id="oe_structure_portal_my_home_2"/>
+            </t>
+        </template>
+
+        <template id="my" name="Portal Layout">
+            <t t-call="wechat_web.portal_layout">
+
+                <div t-if="page_name == 'my_account'" id="wrap" class='o_portal_wrap'>
+                    <div class="container mb64">
+                        <div class="row justify-content-between">
+                            <div id="o_my_sidebar" class="pt-3 pt-lg-0 col-12 col-md col-lg-4 col-xl-3 o_my_sidebar">
+                                <div class="o_my_contact" t-if="sales_user">
+                                    <t t-call="portal.portal_contact"/>
+                                </div>
+                                <div class="o_portal_my_account">
+                                    <h4>Details
+                                        <a role="button" href="/wechat/web/my/account" class="btn btn-sm btn-link">
+                                            <i class="fa fa-pencil"/>
+                                            <span>Edit</span>
+                                        </a>
+                                    </h4>
+                                    <hr class="mt-1 mb-0"/>
+                                    <div t-field="user_id.partner_id" t-options='{"widget": "contact", "fields": ["email", "phone", "address", "name"]}'/>
+                                </div>
+                                <div class="o_portal_my_security mt-3">
+                                    <h4>Account Security </h4>
+                                    <hr class="mt-1 mb-1"/>
+                                    <a href="/wechat/web/my/security">
+                                        <i class="fa fa-pencil mx-1"/>
+                                        <span>Edit Security Settings</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="portal_my_details">
+            <t t-call="portal.portal_layout">
+                <t t-set="additional_title">Contact Details</t>
+                <form action="/wechat/web/my/account" method="post">
+                    <div class="row o_portal_details">
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <t t-call="portal.portal_my_details_fields"/>
+                                <input type="hidden" name="redirect" t-att-value="redirect"/>
+                            </div>
+                            <div class="clearfix">
+                                <button type="submit" class="btn btn-primary float-end mb32 ">
+                                Confirm
+                                    <span class="fa fa-long-arrow-right" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </t>
+        </template>
+
+        <template id="portal_my_security">
+            <t t-call="wechat_web.portal_layout">
+                <div class="o_portal_security_body">
+                    <t t-set="additional_title">Security</t>
+                    <t t-set="no_breadcrumbs" t-value="1"/>
+                    <div class="alert alert-danger" role="alert" t-if="get_error(errors)">
+                        <t t-esc="errors"/>
+                    </div>
+                    <section name="portal_change_password">
+                        <h3>Change Password</h3>
+                        <t t-set="path">password</t>
+                        <div class="alert alert-success" role="alert" t-if="success and success.get('password')">
+                            Password Updated!
+                        </div>
+                        <div class="alert alert-danger" role="alert" t-if="get_error(errors, 'password')">
+                            <t t-esc="errors['password']"/>
+                        </div>
+                        <form action="/wechat/web/my/security" method="post" class="oe_reset_password_form">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <input type="hidden" name="op" value="password"/>
+                            <div class="mb-3">
+                                <label for="current">Password:</label>
+                                <input type="password" t-attf-class="form-control form-control-sm {{ 'is-invalid' if get_error(errors, 'password.old') else '' }}" id="current" name="old" autocomplete="current-password" required="required"/>
+                                <div class="invalid-feedback">
+                                    <t t-esc="get_error(errors, 'password.old')"/>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="new">New Password:</label>
+                                <input type="password" t-attf-class="form-control form-control-sm {{ 'is-invalid' if get_error(errors, 'password.new1') else '' }}" id="new" name="new1" autocomplete="new-password" required="required"/>
+                                <div class="invalid-feedback">
+                                    <t t-esc="get_error(errors, 'password.new1')"/>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="new2">Verify New Password:</label>
+                                <input type="password" t-attf-class="form-control form-control-sm {{ 'is-invalid' if get_error(errors, 'password.new2') else '' }}" id="new2" name="new2" autocomplete="new-password" required="required"/>
+                                <div class="invalid-feedback">
+                                    <t t-esc="get_error(errors, 'password.new2')"/>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-secondary">Change Password</button>
+                        </form>
+                    </section>
+                    <section t-if="debug and allow_api_keys">
+                        <h3>
+                            Developer API Keys
+                            <a href="https://www.odoo.com/documentation/16.0/developer/misc/api/external_api.html#api-keys" target="_blank">
+                                <i title="Documentation" class="fa fa-fw o_button_icon fa-info-circle"></i>
+                            </a>
+                        </h3>
+                        <div>
+                            <table class="table o_main_table">
+                                <thead>
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Scope</th>
+                                        <th>Added On</th>
+                                        <th/>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="request.env.user.api_key_ids" t-as="key">
+                                        <tr>
+                                            <td>
+                                                <span t-field="key.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="key.scope"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="key.create_date"/>
+                                            </td>
+                                            <td>
+                                                <i class="fa fa-trash text-danger o_portal_remove_api_key" type="button" t-att-id="key.id"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-secondary o_portal_new_api_key">New API Key</button>
+                        </div>
+                    </section>
+                    <!-- <section name="portal_deactivate_account" groups="base.group_portal">
+                        <h3>Delete Account</h3>
+                        <t t-set="deactivate_error" t-value="get_error(errors, 'deactivate')"/>
+                        <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#portal_deactivate_account_modal">
+                            Delete Account
+                        </button>
+                        <div t-attf-class="modal #{'show d-block' if open_deactivate_modal else ''}" id="portal_deactivate_account_modal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-danger">
+                                        <h5 class="modal-title">Are you sure you want to do this?</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <form action="/my/deactivate_account" method="post" class="modal-body" id="portal_deactivate_account_form">
+                                        <div>
+                                            <div class="alert alert-danger" t-esc="get_error(errors, 'deactivate.other')"/>
+                                                <p class="text-muted">
+                                                    Disable your account, preventing any further login.<br/>
+                                                <b>
+                                                    <i class="fa fa-exclamation-triangle text-danger"></i>
+                                                    This action cannot be undone.
+                                                </b>
+                                            </p>
+                                            <hr/>
+                                            <p>1. Enter your password to confirm you own this account</p>
+                                            <input name="password" type="password" required="1" t-attf-class="form-control #{'is-invalid' if deactivate_error == 'password' else ''}" placeholder="Password"/>
+                                            <div t-if="deactivate_error == 'password'" class="invalid-feedback">
+                                                Wrong password.
+                                            </div>
+                                            <hr/>
+                                            <p>
+                                                <span>2. Confirm you want to delete your account by copying down your login (</span>
+                                                <span t-esc="env.user.login"/>
+                                                <span>).</span>
+                                            </p>
+                                            <input name="validation" type="text" required="1" t-attf-class="form-control #{'is-invalid' if deactivate_error == 'validation' else ''}"/>
+                                            <div t-if="deactivate_error == 'validation'" class="invalid-feedback">
+                                                <span>You should enter "</span>
+                                                <span t-esc="env.user.login"/>
+                                                <span>" to validate your action.</span>
+                                            </div>
+                                            <div class="d-flex flex-row align-items-center">
+                                                <input type="checkbox" name="request_blacklist" id="request_blacklist" checked="1"/>
+                                                <label for="request_blacklist" class="ms-2 mw-100 fw-normal mt-3">
+                                                Put my email and phone in a block list to make sure I'm never contacted again
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    </form>
+                                    <div class="modal-footer justify-content-start">
+                                        <input type="submit" class="btn btn-danger" form="portal_deactivate_account_form" value="Delete Account"/>
+                                        <button type="button" class="btn" data-bs-dismiss="modal">
+                                                Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section> -->
+                </div>
+            </t>
+        </template>
+
+    </data>
+
+</odoo>

@@ -5,7 +5,7 @@
 
             <xpath expr="//head/link[last()]" position="after">
                 <!-- 引入 WeUI CDN 链接 -->
-                <link rel="stylesheet" href="https://res.wx.qq.com/t/wx_fed/weui-source/res/2.6.11/weui.min.css"/>
+                <!-- <link rel="stylesheet" href="https://res.wx.qq.com/t/wx_fed/weui-source/res/2.6.11/weui.min.css"/> -->
             </xpath>
 
         </template>
