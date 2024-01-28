@@ -25,6 +25,9 @@
         <!-- 4.公众号-->
         <menuitem id="menu_wechat_official_accounts" name="Official Accounts" parent="wechat_base.menu_wechat_root" sequence="4" groups="group_wechat_settings_manager" />
 
+        <!-- 80.微信消息-->
+        <menuitem id="menu_wechat_message" name="Message" parent="wechat_base.menu_wechat_root" sequence="80" groups="group_wechat_settings_manager" />
+
         <!-- 90.微信用户-->
         <menuitem id="menu_wechat_users" name="Users" parent="wechat_base.menu_wechat_root" sequence="90" groups="group_wechat_settings_manager" />
 

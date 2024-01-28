@@ -65,3 +65,4 @@ class ResConfigSettings(models.TransientModel):
         "Website application WeChat login"
     )
     module_wechat_auth_oauth = fields.Boolean("WeChat OAuth2 Authentication")
+    module_wechat_message = fields.Boolean("Send a message via WeChat")

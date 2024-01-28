@@ -1,28 +1,48 @@
 # -*- coding: utf-8 -*-
 
-import requests # type: ignore
+import logging
+import requests  # type: ignore
 from datetime import datetime, timedelta
 from odoo import api, fields, models, SUPERUSER_ID, _
 
+_logger = logging.getLogger(__name__)
+
+
 def now(**kwargs):
     return datetime.now() + timedelta(**kwargs)
+
 
 class WeChatApplications(models.Model):
     """
     微信应用
     """
+
     _name = "wechat.applications"
     _description = "WeChat Applications"
     _order = "sequence"
 
-    name = fields.Char(string="Name",copy=False,index=True,translate=True,)  # 应用名称
+    name = fields.Char(
+        string="Name",
+        copy=False,
+        index=True,
+        translate=True,
+    )  # 应用名称
     app_type = fields.Selection(
-        string='Application Type',
+        string="Application Type",
         required=True,
-        selection=[('official_account', 'Official Account'), ('open_platform', 'Open platform')]
+        selection=[
+            ("official_account", "Official Account"),
+            ("open_platform", "Open platform"),
+        ],
     )
-    appid = fields.Char(string="Application Unique identification",copy=False,)  # 唯一标识
-    secret = fields.Char(string="Application Secret",copy=False,)  # 应用密钥
+    appid = fields.Char(
+        string="Application Unique identification",
+        copy=False,
+    )  # 唯一标识
+    secret = fields.Char(
+        string="Application Secret",
+        copy=False,
+    )  # 应用密钥
     access_token = fields.Char(string="Access Token", readonly=True, copy=False)
     access_token_expiration_time = fields.Datetime(
         string="Access Token Expiration Time", readonly=True, copy=False
@@ -38,8 +58,6 @@ class WeChatApplications(models.Model):
 
     sequence = fields.Integer(default=0, copy=True)
 
-
-
     def get_access_token(self):
         """
         getAccessToken获
@@ -49,29 +67,39 @@ class WeChatApplications(models.Model):
         https://api.weixin.qq.com/cgi-bin/stable_token
         """
         try:
-            headers = {"content-type":"application/json"}
+            headers = {"content-type": "application/json"}
             get_access_token_url = "https://api.weixin.qq.com/cgi-bin/stable_token"
             json = {
-                "grant_type":"client_credential",
-                "appid":self.appid,
-                "secret":self.secret,
-                "force_refresh":False
+                "grant_type": "client_credential",
+                "appid": self.appid,
+                "secret": self.secret,
+                "force_refresh": False,
             }
-            if not self.access_token_expiration_time or (datetime.now() > self.access_token_expiration_time):
-                response = requests.post(get_access_token_url,json=json,headers=headers).json()
+            if not self.access_token_expiration_time or (
+                datetime.now() > self.access_token_expiration_time
+            ):
+                response = requests.post(
+                    get_access_token_url, json=json, headers=headers
+                ).json()
         except Exception as e:
             print(str(e))
         else:
-            # print(response)
-            self.update({
-                "access_token":response["access_token"],
-                "access_token_expiration_time":now(hours=+2),
-            })
+            print(response)
+            self.update(
+                {
+                    "access_token": response["access_token"],
+                    "access_token_expiration_time": now(hours=+2),
+                }
+            )
 
     def cron_get_access_token(self):
         """
         自动任务定时获取应用token
         """
-        for app in self:
-            if app.appid & app.secret:
-                app.get_access_token()
+        asps = self.search(["&", ("appid", "!=", False), ("secret", "!=", False)])
+        for app in asps:
+            _logger.info(
+                _("Automatic task: start to get the wechat application [%s] token")
+                % app.name
+            )
+            app.get_access_token()
