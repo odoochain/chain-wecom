@@ -30,7 +30,7 @@
         <template id="frontend_layout" name="Main Frontend Layout" inherit_id="web.frontend_layout">
             <xpath expr="//div[@id='wrapwrap']" position="attributes">
                 <attribute name="t-attf-class" add="#{request.env['res.lang']._lang_get_direction(request.env.lang) == 'rtl' and 'o_rtl' or ''}" separator=" "/>
-                <attribute name="t-attf-class" add="#{'o_wechat_portal' if is_portal else ''}" separator=" "/>
+                <attribute name="t-attf-class" add="#{'o_wechat_portal_home' if is_portal else ''}" separator=" "/>
             </xpath>
 
             <xpath expr="//div[@id='wrapwrap']/main/t[@t-out='0']" position="before">
@@ -66,7 +66,7 @@
 
                 <div t-if="not no_breadcrumbs and not my_account and not breadcrumbs_searchbar" class="o_portal container mt-3">
                     <div class="row align-items-center bg-white g-0 border rounded">
-                        <div class="col-10">
+                        <div class="col-12">
                             <t t-call="wechat_web.portal_breadcrumbs"></t>
                         </div>
                         <div t-if="prev_record or next_record" class="col-2 flex-grow-0 text-center">
@@ -82,20 +82,162 @@
             </t>
         </template>
 
-        <template id="home" name="My Portal">
+        <template id="home" name="Wechat Portal">
             <t t-call="wechat_web.portal_layout">
 
-                <div class="o_portal_my_home">
+                <div class="o_wechat_portal_home">
                     <div class="oe_structure" id="oe_structure_portal_my_home_1"/>
                     <h3>Documents</h3>
                     <div class="o_portal_docs list-group">
                         <div class="o_portal_doc_spinner spinner-border text-o-color-2 align-self-center mt-5"/>
-                        <p class="o_portal_no_doc_message d-none">No Documents to display</p>
+                        <p class="o_portal_no_doc_message  d-none">No Documents to display</p>
                     </div>
                 </div>
                 <div class="oe_structure" id="oe_structure_portal_my_home_2"/>
             </t>
         </template>
+
+        <template id="portal_docs_entry" name="My Portal Docs Entry">
+            <a t-att-href="url" t-att-title="title" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between d-none">
+                <t t-esc="title"/>
+                <t t-if='count'>
+                    <span class="badge text-bg-secondary rounded-pill" t-esc="count"/>
+                </t>
+                <t t-elif="placeholder_count">
+                    <span class="badge text-bg-secondary rounded-pill" t-att-data-placeholder_count="placeholder_count">
+                        <i class="fa fa-spin fa-circle-o-notch"></i>
+                    </span>
+                </t>
+            </a>
+        </template>
+
+        <template id="portal_table" name="My Portal Table">
+            <div t-attf-class="table-responsive border rounded border-top-0 #{classes if classes else ''}">
+                <table class="table rounded mb-0 bg-white o_portal_my_doc_table">
+                    <t t-out="0"/>
+                </table>
+            </div>
+            <div t-if="pager" class="o_portal_pager d-flex justify-content-center">
+                <t t-call="portal.pager"/>
+            </div>
+        </template>
+
+
+        <!--
+        The search bar is composed of 2 buttons : a "filter by" and a "sort by". Changing the 'sortby'
+        criteria will keep the number of page, query params, ... Changing the 'filterby' param will
+        redirect the user to the beginning of document list, keeping query parameters.
+
+        These 2 buttons can be prepended by a advanced search input, to activate it, search_input need
+        to be initialized at 'True' and the content of the t-call is the list of li elements searchable.
+
+        :param dict searchbar_sortings : containing the sort criteria like
+            {'date': {'label': _('Newest'), 'order': 'create_date desc'}}
+        :param string sortby : name of the sort criteria
+        :param dict searchbar_filters : containing the filter criteria like
+            {'open': {'label': _('In Progress'), 'domain': [('state', '=', 'open')]}}
+        :param string filterby : name of the filter criteria
+        :param default_url : the base url of the pages (like '/my/orders')
+        :param boolean breadcrumbs_searchbar : set to True to show breadcrumbs rather than the title
+        :param boolean o_portal_search_panel : set to True to active the input search
+        :param html $0 : content of the t-call
+        :param title : bavbar title
+        :param classes : navbar classes
+    -->
+        <template id="portal_searchbar" name="Portal Search Bar">
+            <nav t-attf-class="navbar navbar-light navbar-expand-lg border py-0 mb-2 o_portal_navbar {{classes if classes else ''}} {{'mt-3 rounded' if breadcrumbs_searchbar else 'border-top-0' }}">
+                <!--  Navbar breadcrumb or title  -->
+                <t t-if="breadcrumbs_searchbar">
+                    <t t-call="portal.portal_breadcrumbs"/>
+                </t>
+                <span t-else="" class="navbar-brand mb-0 h1 me-auto" t-esc="title or 'No title'"/>
+
+                <!--  Collapse button -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#o_portal_navbar_content" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle filters">
+                    <span class="navbar-toggler-icon small"/>
+                </button>
+
+                <!--  Collapsable content  -->
+                <div class="collapse navbar-collapse" id="o_portal_navbar_content">
+                    <div class="nav flex-column flex-lg-row ms-auto p-0 mb-3 mb-lg-0 mt-1 mt-lg-0">
+                        <div t-if="searchbar_sortings">
+                            <span class="small me-1 navbar-text">Sort By:</span>
+                            <div class="btn-group">
+                                <button id="portal_searchbar_sortby" data-bs-toggle="dropdown" class="btn btn-secondary btn-sm dropdown-toggle">
+                                    <t t-esc="searchbar_sortings[sortby].get('label', 'Newest')"/>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="portal_searchbar_sortby">
+                                    <t t-foreach="searchbar_sortings" t-as="option">
+                                        <a t-att-href="request.httprequest.path + '?' + keep_query('*', sortby=option)" t-attf-class="dropdown-item#{sortby == option and ' active' or ''}">
+                                            <span t-esc="searchbar_sortings[option].get('label')"/>
+                                        </a>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                        <div t-if="searchbar_filters" class="ms-lg-2">
+                            <span class="small me-1 navbar-text">Filter By:</span>
+                            <div class="btn-group">
+                                <button id="portal_searchbar_filters" data-bs-toggle="dropdown" class="btn btn-secondary btn-sm dropdown-toggle">
+                                    <t t-esc="searchbar_filters.get(filterby,searchbar_filters.get('all')).get('label', 'All')"/>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="portal_searchbar_filters">
+                                    <t t-foreach="searchbar_filters" t-as="option">
+                                        <a t-att-href="default_url + '?' + keep_query('*', filterby=option)" t-attf-class="dropdown-item#{filterby == option and ' active' or ''}">
+                                            <span t-esc="searchbar_filters[option].get('label')"/>
+                                        </a>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                        <div t-if="searchbar_groupby" class="ms-lg-2">
+                            <span class="small me-1 navbar-text">Group By:</span>
+                            <div class="btn-group">
+                                <button id="portal_searchbar_groupby" data-bs-toggle="dropdown" class="btn btn-secondary btn-sm dropdown-toggle">
+                                    <t t-esc="searchbar_groupby[groupby].get('label', 'None')"/>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="portal_searchbar_groupby">
+                                    <t t-foreach="searchbar_groupby" t-as="option">
+                                        <a t-att-href="default_url + '?' + keep_query('*', groupby=option)" t-attf-class="dropdown-item#{groupby == option and ' active' or ''}">
+                                            <span t-esc="searchbar_groupby[option].get('label')"/>
+                                        </a>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                        <t t-out="0"/>
+                    </div>
+                    <form t-if="searchbar_inputs" class="o_portal_search_panel ms-lg-4 col-xl-4 col-md-5">
+                        <div class="input-group input-group-sm w-100">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"/>
+                            <div class="dropdown-menu" role="menu">
+                                <t t-foreach='searchbar_inputs' t-as='input'>
+                                    <a t-att-href="'#' + input_value['input']" t-attf-class="dropdown-item#{search_in == input_value['input'] and ' active' or ''}">
+                                        <span t-out="input_value['label']"/>
+                                    </a>
+                                </t>
+                            </div>
+                            <input type="text" class="form-control form-control-sm" placeholder="Search" t-att-value='search' name="search"/>
+                            <button class="btn btn-secondary o_wait_lazy_js" type="submit">
+                                <span class="fa fa-search"/>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </template>
+
+        <template id="portal_record_layout" name="Portal single record layout">
+            <div t-attf-class="card mt-0 border-top-0 rounded-0 rounded-bottom #{classes if classes else ''}">
+                <div t-if="card_header" t-attf-class="card-header #{header_classes if header_classes else ''}">
+                    <t t-out="card_header"/>
+                </div>
+                <div t-if="card_body" t-attf-class="card-body #{body_classes if body_classes else ''}">
+                    <t t-out="card_body"/>
+                </div>
+            </div>
+        </template>
+
 
         <template id="my" name="Portal Layout">
             <t t-call="wechat_web.portal_layout">
@@ -252,7 +394,7 @@
                                         <h5 class="modal-title">Are you sure you want to do this?</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                     </div>
-                                    <form action="/my/deactivate_account" method="post" class="modal-body" id="portal_deactivate_account_form">
+                                    <form action="/wechat/my/deactivate_account" method="post" class="modal-body" id="portal_deactivate_account_form">
                                         <div>
                                             <div class="alert alert-danger" t-esc="get_error(errors, 'deactivate.other')"/>
                                                 <p class="text-muted">

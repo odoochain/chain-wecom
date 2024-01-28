@@ -11,6 +11,11 @@ from odoo.modules.module import get_resource_path  # type: ignore
 class ResConfigSettings(models.TransientModel):
     _inherit = "res.config.settings"
 
+    # 模块
+    module_wechat_web_sale = fields.Boolean(
+        "Build sales related pages for WeChat official account"
+    )
+
     def _wechat_web_state(self):
         code = ""
         for i in range(6):

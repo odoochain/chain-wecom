@@ -49,7 +49,7 @@
 
         <template id="wechat_web.webclient_bootstrap">
             <t t-call="web.layout">
-            首页
+
             </t>
         </template>
 

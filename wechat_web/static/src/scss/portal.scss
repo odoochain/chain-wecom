@@ -345,27 +345,27 @@ img,
 // ===  Page custom bg ===
 // To be applied to all portal pages if bg-color is white (default).
 @if ($o-portal-use-default-colors) {
-    #wrapwrap.o_wechat_portal {
+    #wrapwrap.o_wechat_portal_home {
         @include o-bg-color($o-portal-bg-color, $with-extras: false);
     }
 }
 
-.o_wechat_portal {
+.o_wechat_portal_home {
     .breadcrumb {
         @extend %o-portal-breadcrumbs;
     }
 
-    >tbody.o_wechat_portal_report_tbody {
+    >tbody.o_wechat_portal_home_report_tbody {
         vertical-align: middle;
     }
 }
 
-.o_wechat_portal_wrap {
-    .o_wechat_portal_my_home>.o_page_header>a:hover {
+.o_wechat_portal_home_wrap {
+    .o_wechat_portal_home_my_home>.o_page_header>a:hover {
         text-decoration: none;
     }
 
-    .o_wechat_portal_navbar {
+    .o_wechat_portal_home_navbar {
         .breadcrumb {
             padding-left: 0;
             padding-right: 0;
@@ -377,7 +377,7 @@ img,
         }
     }
 
-    .o_wechat_portal_my_doc_table {
+    .o_wechat_portal_home_my_doc_table {
         th {
             padding-top: $o-portal-table-th-pt;
             padding-bottom: $o-portal-table-th-pb;
@@ -440,7 +440,7 @@ img,
     }
 
     @if ($o-portal-mobile-toolbar) {
-        #o_wechat_portal_navbar_content {
+        #o_wechat_portal_home_navbar_content {
             @include media-breakpoint-down(lg) {
                 margin: $navbar-padding-y (
                     -$navbar-padding-x) 0;
@@ -470,13 +470,13 @@ form label {
     }
 }
 
-.o_wechat_portal_contact_img {
+.o_wechat_portal_home_contact_img {
     width: 2.3em;
     height: 2.3em;
     object-fit: cover;
 }
 
-.o_wechat_portal_sidebar {
+.o_wechat_portal_home_sidebar {
     #sidebar_content.card {
         border-left: 0;
         border-bottom: 0;
@@ -496,12 +496,12 @@ form label {
         }
     }
 
-    .o_wechat_portal_html_view {
+    .o_wechat_portal_home_html_view {
         overflow: hidden;
         background: white;
         position: relative;
 
-        .o_wechat_portal_html_loader {
+        .o_wechat_portal_home_html_loader {
             @include o-position-absolute(45%, 0, auto, 0
         );
     }
@@ -517,35 +517,35 @@ form label {
 // ------------------------------------------------------------
 
 // Readonly display
-.o_wechat_portal_chatter {
+.o_wechat_portal_home_chatter {
     padding: 10px;
 
-    .o_wechat_portal_chatter_avatar {
+    .o_wechat_portal_home_chatter_avatar {
         width: 45px;
         height: 45px;
         margin-right: 1rem;
     }
 
-    .o_wechat_portal_chatter_header {
+    .o_wechat_portal_home_chatter_header {
         margin-bottom: 15px;
     }
 
-    .o_wechat_portal_chatter_composer {
+    .o_wechat_portal_home_chatter_composer {
         margin-bottom: 15px;
     }
 
-    .o_wechat_portal_chatter_messages {
+    .o_wechat_portal_home_chatter_messages {
         margin-bottom: 15px;
         overflow-wrap: break-word;
         word-break: break-word;
 
-        .o_wechat_portal_chatter_message {
-            div.flex-grow-1>p:not(.o_wechat_portal_chatter_puslished_date):last-of-type {
+        .o_wechat_portal_home_chatter_message {
+            div.flex-grow-1>p:not(.o_wechat_portal_home_chatter_puslished_date):last-of-type {
                 margin-bottom: 5px;
             }
         }
 
-        .o_wechat_portal_chatter_message_title {
+        .o_wechat_portal_home_chatter_message_title {
             p {
                 font-size: 85%;
                 color: $text-muted;
@@ -554,7 +554,7 @@ form label {
         }
     }
 
-    .o_wechat_portal_chatter_pager {
+    .o_wechat_portal_home_chatter_pager {
         text-align: center;
     }
 
@@ -562,37 +562,37 @@ form label {
 }
 
 // Readonly / Composer mix display
-.o_wechat_portal_chatter,
-.o_wechat_portal_chatter_composer {
-    .o_wechat_portal_chatter_attachment {
-        .o_wechat_portal_chatter_attachment_name {
+.o_wechat_portal_home_chatter,
+.o_wechat_portal_home_chatter_composer {
+    .o_wechat_portal_home_chatter_attachment {
+        .o_wechat_portal_home_chatter_attachment_name {
             word-wrap: break-word;
         }
 
-        .o_wechat_portal_chatter_attachment_delete {
+        .o_wechat_portal_home_chatter_attachment_delete {
             @include o-position-absolute($top: 0, $right: 0);
             opacity: 0;
         }
 
-        &:hover .o_wechat_portal_chatter_attachment_delete {
+        &:hover .o_wechat_portal_home_chatter_attachment_delete {
             opacity: 1;
         }
     }
 
-    .o_wechat_portal_message_internal_off {
+    .o_wechat_portal_home_message_internal_off {
         .btn-danger {
             display: none;
         }
     }
 
-    .o_wechat_portal_message_internal_on {
+    .o_wechat_portal_home_message_internal_on {
         .btn-success {
             display: none;
         }
     }
 }
 
-.o_wechat_portal_security_body {
+.o_wechat_portal_home_security_body {
     @extend .mx-auto;
     max-width: map-get($container-max-widths, sm);
 

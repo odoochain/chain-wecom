@@ -9,10 +9,10 @@
     "category": "WeChat Suites/Portal",
     "version": "16.0.0.1",
     "summary": """
-Allow users to log in through WeChat.
+Build menus and pages for WeChat official accounts.
         """,
     "description": """
-Allow users to log in through WeChat.
+Build menus and pages for WeChat official accounts.
         """,
     "depends": ["web", "portal", "wechat_official_accounts", "wechat_auth_oauth"],
     "data": [

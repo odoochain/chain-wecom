@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-25 13:09+0000\n"
-"PO-Revision-Date: 2024-01-25 21:16+0800\n"
+"POT-Creation-Date: 2024-01-27 08:39+0000\n"
+"PO-Revision-Date: 2024-01-27 16:43+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -18,28 +18,11 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 
 #. module: wechat_web
-#: model_terms:ir.ui.view,arch_db:wechat_web.portal_my_security
-msgid "\" to validate your action."
-msgstr "\" 来验证您的动作。"
-
-#. module: wechat_web
 #. odoo-python
 #: code:addons/wechat_web/controllers/main.py:0
 #, python-format
 msgid "%s: %s"
 msgstr ""
-
-#. module: wechat_web
-#: model_terms:ir.ui.view,arch_db:wechat_web.portal_my_security
-msgid "1. Enter your password to confirm you own this account"
-msgstr "1、输入您的密码以确认您拥有此账户"
-
-#. module: wechat_web
-#: model_terms:ir.ui.view,arch_db:wechat_web.portal_my_security
-msgid ""
-"2. Confirm you want to delete your account by\n"
-"                                        copying down your login ("
-msgstr "2、通过复制您的登录信息来确认您要删除您的帐户("
 
 #. module: wechat_web
 #: model_terms:ir.ui.view,arch_db:wechat_web.record_pager
@@ -105,6 +88,11 @@ msgstr ""
 "for=\"official_accounts_menu_data_operate\">操作</span>"
 
 #. module: wechat_web
+#: model_terms:ir.ui.view,arch_db:wechat_web.res_config_settings_view_form
+msgid "<strong>Save</strong> this page and come back here to set up the feature."
+msgstr "<strong>保存</strong>此页面并返回此处以设置该功能。"
+
+#. module: wechat_web
 #: model_terms:ir.ui.view,arch_db:wechat_web.my
 msgid "Account Security"
 msgstr "帐户安全"
@@ -126,19 +114,14 @@ msgid "Application"
 msgstr "应用"
 
 #. module: wechat_web
-#: model_terms:ir.ui.view,arch_db:wechat_web.portal_my_security
-msgid "Are you sure you want to do this?"
-msgstr "您确认您想这么做吗？"
+#: model:ir.model.fields,field_description:wechat_web.field_res_config_settings__module_wechat_web_sale
+msgid "Build sales related pages for WeChat official account"
+msgstr "为微信公众号构建销售相关页面"
 
 #. module: wechat_web
 #: model_terms:ir.ui.view,arch_db:wechat_web.view_wechat_applications_form
 msgid "Button group"
 msgstr "按钮组"
-
-#. module: wechat_web
-#: model_terms:ir.ui.view,arch_db:wechat_web.portal_my_security
-msgid "Cancel"
-msgstr "取消"
 
 #. module: wechat_web
 #: model_terms:ir.ui.view,arch_db:wechat_web.portal_my_security
@@ -193,11 +176,6 @@ msgstr "创建时间"
 
 #. module: wechat_web
 #: model_terms:ir.ui.view,arch_db:wechat_web.portal_my_security
-msgid "Delete Account"
-msgstr "删除账户"
-
-#. module: wechat_web
-#: model_terms:ir.ui.view,arch_db:wechat_web.portal_my_security
 msgid "Description"
 msgstr "说明"
 
@@ -210,23 +188,6 @@ msgstr "详情"
 #: model_terms:ir.ui.view,arch_db:wechat_web.portal_my_security
 msgid "Developer API Keys"
 msgstr "开发者 API 密钥"
-
-#. module: wechat_web
-#: model_terms:ir.ui.view,arch_db:wechat_web.portal_my_security
-msgid ""
-"Disable your account, preventing any further login.<br/>\n"
-"                                            <b>\n"
-"                                                <i class=\"fa fa-exclamation-triangle "
-"text-danger\"/>\n"
-"                                            This action cannot be undone.\n"
-"                                            </b>"
-msgstr ""
-"禁用您的帐户，防止任何进一步登录。<br/>\n"
-"                                            <b>\n"
-"                                                <i class=\"fa fa-exclamation-triangle "
-"text-danger\"/>\n"
-"                                            此动作无法撤消。\n"
-"                                            </b>"
 
 #. module: wechat_web
 #: model:ir.model.fields,field_description:wechat_web.field_wechat_official_accounts_menus__display_name
@@ -404,11 +365,6 @@ msgstr "上级菜单"
 
 #. module: wechat_web
 #: model_terms:ir.ui.view,arch_db:wechat_web.portal_my_security
-msgid "Password"
-msgstr "密码"
-
-#. module: wechat_web
-#: model_terms:ir.ui.view,arch_db:wechat_web.portal_my_security
 msgid "Password Updated!"
 msgstr "密码已更新！"
 
@@ -416,11 +372,6 @@ msgstr "密码已更新！"
 #: model_terms:ir.ui.view,arch_db:wechat_web.portal_my_security
 msgid "Password:"
 msgstr "密码："
-
-#. module: wechat_web
-#: model_terms:ir.ui.view,arch_db:wechat_web.portal_my_security
-msgid "Put my email and phone in a block list to make sure I'm never contacted again"
-msgstr "将我的电子邮件和电话放在阻止列表中，以确保再也不会联系我"
 
 #. module: wechat_web
 #: model:ir.model.fields,field_description:wechat_web.field_wechat_official_accounts_menus__route
@@ -459,10 +410,24 @@ msgstr "子菜单"
 
 #. module: wechat_web
 #. odoo-python
+#: code:addons/wechat_web/controllers/home.py:0
+#, python-format
+msgid "The new password and its confirmation must be identical."
+msgstr "新密码与确认密码必须相同。"
+
+#. module: wechat_web
+#. odoo-python
 #: code:addons/wechat_web/models/wechat_official_accounts_menus.py:0
 #, python-format
 msgid "The number of menus with [%s] cannot be greater than 3!"
 msgstr "[%s] 的菜单数量不能大于 3！"
+
+#. module: wechat_web
+#. odoo-python
+#: code:addons/wechat_web/controllers/home.py:0
+#, python-format
+msgid "The old password you provided is incorrect, your password was not changed."
+msgstr "您提供的原密码是错误的，密码没有改变。"
 
 #. module: wechat_web
 #: model_terms:ir.ui.view,arch_db:wechat_web.view_wechat_official_accounts_menus_form
@@ -518,19 +483,16 @@ msgid "Wrong login/password"
 msgstr "登录名/密码错误"
 
 #. module: wechat_web
-#: model_terms:ir.ui.view,arch_db:wechat_web.portal_my_security
-msgid "Wrong password."
-msgstr "错误的密码"
-
-#. module: wechat_web
 #: model_terms:ir.ui.view,arch_db:wechat_web.login_successful
 msgid "You are logged in."
 msgstr "您已登录。"
 
 #. module: wechat_web
-#: model_terms:ir.ui.view,arch_db:wechat_web.portal_my_security
-msgid "You should enter \""
-msgstr "您必须输入 \""
+#. odoo-python
+#: code:addons/wechat_web/controllers/home.py:0
+#, python-format
+msgid "You cannot leave any password empty."
+msgstr "您不能让任何密码为空。"
 
 #. module: wechat_web
 #: model_terms:ir.ui.view,arch_db:wechat_web.portal_my_security
@@ -544,12 +506,3 @@ msgstr "密码"
 msgid "unknown error"
 msgstr "未知错误"
 
-#. module: wechat_web
-#: model_terms:ir.ui.view,arch_db:wechat_web.frontend_layout
-msgid "选项卡标题"
-msgstr ""
-
-#. module: wechat_web
-#: model_terms:ir.ui.view,arch_db:wechat_web.webclient_bootstrap
-msgid "首页"
-msgstr ""
