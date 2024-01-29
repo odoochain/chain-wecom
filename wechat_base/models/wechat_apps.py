@@ -58,6 +58,14 @@ class WeChatApplications(models.Model):
 
     sequence = fields.Integer(default=0, copy=True)
 
+    _sql_constraints = [
+        (
+            "app_type_uniq",
+            "unique (app_type)",
+            _("The app must be unique !"),
+        )
+    ]
+
     def get_access_token(self):
         """
         getAccessToken获

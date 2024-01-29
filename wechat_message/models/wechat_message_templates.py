@@ -29,6 +29,11 @@ class WeChatMessageTemplates(models.Model):
 
     name = fields.Char(string="Name", required=True, translate=True)
     subject = fields.Char(string="Subject")
-    code = fields.Char(string="Code", required=True)
+    # code = fields.Char(string="Code", required=True)
     model_id = fields.Many2one("ir.model", string="Applied to")
     model = fields.Char("Model", related="model_id.model")
+    description = fields.Text(
+        "Template description",
+        translate=True,
+        help="This field is used for internal description of the template's usage.",
+    )

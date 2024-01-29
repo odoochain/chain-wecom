@@ -9,7 +9,6 @@
                 <tree string="">
                     <field name="name" />
                     <field name="model_id"/>
-                    <field name="code" />
                     <field name="subject" />
                     <!-- <field name="msgtype" />
                     <field name="partner_to" /> -->

@@ -16,6 +16,7 @@ Send sales quotations and order messages to WeChat users.
         """,
     "depends": ["wechat_message", "sale"],
     "data": [
+        "data/wechat_message_data.xml",
         "views/res_config_settings_views.xml",
     ],
     "bootstrap": True,  # 加载登录屏幕的翻译，

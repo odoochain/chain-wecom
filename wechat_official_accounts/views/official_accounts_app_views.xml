@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="wechat_applications_official_accounts_app_settings_action" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wechat.applications</field>
+            <field name="view_mode">form</field>
+            <field name="views">form</field>
+            <field name="target">current</field>
+            <field name="domain">[('app_type','=','official_account')]</field>
+            <field name="res_id" ref="wechat_official_accounts.wechat_applications_official_account"/>
+
+
+        </record>
+
+
+    </data>
+</odoo>
