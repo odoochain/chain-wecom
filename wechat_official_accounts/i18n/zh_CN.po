@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-24 11:30+0000\n"
-"PO-Revision-Date: 2024-01-24 19:35+0800\n"
+"POT-Creation-Date: 2024-01-30 06:09+0000\n"
+"PO-Revision-Date: 2024-01-30 14:20+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -51,10 +51,34 @@ msgid ""
 msgstr "<i class=\"fa fa-server fa-lg\" aria-label=\"公众号事件服务\"/>"
 
 #. module: wechat_official_accounts
+#: model_terms:ir.ui.view,arch_db:wechat_official_accounts.view_wechat_applications_form
+msgid ""
+"<span class=\"o_form_label o_form_label_readonly\" "
+"for=\"official_accounts_industry_operate\">Operate</span>"
+msgstr ""
+"<span class=\"o_form_label o_form_label_readonly\" "
+"for=\"official_accounts_industry_operate\">操作</span>"
+
+#. module: wechat_official_accounts
 #: model_terms:ir.ui.view,arch_db:wechat_official_accounts.res_config_settings_view_form
 msgid ""
 "<strong>Save</strong> this page and come back here to set up the feature."
 msgstr "<strong>保存</strong>此页面并返回此处以设置该功能。"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_18
+msgid "Academic research"
+msgstr "学术科研"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_35
+msgid "Accreditation"
+msgstr "认证"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_28
+msgid "Aircraft related"
+msgstr "飞机相关"
 
 #. module: wechat_official_accounts
 #. odoo-python
@@ -64,9 +88,84 @@ msgid "App [%s] did not start the event service"
 msgstr "应用 [%s] 未启动事件服务"
 
 #. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_36
+msgid "Audit"
+msgstr "审计"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_25
+msgid "Automotive-related"
+msgstr "汽车相关"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_7
+msgid "Bank"
+msgstr "银行"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_23
+msgid "Beauty"
+msgstr "护理美容"
+
+#. module: wechat_official_accounts
 #: model_terms:ir.ui.view,arch_db:wechat_official_accounts.res_config_settings_view_form
 msgid "Build menus and pages for WeChat official accounts."
 msgstr "为微信公众号构建菜单和页面。"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_29
+msgid "Building"
+msgstr "建筑"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_32
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_33
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_34
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_35
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_36
+msgid "Business services"
+msgstr "商业服务"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_35
+msgid "Business services/Accreditation"
+msgstr "商业服务/认证"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_36
+msgid "Business services/Audit"
+msgstr "商业服务/审计"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_33
+msgid "Business services/Exhibition"
+msgstr "商业服务/会展"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_34
+msgid "Business services/Intermediary services"
+msgstr "商业服务/中介服务"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_32
+msgid "Business services/Law"
+msgstr "商业服务/法律"
+
+#. module: wechat_official_accounts
+#: model_terms:ir.ui.view,arch_db:wechat_official_accounts.view_wechat_applications_form
+msgid "Button group"
+msgstr "按钮组"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_10
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_10
+msgid "Catering"
+msgstr "餐饮"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_10
+msgid "Catering/Catering"
+msgstr "餐饮/餐饮"
 
 #. module: wechat_official_accounts
 #: model:ir.model.fields.selection,name:wechat_official_accounts.selection__res_config_settings__wechat_official_accounts_web_auth_lang__zh_cn
@@ -77,6 +176,16 @@ msgstr "中文（简体）"
 #: model:ir.model.fields.selection,name:wechat_official_accounts.selection__res_config_settings__wechat_official_accounts_web_auth_lang__zh_tw
 msgid "Chinese (Traditional)"
 msgstr "中文（繁体）"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_17
+msgid "Colleges"
+msgstr "院校"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_5
+msgid "Communications & Carriers"
+msgstr "通信与运营商"
 
 #. module: wechat_official_accounts
 #: model:ir.model,name:wechat_official_accounts.model_res_company
@@ -94,14 +203,334 @@ msgid "Config Settings"
 msgstr "配置设置"
 
 #. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_31
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_31
+msgid "Consumable"
+msgstr "消费品"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_31
+msgid "Consumable/Consumable"
+msgstr "消费品/消费品"
+
+#. module: wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_wechat_official_accounts_industry__create_uid
+msgid "Created by"
+msgstr "创建人"
+
+#. module: wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_wechat_official_accounts_industry__create_date
+msgid "Created on"
+msgstr "创建时间"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_37
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_38
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_39
+msgid "Culture, sports and entertainment"
+msgstr "文体娱乐"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_39
+msgid "Culture, sports and entertainment/Entertainment and leisure"
+msgstr "文体娱乐/娱乐休闲"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_37
+msgid "Culture, sports and entertainment/Media"
+msgstr "文体娱乐/传媒"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_38
+msgid "Culture, sports and entertainment/Physical education"
+msgstr "文体娱乐/体育"
+
+#. module: wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_wechat_official_accounts_industry__display_name
+msgid "Display Name"
+msgstr "显示名称"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_16
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_17
+msgid "Educate"
+msgstr "教育"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_17
+msgid "Educate/Colleges"
+msgstr "教育/院校"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_16
+msgid "Educate/Training"
+msgstr "教育/培训"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_4
+msgid "Electronics"
+msgstr "电子技术"
+
+#. module: wechat_official_accounts
 #: model:ir.model.fields.selection,name:wechat_official_accounts.selection__res_config_settings__wechat_official_accounts_web_auth_lang__en
 msgid "English"
 msgstr "英语"
 
 #. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_39
+msgid "Entertainment and leisure"
+msgstr "娱乐休闲"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_33
+msgid "Exhibition"
+msgstr "会展"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_13
+msgid "Express delivery"
+msgstr "快递"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_7
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_8
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_9
+msgid "Finance"
+msgstr "金融业"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_7
+msgid "Finance/Bank"
+msgstr "金融业/银行"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_8
+msgid "Finance/Fund Wealth Management Trust"
+msgstr "金融业/基金理财信托"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_9
+msgid "Finance/Insurance"
+msgstr "金融业/保险"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_8
+msgid "Fund Wealth Management Trust"
+msgstr "基金理财信托"
+
+#. module: wechat_official_accounts
+#: model_terms:ir.ui.view,arch_db:wechat_official_accounts.view_wechat_applications_form
+msgid "Get Industry"
+msgstr "获取行业"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_18
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_19
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_20
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_21
+msgid "Government & Public Utilities"
+msgstr "政府与公共事业"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_18
+msgid "Government & Public Utilities/Academic research"
+msgstr "政府与公共事业/学术科研"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_20
+msgid "Government & Public Utilities/Museum"
+msgstr "政府与公共事业/博物馆"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_21
+msgid ""
+"Government & Public Utilities/Public utilities non-profit organizations"
+msgstr "政府与公共事业/公共事业非盈利机构"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_19
+msgid "Government & Public Utilities/Traffic police"
+msgstr "政府与公共事业/交警"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_24
+msgid "Health & Hygiene"
+msgstr "保健与卫生"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_11
+msgid "Hotel"
+msgstr "酒店"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_11
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_12
+msgid "Hotel tours"
+msgstr "酒店旅游"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_11
+msgid "Hotel tours/Hotel"
+msgstr "酒店旅游/酒店"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_12
+msgid "Hotel tours/Tours"
+msgstr "酒店旅游/旅游"
+
+#. module: wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_wechat_official_accounts_industry__id
+msgid "ID"
+msgstr ""
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_3
+msgid "IT Hardware & Equipment"
+msgstr "IT硬件与设备"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_2
+msgid "IT Software & Services"
+msgstr "IT软件与服务"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_1
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_2
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_3
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_4
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_5
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_6
+msgid "IT technology"
+msgstr "IT科技"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_5
+msgid "IT technology/Communications & Carriers"
+msgstr "IT科技/通信与运营商"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_4
+msgid "IT technology/Electronics"
+msgstr "IT科技/电子技术"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_3
+msgid "IT technology/IT Hardware & Equipment"
+msgstr "IT科技/IT硬件与设备"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_2
+msgid "IT technology/IT Software & Services"
+msgstr "IT科技/IT软件与服务"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_1
+msgid "IT technology/Internet/e-commerce"
+msgstr "IT科技/互联网/电子商务"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_6
+msgid "IT technology/Online games"
+msgstr "IT科技/网络游戏"
+
+#. module: wechat_official_accounts
+#: model:ir.actions.act_window,name:wechat_official_accounts.wechat_official_accounts_industry_action
+#: model:ir.ui.menu,name:wechat_official_accounts.menu_wechat_official_accounts_industry
+#: model_terms:ir.ui.view,arch_db:wechat_official_accounts.view_wechat_applications_form
+msgid "Industry"
+msgstr "行业"
+
+#. module: wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_wechat_official_accounts_industry__code
+msgid "Industry Code"
+msgstr "行业代码"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_9
+msgid "Insurance"
+msgstr "保险"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_34
+msgid "Intermediary services"
+msgstr "中介服务"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_1
+msgid "Internet/e-commerce"
+msgstr "互联网/电子商务"
+
+#. module: wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_wechat_official_accounts_industry____last_update
+msgid "Last Modified on"
+msgstr "最后修改时间"
+
+#. module: wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_wechat_official_accounts_industry__write_uid
+msgid "Last Updated by"
+msgstr "最后更新人"
+
+#. module: wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_wechat_official_accounts_industry__write_date
+msgid "Last Updated on"
+msgstr "最后更新时间"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_32
+msgid "Law"
+msgstr "法律"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_14
+msgid "Logistics"
+msgstr "物流"
+
+#. module: wechat_official_accounts
 #: model_terms:ir.ui.view,arch_db:wechat_official_accounts.res_config_settings_view_form
 msgid "Management application"
 msgstr "管理应用"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_37
+msgid "Media"
+msgstr "传媒"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_22
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_23
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_24
+msgid "Medical care"
+msgstr "医药护理"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_23
+msgid "Medical care/Beauty"
+msgstr "医药护理/护理美容"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_24
+msgid "Medical care/Health & Hygiene"
+msgstr "医药护理/保健与卫生"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_22
+msgid "Medical care/Pharmaceutical and medical"
+msgstr "医药护理/医药医疗"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_26
+msgid "Motorcycle-related"
+msgstr "摩托车相关"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_20
+msgid "Museum"
+msgstr "博物馆"
+
+#. module: wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_wechat_official_accounts_industry__name
+msgid "Name"
+msgstr "名称"
 
 #. module: wechat_official_accounts
 #: model:wechat.applications,name:wechat_official_accounts.wechat_applications_official_account
@@ -124,6 +553,100 @@ msgid "One click login on WeChat"
 msgstr "微信一键登录"
 
 #. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_6
+msgid "Online games"
+msgstr "网络游戏"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_41
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_41
+msgid "Other"
+msgstr "其他"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_41
+msgid "Other/Other"
+msgstr "其他/其他"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_22
+msgid "Pharmaceutical and medical"
+msgstr "医药医疗"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_38
+msgid "Physical education"
+msgstr "体育"
+
+#. module: wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_wechat_applications__primary_industry_id
+msgid "Primary Industry"
+msgstr "主营行业"
+
+#. module: wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_wechat_official_accounts_industry__primary_industry
+msgid "Primary industry"
+msgstr "请选择主营行业"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_40
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_40
+msgid "Printing"
+msgstr "印刷"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_40
+msgid "Printing/Printing"
+msgstr "印刷/印刷"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_30
+msgid "Property"
+msgstr "物业"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_21
+msgid "Public utilities non-profit organizations"
+msgstr "公共事业非盈利机构"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_29
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_30
+msgid "Real estate"
+msgstr "房地产"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_29
+msgid "Real estate/Building"
+msgstr "房地产/建筑"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_30
+msgid "Real estate/Property"
+msgstr "房地产/物业"
+
+#. module: wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_wechat_applications__secondary_industry_id
+msgid "Secondary Industry"
+msgstr "副营行业"
+
+#. module: wechat_official_accounts
+#: model:ir.model.fields,field_description:wechat_official_accounts.field_wechat_official_accounts_industry__secondary_industry
+msgid "Secondary industry"
+msgstr "请选择副营行业"
+
+#. module: wechat_official_accounts
+#: model_terms:ir.ui.view,arch_db:wechat_official_accounts.view_wechat_applications_form
+msgid "Set Industry"
+msgstr "设置行业"
+
+#. module: wechat_official_accounts
+#: model:ir.actions.act_window,name:wechat_official_accounts.wechat_applications_official_accounts_app_settings_action
+#: model:ir.ui.menu,name:wechat_official_accounts.menu_wechat_official_accounts_settings
+msgid "Settings"
+msgstr "设置"
+
+#. module: wechat_official_accounts
 #. odoo-python
 #: code:addons/wechat_official_accounts/controllers/main.py:0
 #, python-format
@@ -141,10 +664,97 @@ msgstr "微信公众号网页授权的全国和地区语言版本"
 
 #. module: wechat_official_accounts
 #. odoo-python
+#: code:addons/wechat_official_accounts/models/wechat_apps.py:0
+#, python-format
+msgid "The primary and secondary industry cannot be the same!"
+msgstr "主营行业和副营行业不能相同！"
+
+#. module: wechat_official_accounts
+#. odoo-python
 #: code:addons/wechat_official_accounts/controllers/main.py:0
 #, python-format
 msgid "The server configuration of [%s] was successfully verified."
 msgstr "已成功验证 [%s] 的服务器配置。"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_12
+msgid "Tours"
+msgstr "旅游"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_19
+msgid "Traffic police"
+msgstr "交警"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_27
+msgid "Train-related"
+msgstr "火车相关"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_16
+msgid "Training"
+msgstr "培训"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_13
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_14
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_15
+msgid "Transportation & Warehousing"
+msgstr "运输与仓储"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_13
+msgid "Transportation & Warehousing/Express delivery"
+msgstr "运输与仓储/快递"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_14
+msgid "Transportation & Warehousing/Logistics"
+msgstr "运输与仓储/物流"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_15
+msgid "Transportation & Warehousing/Warehousing"
+msgstr "运输与仓储/仓储"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_25
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_26
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_27
+#: model:wechat.official_accounts.industry,primary_industry:wechat_official_accounts.wechat_official_accounts_industry_28
+msgid "Vehicle"
+msgstr "交通工具"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_28
+msgid "Vehicle/Aircraft related"
+msgstr "交通工具/飞机相关"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_25
+msgid "Vehicle/Automotive-related"
+msgstr "交通工具/汽车相关"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_26
+msgid "Vehicle/Motorcycle-related"
+msgstr "交通工具/摩托车相关"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,name:wechat_official_accounts.wechat_official_accounts_industry_27
+msgid "Vehicle/Train-related"
+msgstr "交通工具/火车相关"
+
+#. module: wechat_official_accounts
+#: model:wechat.official_accounts.industry,secondary_industry:wechat_official_accounts.wechat_official_accounts_industry_15
+msgid "Warehousing"
+msgstr "仓储"
+
+#. module: wechat_official_accounts
+#: model:ir.model,name:wechat_official_accounts.model_wechat_applications
+msgid "WeChat Applications"
+msgstr "微信应用"
 
 #. module: wechat_official_accounts
 #: model:ir.model.fields,field_description:wechat_official_accounts.field_res_config_settings__wechat_official_accounts_developer_appid
@@ -167,6 +777,11 @@ msgid "WeChat Official Accounts H5 Website"
 msgstr "微信公众号门户"
 
 #. module: wechat_official_accounts
+#: model:ir.model,name:wechat_official_accounts.model_wechat_official_accounts_industry
+msgid "WeChat Official Accounts Industry"
+msgstr "微信公众号行业"
+
+#. module: wechat_official_accounts
 #: model:ir.model.fields,field_description:wechat_official_accounts.field_res_company__social_wechat_official_accounts
 msgid "WeChat Official Accounts QR Code"
 msgstr "微信公众号二维码"
@@ -175,3 +790,11 @@ msgstr "微信公众号二维码"
 #: model:auth.oauth.provider,name:wechat_official_accounts.provider_wechat_one_click_login
 msgid "Wechat one-click login OAuth2"
 msgstr "微信一键登录OAuth2"
+
+#. module: wechat_official_accounts
+#. odoo-python
+#: code:addons/wechat_official_accounts/models/wechat_official_accounts_industry.py:0
+#: model:ir.model.constraint,message:wechat_official_accounts.constraint_wechat_official_accounts_industry_code_uniq
+#, python-format
+msgid "code must be unique !"
+msgstr "代码必须唯一！"

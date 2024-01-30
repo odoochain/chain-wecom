@@ -14,14 +14,17 @@
         """,
     "depends": ["mass_mailing", "auth_oauth", "wechat_base"],
     "data": [
+        "security/ir.model.access.csv",
         "data/res_company_data.xml",
         "data/wechat_oauth_data.xml",
         "data/wechat_applications_data.xml",
         "data/wechat_event_service_data.xml",
+        "data/wechat_official_accounts_industry_data.xml",
         "views/res_config_settings_views.xml",
         "views/wechat_users_views.xml",
         "views/res_users_views.xml",
         "views/official_accounts_app_views.xml",
+        "views/wechat_official_accounts_industry_views.xml",
         "views/menu_views.xml",
     ],
     "assets": {

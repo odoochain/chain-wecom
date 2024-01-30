@@ -2,6 +2,33 @@
 <odoo>
     <data>
 
+        <record model="ir.ui.view" id="view_wechat_applications_form">
+            <field name="name">wechat.applications.form</field>
+            <field name="model">wechat.applications</field>
+            <field name="inherit_id" ref="wechat_base.view_wechat_applications_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[last()]" position="after">
+                    <field name="app_type" invisible="1"/>
+                    <page name="industry" string="Industry" attrs="{'invisible': [('app_type','!=','official_account')]}">
+                        <group>
+                            <group>
+                                <field name="primary_industry_id" widget="selection"/>
+                                <field name="secondary_industry_id" widget="selection"/>
+
+                                <span class="o_form_label o_form_label_readonly" for="official_accounts_industry_operate">Operate</span>
+                                <div class="btn-group mt8 o_row w-100" role="group" aria-label="Button group" name="official_accounts_industry_operate">
+                                    <button class="oe_highlight ml-1" name="set_official_accounts_industry" string="Set Industry" type="object" icon="fa-cloud-upload fa-lg" attrs="{'invisible': ['|',('primary_industry_id','=',False),('secondary_industry_id','=',False)]}"/>
+                                    <button class="oe_highlight ml-1" name="get_official_accounts_industry" string="Get Industry" type="object" icon="fa-cloud-download fa-lg" />
+                                </div>
+                            </group>
+                            <group>
+
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
 
         <record id="wechat_applications_official_accounts_app_settings_action" model="ir.actions.act_window">
             <field name="name">Settings</field>
@@ -12,8 +39,6 @@
             <field name="target">current</field>
             <field name="domain">[('app_type','=','official_account')]</field>
             <field name="res_id" ref="wechat_official_accounts.wechat_applications_official_account"/>
-
-
         </record>
 
 

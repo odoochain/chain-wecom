@@ -4,6 +4,7 @@ import logging
 import requests  # type: ignore
 from datetime import datetime, timedelta
 from odoo import api, fields, models, SUPERUSER_ID, _
+from odoo.exceptions import UserError, ValidationError, Warning
 
 _logger = logging.getLogger(__name__)
 
@@ -92,7 +93,28 @@ class WeChatApplications(models.Model):
         except Exception as e:
             print(str(e))
         else:
-            print(response)
+            if "errcode" in response:
+                error_msg = ""
+                error_code = (
+                    self.env["wechat.error_codes"]
+                    .sudo()
+                    .search_read(
+                        domain=[("code", "=", response["errcode"])],
+                        fields=["name"],
+                    )
+                )
+                if error_code:
+                    error_msg = error_code[0]["name"]
+                else:
+                    error_msg = _("unknown error")
+
+                raise UserError(
+                    _(
+                        "Error code: %s, Error description: %s",
+                        response["errcode"],
+                        error_msg,
+                    )
+                )
             self.update(
                 {
                     "access_token": response["access_token"],
