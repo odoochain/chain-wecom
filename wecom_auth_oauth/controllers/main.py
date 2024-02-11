@@ -6,7 +6,8 @@ import functools
 import logging
 
 import json
-import werkzeug.urls
+from urllib.parse import unquote_plus, urlparse, urlencode
+
 import werkzeug.utils
 from werkzeug.exceptions import BadRequest
 
@@ -18,10 +19,6 @@ from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException   # type: 
 from odoo.addons.auth_signup.controllers.main import AuthSignupHome as Home # type: ignore
 from odoo.addons.auth_oauth.controllers.main import fragment_to_query_string    # type: ignore
 from odoo.addons.web.controllers.utils import ensure_db, _get_login_redirect_url    # type: ignore
-
-import urllib
-import requests
-from werkzeug import urls
 
 _logger = logging.getLogger(__name__)
 
@@ -67,7 +64,7 @@ class OAuthLogin(Home):
                 )
                 provider["auth_link"] = "%s?%s%s" % (
                     provider["auth_endpoint"],
-                    werkzeug.urls.url_encode(params),   # type: ignore
+                    urlencode(params),   # type: ignore
                     "#wechat_redirect",
                 )
             elif (
@@ -87,7 +84,7 @@ class OAuthLogin(Home):
                 )
                 provider["auth_link"] = "%s?%s" % (
                     provider["auth_endpoint"],
-                    werkzeug.urls.url_encode(params),   # type: ignore
+                    urlencode(params),   # type: ignore
                 )
             else:
                 return_url = request.httprequest.url_root + "auth_oauth/signin" # type: ignore
@@ -101,7 +98,7 @@ class OAuthLogin(Home):
                 )
                 provider["auth_link"] = "%s?%s" % (
                     provider["auth_endpoint"],
-                    werkzeug.urls.url_encode(params),
+                    urlencode(params),
                 )
         return providers
 
@@ -151,7 +148,7 @@ class OAuthController(http.Controller):
                     action = state.get("a")
                     menu = state.get("m")
                     redirect = (
-                        werkzeug.urls.url_unquote_plus(state["r"])
+                        unquote_plus(state["r"])
                         if state.get("r")
                         else False
                     )
@@ -169,7 +166,7 @@ class OAuthController(http.Controller):
                     resp.autocorrect_location_header = False
 
                     # Since /web is hardcoded, verify user has right to land on it
-                    if werkzeug.urls.url_parse(
+                    if urlparse(
                         resp.location
                     ).path == "/web" and not request.env.user.has_group(    # type: ignore
                         "base.group_user"
@@ -247,7 +244,7 @@ class OAuthController(http.Controller):
                     action = state.get("a")
                     menu = state.get("m")
                     redirect = (
-                        werkzeug.urls.url_unquote_plus(state["r"])
+                        unquote_plus(state["r"])
                         if state.get("r")
                         else False
                     )
@@ -263,7 +260,7 @@ class OAuthController(http.Controller):
                     resp = request.redirect(_get_login_redirect_url(pre_uid, url), 303) # type: ignore
                     resp.autocorrect_location_header = False
 
-                    if werkzeug.urls.url_parse(
+                    if urlparse(
                         resp.location
                     ).path == "/web" and not request.env.user.has_group(    # type: ignore
                         "base.group_user"
