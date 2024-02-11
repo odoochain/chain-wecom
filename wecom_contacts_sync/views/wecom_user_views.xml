@@ -122,7 +122,8 @@
             <field name="name">wecom.user.form</field>
             <field name="model">wecom.user</field>
             <field name="arch" type="xml">
-                <form string="User" create="false" delete="false" edit="false">
+                <!-- edit="false" -->
+                <form string="User" create="false" delete="false">
                     <header></header>
                     <sheet>
                         <div name="button_box" class="oe_button_box">

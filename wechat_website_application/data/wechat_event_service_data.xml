@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="wechat_event_service_open_platform" model="wechat.event_service">
+            <field name="app_id" ref="wechat_website_application.wechat_applications_open_platform"/>
+            <field name="name">Open Platform Events</field>
+            <field name="service_type">open_platform</field>
+            <field name="route">/wechat/event/open_platform</field>
+        </record>
+
+    </data>
+
+    <data noupdate="0">
+
+
+    </data>
+</odoo>

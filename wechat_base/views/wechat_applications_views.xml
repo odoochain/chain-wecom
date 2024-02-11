@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_wechat_applications_tree">
+            <field name="name">wechat.applications.tree</field>
+            <field name="model">wechat.applications</field>
+            <field name="arch" type="xml">
+                <tree expand="1">
+                    <field name="name"/>
+                    <field name="appid" />
+                    <field name="app_type"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_wechat_applications_form">
+            <field name="name">wechat.applications.form</field>
+            <field name="model">wechat.applications</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+
+                    </header>
+                    <sheet>
+                        <div name="button_box" class="oe_button_box">
+                            <button class="btn oe_stat_button btn-succes" name="get_access_token" type="object" attrs="{'invisible': ['|',('appid','=', False),('secret','=', 'self')]}">
+                                <div role="img" class="fa fa-key o_button_icon" aria-label="Get Access Token"/>
+                                <div class="o_stat_info">
+                                    <span class="o_stat_value">Get</span>
+                                    <span class="o_stat_text">Access Token</span>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="appid" required="1"/>
+                                <field name="secret" required="1" widget="DisplayPasswordChar" require_encryption="True"/>
+                            </group>
+                            <group>
+
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="access_token" string="Access Token">
+                                <!-- <ol class="list-group list-group-numbered">
+                                    <li class="list-group-item">A list item</li>
+                                    <li class="list-group-item">A list item</li>
+                                    <li class="list-group-item">A list item</li>
+                                </ol> -->
+                                <div class="o_row">
+                                    <label for="access_token"/>
+                                    <field name="access_token" readonly="1" widget="CopyClipboardText" force_save="1"/>
+                                </div>
+                                <div class="o_row">
+                                    <label for="access_token_expiration_time"/>
+                                    <field name="access_token_expiration_time" force_save="1"/>
+                                </div>
+                            </page>
+                            <page name="event_service" string="Event Service">
+                                <field name="event_service_ids" options="{'no_open': True, 'no_create': True}" widget="one2many_config" mode="tree" help="description" nolabel="1" t-translation="off">
+                                    <tree create="0" edit="1" delete="0" nolabel="1" editable="bottom">
+                                        <field name="name" readonly="1" />
+                                        <field name="url" readonly="1" widget="CopyClipboardChar"/>
+                                        <field name="token" required="1"/>
+                                        <field name="aeskey" required="1"/>
+                                        <field name="active" widget="boolean_toggle"/>
+                                        <field name="description" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="wechat_applications_action" model="ir.actions.act_window">
+            <field name="name">Applications</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wechat.applications</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <!-- <field name="context">{'active_test': False}</field> -->
+        </record>
+
+    </data>
+</odoo>

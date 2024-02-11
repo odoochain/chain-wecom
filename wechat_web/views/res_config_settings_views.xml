@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">WeChat settings</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="wechat_official_accounts.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+
+                <div id="msg_module_wechat_web" position="replace">
+                    <div class="content-group mt8">
+                        <button type="action" name="%(wechat_web.wechat_official_accounts_menus_action)d" string="Manage Menus" icon="fa-arrow-right" class="btn-link" />
+                    </div>
+                </div>
+                <div id="module_wechat_web" position="after">
+                    <div class="col-xs-12 col-md-6 o_setting_box" id="module_wechat_web_sale" attrs="{'invisible': [('module_wechat_web','=',False)]}">
+                        <div class="o_setting_left_pane">
+                            <field name="module_wechat_web_sale" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="module_wechat_web_sale" />
+                            <div class="content-group mt16" attrs="{'invisible': [('module_wechat_web_sale','=',False)]}" id="msg_module_wechat_web_sale">
+                                <div class="mt16 text-warning">
+                                    <strong>Save</strong> this page and come back here to set up the feature.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </field>
+
+        </record>
+
+
+
+    </data>
+</odoo>

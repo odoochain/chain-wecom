@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="portal_my_home_menu_sale" name="Portal layout : sales menu entries" inherit_id="wechat_web.portal_breadcrumbs" priority="20">
+            <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+                <li t-if="page_name == 'quote' or sale_order and sale_order.state in ('sent', 'cancel')" t-attf-class="breadcrumb-item #{'active ' if not sale_order else ''}">
+                    <a t-if="sale_order" t-attf-href="/wechat/web/quotes?{{ keep_query() }}">Quotations</a>
+                    <t t-else="">Quotations</t>
+                </li>
+                <li t-if="page_name == 'order' or sale_order and sale_order.state not in ('sent', 'cancel')" t-attf-class="breadcrumb-item #{'active ' if not sale_order else ''}">
+                    <a t-if="sale_order" t-attf-href="/wechat/web/orders?{{ keep_query() }}">Sales Orders</a>
+                    <t t-else="">Sales Orders</t>
+                </li>
+                <li t-if="sale_order" class="breadcrumb-item active">
+                    <span t-field="sale_order.type_name"/>
+                    <t t-out="sale_order.name"/>
+                </li>
+            </xpath>
+        </template>
+
+        <template id="portal_my_home_sale" name="Show Quotations / Sales Orders" customize_show="True" inherit_id="wechat_web.home" priority="20">
+            <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+                <t t-call="wechat_web.portal_docs_entry">
+                    <t t-set="title">Quotations</t>
+                    <t t-set="url" t-value="'/wechat/web/quotes'"/>
+                    <t t-set="placeholder_count" t-value="'quotation_count'"/>
+                </t>
+                <t t-call="wechat_web.portal_docs_entry">
+                    <t t-set="title">Sales Orders</t>
+                    <t t-set="url" t-value="'/wechat/web/orders'"/>
+                    <t t-set="placeholder_count" t-value="'order_count'"/>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="portal_my_orders" name="My Sales Orders">
+            <t t-call="wechat_web.portal_layout">
+                <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+                <t t-call="wechat_web.portal_searchbar">
+                    <t t-set="title">Sales Orders</t>
+                </t>
+                <t t-if="orders" t-call="wechat_web.portal_table">
+                    <thead>
+                        <tr class="active">
+                            <th>
+                                <span class='d-none d-md-inline'>Sales Order #</span>
+                                <span class='d-block d-md-none'>Ref.</span>
+                            </th>
+                            <th class="text-end">Order Date</th>
+                            <th class="text-center"/>
+                            <th class="text-end">Total</th>
+                        </tr>
+                    </thead>
+                    <t t-foreach="orders" t-as="order">
+                        <tr>
+                            <td>
+                                <a t-att-href="order.get_portal_url()">
+                                    <t t-out="order.name"/>
+                                </a>
+                            </td>
+                            <td class="text-end">
+                                <span t-field="order.date_order" t-options="{'widget': 'date'}"/>
+&amp;nbsp;
+                                <span class='d-none d-md-inline' t-field="order.date_order" t-options="{'time_only': True}"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-if="order.state == 'done'" class="badge rounded-pill text-bg-success">
+                                    <i class="fa fa-fw fa-check" role="img" aria-label="Done" title="Done"/>
+Done
+                                </span>
+                            </td>
+                            <td class="text-end">
+                                <span t-field="order.amount_total"/>
+                            </td>
+                        </tr>
+                    </t>
+                </t>
+                <p t-else="">There are currently no orders for your account.</p>
+            </t>
+        </template>
+
+
+    </data>
+
+</odoo>

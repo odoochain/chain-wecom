@@ -13,25 +13,25 @@ export class JsonField extends Component {
 	setup() {
 		this.jsonEditor = null;
 		this.editorRef = useRef('editor');
-		// this.cookies = useService("cookie");
+		// console.log("props---------", this.props)
+		// this.props.record.isValid
+		// this.props.record.isVirtual
 
-		// this.state = useState({
-		// 	isJSON: true,
-		// 	json: this.props.value
-		// });
-		// console.log(this.props);
 
 		onWillStart(async () => {
 			await loadJS('/web_widgets/static/libs/jsoneditor/dist/jsoneditor.js');
 			await loadCSS('/web_widgets/static/libs/jsoneditor/dist/jsoneditor.css');
-			const jsLibs = [
-				// "/web_widgets/static/lib/ace/mode-python.js",
-				// "/web/static/lib/ace/mode-xml.js",
-				// "/web/static/lib/ace/mode-qweb.js",
-			];
+			const jsLibs = [];
+			const cssLibs= [];
 			const proms = jsLibs.map((url) => loadJS(url));
+			proms.push(...cssLibs.map((url) => loadCSS(url)));
+
+			// this.props.record.isValid = false;
+
 			return Promise.all(proms);
 		});
+
+		// onWillUpdateProps(this.updateJsonEditor);
 
 		useEffect(
 			() => {
@@ -72,15 +72,15 @@ export class JsonField extends Component {
 			// onError: function (err) {
 			// 	console.error(err.toString());
 			// },
-			// onChange: function () {
-			// 	console.log('onChange');
-			// },
+			onChange: function () {
+				console.log('onChange');
+			},
 			// onChangeJSON: function (json) {
 			// 	console.log('onChangeJSON', json);
 			// },
-			// onChangeText: function (text) {
-			// 	console.log('onChangeText', formatText(text));
-			// },
+			onChangeText: function (text) {
+				console.log('onChangeText', formatText(text));
+			},
 			// onValidationError: function (err) {
 			// 	console.error('onValidationError', err);
 			// 	self.state.isJSON = false;
@@ -102,6 +102,17 @@ export class JsonField extends Component {
 		};
 
 		this.jsonEditor = new JSONEditor(this.jsonEditor, this.options, this.props.value || {});
+		// this.jsonEditor.on("blur", this.commitChanges.bind(this));
+	}
+
+	updateJsonEditor({ mode,modes, readonly, value }) {
+		if (!this.jsonEditor) {
+            return;
+		}
+		// console.log('updateJsonEditor - mode', mode);
+		// console.log('updateJsonEditor - modes', modes);
+		// console.log('updateJsonEditor - readonly',  readonly);
+		// console.log('updateJsonEditor - value', value);
 	}
 
 	destroyJsonEditor() {
@@ -109,6 +120,16 @@ export class JsonField extends Component {
 			this.jsonEditor.destroy();
 		}
 	}
+
+	commitChanges() {
+		if (!this.props.readonly) {
+			console.log(this.props.value)
+            // const value = this.aceSession.getValue();
+            // if ((this.props.value || "") !== value) {
+            //     return this.props.update(value);
+            // }
+        }
+    }
 }
 JsonField.template = 'web.JsonField';
 JsonField.props = {

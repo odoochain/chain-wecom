@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_wechat_official_accounts_industry_tree">
+            <field name="name">wechat.official_accounts.industry.tree</field>
+            <field name="model">wechat.official_accounts.industry</field>
+            <field name="arch" type="xml">
+                <tree create="0" edit="0" delete="0">
+                    <field name="name"/>
+                    <field name="primary_industry" />
+                    <field name="secondary_industry"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_wechat_official_accounts_industry_form">
+            <field name="name">wechat.official_accounts.industry.form</field>
+            <field name="model">wechat.official_accounts.industry</field>
+            <field name="arch" type="xml">
+                <form create="0" edit="0" delete="0">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="primary_industry" />
+                            <field name="secondary_industry"/>
+                            <field name="code"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_action" model="ir.actions.act_window">
+            <field name="name">Industry</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wechat.official_accounts.industry</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <!-- <field name="context">{'active_test': False}</field> -->
+        </record>
+    </data>
+</odoo>

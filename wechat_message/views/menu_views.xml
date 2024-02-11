@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+
+        <menuitem id="menu_wecom_message_template" name="Message Template" parent="wechat_base.menu_wechat_message" groups="wechat_base.group_wechat_settings_manager" action="wechat_message_templates_action" sequence="1"/>
+
+    </data>
+</odoo>

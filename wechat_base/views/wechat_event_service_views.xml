@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_wechat_event_service_tree">
+            <field name="name">wechat.event_service.tree</field>
+            <field name="model">wechat.event_service</field>
+            <field name="arch" type="xml">
+                <tree expand="1">
+                    <field name="name"/>
+                    <field name="service_type"/>
+                    <field name="url" widget="CopyClipboardChar"/>
+                    <field name="active" />
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="wechat_event_service_list_action" model="ir.actions.act_window">
+            <field name="name">Event service</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wechat.event_service</field>
+            <field name="target">current</field>
+            <field name="context">{'active_test': False}</field>
+        </record>
+
+    </data>
+</odoo>

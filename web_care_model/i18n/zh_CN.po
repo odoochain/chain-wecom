@@ -1,0 +1,31 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* web_care_model
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-29 08:50+0000\n"
+"PO-Revision-Date: 2023-12-29 08:50+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: web_care_model
+#. odoo-javascript
+#: code:addons/web_care_model/static/src/js/care_model_login.js:0
+#, python-format
+msgid "Disable Care Mode"
+msgstr "关闭关爱模式"
+
+#. module: web_care_model
+#. odoo-javascript
+#: code:addons/web_care_model/static/src/js/care_model_login.js:0
+#: code:addons/web_care_model/static/src/js/care_model_login.js:0
+#, python-format
+msgid "Enable Care Mode"
+msgstr "启用关爱模式"

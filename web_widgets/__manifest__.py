@@ -33,7 +33,7 @@
     },
     "sequence": 500,
     "installable": True,
-    "auto_install": False,
+    "auto_install": True,
     "application": False,
     "license": "AGPL-3",
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="wechat_applications_open_platform" model="wechat.applications">
+            <field name="name">Website Application</field>
+            <field name="app_type">open_platform</field>
+
+        </record>
+
+    </data>
+
+    <data noupdate="0">
+
+
+    </data>
+</odoo>

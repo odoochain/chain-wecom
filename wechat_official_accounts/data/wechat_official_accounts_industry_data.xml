@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="wechat_official_accounts_industry_1" model="wechat.official_accounts.industry">
+            <field name="primary_industry">IT technology</field>
+            <field name="secondary_industry">Internet/e-commerce</field>
+            <field name="code">1</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_2" model="wechat.official_accounts.industry">
+            <field name="primary_industry">IT technology</field>
+            <field name="secondary_industry">IT Software &amp; Services</field>
+            <field name="code">2</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_3" model="wechat.official_accounts.industry">
+            <field name="primary_industry">IT technology</field>
+            <field name="secondary_industry">IT Hardware &amp; Equipment</field>
+            <field name="code">3</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_4" model="wechat.official_accounts.industry">
+            <field name="primary_industry">IT technology</field>
+            <field name="secondary_industry">Electronics</field>
+            <field name="code">4</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_5" model="wechat.official_accounts.industry">
+            <field name="primary_industry">IT technology</field>
+            <field name="secondary_industry">Communications &amp; Carriers</field>
+            <field name="code">5</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_6" model="wechat.official_accounts.industry">
+            <field name="primary_industry">IT technology</field>
+            <field name="secondary_industry">Online games</field>
+            <field name="code">6</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_7" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Finance</field>
+            <field name="secondary_industry">Bank</field>
+            <field name="code">7</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_8" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Finance</field>
+            <field name="secondary_industry">Fund Wealth Management Trust</field>
+            <field name="code">8</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_9" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Finance</field>
+            <field name="secondary_industry">Insurance</field>
+            <field name="code">9</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_10" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Catering</field>
+            <field name="secondary_industry">Catering</field>
+            <field name="code">10</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_11" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Hotel tours</field>
+            <field name="secondary_industry">Hotel</field>
+            <field name="code">11</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_12" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Hotel tours</field>
+            <field name="secondary_industry">Tours</field>
+            <field name="code">12</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_13" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Transportation &amp; Warehousing</field>
+            <field name="secondary_industry">Express delivery</field>
+            <field name="code">13</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_14" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Transportation &amp; Warehousing</field>
+            <field name="secondary_industry">Logistics</field>
+            <field name="code">14</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_15" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Transportation &amp; Warehousing</field>
+            <field name="secondary_industry">Warehousing</field>
+            <field name="code">15</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_16" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Educate</field>
+            <field name="secondary_industry">Training</field>
+            <field name="code">16</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_17" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Educate</field>
+            <field name="secondary_industry">Colleges</field>
+            <field name="code">17</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_18" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Government &amp; Public Utilities</field>
+            <field name="secondary_industry">Academic research</field>
+            <field name="code">18</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_19" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Government &amp; Public Utilities</field>
+            <field name="secondary_industry">Traffic police</field>
+            <field name="code">19</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_20" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Government &amp; Public Utilities</field>
+            <field name="secondary_industry">Museum</field>
+            <field name="code">20</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_21" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Government &amp; Public Utilities</field>
+            <field name="secondary_industry">Public utilities non-profit organizations</field>
+            <field name="code">21</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_22" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Medical care</field>
+            <field name="secondary_industry">Pharmaceutical and medical</field>
+            <field name="code">22</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_23" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Medical care</field>
+            <field name="secondary_industry">Beauty</field>
+            <field name="code">23</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_24" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Medical care</field>
+            <field name="secondary_industry">Health &amp; Hygiene</field>
+            <field name="code">24</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_25" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Vehicle</field>
+            <field name="secondary_industry">Automotive-related</field>
+            <field name="code">25</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_26" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Vehicle</field>
+            <field name="secondary_industry">Motorcycle-related</field>
+            <field name="code">26</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_27" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Vehicle</field>
+            <field name="secondary_industry">Train-related</field>
+            <field name="code">27</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_28" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Vehicle</field>
+            <field name="secondary_industry">Aircraft related</field>
+            <field name="code">28</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_29" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Real estate</field>
+            <field name="secondary_industry">Building</field>
+            <field name="code">29</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_30" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Real estate</field>
+            <field name="secondary_industry">Property</field>
+            <field name="code">30</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_31" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Consumable</field>
+            <field name="secondary_industry">Consumable</field>
+            <field name="code">31</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_32" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Business services</field>
+            <field name="secondary_industry">Law</field>
+            <field name="code">32</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_33" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Business services</field>
+            <field name="secondary_industry">Exhibition</field>
+            <field name="code">33</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_34" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Business services</field>
+            <field name="secondary_industry">Intermediary services</field>
+            <field name="code">34</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_35" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Business services</field>
+            <field name="secondary_industry">Accreditation</field>
+            <field name="code">35</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_36" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Business services</field>
+            <field name="secondary_industry">Audit</field>
+            <field name="code">36</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_37" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Culture, sports and entertainment</field>
+            <field name="secondary_industry">Media</field>
+            <field name="code">37</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_38" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Culture, sports and entertainment</field>
+            <field name="secondary_industry">Physical education</field>
+            <field name="code">38</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_39" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Culture, sports and entertainment</field>
+            <field name="secondary_industry">Entertainment and leisure</field>
+            <field name="code">39</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_40" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Printing</field>
+            <field name="secondary_industry">Printing</field>
+            <field name="code">40</field>
+        </record>
+
+        <record id="wechat_official_accounts_industry_41" model="wechat.official_accounts.industry">
+            <field name="primary_industry">Other</field>
+            <field name="secondary_industry">Other</field>
+            <field name="code">41</field>
+        </record>
+
+    </data>
+
+</odoo>

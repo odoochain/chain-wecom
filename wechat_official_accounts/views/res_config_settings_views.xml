@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">WeChat settings</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="wechat_base.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+                <div id="msg_module_wechat_official_accounts" position="replace" />
+
+                <div id="module_wechat_official_accounts" position="after">
+
+                    <div class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('module_wechat_official_accounts','=',False)]}">
+                        <div class="o_setting_left_pane">
+                            <i class="fa fa-puzzle-piece fa-lg" aria-label="Official Accounts Application" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="wechat_official_accounts_app" />
+                            <div class="content-group">
+                                <div class="mt8">
+                                    <field name="wechat_official_accounts_app" class="w-100 " widget="selection"/>
+                                </div>
+                            </div>
+                            <button name="%(wechat_base.wechat_applications_action)d" icon="fa-arrow-right" type="action" string="Management application" class="btn-link"/>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('wechat_official_accounts_app','=',False)]}">
+                        <div class="o_setting_left_pane">
+                            <i class="fa fa-list-ol fa-lg" aria-label="Developer ID" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="wechat_official_accounts_developer_appid" />
+                            <div class="content-group">
+                                <div class="mt8">
+                                    <field name="wechat_official_accounts_developer_appid" class="w-100" attrs="{'required': [('wechat_official_accounts_app', '!=', False)]}" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('wechat_official_accounts_app','=',False)]}">
+                        <div class="o_setting_left_pane">
+                            <i class="fa fa-key fa-lg" aria-label="Developer secret key" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="wechat_official_accounts_developer_secret" />
+                            <div class="content-group">
+                                <div class="mt8">
+                                    <field name="wechat_official_accounts_developer_secret" widget="DisplayPasswordChar" require_encryption="True" attrs="{'required': [('wechat_official_accounts_app', '!=', False)]}" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible': [('module_wechat_official_accounts','=',False)]}">
+                        <div class="o_setting_left_pane">
+                            <i class="fa fa-language fa-lg" role="img" aria-label="Country/Region Language Version" title="Country/Region Language Version"></i>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="wechat_official_accounts_web_auth_lang" />
+                            <div class="o_row">
+                                <field name="wechat_official_accounts_web_auth_lang" />
+                            </div>
+                            <div class="text-muted">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-12 o_setting_box" attrs="{'invisible': [('wechat_official_accounts_app','=',False)]}">
+                        <div class="o_setting_left_pane">
+                            <i class="fa fa-server fa-lg" aria-label="Official Accounts Event Service"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="wechat_official_accounts_event_service"/>
+                            <div class="content-group mt4">
+                                <field name="wechat_official_accounts_event_service" widget="one2many_config" help="description" class="w-100 pl-3" t-translation="off">
+                                    <tree create="0" edit="true" delete="0" editable="bottom" help="description">
+                                        <field name="name" readonly="1" />
+                                        <field name="url" readonly="1" widget="CopyClipboardChar"/>
+                                        <field name="token" max-width="80px"/>
+                                        <field name="aeskey" max-width="200px"/>
+                                        <field name="active" widget="boolean_toggle" max-width="30px"/>
+                                        <field name="description" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="wechat_official_accounts" position="after">
+                    <div id="wechat_official_accounts_portal" attrs="{'invisible': [('module_wechat_official_accounts','=',False)]}">
+                        <h2>WeChat Official Accounts H5 Website</h2>
+                        <div class="row mt8 o_settings_container">
+                            <div class="col-xs-12 col-md-6 o_setting_box" id="module_wechat_web">
+                                <div class="o_setting_left_pane">
+                                    <field name="module_wechat_web" />
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="module_wechat_web" />
+                                    <div class="text-muted">
+                                        Build menus and pages for WeChat official accounts.
+                                    </div>
+                                    <div class="content-group mt16" attrs="{'invisible': [('module_wechat_web','=',False)]}" id="msg_module_wechat_web">
+                                        <div class="mt16 text-warning">
+                                            <strong>Save</strong> this page and come back here to set up the feature.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>

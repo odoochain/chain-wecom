@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="wechat_official_accounts_menus_home" model="wechat.official_accounts.menus">
+            <field name="app_id" ref="wechat_official_accounts.wechat_applications_official_account"/>
+            <field name="name">ERP</field>
+            <field name="menu_type">view</field>
+            <field name="route">/wechat</field>
+            <field name="sequence">1</field>
+            <field name="active" eval="True"/>
+        </record>
+
+        <!-- <record id="wechat_official_accounts_menus_test" model="wechat.official_accounts.menus">
+            <field name="app_id" ref="wechat_official_accounts.wechat_applications_official_account"/>
+            <field name="name">Test</field>
+            <field name="menu_type">view</field>
+            <field name="route">/wechat/test</field>
+            <field name="sequence">2</field>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="wechat_official_accounts_menus_my" model="wechat.official_accounts.menus">
+            <field name="app_id" ref="wechat_official_accounts.wechat_applications_official_account"/>
+            <field name="name">My</field>
+            <field name="menu_type">view</field>
+            <field name="route">/wechat/my</field>
+            <field name="sequence">3</field>
+            <field name="active" eval="True"/>
+        </record> -->
+
+    </data>
+
+    <data noupdate="0">
+
+
+    </data>
+</odoo>

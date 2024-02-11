@@ -1,0 +1,647 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* wechat_base
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-28 08:32+0000\n"
+"PO-Revision-Date: 2024-01-28 16:33+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid ""
+", have an approved website application, and obtain the corresponding AppID and "
+"AppSecret. After applying for WeChat login and passing the review, the access process "
+"can begin."
+msgstr ""
+"，并拥有一个已审核通过的网站应用，并获得相应的AppID和AppSecret，申请微信登录且通过审核"
+"后，可开始接\"\n"
+"\"入流程。"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "<i class=\"fa fa-building fa-lg\" aria-label=\"Default User Company\"/>"
+msgstr "<i class=\"fa fa-building fa-lg\" aria-label=\"默认用户公司\"/>"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_kanban
+msgid "<i class=\"fa fa-circle\" role=\"img\" aria-label=\"Invalid\" title=\"Invalid\"/>"
+msgstr "<i class=\"fa fa-circle\" role=\"img\" aria-label=\"无效\" title=\"无效\"/>"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_kanban
+msgid "<i class=\"fa fa-envelope\" role=\"img\" aria-label=\"Login\"/>"
+msgstr "<i class=\"fa fa-envelope\" role=\"img\" aria-label=\"登录名\"/>"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "<i class=\"fa fa-user fa-lg\" aria-label=\"Default User Type\"/>"
+msgstr "<i class=\"fa fa-user fa-lg\" aria-label=\"默认用户类型\"/>"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid ""
+"<i class=\"fa fa-users fa-lg\" aria-label=\"How to register and create new users\"/>"
+msgstr "<i class=\"fa fa-users fa-lg\" aria-label=\"如何注册和创建新用户\"/>"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_res_users_kanban
+msgid ""
+"<i class=\"fa fa-weixin text-primary\" role=\"img\" aria-label=\"WeChat user\" "
+"title=\"WeChat user\"/>"
+msgstr ""
+"<i class=\"fa fa-weixin text-primary\" role=\"img\" aria-label=\"微信用户\" title=\"微"
+"信用户\"/>"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_kanban
+msgid ""
+"<i class=\"fa fa-weixin text-success\" role=\"img\" aria-label=\"WeChat user\" "
+"title=\"WeChat user\"/>"
+msgstr ""
+"<i class=\"fa fa-weixin text-success\" role=\"img\" aria-label=\"微信用户\" title=\"微"
+"信用户\"/>"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_wechat_applications_form
+msgid ""
+"<span class=\"o_stat_value\">Get</span>\n"
+"                                    <span class=\"o_stat_text\">Access Token</span>"
+msgstr ""
+"<span class=\"o_stat_value\">获取</span>\n"
+"                                    <span class=\"o_stat_text\">访问令牌</span>"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "<strong>Save</strong> this page and come back here to set up the feature."
+msgstr "<strong>保存</strong>此页面并返回此处以设置该功能。"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service__aeskey
+msgid "AES Key"
+msgstr "AES加密密钥"
+
+#. module: wechat_base
+#: model:ir.ui.menu,name:wechat_base.menu_wechat_api
+msgid "API"
+msgstr "微信API"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__access_token
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_wechat_applications_form
+msgid "Access Token"
+msgstr "访问令牌"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__access_token_expiration_time
+msgid "Access Token Expiration Time"
+msgstr "访问令牌过期时间"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service__active
+msgid "Active"
+msgstr "启用"
+
+#. module: wechat_base
+#: model:res.groups,name:wechat_base.group_wechat_settings_manager
+msgid "Administrator"
+msgstr "管理员"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service__app_id
+msgid "Application"
+msgstr "应用"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__secret
+msgid "Application Secret"
+msgstr "应用密钥"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__app_type
+msgid "Application Type"
+msgstr "应用类型"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__appid
+msgid "Application Unique identification"
+msgstr "应用唯一标识"
+
+#. module: wechat_base
+#: model:ir.actions.act_window,name:wechat_base.wechat_applications_action
+#: model:ir.ui.menu,name:wechat_base.menu_wechat_applications
+#: model:ir.ui.menu,name:wechat_base.menu_wechat_event_service
+msgid "Applications"
+msgstr "应用"
+
+#. module: wechat_base
+#. odoo-python
+#: code:addons/wechat_base/models/wechat_apps.py:0
+#, python-format
+msgid "Automatic task: start to get the wechat application [%s] token"
+msgstr "自动任务：开始获取微信应用 [%s] 令牌"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_kanban
+msgid "Avatar"
+msgstr "头像"
+
+#. module: wechat_base
+#: model:ir.model,name:wechat_base.model_res_company
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "Companies"
+msgstr "公司"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__company_id
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_search
+msgid "Company"
+msgstr "公司"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_company__shortname
+msgid "Company Short Name"
+msgstr "公司简称"
+
+#. module: wechat_base
+#: model:ir.model,name:wechat_base.model_res_config_settings
+msgid "Config Settings"
+msgstr "配置设置"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__create_uid
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service__create_uid
+msgid "Created by"
+msgstr "创建人"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__create_date
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service__create_date
+msgid "Created on"
+msgstr "创建时间"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__wechat_default_user_company
+msgid "Default registered company for WeChat users"
+msgstr "微信用户默认注册公司"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__wechat_auth_signup_default_user_type
+msgid "Default registered user type for WeChat users"
+msgstr "微信用户的默认注册用户类型"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service__description
+msgid "Description"
+msgstr "描述"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__display_name
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service__display_name
+msgid "Display Name"
+msgstr "显示名称"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_wechat_error_codes_tree
+msgid "Error"
+msgstr "错误"
+
+#. module: wechat_base
+#: model:ir.actions.act_window,name:wechat_base.action_view_wechat_error_codes
+msgid "Error code"
+msgstr "错误代码"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_wechat_error_codes_filter
+msgid "Errors"
+msgstr "错误"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__event_service_ids
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_wechat_applications_form
+msgid "Event Service"
+msgstr "事件服务"
+
+#. module: wechat_base
+#: model:ir.actions.act_window,name:wechat_base.wechat_event_service_list_action
+msgid "Event service"
+msgstr "事件服务"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_wechat_applications_form
+msgid "Get Access Token"
+msgstr "获取访问令牌"
+
+#. module: wechat_base
+#: model:ir.ui.menu,name:wechat_base.menu_wechat_app_get_token
+msgid "Get App token"
+msgstr "获取应用令牌"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__wechat_auth_signup_type
+msgid "How to create new users through WeChat registration"
+msgstr "如何通过微信注册创建新用户"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__id
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service__id
+msgid "ID"
+msgstr ""
+
+#. module: wechat_base
+#: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_auth_signup_default_user_type__1
+msgid "Internal User"
+msgstr "内部用户"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_applications____last_update
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service____last_update
+msgid "Last Modified on"
+msgstr "最后修改时间"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__write_uid
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service__write_uid
+msgid "Last Updated by"
+msgstr "最后更新人"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__write_date
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service__write_date
+msgid "Last Updated on"
+msgstr "最后更新时间"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_kanban
+msgid "Login"
+msgstr "登录"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_form
+msgid "Login account"
+msgstr "登录帐户"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_form
+msgid "Login name"
+msgstr "登录名"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_form
+msgid "Logs"
+msgstr "日志"
+
+#. module: wechat_base
+#: model:ir.ui.menu,name:wechat_base.menu_wechat_message
+msgid "Message"
+msgstr "消息"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__name
+msgid "Name"
+msgstr "名称"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_search
+msgid "Nickname"
+msgstr "昵称"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_auth_oauth_provider__description
+msgid "OAuth description"
+msgstr "OAuth描述"
+
+#. module: wechat_base
+#: model:ir.model,name:wechat_base.model_auth_oauth_provider
+msgid "OAuth2 provider"
+msgstr "OAuth2服务商"
+
+#. module: wechat_base
+#: model:res.groups,name:wechat_base.group_wechat_settings_user
+msgid "Officer"
+msgstr "职员"
+
+#. module: wechat_base
+#: model:ir.model.fields.selection,name:wechat_base.selection__wechat_applications__app_type__official_account
+#: model:ir.model.fields.selection,name:wechat_base.selection__wechat_event_service__service_type__official_account
+msgid "Official Account"
+msgstr "公众号"
+
+#. module: wechat_base
+#: model:ir.ui.menu,name:wechat_base.menu_wechat_official_accounts
+msgid "Official Accounts"
+msgstr "公众号"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_kanban
+msgid "Ok"
+msgstr ""
+
+#. module: wechat_base
+#: model:ir.model.fields.selection,name:wechat_base.selection__wechat_applications__app_type__open_platform
+#: model:ir.model.fields.selection,name:wechat_base.selection__wechat_event_service__service_type__open_platform
+msgid "Open platform"
+msgstr "开放平台"
+
+#. module: wechat_base
+#: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_auth_signup_default_user_type__10
+msgid "Portal User"
+msgstr "门户用户"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_auth_oauth_provider__name
+msgid "Provider name"
+msgstr "服务商名称"
+
+#. module: wechat_base
+#: model:ir.ui.menu,name:wechat_base.menu_wechat_error_codes
+msgid "Public Error Code"
+msgstr "错误代码"
+
+#. module: wechat_base
+#: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_auth_signup_default_user_type__11
+msgid "Public User"
+msgstr "公开用户"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service__route
+msgid "Route"
+msgstr "路由"
+
+#. module: wechat_base
+#: model:ir.ui.menu,name:wechat_base.menu_wechat_cron
+msgid "Schedule tasks"
+msgstr "微信计划任务"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__module_wechat_message
+msgid "Send a message via WeChat"
+msgstr "通过微信发送消息"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__sequence
+msgid "Sequence"
+msgstr "序号"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service__name
+msgid "Service Name"
+msgstr "服务名称"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service__service_type
+msgid "Service Type"
+msgstr "服务类型"
+
+#. module: wechat_base
+#: model:ir.actions.act_window,name:wechat_base.wechat_config_settings_action
+#: model:ir.ui.menu,name:wechat_base.menu_wechat_configuration
+msgid "Settings"
+msgstr "设置"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__wechat_auth_signup_template_user_id
+msgid "Template user for new users created through WeChat registration"
+msgstr "通过微信注册创建的新用户模板用户"
+
+#. module: wechat_base
+#: model:res.groups,comment:wechat_base.group_wechat_settings_user
+msgid "The user will be able to approve document created by employees."
+msgstr "用户将能够批准员工创建的文档。"
+
+#. module: wechat_base
+#: model:res.groups,comment:wechat_base.group_wechat_settings_manager
+msgid ""
+"The user will have access to the wechat configuration as well as statistic reports."
+msgstr "用户将可以访问微信配置以及统计报告。"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid ""
+"The website application WeChat login is a WeChat OAuth2.0 authorization login system "
+"built based on the OAuth2.0 protocol standard. Before conducting WeChat OAuth2.0 "
+"authorization login and access, register a developer account on the"
+msgstr ""
+"网站应用微信登录是基于OAuth2.0协议标准构建的微信OAuth2.0授权登录系统。 在进行微信"
+"OAuth2.0授权登录接\"\n"
+"\"入之前，注册开发者账号在"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_form
+msgid "Time"
+msgstr "时间"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service__token
+msgid "Token"
+msgstr "令牌"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service__url
+msgid "URL"
+msgstr ""
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_unionid
+msgid "Unified identification of WeChat user"
+msgstr "微信用户统一标识"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_search
+msgid "UnionID"
+msgstr "统一标识"
+
+#. module: wechat_base
+#: model:ir.model,name:wechat_base.model_res_users
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_search
+msgid "User"
+msgstr "用户"
+
+#. module: wechat_base
+#: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_auth_signup_type__group
+msgid "User group"
+msgstr "用户组"
+
+#. module: wechat_base
+#: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_auth_signup_type__template
+msgid "User template"
+msgstr "用户模板"
+
+#. module: wechat_base
+#: model:ir.ui.menu,name:wechat_base.menu_wechat_user_list
+#: model:ir.ui.menu,name:wechat_base.menu_wechat_users
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_form
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_kanban
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_tree
+msgid "Users"
+msgstr "微信用户"
+
+#. module: wechat_base
+#: model:ir.ui.menu,name:wechat_base.menu_wechat_root
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_form
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_form
+msgid "WeChat"
+msgstr "微信"
+
+#. module: wechat_base
+#: model:ir.model,name:wechat_base.model_wechat_applications
+msgid "WeChat Applications"
+msgstr "微信应用"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "WeChat Basic Settings"
+msgstr "微信基础设置"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__module_wechat_auth_oauth
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "WeChat OAuth2 Authentication"
+msgstr "使用微信身份验证登录网站（OAuth）"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_official_account_openid
+msgid "WeChat Officia Account User OpenID"
+msgstr "微信公众号用户OpenID"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__module_wechat_official_accounts
+msgid "WeChat Official Accounts"
+msgstr "微信公众号"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__module_wechat_web
+msgid "WeChat Official Accounts H5 Website"
+msgstr "微信公众号H5网站"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "WeChat Official accounts"
+msgstr "微信公众号"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_open_platform_openid
+msgid "WeChat Open Platform User OpenID"
+msgstr "微信开发平台用户OpenID"
+
+#. module: wechat_base
+#: model:ir.model,name:wechat_base.model_wechat_event_service
+msgid "WeChat event service"
+msgstr "微信事件服务"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "WeChat messages"
+msgstr "微信消息"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "WeChat open platform"
+msgstr "微信开放平台"
+
+#. module: wechat_base
+#: model:ir.model,name:wechat_base.model_wechat_error_codes
+msgid "WeChat public error code"
+msgstr "微信公共错误代码"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "WeChat public platform"
+msgstr "微信公众平台"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__is_wechat_user
+msgid "WeChat user"
+msgstr "微信用户"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_access_token
+msgid "WeChat user access token"
+msgstr "微信用户访问令牌"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_access_token_expires_in
+msgid "WeChat user access token expiration date"
+msgstr "微信用户访问令牌到期时间"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_refresh_token
+msgid "WeChat user refresh token"
+msgstr "微信用户刷新令牌"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_refresh_token_expires_in
+msgid "WeChat user refresh token expiration date"
+msgstr "微信用户刷新令牌到期时间"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "WeChat website application"
+msgstr "微信网站应用"
+
+#. module: wechat_base
+#: model:ir.actions.act_window,name:wechat_base.ir_cron_act_get_wechat_app_token
+#: model:ir.actions.server,name:wechat_base.ir_cron_get_wechat_app_token_ir_actions_server
+#: model:ir.cron,cron_name:wechat_base.ir_cron_get_wechat_app_token
+msgid "WeChat: Get WeChat Applications Token"
+msgstr "微信：获取微信应用令牌"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__module_wechat_website_application
+msgid "Website application WeChat login"
+msgstr "微信网站应用登录"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "Wechat Settings"
+msgstr "微信配置"
+
+#. module: wechat_base
+#: model:ir.actions.act_window,name:wechat_base.wechat_users_action
+msgid "Wechat User"
+msgstr "微信用户"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_search
+msgid "Wechat Users"
+msgstr "微信用户"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_nickname
+msgid "Wechat nickname"
+msgstr "微信昵称"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_form
+msgid "e.g. John Doe"
+msgstr "例如：张三"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.view_users_wechat_form
+msgid "e.g. email@yourcompany.com"
+msgstr "例如 email@yourcompany.com"
+
+#. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid ""
+"is a new service platform that provides business services and user management "
+"capabilities for individuals, enterprises, and organizations."
+msgstr "给个人、企业和组织提供业务服务与用户管理能力的全新服务平台。"
+
+#. module: wechat_base
+#. odoo-python
+#: code:addons/wechat_base/models/wechat_event_service.py:0
+#: model:ir.model.constraint,message:wechat_base.constraint_wechat_event_service_route_uniq
+#, python-format
+msgid "route must be unique !"
+msgstr "路由必须是唯一的！"

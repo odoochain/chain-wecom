@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+wechat_official_accounts_industry_access_right,access.wechat.official_accounts.industry,model_wechat_official_accounts_industry,wechat_base.group_wechat_settings_manager,1,1,1,1
+wechat_official_accounts_industry_access_right_user,access.wechat.official_accounts.industry,model_wechat_official_accounts_industry,wechat_base.group_wechat_settings_user,1,0,0,0

@@ -10,6 +10,7 @@ from odoo.exceptions import UserError
 import xmltodict
 from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException  # type: ignore
 from odoo.addons.base.models.ir_mail_server import MailDeliveryException
+import ast
 
 import re
 
@@ -39,7 +40,7 @@ class WecomUser(models.Model):
     )  # 成员所属部门id列表
 
     main_department = fields.Integer(
-        string="Main department", readonly=True, default=""
+        string="Main department", readonly=True, default=0
     )  # 主部门
     order = fields.Char(
         string="Sequence", readonly=True, default="[]"
@@ -92,7 +93,7 @@ class WecomUser(models.Model):
     open_userid = fields.Char(
         string="Open userid", readonly=True, default=None
     )  # 开放用户Id,全局唯一,对于同一个服务商，不同应用获取到企业内同一个成员的open_userid是相同的，最多64个字节。仅第三方应用可获取
-    user_json = fields.Json(string="User Json", readonly=True)
+    user_json = fields.Json(string="User Json", readonly=True)  #
 
     # odoo 字段
     company_id = fields.Many2one(
@@ -209,10 +210,10 @@ class WecomUser(models.Model):
     @api.depends("department")
     def _compute_department_ids(self):
         """
-        计算多部门  eval( )
+        计算多部门  ast.literal_eval( )
         """
         for user in self:
-            department_list = eval(user.department)  # type: ignore
+            department_list = ast.literal_eval(user.department)  # type: ignore
             department_ids = self.get_parent_department(
                 user.company_id, department_list  # type: ignore
             )
@@ -300,8 +301,9 @@ class WecomUser(models.Model):
         """
         app_config = self.env["wecom.app_config"].sudo()
         contacts_allow_add_system_users = app_config.get_param(
-            self.company_id.contacts_app_id.id, "contacts_allow_add_system_users"  # type: ignore
+            self.company_id.contacts_sync_app_id.id, "contacts_allow_add_system_users"  # type: ignore
         )  # 允许创建用户
+        print(contacts_allow_add_system_users, type(contacts_allow_add_system_users))
 
         if contacts_allow_add_system_users:
             # 允许 通讯录 生成系统用户
@@ -369,7 +371,7 @@ class WecomUser(models.Model):
         app_config = self.env["wecom.app_config"].sudo()
         contacts_sync_hr_department_id = "1"  # 需要同步的企业微信部门ID
         sync_hr_department_id = app_config.get_param(
-            company.contacts_app_id.id, "contacts_sync_hr_department_id"
+            company.contacts_sync_app_id.id, "contacts_sync_hr_department_id"
         )
         if sync_hr_department_id:
             contacts_sync_hr_department_id = sync_hr_department_id
@@ -590,59 +592,72 @@ class WecomUser(models.Model):
         company = self.company_id
         params = {}
         message = ""
+
         try:
             wxapi = self.env["wecom.service_api"].InitServiceApi(
-                company.corpid, company.contacts_app_id.secret  # type: ignore
+                company.corpid, company.contacts_sync_app_id.secret  # type: ignore
             )
             response = wxapi.httpCall(
                 self.env["wecom.service_api_list"].get_server_api_call("USER_GET"),
                 {"userid": self.userid},
             )
-            for key in response.keys():
-                if type(response[key]) in (list, dict) and response[key]:
-                    json_str = json.dumps(
-                        response[key],
-                        sort_keys=False,
-                        indent=2,
-                        separators=(",", ":"),
-                        ensure_ascii=False,
-                    )
-                    response[key] = json_str
+
+            # for key in response.keys():
+            #     if type(response[key]) in (list, dict) and response[key]:
+            #         json_str = json.dumps(
+            #             response[key],
+            #             sort_keys=False,
+            #             indent=2,
+            #             separators=(",", ":"),
+            #             ensure_ascii=False,
+            #         )
+            #         response[key] = json_str
+
             self.write(
                 {
                     "name": response["name"],
-                    "english_name": self.env[
-                        "wecomapi.tools.dictionary"
-                    ].check_dictionary_keywords(response, "english_name"),
-                    "mobile": response["mobile"],
-                    "department": response["department"],
-                    "main_department": response["main_department"],
-                    "order": response["order"],
-                    "position": response["position"],
-                    "gender": response["gender"],
-                    "email": response["email"],
-                    "biz_mail": response["biz_mail"],
-                    "is_leader_in_dept": response["is_leader_in_dept"],
-                    "direct_leader": response["direct_leader"],
-                    "avatar": response["avatar"],
-                    "thumb_avatar": response["thumb_avatar"],
-                    "telephone": response["telephone"],
-                    "alias": response["alias"],
-                    "extattr": response["extattr"],
-                    "external_profile": self.env[
-                        "wecomapi.tools.dictionary"
-                    ].check_dictionary_keywords(response, "external_profile"),
-                    "external_position": self.env[
-                        "wecomapi.tools.dictionary"
-                    ].check_dictionary_keywords(response, "external_position"),
+                    "english_name": response["english_name"]
+                    if "english_name" in response
+                    else "",
+                    "mobile": response["mobile"] if "mobile" in response else "",
+                    "department": response["department"]
+                    if "department" in response
+                    else "",
+                    "main_department": response["main_department"]
+                    if "main_department" in response
+                    else 0,
+                    "order": response["order"] if "order" in response else "[]",
+                    "position": response["position"] if "position" in response else "",
+                    "gender": response["gender"] if "gender" in response else "",
+                    "email": response["email"] if "email" in response else "",
+                    "biz_mail": response["biz_mail"] if "biz_mail" in response else "",
+                    "is_leader_in_dept": response["is_leader_in_dept"]
+                    if "is_leader_in_dept" in response
+                    else "",
+                    "direct_leader": response["direct_leader"]
+                    if "direct_leader" in response
+                    else "[]",
+                    "avatar": response["avatar"] if "avatar" in response else "",
+                    "thumb_avatar": response["thumb_avatar"]
+                    if "thumb_avatar" in response
+                    else "",
+                    "telephone": response["telephone"]
+                    if "telephone" in response
+                    else "",
+                    "alias": response["alias"] if "alias" in response else "",
+                    "extattr": response["extattr"] if "extattr" in response else "",
+                    "external_profile": response["external_profile"]
+                    if "external_profile" in response
+                    else "",
+                    "external_position": response["external_position"]
+                    if "external_position" in response
+                    else "",
                     "status": response["status"],
-                    "qr_code": response["qr_code"],
-                    "address": self.env[
-                        "wecomapi.tools.dictionary"
-                    ].check_dictionary_keywords(response, "address"),
-                    "open_userid": self.env[
-                        "wecomapi.tools.dictionary"
-                    ].check_dictionary_keywords(response, "open_userid"),
+                    "qr_code": response["qr_code"] if "qr_code" in response else "",
+                    "address": response["address"] if "address" in response else "",
+                    "open_userid": response["open_userid"]
+                    if "open_userid" in response
+                    else "",
                 }
             )
         except ApiException as ex:
@@ -691,7 +706,7 @@ class WecomUser(models.Model):
             try:
                 wxapi = self.env["wecom.service_api"].InitServiceApi(
                     user.company_id.corpid,  # type: ignore
-                    user.company_id.contacts_app_id.secret,  # type: ignore
+                    user.company_id.contacts_sync_app_id.secret,  # type: ignore
                 )
                 response = wxapi.httpCall(
                     self.env["wecom.service_api_list"].get_server_api_call(

@@ -3,7 +3,7 @@
 from datetime import datetime, timedelta
 from random import weibullvariate
 from odoo import models, fields, api, _
-from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException # type: ignore
+from odoo.addons.wecom_api.api.wecom_abstract_api import ApiException  # type: ignore
 
 import logging
 
@@ -51,13 +51,13 @@ class ResConfigSettings(models.TransientModel):
         config_parameter="wecom.global_error_code_item_selection_code",
     )  # 错误码排查方法的选取属性。
 
-    module_rainbow_community_theme = fields.Boolean("Rainbow Community Theme")
+    module_web_theme = fields.Boolean("Rainbow Community Theme")
     module_wecom_contacts = fields.Boolean("WeCom Contacts")
     module_wecom_contacts_sync = fields.Boolean("WeCom Contacts Synchronized")
 
     @api.model
     def get_values(self):
-        res = super(ResConfigSettings, self).get_values() # type: ignore
+        res = super(ResConfigSettings, self).get_values()  # type: ignore
         ir_config = self.env["ir.config_parameter"].sudo()
 
         debug_enabled = (
@@ -70,7 +70,7 @@ class ResConfigSettings(models.TransientModel):
         return res
 
     def set_values(self):
-        super(ResConfigSettings, self).set_values() # type: ignore
+        super(ResConfigSettings, self).set_values()  # type: ignore
         ir_config = self.env["ir.config_parameter"].sudo()
         ir_config.set_param("wecom.debug_enabled", self.debug_enabled or "False")
 
@@ -92,7 +92,7 @@ class ResConfigSettings(models.TransientModel):
         company_corpid = self.company_id.corpid if self.company_id.corpid else ""  # type: ignore
 
         for record in self:
-            record.wecom_company_corpid = company_corpid    # type: ignore
+            record.wecom_company_corpid = company_corpid  # type: ignore
 
     @api.model
     def open_wecom_settings(self):
@@ -119,7 +119,7 @@ class ResConfigSettings(models.TransientModel):
         debug = ir_config.get_param("wecom.debug_enabled")
         if debug:
             _logger.info(
-                _("Start getting ticket for company [%s]") % (self.company_id.name) # type: ignore
+                _("Start getting ticket for company [%s]") % (self.company_id.name)  # type: ignore
             )
         try:
             if (
@@ -136,7 +136,7 @@ class ResConfigSettings(models.TransientModel):
                 return self.env["wecomapi.tools.action"].WecomInfoNotification(msg)
             else:
                 # print("过期")
-                wecom_api = self.env["wecom.service_api"].InitServiceApi(self.company_id.corpid, self.contacts_app_id.secret) # type: ignore
+                wecom_api = self.env["wecom.service_api"].InitServiceApi(self.company_id.corpid, self.contacts_app_id.secret)  # type: ignore
                 response = wecom_api.httpCall(
                     self.env["wecom.service_api_list"].get_server_api_call(
                         "GET_JSAPI_TICKET"
