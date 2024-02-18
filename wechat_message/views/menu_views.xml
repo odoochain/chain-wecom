@@ -5,5 +5,7 @@
 
         <menuitem id="menu_wecom_message_template" name="Message Template" parent="wechat_base.menu_wechat_message" groups="wechat_base.group_wechat_settings_manager" action="wechat_message_templates_action" sequence="1"/>
 
+        <menuitem id="menu_wecom_message_template_list" name="Wechat Template Message List" parent="wechat_base.menu_wechat_message" groups="wechat_base.group_wechat_settings_manager" action="wechat_message_template_list_action" sequence="3"/>
+
     </data>
 </odoo>

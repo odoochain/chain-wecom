@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-28 08:36+0000\n"
-"PO-Revision-Date: 2024-01-28 16:41+0800\n"
+"POT-Creation-Date: 2024-02-18 02:03+0000\n"
+"PO-Revision-Date: 2024-02-18 10:07+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -29,9 +29,9 @@ msgid "Applied to"
 msgstr "适用于"
 
 #. module: wechat_message
-#: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__code
-msgid "Code"
-msgstr "代码"
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__body_html
+msgid "Body"
+msgstr ""
 
 #. module: wechat_message
 #: model:ir.model,name:wechat_message.model_res_config_settings
@@ -39,21 +39,37 @@ msgid "Config Settings"
 msgstr "配置设置"
 
 #. module: wechat_message
+#: model_terms:ir.ui.view,arch_db:wechat_message.wechatmessage_templates_view_form
+msgid "Content"
+msgstr "内容"
+
+#. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_message_template_list__create_uid
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__create_uid
 msgid "Created by"
 msgstr "创建人"
 
 #. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_message_template_list__create_date
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__create_date
 msgid "Created on"
 msgstr "创建时间"
 
 #. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_message_template_list__display_name
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__display_name
 msgid "Display Name"
 msgstr "显示名称"
 
 #. module: wechat_message
+#. odoo-javascript
+#: code:addons/wechat_message/static/src/views/list_view_buttons.xml:0
+#, python-format
+msgid "Get Wechat Message Template List"
+msgstr "获取微信消息模板列表"
+
+#. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_message_template_list__id
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__id
 msgid "ID"
 msgstr ""
@@ -64,19 +80,22 @@ msgid "Language"
 msgstr "语言"
 
 #. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_message_template_list____last_update
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates____last_update
 msgid "Last Modified on"
 msgstr "最后修改时间"
 
 #. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_message_template_list__write_uid
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__write_uid
 msgid "Last Updated by"
 msgstr "最后更新人"
 
 #. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_message_template_list__write_date
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "最后更新时间"
 
 #. module: wechat_message
 #: model:ir.ui.menu,name:wechat_message.menu_wecom_message_template
@@ -94,6 +113,7 @@ msgid "Model"
 msgstr "模型"
 
 #. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_message_template_list__name
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__name
 msgid "Name"
 msgstr "名称"
@@ -101,13 +121,13 @@ msgstr "名称"
 #. module: wechat_message
 #: model:ir.model.fields,help:wechat_message.field_wechat_message_templates__lang
 msgid ""
-"Optional translation language (ISO code) to select when sending out an "
-"email. If not set, the english version will be used. This should usually be "
-"a placeholder expression that provides the appropriate language, e.g. "
-"{{ object.partner_id.lang }}."
+"Optional translation language (ISO code) to select when sending out an email. "
+"If not set, the english version will be used. This should usually be a "
+"placeholder expression that provides the appropriate language, e.g. {{ object."
+"partner_id.lang }}."
 msgstr ""
-"在发送邮件时可选择的语言代码(ISO 代码)。如果没有设置，会使用英文版本。一般用"
-"占位符来确定合适的语言，例如: {{ object.partner_id.lang }}."
+"在发送邮件时可选择的语言代码(ISO 代码)。如果没有设置，会使用英文版本。一般用占"
+"位符来确定合适的语言，例如: {{ object.partner_id.lang }}."
 
 #. module: wechat_message
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__render_model
@@ -127,9 +147,64 @@ msgstr "向微信用户发送销售报价单和订单消息。"
 #. module: wechat_message
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__subject
 msgid "Subject"
-msgstr ""
+msgstr "主题"
+
+#. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_message_template_list__template_id
+msgid "Template Id"
+msgstr "模板ID"
+
+#. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__description
+msgid "Template description"
+msgstr "模板描述"
+
+#. module: wechat_message
+#: model_terms:ir.ui.view,arch_db:wechat_message.wechatmessage_templates_view_form
+msgid "Templates"
+msgstr "模板"
+
+#. module: wechat_message
+#: model:ir.model.fields,help:wechat_message.field_wechat_message_templates__description
+msgid "This field is used for internal description of the template's usage."
+msgstr "此字段用于模板使用情况的内部描述。"
+
+#. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_message_template_list__title
+msgid "Title"
+msgstr "标题"
+
+#. module: wechat_message
+#: model:ir.model,name:wechat_message.model_wechat_message_template_list
+msgid "WeChat Message Template List"
+msgstr "微信消息模板列表"
 
 #. module: wechat_message
 #: model:ir.model,name:wechat_message.model_wechat_message_templates
 msgid "WeChat Message Templates"
 msgstr "微信消息模板"
+
+#. module: wechat_message
+#: model:ir.actions.act_window,name:wechat_message.wechat_message_template_list_action
+msgid "Wechat Message Template List"
+msgstr "微信消息模板列表"
+
+#. module: wechat_message
+#: model:ir.ui.menu,name:wechat_message.menu_wecom_message_template_list
+msgid "Wechat Template Message List"
+msgstr "微信模板消息列表"
+
+#. module: wechat_message
+#: model_terms:ir.ui.view,arch_db:wechat_message.wechatmessage_templates_view_form
+msgid "e.g. \"Welcome email\""
+msgstr ""
+
+#. module: wechat_message
+#: model_terms:ir.ui.view,arch_db:wechat_message.wechatmessage_templates_view_form
+msgid "e.g. \"Welcome to MyCompany\" or \"Nice to meet you, {{ object.name }}\""
+msgstr ""
+
+#. module: wechat_message
+#: model_terms:ir.ui.view,arch_db:wechat_message.wechatmessage_templates_view_form
+msgid "e.g. Contact"
+msgstr ""

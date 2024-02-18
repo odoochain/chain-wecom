@@ -90,6 +90,28 @@ class WeChatApplications(models.Model):
             print(str(e))
         else:
             print(response)
+            if "errcode" in response and response["errcode"] != 0:
+                error_msg = ""
+                error_code = (
+                    self.env["wechat.error_codes"]
+                    .sudo()
+                    .search_read(
+                        domain=[("code", "=", response["errcode"])],
+                        fields=["name"],
+                    )
+                )
+                if error_code:
+                    error_msg = error_code[0]["name"]
+                else:
+                    error_msg = _("unknown error")
+
+                raise UserError(
+                    _(
+                        "Error code: %s, Error description: %s",
+                        response["errcode"],
+                        error_msg,
+                    )
+                )
             industries = self.env["wechat.official_accounts.industry"].sudo()
             if "primary_industry" in response:
                 primary_industry = response["primary_industry"]
@@ -106,7 +128,7 @@ class WeChatApplications(models.Model):
             if "secondary_industry" in response:
                 secondary_industry = response["secondary_industry"]
                 if (
-                    "second_class" in primary_industry
+                    "second_class" in secondary_industry
                     and secondary_industry["second_class"]
                 ):
                     industry = industries.search(

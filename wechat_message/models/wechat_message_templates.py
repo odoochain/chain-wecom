@@ -37,3 +37,5 @@ class WeChatMessageTemplates(models.Model):
         translate=True,
         help="This field is used for internal description of the template's usage.",
     )
+
+    body_html = fields.Html('Body', render_engine='qweb', translate=True, prefetch=True, sanitize=False)
