@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="wechat_message_sale_order">
+        <field name="name">sale.order.wechat_message.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_quotation_send'][1]" position="before">
+                <button name="action_quotation_send_by_wechat" string="Send by Wehcat" type="object" states="draft" class="btn-primary" data-hotkey="g" context="{'validate_analytic': True}"/>
+                <button name="action_quotation_send_by_wechat" string="Send by Wehcat" type="object" states="sent,sale" data-hotkey="g" context="{'validate_analytic': True}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

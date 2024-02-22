@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-17 03:24+0000\n"
-"PO-Revision-Date: 2024-02-17 11:26+0800\n"
+"POT-Creation-Date: 2024-02-22 09:02+0000\n"
+"PO-Revision-Date: 2024-02-22 17:02+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -16,6 +16,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.4.2\n"
+
+#. module: wechat_message_sale
+#: model:ir.model,name:wechat_message_sale.model_sale_order
+msgid "Sales Order"
+msgstr "销售订单"
 
 #. module: wechat_message_sale
 #: model:wechat.message_templates,name:wechat_message_sale.wechat_message_template_sale_cancellation
@@ -33,6 +38,11 @@ msgid "Sales: Send Quotation"
 msgstr "销售：发送报价"
 
 #. module: wechat_message_sale
+#: model_terms:ir.ui.view,arch_db:wechat_message_sale.wechat_message_sale_order
+msgid "Send by Wehcat"
+msgstr "通过微信发送"
+
+#. module: wechat_message_sale
 #: model:wechat.message_templates,description:wechat_message_sale.wechat_message_template_sale_cancellation
 msgid "Sent automatically to customers when you cancel an order"
 msgstr "取消订单时自动发送给客户"
@@ -41,6 +51,13 @@ msgstr "取消订单时自动发送给客户"
 #: model:wechat.message_templates,description:wechat_message_sale.wechat_message_template_sale_confirmation
 msgid "Sent to customers on order confirmation"
 msgstr "在订单确认时发送给客户"
+
+#. module: wechat_message_sale
+#. odoo-python
+#: code:addons/wechat_message_sale/models/sale_order.py:0
+#, python-format
+msgid "The WeChat message template is not bound!"
+msgstr "微信消息模板未绑定！"
 
 #. module: wechat_message_sale
 #: model:wechat.message_templates,description:wechat_message_sale.wechat_message_template_sale

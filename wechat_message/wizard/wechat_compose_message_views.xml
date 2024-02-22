@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="wechat_compose_message_wizard_form">
+            <field name="name">wechat.compose.message.form</field>
+            <field name="model">wechat.compose.message</field>
+            <field name="groups_id" eval="[Command.link(ref('base.group_user'))]"/>
+            <field name="arch" type="xml">
+                <form string="Compose Wechat Message" class="pt-0 pb-0 o_mail_composer_form">
+                    <group>
+                        <field name="author_id" invisible="1"/>
+                        <field name="model" invisible="1"/>
+                        <field name="record_name" invisible="1"/>
+                        <field name="res_id" invisible="1"/>
+
+                        <label for="partner_ids" string="Recipients"/>
+                        <div groups="base.group_user">
+                            <field name="partner_ids" widget="many2many_tags_email" placeholder="Add contacts to notify..." context="{'force_email':True, 'show_email':True}"/>
+                        </div>
+                        <field name="subject" placeholder="Welcome to MyCompany!" required="True"/>
+                        <field name="template_id" string="Load template" options="{'no_create': True}" context="{'default_model': model,  'default_subject': subject}"/>
+                        <footer>
+                            <button string="Send" name="action_send_wenchat_message" type="object" class="btn-primary o_mail_send" data-hotkey="q" />
+                            <!--  attrs="{'invisible': ['|',('partner_ids', '=', False),('template_id', '=', False)]}" -->
+                            <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z" />
+                        </footer>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_wechat_compose_message_wizard" model="ir.actions.act_window">
+            <field name="name">Compose Wechat Message</field>
+            <field name="res_model">wechat.compose.message</field>
+            <field name="binding_model_id" ref="wechat_message.model_wechat_compose_message"/>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

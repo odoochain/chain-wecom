@@ -37,5 +37,6 @@ class WeChatMessageTemplates(models.Model):
         translate=True,
         help="This field is used for internal description of the template's usage.",
     )
+    wechat_message_template_id = fields.Many2one("wechat.message_template_list", string="Wechat Message Template Id")
 
     body_html = fields.Html('Body', render_engine='qweb', translate=True, prefetch=True, sanitize=False)
