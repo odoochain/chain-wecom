@@ -50,7 +50,7 @@ class WeChatOAuthLogin(Home):
                 return_url = (
                     request.httprequest.url_root + "wechat/scan_register_or_login"
                 )
-                state = self.get_state(provider)
+                state = self.get_state(provider)    # type: ignore
                 ICP = request.env["ir.config_parameter"].sudo()
                 wechat_app_id = ICP.get_param("wechat_website_app")
                 app = request.env["wechat.applications"].sudo().search_read([("id", "=", wechat_app_id)])[0]
@@ -84,7 +84,7 @@ class WeChatOAuthLogin(Home):
                 return_url = (
                     request.httprequest.url_root + "wechat/one_click_register_or_login"
                 )
-                state = self.get_state(provider)
+                state = self.get_state(provider)    # type: ignore
                 ICP = request.env["ir.config_parameter"].sudo()
                 wechat_app_id = ICP.get_param("wechat_official_accounts_app")
                 app = request.env["wechat.applications"].sudo().search_read([("id", "=", wechat_app_id)])[0]
@@ -112,7 +112,7 @@ class WeChatOAuthLogin(Home):
     @http.route()
     def web_login(self, *args, **kw):
         response = super(WeChatOAuthLogin, self).web_login(*args, **kw)
-        if response.is_qweb:
+        if response.is_qweb:    # type: ignore
             error = request.params.get('oauth_error')
             if error:
                 error_code = request.env["wechat.error_codes"].sudo().search_read(
@@ -127,7 +127,7 @@ class WeChatOAuthLogin(Home):
                 error = None
 
             if error:
-                response.qcontext['error'] = error
+                response.qcontext['error'] = error  # type: ignore
         return response
 
     @http.route('/wechat/reset_login_name_and_password', type='http', auth='public', website=True, sitemap=False)
@@ -152,10 +152,10 @@ class WeChatOAuthLogin(Home):
                         "login":login_name,
                     })
                     ctx = UserSudo._crypt_context()
-                    UserSudo._set_encrypted_password(request.env.user.id, ctx.hash(kw.get("password")))
+                    UserSudo._set_encrypted_password(request.env.user.id, ctx.hash(kw.get("password"))) # type: ignore
                 except Exception as e:
                     qcontext['error'] = str(e)
-                    return response
+                    return response # type: ignore
                 else:
                     if "redirect" in kw:
                         return request.redirect("/%s" %  kw.get("redirect"))
@@ -249,7 +249,7 @@ class OAuthController(http.Controller):
                     })
                     try:
                         # auth_oauth可能会创建一个新用户，提交使下面的 authenticate() 自己的事务可见
-                        db, login, key = request.env['res.users'].with_user(SUPERUSER_ID).wechat_auth_oauth(provider, userinfo)
+                        db, login, key = request.env['res.users'].with_user(SUPERUSER_ID).wechat_auth_oauth(provider, userinfo) # type: ignore
                         request.env.cr.commit()
 
                         action = state.get("a")
@@ -347,6 +347,7 @@ class OAuthController(http.Controller):
                 return request.redirect(url)
 
             # {'access_token': '', 'expires_in': 7200, 'refresh_token': '', 'openid': '', 'scope': ''}
+
             current_time = time.time()  # 当前时间戳
             access_token = response["access_token"]
             expires_in = response["expires_in"]
@@ -381,7 +382,7 @@ class OAuthController(http.Controller):
                 })
                 try:
                     # auth_oauth可能会创建一个新用户，提交使下面的 authenticate() 自己的事务可见
-                    db, login, key = request.env['res.users'].with_user(SUPERUSER_ID).wechat_auth_oauth(provider, userinfo)
+                    db, login, key = request.env['res.users'].with_user(SUPERUSER_ID).wechat_auth_oauth(provider, userinfo) # type: ignore
                     request.env.cr.commit()
 
                     action = state.get("a")

@@ -5,7 +5,6 @@ import urllib
 from urllib import parse
 from odoo import models, api, _
 from odoo.exceptions import AccessDenied
-from odoo.tools.misc import ustr
 from odoo.addons.auth_signup.models.res_partner import SignupError, now
 
 class ResUsers(models.Model):
@@ -24,6 +23,7 @@ class ResUsers(models.Model):
         :param params: {'access_token': '', 'expires_in': 7200, 'refresh_token': '', 'openid': '', 'scope': 'snsapi_login', 'unionid': ''}
         :return
         """
+        # print(provider, params)
         values = {}
         ICP = self.env["ir.config_parameter"].sudo()
         wechat_open_endpoint = "https://open.weixin.qq.com/connect/qrconnect"
@@ -41,62 +41,95 @@ class ResUsers(models.Model):
         )
         if wechat_open_endpoint in wechat_providers["auth_endpoint"]:
             auth_type="scan"
-            # values.update({
-            #     "wechat_open_platform_openid":params["openid"]
-            # })
+            values.update({
+                "wechat_open_platform_openid":params["openid"]
+            })
         elif wechat_official_accounts_endpoint in wechat_providers["auth_endpoint"]:
             auth_type="one_click"
-            # values.update({
-            #     "wechat_official_account_openid":params["openid"]
-            # })
+            values.update({
+                "wechat_official_account_openid":params["openid"]
+            })
 
         if auth_type=="":
             return AccessDenied
 
         # 查询用户是否存在
-        # oauth_openid = params["openid"]
-        oauth_unionid = params["unionid"]
-        oauth_user = self.sudo().search(
-            [
-                "|",
-                "|",
-                ("wechat_open_platform_openid", "=", params["openid"]),
-                ("wechat_official_account_openid", "=", params["openid"]),
+        oauth_id = ""
+        domain = []
+        if "unionid" in params:
+
+            oauth_id = params["unionid"]
+            domain=[
                 ("wechat_unionid", "=", params["unionid"]),
                 "|",
                 ("active", "=", True),
                 ("active", "=", False),
-            ],
+            ]
+            values.update({
+                "login": params["unionid"],
+                "wechat_unionid": params["unionid"],
+            })
+        elif "openid" in params:
+            oauth_id = params["openid"]
+            domain=[
+                "|",
+                ("wechat_open_platform_openid", "=", params["openid"]),
+                ("wechat_official_account_openid", "=", params["openid"]),
+                "|",
+                ("active", "=", True),
+                ("active", "=", False),
+            ]
+            values.update({
+                "login": params["openid"],
+            })
+
+        # oauth_user = self.sudo().search(
+        #     [
+        #         "|",
+        #         "|",
+        #         ("wechat_open_platform_openid", "=", params["openid"]),
+        #         ("wechat_official_account_openid", "=", params["openid"]),
+        #         ("wechat_unionid", "=", params["unionid"]),
+        #         "|",
+        #         ("active", "=", True),
+        #         ("active", "=", False),
+        #     ],
+        #     limit=1,
+        # )
+
+        oauth_user = self.sudo().search(
+            domain,
             limit=1,
         )
-        print("是否存在用户",oauth_user,values)
+        
         if not oauth_user:
             # 创建用户
             # 用户信息
         # {'openid': '', 'nickname': 'ð\x9f\x8c\x88å½©è\x99¹å·¥ä½\x9cå®¤', 'sex': 0, 'language': '', 'city': '', 'province': '', 'country': '', 'headimgurl': '', 'privilege': [], 'unionid': ''}
             user_company = ICP.get_param("wechat_default_user_company")
             nickname = params["nickname"].encode("ISO-8859-1").decode("utf-8")
-            values.update({
-                "name": nickname,
-                "login": params["unionid"],
-                "password": self.env["wechat.tools.security"].random_passwd(8),
-                "share": False,
-                "active": True,
-                "company_ids": [(6, 0, [int(user_company)])],
-                "company_id": int(user_company),
-                # 以下为微信专有字段
-                "is_wechat_user": True,
-                "wechat_nickname": nickname,
-                "wechat_unionid": params["unionid"],
-                "wechat_access_token": params["access_token"],
-                "wechat_access_token_expires_in": now(hours=+2),
-                "wechat_refresh_token_expires_in": now(days=+30),
-                "wechat_refresh_token": params["refresh_token"],
-            })
+            try:
+                values.update({
+                    "name": nickname,
+
+                    "password": self.env["wechat.tools.security"].random_passwd(8),
+                    "share": False,
+                    "active": True,
+                    "company_ids": [(6, 0, [int(user_company)])],
+                    "company_id": int(user_company),
+                    # 以下为微信专有字段
+                    "is_wechat_user": True,
+                    "wechat_nickname": nickname,
+                    "wechat_access_token": params["access_token"],
+                    "wechat_access_token_expires_in": now(hours=+2),
+                    "wechat_refresh_token_expires_in": now(days=+30),
+                    "wechat_refresh_token": params["refresh_token"],
+                })
+            except Exception as e:
+                print("values更新错误:",str(e))
             oauth_user = self._wechat_signup_create_user(values,ICP)
 
         if oauth_user:
-            print("验证成功--------")
             if oauth_user.wechat_open_platform_openid is False and auth_type=="scan":
                 oauth_user.update({
                     "wechat_open_platform_openid":params["openid"]
@@ -105,7 +138,7 @@ class ResUsers(models.Model):
                 oauth_user.update({
                     "wechat_official_account_openid":params["openid"]
                 })
-            return (self.env.cr.dbname, oauth_user.login, oauth_unionid)  # type: ignore
+            return (self.env.cr.dbname, oauth_user.login, oauth_id)  # type: ignore
         else:
             return AccessDenied
 
@@ -115,13 +148,15 @@ class ResUsers(models.Model):
         微信注册新用户
         """
         auth_signup_type = ICP.get_param("wechat_auth_signup_type")
-
-        if auth_signup_type=="group":
-            return self._wechet_create_user_from_group(values,ICP)
-        elif auth_signup_type=="template":
-            return self._wechet_create_user_from_template(values,ICP)
-        else:
-            return False
+        try:
+            if auth_signup_type=="group":
+                return self._wechet_create_user_from_group(values,ICP)
+            elif auth_signup_type=="template":
+                return self._wechet_create_user_from_template(values,ICP)
+            else:
+                return False
+        except Exception as e:
+            print("错误：",str(e))
 
     def _wechet_create_user_from_group(self,values,ICP):
         """
@@ -149,7 +184,7 @@ class ResUsers(models.Model):
         从模板创建新用户
         """
         user_template = ICP.get_param("wechat_template_portal_user_id")
-        template_user_id = literal_eval(self.env['ir.config_parameter'].sudo().get_param('wechat_template_portal_user_id', 'False'))
+        template_user_id = literal_eval(self.env['ir.config_parameter'].sudo().get_param('wechat_template_portal_user_id', 'False'))    # type: ignore
         template_user = self.browse(template_user_id)
         if not template_user.exists():
             raise ValueError(_('Wechat Signup: invalid template user'))
@@ -171,14 +206,22 @@ class ResUsers(models.Model):
 
 
     def _check_credentials(self, password, env):
-        # password为微信的用户 unionid
+        # -----------------------------------------------------
+        # 如果 unionid 存在，password为微信的用户 unionid
+        # 如果 unionid 不存在，password为微信的用户 openid
+        # -----------------------------------------------------
         try:
             return super(ResUsers, self)._check_credentials(password, env)  # type: ignore
         except AccessDenied:
-            # print(self.env.uid)
             res = self.sudo().search(
-                [("id", "=", self.env.uid), ("wechat_unionid", "=", password)]
+                [
+                    ("id", "=", self.env.uid),
+                    "|",
+                    "|",
+                     ("wechat_unionid", "=", password),
+                     ("wechat_open_platform_openid", "=", password),
+                     ("wechat_official_account_openid", "=", password)
+                     ]
             )
-            # print(res)
             if not res:
                 raise
