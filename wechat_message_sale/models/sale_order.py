@@ -3,6 +3,8 @@
 
 from odoo import api, fields, models, SUPERUSER_ID, _
 from odoo.exceptions import AccessError, UserError, ValidationError
+from odoo.tools import (format_amount,format_date)
+from datetime import datetime
 
 class SaleOrder(models.Model):
 	_inherit = 'sale.order'
@@ -15,7 +17,6 @@ class SaleOrder(models.Model):
 		self.order_line._validate_analytic_distribution()
 		lang = self.env.context.get('lang')
 		wechat_message_template = self._find_wechat_message_template()
-		# print(wechat_message_template)
 
 		if not wechat_message_template:
 			raise UserError(_("The WeChat message template is not bound!"))
@@ -65,3 +66,13 @@ class SaleOrder(models.Model):
 		:return: `mail.template` record or None if default template wasn't found
 		"""
 		return self.env.ref('wechat_message_sale.wechat_message_template_sale_confirmation', raise_if_not_found=False)
+
+	def get_amount_total(self):
+		""""""
+		return  format_amount(self.amount_total, self.pricelist_id.currency_id)
+
+
+	def get_sent_time(self):
+		""""""
+		# datetime.now()
+		return format_date(self.env, datetime.now(), date_format='short', lang_code=self.env.lang)

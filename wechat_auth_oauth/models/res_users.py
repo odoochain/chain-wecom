@@ -83,25 +83,11 @@ class ResUsers(models.Model):
                 "login": params["openid"],
             })
 
-        # oauth_user = self.sudo().search(
-        #     [
-        #         "|",
-        #         "|",
-        #         ("wechat_open_platform_openid", "=", params["openid"]),
-        #         ("wechat_official_account_openid", "=", params["openid"]),
-        #         ("wechat_unionid", "=", params["unionid"]),
-        #         "|",
-        #         ("active", "=", True),
-        #         ("active", "=", False),
-        #     ],
-        #     limit=1,
-        # )
-
         oauth_user = self.sudo().search(
             domain,
             limit=1,
         )
-        
+
         if not oauth_user:
             # 创建用户
             # 用户信息
@@ -138,6 +124,27 @@ class ResUsers(models.Model):
                 oauth_user.update({
                     "wechat_official_account_openid":params["openid"]
                 })
+
+            try:
+                # print(oauth_user.partner_id)
+                partner = {
+                    "is_wechat_user":True
+                }
+                if "wechat_open_platform_openid" in values:
+                    partner.update({
+                        "wechat_open_platform_openid": values["wechat_open_platform_openid"]
+                    })
+                if "wechat_official_account_openid" in values:
+                    partner.update({
+                        "wechat_official_account_openid": values["wechat_official_account_openid"]
+                    })
+                if "wechat_unionid" in values:
+                    partner.update({
+                        "wechat_unionid": values["wechat_unionid"]
+                    })
+                oauth_user.partner_id.update(partner)
+            except Exception as e:
+                print("partner更新错误:",str(e))
             return (self.env.cr.dbname, oauth_user.login, oauth_id)  # type: ignore
         else:
             return AccessDenied

@@ -7,8 +7,13 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//button[@name='action_quotation_send'][1]" position="before">
-                <button name="action_quotation_send_by_wechat" string="Send by Wehcat" type="object" states="draft" class="btn-primary" data-hotkey="g" context="{'validate_analytic': True}"/>
-                <button name="action_quotation_send_by_wechat" string="Send by Wehcat" type="object" states="sent,sale" data-hotkey="g" context="{'validate_analytic': True}"/>
+                
+                <!-- 发送报价单 -->
+                <!-- <button name="action_quotation_send_by_wechat" string="Send by Wehcat" type="object" states="draft" class="btn-primary" data-hotkey="g" context="{'validate_analytic': True}" icon="fa-wechat"/> -->
+
+                <!-- 发送订单 -->
+                <button name="action_quotation_send_by_wechat" string="Send by Wehcat" type="object" states="sent,sale"  class="btn-primary" data-hotkey="g" context="{'validate_analytic': True}" icon="fa-wechat"/>
+
             </xpath>
         </field>
     </record>

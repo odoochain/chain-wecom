@@ -284,7 +284,7 @@ msgid "WeChat Message Templates"
 msgstr "微信消息模板"
 
 #. module: wechat_message
-#: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__wechat_message_template_id
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__template_id
 msgid "Wechat Message Template Id"
 msgstr "微信消息模板Id"
 

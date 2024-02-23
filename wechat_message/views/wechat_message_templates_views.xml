@@ -29,22 +29,23 @@
                         </div>
                         <div class="oe_title">
                             <label for="name"/>
-                            <h1><field name="name" class="w-100"
-                                required="1" placeholder='e.g. "Welcome email"'/></h1>
+                            <h1>
+                                <field name="name" class="w-100" required="1" placeholder='e.g. "Welcome email"'/>
+                            </h1>
                             <group>
                                 <field name="model_id" placeholder="e.g. Contact" required="1" options="{'no_create': True}"/>
                                 <field name="subject" placeholder='e.g. "Welcome to MyCompany" or "Nice to meet you, {{ object.name }}"'/>
                                 <field name="model" invisible="1"/>
                                 <field name="description"/>
-                                <field name="wechat_message_template_id"/>
+                                <field name="template_id"/>
                             </group>
                         </div>
                         <notebook>
                             <page string="Content" name="content">
-                                <!-- <field name="can_write" invisible="1"/> -->
-                                <field name="body_html" widget="html" class="oe-bordered-editor"
-                                    options="{'style-inline': true, 'codeview': true, 'dynamic_placeholder': true}"
-                                    attrs="{'readonly': [ ('id', '!=', False)]}"/>
+                                <!-- <field name="can_write" invisible="1" attrs="{'readonly': [ ('id', '!=', False)]}"/> widget="ace"-->
+                                <!-- <field name="body_json" widget="json_editor" options="{'mode': 'code', 'modes':['code', 'form', 'text', 'tree', 'view', 'preview']}" /> -->
+                                <!-- <field name="body_json" widget="json_editor"/> -->
+                                <field name="body_html" widget="ace" options="{'mode': 'python'}" />
                                 <!-- <field name="attachment_ids" widget="many2many_binary"/> -->
                             </page>
                         </notebook>
