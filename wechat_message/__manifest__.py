@@ -31,5 +31,10 @@ Odoo event notification to Wechat.
             "wechat_message/static/src/views/**/*.xml",
         ],
     },
+    "external_dependencies": {
+        "python": [
+            "xmltodict",
+        ],
+    },
     "license": "Other proprietary",
 }

@@ -12,7 +12,7 @@
                         <field name="author_id" invisible="1"/>
                         <field name="model" invisible="1"/>
                         <!-- <field name="record_name" invisible="1"/> -->
-                        <field name="record_name" />
+                        <field name="record_name" invisible="1"/>
                         <field name="res_id" invisible="1"/>
 
                         <label for="partner_ids" string="Recipients"/>
@@ -25,14 +25,15 @@
                         <field name="template_id" string="Load template" options="{'no_create': True}" context="{'default_model': model,  'default_subject': subject}"/>
                         <field name="wechat_template_id" readonly="1" force_save="1"/>
                         <field name="jump_link" readonly="1" force_save="1"/>
-                        <field name="body"  widget="ace" options="{'mode': 'python'}" force_save="1"/>
-                        <field name="body_json"  widget="json_editor" options="{'mode': 'code', 'modes':['code', 'form', 'text', 'tree', 'view', 'preview']}" force_save="1" readonly="1"/>
-                        <footer>
-                            <button string="Send" name="action_send_wenchat_message" type="object" class="btn-primary o_mail_send" data-hotkey="q" />
-                            <!--  attrs="{'invisible': ['|',('partner_ids', '=', False),('template_id', '=', False)]}" -->
-                            <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z" />
-                        </footer>
+                        <field name="body" widget="ace" options="{'mode': 'python'}" force_save="1"/>
                     </group>
+
+
+                    <footer>
+                        <button string="Send" name="action_send_wenchat_message" type="object" class="btn-primary o_mail_send" data-hotkey="q" />
+                        <!--  attrs="{'invisible': ['|',('partner_ids', '=', False),('template_id', '=', False)]}" -->
+                        <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z" />
+                    </footer>
                 </form>
             </field>
         </record>

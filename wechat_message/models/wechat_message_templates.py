@@ -44,21 +44,10 @@ class WeChatMessageTemplates(models.Model):
     jump_link = fields.Char(string="Template jump link")  # 模板跳转链接
     body_html = fields.Text(
         string="Body",
-        render_engine="qweb",
-        translate=True,
-        prefetch=True,
-        sanitize=False,
-        default={},
+        # render_engine="qweb",
+        # translate=True,
+        # prefetch=True,
+        # sanitize=False,
+        # default={},
     )
     body_json = fields.Char(string="Body", translate=True, default={})
-
-
-# {
-#                 'thing4':{'value':{{ object.company_id.name }}},
-#                 'thing5':{'value':{{ object.partner_id.name }}},
-#                 'character_string1':{'value': {{ object.name }}},
-#                 'amount2':{'value': <t t-out="format_amount(object.amount_total, object.currency_id) or ''">$ 10.00</t>},
-#                 'time3':{'value': <t t-out="format_datetime(object.create_date, tz='UTC', dt_format=&quot;yyyyMMdd'T'HHmmss'Z'&quot;)"/> }
-# "time3":{"value": {{ format_datetime(dt=object.create_date, tz='UTC', dt_format=&quot;yyyyMMdd'T'HHmmss'Z'&quot;, lang_code=object.env.lang)}}}"amount2":{"value": {{ object.get_amount_total() }}},
-# "time3":{"value": {{ object.get_sent_time() }}},
-#             }

@@ -1,10 +1,26 @@
 # -*- coding: utf-8 -*-
 
 import json
+import xmltodict
+import requests  # type: ignore
 
 from odoo import _, api, fields, models, tools, Command
 from odoo.exceptions import UserError
 from odoo.osv import expression
+
+
+def _reopen(self, res_id, model, context=None):
+    # save original model in context, because selecting the list of available
+    # templates requires a model in context
+    context = dict(context or {}, default_model=model)
+    return {
+        "type": "ir.actions.act_window",
+        "view_mode": "form",
+        "res_id": res_id,
+        "res_model": self._name,
+        "target": "new",
+        "context": context,
+    }
 
 
 class WechatComposeMessage(models.TransientModel):
@@ -13,8 +29,9 @@ class WechatComposeMessage(models.TransientModel):
     """
 
     _name = "wechat.compose.message"
+    _inherit = "mail.composer.mixin"
     _description = "Wechat message composition wizard"
-    _log_access = True
+    # _log_access = True
 
     @api.model
     def default_get(self, fields):
@@ -54,17 +71,22 @@ class WechatComposeMessage(models.TransientModel):
         domain=_partner_ids_domain,
         readonly=True,
     )
-    openid = fields.Char(string="Wechat User Id",readonly=True,)
+    openid = fields.Char(
+        string="Wechat User Id",
+        readonly=True,
+        store=True,
+    )
 
     # 内容
     subject = fields.Char("Subject", compute=False)
     template_id = fields.Many2one(
         "wechat.message_templates", "Use template", domain="[('model', '=', model)]"
     )
-    wechat_template_id = fields.Char(string="Wechat template id",)
+    wechat_template_id = fields.Char(
+        string="Wechat template id",
+    )
     jump_link = fields.Char(string="Template jump link")  # 模板跳转链接
-    body = fields.Html("Contents",readonly=True)
-    body_json = fields.Json("JSON Contents",readonly=True,default={})
+    body = fields.Text("Contents", compute=False, readonly=True,store=True,)
 
     # 源
     author_id = fields.Many2one(
@@ -76,6 +98,12 @@ class WechatComposeMessage(models.TransientModel):
     model = fields.Char("Related Document Model")
     res_id = fields.Integer("Related Document ID")
     record_name = fields.Char("Message Record Name")
+
+    # Overrides of mail.render.mixin
+    @api.depends("model")
+    def _compute_render_model(self):
+        for composer in self:
+            composer.render_model = composer.model
 
     @api.model
     def get_record_data(self, values):
@@ -96,88 +124,106 @@ class WechatComposeMessage(models.TransientModel):
             subject = tools.ustr(result["record_name"])
             result["jump_link"] = self.env[values.get("model")].get_base_url() + self.env[values.get("model")].browse(values.get("res_id")).get_portal_url()  # type: ignore
 
-
         if values.get("template_id"):
-            template =  self.env["wechat.message_templates"].browse(values.get("template_id"))
+            template = self.env["wechat.message_templates"].browse(
+                values.get("template_id")
+            )
             result["wechat_template_id"] = template.template_id.template_id
-            result["body"] = template.body_html
+            template_body = self.render_message_body(values.get("model"),values.get("res_id"),template.body_html)
+            result["body"] = template_body
 
 
         result["subject"] = subject
-
-        # res_id = values.get("res_id")
-        # result["body_json"] = self.env["wechat.message_templates"].browse(values.get("res_id"))self.render_message(values.get("model"),res_id,xml_id,template_data)
-        # print(result)
         return result
 
+    # ------------------------------------------------------------
+    # ACTIONS
+    # ------------------------------------------------------------
 
     def action_send_wenchat_message(self):
-        if not self.partner_ids:
-            raise UserError(_("No recipient found!"))
-        if not self.template_id:
-            raise UserError(_("Unbound WeChat message template!"))
-
-        self._action_send_wenchat_message(auto_commit=False)
-
+        """Used for action button that do not accept arguments."""
+        self._action_send_wenchat_message()
         return {"type": "ir.actions.act_window_close"}
 
-    def _action_send_wenchat_message(self, auto_commit=False):
+    def _action_send_wenchat_message(self):
         """
-        处理向导内容，并继续发送相关消息，如果需要，实时呈现任何模板模式。
         """
-        model_description = self._context.get("model_description")
-        model = self.env['ir.model']._get(self.model)
-        model_name = model.model
+        data_dict = self.get_message_json(self.body)
+        data_dict.update({  # type: ignore
+            "touser":self.openid,
+            "template_id":self.wechat_template_id,
+            "url":self.jump_link,
+        })
 
-
-        for wizard in self:
-            res_ids = [wizard.res_id]
-            template = self.env["wechat.message_templates"].browse(wizard.template_id.id)
-
-            xml_id = template.get_external_id().get(wizard.template_id.id)
-            template_data = template.body_html
-            # record = model.
-            try:
-                rendered_body = self.env['mail.render.mixin']._render_template(
-                    xml_id,
-                    model_name,
-                    res_ids,
-                    engine='qweb_view',
-                    add_context={
-                        "company_name": ""
-                        "partner_name": ""
-                        "order_name": ""
-                        "order_amount_total": ""
-                        "sent_time": ""
-                    },
-                    post_process=True,
-                )[wizard.res_id]
-                print(rendered_body)
-            except Exception as e:
-                print("错误",str(e))
-
-
-    def render_message(self, model, res_id, xml_id, template_data):
-        """
-        为 res_id 提供的文档记录生成向导的基于模板的值。这个方法是由 email_template 继承的，它将使用qweb模板生成一个更完整的字典
-        """
         try:
-            rendered_body = self.env['mail.render.mixin']._render_template(
-                xml_id,
-                model,
-                [res_id],
-                engine='qweb_view',
-                add_context={},
-                post_process=True,
-            )[res_id]
-            print(rendered_body)
+            headers = {"content-type": "application/json"}
+            app = self.env["wechat.applications"].sudo().search([("app_type", "=", "official_account")], limit=1)
+            api_url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=%s" % app.access_token
+            response = requests.post(api_url, json=data_dict, headers=headers).json()
         except Exception as e:
-            print("错误",str(e))
-        # body_json = json.loads(template_data)
-        model = self.env[model]
-        record = model.browse(res_id)
-        print(record)
+            print(str(e))
+        else:
+            print(response)
+            if "errcode" in response and response["errcode"] !=0:
+                error_msg = ""
+                error_code = (
+                    self.env["wechat.error_codes"]
+                    .sudo()
+                    .search_read(
+                        domain=[("code", "=", response["errcode"])],
+                        fields=["name"],
+                    )
+                )
+                if error_code:
+                    error_msg = error_code[0]["name"]
+                else:
+                    error_msg = _("unknown error")
 
-        return {}
+                raise UserError(
+                    _(
+                        "Error code: %s, Error description: %s;Error details: %s",
+                        response["errcode"],
+                        error_msg,
+                        response["errmsg"],
+                    )
+                )
+            else:
+                params = {
+                    "title": _("Success"),
+                    "message": _("Successfully sent WeChat message!"),
+                    "sticky": False,  # 延时关闭
+                    "className": "bg-success",
+                }
+                action = {
+                    "type": "ir.actions.client",
+                    "tag": "display_notification",
+                    "params": {
+                        "title": params["title"],
+                        "type": "success",
+                        "message": params["message"],
+                        "sticky": params["sticky"],
+                    },
+                }
+                return action
 
 
+
+    def render_message_body(self, model, res_id, body):
+        """"""
+        records = self.env[model].browse([res_id])
+        body = self.env['mail.render.mixin']._render_template(body, records._name, records.ids)
+        body_contents = body[res_id]
+        if "\xa0" in body_contents:
+            body_contents = body_contents.replace(u'\xa0', u'')
+        return body_contents
+
+    def get_message_json(self,body):
+        """"""
+        body_json = False
+        try:
+            body_json = json.loads(body)
+        except Exception as e:
+            print(str(e))
+            return False
+        finally:
+            return body_json

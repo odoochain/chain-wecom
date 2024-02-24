@@ -42,11 +42,7 @@
                         </div>
                         <notebook>
                             <page string="Content" name="content">
-                                <!-- <field name="can_write" invisible="1" attrs="{'readonly': [ ('id', '!=', False)]}"/> widget="ace"-->
-                                <!-- <field name="body_json" widget="json_editor" options="{'mode': 'code', 'modes':['code', 'form', 'text', 'tree', 'view', 'preview']}" /> -->
-                                <!-- <field name="body_json" widget="json_editor"/> -->
-                                <field name="body_html" widget="ace" options="{'mode': 'python'}" />
-                                <!-- <field name="attachment_ids" widget="many2many_binary"/> -->
+                                <field name="body_html" widget="ace" options="{'mode': 'xml'}" />
                             </page>
                         </notebook>
                     </sheet>

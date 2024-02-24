@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-22 08:53+0000\n"
-"PO-Revision-Date: 2024-02-22 16:57+0800\n"
+"POT-Creation-Date: 2024-02-24 16:43+0000\n"
+"PO-Revision-Date: 2024-02-25 00:46+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -43,11 +43,16 @@ msgstr "适用于"
 msgid "Author"
 msgstr "作者"
 
-
 #. module: wechat_message
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__body_html
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__body_json
 msgid "Body"
 msgstr "正文"
+
+#. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_compose_message__can_edit_body
+msgid "Can Edit Body"
+msgstr "允许编辑"
 
 #. module: wechat_message
 #: model_terms:ir.ui.view,arch_db:wechat_message.wechat_compose_message_wizard_form
@@ -71,6 +76,11 @@ msgid "Content"
 msgstr "内容"
 
 #. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_compose_message__body
+msgid "Contents"
+msgstr "内容"
+
+#. module: wechat_message
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_compose_message__create_uid
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_template_list__create_uid
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__create_uid
@@ -90,6 +100,13 @@ msgstr "创建时间"
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__display_name
 msgid "Display Name"
 msgstr "显示名称"
+
+#. module: wechat_message
+#. odoo-python
+#: code:addons/wechat_message/wizard/wechat_compose_message.py:0
+#, python-format
+msgid "Error code: %s, Error description: %s;Error details: %s"
+msgstr "错误代码：%s，错误描述：%s；错误详细信息：%s"
 
 #. module: wechat_message
 #. odoo-javascript
@@ -120,6 +137,17 @@ msgid "ID"
 msgstr ""
 
 #. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_compose_message__is_mail_template_editor
+msgid "Is Editor"
+msgstr "编辑器"
+
+#. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_compose_message__body_json
+msgid "JSON Contents"
+msgstr ""
+
+#. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_compose_message__lang
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__lang
 msgid "Language"
 msgstr "语言"
@@ -177,6 +205,7 @@ msgid "Name"
 msgstr "名称"
 
 #. module: wechat_message
+#: model:ir.model.fields,help:wechat_message.field_wechat_compose_message__lang
 #: model:ir.model.fields,help:wechat_message.field_wechat_message_templates__lang
 msgid ""
 "Optional translation language (ISO code) to select when sending out an email. "
@@ -203,6 +232,7 @@ msgid "Related Document Model"
 msgstr "相关单据模型"
 
 #. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_compose_message__render_model
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__render_model
 msgid "Rendering Model"
 msgstr "呈现模型"
@@ -230,10 +260,24 @@ msgstr "主题"
 
 #. module: wechat_message
 #. odoo-python
+#: code:addons/wechat_message/wizard/wechat_compose_message.py:0
+#, python-format
+msgid "Success"
+msgstr "成功"
+
+#. module: wechat_message
+#. odoo-python
 #: code:addons/wechat_message/models/wechat_message_template_list.py:0
 #, python-format
 msgid "Successfully obtained the template message list!"
 msgstr "成功获取模板消息列表！"
+
+#. module: wechat_message
+#. odoo-python
+#: code:addons/wechat_message/wizard/wechat_compose_message.py:0
+#, python-format
+msgid "Successfully sent WeChat message!"
+msgstr "微信消息发送成功！"
 
 #. module: wechat_message
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_template_list__template_id
@@ -252,6 +296,12 @@ msgstr "模板Id必须唯一！"
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__description
 msgid "Template description"
 msgstr "模板描述"
+
+#. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_compose_message__jump_link
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__jump_link
+msgid "Template jump link"
+msgstr "模板跳转链接"
 
 #. module: wechat_message
 #: model_terms:ir.ui.view,arch_db:wechat_message.wechatmessage_templates_view_form
@@ -299,9 +349,19 @@ msgid "Wechat Template Message List"
 msgstr "微信模板消息列表"
 
 #. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_compose_message__openid
+msgid "Wechat User Id"
+msgstr "微信用户ID"
+
+#. module: wechat_message
 #: model:ir.model,name:wechat_message.model_wechat_compose_message
 msgid "Wechat message composition wizard"
 msgstr "微信消息撰写向导"
+
+#. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_compose_message__wechat_template_id
+msgid "Wechat template id"
+msgstr "微信模板id"
 
 #. module: wechat_message
 #: model_terms:ir.ui.view,arch_db:wechat_message.wechat_compose_message_wizard_form
@@ -322,3 +382,10 @@ msgstr "例如\"欢迎来到我的公司\" 或 \"很高兴见到你， {{ object
 #: model_terms:ir.ui.view,arch_db:wechat_message.wechatmessage_templates_view_form
 msgid "e.g. Contact"
 msgstr "例如联系人"
+
+#. module: wechat_message
+#. odoo-python
+#: code:addons/wechat_message/wizard/wechat_compose_message.py:0
+#, python-format
+msgid "unknown error"
+msgstr "未知错误"

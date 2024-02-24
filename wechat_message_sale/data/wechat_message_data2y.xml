@@ -20,15 +20,36 @@
             <field name="subject">{{ object.company_id.name }} {{ (object.get_portal_last_transaction().state == 'pending') and 'Pending Order' or 'Order' }} (Ref {{ object.name or 'n/a' }})</field>
             <field name="description">Sent to customers on order confirmation</field>
             <field name="lang">{{ object.partner_id.lang }}</field>
-            <field name="body_html">{
-    "data":{
-        "thing4":{"value":"{{ object.partner_id.parent_id.name }}"},
-        "thing5":{"value":"{{ object.partner_id.name }}"},
-        "character_string1":{"value": "{{ object.name }}"},
-        "amount2":{"value": "{{ object.get_amount_total() }}"},
-        "time3":{"value": "{{ object.get_sent_time() }}"},
-    }
-}</field>
+            <field name="body_html"  type="xml">
+<data>
+    <thing4>
+        <value>
+            <t t-esc='company_name' />
+        </value>
+    </thing4>
+    <thing5>
+        <value>
+            <t t-esc='partner_name' />
+        </value>
+    </thing5>
+    <character_string1>
+        <value>
+            <t t-esc='order_name' />
+        </value>
+    </character_string1>
+    <amount2>
+        <value>
+            <t t-esc='order_amount_total' />
+        </value>
+    </amount2>
+    <time3>
+        <value>
+            <t t-esc='sent_time' />
+        </value>
+    </time3>
+</data>
+            </field>
+
         </record>
 
         <!-- 销售：订单取消 模板编号59611-->
@@ -38,15 +59,35 @@
             <field name="subject">{{ object.company_id.name }} {{ object.type_name }} Cancelled (Ref {{ object.name or 'n/a' }})</field>
             <field name="description">Sent automatically to customers when you cancel an order</field>
             <field name="lang">{{ object.partner_id.lang }}</field>
-            <field name="body_html">{
-    "data":{
-        "thing4":{"value":"{{ object.partner_id.parent_id.name }}"},
-        "thing5":{"value":"{{ object.partner_id.name }}"},
-        "character_string1":{"value": "{{ object.name }}"},
-        "amount2":{"value": "{{ object.get_amount_total() }}"},
-        "time3":{"value": "{{ object.get_sent_time() }}"},
-    }
-}</field>
+            <field name="body_html"  type="xml">
+<data>
+    <thing4>
+        <value>
+            <t t-esc='company_name' />
+        </value>
+    </thing4>
+    <thing5>
+        <value>
+            <t t-esc='partner_name' />
+        </value>
+    </thing5>
+    <character_string1>
+        <value>
+            <t t-esc='order_name' />
+        </value>
+    </character_string1>
+    <amount2>
+        <value>
+            <t t-esc='order_amount_total' />
+        </value>
+    </amount2>
+    <time3>
+        <value>
+            <t t-esc='sent_time' />
+        </value>
+    </time3>
+</data>
+            </field>
         </record>
 
 

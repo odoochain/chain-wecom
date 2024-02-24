@@ -3,7 +3,8 @@
 
 from odoo import api, fields, models, SUPERUSER_ID, _
 from odoo.exceptions import AccessError, UserError, ValidationError
-from odoo.tools import (format_amount,format_date)
+from odoo.tools import (format_amount,format_datetime)
+# from babel.dates import format_datetime
 from datetime import datetime
 
 class SaleOrder(models.Model):
@@ -69,10 +70,18 @@ class SaleOrder(models.Model):
 
 	def get_amount_total(self):
 		""""""
-		return  format_amount(self.amount_total, self.pricelist_id.currency_id)
+		amount_total = format_amount(self.env, self.amount_total, self.pricelist_id.currency_id)
+		# print(amount_total)
+		# replace
+		if "," in amount_total:
+			amount_total = amount_total.replace(",","")
+		return amount_total
 
 
 	def get_sent_time(self):
 		""""""
 		# datetime.now()
-		return format_date(self.env, datetime.now(), date_format='short', lang_code=self.env.lang)
+		# return format_date(self.env, datetime.now(), date_format='medium',dt_format='yyyyMMddHHmmss', lang_code=self.env.lang)
+		# print(datetime.now())
+		# return format_date(self.env, datetime.now(), date_format='yyyy-MM-dd HH:mm:ss', lang_code=self.env.lang)
+		return format_datetime(self.env, datetime.now(), dt_format='yyyy-MM-dd HH:mm:ss', lang_code=self.env.lang)
