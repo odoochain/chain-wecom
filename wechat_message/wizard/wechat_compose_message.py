@@ -83,7 +83,7 @@ class WechatComposeMessage(models.TransientModel):
         "wechat.message_templates", "Use template", domain="[('model', '=', model)]"
     )
     wechat_template_id = fields.Char(
-        string="Wechat template id",
+        string="Wechat template id", required=True,store=True,
     )
     jump_link = fields.Char(string="Template jump link")  # 模板跳转链接
     body = fields.Text("Contents", compute=False, readonly=True,store=True,)
@@ -113,6 +113,8 @@ class WechatComposeMessage(models.TransientModel):
             openids = []
             for partner_id in partner_ids:
                 partner = self.env["res.partner"].browse(partner_id)
+                if not partner.wechat_official_account_openid:
+                    raise UserError(_("The current customer is not a WeChat user!"))
                 openids.append(partner.wechat_official_account_openid)
             result["openid"] = ",".join(openids)
 
@@ -149,6 +151,9 @@ class WechatComposeMessage(models.TransientModel):
         """
         """
         data_dict = self.get_message_json(self.body)
+        if not data_dict:
+            raise UserError(_("There is an error in the content of the WeChat message template!"))
+
         data_dict.update({  # type: ignore
             "touser":self.openid,
             "template_id":self.wechat_template_id,
@@ -163,8 +168,26 @@ class WechatComposeMessage(models.TransientModel):
         except Exception as e:
             print(str(e))
         else:
-            print(response)
-            if "errcode" in response and response["errcode"] !=0:
+            if response["errcode"] == 0:
+                params = {
+                    "title": _("Success"),
+                    "message": _("Successfully sent WeChat message!"),
+                    "sticky": False,  # 延时关闭
+                    "className": "bg-success",
+                }
+                action = {
+                    "type": "ir.actions.client",
+                    "tag": "display_notification",
+                    "params": {
+                        "title": params["title"],
+                        "type": "success",
+                        "message": params["message"],
+                        "sticky": params["sticky"],
+                    },
+                }
+                # print(action)
+                return action
+            else:
                 error_msg = ""
                 error_code = (
                     self.env["wechat.error_codes"]
@@ -187,24 +210,7 @@ class WechatComposeMessage(models.TransientModel):
                         response["errmsg"],
                     )
                 )
-            else:
-                params = {
-                    "title": _("Success"),
-                    "message": _("Successfully sent WeChat message!"),
-                    "sticky": False,  # 延时关闭
-                    "className": "bg-success",
-                }
-                action = {
-                    "type": "ir.actions.client",
-                    "tag": "display_notification",
-                    "params": {
-                        "title": params["title"],
-                        "type": "success",
-                        "message": params["message"],
-                        "sticky": params["sticky"],
-                    },
-                }
-                return action
+
 
 
 

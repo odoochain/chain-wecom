@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-22 09:02+0000\n"
-"PO-Revision-Date: 2024-02-22 17:02+0800\n"
+"POT-Creation-Date: 2024-02-25 06:38+0000\n"
+"PO-Revision-Date: 2024-02-25 14:38+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -21,6 +21,11 @@ msgstr ""
 #: model:ir.model,name:wechat_message_sale.model_sale_order
 msgid "Sales Order"
 msgstr "销售订单"
+
+#. module: wechat_message_sale
+#: model:ir.model,name:wechat_message_sale.model_wechat_compose_message
+msgid "Sales Order Wechat message"
+msgstr "销售订单微信消息"
 
 #. module: wechat_message_sale
 #: model:wechat.message_templates,name:wechat_message_sale.wechat_message_template_sale_cancellation
@@ -39,8 +44,13 @@ msgstr "销售：发送报价"
 
 #. module: wechat_message_sale
 #: model_terms:ir.ui.view,arch_db:wechat_message_sale.wechat_message_sale_order
-msgid "Send by Wehcat"
-msgstr "通过微信发送"
+msgid "Send and cancel by Wechat"
+msgstr "Send and cancel via Wechat"
+
+#. module: wechat_message_sale
+#: model_terms:ir.ui.view,arch_db:wechat_message_sale.wechat_message_sale_order
+msgid "Send and confirm by Wehcat"
+msgstr "通过微信发送并确认"
 
 #. module: wechat_message_sale
 #: model:wechat.message_templates,description:wechat_message_sale.wechat_message_template_sale_cancellation

@@ -10,7 +10,4 @@ class WechatComposeMessage(models.TransientModel):
     _inherit = 'wechat.compose.message'
 
 
-    def action_send_wenchat_message(self):
-        if self.model == 'sale.order':
-            pass
-        return super(WechatComposeMessage, self).action_send_wenchat_message()
+    

@@ -23,7 +23,7 @@
                         <field name="openid" />
                         <field name="subject" placeholder="Welcome to MyCompany!" required="True"/>
                         <field name="template_id" string="Load template" options="{'no_create': True}" context="{'default_model': model,  'default_subject': subject}"/>
-                        <field name="wechat_template_id" readonly="1" force_save="1"/>
+                        <field name="wechat_template_id"  readonly="1"   force_save="1"/>
                         <field name="jump_link" readonly="1" force_save="1"/>
                         <field name="body" widget="ace" options="{'mode': 'python'}" force_save="1"/>
                     </group>

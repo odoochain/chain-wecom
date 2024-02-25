@@ -7,13 +7,24 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//button[@name='action_quotation_send'][1]" position="before">
-                
+
                 <!-- 发送报价单 -->
                 <!-- <button name="action_quotation_send_by_wechat" string="Send by Wehcat" type="object" states="draft" class="btn-primary" data-hotkey="g" context="{'validate_analytic': True}" icon="fa-wechat"/> -->
 
-                <!-- 发送订单 -->
-                <button name="action_quotation_send_by_wechat" string="Send by Wehcat" type="object" states="sent,sale"  class="btn-primary" data-hotkey="g" context="{'validate_analytic': True}" icon="fa-wechat"/>
+            <!--
+                attrs="{'invisible': [('state', 'not in', ['draft','sale','cancel']
+                states="sent,sale"
+             -->
+            </xpath>
 
+            <xpath expr="//button[@name='action_confirm'][1]" position="before">
+                <!-- 发送确认的订单 -->
+                <button name="action_confirm_send_by_wechat" string="Send and confirm by Wehcat" type="object" class="btn-primary" context="{'validate_analytic': True}" icon="fa-wechat" attrs="{'invisible': [('state', 'in', ['sale','cancel','done'])]}"/>
+            </xpath>
+
+            <xpath expr="//button[@name='action_cancel']" position="before">
+                <!-- 取消订单 -->
+                <button string="Send and cancel by Wechat" type="object" attrs="{'invisible': ['|', ('state', 'not in', ['draft', 'sent','sale']), ('id', '=', False)]}"  name="action_cancel_send_by_wechat"  icon="fa-wechat" class="btn-warning"/>
             </xpath>
         </field>
     </record>
