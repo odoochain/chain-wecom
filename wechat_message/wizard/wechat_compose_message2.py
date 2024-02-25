@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import json
-import time
+import xmltodict
 import requests  # type: ignore
 
 from odoo import _, api, fields, models, tools, Command
@@ -83,17 +83,10 @@ class WechatComposeMessage(models.TransientModel):
         "wechat.message_templates", "Use template", domain="[('model', '=', model)]"
     )
     wechat_template_id = fields.Char(
-        string="Wechat template id",
-        required=True,
-        store=True,
+        string="Wechat template id", required=True,store=True,
     )
     jump_link = fields.Char(string="Template jump link")  # 模板跳转链接
-    body = fields.Text(
-        "Contents",
-        compute=False,
-        readonly=True,
-        store=True,
-    )
+    body = fields.Text("Contents", compute=False, readonly=True,store=True,)
 
     # 源
     author_id = fields.Many2one(
@@ -105,8 +98,6 @@ class WechatComposeMessage(models.TransientModel):
     model = fields.Char("Related Document Model")
     res_id = fields.Integer("Related Document ID")
     record_name = fields.Char("Message Record Name")
-
-    state = fields.Boolean(string="Message sending status", default=False)
 
     # Overrides of mail.render.mixin
     @api.depends("model")
@@ -140,184 +131,112 @@ class WechatComposeMessage(models.TransientModel):
                 values.get("template_id")
             )
             result["wechat_template_id"] = template.template_id.template_id
-            template_body = self.render_message_body(
-                values.get("model"), values.get("res_id"), template.body_html
-            )
+            template_body = self.render_message_body(values.get("model"),values.get("res_id"),template.body_html)
             result["body"] = template_body
+
 
         result["subject"] = subject
         return result
 
-    # def action_send_wenchat_message(self):
-    #     """Used for action button that do not accept arguments."""
-    #     self._action_send_wenchat_message()
-    # return {"type": "ir.actions.act_window_close"}
 
     def action_send_wenchat_message(self):
+        """Used for action button that do not accept arguments."""
+        self._action_send_wenchat_message()
+        return {"type": "ir.actions.act_window_close"}
+
+    def _action_send_wenchat_message(self):
+        """
+        """
         data_dict = self.get_message_json(self.body)
         if not data_dict:
-            raise UserError(
-                _("There is an error in the content of the WeChat message template!")
-            )
+            raise UserError(_("There is an error in the content of the WeChat message template!"))
 
-        data_dict.update(
-            {  # type: ignore
-                "touser": self.openid,
-                "template_id": self.wechat_template_id,
-                "url": self.jump_link,
-            }
-        )
-        app = (
-            self.env["wechat.applications"]
-            .sudo()
-            .search([("app_type", "=", "official_account")], limit=1)
-        )
-        result = self.call_wechat_api(app, data_dict)  # type: ignore
+        data_dict.update({  # type: ignore
+            "touser":self.openid,
+            "template_id":self.wechat_template_id,
+            "url":self.jump_link,
+        })
 
-        params = {}
-
-        action = {
-            "type": "ir.actions.client",
-            "tag": "display_notification",
-        }
-        if result["code"] == 0:  # type: ignore
-            self.state = True  # type: ignore 发送成功
-            params.update(
-                {
-                    "type": "success",
+        try:
+            headers = {"content-type": "application/json"}
+            app = self.env["wechat.applications"].sudo().search([("app_type", "=", "official_account")], limit=1)
+            api_url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=%s" % app.access_token
+            response = requests.post(api_url, json=data_dict, headers=headers).json()
+        except Exception as e:
+            print(str(e))
+        else:
+            if response["errcode"] == 0:
+                params = {
                     "title": _("Success"),
                     "message": _("Successfully sent WeChat message!"),
                     "sticky": False,  # 延时关闭
-                    "next": {"type": "ir.actions.act_window_close"},
+                    "className": "bg-success",
                 }
-            )
-
-        elif result["code"] == 42001:  # type: ignore
-            # access_token 超时,需要重启获取Token且再次发送
-            self.state = False  # type: ignore
-
-            # self.retry_action_send_wenchat_message(app,data_dict)
-            params.update(
-                {
-                    "type": "info",
-                    "title": _("Retrieve token again"),
-                    "message": _("Token expired, retrieve token again and retry sending message"),
-                    "sticky": False,  # 延时关闭
-                }
-            )
-            return self.retry_action_send_wenchat_message(app,data_dict)
-        else:
-            self.state = False  # type: ignore
-            error_msg = ""
-            error_code = (
-                self.env["wechat.error_codes"]
-                .sudo()
-                .search_read(
-                    domain=[("code", "=", result["code"])],  # type: ignore
-                    fields=["name"],
-                )
-            )
-            if error_code:
-                error_msg = error_code[0]["name"]
-            else:
-                error_msg = _("unknown error")
-            msg = _(
-                "Error code: %s, Error description: %s;Error details: %s",
-                result["code"],  # type: ignore
-                error_msg,
-                result["msg"],  # type: ignore
-            )
-            params.update(
-                {
-                    "type": "warning",
-                    "title": _("Fail"),
-                    "message": msg,
-                    "sticky": False,  # 延时关闭
-                    "next": {"type": "ir.actions.act_window_close"}
-                }
-            )
-        action.update({"params": params})
-        return action
-
-
-    def retry_action_send_wenchat_message(self, app, data):
-        """
-        重发一次消息
-        """
-        params = {
-            "sticky": False,  # 延时关闭
-            "next": {"type": "ir.actions.act_window_close"},
-        }
-        action = {
-            "type": "ir.actions.client",
-            "tag": "display_notification",
-        }
-
-        token_result = app.retry_get_access_token()
-        if token_result["state"]:
-            api_result = self.call_wechat_api(app, data)  # type: ignore
-            if api_result["code"] == 0:  # type: ignore
-                self.state = True  # type: ignore 发送成功
-                params.update(
-                    {
+                action = {
+                    "type": "ir.actions.client",
+                    "tag": "display_notification",
+                    "params": {
+                        "title": params["title"],
                         "type": "success",
-                        "title": _("Success"),
-                        "message": _("Successfully sent WeChat message!")
-                    }
-                )
-            else:
-                self.state = False
-                params.update(
-                    {
-                        "type": "warning",
-                        "title": _("Fail"),
-                        "message": _("Failed to retry sending message! Reason: %s") % api_result["msg"],
-                    }
-                )
-        else:
-            self.state = False
-            params.update(
-                {
-                    "type": "warning",
-                    "title": _("Fail"),
-                    "message": _("Failed to retry sending message! Reason: %s") % token_result["msg"],
+                        "message": params["message"],
+                        "sticky": params["sticky"],
+                    },
                 }
-            )
-        action.update({"params": params})
-        return action
+                # print(action)
+                return action
+            elif response["errcode"] == 42001:
+                # access_token 超时,重启获取 Token
+                pass
+            else:
+                error_msg = ""
+                error_code = (
+                    self.env["wechat.error_codes"]
+                    .sudo()
+                    .search_read(
+                        domain=[("code", "=", response["errcode"])],
+                        fields=["name"],
+                    )
+                )
+                if error_code:
+                    error_msg = error_code[0]["name"]
+                else:
+                    error_msg = _("unknown error")
 
-    def call_wechat_api(self, app, data):
+                raise UserError(
+                    _(
+                        "Error code: %s, Error description: %s;Error details: %s",
+                        response["errcode"],
+                        error_msg,
+                        response["errmsg"],
+                    )
+                )
+
+
+    def call_wechat_api(self, data):
         """
         调用微信API
         """
-        result = {}
         try:
             headers = {"content-type": "application/json"}
-            api_url = (
-                "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=%s"
-                % app.access_token
-            )
+            app = self.env["wechat.applications"].sudo().search([("app_type", "=", "official_account")], limit=1)
+            api_url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=%s" % app.access_token
             response = requests.post(api_url, json=data, headers=headers).json()
         except Exception as e:
-            result.update({"code": False, "msg": str(e)})
-            return result
-        else:
-            result.update({"code": response["errcode"], "msg": response["errmsg"]})
+            print(str(e))
+            return False
         finally:
-            return result
+            return response["errcode"]
 
     def render_message_body(self, model, res_id, body):
         """"""
         records = self.env[model].browse([res_id])
-        body = self.env["mail.render.mixin"]._render_template(
-            body, records._name, records.ids
-        )
+        body = self.env['mail.render.mixin']._render_template(body, records._name, records.ids)
         body_contents = body[res_id]
         if "\xa0" in body_contents:
-            body_contents = body_contents.replace("\xa0", "")
+            body_contents = body_contents.replace(u'\xa0', u'')
         return body_contents
 
-    def get_message_json(self, body):
+    def get_message_json(self,body):
         """"""
         body_json = False
         try:

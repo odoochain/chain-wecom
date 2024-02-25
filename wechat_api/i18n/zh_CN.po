@@ -1858,7 +1858,7 @@ msgstr "用户修改微信密码， accesstoken 和 refreshtoken 失效，需要
 #. module: wechat_api
 #: model:wechat.error_codes,name:wechat_api.wechat_error_codes_42001
 msgid "access_token expired"
-msgstr "需要 HTTPS 请求"
+msgstr "access_token 超时，请检查 access_token 的有效期，请参考基础支持 - 获取 access_token 中，对 access_token 的详细机制说明"
 
 #. module: wechat_api
 #: model:wechat.error_codes,name:wechat_api.wechat_error_codes_41001
