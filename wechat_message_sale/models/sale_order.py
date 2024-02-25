@@ -4,7 +4,6 @@
 from odoo import api, fields, models, SUPERUSER_ID, _
 from odoo.exceptions import AccessError, UserError, ValidationError
 from odoo.tools import (format_amount,format_datetime)
-# from babel.dates import format_datetime
 from datetime import datetime
 
 class SaleOrder(models.Model):

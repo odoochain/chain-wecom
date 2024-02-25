@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-25 06:38+0000\n"
-"PO-Revision-Date: 2024-02-25 14:38+0800\n"
+"POT-Creation-Date: 2024-02-25 08:47+0000\n"
+"PO-Revision-Date: 2024-02-25 16:51+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -45,7 +45,7 @@ msgstr "销售：发送报价"
 #. module: wechat_message_sale
 #: model_terms:ir.ui.view,arch_db:wechat_message_sale.wechat_message_sale_order
 msgid "Send and cancel by Wechat"
-msgstr "Send and cancel via Wechat"
+msgstr "通过微信发送和取消"
 
 #. module: wechat_message_sale
 #: model_terms:ir.ui.view,arch_db:wechat_message_sale.wechat_message_sale_order
@@ -53,14 +53,38 @@ msgid "Send and confirm by Wehcat"
 msgstr "通过微信发送并确认"
 
 #. module: wechat_message_sale
-#: model:wechat.message_templates,description:wechat_message_sale.wechat_message_template_sale_cancellation
-msgid "Sent automatically to customers when you cancel an order"
-msgstr "取消订单时自动发送给客户"
+#: model:wechat.message_templates,description:wechat_message_sale.wechat_message_template_sale_confirmation
+msgid ""
+"Sent to customers on order confirmation.\n"
+"Please do the following in the background of WeChat official account:\n"
+"1. \"Setting and development\" → \"official account setting\" → \"service category\";\n"
+"2. Add \"Tools>Office\" to the service category;\n"
+"3. \"Advertising Services and Services\" → \"Template Messages\" → \"Template Library\" → \"Category Template Library\", search for \"Sales Order Confirmed Notification\";\n"
+"4. Add template with number \"59610\""
+msgstr ""
+"在订单确认时发送给客户。\n"
+"请在微信公众号后台进行如下：\n"
+"1. \"设置与开发\" → \"公众号设置\" → \"服务类目\";\n"
+"2. 在服务类目中添加\"工具 > 办公\";\n"
+"3. \"广告服与务\" → \"模板消息\" → \"模板库\" → \"类目模板库\"，搜索\"销售订单已确认通知\";\n"
+"4. 添加编号为\"59610\"的模板"
 
 #. module: wechat_message_sale
-#: model:wechat.message_templates,description:wechat_message_sale.wechat_message_template_sale_confirmation
-msgid "Sent to customers on order confirmation"
-msgstr "在订单确认时发送给客户"
+#: model:wechat.message_templates,description:wechat_message_sale.wechat_message_template_sale_cancellation
+msgid ""
+"Sent to customers when you cancel an order.\n"
+"Please do the following in the background of WeChat official account:\n"
+"1. \"Setting and development\" → \"official account setting\" → \"service category\";\n"
+"2. Add \"Tools>Office\" to the service category;\n"
+"3. \"Advertising Services and Services\" → \"Template Messages\" → \"Template Library\" → \"Category Template Library\", search for \"Sales order cancelled notification\";\n"
+"4. Add template with number \"59611\""
+msgstr ""
+"在订单取消时发送给客户。\n"
+"请在微信公众号后台进行如下：\n"
+"1. \"设置与开发\" → \"公众号设置\" → \"服务类目\";\n"
+"2. 在服务类目中添加\"工具 > 办公\";\n"
+"3. \"广告服与务\" → \"模板消息\" → \"模板库\" → \"类目模板库\"，搜索\"销售订单已取消通知\";\n"
+"4. 添加编号为\"59611\"的模板"
 
 #. module: wechat_message_sale
 #. odoo-python
