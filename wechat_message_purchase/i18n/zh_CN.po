@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-25 07:42+0000\n"
-"PO-Revision-Date: 2024-02-25 15:43+0800\n"
+"POT-Creation-Date: 2024-02-27 01:59+0000\n"
+"PO-Revision-Date: 2024-02-27 09:59+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -43,12 +43,38 @@ msgid "Send PO by Wechat"
 msgstr "通过微信发送采购单"
 
 #. module: wechat_message_purchase
+#: model:wechat.message_templates,description:wechat_message_purchase.wechat_message_template_edi_purchase_done
+msgid ""
+"Send purchase order to vendor.\n"
+"Please do the following in the background of WeChat official account:\n"
+"1. \"Setting and development\" → \"official account setting\" → \"service category\";\n"
+"2. Add \"Tools>Office\" to the service category;\n"
+"3. \"Advertising Services and Services\" → \"Template Messages\" → \"Template Library\" → \"Category Template Library\", search for \"Purchase order confirmation notification\";\n"
+"4. Add template with number \"59812\""
+msgstr ""
+"将采购订单发送给供应商。\n"
+"请在微信公众号后台进行如下：\n"
+"1. \"设置与开发\" → \"公众号设置\" → \"服务类目\";\n"
+"2. 在服务类目中添加\"工具 > 办公\";\n"
+"3. \"广告服与务\" → \"模板消息\" → \"模板库\" → \"类目模板库\"，搜索\"销售订单已确认通知\";\n"
+"4. 添加编号为\"59812\"的模板"
+
+#. module: wechat_message_purchase
 #: model:wechat.message_templates,description:wechat_message_purchase.wechat_message_template_edi_purchase
 msgid "Sent manually to vendor to request a quotation"
 msgstr "手动发送给供应商以请求报价"
-
 
 #. module: wechat_message_purchase
 #: model:wechat.message_templates,description:wechat_message_purchase.wechat_message_template_edi_purchase_reminder
 msgid "Sent to vendors before expected arrival, based on the purchase order setting"
 msgstr "根据采购订单设置，在预期到达前发送给供应商"
+
+#. module: wechat_message_purchase
+#: model:ir.model.fields,field_description:wechat_message_purchase.field_purchase_order__partner_contact
+msgid "Vendor Contact"
+msgstr "供应商联系人"
+
+#. module: wechat_message_purchase
+#: model:ir.model.fields,field_description:wechat_message_purchase.field_purchase_order__partner_type
+msgid "Vendor Type"
+msgstr "供应商类型"

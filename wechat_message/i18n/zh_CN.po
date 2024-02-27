@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-25 06:36+0000\n"
-"PO-Revision-Date: 2024-02-25 14:37+0800\n"
+"POT-Creation-Date: 2024-02-26 01:31+0000\n"
+"PO-Revision-Date: 2024-02-26 09:33+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -104,9 +104,24 @@ msgstr "显示名称"
 #. module: wechat_message
 #. odoo-python
 #: code:addons/wechat_message/wizard/wechat_compose_message.py:0
+#: code:addons/wechat_message/wizard/wechat_compose_message2.py:0
 #, python-format
 msgid "Error code: %s, Error description: %s;Error details: %s"
 msgstr "错误代码：%s，错误描述：%s；错误详细信息：%s"
+
+#. module: wechat_message
+#. odoo-python
+#: code:addons/wechat_message/wizard/wechat_compose_message.py:0
+#, python-format
+msgid "Fail"
+msgstr "失败"
+
+#. module: wechat_message
+#. odoo-python
+#: code:addons/wechat_message/wizard/wechat_compose_message.py:0
+#, python-format
+msgid "Failed to retry sending message! Reason: %s"
+msgstr "重发消息失败！原因：%s"
 
 #. module: wechat_message
 #. odoo-javascript
@@ -189,6 +204,11 @@ msgid "Message Templates"
 msgstr "消息模板"
 
 #. module: wechat_message
+#: model:ir.model.fields,field_description:wechat_message.field_wechat_compose_message__state
+msgid "Message sending status"
+msgstr "消息发送状态"
+
+#. module: wechat_message
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_templates__model
 msgid "Model"
 msgstr "模型"
@@ -233,9 +253,16 @@ msgid "Rendering Model"
 msgstr "呈现模型"
 
 #. module: wechat_message
+#. odoo-python
+#: code:addons/wechat_message/wizard/wechat_compose_message.py:0
+#, python-format
+msgid "Retrieve token again"
+msgstr "再次获取令牌"
+
+#. module: wechat_message
 #: model:ir.model,name:wechat_message.model_wechat_compose_message
-msgid "Sales Order Confirm"
-msgstr ""
+msgid "Sales Order Wechat message"
+msgstr "销售订单微信消息"
 
 #. module: wechat_message
 #: model_terms:ir.ui.view,arch_db:wechat_message.wechat_compose_message_wizard_form
@@ -261,6 +288,7 @@ msgstr "主题"
 #. module: wechat_message
 #. odoo-python
 #: code:addons/wechat_message/wizard/wechat_compose_message.py:0
+#: code:addons/wechat_message/wizard/wechat_compose_message2.py:0
 #, python-format
 msgid "Success"
 msgstr "成功"
@@ -275,6 +303,7 @@ msgstr "成功获取模板消息列表！"
 #. module: wechat_message
 #. odoo-python
 #: code:addons/wechat_message/wizard/wechat_compose_message.py:0
+#: code:addons/wechat_message/wizard/wechat_compose_message2.py:0
 #, python-format
 msgid "Successfully sent WeChat message!"
 msgstr "微信消息发送成功！"
@@ -311,6 +340,7 @@ msgstr "模板"
 #. module: wechat_message
 #. odoo-python
 #: code:addons/wechat_message/wizard/wechat_compose_message.py:0
+#: code:addons/wechat_message/wizard/wechat_compose_message2.py:0
 #, python-format
 msgid "The current customer is not a WeChat user!"
 msgstr "当前客户不是微信用户！"
@@ -318,6 +348,7 @@ msgstr "当前客户不是微信用户！"
 #. module: wechat_message
 #. odoo-python
 #: code:addons/wechat_message/wizard/wechat_compose_message.py:0
+#: code:addons/wechat_message/wizard/wechat_compose_message2.py:0
 #, python-format
 msgid "There is an error in the content of the WeChat message template!"
 msgstr "微信消息模板的内容有错误！"
@@ -331,6 +362,13 @@ msgstr "此字段用于模板使用情况的内部描述。"
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_message_template_list__title
 msgid "Title"
 msgstr "标题"
+
+#. module: wechat_message
+#. odoo-python
+#: code:addons/wechat_message/wizard/wechat_compose_message.py:0
+#, python-format
+msgid "Token expired, retrieve token again and retry sending message"
+msgstr "令牌已过期，请重新获取令牌并重发消息"
 
 #. module: wechat_message
 #: model:ir.model.fields,field_description:wechat_message.field_wechat_compose_message__template_id
@@ -395,6 +433,7 @@ msgstr "例如联系人"
 #. module: wechat_message
 #. odoo-python
 #: code:addons/wechat_message/wizard/wechat_compose_message.py:0
+#: code:addons/wechat_message/wizard/wechat_compose_message2.py:0
 #, python-format
 msgid "unknown error"
 msgstr "未知错误"
