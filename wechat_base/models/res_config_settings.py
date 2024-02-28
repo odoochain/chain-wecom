@@ -59,6 +59,7 @@ class ResConfigSettings(models.TransientModel):
     )
 
     # 模块
+    module_gooderp_wechat_base = fields.Boolean("Supports GoodErp")
     module_wechat_official_accounts = fields.Boolean("WeChat Official Accounts")
     module_wechat_web = fields.Boolean("WeChat Official Accounts H5 Website")
     module_wechat_website_application = fields.Boolean(

@@ -20,7 +20,7 @@ class ResUsers(models.Model):
         official_account_openid
         open_platform_openid
         :param provider: OAuth2 程序提供者的ID
-        :param params: {'access_token': '', 'expires_in': 7200, 'refresh_token': '', 'openid': '', 'scope': 'snsapi_login', 'unionid': ''}
+        :param params: {"access_token": "", "expires_in": 7200, "refresh_token": "", "openid": "", "scope": "snsapi_login", "unionid": ""}
         :return
         """
         # print(provider, params)
@@ -57,7 +57,6 @@ class ResUsers(models.Model):
         oauth_id = ""
         domain = []
         if "unionid" in params:
-
             oauth_id = params["unionid"]
             domain=[
                 ("wechat_unionid", "=", params["unionid"]),
@@ -87,11 +86,11 @@ class ResUsers(models.Model):
             domain,
             limit=1,
         )
-        print("1",oauth_user)
+
         if not oauth_user:
             # 创建用户
             # 用户信息
-        # {'openid': '', 'nickname': 'ð\x9f\x8c\x88å½©è\x99¹å·¥ä½\x9cå®¤', 'sex': 0, 'language': '', 'city': '', 'province': '', 'country': '', 'headimgurl': '', 'privilege': [], 'unionid': ''}
+        # {"openid": "", "nickname": "ð\x9f\x8c\x88å½©è\x99¹å·¥ä½\x9cå®¤", "sex": 0, "language": "", "city": "", "province": "", "country": "", "headimgurl": "", "privilege": [], "unionid": ""}
             user_company = ICP.get_param("wechat_default_user_company")
             nickname = params["nickname"].encode("ISO-8859-1").decode("utf-8")
             try:
@@ -117,7 +116,7 @@ class ResUsers(models.Model):
                 print("values更新错误:",str(e))
             oauth_user = self._wechat_signup_create_user(values,ICP)
 
-        # print("2",oauth_user)
+
         if oauth_user:
             if oauth_user.wechat_open_platform_openid is False and auth_type=="scan":
                 oauth_user.update({
@@ -128,29 +127,52 @@ class ResUsers(models.Model):
                     "wechat_official_account_openid":params["openid"]
                 })
 
+
+            partner = {
+                "is_wechat_user":True
+            }
+            if "wechat_open_platform_openid" in values:
+                partner.update({
+                    "wechat_open_platform_openid": values["wechat_open_platform_openid"]
+                })
+            if "wechat_official_account_openid" in values:
+                partner.update({
+                    "wechat_official_account_openid": values["wechat_official_account_openid"]
+                })
+            if "wechat_unionid" in values:
+                partner.update({
+                    "wechat_unionid": values["wechat_unionid"]
+                })
+
             try:
-                partner = {
-                    "is_wechat_user":True
-                }
-                if "wechat_open_platform_openid" in values:
-                    partner.update({
-                        "wechat_open_platform_openid": values["wechat_open_platform_openid"]
-                    })
-                if "wechat_official_account_openid" in values:
-                    partner.update({
-                        "wechat_official_account_openid": values["wechat_official_account_openid"]
-                    })
-                if "wechat_unionid" in values:
-                    partner.update({
-                        "wechat_unionid": values["wechat_unionid"]
-                    })
-                # oauth_user.partner_id.update(partner)
+                oauth_user.partner_id.update(partner)
             except Exception as e:
-                print("partner更新错误:",str(e))
+                print("partner错误:",str(e))
+
+            # gooderp 的 `partner` 模型
+            if self.check_gooderp_installed():
+                try:
+                    domain = ["|",("wechat_open_platform_openid","=",params["openid"]),("wechat_official_account_openid","=",params["openid"])]
+                    g_partner = self.env["partner"].sudo().search(domain,limit=1)  # type: ignore
+
+                    if not g_partner: # type: ignore
+                        partner.update({    # type: ignore
+                            "name": oauth_user.name,
+                            "c_category_id": self.env.ref("gooderp_wechat_message_sell.customer_category_wechat").id,   # type: ignore
+                            "s_category_id": self.env.ref("gooderp_wechat_message_sell.supplier_category_wechat").id,   # type: ignore
+                        })
+
+                        g_partner_id = g_partner.create(partner)
+                        oauth_user.g_partner_id = g_partner_id # type: ignore
+                    else:
+                        oauth_user.g_partner_id.sudo().update(partner) # type: ignore
+                    oauth_user.g_partner_id = g_partner.id # type: ignore
+                except Exception as e:
+                    print("GoodErp partner错误:",str(e))
+
             return (self.env.cr.dbname, oauth_user.login, oauth_id)  # type: ignore
         else:
             return AccessDenied
-
 
     def _wechat_signup_create_user(self,values,ICP):
         """
@@ -193,10 +215,10 @@ class ResUsers(models.Model):
         从模板创建新用户
         """
         user_template = ICP.get_param("wechat_template_portal_user_id")
-        template_user_id = literal_eval(self.env['ir.config_parameter'].sudo().get_param('wechat_template_portal_user_id', 'False'))    # type: ignore
+        template_user_id = literal_eval(self.env["ir.config_parameter"].sudo().get_param("wechat_template_portal_user_id", "False"))    # type: ignore
         template_user = self.browse(template_user_id)
         if not template_user.exists():
-            raise ValueError(_('Wechat Signup: invalid template user'))
+            raise ValueError(_("Wechat Signup: invalid template user"))
         try:
             groups = template_user.groups_id
             group_ids = []
@@ -212,7 +234,6 @@ class ResUsers(models.Model):
             # copy may failed if asked login is not available.
             print("从模板创建新用户,错误:",str(e))
             return False
-
 
     def _check_credentials(self, password, env):
         # -----------------------------------------------------
@@ -234,3 +255,14 @@ class ResUsers(models.Model):
             )
             if not res:
                 raise
+
+
+    def check_gooderp_installed(self):
+        """
+        检查GoodErp 是否已安装
+        """
+        module = self.env["ir.module.module"].sudo().search([("name", "=", "core")])
+        if not module or module.state != "installed":   # type: ignore
+            return False
+        else:
+            return True
