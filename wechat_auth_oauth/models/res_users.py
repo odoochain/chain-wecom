@@ -87,7 +87,7 @@ class ResUsers(models.Model):
             domain,
             limit=1,
         )
-
+        print("1",oauth_user)
         if not oauth_user:
             # 创建用户
             # 用户信息
@@ -97,12 +97,13 @@ class ResUsers(models.Model):
             try:
                 values.update({
                     "name": nickname,
-
                     "password": self.env["wechat.tools.security"].random_passwd(8),
                     "share": False,
                     "active": True,
-                    "company_ids": [(6, 0, [int(user_company)])],
                     "company_id": int(user_company),
+                    "company_ids": [(6, 0, [int(user_company)])],
+                    # "notification_type": "inbox",
+                    "notification_type": "email",
                     # 以下为微信专有字段
                     "is_wechat_user": True,
                     "wechat_nickname": nickname,
@@ -111,10 +112,12 @@ class ResUsers(models.Model):
                     "wechat_refresh_token_expires_in": now(days=+30),
                     "wechat_refresh_token": params["refresh_token"],
                 })
+                print("values---",values)
             except Exception as e:
                 print("values更新错误:",str(e))
             oauth_user = self._wechat_signup_create_user(values,ICP)
 
+        # print("2",oauth_user)
         if oauth_user:
             if oauth_user.wechat_open_platform_openid is False and auth_type=="scan":
                 oauth_user.update({
@@ -126,7 +129,6 @@ class ResUsers(models.Model):
                 })
 
             try:
-                # print(oauth_user.partner_id)
                 partner = {
                     "is_wechat_user":True
                 }
@@ -142,7 +144,7 @@ class ResUsers(models.Model):
                     partner.update({
                         "wechat_unionid": values["wechat_unionid"]
                     })
-                oauth_user.partner_id.update(partner)
+                # oauth_user.partner_id.update(partner)
             except Exception as e:
                 print("partner更新错误:",str(e))
             return (self.env.cr.dbname, oauth_user.login, oauth_id)  # type: ignore
@@ -183,7 +185,7 @@ class ResUsers(models.Model):
         try:
             return self.sudo().create(values)
         except Exception as e:
-            # print("从用户组创建新用户,错误:",str(e))
+            print("从用户组创建新用户,错误:",str(e))
             return False
 
     def _wechet_create_user_from_template(self,values,ICP):
@@ -208,7 +210,7 @@ class ResUsers(models.Model):
             # return template_user.with_context(no_reset_password=True).copy(values)
         except Exception as e:
             # copy may failed if asked login is not available.
-            # print("从模板创建新用户,错误:",str(e))
+            print("从模板创建新用户,错误:",str(e))
             return False
 
 

@@ -4,7 +4,7 @@
     "author": "RStudio",
     "sequence": 708,
     "installable": True,
-    "application": True,
+    "application": False,
     "auto_install": False,
     "category": "WeChat Suites/Message",
     "version": "16.0.0.1",
