@@ -4892,6 +4892,10 @@ msgstr "无效的 opengid"
 
 #. module: wechat_api
 #: model:wechat.error_codes,name:wechat_api.wechat_error_codes_40003
+msgid "invalid openid"
+msgstr "不合法的 OpenID ，请开发者确认 OpenID （该用户）是否已关注公众号，或是否是其他公众号的 OpenID"
+
+#. module: wechat_api
 #: model:wechat.error_codes,name:wechat_api.wechat_error_codes_61101
 #: model:wechat.error_codes,name:wechat_api.wechat_error_codes_87081
 #: model:wechat.error_codes,name:wechat_api.wechat_error_codes_90007

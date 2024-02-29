@@ -3,10 +3,12 @@
 import json
 import time
 import requests  # type: ignore
+import urllib.parse
 
 from odoo import _, api, fields, models, tools, Command
 from odoo.exceptions import UserError
 from odoo.osv import expression
+from odoo.http import request
 
 
 def _reopen(self, res_id, model, context=None):
@@ -119,12 +121,13 @@ class WechatComposeMessage(models.TransientModel):
         result, subject = {}, False
         if values.get("partner_ids"):
             partner_ids = values.get("partner_ids")[0][2]
+
             openids = []
             for partner_id in partner_ids:
                 partner = self.env["res.partner"].browse(partner_id)
-                if not partner.wechat_official_account_openid:
+                if not partner.wechat_official_account_openid:    # type: ignore
                     raise UserError(_("The current customer is not a WeChat user!"))
-                openids.append(partner.wechat_official_account_openid)
+                openids.append(partner.wechat_official_account_openid)    # type: ignore
             result["openid"] = ",".join(openids)
 
         if values.get("model") and values.get("res_id"):
@@ -148,10 +151,6 @@ class WechatComposeMessage(models.TransientModel):
         result["subject"] = subject
         return result
 
-    # def action_send_wenchat_message(self):
-    #     """Used for action button that do not accept arguments."""
-    #     self._action_send_wenchat_message()
-    # return {"type": "ir.actions.act_window_close"}
 
     def action_send_wenchat_message(self):
         data_dict = self.get_message_json(self.body)
@@ -161,12 +160,14 @@ class WechatComposeMessage(models.TransientModel):
             )
 
         data_dict.update(
-            {  # type: ignore
+            {
                 "touser": self.openid,
                 "template_id": self.wechat_template_id,
                 "url": self.jump_link,
             }
         )
+        # print(self.openid)
+        # print(data_dict)
         app = (
             self.env["wechat.applications"]
             .sudo()
@@ -195,8 +196,6 @@ class WechatComposeMessage(models.TransientModel):
         elif result["code"] == 42001:  # type: ignore
             # access_token 超时,需要重启获取Token且再次发送
             self.state = False  # type: ignore
-
-            # self.retry_action_send_wenchat_message(app,data_dict)
             params.update(
                 {
                     "type": "info",
@@ -236,7 +235,7 @@ class WechatComposeMessage(models.TransientModel):
                     "next": {"type": "ir.actions.act_window_close"}
                 }
             )
-        action.update({"params": params})
+        action.update({"params": params})    # type: ignore
         return action
 
 
@@ -283,13 +282,14 @@ class WechatComposeMessage(models.TransientModel):
                     "message": _("Failed to retry sending message! Reason: %s") % token_result["msg"],
                 }
             )
-        action.update({"params": params})
+        action.update({"params": params})    # type: ignore
         return action
 
     def call_wechat_api(self, app, data):
         """
         调用微信API
         """
+
         result = {}
         try:
             headers = {"content-type": "application/json"}

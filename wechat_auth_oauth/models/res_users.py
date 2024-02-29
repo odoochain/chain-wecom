@@ -111,7 +111,7 @@ class ResUsers(models.Model):
                     "wechat_refresh_token_expires_in": now(days=+30),
                     "wechat_refresh_token": params["refresh_token"],
                 })
-                print("values---",values)
+                # print("values---",values)
             except Exception as e:
                 print("values更新错误:",str(e))
             oauth_user = self._wechat_signup_create_user(values,ICP)
@@ -147,19 +147,19 @@ class ResUsers(models.Model):
             try:
                 oauth_user.partner_id.update(partner)
             except Exception as e:
-                print("partner错误:",str(e))
+                print("partner 错误:",str(e))
 
             # gooderp 的 `partner` 模型
             if self.check_gooderp_installed():
                 try:
                     domain = ["|",("wechat_open_platform_openid","=",params["openid"]),("wechat_official_account_openid","=",params["openid"])]
                     g_partner = self.env["partner"].sudo().search(domain,limit=1)  # type: ignore
-
+                    # print(g_partner)
                     if not g_partner: # type: ignore
                         partner.update({    # type: ignore
                             "name": oauth_user.name,
-                            "c_category_id": self.env.ref("gooderp_wechat_message_sell.customer_category_wechat").id,   # type: ignore
-                            "s_category_id": self.env.ref("gooderp_wechat_message_sell.supplier_category_wechat").id,   # type: ignore
+                            "c_category_id": self.env.ref("gooderp_wechat_base.customer_category_wechat").id,   # type: ignore
+                            "s_category_id": self.env.ref("gooderp_wechat_base.supplier_category_wechat").id,   # type: ignore
                         })
 
                         g_partner_id = g_partner.create(partner)
@@ -261,7 +261,7 @@ class ResUsers(models.Model):
         """
         检查GoodErp 是否已安装
         """
-        module = self.env["ir.module.module"].sudo().search([("name", "=", "core")])
+        module = self.env["ir.module.module"].sudo().search([("name", "=", "gooderp_wechat_base")])
         if not module or module.state != "installed":   # type: ignore
             return False
         else:
