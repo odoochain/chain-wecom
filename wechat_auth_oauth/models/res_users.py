@@ -149,24 +149,22 @@ class ResUsers(models.Model):
             except Exception as e:
                 print("partner 错误:",str(e))
 
-            # gooderp 的 `partner` 模型
+            # gooderp 的 `partner.address` 模型
             if self.check_gooderp_installed():
                 try:
                     domain = ["|",("wechat_open_platform_openid","=",params["openid"]),("wechat_official_account_openid","=",params["openid"])]
-                    g_partner = self.env["partner"].sudo().search(domain,limit=1)  # type: ignore
+                    pa = self.env["partner.address"].sudo().search(domain,limit=1)  # type: ignore
                     # print(g_partner)
-                    if not g_partner: # type: ignore
+                    if not pa: # type: ignore
                         partner.update({    # type: ignore
-                            "name": oauth_user.name,
-                            "c_category_id": self.env.ref("gooderp_wechat_base.customer_category_wechat").id,   # type: ignore
-                            "s_category_id": self.env.ref("gooderp_wechat_base.supplier_category_wechat").id,   # type: ignore
+                            "contact": oauth_user.name, # type: ignore
                         })
 
-                        g_partner_id = g_partner.create(partner)
-                        oauth_user.g_partner_id = g_partner_id # type: ignore
+                        pa_id = pa.create(partner)
+                        oauth_user.partner_address_id = pa_id # type: ignore
                     else:
-                        oauth_user.g_partner_id.sudo().update(partner) # type: ignore
-                    oauth_user.g_partner_id = g_partner.id # type: ignore
+                        oauth_user.partner_address_id.sudo().update(partner) # type: ignore
+                    oauth_user.partner_address_id = pa_id.id # type: ignore
                 except Exception as e:
                     print("GoodErp partner错误:",str(e))
 
