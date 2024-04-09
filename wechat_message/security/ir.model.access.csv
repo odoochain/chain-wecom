@@ -1,4 +1,13 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 wechat_message_templates_access_right,access.wechat.message_templates,model_wechat_message_templates,wechat_base.group_wechat_settings_manager,1,1,1,1
-wechat_message_templates_access_right_user,access.wechat.message_templates,model_wechat_message_templates,wechat_base.group_wechat_settings_user,1,0,0,0
+wechat_message_templates_access_right_user,access.wechat.message_templates.user,model_wechat_message_templates,wechat_base.group_wechat_settings_user,1,0,0,0
+
+
+wechat_message_template_list_access_right,access.wechat.message_template_list,model_wechat_message_template_list,wechat_base.group_wechat_settings_manager,1,1,1,1
+wechat_message_template_list_access_right_user,access.wechat.message_template_list.user,model_wechat_message_template_list,wechat_base.group_wechat_settings_user,1,0,0,0
+
+
+access_wechat_compose_message,access.wechat.compose.message,model_wechat_compose_message,wechat_base.group_wechat_settings_manager,1,1,1,0
+access_wechat_compose_message_user,access.wechat.compose.message.user,model_wechat_compose_message,wechat_base.group_wechat_settings_user,1,0,0,0
+access_wechat_compose_message_portal,access.wechat.compose.message.portal,model_wechat_compose_message,base.group_portal,1,1,1,0

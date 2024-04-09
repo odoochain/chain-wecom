@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="purchase_order_form" model="ir.ui.view">
+        <field name="name">purchase.order.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <!-- <button name="action_rfq_send" states="purchase" string="Send PO by Email" type="object" context="{'send_rfq':False}" data-hotkey="g"/> -->
+
+            <xpath expr="//button[@name='action_rfq_send'][last()]" position="before">
+                <button name="action_rfq_send_by_wechat" attrs="{'invisible': [('state', 'not in', ['purchase'])]}" string="Send PO by Wechat" type="object" icon="fa-wechat" class="btn-primary" />
+            </xpath>
+
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="partner_type" invisible="1" force_save="1"/>
+                <field name="partner_contact" readonly="0" attrs="{'invisible': [('partner_type', '=', 'person')], 'required': [('partner_type', '=', 'company')]}"/>
+
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

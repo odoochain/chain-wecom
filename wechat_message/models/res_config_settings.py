@@ -14,7 +14,14 @@ class ResConfigSettings(models.TransientModel):
     module_wechat_message_sale = fields.Boolean(
         "Send sales quotations and order messages to WeChat users."
     )
+    module_gooderp_wechat_message_sell = fields.Boolean(
+        "Send sales quotations and order messages to WeChat users.(For GoodErp)"
+    )
 
     module_wechat_message_purchase = fields.Boolean(
-        "Send purchase orders, tenders, and agreements to WeChat users"
+        "Send purchase orders, tenders, and agreements to WeChat users."
+    )
+
+    module_gooderp_wechat_message_buy = fields.Boolean(
+        "Send purchase orders, tenders, and agreements to WeChat users.(For GoodErp)"
     )

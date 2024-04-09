@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-28 08:32+0000\n"
-"PO-Revision-Date: 2024-01-28 16:33+0800\n"
+"POT-Creation-Date: 2024-02-28 08:50+0000\n"
+"PO-Revision-Date: 2024-02-28 16:51+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -179,6 +179,11 @@ msgid "Config Settings"
 msgstr "配置设置"
 
 #. module: wechat_base
+#: model:ir.model,name:wechat_base.model_res_partner
+msgid "Contact"
+msgstr "联系人"
+
+#. module: wechat_base
 #: model:ir.model.fields,field_description:wechat_base.field_wechat_applications__create_uid
 #: model:ir.model.fields,field_description:wechat_base.field_wechat_event_service__create_uid
 msgid "Created by"
@@ -191,11 +196,13 @@ msgid "Created on"
 msgstr "创建时间"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_finance_config_settings__wechat_default_user_company
 #: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__wechat_default_user_company
 msgid "Default registered company for WeChat users"
 msgstr "微信用户默认注册公司"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_finance_config_settings__wechat_auth_signup_default_user_type
 #: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__wechat_auth_signup_default_user_type
 msgid "Default registered user type for WeChat users"
 msgstr "微信用户的默认注册用户类型"
@@ -212,6 +219,11 @@ msgid "Display Name"
 msgstr "显示名称"
 
 #. module: wechat_base
+#: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
+msgid "Enable GoodErp to have the ability to connect with WeChat"
+msgstr "让GoodErp 拥有对接微信的的能力"
+
+#. module: wechat_base
 #: model_terms:ir.ui.view,arch_db:wechat_base.view_wechat_error_codes_tree
 msgid "Error"
 msgstr "错误"
@@ -220,6 +232,13 @@ msgstr "错误"
 #: model:ir.actions.act_window,name:wechat_base.action_view_wechat_error_codes
 msgid "Error code"
 msgstr "错误代码"
+
+#. module: wechat_base
+#. odoo-python
+#: code:addons/wechat_base/models/wechat_apps.py:0
+#, python-format
+msgid "Error code: %s, Error description: %s"
+msgstr "错误代码：%s，错误描述：%s"
 
 #. module: wechat_base
 #: model_terms:ir.ui.view,arch_db:wechat_base.view_wechat_error_codes_filter
@@ -248,6 +267,7 @@ msgid "Get App token"
 msgstr "获取应用令牌"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_finance_config_settings__wechat_auth_signup_type
 #: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__wechat_auth_signup_type
 msgid "How to create new users through WeChat registration"
 msgstr "如何通过微信注册创建新用户"
@@ -259,6 +279,7 @@ msgid "ID"
 msgstr ""
 
 #. module: wechat_base
+#: model:ir.model.fields.selection,name:wechat_base.selection__finance_config_settings__wechat_auth_signup_default_user_type__1
 #: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_auth_signup_default_user_type__1
 msgid "Internal User"
 msgstr "内部用户"
@@ -354,6 +375,7 @@ msgid "Open platform"
 msgstr "开放平台"
 
 #. module: wechat_base
+#: model:ir.model.fields.selection,name:wechat_base.selection__finance_config_settings__wechat_auth_signup_default_user_type__10
 #: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_auth_signup_default_user_type__10
 msgid "Portal User"
 msgstr "门户用户"
@@ -369,6 +391,7 @@ msgid "Public Error Code"
 msgstr "错误代码"
 
 #. module: wechat_base
+#: model:ir.model.fields.selection,name:wechat_base.selection__finance_config_settings__wechat_auth_signup_default_user_type__11
 #: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_auth_signup_default_user_type__11
 msgid "Public User"
 msgstr "公开用户"
@@ -384,6 +407,7 @@ msgid "Schedule tasks"
 msgstr "微信计划任务"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_finance_config_settings__module_wechat_message
 #: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__module_wechat_message
 msgid "Send a message via WeChat"
 msgstr "通过微信发送消息"
@@ -410,9 +434,24 @@ msgid "Settings"
 msgstr "设置"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_finance_config_settings__module_gooderp_wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__module_gooderp_wechat_base
+msgid "Supports GoodErp"
+msgstr "支持GoodErp"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_finance_config_settings__wechat_auth_signup_template_user_id
 #: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__wechat_auth_signup_template_user_id
 msgid "Template user for new users created through WeChat registration"
 msgstr "通过微信注册创建的新用户模板用户"
+
+#. module: wechat_base
+#. odoo-python
+#: code:addons/wechat_base/models/wechat_apps.py:0
+#: model:ir.model.constraint,message:wechat_base.constraint_wechat_applications_app_type_uniq
+#, python-format
+msgid "The app must be unique !"
+msgstr "应用必须是唯一的！"
 
 #. module: wechat_base
 #: model:res.groups,comment:wechat_base.group_wechat_settings_user
@@ -452,6 +491,7 @@ msgid "URL"
 msgstr ""
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_partner__wechat_unionid
 #: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_unionid
 msgid "Unified identification of WeChat user"
 msgstr "微信用户统一标识"
@@ -468,11 +508,13 @@ msgid "User"
 msgstr "用户"
 
 #. module: wechat_base
+#: model:ir.model.fields.selection,name:wechat_base.selection__finance_config_settings__wechat_auth_signup_type__group
 #: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_auth_signup_type__group
 msgid "User group"
 msgstr "用户组"
 
 #. module: wechat_base
+#: model:ir.model.fields.selection,name:wechat_base.selection__finance_config_settings__wechat_auth_signup_type__template
 #: model:ir.model.fields.selection,name:wechat_base.selection__res_config_settings__wechat_auth_signup_type__template
 msgid "User template"
 msgstr "用户模板"
@@ -504,22 +546,26 @@ msgid "WeChat Basic Settings"
 msgstr "微信基础设置"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_finance_config_settings__module_wechat_auth_oauth
 #: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__module_wechat_auth_oauth
 #: model_terms:ir.ui.view,arch_db:wechat_base.res_config_settings_view_form
 msgid "WeChat OAuth2 Authentication"
 msgstr "使用微信身份验证登录网站（OAuth）"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_partner__wechat_official_account_openid
 #: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_official_account_openid
 msgid "WeChat Officia Account User OpenID"
 msgstr "微信公众号用户OpenID"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_finance_config_settings__module_wechat_official_accounts
 #: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__module_wechat_official_accounts
 msgid "WeChat Official Accounts"
 msgstr "微信公众号"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_finance_config_settings__module_wechat_web
 #: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__module_wechat_web
 msgid "WeChat Official Accounts H5 Website"
 msgstr "微信公众号H5网站"
@@ -530,6 +576,7 @@ msgid "WeChat Official accounts"
 msgstr "微信公众号"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_partner__wechat_open_platform_openid
 #: model:ir.model.fields,field_description:wechat_base.field_res_users__wechat_open_platform_openid
 msgid "WeChat Open Platform User OpenID"
 msgstr "微信开发平台用户OpenID"
@@ -560,6 +607,7 @@ msgid "WeChat public platform"
 msgstr "微信公众平台"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_res_partner__is_wechat_user
 #: model:ir.model.fields,field_description:wechat_base.field_res_users__is_wechat_user
 msgid "WeChat user"
 msgstr "微信用户"
@@ -597,6 +645,7 @@ msgid "WeChat: Get WeChat Applications Token"
 msgstr "微信：获取微信应用令牌"
 
 #. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_finance_config_settings__module_wechat_website_application
 #: model:ir.model.fields,field_description:wechat_base.field_res_config_settings__module_wechat_website_application
 msgid "Website application WeChat login"
 msgstr "微信网站应用登录"
@@ -645,3 +694,15 @@ msgstr "给个人、企业和组织提供业务服务与用户管理能力的全
 #, python-format
 msgid "route must be unique !"
 msgstr "路由必须是唯一的！"
+
+#. module: wechat_base
+#. odoo-python
+#: code:addons/wechat_base/models/wechat_apps.py:0
+#, python-format
+msgid "unknown error"
+msgstr "未知错误"
+
+#. module: wechat_base
+#: model:ir.model.fields,field_description:wechat_base.field_finance_config_settings__company_id
+msgid "公司"
+msgstr ""

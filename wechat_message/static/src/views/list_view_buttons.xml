@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <!-- wechat_message_template_list -->
+    <t t-name="WechatMessageTemplateListView.buttons" t-inherit="web.ListView.Buttons" owl="1">
+        <xpath expr="//t[@t-if='props.showButtons']" position="after">
+            <button t-if="props.resModel == 'wechat.message_template_list'" class="btn btn-info  fa fa-cloud-download" type="button" t-on-click="onClickGetWechatMessageTemplateList"> Get Wechat Message Template List</button>
+        </xpath>
+    </t>
+
+</templates>

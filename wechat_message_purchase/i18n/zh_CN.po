@@ -1,0 +1,80 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* wechat_message_purchase
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-27 01:59+0000\n"
+"PO-Revision-Date: 2024-02-27 09:59+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. module: wechat_message_purchase
+#: model:ir.model,name:wechat_message_purchase.model_purchase_order
+msgid "Purchase Order"
+msgstr "采购订单"
+
+#. module: wechat_message_purchase
+#: model:wechat.message_templates,name:wechat_message_purchase.wechat_message_template_edi_purchase_done
+msgid "Purchase: Purchase Order"
+msgstr "采购：采购订单"
+
+#. module: wechat_message_purchase
+#: model:wechat.message_templates,name:wechat_message_purchase.wechat_message_template_edi_purchase
+msgid "Purchase: Request For Quotation"
+msgstr "采购：需求报价"
+
+#. module: wechat_message_purchase
+#: model:wechat.message_templates,name:wechat_message_purchase.wechat_message_template_edi_purchase_reminder
+msgid "Purchase: Vendor Reminder"
+msgstr "采购：供应商提醒"
+
+#. module: wechat_message_purchase
+#: model_terms:ir.ui.view,arch_db:wechat_message_purchase.purchase_order_form
+msgid "Send PO by Wechat"
+msgstr "通过微信发送采购单"
+
+#. module: wechat_message_purchase
+#: model:wechat.message_templates,description:wechat_message_purchase.wechat_message_template_edi_purchase_done
+msgid ""
+"Send purchase order to vendor.\n"
+"Please do the following in the background of WeChat official account:\n"
+"1. \"Setting and development\" → \"official account setting\" → \"service category\";\n"
+"2. Add \"Tools>Office\" to the service category;\n"
+"3. \"Advertising Services and Services\" → \"Template Messages\" → \"Template Library\" → \"Category Template Library\", search for \"Purchase order confirmation notification\";\n"
+"4. Add template with number \"59812\""
+msgstr ""
+"将采购订单发送给供应商。\n"
+"请在微信公众号后台进行如下：\n"
+"1. \"设置与开发\" → \"公众号设置\" → \"服务类目\";\n"
+"2. 在服务类目中添加\"工具 > 办公\";\n"
+"3. \"广告服与务\" → \"模板消息\" → \"模板库\" → \"类目模板库\"，搜索\"采购订单已确认通知\";\n"
+"4. 添加编号为\"59812\"的模板"
+
+#. module: wechat_message_purchase
+#: model:wechat.message_templates,description:wechat_message_purchase.wechat_message_template_edi_purchase
+msgid "Sent manually to vendor to request a quotation"
+msgstr "手动发送给供应商以请求报价"
+
+#. module: wechat_message_purchase
+#: model:wechat.message_templates,description:wechat_message_purchase.wechat_message_template_edi_purchase_reminder
+msgid "Sent to vendors before expected arrival, based on the purchase order setting"
+msgstr "根据采购订单设置，在预期到达前发送给供应商"
+
+#. module: wechat_message_purchase
+#: model:ir.model.fields,field_description:wechat_message_purchase.field_purchase_order__partner_contact
+msgid "Vendor Contact"
+msgstr "供应商联系人"
+
+#. module: wechat_message_purchase
+#: model:ir.model.fields,field_description:wechat_message_purchase.field_purchase_order__partner_type
+msgid "Vendor Type"
+msgstr "供应商类型"

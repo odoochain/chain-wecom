@@ -33,6 +33,7 @@
             "xmltodict",
             "pycryptodome",
             "html2text",
+            "pandas",
         ],
     },
     "license": "Other proprietary",

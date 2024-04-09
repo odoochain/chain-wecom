@@ -37,3 +37,17 @@ class WeChatMessageTemplates(models.Model):
         translate=True,
         help="This field is used for internal description of the template's usage.",
     )
+
+    template_id = fields.Many2one(
+        "wechat.message_template_list", string="Wechat Message Template Id"
+    )
+    jump_link = fields.Char(string="Template jump link")  # 模板跳转链接
+    body_html = fields.Text(
+        string="Body",
+        # render_engine="qweb",
+        # translate=True,
+        # prefetch=True,
+        # sanitize=False,
+        # default={},
+    )
+    body_json = fields.Char(string="Body", translate=True, default={})

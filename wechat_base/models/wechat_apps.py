@@ -121,6 +121,63 @@ class WeChatApplications(models.Model):
                     "access_token_expiration_time": now(hours=+2),
                 }
             )
+            return True
+
+    def retry_get_access_token(self):
+        """
+        重新获取令牌
+        """
+        res = {}
+        try:
+            headers = {"content-type": "application/json"}
+            get_access_token_url = "https://api.weixin.qq.com/cgi-bin/stable_token"
+            json = {
+                "grant_type": "client_credential",
+                "appid": self.appid,
+                "secret": self.secret,
+                "force_refresh": False,
+            }
+            response = requests.post(
+                get_access_token_url, json=json, headers=headers
+            ).json()
+        except Exception as e:
+            res.update({
+                "state":False,
+                "msg":str(e)
+            })
+        else:
+            if "errcode" in response:
+                error_msg = ""
+                error_code = (
+                    self.env["wechat.error_codes"]
+                    .sudo()
+                    .search_read(
+                        domain=[("code", "=", response["errcode"])],
+                        fields=["name"],
+                    )
+                )
+                if error_code:
+                    error_msg = error_code[0]["name"]
+                else:
+                    error_msg = _("unknown error")
+
+                res.update({
+                    "state":False,
+                    "msg":error_msg
+                })
+            else:
+                self.update(
+                    {
+                        "access_token": response["access_token"],
+                        "access_token_expiration_time": now(hours=+2),
+                    }
+                )
+                res.update({
+                    "state":True,
+                    "msg":"",
+                })
+        finally:
+            return res
 
     def cron_get_access_token(self):
         """

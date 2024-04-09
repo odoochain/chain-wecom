@@ -3,6 +3,7 @@
 
     <data noupdate="1">
 
+
         <!-- 销售：发送报价 -->
         <record id="wechat_message_template_sale" model="wechat.message_templates">
             <field name="name">Sales: Send Quotation</field>
@@ -12,23 +13,53 @@
             <field name="lang">{{ object.partner_id.lang }}</field>
         </record>
 
-        <!-- 销售：订单确认 -->
+        <!-- 销售：订单确认 模板编号59610-->
         <record id="wechat_message_template_sale_confirmation" model="wechat.message_templates">
             <field name="name">Sales: Order Confirmation</field>
             <field name="model_id" ref="sale.model_sale_order"/>
             <field name="subject">{{ object.company_id.name }} {{ (object.get_portal_last_transaction().state == 'pending') and 'Pending Order' or 'Order' }} (Ref {{ object.name or 'n/a' }})</field>
-            <field name="description">Sent to customers on order confirmation</field>
+            <field name="description"><![CDATA[Sent to customers on order confirmation.
+Please do the following in the background of WeChat official account:
+1. "Setting and development" → "official account setting" → "service category";
+2. Add "Tools>Office" to the service category;
+3. "Advertising Services and Services" → "Template Messages" → "Template Library" → "Category Template Library", search for "Sales Order Confirmed Notification";
+4. Add template with number "59610"]]></field>
             <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="body_html">{
+    "data":{
+        "thing4":{"value":"{{ object.partner_id.parent_id.name }}"},
+        "thing5":{"value":"{{ object.partner_id.name }}"},
+        "character_string1":{"value": "{{ object.name }}"},
+        "amount2":{"value": "{{ object.get_amount_total() }}"},
+        "time3":{"value": "{{ object.get_sent_time() }}"}
+    }
+}</field>
         </record>
 
-        <!-- 销售：订单取消 -->
+        <!-- 销售：订单取消 模板编号 59611-->
         <record id="wechat_message_template_sale_cancellation" model="wechat.message_templates">
             <field name="name">Sales: Order Cancellation</field>
             <field name="model_id" ref="sale.model_sale_order"/>
             <field name="subject">{{ object.company_id.name }} {{ object.type_name }} Cancelled (Ref {{ object.name or 'n/a' }})</field>
-            <field name="description">Sent automatically to customers when you cancel an order</field>
+            <field name="description"><![CDATA[Sent to customers when you cancel an order.
+Please do the following in the background of WeChat official account:
+1. "Setting and development" → "official account setting" → "service category";
+2. Add "Tools>Office" to the service category;
+3. "Advertising Services and Services" → "Template Messages" → "Template Library" → "Category Template Library", search for "Sales order cancelled notification";
+4. Add template with number "59611"]]></field>
             <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="body_html">{
+    "data":{
+        "thing4":{"value":"{{ object.partner_id.parent_id.name }}"},
+        "thing5":{"value":"{{ object.partner_id.name }}"},
+        "character_string1":{"value": "{{ object.name }}"},
+        "amount2":{"value": "{{ object.get_amount_total() }}"},
+        "time3":{"value": "{{ object.get_sent_time() }}"}
+    }
+}</field>
         </record>
+
+
     </data>
 
 </odoo>

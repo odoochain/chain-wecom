@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="1">
+
+
+        <!-- 采购：询价 -->
+        <record id="wechat_message_template_edi_purchase" model="wechat.message_templates">
+            <field name="name">Purchase: Request For Quotation</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="subject">{{ object.company_id.name }} Order (Ref {{ object.name or 'n/a' }})</field>
+            <field name="description">Sent manually to vendor to request a quotation</field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+        </record>
+
+        <!-- 采购：采购订单 59812-->
+        <record id="wechat_message_template_edi_purchase_done" model="wechat.message_templates">
+            <field name="name">Purchase: Purchase Order</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="subject">{{ object.company_id.name }} Order (Ref {{ object.name or 'n/a' }})</field>
+            <field name="description"><![CDATA[Send purchase order to vendor.
+Please do the following in the background of WeChat official account:
+1. "Setting and development" → "official account setting" → "service category";
+2. Add "Tools>Office" to the service category;
+3. "Advertising Services and Services" → "Template Messages" → "Template Library" → "Category Template Library", search for "Purchase order confirmation notification";
+4. Add template with number "59812"]]></field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="body_html">{
+    "data":{
+        "thing4":{"value":"{{ object.get_vendor_name() }}"},
+        "thing5":{"value":"{{ object.get_vendor_contact_name() }}"},
+        "character_string1":{"value": "{{ object.name }}"},
+        "amount2":{"value": "{{ object.get_amount_total() }}"},
+        "time3":{"value": "{{ object.get_sent_time() }}"}
+    }
+}</field>
+        </record>
+
+        <!-- 采购：供应商提醒 -->
+        <record id="wechat_message_template_edi_purchase_reminder" model="wechat.message_templates">
+            <field name="name">Purchase: Vendor Reminder</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="subject">{{ object.company_id.name }} Order (Ref {{ object.name or 'n/a' }})</field>
+            <field name="description">Sent to vendors before expected arrival, based on the purchase order setting</field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+        </record>
+
+
+    </data>
+
+</odoo>
